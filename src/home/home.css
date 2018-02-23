@@ -1,0 +1,11 @@
+.Home-container {
+  align-items: center;
+  background-color: #90AFC5;
+  display: flex;
+  color: #2A3132;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh);
+  min-height: 300px;
+  width: 100%;
+}

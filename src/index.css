@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+@font-face {
+  font-family: 'TitleFont';
+  src: local('TitleFont'), url(./assets/fonts/Raleway/Raleway-ExtraBold.ttf) format('truetype');
+}
