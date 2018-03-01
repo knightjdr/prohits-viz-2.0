@@ -1,0 +1,12 @@
+.Tools-container {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.Tools-toolbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+}

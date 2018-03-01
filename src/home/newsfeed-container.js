@@ -10,14 +10,20 @@ const testNews = [
   {
     date: 'Jan 5, 2018',
     news: 'Some news',
-  }
+  },
 ];
 
 class NewsfeedContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      testNews,
+    };
+  }
   render() {
     return (
       <Newsfeed
-        news={testNews}
+        news={this.state.testNews}
       />
     );
   }

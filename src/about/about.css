@@ -1,0 +1,17 @@
+.About-container {
+  background-color: #f5f5f5;
+  color: #2A3132;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+.About-link {
+  color: #2A3132;
+  margin-left: 4px;
+}
+.About-link:visited {
+  color: #90AFC5;
+}
+.About-link:hover {
+  color: #763626;
+}

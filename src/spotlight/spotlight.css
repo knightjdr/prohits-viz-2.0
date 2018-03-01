@@ -1,0 +1,85 @@
+.Spotlight-container {
+  background-color: #90AFC5;
+  display: flex;
+  flex-direction: column;
+  font-family: BodyText;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.Spotlight-carousel {
+  background: #f5f5f5;
+  max-width: 800px;
+}
+.Spotlight-carousel-container {
+  align-items: center;
+  display: flex !important;
+  justify-content: center;
+  padding: 10px;
+}
+.Spotlight-carousel-description {
+  max-width: 600px;
+}
+.Spotlight-carousel-image-container {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+  max-height: 200px;
+  max-width: 200px;
+}
+.Spotlight-carousel-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+.Spotlight-header {
+  font-family: TitleFont;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.Spotlight-howto {
+  color: #2A3132;
+  margin-top: 20px;
+}
+.Spotlight-link-container {
+  margin-top: 15px;
+}
+.Spotlight-link {
+  color: #AC867C;
+  margin: 0px 10px;
+}
+.Spotlight-link:visited {
+  color: #763626;
+}
+.Spotlight-link:hover {
+  color: #90AFC5;
+}
+.ant-carousel {
+  display: flex !important;
+  height: auto;
+  justify-content: center;
+}
+.ant-carousel .slick-dots li button {
+  border: 0;
+  cursor: pointer;
+  background: #763626;
+  border-radius: 1px;
+  color: transparent;
+  display: block;
+  font-size: 0;
+  height: 10px;
+  opacity: 0.3;
+  outline: none;
+  padding: 0;
+  transition: all .5s;
+  width: 16px;
+}
+.ant-carousel .slick-dots li.slick-active button {
+  background: #AC867C;
+  opacity: 1;
+  width: 24px;
+}
+@media screen and (max-width: 880px) {
+  .Spotlight-carousel {
+    max-width: calc(100vw - 80px);
+  }
+  .Spotlight-carousel-description {
+    max-width: calc(100vw - 280px);
+  }
+}

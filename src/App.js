@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+import About from './about/about';
+import Funding from './funding/funding';
 import Home from './home/home';
+import Spotlight from './spotlight/spotlight';
+import Tools from './tools/tools';
 
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Home />
-        <div className="App-second">
-          something
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Home />
+    <Tools />
+    <Spotlight />
+    <Funding />
+    <About />
+  </div>
+);
 
 export default App;
