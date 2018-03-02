@@ -1,5 +1,8 @@
 .Spotlight-container {
   background-color: #90AFC5;
+  background-image: url('../assets/background/pattern.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   font-family: BodyText;
@@ -17,6 +20,7 @@
   padding: 10px;
 }
 .Spotlight-carousel-description {
+  margin-left: 10px;
   max-width: 600px;
 }
 .Spotlight-carousel-image-container {

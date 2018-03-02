@@ -1,0 +1,9 @@
+.Pipeline-container {
+  height: 100%;
+  width: 100%;
+}
+.Pipeline-datapoint {
+  fill: #2A3132;
+  font-family: Cartoon;
+  text-align: right;
+}

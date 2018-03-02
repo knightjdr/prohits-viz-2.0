@@ -1,4 +1,4 @@
 .Title-text {
-  font-family: 'TitleFont';
-  font-size: 3em;
+  position: absolute;
+  top: 40%;
 }

@@ -1,20 +1,10 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-a:link {
-  color: #AC867C;
-}
-a:visited {
-  color: #763626;
-}
-a:hover {
-  color: #90AFC5;
-}
 @font-face {
   font-family: 'TitleFont';
   src: local('TitleFont'), url(./assets/fonts/Raleway/Raleway-ExtraBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cartoon';
+  src: local('Cartoon'), url(./assets/fonts/Fredoka_One/FredokaOne-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'BodyText';
@@ -33,4 +23,18 @@ a:hover {
   src: local('BodyText'), url(./assets/fonts/Lato/Lato-Bold.ttf) format('truetype');
   font-weight: bold;
   font-style: normal;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: BodyText;
+}
+a:link {
+  color: #AC867C;
+}
+a:visited {
+  color: #763626;
+}
+a:hover {
+  color: #90AFC5;
 }

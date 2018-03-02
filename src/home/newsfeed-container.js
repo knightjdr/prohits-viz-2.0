@@ -4,12 +4,12 @@ import Newsfeed from './newsfeed';
 
 const testNews = [
   {
-    date: 'Jan 20, 2018',
-    news: 'Some more news',
+    date: 'Month day, 2018',
+    news: 'ProHits-viz 2.0 released',
   },
   {
     date: 'Jan 5, 2018',
-    news: 'Some news',
+    news: 'Some older news',
   },
 ];
 

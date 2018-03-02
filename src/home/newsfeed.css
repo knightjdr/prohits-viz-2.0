@@ -4,10 +4,15 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   display: flex;
   flex-direction: column;
+  font-family: BodyText;
   height: auto;
   margin-top: 20px;
   max-height: 200px;
+  max-width: 350px;
   padding: 2px;
+  position: absolute;
+  top: 45%;
+  width: auto;
 }
 
 .Newsfeed-header {
