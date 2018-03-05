@@ -3,49 +3,65 @@ import React, { Component } from 'react';
 
 import Pipeline from './pipeline';
 
+const cellWidth = 24;
+const defaultWidth = 750;
+
 export default class PipelineContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       path: {},
+      rows: null,
+      scale: null,
     };
   }
   componentWillReceiveProps = (nextProps) => {
-    this.updateParameters(nextProps);
-  }
-  updateParameters = (next) => {
     const {
-      columns,
       height,
-      rows,
-      start,
+      hide,
       width,
-    } = next;
+    } = nextProps;
+    this.updateParameters(height, hide, width);
+  }
+  updateParameters = (height, hide, width) => {
     if (
-      start &&
-      columns &&
+      !hide &&
       height &&
-      rows &&
       width
     ) {
-      const leftEdge = Math.round(next.width / 2);
-      const y = Math.round(next.height * 0.4) + 28;
-      const totalPoints = next.columns * next.rows;
+      const center = {
+        h: Math.round(height / 2),
+        w: Math.round(width / 2),
+      };
+      const columns = 3;
+      const rows = Math.round((height / 5) / cellWidth);
+      const scale = width / defaultWidth;
+      const y = Math.round(height * 0.4) + 28;
       this.setState({
-        data: Array.from({ length: totalPoints }, () => Math.floor(Math.random() * 90) + 10),
+        data: Array.from({ length: rows * columns }, () => Math.floor(Math.random() * 90) + 10),
         path: {
           leftSlide: {
             x: 0,
             y,
-            xP: leftEdge - 160,
+            xP: center.w - 110,
           },
-          leftCircle: {
-            x: leftEdge - 140,
-            y: y - 5,
-            xP: leftEdge - 120,
+          rightSlide: {
+            x: center.w + 130,
+            y,
+            xP: Math.round(center.w * 1.55),
+            yP: y - (center.h / 3),
           },
         },
+        rows,
+        scale,
+      });
+    } else {
+      this.setState({
+        data: [],
+        path: {},
+        rows: null,
+        scale: null,
       });
     }
   }
@@ -54,22 +70,20 @@ export default class PipelineContainer extends Component {
       <Pipeline
         data={this.state.data}
         path={this.state.path}
+        rows={this.state.rows}
+        scale={this.state.scale}
       />
     );
   }
 }
 
 PipelineContainer.defaultProps = {
-  columns: null,
   height: null,
-  rows: null,
   width: null,
 };
 
 PipelineContainer.propTypes = {
-  columns: PropTypes.number,
   height: PropTypes.number,
-  rows: PropTypes.number,
-  start: PropTypes.bool,
+  hide: PropTypes.bool.isRequired,
   width: PropTypes.number,
 };

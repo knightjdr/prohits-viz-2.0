@@ -1,9 +1,30 @@
 .Pipeline-container {
   height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
-.Pipeline-datapoint {
+.Pipeline-datapoint-text {
   fill: #2A3132;
   font-family: Cartoon;
+  font-size: 1.2em;
   text-align: right;
+  will-change: 'opacity, transform';
+}
+.Pipeline-datapoint-circle {
+  fill: #F5F5F5;
+  will-change: 'opacity, transform';
+}
+.Pipeline-heatmap-circle {
+  will-change: 'opacity, transform';
+}
+.Pipeline-heatmap-rect {
+  will-change: 'opacity, transform';
+}
+.Pipeline-leftgContainer {
+  height: 30;
+}
+.Pipeline-shadow {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
 }

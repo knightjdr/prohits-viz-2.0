@@ -10,9 +10,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: null,
-      rows: null,
-      start: true,
+      hidePipeline: false,
     };
   }
   componentDidMount = () => {
@@ -22,12 +20,11 @@ export default class Home extends Component {
     const height = this.homeElement.clientHeight;
     const width = this.homeElement.clientWidth;
     this.setState({
-      columns: 2,
       height,
-      rows: Math.round(height / 20) / 2,
       width,
     });
   }
+  resize = () => {}
   render() {
     return (
       <div
@@ -37,10 +34,8 @@ export default class Home extends Component {
         <Title />
         <Newsfeed />
         <Pipeline
-          columns={this.state.columns}
           height={this.state.height}
-          rows={this.state.rows}
-          start={this.state.start}
+          hide={this.state.hidePipeline}
           width={this.state.width}
         />
       </div>

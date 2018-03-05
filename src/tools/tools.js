@@ -30,6 +30,9 @@ const details = {
 
 const Tools = () => (
   <div className="Tools-container">
+    <div className="Tools-description">
+      GETTING STARTED
+    </div>
     <div className="Tools-toolbox-wrapper">
       <ToolBox
         image={details.analysis.image}

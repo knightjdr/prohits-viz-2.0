@@ -1,4 +1,11 @@
+.Title-description {
+  font-family: 'BodyText';
+  margin-top: 10px;
+  max-width: 350px;
+}
 .Title-text {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 40%;
 }
