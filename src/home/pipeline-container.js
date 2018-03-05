@@ -50,7 +50,7 @@ export default class PipelineContainer extends Component {
             x: center.w + 130,
             y,
             xP: Math.round(center.w * 1.55),
-            yP: y - (center.h / 3),
+            yP: y - (center.h / 5),
           },
         },
         rows,
