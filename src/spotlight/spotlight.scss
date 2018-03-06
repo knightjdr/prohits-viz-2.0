@@ -1,66 +1,68 @@
+@import 'theme/_theme.scss';
+
 .Spotlight-container {
-  background-image: url("../assets/background/pattern.svg");
+  background-image: url('../assets/background/pattern.svg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   font-family: BodyText;
   justify-content: center;
-  padding: 40px 20px; }
-
+  padding: 40px 20px;
+}
 .Spotlight-carousel {
-  background: #f5f5f5;
-  max-width: 800px; }
-
+  background: $backdrop-light;
+  max-width: 800px;
+}
 .Spotlight-carousel-container {
   align-items: center;
   display: flex !important;
   justify-content: center;
-  padding: 10px; }
-
+  padding: 10px;
+}
 .Spotlight-carousel-description {
   margin-left: 10px;
-  max-width: 600px; }
-
+  max-width: 600px;
+}
 .Spotlight-carousel-image-container {
   max-height: 200px;
-  max-width: 200px; }
-
+  max-width: 200px;
+}
 .Spotlight-carousel-image {
   max-height: 100%;
-  max-width: 100%; }
-
+  max-width: 100%;
+}
 .Spotlight-header {
   font-family: TitleFont;
   font-size: 1.2em;
-  margin-bottom: 10px; }
-
+  margin-bottom: 10px;
+}
 .Spotlight-howto {
-  color: #2A3132;
-  margin-top: 20px; }
-
+  color: $text-dark;
+  margin-top: 20px;
+}
 .Spotlight-link-container {
-  margin-top: 15px; }
-
+  margin-top: 15px;
+}
 .Spotlight-link {
-  color: #AC867C;
-  margin: 0px 10px; }
-
+  color: $accent-light;
+  margin: 0px 10px;
+}
 .Spotlight-link:visited {
-  color: #763626; }
-
+  color: $accent-dark;
+}
 .Spotlight-link:hover {
-  color: #90AFC5; }
-
+  color: $primary-light;
+}
 .ant-carousel {
   display: flex !important;
   height: auto;
-  justify-content: center; }
-
+  justify-content: center;
+}
 .ant-carousel .slick-dots li button {
   border: 0;
   cursor: pointer;
-  background: #763626;
+  background: $accent-dark;
   border-radius: 1px;
   color: transparent;
   display: block;
@@ -70,15 +72,18 @@
   outline: none;
   padding: 0;
   transition: all .5s;
-  width: 16px; }
-
+  width: 16px;
+}
 .ant-carousel .slick-dots li.slick-active button {
-  background: #AC867C;
+  background: $accent-light;
   opacity: 1;
-  width: 24px; }
-
+  width: 24px;
+}
 @media screen and (max-width: 880px) {
   .Spotlight-carousel {
-    max-width: calc(100vw - 80px); }
+    max-width: calc(100vw - 80px);
+  }
   .Spotlight-carousel-description {
-    max-width: calc(100vw - 280px); } }
+    max-width: calc(100vw - 280px);
+  }
+}

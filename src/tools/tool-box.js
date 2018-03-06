@@ -18,7 +18,7 @@ const ToolBox = ({
       />
     );
   return (
-    <div className="ToolBox-container">
+    <div className="ToolBox-container boxshadow">
       <div className="ToolBox-image">
         { imageElement }
       </div>

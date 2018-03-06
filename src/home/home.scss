@@ -1,11 +1,14 @@
+@import 'theme/_theme.scss';
+
 .Home-container {
   align-items: center;
-  background-image: url("../assets/background/pattern.svg");
+  background-image: url('../assets/background/pattern.svg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  color: #2A3132;
+  color: $text-dark;
   flex-direction: column;
   height: calc(100vh);
   min-height: 300px;
-  width: 100%; }
+  width: 100%;
+}

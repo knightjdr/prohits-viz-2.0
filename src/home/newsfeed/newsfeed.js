@@ -29,7 +29,7 @@ const Newsfeed = ({
     ]))
   );
   return (
-    <div className="Newsfeed-container">
+    <div className="Newsfeed-container boxshadow">
       <div className="Newsfeed-header">
         News
       </div>

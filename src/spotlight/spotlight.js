@@ -33,7 +33,7 @@ const Spotlight = () => {
         className="Spotlight-carousel-container"
         key={key}
       >
-        <div className="Spotlight-carousel-image-container">
+        <div className="Spotlight-carousel-image-container boxshadow">
           <img
             alt={`${article.authorLastName} highlight`}
             className="Spotlight-carousel-image"

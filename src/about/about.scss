@@ -1,0 +1,19 @@
+@import 'theme/_theme.scss';
+
+.About-container {
+  background-color: $backdrop-light;
+  color: $text-dark;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+.About-link {
+  color: $primary-dark;
+  margin-left: 4px;
+}
+.About-link:visited {
+  color: $primary-light;
+}
+.About-link:hover {
+  color: $accent-dark;
+}
