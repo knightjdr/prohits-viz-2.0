@@ -1,7 +1,6 @@
 import React from 'react';
 
 import About from './about/about';
-import Funding from './funding/funding';
 import Home from './home/home';
 import Spotlight from './spotlight/spotlight';
 import Tools from './tools/tools';
@@ -13,7 +12,6 @@ const App = () => (
     <Home />
     <Tools />
     <Spotlight />
-    <Funding />
     <About />
   </div>
 );

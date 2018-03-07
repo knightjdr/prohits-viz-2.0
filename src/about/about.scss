@@ -2,10 +2,34 @@
 
 .About-container {
   background-color: $backdrop-light;
+  background-image: url('../assets/background/network.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: $text-dark;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 10px 20px;
+}
+.About-footer {
+  margin-top: 10px;
+}
+.About-funding {
+  align-items: center;
+  color: $text-dark;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0px 20px;
+}
+.About-funding-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  max-width: 1200px;
+}
+.About-funding-link {
+  margin: 10px 10px;
 }
 .About-link {
   color: $primary-dark;

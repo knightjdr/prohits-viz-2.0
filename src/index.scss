@@ -27,18 +27,10 @@
   font-style: normal;
 }
 body {
+  color: $text-dark;
+  font-family: BodyText;
   margin: 0;
   padding: 0;
-  font-family: BodyText;
-}
-a:link {
-  color: $accent-light;
-}
-a:visited {
-  color: $accent-dark;
-}
-a:hover {
-  color: $primary-light;
 }
 .nobutton {
   background-color: transparent;
@@ -50,4 +42,8 @@ a:hover {
 }
 .boxshadow {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+// ant
+.ant-popover-inner {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
 }

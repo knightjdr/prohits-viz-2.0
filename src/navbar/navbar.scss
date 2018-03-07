@@ -1,0 +1,74 @@
+@import 'theme/_theme.scss';
+
+.Navbar {
+  height: 40px;
+  left: 0;
+  line-height: 40px;
+  padding: 0px 10px;
+  top: 0;
+}
+.Navbar-default {
+  background-color: $backdrop-dark;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.Navbar-link {
+  font-weight: bold;
+  margin: 0px 5px;
+}
+.Navbar-default a.Navbar-link:link {
+  color: $accent-light;
+}
+.Navbar-default a.Navbar-link:visited {
+  color: $accent-light;
+}
+.Navbar-default a.Navbar-link:hover {
+  color: $primary-light;
+}
+.Navbar-link-container {
+  float: right;
+}
+.Navbar-logo {
+  height: 30px;
+  margin-top: -5px;
+}
+.Navbar-logo-link {
+  float: left;
+}
+.Navbar-menu {
+  cursor: pointer;
+  font-size: 1.8em;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.Navbar-default .Navbar-menu {
+  color: $accent-light;
+}
+.Navbar-menu-items {
+  display: flex;
+  flex-direction: column;
+}
+.Navbar-transparent {
+  background-color: transparent;
+}
+.Navbar-transparent a.Navbar-link:link {
+  color: $primary_dark;
+}
+.Navbar-transparent a.Navbar-link:visited {
+  color: $primary_dark;
+}
+.Navbar-transparent a.Navbar-link:hover {
+  color: $accent-dark;
+}
+.Navbar-transparent .Navbar-menu {
+  color: $primary_dark;
+}
+// menu links
+.Navbar-link:link {
+  color: $primary_dark;
+}
+.Navbar-link:visited {
+  color: $primary_dark;
+}
+.Navbar-link:hover {
+  color: $accent-dark;
+}

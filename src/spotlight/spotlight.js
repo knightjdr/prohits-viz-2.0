@@ -1,5 +1,7 @@
-import { Carousel } from 'antd';
+import LazyLoad from 'react-lazyload';
 import React from 'react';
+
+import { Carousel } from 'antd';
 
 import './spotlight.css';
 
@@ -34,11 +36,16 @@ const Spotlight = () => {
         key={key}
       >
         <div className="Spotlight-carousel-image-container boxshadow">
-          <img
-            alt={`${article.authorLastName} highlight`}
-            className="Spotlight-carousel-image"
-            src={article.image}
-          />
+          <LazyLoad
+            height={200}
+            offset={100}
+          >
+            <img
+              alt={`${article.authorLastName} highlight`}
+              className="Spotlight-carousel-image"
+              src={article.image}
+            />
+          </LazyLoad>
         </div>
         <div>
           <div className="Spotlight-carousel-description">

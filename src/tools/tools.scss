@@ -3,6 +3,9 @@
 .Tools-container {
   align-items: center;
   background-color: $backdrop-light;
+  background-image: url('../assets/background/network.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   padding: 40px 20px;

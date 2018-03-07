@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './tool-box.css';
 
+const scrollTop = () => {
+  window.scrollTo(0, 0);
+};
+
 const ToolBox = ({
   image,
+  route,
   text,
   title,
 }) => {
@@ -18,17 +24,22 @@ const ToolBox = ({
       />
     );
   return (
-    <div className="ToolBox-container boxshadow">
-      <div className="ToolBox-image">
-        { imageElement }
+    <NavLink
+      onClick={scrollTop}
+      to={route}
+    >
+      <div className="ToolBox-container boxshadow">
+        <div className="ToolBox-image">
+          { imageElement }
+        </div>
+        <div className="ToolBox-text">
+          { text }
+        </div>
+        <div className="ToolBox-title">
+          { title }
+        </div>
       </div>
-      <div className="ToolBox-text">
-        { text }
-      </div>
-      <div className="ToolBox-title">
-        { title }
-      </div>
-    </div>
+    </NavLink>
   );
 };
 
@@ -37,6 +48,7 @@ ToolBox.propTypes = {
     PropTypes.object,
     PropTypes.string,
   ]).isRequired,
+  route: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
