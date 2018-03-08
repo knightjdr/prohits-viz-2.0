@@ -3,14 +3,17 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-<rect fill="#90AFC5" width="300" height="300"/>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="97.0093" y1="196.9053" x2="97.0093" y2="-3.1475" gradientTransform="matrix(0.8634 -0.5044 0.6326 1.0828 -59.3652 63.9224)">
+<g>
+	<path fill="#90AFC5" d="M300,270c0,16.5-13.5,30-30,30H30c-16.5,0-30-13.5-30-30V30C0,13.5,13.5,0,30,0h240c16.5,0,30,13.5,30,30
+		V270z"/>
+</g>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="97.4272" y1="196.8066" x2="97.4272" y2="-3.2466" gradientTransform="matrix(0.8634 -0.5044 0.6326 1.0828 -59.6602 64.2373)">
 	<stop  offset="0.386" style="stop-color:#2A3132"/>
 	<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
 </linearGradient>
 <polygon fill="url(#SVGID_1_)" points="122.99,243.218 21.964,11.837 174.862,213.062 "/>
 <circle fill="#2A3132" cx="150" cy="230" r="30"/>
-<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="118.6812" y1="187.7559" x2="118.6811" y2="-12.2969" gradientTransform="matrix(0.8686 0.4955 -0.6214 1.0892 163.7554 -33.3252)">
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="118.625" y1="188.4316" x2="118.625" y2="-11.6318" gradientTransform="matrix(0.8686 0.4955 -0.6214 1.0892 164.2144 -34.0186)">
 	<stop  offset="0.386" style="stop-color:#2A3132"/>
 	<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
 </linearGradient>
