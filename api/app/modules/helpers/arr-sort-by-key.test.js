@@ -1,4 +1,4 @@
-const ArrSortByKey = require('./arrSortByKey');
+const ArrSortByKey = require('./arr-sort-by-key');
 
 const testArrays = {
   mixed: [

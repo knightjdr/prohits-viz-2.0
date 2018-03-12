@@ -8,7 +8,10 @@ const Init = () => (
     const url = `mongodb://${dbParams}`;
     MongoClient.connect(url)
       .then((client) => {
-        resolve(client.db(Config.database.name));
+        resolve({
+          client,
+          db: client.db(Config.database.name),
+        });
       })
       .catch((err) => {
         reject(err);

@@ -27,7 +27,10 @@ MongoClient.connect
 
 test('database initialization from mongoclient success', () => (
   Init().then((data) => {
-    expect(data).toBe('test');
+    expect(data).toEqual({
+      client: mockClient,
+      db: 'test',
+    });
   })
 ));
 

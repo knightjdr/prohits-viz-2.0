@@ -1,10 +1,10 @@
-const news = () => {};
+const HomeLoad = require('./modules/home-load/home-load');
 
 const Routes = {
   configure: (app) => {
     // get all news items
-    app.get('/api/news/', (req, res) => {
-      news.get()
+    app.get('/api/home/', (req, res) => {
+      HomeLoad()
         .then((response) => {
           Routes.response(res, response);
         });
@@ -16,23 +16,24 @@ const Routes = {
         error: Routes.messages.invalidRoute,
       });
     });
+    // for invalid methods
+    app.use((req, res) => {
+      res.status(405).send({
+        status: 405,
+        error: Routes.messages.notSupported,
+      });
+    });
   },
   messages: {
     invalidRoute: 'The requiested route is not valid',
     notSupported: 'The requested method is not supported',
   },
   response: (resObject, response) => {
-    const data = response.clientResponse;
-    Object.entries(resObject.locals).forEach(([key, value]) => {
-      if (key !== 'user') {
-        data[key] = value;
-      }
-    });
     // security headers
     resObject.setHeader('X-XSS-Protection', '1;mode=block');
     resObject.setHeader('X-Frame-Options', 'SAMEORIGIN');
     resObject.setHeader('X-Content-Type-Options', 'nosniff');
-    resObject.status(response.status).send(data);
+    resObject.status(response.status).send(response.data);
   },
 };
 module.exports = Routes;
