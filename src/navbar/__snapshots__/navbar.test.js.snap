@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar on small screen 1`] = `
+<div
+  class="Navbar Navbar-default"
+>
+  <a
+    aria-current="true"
+    class="Navbar-logo-link active"
+    href="/"
+  >
+    <img
+      alt="Logo"
+      class="Navbar-logo"
+      src="logo_accent_nobg.svg"
+    >
+      
+    </img>
+  </a>
+  <div
+    class="Navbar-link-container"
+  >
+    <svg
+      aria-hidden="true"
+      class="svg-inline--fa fa-bars fa-w-14 Navbar-menu"
+      data-icon="bars"
+      data-prefix="fas"
+      role="img"
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        fill="currentColor"
+      >
+        
+      </path>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Navbar shows background 1`] = `
+<div
+  class="Navbar Navbar-default"
+>
+  <a
+    aria-current="true"
+    class="Navbar-logo-link active"
+    href="/"
+  >
+    <img
+      alt="Logo"
+      class="Navbar-logo"
+      src="logo_accent_nobg.svg"
+    >
+      
+    </img>
+  </a>
+  <div
+    class="Navbar-link-container"
+  >
+    <a
+      aria-current="false"
+      class="Navbar-link"
+      href="/analysis"
+    >
+      analysis
+    </a>
+    <a
+      aria-current="false"
+      class="Navbar-link"
+      href="/help"
+    >
+      help
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Navbar transparent background 1`] = `
+<div
+  class="Navbar Navbar-transparent"
+>
+  <a
+    aria-current="true"
+    class="Navbar-logo-link active"
+    href="/"
+  >
+    <img
+      alt="Logo"
+      class="Navbar-logo"
+      src="logo_nobg.svg"
+    >
+      
+    </img>
+  </a>
+  <div
+    class="Navbar-link-container"
+  >
+    <a
+      aria-current="false"
+      class="Navbar-link"
+      href="/analysis"
+    >
+      analysis
+    </a>
+    <a
+      aria-current="false"
+      class="Navbar-link"
+      href="/help"
+    >
+      help
+    </a>
+  </div>
+</div>
+`;
