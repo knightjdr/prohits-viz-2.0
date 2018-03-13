@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import App from './App';
+import Router from './router';
 
-describe('App', () => {
+describe('Router', () => {
   test('It renders', () => {
     const wrapper = shallow(
-      <App />,
+      <Router />,
     );
     expect(wrapper).toMatchSnapshot();
   });

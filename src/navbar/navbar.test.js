@@ -1,8 +1,14 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { render } from 'enzyme';
+import * as moduleToMock from 'react-router-dom';
+import { shallow } from 'enzyme';
 
 import Navbar from './navbar';
+
+// mock NavLink
+moduleToMock.NavLink = () => (
+  <div />
+);
+jest.setMock('react-router-dom', moduleToMock);
 
 const links = [
   {
@@ -16,46 +22,34 @@ const links = [
 ];
 
 test('Navbar shows background', () => {
-  const wrapper = render(
-    <MemoryRouter
-      initialEntries={[{ pathname: '/', key: 'testKey' }]}
-    >
-      <Navbar
-        background
-        links={links}
-        smallScreen={false}
-      />
-    </MemoryRouter>,
+  const wrapper = shallow(
+    <Navbar
+      background
+      links={links}
+      smallScreen={false}
+    />,
   );
   expect(wrapper).toMatchSnapshot();
 });
 
 test('Navbar transparent background', () => {
-  const wrapper = render(
-    <MemoryRouter
-      initialEntries={[{ pathname: '/', key: 'testKey' }]}
-    >
-      <Navbar
-        background={false}
-        links={links}
-        smallScreen={false}
-      />
-    </MemoryRouter>,
+  const wrapper = shallow(
+    <Navbar
+      background={false}
+      links={links}
+      smallScreen={false}
+    />,
   );
   expect(wrapper).toMatchSnapshot();
 });
 
 test('Navbar on small screen', () => {
-  const wrapper = render(
-    <MemoryRouter
-      initialEntries={[{ pathname: '/', key: 'testKey' }]}
-    >
-      <Navbar
-        background
-        links={links}
-        smallScreen
-      />
-    </MemoryRouter>,
+  const wrapper = shallow(
+    <Navbar
+      background
+      links={links}
+      smallScreen
+    />,
   );
   expect(wrapper).toMatchSnapshot();
 });

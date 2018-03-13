@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Newsfeed with news 1`] = `
+<div
+  class="Newsfeed-container boxshadow fadein"
+>
+  <div
+    class="Newsfeed-header"
+  >
+    News
+  </div>
+  <div
+    class="Newsfeed-content"
+  >
+    <div
+      class="Newsfeed-content-date"
+      style="grid-row:1"
+    >
+      Apr 25, 2018
+    </div>
+    <div
+      class="Newsfeed-content-news"
+      style="grid-row:1"
+    >
+      <a
+        aria-current="false"
+        class="Newsfeed-link"
+        href="/news/5aa6b120c63eb43ab21a072e"
+      >
+        test headline
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Newsfeed without news 1`] = `null`;

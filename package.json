@@ -10,7 +10,9 @@
     "@fortawesome/fontawesome-pro-solid": "^5.0.7",
     "@fortawesome/react-fontawesome": "0.0.17",
     "antd": "^3.2.1",
+    "deep-equal": "^1.0.1",
     "history": "^4.7.2",
+    "moment": "^2.21.0",
     "node-sass-chokidar": "^1.0.1",
     "npm-run-all": "^4.1.2",
     "prop-types": "^15.6.0",
@@ -25,7 +27,8 @@
     "react-router-transition": "^1.2.1",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "build-js": "react-app-rewired build",
@@ -49,16 +52,18 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "fetch-mock": "^6.1.0",
     "identity-obj-proxy": "^3.0.0",
-    "react-test-renderer": "^16.2.0"
+    "md5": "^2.2.1",
+    "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.4.0"
   },
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
     "setupFiles": [
-      "./src/test/shim.js",
-      "./src/test/jestsetup.js"
+      "./src/test/shim.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home It renders 1`] = `
+<div
+  className="Home-container"
+>
+  <NavbarContainer
+    background={false}
+    links={
+      Array [
+        Object {
+          "route": "/analysis",
+          "text": "ANALYSIS",
+        },
+        Object {
+          "route": "/visualization",
+          "text": "VISUALIZATION",
+        },
+        Object {
+          "route": "/help",
+          "text": "HELP",
+        },
+      ]
+    }
+  />
+  <div
+    className="Home-text"
+  >
+    <Title />
+    <Connect(NewsfeedContainer) />
+  </div>
+</div>
+`;

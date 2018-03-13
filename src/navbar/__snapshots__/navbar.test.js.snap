@@ -2,116 +2,148 @@
 
 exports[`Navbar on small screen 1`] = `
 <div
-  class="Navbar Navbar-default"
+  className="Navbar Navbar-default"
 >
-  <a
-    aria-current="true"
-    class="Navbar-logo-link active"
-    href="/"
+  <Component
+    className="Navbar-logo-link"
+    to="/"
   >
     <img
       alt="Logo"
-      class="Navbar-logo"
+      className="Navbar-logo"
       src="logo_accent_nobg.svg"
-    >
-      
-    </img>
-  </a>
+    />
+  </Component>
   <div
-    class="Navbar-link-container"
+    className="Navbar-link-container"
   >
-    <svg
-      aria-hidden="true"
-      class="svg-inline--fa fa-bars fa-w-14 Navbar-menu"
-      data-icon="bars"
-      data-prefix="fas"
-      role="img"
-      viewBox="0 0 448 512"
-      xmlns="http://www.w3.org/2000/svg"
+    <Popover
+      content={
+        <div
+          className="Navbar-menu-items"
+        >
+          <Unknown
+            className="Navbar-link"
+            to="/analysis"
+          >
+            analysis
+          </Unknown>
+          <Unknown
+            className="Navbar-link"
+            to="/help"
+          >
+            help
+          </Unknown>
+        </div>
+      }
+      mouseEnterDelay={0.1}
+      mouseLeaveDelay={0.1}
+      overlayStyle={Object {}}
+      placement="rightBottom"
+      prefixCls="ant-popover"
+      transitionName="zoom-big"
+      trigger="click"
     >
-      <path
-        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-        fill="currentColor"
-      >
-        
-      </path>
-    </svg>
+      <FontAwesomeIcon$1
+        border={false}
+        className="Navbar-menu"
+        fixedWidth={false}
+        flip={null}
+        icon={
+          Object {
+            "icon": Array [
+              448,
+              512,
+              Array [],
+              "f0c9",
+              "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z",
+            ],
+            "iconName": "bars",
+            "prefix": "fas",
+          }
+        }
+        listItem={false}
+        mask={null}
+        name=""
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        transform={null}
+      />
+    </Popover>
   </div>
 </div>
 `;
 
 exports[`Navbar shows background 1`] = `
 <div
-  class="Navbar Navbar-default"
+  className="Navbar Navbar-default"
 >
-  <a
-    aria-current="true"
-    class="Navbar-logo-link active"
-    href="/"
+  <Component
+    className="Navbar-logo-link"
+    to="/"
   >
     <img
       alt="Logo"
-      class="Navbar-logo"
+      className="Navbar-logo"
       src="logo_accent_nobg.svg"
-    >
-      
-    </img>
-  </a>
+    />
+  </Component>
   <div
-    class="Navbar-link-container"
+    className="Navbar-link-container"
   >
-    <a
-      aria-current="false"
-      class="Navbar-link"
-      href="/analysis"
+    <Component
+      className="Navbar-link"
+      key="analysis"
+      to="/analysis"
     >
       analysis
-    </a>
-    <a
-      aria-current="false"
-      class="Navbar-link"
-      href="/help"
+    </Component>
+    <Component
+      className="Navbar-link"
+      key="help"
+      to="/help"
     >
       help
-    </a>
+    </Component>
   </div>
 </div>
 `;
 
 exports[`Navbar transparent background 1`] = `
 <div
-  class="Navbar Navbar-transparent"
+  className="Navbar Navbar-transparent"
 >
-  <a
-    aria-current="true"
-    class="Navbar-logo-link active"
-    href="/"
+  <Component
+    className="Navbar-logo-link"
+    to="/"
   >
     <img
       alt="Logo"
-      class="Navbar-logo"
+      className="Navbar-logo"
       src="logo_nobg.svg"
-    >
-      
-    </img>
-  </a>
+    />
+  </Component>
   <div
-    class="Navbar-link-container"
+    className="Navbar-link-container"
   >
-    <a
-      aria-current="false"
-      class="Navbar-link"
-      href="/analysis"
+    <Component
+      className="Navbar-link"
+      key="analysis"
+      to="/analysis"
     >
       analysis
-    </a>
-    <a
-      aria-current="false"
-      class="Navbar-link"
-      href="/help"
+    </Component>
+    <Component
+      className="Navbar-link"
+      key="help"
+      to="/help"
     >
       help
-    </a>
+    </Component>
   </div>
 </div>
 `;

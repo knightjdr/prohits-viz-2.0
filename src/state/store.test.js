@@ -1,12 +1,13 @@
 import React from 'react';
+// import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
 
-import App from './App';
+import Store from './store';
 
 describe('App', () => {
   test('It renders', () => {
     const wrapper = shallow(
-      <App />,
+      <Store />,
     );
     expect(wrapper).toMatchSnapshot();
   });

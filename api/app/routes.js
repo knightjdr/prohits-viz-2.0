@@ -12,20 +12,18 @@ const Routes = {
     // invalid get methods
     app.get('*', (req, res) => {
       res.status(404).send({
-        status: 404,
-        error: Routes.messages.invalidRoute,
+        message: Routes.messages.invalidRoute,
       });
     });
     // for invalid methods
     app.use((req, res) => {
       res.status(405).send({
-        status: 405,
-        error: Routes.messages.notSupported,
+        message: Routes.messages.notSupported,
       });
     });
   },
   messages: {
-    invalidRoute: 'The requiested route is not valid',
+    invalidRoute: 'The requested route is not valid',
     notSupported: 'The requested method is not supported',
   },
   response: (resObject, response) => {
@@ -33,7 +31,7 @@ const Routes = {
     resObject.setHeader('X-XSS-Protection', '1;mode=block');
     resObject.setHeader('X-Frame-Options', 'SAMEORIGIN');
     resObject.setHeader('X-Content-Type-Options', 'nosniff');
-    resObject.status(response.status).send(response.data);
+    resObject.status(response.status).send({ data: response.data });
   },
 };
 module.exports = Routes;
