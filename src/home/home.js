@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Navbar from '../navbar/navbar-container';
-import Newsfeed from './newsfeed/newsfeed-container';
+import Newsfeed from './newsfeed/newsfeed';
 import Title from './title/title';
 
 import './home.css';
@@ -14,6 +14,10 @@ const links = [
   {
     route: '/visualization',
     text: 'VISUALIZATION',
+  },
+  {
+    route: '/news',
+    text: 'NEWS',
   },
   {
     route: '/help',

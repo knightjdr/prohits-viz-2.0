@@ -1,8 +1,14 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { render } from 'enzyme';
+import * as moduleToMock from 'react-router-dom';
+import { shallow } from 'enzyme';
 
-import Newsfeed from './newsfeed';
+import { NewsfeedComponent } from './newsfeed';
+
+// mock NavLink
+moduleToMock.NavLink = () => (
+  <div />
+);
+jest.setMock('react-router-dom', moduleToMock);
 
 const testNews = [
   {
@@ -12,28 +18,22 @@ const testNews = [
   },
 ];
 
-test('Newsfeed with news', () => {
-  const wrapper = render(
-    <MemoryRouter
-      initialEntries={[{ pathname: '/', key: 'testKey' }]}
-    >
-      <Newsfeed
+describe('Newsfeed', () => {
+  test('Renders with news items', () => {
+    const wrapper = shallow(
+      <NewsfeedComponent
         news={testNews}
-      />
-    </MemoryRouter>,
-  );
-  expect(wrapper).toMatchSnapshot();
-});
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 
-test('Newsfeed without news', () => {
-  const wrapper = render(
-    <MemoryRouter
-      initialEntries={[{ pathname: '/', key: 'testKey' }]}
-    >
-      <Newsfeed
+  test('Renders without news items', () => {
+    const wrapper = shallow(
+      <NewsfeedComponent
         news={[]}
-      />
-    </MemoryRouter>,
-  );
-  expect(wrapper).toMatchSnapshot();
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 });

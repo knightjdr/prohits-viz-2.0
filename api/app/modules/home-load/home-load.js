@@ -13,8 +13,8 @@ const HomeLoad = () => (
       .then((documents) => {
         resolve({
           data: {
-            news: AddMongoDate(documents[0]),
-            spotlight: AddMongoDate(documents[0]),
+            news: AddMongoDate.arr(documents[0]),
+            spotlight: AddMongoDate.arr(documents[1]),
           },
           status: 200,
         });

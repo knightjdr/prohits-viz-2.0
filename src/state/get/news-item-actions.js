@@ -1,0 +1,55 @@
+export const FILL_NEWS_ITEM = 'FILL_NEWS_ITEM';
+export const GET_NEWS_ITEM = 'GET_NEWS_ITEM';
+export const NEWS_ITEM_ERROR = 'NEWS_ITEM_ERROR';
+
+export const fillNewsItem = (id, item) => ({
+  id,
+  item,
+  type: 'FILL_NEWS_ITEM',
+});
+export const getNewsItem = id => ({
+  id,
+  type: 'GET_NEWS_ITEM',
+});
+export const newsItemError = id => ({
+  id,
+  type: 'NEWS_ITEM_ERROR',
+});
+
+// thunks
+const fetchNewsItem = newsId => (
+  (dispatch, getState) => {
+    if (
+      getState().newsItem &&
+      getState().newsItem.id === newsId
+    ) {
+      return null;
+    }
+    dispatch(getNewsItem(newsId));
+    // set headers
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    const url = `${process.env.REACT_APP_API_ROOT}/news/${newsId}`;
+    // fetch and handle response
+    return fetch(url, {
+      cache: 'no-store',
+      headers,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then(response => (
+        response.json()
+      ))
+      .then((json) => {
+        dispatch(fillNewsItem(newsId, json.data.news));
+      })
+      .catch(() => {
+        dispatch(newsItemError(newsId));
+      });
+  }
+);
+export default fetchNewsItem;

@@ -7,6 +7,8 @@ jest.mock('./id-to-date');
 IdToDate
   .mockReturnValueOnce('2018-03-12T16:36:33Z')
   .mockReturnValueOnce('2018-03-12T16:36:40Z')
+  .mockReturnValueOnce(null)
+  .mockReturnValueOnce('2018-03-12T16:36:33Z')
   .mockReturnValueOnce(null);
 
 const startingArr = [
@@ -22,9 +24,18 @@ const mappedArr = [
   { field: 'bbb', dbDate: null },
 ];
 
-test('add date to array of mongo documents', () => {
-  // map array of objects
-  expect(AddMongoDate(startingArr)).toEqual(mappedArr);
-  // simply return things that are not arrays
-  expect(AddMongoDate({ a: 1 })).toEqual({ a: 1 });
+describe('AddMongoDate', () => {
+  test('add date to array of mongo documents', () => {
+    // map array of objects
+    expect(AddMongoDate.arr(startingArr)).toEqual(mappedArr);
+    // simply return things that are not arrays
+    expect(AddMongoDate.arr({ a: 1 })).toEqual({ a: 1 });
+  });
+
+  test('add date to mongo document', () => {
+    // map array of objects
+    expect(AddMongoDate.obj(startingArr[0])).toEqual(mappedArr[0]);
+    // simply return things that are not object
+    expect(AddMongoDate.arr(['a'])).toEqual(['a']);
+  });
 });

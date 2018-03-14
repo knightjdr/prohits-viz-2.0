@@ -8,6 +8,7 @@
   flex-direction: column;
   font-family: BodyText;
   justify-content: center;
+  min-height: 376px;
   padding: 40px 20px;
 }
 .Spotlight-carousel {
@@ -27,6 +28,7 @@
 .Spotlight-carousel-image-container {
   max-height: 200px;
   max-width: 200px;
+  min-width: 200px;
 }
 .Spotlight-carousel-image {
   max-height: 100%;

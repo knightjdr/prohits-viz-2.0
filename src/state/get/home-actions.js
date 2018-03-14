@@ -9,12 +9,7 @@ export const fillHome = data => ({
 const fetchHome = () => (
   (dispatch, getState) => {
     // if we already have the home page news, do nothing
-    if (
-      getState().news &&
-      getState().news.length > 0 &&
-      getState().spotlight &&
-      getState().spotlight.length > 0
-    ) {
+    if (getState().home.isLoaded) {
       return null;
     }
     // set headers

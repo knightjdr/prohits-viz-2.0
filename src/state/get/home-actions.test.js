@@ -9,7 +9,7 @@ const mockStore = configureMockStore(middlewares);
 
 // mock success data
 const data = {
-  initial: { news: [], spotlight: [] },
+  initial: { isLoaded: false, news: [], spotlight: [] },
   success: { news: ['a', 'b'], spotlight: ['a', 'b'] },
 };
 
@@ -26,9 +26,14 @@ describe('Home actions', () => {
     expect(actions.fillHome(data.success)).toEqual(expectedAction);
   });
 
-  it('calls fill actionsif the fetch response was successful', () => {
-    fetchMock.getOnce('*', { data: data.success, status: 200 });
-    const store = mockStore(data.initial);
+  it('no actions called if state already loaded', () => {
+    const store = mockStore({ home: { isLoaded: true } });
+    expect(store.dispatch(FetchHome())).toBeNull();
+  });
+
+  it('calls fill action if the fetch response was successful', () => {
+    fetchMock.getOnce('*', { data: data.success });
+    const store = mockStore({ home: data.initial });
     return store.dispatch(FetchHome())
       .then(() => {
         const expectedActions = store.getActions();
@@ -42,7 +47,7 @@ describe('Home actions', () => {
 
   it('no actions called if fetch response was unsuccessful', () => {
     fetchMock.getOnce('*', { status: 400 }, { overwriteRoutes: true });
-    const store = mockStore(data.initial);
+    const store = mockStore({ home: data.initial });
     return store.dispatch(FetchHome())
       .then(() => {
         const expectedActions = store.getActions();

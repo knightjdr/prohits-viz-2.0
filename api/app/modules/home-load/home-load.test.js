@@ -23,7 +23,7 @@ jest.mock('../helpers/add-mongo-date');
 jest.mock('../db-methods/find');
 
 afterEach(() => {
-  AddMongoDate.mockClear();
+  AddMongoDate.arr.mockClear();
   Find.mockClear();
 });
 
@@ -32,7 +32,7 @@ describe('home page load', () => {
     Find
       .mockResolvedValueOnce(returnValues.news.find)
       .mockResolvedValueOnce(returnValues.spotlight.find);
-    AddMongoDate
+    AddMongoDate.arr
       .mockReturnValueOnce(returnValues.news.addDate)
       .mockReturnValueOnce(returnValues.spotlight.addDate);
   });

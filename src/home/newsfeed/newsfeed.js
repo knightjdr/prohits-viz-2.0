@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
+import NewsfeedSelector from '../../state/selectors/newsfeed-selector';
 
 import './newsfeed.css';
 
-const Newsfeed = ({
+export const NewsfeedComponent = ({
   news,
 }) => {
   const newsElement = () => (
@@ -44,17 +47,30 @@ const Newsfeed = ({
     </div>
   );
   return (
-    news.length > 0 ? newsElement(news) : null
+    news.length > 0 ? newsElement() : null
   );
 };
 
-Newsfeed.propTypes = {
-  news: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string,
-      news: PropTypes.string,
-    }),
-  ).isRequired,
+NewsfeedComponent.defaultProps = {
+  news: [],
 };
 
-export default Newsfeed;
+NewsfeedComponent.propTypes = {
+  news: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      date: PropTypes.string,
+      headline: PropTypes.string,
+    }),
+  ),
+};
+
+const mapStateToProps = state => ({
+  news: NewsfeedSelector(state),
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+)(NewsfeedComponent);
+
+export default ConnectedContainer;

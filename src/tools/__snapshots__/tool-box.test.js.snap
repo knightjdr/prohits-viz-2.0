@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbox It renders 1`] = `
+<button
+  className="Toolbox-button nobutton"
+  onClick={[Function]}
+>
+  <Component
+    to="/test"
+  >
+    <div
+      className="ToolBox-container boxshadow"
+    >
+      <div
+        className="ToolBox-image"
+      >
+        <img
+          alt="Toolbox"
+          src="test.png"
+        />
+      </div>
+      <div
+        className="ToolBox-text"
+      >
+        Test
+      </div>
+      <div
+        className="ToolBox-title"
+      >
+        Test
+      </div>
+    </div>
+  </Component>
+</button>
+`;

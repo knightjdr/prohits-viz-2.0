@@ -46,32 +46,34 @@ afterAll(() => (
   Database.close()
 ));
 
-test('find all records in the database', () => (
-  Find('get').then((getCollection) => {
-    expect(getCollection).toEqual(response.all);
-  })
-));
+describe('Find', () => {
+  test('all records in the database', () => (
+    Find('get').then((getCollection) => {
+      expect(getCollection).toEqual(response.all);
+    })
+  ));
 
-test('find one record in the database', () => (
-  Find('get', { name: 'test' }).then((getCollection) => {
-    expect(getCollection).toEqual(response.one);
-  })
-));
+  test('one record in the database', () => (
+    Find('get', { name: 'test' }).then((getCollection) => {
+      expect(getCollection).toEqual(response.one);
+    })
+  ));
 
-test('subset returned documents from database', () => (
-  Find('get', {}, { _id: 0, field: 1 }).then((getCollection) => {
-    expect(getCollection).toEqual(response.subset);
-  })
-));
+  test('subset returned documents from database', () => (
+    Find('get', {}, { _id: 0, field: 1 }).then((getCollection) => {
+      expect(getCollection).toEqual(response.subset);
+    })
+  ));
 
-test('sort returned documents from database', () => (
-  Find('get', {}, {}, { _id: -1 }).then((getCollection) => {
-    expect(getCollection).toEqual(response.sorted);
-  })
-));
+  test('sort returned documents from database', () => (
+    Find('get', {}, {}, { _id: -1 }).then((getCollection) => {
+      expect(getCollection).toEqual(response.sorted);
+    })
+  ));
 
-test('limit returned documents from database', () => (
-  Find('get', {}, {}, {}, 1).then((getCollection) => {
-    expect(getCollection).toEqual(response.limit);
-  })
-));
+  test('limit returned documents from database', () => (
+    Find('get', {}, {}, {}, 1).then((getCollection) => {
+      expect(getCollection).toEqual(response.limit);
+    })
+  ));
+});

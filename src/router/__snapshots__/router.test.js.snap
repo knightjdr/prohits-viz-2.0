@@ -35,6 +35,10 @@ exports[`Router It renders 1`] = `
     />
     <Route
       component={[Function]}
+      path="/news"
+    />
+    <Route
+      component={[Function]}
       path="/visualization"
     />
     <Route

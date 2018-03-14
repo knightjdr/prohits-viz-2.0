@@ -40,6 +40,7 @@ class NavbarContainer extends Component {
 
 NavbarContainer.defaultProps = {
   background: true,
+  links: [],
 };
 
 NavbarContainer.propTypes = {
@@ -49,7 +50,7 @@ NavbarContainer.propTypes = {
       route: PropTypes.string,
       text: PropTypes.string,
     }),
-  ).isRequired,
+  ),
 };
 
 export default NavbarContainer;

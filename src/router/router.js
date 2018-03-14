@@ -6,6 +6,7 @@ import Analysis from '../analysis/analysis';
 import App from '../App';
 import Help from '../help/help';
 import Missing from '../404/404';
+import News from '../news/news-container';
 import Visualization from '../visualization/visualization';
 
 import './router.css';
@@ -30,6 +31,10 @@ const Routes = () => (
       <Route
         path="/help"
         component={Help}
+      />
+      <Route
+        path="/news"
+        component={News}
       />
       <Route
         path="/visualization"

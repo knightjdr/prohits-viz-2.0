@@ -1,10 +1,18 @@
 const HomeLoad = require('./modules/home-load/home-load');
+const News = require('./modules/news/news');
 
 const Routes = {
   configure: (app) => {
-    // get all news items
+    // get all content for home page
     app.get('/api/home/', (req, res) => {
       HomeLoad()
+        .then((response) => {
+          Routes.response(res, response);
+        });
+    });
+    // get news
+    app.get('/api/news/:newsId', (req, res) => {
+      News(req.params.newsId)
         .then((response) => {
           Routes.response(res, response);
         });

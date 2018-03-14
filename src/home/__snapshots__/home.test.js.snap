@@ -17,6 +17,10 @@ exports[`Home It renders 1`] = `
           "text": "VISUALIZATION",
         },
         Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
+        Object {
           "route": "/help",
           "text": "HELP",
         },
@@ -27,7 +31,7 @@ exports[`Home It renders 1`] = `
     className="Home-text"
   >
     <Title />
-    <Connect(NewsfeedContainer) />
+    <Connect(Component) />
   </div>
 </div>
 `;

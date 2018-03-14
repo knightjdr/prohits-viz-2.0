@@ -4,9 +4,9 @@ exports[`App It renders 1`] = `
 <div
   className="App"
 >
-  <Home />
+  <Connect(HomeContainer) />
   <Tools />
-  <Spotlight />
+  <Connect(Component) />
   <About />
 </div>
 `;
