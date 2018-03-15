@@ -31,8 +31,8 @@ const fetchHome = () => (
       .then(response => (
         response.json()
       ))
-      .then((json) => {
-        dispatch(fillHome(json.data));
+      .then((data) => {
+        dispatch(fillHome(data));
       })
       .catch(() => {
       });

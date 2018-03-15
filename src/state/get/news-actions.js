@@ -39,8 +39,8 @@ const fetchNews = () => (
       .then(response => (
         response.json()
       ))
-      .then((json) => {
-        dispatch(fillNews(json.data.news));
+      .then((data) => {
+        dispatch(fillNews(data.news));
       })
       .catch(() => {
         dispatch(newsError());

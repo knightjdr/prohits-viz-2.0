@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import NewsItemSelector from '../state/selectors/news-item-selector';
+import TextToHtml from '../helpers/text-to-html';
 
 import './news-item.css';
 
@@ -16,52 +17,55 @@ export const NewsItemComponent = ({
 }) => {
   const newsItemElement = newsItem ?
     (
-      <div className="New-item-container">
+      <div className="News-item-container">
         {
           newsItem.isLoading &&
           <Spin
-            className="News-item-child"
             size="large"
           />
         }
         {
           newsItem.error &&
-          <div className="News-item-child">
+          <div>
             <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
             There was an error retrieving this story
           </div>
         }
         {
           newsItem.isLoaded &&
-          <div className="News-item-child News-item-story">
-            <div className="News-item-headline">
-              { newsItem.item.headline }
-            </div>
-            <div className="News-item-date">
-              { newsItem.item.date }
-            </div>
-            <div className="News-item-details">
-              { newsItem.item.details }
-            </div>
-            <Affix
-              className="News-item-navbuttons"
-              offsetTop={20}
-            >
-              <Tooltip
-                placement="right"
-                title="News archive"
+          <div className="News-item-content">
+            <div className="News-item-navbutton-container">
+              <Affix
+                className="News-item-navbuttons"
+                offsetTop={20}
               >
-                <NavLink
-                  className="News-item-navlink"
-                  to="/news"
+                <Tooltip
+                  placement="right"
+                  title="News archive"
                 >
-                  <FontAwesomeIcon
-                    icon={faNewspaper}
-                    size="lg"
-                  />
-                </NavLink>
-              </Tooltip>
-            </Affix>
+                  <NavLink
+                    className="News-item-navlink"
+                    to="/news"
+                  >
+                    <FontAwesomeIcon
+                      icon={faNewspaper}
+                      size="lg"
+                    />
+                  </NavLink>
+                </Tooltip>
+              </Affix>
+            </div>
+            <div className="News-item-story">
+              <div className="News-item-headline">
+                { newsItem.item.headline }
+              </div>
+              <div className="News-item-date">
+                { newsItem.item.date }
+              </div>
+              <div className="News-item-details">
+                { TextToHtml(newsItem.item.details) }
+              </div>
+            </div>
           </div>
         }
       </div>
@@ -77,10 +81,14 @@ NewsItemComponent.defaultProps = {
 
 NewsItemComponent.propTypes = {
   newsItem: PropTypes.shape({
-    _id: PropTypes.string,
-    date: PropTypes.string,
-    details: PropTypes.string,
-    headline: PropTypes.string,
+    error: PropTypes.bool,
+    isLoaded: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    item: PropTypes.shape({
+      date: PropTypes.string,
+      details: PropTypes.string,
+      headline: PropTypes.string,
+    }),
   }),
 };
 

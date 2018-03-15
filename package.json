@@ -59,6 +59,10 @@
     "redux-mock-store": "^1.4.0"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "!src/test/*",
+      "!src/registerServiceWorker.js"
+    ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },

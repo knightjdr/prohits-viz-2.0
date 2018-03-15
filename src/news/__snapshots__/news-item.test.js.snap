@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`News item It renders when loaded 1`] = `
+<div
+  className="News-item-container"
+>
+  <div
+    className="News-item-content"
+  >
+    <div
+      className="News-item-navbutton-container"
+    >
+      <Affix
+        className="News-item-navbuttons"
+        offsetTop={20}
+      >
+        <Tooltip
+          arrowPointAtCenter={false}
+          autoAdjustOverflow={true}
+          mouseEnterDelay={0.1}
+          mouseLeaveDelay={0.1}
+          placement="right"
+          prefixCls="ant-tooltip"
+          title="News archive"
+          transitionName="zoom-big-fast"
+        >
+          <Component
+            className="News-item-navlink"
+            to="/news"
+          >
+            <FontAwesomeIcon$1
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Object {
+                  "icon": Array [
+                    576,
+                    512,
+                    Array [],
+                    "f1ea",
+                    "M552 64H112c-20.858 0-38.643 13.377-45.248 32H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h496c13.255 0 24-10.745 24-24V88c0-13.255-10.745-24-24-24zM48 392V144h16v248c0 4.411-3.589 8-8 8s-8-3.589-8-8zm480 8H111.422c.374-2.614.578-5.283.578-8V112h416v288zM172 280h136c6.627 0 12-5.373 12-12v-96c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v96c0 6.627 5.373 12 12 12zm28-80h80v40h-80v-40zm-40 140v-24c0-6.627 5.373-12 12-12h136c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H172c-6.627 0-12-5.373-12-12zm192 0v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0-144v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0 72v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12z",
+                  ],
+                  "iconName": "newspaper",
+                  "prefix": "far",
+                }
+              }
+              listItem={false}
+              mask={null}
+              name=""
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size="lg"
+              spin={false}
+              symbol={false}
+              transform={null}
+            />
+          </Component>
+        </Tooltip>
+      </Affix>
+    </div>
+    <div
+      className="News-item-story"
+    >
+      <div
+        className="News-item-headline"
+      >
+        test
+      </div>
+      <div
+        className="News-item-date"
+      >
+        test
+      </div>
+      <div
+        className="News-item-details"
+      >
+        <p
+          key="paragraph-0"
+        >
+          test
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`News item It renders when loading 1`] = `
+<div
+  className="News-item-container"
+>
+  <Spin
+    prefixCls="ant-spin"
+    size="large"
+    spinning={true}
+    wrapperClassName=""
+  />
+</div>
+`;
+
+exports[`News item It renders with error 1`] = `
+<div
+  className="News-item-container"
+>
+  <div>
+    <FontAwesomeIcon$1
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon={
+        Object {
+          "icon": Array [
+            576,
+            512,
+            Array [],
+            "f071",
+            "M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z",
+          ],
+          "iconName": "exclamation-triangle",
+          "prefix": "fas",
+        }
+      }
+      listItem={false}
+      mask={null}
+      name=""
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      symbol={false}
+      transform={null}
+    />
+      There was an error retrieving this story
+  </div>
+</div>
+`;

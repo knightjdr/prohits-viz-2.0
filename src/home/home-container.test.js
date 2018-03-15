@@ -27,14 +27,4 @@ describe('HomeContainer', () => {
     );
     expect(FetchHome).toHaveBeenCalledTimes(1);
   });
-
-  test('Fetch home not called on mount when content has already been fetched', () => {
-    shallow(
-      <HomeContainer
-        fetchHome={FetchHome}
-        isLoaded
-      />,
-    );
-    expect(FetchHome).toHaveBeenCalledTimes(0);
-  });
 });

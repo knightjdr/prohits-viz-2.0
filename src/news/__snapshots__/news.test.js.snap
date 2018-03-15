@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`News It renders list when no ID specified 1`] = `
+<div>
+  <NavbarContainer
+    background={true}
+    links={
+      Array [
+        Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
+      ]
+    }
+  />
+  <div
+    className="News-container"
+  >
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/news"
+    />
+    <Route
+      component={[Function]}
+      path="/news/:newsId"
+    />
+  </div>
+</div>
+`;

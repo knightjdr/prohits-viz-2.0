@@ -32,7 +32,7 @@ describe('Home actions', () => {
   });
 
   it('calls fill action if the fetch response was successful', () => {
-    fetchMock.getOnce('*', { data: data.success });
+    fetchMock.getOnce('*', { body: data.success });
     const store = mockStore({ home: data.initial });
     return store.dispatch(FetchHome())
       .then(() => {

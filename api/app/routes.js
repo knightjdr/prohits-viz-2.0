@@ -11,6 +11,12 @@ const Routes = {
         });
     });
     // get news
+    app.get('/api/news/', (req, res) => {
+      News()
+        .then((response) => {
+          Routes.response(res, response);
+        });
+    });
     app.get('/api/news/:newsId', (req, res) => {
       News(req.params.newsId)
         .then((response) => {
@@ -39,7 +45,7 @@ const Routes = {
     resObject.setHeader('X-XSS-Protection', '1;mode=block');
     resObject.setHeader('X-Frame-Options', 'SAMEORIGIN');
     resObject.setHeader('X-Content-Type-Options', 'nosniff');
-    resObject.status(response.status).send({ data: response.data });
+    resObject.status(response.status).send(response.data);
   },
 };
 module.exports = Routes;

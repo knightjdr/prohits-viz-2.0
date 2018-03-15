@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import Home from './get/home-reducer';
 import News from './get/news-reducer';
 import NewsItem from './get/news-item-reducer';
+import NewsPage from './set/news-page-reducer';
 import Reducers from './reducers';
 
 // create store
@@ -45,5 +46,11 @@ describe('Store', () => {
     action = { id: 'id', type: 'NEWS_ITEM_ERROR' };
     store.dispatch(action);
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
+  });
+
+  test('News page reducer handles its actions', () => {
+    const action = { page: ['a'], pageIndex: 2, type: 'SET_NEWS_PAGE' };
+    store.dispatch(action);
+    expect(store.getState().newsPage).toEqual(NewsPage(undefined, action));
   });
 });

@@ -15,7 +15,7 @@ const links = [
   },
 ];
 
-const NewsContainer = ({
+const News = ({
   match,
 }) => (
   <div>
@@ -34,10 +34,10 @@ const NewsContainer = ({
   </div>
 );
 
-NewsContainer.propTypes = {
+News.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
   }).isRequired,
 };
 
-export default NewsContainer;
+export default News;

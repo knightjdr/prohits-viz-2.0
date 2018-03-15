@@ -1,0 +1,26 @@
+@import 'theme/_mixins.scss';
+
+.News-list-container {
+  max-width: 1000px;
+  width: calc(100vh - 40px);
+}
+.News-list-container .ant-list-item-meta-title {
+  font-family: TitleFont;
+  text-transform: uppercase;
+}
+.News-list-child {
+  display: flex;
+  flex-direction: column;
+}
+.News-list-details {
+  @include line-clamp(2);
+  text-align: justify;
+}
+.News-list-pagination {
+  float: right;
+}
+.News-list-title {
+  font-family: TitleFont;
+  font-size: 2em;
+  font-weight: bold;
+}

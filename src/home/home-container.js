@@ -11,9 +11,7 @@ export class HomeContainer extends Component {
     this.getHomeContent();
   }
   getHomeContent = () => {
-    if (!this.props.isLoaded) {
-      this.props.fetchHome();
-    }
+    this.props.fetchHome();
   }
   render() {
     return (
@@ -24,7 +22,6 @@ export class HomeContainer extends Component {
 
 HomeContainer.propTypes = {
   fetchHome: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

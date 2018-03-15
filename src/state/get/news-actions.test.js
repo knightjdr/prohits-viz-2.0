@@ -51,7 +51,7 @@ describe('News actions', () => {
   });
 
   it('Calls get and fill actions if the fetch response was successful', () => {
-    fetchMock.getOnce('*', { body: { data: { news: news.success } } });
+    fetchMock.getOnce('*', { body: { news: news.success } });
     const store = mockStore({ news: news.initial });
     return store.dispatch(FetchNews())
       .then(() => {

@@ -34,7 +34,7 @@ const Navbar = ({
     linksElements = (
       <Popover
         content={menu}
-        placement="rightBottom"
+        placement="leftBottom"
         trigger="click"
       >
         <FontAwesomeIcon

@@ -1,5 +1,6 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faFileAlt from '@fortawesome/fontawesome-pro-solid/faFileAlt';
+import faNewspaper from '@fortawesome/fontawesome-pro-solid/faNewspaper';
 import faQuestion from '@fortawesome/fontawesome-pro-solid/faQuestion';
 import React from 'react';
 
@@ -21,6 +22,12 @@ const details = {
     text: `New to ProHits-viz or have a question about one of our
       tools? Try our online help section by clicking here`,
     title: 'Help',
+  },
+  news: {
+    image: <FontAwesomeIcon icon={faNewspaper} />,
+    route: '/news',
+    text: 'Read more about the latest news and features available at ProHits-viz',
+    title: 'News',
   },
   visualization: {
     image: Dotplot,
@@ -48,6 +55,12 @@ const Tools = () => (
         route={details.visualization.route}
         text={details.visualization.text}
         title={details.visualization.title}
+      />
+      <ToolBox
+        image={details.news.image}
+        route={details.news.route}
+        text={details.news.text}
+        title={details.news.title}
       />
       <ToolBox
         image={details.help.image}
