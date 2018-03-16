@@ -17,20 +17,21 @@ export const NewsListComponent = ({
   newsPage,
   pageLength,
 }) => {
-  let newsListElement;
+  let newsListElement = null;
   if (news.error) {
     newsListElement = (
-      <div className="News-list-child">
+      <div className="News-list-message">
         <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-        There was an error retrieving this story
+        There was an error retrieving the news
       </div>
     );
   } else if (news.isLoading) {
     newsListElement = (
-      <Spin
-        className="News-list-child"
-        size="large"
-      />
+      <div className="News-list-message">
+        <Spin
+          size="large"
+        />
+      </div>
     );
   } else if (news.isLoaded) {
     newsListElement = (
@@ -75,8 +76,6 @@ export const NewsListComponent = ({
         />
       </div>
     );
-  } else {
-    newsListElement = null;
   }
   return (
     <div className="News-list-container">

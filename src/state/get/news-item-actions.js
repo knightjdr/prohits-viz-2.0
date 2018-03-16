@@ -45,7 +45,11 @@ const fetchNewsItem = newsId => (
         response.json()
       ))
       .then((data) => {
-        dispatch(fillNewsItem(newsId, data.news));
+        if (data.news) {
+          dispatch(fillNewsItem(newsId, data.news));
+        } else {
+          dispatch(newsItemError(newsId));
+        }
       })
       .catch(() => {
         dispatch(newsItemError(newsId));

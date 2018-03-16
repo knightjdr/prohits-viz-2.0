@@ -90,7 +90,7 @@ describe('News item', () => {
   ));
 });
 
-describe('News items error', () => {
+describe('News item error', () => {
   beforeAll(() => {
     FindOne
       .mockRejectedValueOnce(err);
@@ -102,6 +102,16 @@ describe('News items error', () => {
 
   test('Return response object on error', () => (
     News(mongoID)
+      .then((result) => {
+        expect(result.status).toBe(200);
+        expect(result.data).toEqual({
+          news: null,
+        });
+      })
+  ));
+
+  test('Return response object when given invalid ID', () => (
+    News('aaaa')
       .then((result) => {
         expect(result.status).toBe(200);
         expect(result.data).toEqual({

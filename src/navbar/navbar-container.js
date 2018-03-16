@@ -9,7 +9,7 @@ class NavbarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smallScreen: this.issmallScreen(),
+      smallScreen: this.isSmallScreen(),
     };
   }
   componentDidMount = () => {
@@ -20,10 +20,10 @@ class NavbarContainer extends Component {
   }
   onResize = () => {
     this.setState({
-      smallScreen: this.issmallScreen(),
+      smallScreen: this.isSmallScreen(),
     });
   }
-  issmallScreen = () => {
+  isSmallScreen = () => {
     const isSmall = window.innerWidth <= smallScreenSize;
     return isSmall;
   }

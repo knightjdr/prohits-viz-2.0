@@ -9,23 +9,32 @@ const News = newsId => (
   new Promise((resolve) => {
     if (newsId) {
       // get all news stories sorted by date
-      FindOne('news', { _id: ObjectID(newsId) })
-        .then((newsItem) => {
-          resolve({
-            data: {
-              news: AddMongoDate.obj(newsItem),
-            },
-            status: 200,
-          });
-        })
-        .catch(() => {
-          resolve({
-            data: {
-              news: null,
-            },
-            status: 200,
-          });
+      if (!ObjectID.isValid(newsId)) {
+        resolve({
+          data: {
+            news: null,
+          },
+          status: 200,
         });
+      } else {
+        FindOne('news', { _id: ObjectID(newsId) })
+          .then((newsItem) => {
+            resolve({
+              data: {
+                news: AddMongoDate.obj(newsItem),
+              },
+              status: 200,
+            });
+          })
+          .catch(() => {
+            resolve({
+              data: {
+                news: null,
+              },
+              status: 200,
+            });
+          });
+      }
     } else {
       // get all news stories sorted by date
       Find('news', {}, {}, { _id: -1 })

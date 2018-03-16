@@ -92,12 +92,16 @@ exports[`News item It renders when loading 1`] = `
 <div
   className="News-item-container"
 >
-  <Spin
-    prefixCls="ant-spin"
-    size="large"
-    spinning={true}
-    wrapperClassName=""
-  />
+  <div
+    className="News-item-message"
+  >
+    <Spin
+      prefixCls="ant-spin"
+      size="large"
+      spinning={true}
+      wrapperClassName=""
+    />
+  </div>
 </div>
 `;
 
@@ -105,7 +109,9 @@ exports[`News item It renders with error 1`] = `
 <div
   className="News-item-container"
 >
-  <div>
+  <div
+    className="News-item-message"
+  >
     <FontAwesomeIcon$1
       border={false}
       className=""

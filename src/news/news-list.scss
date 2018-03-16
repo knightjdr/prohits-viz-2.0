@@ -8,13 +8,12 @@
   font-family: TitleFont;
   text-transform: uppercase;
 }
-.News-list-child {
-  display: flex;
-  flex-direction: column;
-}
 .News-list-details {
   @include line-clamp(2);
   text-align: justify;
+}
+.News-list-message {
+  text-align: center;
 }
 .News-list-pagination {
   float: right;

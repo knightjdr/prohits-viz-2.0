@@ -48,13 +48,16 @@ exports[`News list It renders when loading 1`] = `
 <div
   className="News-list-container"
 >
-  <Spin
-    className="News-list-child"
-    prefixCls="ant-spin"
-    size="large"
-    spinning={true}
-    wrapperClassName=""
-  />
+  <div
+    className="News-list-message"
+  >
+    <Spin
+      prefixCls="ant-spin"
+      size="large"
+      spinning={true}
+      wrapperClassName=""
+    />
+  </div>
 </div>
 `;
 
@@ -63,7 +66,7 @@ exports[`News list It renders with error 1`] = `
   className="News-list-container"
 >
   <div
-    className="News-list-child"
+    className="News-list-message"
   >
     <FontAwesomeIcon$1
       border={false}
@@ -94,7 +97,7 @@ exports[`News list It renders with error 1`] = `
       symbol={false}
       transform={null}
     />
-      There was an error retrieving this story
+      There was an error retrieving the news
   </div>
 </div>
 `;

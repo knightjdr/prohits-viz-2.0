@@ -1,0 +1,31 @@
+@import 'theme/_theme.scss';
+
+.Missing-container {
+  align-items: center;
+  background-color: $primary-dark;
+  color: $text-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+.Missing-nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  max-width: 800px;
+}
+.Missing-nav-buttons Button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.Missing-test {
+  font-size: 1.2em;
+  margin-top: 20px;
+  max-width: 800px;
+}
+.Missing-title {
+  font-family: TitleFont;
+  font-size: 2.5em;
+}

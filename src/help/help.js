@@ -1,5 +1,7 @@
 import React from 'react';
 
+import HelpBar from './help-bar-container';
+import HelpDetails from './help-details';
 import Navbar from '../navbar/navbar-container';
 
 import './help.css';
@@ -20,6 +22,10 @@ const Help = () => (
     <Navbar
       links={links}
     />
+    <div className="Help-content">
+      <HelpBar />
+      <HelpDetails />
+    </div>
   </div>
 );
 

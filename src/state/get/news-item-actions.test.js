@@ -81,4 +81,22 @@ describe('News item actions', () => {
         });
       });
   });
+
+  it('Error action called if fetch returns null, i.e. news story does not exist', () => {
+    fetchMock.getOnce('*', { body: { news: null } }, { overwriteRoutes: true });
+    const store = mockStore({ news: {} });
+    return store.dispatch(FetchNewsItem('id'))
+      .then(() => {
+        const expectedActions = store.getActions();
+        expect(expectedActions.length).toBe(2);
+        expect(expectedActions).toContainEqual({
+          id: 'id',
+          type: actions.GET_NEWS_ITEM,
+        });
+        expect(expectedActions).toContainEqual({
+          id: 'id',
+          type: actions.NEWS_ITEM_ERROR,
+        });
+      });
+  });
 });

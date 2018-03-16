@@ -15,64 +15,65 @@ import './news-item.css';
 export const NewsItemComponent = ({
   newsItem,
 }) => {
-  const newsItemElement = newsItem ?
-    (
-      <div className="News-item-container">
-        {
-          newsItem.isLoading &&
-          <Spin
-            size="large"
-          />
-        }
-        {
-          newsItem.error &&
-          <div>
-            <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-            There was an error retrieving this story
-          </div>
-        }
-        {
-          newsItem.isLoaded &&
-          <div className="News-item-content">
-            <div className="News-item-navbutton-container">
-              <Affix
-                className="News-item-navbuttons"
-                offsetTop={20}
-              >
-                <Tooltip
-                  placement="right"
-                  title="News archive"
-                >
-                  <NavLink
-                    className="News-item-navlink"
-                    to="/news"
-                  >
-                    <FontAwesomeIcon
-                      icon={faNewspaper}
-                      size="lg"
-                    />
-                  </NavLink>
-                </Tooltip>
-              </Affix>
-            </div>
-            <div className="News-item-story">
-              <div className="News-item-headline">
-                { newsItem.item.headline }
-              </div>
-              <div className="News-item-date">
-                { newsItem.item.date }
-              </div>
-              <div className="News-item-details">
-                { TextToHtml(newsItem.item.details) }
-              </div>
-            </div>
-          </div>
-        }
+  let newsItemElement = null;
+  if (newsItem.isLoading) {
+    newsItemElement = (
+      <div className="News-item-message">
+        <Spin
+          size="large"
+        />
       </div>
-    )
-    :
-    null;
-  return newsItemElement;
+    );
+  } else if (newsItem.error) {
+    newsItemElement = (
+      <div className="News-item-message">
+        <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
+        There was an error retrieving this story
+      </div>
+    );
+  } else if (newsItem.isLoaded) {
+    newsItemElement = (
+      <div className="News-item-content">
+        <div className="News-item-navbutton-container">
+          <Affix
+            className="News-item-navbuttons"
+            offsetTop={20}
+          >
+            <Tooltip
+              placement="right"
+              title="News archive"
+            >
+              <NavLink
+                className="News-item-navlink"
+                to="/news"
+              >
+                <FontAwesomeIcon
+                  icon={faNewspaper}
+                  size="lg"
+                />
+              </NavLink>
+            </Tooltip>
+          </Affix>
+        </div>
+        <div className="News-item-story">
+          <div className="News-item-headline">
+            { newsItem.item.headline }
+          </div>
+          <div className="News-item-date">
+            { newsItem.item.date }
+          </div>
+          <div className="News-item-details">
+            { TextToHtml(newsItem.item.details) }
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="News-item-container">
+      { newsItemElement }
+    </div>
+  );
 };
 
 NewsItemComponent.defaultProps = {

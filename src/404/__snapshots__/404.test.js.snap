@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 It renders 1`] = `
+<div
+  className="Missing-container"
+>
+  <div
+    className="Missing-title"
+  >
+    Page Not Found
+  </div>
+  <div
+    className="Missing-test"
+  >
+    The page you were looking for was moved, removed, renamed or never existed.
+  </div>
+  <div
+    className="Missing-nav-buttons"
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+      type="primary"
+    >
+      <Component
+        to="/"
+      >
+        Home
+      </Component>
+    </Button>
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+      type="primary"
+    >
+      <Component
+        to="/help"
+      >
+        Help
+      </Component>
+    </Button>
+    <Button
+      ghost={false}
+      loading={false}
+      onClick={[Function]}
+      prefixCls="ant-btn"
+      type="primary"
+    >
+      Contact
+    </Button>
+  </div>
+</div>
+`;
