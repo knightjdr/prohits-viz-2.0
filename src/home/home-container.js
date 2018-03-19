@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import FetchHome from '../state/get/home-actions';
 import Home from './home';
-import IsLoadedSelector from '../state/selectors/home-loaded-selector';
 
 export class HomeContainer extends Component {
   componentDidMount = () => {
@@ -24,18 +23,16 @@ HomeContainer.propTypes = {
   fetchHome: PropTypes.func.isRequired,
 };
 
+/* istanbul ignore next */
+
 const mapDispatchToProps = dispatch => ({
   fetchHome: () => {
     dispatch(FetchHome());
   },
 });
 
-const mapStateToProps = state => ({
-  isLoaded: IsLoadedSelector(state),
-});
-
 const ConnectedContainer = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(HomeContainer);
 

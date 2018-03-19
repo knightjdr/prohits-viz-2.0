@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import FetchNewsItem from '../state/get/news-item-actions';
+import FetchNewsItem from '../../state/get/news-item-actions';
 import NewsItem from './news-item';
 
 export class NewsItemContainer extends Component {

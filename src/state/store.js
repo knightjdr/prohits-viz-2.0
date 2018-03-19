@@ -6,10 +6,19 @@ import { Provider } from 'react-redux';
 import Reducers from './reducers';
 import Router from '../router/router';
 
+export const addDevTools = () => (
+  (
+    process.env.NODE_ENV === 'development' ||
+    process.env.NODE_ENV === 'test'
+  ) &&
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   Reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  addDevTools(),
   applyMiddleware(
     Thunk,
   ),
@@ -21,5 +30,4 @@ const Store = () => (
     <Router />
   </Provider>
 );
-
 export default Store;

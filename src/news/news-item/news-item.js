@@ -3,12 +3,12 @@ import faExclamationTriangle from '@fortawesome/fontawesome-pro-solid/faExclamat
 import faNewspaper from '@fortawesome/fontawesome-pro-regular/faNewspaper';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Affix, Spin, Tooltip } from 'antd';
+import { Affix, Button, Spin, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import NewsItemSelector from '../state/selectors/news-item-selector';
-import TextToHtml from '../helpers/text-to-html';
+import NewsItemSelector from '../../state/selectors/news-item-selector';
+import TextToHtml from '../../helpers/text-to-html';
 
 import './news-item.css';
 
@@ -47,10 +47,14 @@ export const NewsItemComponent = ({
                 className="News-item-navlink"
                 to="/news"
               >
-                <FontAwesomeIcon
-                  icon={faNewspaper}
-                  size="lg"
-                />
+                <Button
+                  type="primary"
+                  shape="circle"
+                >
+                  <FontAwesomeIcon
+                    icon={faNewspaper}
+                  />
+                </Button>
               </NavLink>
             </Tooltip>
           </Affix>

@@ -9,7 +9,7 @@ class NavbarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smallScreen: this.isSmallScreen(),
+      isSmallScreen: this.smallScreen(),
     };
   }
   componentDidMount = () => {
@@ -20,10 +20,10 @@ class NavbarContainer extends Component {
   }
   onResize = () => {
     this.setState({
-      smallScreen: this.isSmallScreen(),
+      isSmallScreen: this.smallScreen(),
     });
   }
-  isSmallScreen = () => {
+  smallScreen = () => {
     const isSmall = window.innerWidth <= smallScreenSize;
     return isSmall;
   }
@@ -32,7 +32,7 @@ class NavbarContainer extends Component {
       <Navbar
         background={this.props.background}
         links={this.props.links}
-        smallScreen={this.state.smallScreen}
+        smallScreen={this.state.isSmallScreen}
       />
     );
   }

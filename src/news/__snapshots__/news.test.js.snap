@@ -16,15 +16,19 @@ exports[`News It renders list when no ID specified 1`] = `
   <div
     className="News-container"
   >
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/news"
-    />
-    <Route
-      component={[Function]}
-      path="/news/:newsId"
-    />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/news"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/news/:newsId"
+      />
+      <RouteNotFound />
+    </Switch>
   </div>
 </div>
 `;

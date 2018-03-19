@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import News from './news';
+import { News } from './news';
 
 const route = {
-  path: '/news',
+  pathname: '/news',
 };
 
 describe('News', () => {
   test('It renders list when no ID specified', () => {
     const wrapper = shallow(
       <News
-        match={route}
+        location={route}
       />,
     );
     expect(wrapper).toMatchSnapshot();

@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FetchNews from '../state/get/news-actions';
+import FetchNews from '../../state/get/news-actions';
 import { NewsListContainer } from './news-list-container';
-import { setNewsPage } from '../state/set/news-page-actions';
+import { setNewsPage } from '../../state/set/news-page-actions';
 
 // mock FetchNews
-jest.mock('../state/get/news-actions');
+jest.mock('../../state/get/news-actions');
 FetchNews.mockReturnValue();
 
 // mock setNewsPage
-jest.mock('../state/set/news-page-actions');
+jest.mock('../../state/set/news-page-actions');
 setNewsPage.mockReturnValue();
 
 const news = {

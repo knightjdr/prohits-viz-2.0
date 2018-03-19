@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import FetchNews from '../state/get/news-actions';
+import FetchNews from '../../state/get/news-actions';
 import NewsList from './news-list';
-import NewsSelector from '../state/selectors/news-selector';
-import { setNewsPage } from '../state/set/news-page-actions';
+import NewsSelector from '../../state/selectors/news-selector';
+import { setNewsPage } from '../../state/set/news-page-actions';
 
 const pageLength = 5;
 

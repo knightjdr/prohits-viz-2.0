@@ -6,13 +6,8 @@ import ScrollTop from '../helpers/scroll-top';
 
 import './tool-box.css';
 
-const ToolBox = ({
-  image,
-  route,
-  text,
-  title,
-}) => {
-  const imageElement = typeof image === 'object' ?
+export const getImageElement = image => (
+  typeof image === 'object' ?
     image
     :
     (
@@ -20,7 +15,16 @@ const ToolBox = ({
         alt="Toolbox"
         src={image}
       />
-    );
+    )
+);
+
+const ToolBox = ({
+  image,
+  route,
+  text,
+  title,
+}) => {
+  const imageElement = getImageElement(image);
   return (
     <button
       className="Toolbox-button nobutton"

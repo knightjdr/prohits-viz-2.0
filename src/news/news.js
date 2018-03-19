@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Navbar from '../navbar/navbar-container';
-import NewsList from './news-list-container';
-import NewsItem from './news-item-container';
+import NewsList from './news-list/news-list-container';
+import NewsItem from './news-item/news-item-container';
+import RouteNotFound from '../router/route-not-found';
 
 import './news.css';
 
@@ -15,29 +16,33 @@ const links = [
   },
 ];
 
-const News = ({
-  match,
+export const News = ({
+  location,
 }) => (
   <div>
     <Navbar links={links} />
     <div className="News-container">
-      <Route
-        exact
-        path={match.path}
-        component={NewsList}
-      />
-      <Route
-        path={`${match.path}/:newsId`}
-        component={NewsItem}
-      />
+      <Switch>
+        <Route
+          exact
+          path={location.pathname}
+          component={NewsList}
+        />
+        <Route
+          exact
+          path={`${location.pathname}/:newsId`}
+          component={NewsItem}
+        />
+        <RouteNotFound />
+      </Switch>
     </div>
   </div>
 );
 
 News.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
   }).isRequired,
 };
 
-export default News;
+export default withRouter(News);

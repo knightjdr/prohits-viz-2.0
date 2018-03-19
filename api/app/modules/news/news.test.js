@@ -58,10 +58,7 @@ describe('News list error', () => {
   test('Return response object on error', () => (
     News()
       .then((result) => {
-        expect(result.status).toBe(200);
-        expect(result.data).toEqual({
-          news: null,
-        });
+        expect(result.status).toBe(500);
       })
   ));
 });
@@ -69,9 +66,11 @@ describe('News list error', () => {
 describe('News item', () => {
   beforeAll(() => {
     FindOne
-      .mockResolvedValueOnce(returnValues.news.find[0]);
+      .mockResolvedValueOnce(returnValues.news.find[0])
+      .mockResolvedValueOnce(null);
     AddMongoDate.obj
-      .mockReturnValueOnce(returnValues.news.addDate[0]);
+      .mockReturnValueOnce(returnValues.news.addDate[0])
+      .mockReturnValueOnce(null);
   });
 
   afterAll(() => {
@@ -79,13 +78,20 @@ describe('News item', () => {
     FindOne.mockClear();
   });
 
-  test('Find returns response object', () => (
+  test('Find returns response object with ID found', () => (
     News(mongoID)
       .then((result) => {
         expect(result.status).toBe(200);
         expect(result.data).toEqual({
           news: returnValues.news.addDate[0],
         });
+      })
+  ));
+
+  test('Find returns status code with ID notfound', () => (
+    News(mongoID)
+      .then((result) => {
+        expect(result.status).toBe(204);
       })
   ));
 });
@@ -103,20 +109,14 @@ describe('News item error', () => {
   test('Return response object on error', () => (
     News(mongoID)
       .then((result) => {
-        expect(result.status).toBe(200);
-        expect(result.data).toEqual({
-          news: null,
-        });
+        expect(result.status).toBe(500);
       })
   ));
 
   test('Return response object when given invalid ID', () => (
     News('aaaa')
       .then((result) => {
-        expect(result.status).toBe(200);
-        expect(result.data).toEqual({
-          news: null,
-        });
+        expect(result.status).toBe(204);
       })
   ));
 });

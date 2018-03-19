@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeRoutes It renders 1`] = `
+<Tree
+  checkable={false}
+  defaultExpandedKeys={
+    Array [
+      "help",
+    ]
+  }
+  openAnimation={
+    Object {
+      "appear": [Function],
+      "enter": [Function],
+      "leave": [Function],
+    }
+  }
+  prefixCls="ant-tree"
+  showIcon={false}
+>
+  <TreeNode
+    key="/help"
+    title={
+      <Unknown
+        to="/help"
+      >
+        Introduction
+      </Unknown>
+    }
+  />
+  <TreeNode
+    key="/help/tools"
+    title={
+      <Unknown
+        to="/help/tools"
+      >
+        Tools
+      </Unknown>
+    }
+  >
+    <TreeNode
+      key="/help/tools/dotplot"
+      title={
+        <Unknown
+          to="/help/tools/dotplot"
+        >
+          Dot plot
+        </Unknown>
+      }
+    />
+  </TreeNode>
+  <TreeNode
+    key="/help/visualization"
+    title={
+      <Unknown
+        to="/help/visualization"
+      >
+        Visualization
+      </Unknown>
+    }
+  >
+    <TreeNode
+      key="/help/visualization/heatmap"
+      title={
+        <Unknown
+          to="/help/visualization/heatmap"
+        >
+          Heat map
+        </Unknown>
+      }
+    />
+  </TreeNode>
+</Tree>
+`;

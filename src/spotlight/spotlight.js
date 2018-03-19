@@ -58,7 +58,7 @@ export const SpotlightComponent = ({
       </div>
     );
   });
-  const spotlightElement = () => (
+  const spotlightElement = (
     <div className="Spotlight-container fadein">
       <div className="Spotlight-header">
         SPOTLIGHT
@@ -77,7 +77,7 @@ export const SpotlightComponent = ({
     </div>
   );
   return (
-    articles.length > 0 ? spotlightElement() : null
+    articles.length > 0 ? spotlightElement : null
   );
 };
 
@@ -97,6 +97,8 @@ SpotlightComponent.propTypes = {
     }),
   ),
 };
+
+/* istanbul ignore next */
 
 const mapStateToProps = state => ({
   articles: ArticleSelector(state),

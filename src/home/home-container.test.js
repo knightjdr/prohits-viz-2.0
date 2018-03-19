@@ -14,17 +14,15 @@ jest.mock('../state/get/home-actions');
 FetchHome.mockReturnValue();
 
 describe('HomeContainer', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  test('Fetch home is called on mount', () => {
-    shallow(
+  test('Fetchhome is called on mount', () => {
+    const wrapper = shallow(
       <HomeContainer
         fetchHome={FetchHome}
         isLoaded={false}
       />,
     );
     expect(FetchHome).toHaveBeenCalledTimes(1);
+    wrapper.instance().getHomeContent();
+    expect(FetchHome).toHaveBeenCalledTimes(2);
   });
 });

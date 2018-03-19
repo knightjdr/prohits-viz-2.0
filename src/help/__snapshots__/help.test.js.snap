@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help It renders 1`] = `
+<div
+  className="Help-container"
+>
+  <NavbarContainer
+    background={true}
+    links={
+      Array [
+        Object {
+          "route": "/analysis",
+          "text": "ANALYSIS",
+        },
+        Object {
+          "route": "/visualization",
+          "text": "VISUALIZATION",
+        },
+      ]
+    }
+  />
+  <div
+    className="Help-content"
+  >
+    <HelpBarContainer />
+    <HelpDetails />
+  </div>
+</div>
+`;

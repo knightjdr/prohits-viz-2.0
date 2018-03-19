@@ -1,42 +1,31 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavbarContainer from './navbar-container';
+import HelpBarContainer from './help-bar-container';
 
-const links = [
-  {
-    route: '/analysis',
-    text: 'analysis',
-  },
-  {
-    route: '/help',
-    text: 'help',
-  },
-];
-
-describe('NavbarContainer', () => {
+describe('HelpBarContainer', () => {
   let wrapper;
   beforeAll(() => {
     wrapper = shallow(
-      <NavbarContainer links={links} />,
+      <HelpBarContainer />,
     );
   });
 
   test('Resize listener bound on mount', () => {
     global.addEventListener = jest.fn();
-    const mountedWrapper = shallow(
-      <NavbarContainer links={links} />,
+    const mountWrapper = shallow(
+      <HelpBarContainer />,
     );
-    expect(global.addEventListener).toHaveBeenCalledWith('resize', mountedWrapper.instance().onResize);
+    expect(global.addEventListener).toHaveBeenCalledWith('resize', mountWrapper.instance().onResize);
   });
 
   test('Resize listener unbound on mount', () => {
     global.removeEventListener = jest.fn();
-    const mountedWrapper = shallow(
-      <NavbarContainer links={links} />,
+    const mountWrapper = shallow(
+      <HelpBarContainer />,
     );
-    const resize = mountedWrapper.instance().onResize;
-    mountedWrapper.unmount();
+    const resize = mountWrapper.instance().onResize;
+    mountWrapper.unmount();
     expect(global.removeEventListener).toHaveBeenCalledWith('resize', resize);
   });
 
@@ -53,8 +42,18 @@ describe('NavbarContainer', () => {
     global.innerWidth = 680;
     global.dispatchEvent(new Event('resize'));
     expect(wrapper.state('isSmallScreen')).toBeTruthy();
+    expect(wrapper.state('isPanelVisible')).toBeFalsy();
     global.innerWidth = 681;
     global.dispatchEvent(new Event('resize'));
     expect(wrapper.state('isSmallScreen')).toBeFalsy();
+    expect(wrapper.state('isPanelVisible')).toBeFalsy();
+  });
+
+  test('Show panel toggle changes boolean state', () => {
+    expect(wrapper.state('isPanelVisible')).toBeFalsy();
+    wrapper.instance().showPanel();
+    expect(wrapper.state('isPanelVisible')).toBeTruthy();
+    wrapper.instance().showPanel();
+    expect(wrapper.state('isPanelVisible')).toBeFalsy();
   });
 });

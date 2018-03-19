@@ -11,27 +11,21 @@ const News = newsId => (
       // get all news stories sorted by date
       if (!ObjectID.isValid(newsId)) {
         resolve({
-          data: {
-            news: null,
-          },
-          status: 200,
+          status: 204,
         });
       } else {
         FindOne('news', { _id: ObjectID(newsId) })
           .then((newsItem) => {
             resolve({
               data: {
-                news: AddMongoDate.obj(newsItem),
+                news: newsItem ? AddMongoDate.obj(newsItem) : null,
               },
-              status: 200,
+              status: newsItem ? 200 : 204,
             });
           })
           .catch(() => {
             resolve({
-              data: {
-                news: null,
-              },
-              status: 200,
+              status: 500,
             });
           });
       }
@@ -48,10 +42,7 @@ const News = newsId => (
         })
         .catch(() => {
           resolve({
-            data: {
-              news: null,
-            },
-            status: 200,
+            status: 500,
           });
         });
     }

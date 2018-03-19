@@ -6,8 +6,8 @@ import { List, Pagination, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import NewsPageSelector from '../state/selectors/news-page-selector';
-import NewsSelector from '../state/selectors/news-selector';
+import NewsPageSelector from '../../state/selectors/news-page-selector';
+import NewsSelector from '../../state/selectors/news-selector';
 
 import './news-list.css';
 

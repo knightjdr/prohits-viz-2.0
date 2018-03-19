@@ -1,6 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar on small screen 1`] = `
+exports[`Navbar Shows background 1`] = `
+<div
+  className="Navbar Navbar-default"
+>
+  <Component
+    className="Navbar-logo-link"
+    to="/"
+  >
+    <img
+      alt="Logo"
+      className="Navbar-logo"
+      src="logo_accent_nobg.svg"
+    />
+  </Component>
+  <div
+    className="Navbar-link-container"
+  >
+    <Component
+      className="Navbar-link"
+      key="analysis"
+      to="/analysis"
+    >
+      analysis
+    </Component>
+    <Component
+      className="Navbar-link"
+      key="help"
+      to="/help"
+    >
+      help
+    </Component>
+  </div>
+</div>
+`;
+
+exports[`Navbar Small screen 1`] = `
 <div
   className="Navbar Navbar-default"
 >
@@ -78,42 +113,7 @@ exports[`Navbar on small screen 1`] = `
 </div>
 `;
 
-exports[`Navbar shows background 1`] = `
-<div
-  className="Navbar Navbar-default"
->
-  <Component
-    className="Navbar-logo-link"
-    to="/"
-  >
-    <img
-      alt="Logo"
-      className="Navbar-logo"
-      src="logo_accent_nobg.svg"
-    />
-  </Component>
-  <div
-    className="Navbar-link-container"
-  >
-    <Component
-      className="Navbar-link"
-      key="analysis"
-      to="/analysis"
-    >
-      analysis
-    </Component>
-    <Component
-      className="Navbar-link"
-      key="help"
-      to="/help"
-    >
-      help
-    </Component>
-  </div>
-</div>
-`;
-
-exports[`Navbar transparent background 1`] = `
+exports[`Navbar Transparent background 1`] = `
 <div
   className="Navbar Navbar-transparent"
 >

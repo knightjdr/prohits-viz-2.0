@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Image from '../test/test.png';
 import ScrollTop from '../helpers/scroll-top';
-import ToolBox from './tool-box';
+import ToolBox, { getImageElement } from './tool-box';
 
 // mock ScrollTop
 jest.mock('../helpers/scroll-top');
@@ -36,5 +36,13 @@ describe('Toolbox', () => {
   test('Clicking a nav link scrolls to top', () => {
     wrapper.find('.Toolbox-button').simulate('click');
     expect(ScrollTop).toHaveBeenCalledTimes(1);
+  });
+
+  test('Images are converted into image element', () => {
+    const image = <img alt="Toolbox" src="test" />;
+    // if the image is already a component, return it
+    expect(getImageElement(image)).toEqual(image);
+    // if the image is a string or path, create image element for it
+    expect(getImageElement('test')).toEqual(image);
   });
 });

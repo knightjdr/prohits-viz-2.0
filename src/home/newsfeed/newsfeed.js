@@ -10,7 +10,7 @@ import './newsfeed.css';
 export const NewsfeedComponent = ({
   news,
 }) => {
-  const newsElement = () => (
+  const newsElement = (
     <div className="Newsfeed-container boxshadow fadein">
       <div className="Newsfeed-header">
         News
@@ -47,7 +47,7 @@ export const NewsfeedComponent = ({
     </div>
   );
   return (
-    news.length > 0 ? newsElement() : null
+    news.length > 0 ? newsElement : null
   );
 };
 
@@ -64,6 +64,8 @@ NewsfeedComponent.propTypes = {
     }),
   ),
 };
+
+/* istanbul ignore next */
 
 const mapStateToProps = state => ({
   news: NewsfeedSelector(state),

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HelpBar from './help-bar-container';
-import HelpDetails from './help-details';
+import HelpBar from './help-bar/help-bar-container';
+import HelpDetails from './help-details/help-details';
 import Navbar from '../navbar/navbar-container';
 
 import './help.css';

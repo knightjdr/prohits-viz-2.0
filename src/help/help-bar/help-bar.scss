@@ -33,9 +33,12 @@
     transition-duration: 0.8s;
     transition-timing-function: ease-in;
   }
+  .HelpBar-container {
+    position: absolute;
+  }
   .HelpBar-panel {
     padding: 5px 0px;
-    width: 0px
+    width: 0px;
   }
 }
 @media screen and (min-width: 681px) {
@@ -48,6 +51,9 @@
     opacity: 0;
     transition-duration: 0.2s;
     transition-timing-function: ease-out;
+  }
+  .HelpBar-container {
+    position: relative;
   }
 }
 .HelpBar-breadcrumb-transition-in {
