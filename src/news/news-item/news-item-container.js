@@ -39,6 +39,8 @@ NewsItemContainer.propTypes = {
   }),
 };
 
+/* istanbul ignore next */
+
 const mapDispatchToProps = dispatch => ({
   fetchNewsItem: (newsId) => {
     dispatch(FetchNewsItem(newsId));

@@ -9,23 +9,38 @@ jest.mock('../../state/get/news-item-actions');
 FetchNewsItem.mockReturnValue();
 
 const match = {
-  params: {
-    newsId: 'a',
+  withId: {
+    params: {
+      newsId: 'a',
+    },
+  },
+  withoutId: {
+    params: {},
   },
 };
 
 describe('NewsItemContainer', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    jest.resetAllMocks();
   });
 
   test('Fetch news is called on mount', () => {
     shallow(
       <NewsItemContainer
         fetchNewsItem={FetchNewsItem}
-        match={match}
+        match={match.withId}
       />,
     );
     expect(FetchNewsItem).toHaveBeenCalledTimes(1);
+  });
+
+  test('Fetch news is not called if ID is null', () => {
+    shallow(
+      <NewsItemContainer
+        fetchNewsItem={FetchNewsItem}
+        match={match.withoutId}
+      />,
+    );
+    expect(FetchNewsItem).not.toHaveBeenCalled();
   });
 });

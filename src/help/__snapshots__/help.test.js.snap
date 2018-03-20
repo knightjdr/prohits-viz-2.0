@@ -23,7 +23,7 @@ exports[`Help It renders 1`] = `
     className="Help-content"
   >
     <HelpBarContainer />
-    <HelpDetails />
+    <withRouter() />
   </div>
 </div>
 `;

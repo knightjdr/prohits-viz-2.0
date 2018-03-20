@@ -34,6 +34,7 @@
     "build-js": "react-app-rewired build",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "build": "npm-run-all build-css build-js",
+    "coverage": "npm run test -- --coverage --no-cache",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "start-js": "react-app-rewired start",
@@ -61,7 +62,9 @@
   "jest": {
     "collectCoverageFrom": [
       "!src/test/*",
-      "!src/registerServiceWorker.js"
+      "!src/index.js",
+      "!src/registerServiceWorker.js",
+      "!src/setupTests.js"
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"

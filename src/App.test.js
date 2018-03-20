@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 describe('App', () => {
-  test('It renders', () => {
+  test('Renders', () => {
     const wrapper = shallow(
       <App />,
     );

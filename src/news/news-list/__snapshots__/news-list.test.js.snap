@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News list It renders when loaded 1`] = `
+exports[`News list Renders initially 1`] = `
+<div
+  className="News-list-container"
+/>
+`;
+
+exports[`News list Renders item on render call 1`] = `
+<NewsListItem
+  item={
+    Object {
+      "item": [Function],
+    }
+  }
+/>
+`;
+
+exports[`News list Renders when loaded 1`] = `
 <div
   className="News-list-container"
 >
@@ -44,7 +60,7 @@ exports[`News list It renders when loaded 1`] = `
 </div>
 `;
 
-exports[`News list It renders when loading 1`] = `
+exports[`News list Renders when loading 1`] = `
 <div
   className="News-list-container"
 >
@@ -61,7 +77,7 @@ exports[`News list It renders when loading 1`] = `
 </div>
 `;
 
-exports[`News list It renders with error 1`] = `
+exports[`News list Renders with error 1`] = `
 <div
   className="News-list-container"
 >

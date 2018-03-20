@@ -11,14 +11,11 @@ const pageLength = 5;
 
 export class NewsListContainer extends Component {
   componentDidMount = () => {
-    this.getNewsListContent();
+    this.props.fetchNews();
   }
   componentWillReceiveProps = (nextProps) => {
     const { news } = nextProps;
     this.setFirstPage(news, this.props.news);
-  }
-  getNewsListContent = () => {
-    this.props.fetchNews();
   }
   setFirstPage = (currNews, oldNews) => {
     if (
@@ -60,6 +57,7 @@ NewsListContainer.propTypes = {
   setNewsPage: PropTypes.func.isRequired,
 };
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   fetchNews: () => {
     dispatch(FetchNews());
@@ -69,6 +67,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   news: NewsSelector(state),
 });

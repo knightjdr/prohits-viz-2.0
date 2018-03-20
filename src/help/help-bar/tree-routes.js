@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Tree } from 'antd';
 
-import HelpRoutes from '../help-routes';
+import HelpRoutes from '../help-routes/help-routes';
 import RoutesFromPath from '../../helpers/routes-from-path';
 
 const { TreeNode } = Tree;

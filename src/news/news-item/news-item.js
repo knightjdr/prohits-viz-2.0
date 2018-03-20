@@ -97,6 +97,8 @@ NewsItemComponent.propTypes = {
   }),
 };
 
+/* istanbul ignore next */
+
 const mapStateToProps = state => ({
   newsItem: NewsItemSelector(state),
 });

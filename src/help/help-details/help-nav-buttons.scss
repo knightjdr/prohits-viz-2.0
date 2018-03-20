@@ -1,0 +1,11 @@
+.HelpNavButtons-forward {
+  float: right;
+}
+.HelpNavButtons-container {
+  margin-top: 20px;
+}
+@media screen and (max-width: 680px) {
+  .HelpNavButtons-backward {
+    margin-left: 40px;
+  }
+}

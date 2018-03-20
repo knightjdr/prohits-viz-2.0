@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`404 It renders 1`] = `
+exports[`404 Renders 1`] = `
 <div
   className="Missing-container"
 >

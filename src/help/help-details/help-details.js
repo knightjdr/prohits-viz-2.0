@@ -1,13 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Breadcrumb } from 'antd';
-import { Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import RouteNotFound from '../../router/route-not-found';
 
-import HelpRoutes from '../help-routes';
+import HelpNavButtons from './help-nav-buttons-container';
+import HelpRoutes from '../help-routes/help-routes';
+import HelpRoutesMap from '../help-routes/help-routes-map';
+import RoutesFromPath from '../../helpers/routes-from-path';
 
 import './help-details.css';
 
-export const toRouteNodes = (routes, routeArr = [], ret = true) => {
+export const toRouteNodes = (routes = HelpRoutes) => {
+  let routeArr = [];
   routes.forEach((route) => {
     routeArr.push(
       <Route
@@ -18,25 +23,47 @@ export const toRouteNodes = (routes, routeArr = [], ret = true) => {
       />,
     );
     if (route.children) {
-      toRouteNodes(route.children, routeArr, false);
+      routeArr = routeArr.concat(toRouteNodes(route.children));
     }
   });
-  return ret ? routeArr : null;
+  return routeArr;
 };
 
-const HelpDetails = () => (
-  <div className="HelpDetails-container">
-    <Breadcrumb separator=">">
-      <Breadcrumb.Item>Help</Breadcrumb.Item>
-      <Breadcrumb.Item>Other</Breadcrumb.Item>
-    </Breadcrumb>
-    <div>
-      <Switch>
-        { toRouteNodes(HelpRoutes) }
-        <RouteNotFound />
-      </Switch>
+export const HelpDetails = ({
+  location,
+}) => {
+  const breadcrumbElement = RoutesFromPath(location.pathname).map(path => (
+    <Breadcrumb.Item
+      key={path}
+    >
+      <NavLink
+        to={path}
+      >
+        { HelpRoutesMap.routeToText[path] }
+      </NavLink>
+    </Breadcrumb.Item>
+  ));
+  const contentElement = toRouteNodes();
+  return (
+    <div className="HelpDetails-container">
+      <Breadcrumb separator=">">
+        { breadcrumbElement }
+      </Breadcrumb>
+      <div className="HelpDetails-pages">
+        <Switch>
+          { contentElement }
+          <RouteNotFound />
+        </Switch>
+      </div>
+      <HelpNavButtons />
     </div>
-  </div>
-);
+  );
+};
 
-export default HelpDetails;
+HelpDetails.propTypes = {
+  location: PropTypes.shape({
+    path: PropTypes.string,
+  }).isRequired,
+};
+
+export default withRouter(HelpDetails);

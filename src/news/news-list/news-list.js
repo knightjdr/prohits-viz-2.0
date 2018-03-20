@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { List, Pagination, Spin } from 'antd';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
+import NewsListItem from './news-list-item';
 import NewsPageSelector from '../../state/selectors/news-page-selector';
 import NewsSelector from '../../state/selectors/news-selector';
 
 import './news-list.css';
+
+export const NewsListItemRender = item => (<NewsListItem item={item} />);
 
 export const NewsListComponent = ({
   changePage,
@@ -43,28 +45,7 @@ export const NewsListComponent = ({
           itemLayout="vertical"
           size="large"
           dataSource={newsPage.page}
-          renderItem={(item) => {
-            const desc = (
-              <div>
-                <div>
-                  { item.date }
-                </div>
-                <div className="News-list-details">
-                  { item.details }
-                </div>
-              </div>
-            );
-            return (
-              <List.Item
-                actions={[<NavLink to={`/news/${item._id}`}>more</NavLink>]}
-              >
-                <List.Item.Meta
-                  title={item.headline}
-                  description={desc}
-                />
-              </List.Item>
-            );
-          }}
+          renderItem={NewsListItemRender}
         />
         <Pagination
           className="News-list-pagination"
@@ -107,6 +88,8 @@ NewsListComponent.propTypes = {
   }).isRequired,
   pageLength: PropTypes.number.isRequired,
 };
+
+/* istanbul ignore next */
 
 const mapStateToProps = state => ({
   news: NewsSelector(state),

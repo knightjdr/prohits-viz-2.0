@@ -17,7 +17,7 @@ const links = [
 ];
 
 export const News = ({
-  location,
+  match,
 }) => (
   <div>
     <Navbar links={links} />
@@ -25,12 +25,12 @@ export const News = ({
       <Switch>
         <Route
           exact
-          path={location.pathname}
+          path={match.path}
           component={NewsList}
         />
         <Route
           exact
-          path={`${location.pathname}/:newsId`}
+          path={`${match.path}/:newsId`}
           component={NewsItem}
         />
         <RouteNotFound />
@@ -40,8 +40,8 @@ export const News = ({
 );
 
 News.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
+  match: PropTypes.shape({
+    path: PropTypes.string,
   }).isRequired,
 };
 

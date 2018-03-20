@@ -36,6 +36,21 @@ const news = {
 };
 
 describe('NewsListContainer', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  test('Renders initially', () => {
+    const wrapper = shallow(
+      <NewsListContainer
+        fetchNews={FetchNews}
+        news={news.empty}
+        setNewsPage={setNewsPage}
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('Fetch news is called on mount', () => {
     shallow(
       <NewsListContainer
@@ -45,6 +60,26 @@ describe('NewsListContainer', () => {
       />,
     );
     expect(FetchNews).toHaveBeenCalledTimes(1);
+  });
+
+  test('Call changePage from setFirstPage', () => {
+    const wrapper = shallow(
+      <NewsListContainer
+        fetchNews={FetchNews}
+        news={news.filled}
+        setNewsPage={setNewsPage}
+      />,
+    );
+    const spy = jest.spyOn(wrapper.instance(), 'changePage');
+    // don't call if there is no list
+    wrapper.instance().setFirstPage({ list: [] }, { list: [] });
+    expect(spy).not.toHaveBeenCalled();
+    // don't call if old list has length > 0
+    wrapper.instance().setFirstPage({ list: ['test'] }, { list: ['test'] });
+    expect(spy).not.toHaveBeenCalled();
+    // call otherwise
+    wrapper.instance().setFirstPage({ list: ['test'] }, { list: [] });
+    expect(spy).toHaveBeenCalledWith(1, ['test']);
   });
 
   test('Call setNewsPage when change page called without news arg', () => {
@@ -59,7 +94,7 @@ describe('NewsListContainer', () => {
     expect(setNewsPage).toHaveBeenCalledWith(news.filled.list, 1);
   });
 
-  test('Call setNewsPage when change page called news arg', () => {
+  test('Call setNewsPage when change page called with news arg', () => {
     const wrapper = shallow(
       <NewsListContainer
         fetchNews={FetchNews}
@@ -79,9 +114,11 @@ describe('NewsListContainer', () => {
         setNewsPage={setNewsPage}
       />,
     );
-    const spyFn = jest.spyOn(wrapper.instance(), 'changePage');
+    const spyChangePage = jest.spyOn(wrapper.instance(), 'changePage');
+    const spySetFirstPage = jest.spyOn(wrapper.instance(), 'setFirstPage');
     wrapper.setProps({ news: news.filled });
-    expect(spyFn).toHaveBeenCalledWith(1, news.filled.list);
+    expect(spySetFirstPage).toHaveBeenCalledWith(news.filled, { list: [] });
+    expect(spyChangePage).toHaveBeenCalledWith(1, news.filled.list);
   });
 
   test('Does not call change page when news arrives as props and news already filled', () => {

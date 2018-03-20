@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsListContainer Renders initially 1`] = `
+<Connect(Component)
+  changePage={[Function]}
+  pageLength={5}
+/>
+`;

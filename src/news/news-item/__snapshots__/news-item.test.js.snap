@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`News item It renders initially 1`] = `
+<div
+  className="News-item-container"
+/>
+`;
+
 exports[`News item It renders when loaded 1`] = `
 <div
   className="News-item-container"
@@ -85,11 +91,7 @@ exports[`News item It renders when loaded 1`] = `
       <div
         className="News-item-details"
       >
-        <p
-          key="paragraph-0"
-        >
-          test
-        </p>
+        test
       </div>
     </div>
   </div>

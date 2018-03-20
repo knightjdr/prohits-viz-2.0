@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsListItem Renders 1`] = `
+<Item
+  actions={
+    Array [
+      <Unknown
+        to="/news/test"
+    >
+        more
+    </Unknown>,
+    ]
+  }
+>
+  <Meta
+    description={
+      <div>
+        <div>
+          test
+        </div>
+        <div
+          className="News-list-details"
+        >
+          test
+        </div>
+      </div>
+    }
+    title="test"
+  />
+</Item>
+`;
