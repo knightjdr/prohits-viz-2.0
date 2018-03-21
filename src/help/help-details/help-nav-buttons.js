@@ -4,44 +4,58 @@ import faChevronRight from '@fortawesome/fontawesome-pro-solid/faChevronRight';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Icon } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 import './help-nav-buttons.css';
 
 const HelpNavButtons = ({
-  index,
-  length,
+  navBackward,
+  navForward,
 }) => (
   <div className="HelpNavButtons-container">
     {
-      index > 0 &&
+      navBackward &&
       <Button
         className="HelpNavButtons-backward"
         type="primary"
       >
-        <Icon>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </Icon>
-        Backward
+        <NavLink to={navBackward}>
+          <Icon>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </Icon>
+          <span className="HelpNavButtons-backward-text">
+            Backward
+          </span>
+        </NavLink>
       </Button>
     }
     {
-      index < length &&
+      navForward &&
       <Button
         className="HelpNavButtons-forward"
         type="primary"
       >
-        Forward
-        <Icon>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </Icon>
+        <NavLink to={navForward}>
+          <span className="HelpNavButtons-forward-text">
+            Forward
+          </span>
+          <Icon>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </Icon>
+        </NavLink>
       </Button>
     }
   </div>
 );
 
+HelpNavButtons.defaultProps = {
+  navBackward: null,
+  navForward: null,
+};
+
 HelpNavButtons.propTypes = {
-  index: PropTypes.number.isRequired,
-  length: PropTypes.number.isRequired,
+  navBackward: PropTypes.string,
+  navForward: PropTypes.string,
 };
 
 export default HelpNavButtons;

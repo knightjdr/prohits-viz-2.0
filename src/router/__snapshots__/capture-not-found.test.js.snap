@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CaptureNotFound Render children otherwise 1`] = `<div />`;
+
+exports[`CaptureNotFound Renders missing on notFoundError 1`] = `<Missing />`;

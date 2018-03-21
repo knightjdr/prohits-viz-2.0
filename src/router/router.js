@@ -1,7 +1,10 @@
 import { AnimatedSwitch } from 'react-router-transition';
 import React from 'react';
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import CaptureRouteNotFound from './capture-not-found';
+
+// routes
 import Analysis from '../analysis/analysis';
 import App from '../App';
 import Help from '../help/help';
@@ -10,10 +13,6 @@ import News from '../news/news';
 import Visualization from '../visualization/visualization';
 
 import './router.css';
-
-const CaptureRouteNotFound = withRouter(({ children, location }) => (
-  location && location.state && location.state.notFoundError ? <Missing /> : children
-));
 
 const Routes = () => (
   <Router>
@@ -53,5 +52,4 @@ const Routes = () => (
     </CaptureRouteNotFound>
   </Router>
 );
-
 export default Routes;

@@ -1,17 +1,31 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { News } from './news';
+import { NewsComponent } from './news';
 
 const route = {
-  path: '/news',
+  noId: {
+    path: '/news',
+  },
+  withId: {
+    path: '/news/id',
+  },
 };
 
 describe('News', () => {
-  test('It renders list when no ID specified', () => {
+  test('Renders list when no ID specified', () => {
     const wrapper = shallow(
-      <News
-        match={route}
+      <NewsComponent
+        match={route.noId}
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('Renders item when ID specified', () => {
+    const wrapper = shallow(
+      <NewsComponent
+        match={route.withId}
       />,
     );
     expect(wrapper).toMatchSnapshot();

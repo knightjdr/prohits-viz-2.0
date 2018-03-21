@@ -1,13 +1,12 @@
-/* eslint import/newline-after-import: "off" */
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Router from './router';
+import RouteNotFound from './route-not-found';
 
-describe('Router', () => {
+describe('RouteNotFound', () => {
   test('Renders', () => {
     const wrapper = shallow(
-      <Router />,
+      <RouteNotFound />,
     );
     expect(wrapper).toMatchSnapshot();
   });

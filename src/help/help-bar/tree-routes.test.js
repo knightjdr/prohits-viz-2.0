@@ -2,19 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { TreeRoutesComponent } from './tree-routes';
 
-import RoutesFromPath from '../../helpers/routes-from-path';
-
-// mock RoutesFromPath
-jest.mock('../../helpers/routes-from-path');
-RoutesFromPath.mockReturnValue(['help']);
+// mock expandNode
+const expandNode = jest.fn();
 
 describe('TreeRoutes', () => {
-  test('It renders', () => {
+  test('Renders', () => {
     const wrapper = shallow(
       <TreeRoutesComponent
-        location={{
-          path: '/help',
-        }}
+        expandNode={expandNode}
+        expandedRoutes={['/help']}
       />,
     );
     expect(wrapper).toMatchSnapshot();

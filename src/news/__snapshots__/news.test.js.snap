@@ -1,6 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News It renders list when no ID specified 1`] = `
+exports[`News Renders item when ID specified 1`] = `
+<div>
+  <NavbarContainer
+    background={true}
+    links={
+      Array [
+        Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
+      ]
+    }
+  />
+  <div
+    className="News-container"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/news/id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/news/id/:newsId"
+      />
+      <RouteNotFound />
+    </Switch>
+  </div>
+</div>
+`;
+
+exports[`News Renders list when no ID specified 1`] = `
 <div>
   <NavbarContainer
     background={true}

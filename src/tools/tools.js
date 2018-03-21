@@ -24,7 +24,7 @@ const details = {
     title: 'Help',
   },
   news: {
-    image: <FontAwesomeIcon icon={faNewspaper} />,
+    image: <FontAwesomeIcon icon={faNewspaper} size="sm" />,
     route: '/news',
     text: 'Read more about the latest news and features available at ProHits-viz',
     title: 'News',

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'antd';
 
-import TreeRoutes from './tree-routes';
+import TreeRoutes from './tree-routes-container';
 
 import './help-bar.css';
 

@@ -20,7 +20,7 @@
   height: calc(100vh - 40px);
   padding: 5px 10px;
   transition: all 0.5s ease-out;
-  width: 150px;
+  width: 180px;
 }
 @media screen and (max-width: 680px) {
   .HelpBar-breadcrumb {
@@ -65,7 +65,7 @@
   transition: opacity 0.1s ease-out;
 }
 .HelpBar-button-transition-in {
-  left: 110px;
+  left: 140px;
   transition: left 0.5s ease-out;
 }
 .HelpBar-button-transition-out {
@@ -75,7 +75,7 @@
 .HelpBar-panel-transition-in {
   padding: 5px 10px;
   transition: all 0.5s ease-out;
-  width: 150px;
+  width: 180px;
 }
 .HelpBar-panel-transition-out {
   padding: 5px 0px;

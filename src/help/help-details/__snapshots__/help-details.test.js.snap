@@ -49,6 +49,6 @@ exports[`HelpDetails Renders 1`] = `
       <RouteNotFound />
     </Switch>
   </div>
-  <HelpNavButtonsContainer />
+  <withRouter(HelpNavButtonsContainer) />
 </div>
 `;

@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TreeRoutes It renders 1`] = `
+exports[`TreeRoutes Renders 1`] = `
 <Tree
   checkable={false}
-  defaultExpandedKeys={
+  expandedKeys={
     Array [
-      "help",
+      "/help",
     ]
   }
+  onExpand={[Function]}
   openAnimation={
     Object {
       "appear": [Function],
@@ -25,6 +26,16 @@ exports[`TreeRoutes It renders 1`] = `
         to="/help"
       >
         Introduction
+      </Unknown>
+    }
+  />
+  <TreeNode
+    key="/help/recommendations"
+    title={
+      <Unknown
+        to="/help/recommendations"
+      >
+        Recommendations
       </Unknown>
     }
   />

@@ -1,6 +1,8 @@
 import Dotplot from '../help-pages/tools/dotplot';
+import FileFormat from '../help-pages/file-format/file-format';
 import Heatmap from '../help-pages/visualization/heatmap';
 import Introduction from '../help-pages/introduction/introduction';
+import Recommendations from '../help-pages/recommendations/recommendations';
 import Tools from '../help-pages/tools/tools';
 import Visualization from '../help-pages/visualization/visualization';
 
@@ -10,6 +12,18 @@ const HelpRoutes = [
     linkText: 'Help',
     route: '/help',
     panelText: 'Introduction',
+  },
+  {
+    component: FileFormat,
+    linkText: 'Input format',
+    route: '/help/format',
+    panelText: 'Input format',
+  },
+  {
+    component: Recommendations,
+    linkText: 'Recommendations',
+    route: '/help/recommendations',
+    panelText: 'Recommendations',
   },
   {
     component: Tools,

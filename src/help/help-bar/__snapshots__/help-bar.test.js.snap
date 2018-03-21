@@ -10,7 +10,7 @@ exports[`HelpBar It renders 1`] = `
     <div
       className="HelpBar-breadcrumb "
     >
-      <withRouter() />
+      <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
@@ -69,7 +69,7 @@ exports[`HelpBar It renders on small screen 1`] = `
     <div
       className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-out"
     >
-      <withRouter() />
+      <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
@@ -128,7 +128,7 @@ exports[`HelpBar It renders on small screen with panel 1`] = `
     <div
       className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-in"
     >
-      <withRouter() />
+      <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
@@ -187,7 +187,7 @@ exports[`HelpBar It renders with panel 1`] = `
     <div
       className="HelpBar-breadcrumb "
     >
-      <withRouter() />
+      <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button

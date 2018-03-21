@@ -4,7 +4,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { Tree } from 'antd';
 
 import HelpRoutes from '../help-routes/help-routes';
-import RoutesFromPath from '../../helpers/routes-from-path';
 
 const { TreeNode } = Tree;
 
@@ -24,17 +23,22 @@ export const treeNodes = routes => (
 );
 
 export const TreeRoutesComponent = ({
-  location,
+  expandNode,
+  expandedRoutes,
 }) => (
-  <Tree defaultExpandedKeys={RoutesFromPath(location.pathname)}>
+  <Tree
+    expandedKeys={expandedRoutes}
+    onExpand={expandNode}
+  >
     { treeNodes(HelpRoutes) }
   </Tree>
 );
 
 TreeRoutesComponent.propTypes = {
-  location: PropTypes.shape({
-    path: PropTypes.string,
-  }).isRequired,
+  expandNode: PropTypes.func.isRequired,
+  expandedRoutes: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
 };
 
 export default withRouter(TreeRoutesComponent);

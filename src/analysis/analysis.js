@@ -1,8 +1,7 @@
 import React from 'react';
 
+import AnalysisForm from './form/form';
 import Navbar from '../navbar/navbar-container';
-
-import './analysis.css';
 
 const links = [
   {
@@ -16,10 +15,11 @@ const links = [
 ];
 
 const Analysis = () => (
-  <div className="Analysis-container">
+  <div>
     <Navbar
       links={links}
     />
+    <AnalysisForm />
   </div>
 );
 
