@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AnalysisForm from './form/form';
+import AnalysisForm from './form/form-container';
 import Navbar from '../navbar/navbar-container';
 
 const links = [

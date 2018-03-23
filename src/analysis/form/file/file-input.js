@@ -1,44 +1,53 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faFilePlus from '@fortawesome/fontawesome-pro-solid/faFilePlus';
+import PropTypes from 'prop-types';
 import React from 'react';
-import { Icon, Upload } from 'antd';
+import { Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
+
+import CustomField from '../field/field';
 
 import './file-input.css';
 
-const { Dragger } = Upload;
-
-const config = {
-  name: 'file',
-  multiple: true,
-  action: '',
-  beforeUpload: () => (false),
-};
-
-const FileInput = () => (
+const FileInput = ({
+  getFieldDecorator,
+}) => (
   <div className="FileInput-container">
-    <Dragger
-      className="FileInput-dragger"
-      {...config}
-    >
-      <p className="ant-upload-drag-icon">
-        <Icon>
-          <FontAwesomeIcon icon={faFilePlus} size="sm" />
-        </Icon>
-      </p>
-      <p className="ant-upload-text">
-        Click to select a file or files from your filesystem or drag the file(s)
-        you would like to analyze to this area. See the
-        <NavLink
-          className="FileInput-drag-help"
-          to="/help/format"
-        >
-          Help
-        </NavLink>
-        for information on acceptable input formats.
-      </p>
-    </Dragger>
+    <Divider>File selection</Divider>
+    <div>
+      Specifiy the type of file you would like to analyze and select or drag it
+      to the input below. See the <NavLink to="/help/format">help</NavLink> for
+      information on input formats. Click here if you would like to try a sample
+      input file.
+    </div>
+    <div className="FileInput-select-container">
+      <CustomField
+        errorMessage="Please select the file type"
+        getFieldDecorator={getFieldDecorator}
+        name="fileType"
+        options={[
+          { text: 'SAINT', value: 'saint' },
+          { disabled: true, text: 'CRAPome', value: 'crapome' },
+          { disabled: true, text: 'Generic', value: 'generic' },
+        ]}
+        placeHolder="File type..."
+        required
+        style={{ width: 125 }}
+        type="select"
+      />
+      <CustomField
+        getFieldDecorator={getFieldDecorator}
+        name="file"
+        style={{
+          marginLeft: 10,
+          marginTop: 4,
+        }}
+        type="upload"
+      />
+    </div>
   </div>
 );
+
+FileInput.propTypes = {
+  getFieldDecorator: PropTypes.func.isRequired,
+};
 
 export default FileInput;

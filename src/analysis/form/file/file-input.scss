@@ -1,20 +1,11 @@
 .FileInput-container {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
 }
-.FileInput-drag-help {
-  margin: 0 5px;
+.FileInput-fa-icon {
+  margin-right: 5px;
 }
-.FileInput-dragger > .ant-upload {
-  height: auto;
-  padding: 5px 10px;
-}
-.FileInput-dragger .ant-upload-drag-icon {
-  margin-bottom: 10px !important;
-}
-.FileInput-dragger .ant-upload-text {
-  font-size: 1em !important;
-}
-.FileInput-info {
-  margin-right: 10px;
-  max-width: 300px;
+.FileInput-select-container {
+  display: flex;
+  margin-top: 10px;
 }

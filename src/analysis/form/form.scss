@@ -2,8 +2,15 @@
   display: flex;
   justify-content: center;
   padding: 10px 20px;
-  max
+  width: 100%;
 }
-.Form-Fields {
-  max-width: 1000px;
+.Form-fields {
+  max-width: 800px;
+  width: 100%;
+}
+.Form-options-button {
+  margin-left: 10px;
+}
+.Form-submit-container {
+  margin-top: 20px;
 }
