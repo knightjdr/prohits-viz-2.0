@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Alert, Divider, Select } from 'antd';
+import { Alert, Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
+
+import CustomField from '../field/field';
 
 import './tool-selection.css';
 
-const { Option } = Select;
 const infoMessages = {
   dotplot: (
     <span>
@@ -19,47 +20,55 @@ const infoMessages = {
 };
 
 const ToolSelection = ({
+  getFieldDecorator,
   getFieldValue,
 }) => {
-  const toolElement =
-    getFieldValue('fileType') &&
-    getFieldValue('file') &&
-    getFieldValue('file').length > 0 ?
-      (
-        <div className="ToolSelection-container">
-          <Divider>Analysis tool</Divider>
-          <div>
-            Select the tool you would like to use for your analysis. A detailed
-            description of the tools can be found <NavLink to="/help/tools">here</NavLink>.
+  const toolElement = (
+    <div className="ToolSelection-container">
+      <Divider>Analysis tool</Divider>
+      <div>
+        Select the tool you would like to use for your analysis. A detailed
+        description of the tools can be found <NavLink to="/help/tools">here</NavLink>.
+      </div>
+      <div className="ToolSelection-select-container">
+        <CustomField
+          errorMessage="Please select the analysis type"
+          getFieldDecorator={getFieldDecorator}
+          name="analysisType"
+          options={[
+            { disabled: true, text: 'Bait v bait', value: 'baitbait' },
+            { disabled: true, text: 'Correlation', value: 'correlation' },
+            { text: 'Dot plot', value: 'dotplot' },
+            { disabled: true, text: 'Specificity', value: 'specificity' },
+          ]}
+          placeHolder="Analysis type..."
+          required
+          style={{
+            marginRight: 20,
+            width: 150,
+          }}
+          type="select"
+        />
+        {
+          getFieldValue('analysisType') &&
+          <div className="ToolSelection-tool-description">
+            <Alert
+              message={infoMessages.dotplot}
+              showIcon
+              type="info"
+            />
           </div>
-          <div className="ToolSelection-select-container">
-            <Select
-              className="ToolSelection-select-type"
-              placeholder="Tool..."
-            >
-              <Option value="baitbait" disabled>Bait v bait</Option>
-              <Option value="correlation" disabled>Correlation</Option>
-              <Option value="dotplot">Dot plot</Option>
-              <Option value="specificity" disabled>Specificity</Option>
-            </Select>
-            <div className="ToolSelection-tool-description">
-              <Alert
-                message={infoMessages.dotplot}
-                showIcon
-                type="info"
-              />
-            </div>
-          </div>
-        </div>
-      )
-      :
-      null;
+        }
+      </div>
+    </div>
+  );
   return (
     toolElement
   );
 };
 
 ToolSelection.propTypes = {
+  getFieldDecorator: PropTypes.func.isRequired,
   getFieldValue: PropTypes.func.isRequired,
 };
 

@@ -1,10 +1,6 @@
 @import 'theme/_theme.scss';
 
 .About-container {
-  background-color: $backdrop-light;
-  background-image: url('../assets/background/network.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
   color: $text-dark;
   display: flex;
   flex-direction: column;

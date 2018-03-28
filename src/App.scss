@@ -1,4 +1,12 @@
+@import 'theme/_theme.scss';
+
 .App {
+  background-color: $backdrop-light;
+  background-image: url('./assets/background/network.svg');
+  /* background by SVGBackgrounds.com */
+  height: 100vh;
+  overflow-y: auto;
+  perspective: 1px;
   position: static;
   text-align: center;
 }

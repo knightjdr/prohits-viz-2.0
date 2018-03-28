@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, Upload } from 'antd';
 
+import './upload.css';
+
 const config = {
   name: 'file',
   multiple: true,
@@ -11,7 +13,7 @@ const config = {
   beforeUpload: () => (false),
 };
 
-const getFile = (e) => {
+export const getFile = (e) => {
   if (Array.isArray(e)) {
     return e;
   }
@@ -20,15 +22,22 @@ const getFile = (e) => {
 
 const FormItem = Form.Item;
 
+/* upload field wrapped in Ant design's <FormItem>, whose initial state will
+** be set from the redux store's 'input' */
+
 const CustomUpload = ({
   errorMessage,
   getFieldDecorator,
   input,
   name,
+  onChange,
   required,
   style,
 }) => {
-  const decoratorOptions = {};
+  const decoratorOptions = {
+    getValueFromEvent: getFile,
+    valuePropName: 'fileList',
+  };
   if (required) {
     decoratorOptions.rules = [{ required: true, message: errorMessage }];
   }
@@ -40,23 +49,15 @@ const CustomUpload = ({
       {
         getFieldDecorator(
           name,
-          {
-            getValueFromEvent: getFile,
-            valuePropName: 'fileList',
-          },
+          decoratorOptions,
         )(
           <Upload
-            className="ModUpload-container"
-            onChange={(value) => {
-              // need to set default input.value to []
-              // copy input.value to new value
-              // push value.fileList to new value
-              // input.onChange(newValue);
-            }}
-            style={style}
+            onChange={(value) => { onChange(value, input); }}
             {...config}
           >
-            <Button>
+            <Button
+              style={style}
+            >
               <FontAwesomeIcon
                 className="FileInput-fa-icon"
                 icon={faFilePlus}
@@ -75,11 +76,13 @@ CustomUpload.propTypes = {
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
+      PropTypes.array,
       PropTypes.string,
       PropTypes.number,
     ]),
   }).isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   required: PropTypes.bool.isRequired,
   style: PropTypes.shape({}).isRequired,
 };

@@ -4,6 +4,8 @@ import { Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import CustomField from '../field/field';
+import FileTypeChange from './file-type-change';
+import FileUploadChange from './file-upload-change';
 
 import './file-input.css';
 
@@ -23,6 +25,7 @@ const FileInput = ({
         errorMessage="Please select the file type"
         getFieldDecorator={getFieldDecorator}
         name="fileType"
+        onChange={FileTypeChange}
         options={[
           { text: 'SAINT', value: 'saint' },
           { disabled: true, text: 'CRAPome', value: 'crapome' },
@@ -30,15 +33,16 @@ const FileInput = ({
         ]}
         placeHolder="File type..."
         required
-        style={{ width: 125 }}
+        style={{ width: 150 }}
         type="select"
       />
       <CustomField
         getFieldDecorator={getFieldDecorator}
         name="file"
+        onChange={FileUploadChange}
         style={{
           marginLeft: 10,
-          marginTop: 4,
+          minWidth: 150,
         }}
         type="upload"
       />

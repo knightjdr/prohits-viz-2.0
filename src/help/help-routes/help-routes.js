@@ -15,9 +15,9 @@ const HelpRoutes = [
   },
   {
     component: FileFormat,
-    linkText: 'Input format',
+    linkText: 'Input formats',
     route: '/help/format',
-    panelText: 'Input format',
+    panelText: 'Input formats',
   },
   {
     component: Recommendations,

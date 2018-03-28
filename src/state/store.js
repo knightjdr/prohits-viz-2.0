@@ -16,7 +16,7 @@ export const addDevTools = () => (
 );
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
+export const store = createStore(
   Reducers,
   addDevTools(),
   applyMiddleware(

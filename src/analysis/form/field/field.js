@@ -5,10 +5,14 @@ import { Field } from 'redux-form';
 import CustomSelect from './select';
 import CustomUpload from './upload';
 
+/* takes props for an input type and passing it to a custom input that
+** wraps it in redux form's <Field> component and Ant design's <FormItem> */
+
 const CustomField = ({
   errorMessage,
   getFieldDecorator,
   name,
+  onChange,
   options,
   placeHolder,
   required,
@@ -25,6 +29,7 @@ const CustomField = ({
             getFieldDecorator={getFieldDecorator}
             input={input}
             name={name}
+            onChange={onChange}
             options={options}
             placeHolder={placeHolder}
             required={required}
@@ -38,6 +43,7 @@ const CustomField = ({
             getFieldDecorator={getFieldDecorator}
             input={input}
             name={name}
+            onChange={onChange}
             required={required}
             style={style}
           />
@@ -56,6 +62,7 @@ const CustomField = ({
 
 CustomField.defaultProps = {
   errorMessage: 'Required',
+  onChange: () => {},
   options: [],
   placeHolder: 'Input',
   required: false,
@@ -67,6 +74,7 @@ CustomField.propTypes = {
   errorMessage: PropTypes.string,
   getFieldDecorator: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,

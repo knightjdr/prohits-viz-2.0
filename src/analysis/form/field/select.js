@@ -5,11 +5,15 @@ import { Form, Select } from 'antd';
 const FormItem = Form.Item;
 const { Option } = Select;
 
+/* select menu wrapped in Ant design's <FormItem>, whose initial state will
+** be set from the redux store's 'input' */
+
 const CustomSelect = ({
   errorMessage,
   getFieldDecorator,
   input,
   name,
+  onChange,
   options,
   placeHolder,
   required,
@@ -30,7 +34,7 @@ const CustomSelect = ({
           decoratorOptions,
         )(
           <Select
-            onChange={(value) => { input.onChange(value); }}
+            onChange={(value) => { onChange(value, input); }}
             placeholder={placeHolder}
             style={style}
           >
@@ -61,6 +65,7 @@ CustomSelect.propTypes = {
     ]),
   }).isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       disabled: PropTypes.bool,

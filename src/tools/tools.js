@@ -10,21 +10,21 @@ import './tools.css';
 
 const details = {
   analysis: {
-    image: <FontAwesomeIcon icon={faFileAlt} />,
+    image: <FontAwesomeIcon icon={faFileAlt} size="xs" />,
     route: '/analysis',
     text: `With a SAINT, CRAPome or tabular input file in hand, click here to
       begin your analysis`,
     title: 'Analysis',
   },
   help: {
-    image: <FontAwesomeIcon icon={faQuestion} />,
+    image: <FontAwesomeIcon icon={faQuestion} size="xs" />,
     route: '/help',
     text: `New to ProHits-viz or have a question about one of our
       tools? Try our online help section by clicking here`,
     title: 'Help',
   },
   news: {
-    image: <FontAwesomeIcon icon={faNewspaper} size="sm" />,
+    image: <FontAwesomeIcon icon={faNewspaper} size="xs" />,
     route: '/news',
     text: 'Read more about the latest news and features available at ProHits-viz',
     title: 'News',

@@ -38,4 +38,5 @@
   font-family: TitleFont;
   font-size: 1.1em;
   grid-row: 1;
-  grid-column: 1; }
+  grid-column: 1;
+  text-transform: uppercase; }

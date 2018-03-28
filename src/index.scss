@@ -72,3 +72,18 @@ body {
   border-color: #66bb6a;
   color: #f5f5f5;
 }
+// button animations
+.pulse-button-primary {
+  animation: pulse-primary 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse-button-primary:hover {
+  animation: none;
+}
+@keyframes pulse-primary {
+  from {
+    box-shadow: 0 0 0 0 rgba(51, 107, 135, 0.7);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(51, 107, 135, 0);
+  }
+}

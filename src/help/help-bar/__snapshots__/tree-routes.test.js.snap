@@ -30,6 +30,16 @@ exports[`TreeRoutes Renders 1`] = `
     }
   />
   <TreeNode
+    key="/help/format"
+    title={
+      <Unknown
+        to="/help/format"
+      >
+        Input formats
+      </Unknown>
+    }
+  />
+  <TreeNode
     key="/help/recommendations"
     title={
       <Unknown

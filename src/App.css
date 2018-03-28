@@ -1,3 +1,9 @@
 .App {
+  background-color: #f5f5f5;
+  background-image: url("./assets/background/network.svg");
+  /* background by SVGBackgrounds.com */
+  height: 100vh;
+  overflow-y: auto;
+  perspective: 1px;
   position: static;
   text-align: center; }

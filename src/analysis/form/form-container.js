@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 import StoreForm from './store-form';
 
-class AnalysisFormContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+class FormContainer extends Component {
   onSubmit = (e, form) => {
     form.validateFields((err, values) => {
       if (!err) {
@@ -22,4 +18,4 @@ class AnalysisFormContainer extends Component {
     );
   }
 }
-export default AnalysisFormContainer;
+export default FormContainer;

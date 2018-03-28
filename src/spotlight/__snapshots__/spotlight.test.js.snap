@@ -23,7 +23,7 @@ exports[`Spotlight With articles 1`] = `
       key="article-0"
     >
       <div
-        className="Spotlight-carousel-image-container boxshadow-faint"
+        className="Spotlight-carousel-image-container"
       >
         <LazyLoad
           height={200}
