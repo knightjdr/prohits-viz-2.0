@@ -1,9 +1,18 @@
 /* global FileReader */
-/* global TextDecoder */
+import { TextDecoder } from 'text-encoding';
 
 // reads the first x lines of a file
 const ReadFileLines = (inputFile, maxLines = 1) => (
   new Promise((resolve, reject) => {
+    // ensure inputFile is of type File and maxLines is a number
+    if (
+      !(inputFile instanceof File) ||
+      Number.isNaN(maxLines) ||
+      maxLines < 1
+    ) {
+      reject(new Error('Invalid function args'));
+      return;
+    }
     const CHUNK_SIZE = 50000;
     const decoder = new TextDecoder();
     let offset = 0;
@@ -24,7 +33,7 @@ const ReadFileLines = (inputFile, maxLines = 1) => (
         offset >= inputFile.size
       ) { // We did not find all lines, but there are no more lines.
         fr.abort();
-        resolve(maxLines === 1 ? lines[0] : lines);
+        resolve(lines);
         return;
       }
       const slice = inputFile.slice(offset, offset + CHUNK_SIZE);

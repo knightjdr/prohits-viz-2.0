@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 // reducers
+import Header from './set/header-reducer';
 import Home from './get/home-reducer';
 import News from './get/news-reducer';
 import NewsItem from './get/news-item-reducer';
@@ -14,8 +15,20 @@ describe('Store', () => {
   test(`check that initial state of the root reducer matches
     what child reducers return given an empty action`,
   () => {
+    expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
+    expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));
+    expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
+  });
+
+  test('Header reducer handles its actions', () => {
+    let action = { header: ['column1', 'column2'], type: 'SET_FILE_HEADER' };
+    store.dispatch(action);
+    expect(store.getState().header).toEqual(Header(undefined, action));
+    action = { type: 'CLEAR_FILE_HEADER' };
+    store.dispatch(action);
+    expect(store.getState().header).toEqual(Header(undefined, action));
   });
 
   test('Home reducer handles its actions', () => {

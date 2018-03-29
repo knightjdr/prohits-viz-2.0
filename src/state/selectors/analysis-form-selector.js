@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 
 const getAnalysisForm = (state) => {
   if (
+    state.form &&
     state.form.analysisForm &&
     state.form.analysisForm.values
   ) {

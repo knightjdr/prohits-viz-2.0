@@ -1,6 +1,10 @@
 // determines if a value is null, undefined, etc, or it is an empty array of object
 const IsNotEmpty = (value) => {
-  if (
+  if (value === 0) {
+    return true;
+  } else if (!value) {
+    return false;
+  } else if (
     Array.isArray(value) &&
     value.length > 0
   ) {

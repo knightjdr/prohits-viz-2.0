@@ -27,9 +27,9 @@ exports[`Spotlight With articles 1`] = `
       >
         <LazyLoad
           height={200}
-          offset={200}
+          offset={100}
           once={false}
-          overflow={false}
+          overflow={true}
           resize={false}
           scroll={true}
           unmountIfInvisible={false}
