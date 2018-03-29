@@ -16,8 +16,14 @@ const FileInput = ({
     <Divider>File selection</Divider>
     <div>
       Specifiy the type of file you would like to analyze and select or drag it
-      to the input below. See the <NavLink to="/help/format">help</NavLink> for
-      information on input formats. Click here if you would like to try a sample
+      to the input below. See the
+      <NavLink
+        className="decorate-link inline-add-margins"
+        to="/help/format"
+      >
+        help
+      </NavLink>
+      for information on input formats. Click HERE if you would like to try a sample
       input file.
     </div>
     <div className="FileInput-select-container">
