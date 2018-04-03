@@ -6,4 +6,4 @@ Web app for visualizing protein-protein interaction data
 
 `npm test`
 
-© 2018 Gingras lab.
+© 2018 James Knight.

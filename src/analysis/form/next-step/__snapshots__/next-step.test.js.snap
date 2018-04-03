@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NextStepComponent Renders nothing when at current step but needed to do not match form 1`] = `
+<div
+  className="NextStep-container"
+  style={Object {}}
+>
+  <Button
+    className="NextStep-button pulse-button-primary"
+    ghost={false}
+    loading={false}
+    onClick={[Function]}
+    prefixCls="ant-btn"
+    type="primary"
+  >
+    Next
+  </Button>
+</div>
+`;

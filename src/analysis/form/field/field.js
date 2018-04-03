@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
 
+import CustomCheckbox from './checkbox';
 import CustomSelect from './select';
 import CustomUpload from './upload';
 
@@ -22,6 +23,19 @@ const CustomField = ({
   const componentElement = (field) => {
     const { input } = field;
     switch (type) {
+      case 'checkbox':
+        return (
+          <CustomCheckbox
+            errorMessage={errorMessage}
+            getFieldDecorator={getFieldDecorator}
+            input={input}
+            name={name}
+            onChange={onChange}
+            placeHolder={placeHolder}
+            required={required}
+            style={style}
+          />
+        );
       case 'select':
         return (
           <CustomSelect

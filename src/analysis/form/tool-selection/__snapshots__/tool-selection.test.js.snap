@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
+<div
+  className="ToolSelection-container"
+>
+  <Divider>
+    Analysis tool
+  </Divider>
+  <div>
+    Select the tool you would like to use for your analysis. A detailed description of the tools can be found
+    <Component
+      className="decorate-link inline-add-margins-left"
+      to="/help/tools"
+    >
+      here
+    </Component>
+    .
+  </div>
+  <div
+    className="ToolSelection-select-container"
+  >
+    <CustomField
+      errorMessage="Please select the analysis type"
+      getFieldDecorator={[Function]}
+      name="analysisType"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "disabled": true,
+            "text": "Bait v bait",
+            "value": "baitbait",
+          },
+          Object {
+            "disabled": true,
+            "text": "Correlation",
+            "value": "correlation",
+          },
+          Object {
+            "text": "Dot plot",
+            "value": "dotplot",
+          },
+          Object {
+            "disabled": true,
+            "text": "Specificity",
+            "value": "specificity",
+          },
+        ]
+      }
+      placeHolder="Analysis type..."
+      required={true}
+      style={
+        Object {
+          "marginRight": 20,
+          "width": 150,
+        }
+      }
+      type="select"
+    />
+    <div
+      className="ToolSelection-tool-description"
+    >
+      <Alert
+        message={
+          <span>
+            This tool takes quantitative information on bait-prey interactions and visualizes the interactions as either a dot plot or heat map. This is an ideal way of visualizing small to moderately sized data sets (≤ 20 baits). See the
+            <Unknown
+              className="decorate-link inline-add-margins"
+              to="/help/tools/dotplot"
+            >
+              help
+            </Unknown>
+            for more information on this tool
+          </span>
+        }
+        showIcon={true}
+        type="info"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ToolSelectionComponent Renders item without selected analysis type 1`] = `
+<div
+  className="ToolSelection-container"
+>
+  <Divider>
+    Analysis tool
+  </Divider>
+  <div>
+    Select the tool you would like to use for your analysis. A detailed description of the tools can be found
+    <Component
+      className="decorate-link inline-add-margins-left"
+      to="/help/tools"
+    >
+      here
+    </Component>
+    .
+  </div>
+  <div
+    className="ToolSelection-select-container"
+  >
+    <CustomField
+      errorMessage="Please select the analysis type"
+      getFieldDecorator={[Function]}
+      name="analysisType"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "disabled": true,
+            "text": "Bait v bait",
+            "value": "baitbait",
+          },
+          Object {
+            "disabled": true,
+            "text": "Correlation",
+            "value": "correlation",
+          },
+          Object {
+            "text": "Dot plot",
+            "value": "dotplot",
+          },
+          Object {
+            "disabled": true,
+            "text": "Specificity",
+            "value": "specificity",
+          },
+        ]
+      }
+      placeHolder="Analysis type..."
+      required={true}
+      style={
+        Object {
+          "marginRight": 20,
+          "width": 150,
+        }
+      }
+      type="select"
+    />
+  </div>
+</div>
+`;

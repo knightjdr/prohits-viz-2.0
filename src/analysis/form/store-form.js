@@ -4,15 +4,21 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { reduxForm } from 'redux-form';
 
-import AnalysisForm from './analysis-form-container';
+import AnalysisForm from './analysis-form';
 
 export const storeForm = ({
+  change,
   onSubmit,
 }) => (
-  <AnalysisForm onSubmit={onSubmit} />
+  <AnalysisForm
+    change={change}
+    onSubmit={onSubmit}
+  />
 );
 
 storeForm.propTypes = {
+  // prop from reduxForm; use to set form programmatically
+  change: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

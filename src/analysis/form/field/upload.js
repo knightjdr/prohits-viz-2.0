@@ -36,14 +36,8 @@ const CustomUpload = ({
 }) => {
   const decoratorOptions = {
     getValueFromEvent: getFile,
-    valuePropName: 'fileList',
+    rules: [{ required, message: errorMessage }],
   };
-  if (required) {
-    decoratorOptions.rules = [{ required: true, message: errorMessage }];
-  }
-  if (input.value) {
-    decoratorOptions.initialValue = input.value;
-  }
   return (
     <FormItem>
       {
@@ -52,6 +46,7 @@ const CustomUpload = ({
           decoratorOptions,
         )(
           <Upload
+            fileList={input.value || []}
             onChange={(value) => { onChange(value, input); }}
             {...config}
           >

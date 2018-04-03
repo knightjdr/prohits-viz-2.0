@@ -1,9 +1,16 @@
+@import 'theme/_theme.scss';
+
 .FileInput-container {
   display: flex;
   flex-direction: column;
 }
 .FileInput-fa-icon {
   margin-right: 5px;
+}
+.FileInput-sample-button {
+  color: $primary-medium;
+  padding: 0 5px;
+  text-decoration: underline;
 }
 .FileInput-select-container {
   display: flex;

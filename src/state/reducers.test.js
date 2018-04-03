@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 // reducers
+import FormStep from './set/form-step-reducer';
 import Header from './set/header-reducer';
 import Home from './get/home-reducer';
 import News from './get/news-reducer';
@@ -15,11 +16,21 @@ describe('Store', () => {
   test(`check that initial state of the root reducer matches
     what child reducers return given an empty action`,
   () => {
+    expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
+  });
+
+  test('FormStep reducer handles its actions', () => {
+    let action = { step: 1, type: 'INCREMENT_FORM_STEP' };
+    store.dispatch(action);
+    expect(store.getState().formStep).toEqual(FormStep(undefined, action));
+    action = { type: 'CLEAR_FORM_STEP' };
+    store.dispatch(action);
+    expect(store.getState().formStep).toEqual(FormStep(undefined, action));
   });
 
   test('Header reducer handles its actions', () => {

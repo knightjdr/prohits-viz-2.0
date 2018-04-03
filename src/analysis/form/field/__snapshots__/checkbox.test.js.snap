@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Renders with no value 1`] = `
+<Form(TestForm)
+  input={
+    Object {
+      "onChange": [Function],
+      "value": false,
+    }
+  }
+>
+  <TestForm
+    form={
+      Object {
+        "getFieldDecorator": [Function],
+        "getFieldError": [Function],
+        "getFieldInstance": [Function],
+        "getFieldProps": [Function],
+        "getFieldValue": [Function],
+        "getFieldsError": [Function],
+        "getFieldsValue": [Function],
+        "isFieldTouched": [Function],
+        "isFieldValidating": [Function],
+        "isFieldsTouched": [Function],
+        "isFieldsValidating": [Function],
+        "isSubmitting": [Function],
+        "resetFields": [Function],
+        "setFields": [Function],
+        "setFieldsInitialValue": [Function],
+        "setFieldsValue": [Function],
+        "submit": [Function],
+        "validateFields": [Function],
+        "validateFieldsAndScroll": [Function],
+      }
+    }
+    input={
+      Object {
+        "onChange": [Function],
+        "value": false,
+      }
+    }
+    onSubmit={[Function]}
+  >
+    <Form
+      hideRequiredMark={false}
+      layout="horizontal"
+      onSubmit={[Function]}
+      prefixCls="ant-form"
+    >
+      <form
+        className="ant-form ant-form-horizontal"
+        onSubmit={[Function]}
+      >
+        <CustomCheckbox
+          errorMessage="Error message"
+          getFieldDecorator={[Function]}
+          input={
+            Object {
+              "onChange": [Function],
+              "value": false,
+            }
+          }
+          name="TestCheckbox"
+          onChange={[Function]}
+          placeHolder="Checkbox"
+          required={false}
+          style={Object {}}
+        >
+          <FormItem
+            colon={true}
+            hasFeedback={false}
+            prefixCls="ant-form"
+          >
+            <Row
+              className="ant-form-item"
+              gutter={0}
+            >
+              <div
+                className="ant-row ant-form-item"
+              >
+                <Col
+                  className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
+                >
+                  <div
+                    className="ant-form-item-control-wrapper"
+                  >
+                    <div
+                      className="ant-form-item-control"
+                    >
+                      <span
+                        className="ant-form-item-children"
+                      >
+                        <Checkbox
+                          data-__field={
+                            Object {
+                              "name": "TestCheckbox",
+                            }
+                          }
+                          data-__meta={
+                            Object {
+                              "checked": false,
+                              "name": "TestCheckbox",
+                              "originalProps": Object {
+                                "children": "Checkbox",
+                                "indeterminate": false,
+                                "onChange": [Function],
+                                "prefixCls": "ant-checkbox",
+                                "style": Object {},
+                              },
+                              "ref": null,
+                              "rules": Array [
+                                Object {
+                                  "message": "Error message",
+                                  "required": false,
+                                },
+                              ],
+                              "trigger": "onChange",
+                              "validate": Array [
+                                Object {
+                                  "rules": Array [
+                                    Object {
+                                      "message": "Error message",
+                                      "required": false,
+                                    },
+                                  ],
+                                  "trigger": Array [
+                                    "onChange",
+                                  ],
+                                },
+                              ],
+                              "valuePropName": "checked",
+                            }
+                          }
+                          id="TestCheckbox"
+                          indeterminate={false}
+                          onChange={[Function]}
+                          prefixCls="ant-checkbox"
+                          style={Object {}}
+                        >
+                          <label
+                            className="ant-checkbox-wrapper"
+                            style={Object {}}
+                          >
+                            <Checkbox
+                              className=""
+                              data-__field={
+                                Object {
+                                  "name": "TestCheckbox",
+                                }
+                              }
+                              data-__meta={
+                                Object {
+                                  "checked": false,
+                                  "name": "TestCheckbox",
+                                  "originalProps": Object {
+                                    "children": "Checkbox",
+                                    "indeterminate": false,
+                                    "onChange": [Function],
+                                    "prefixCls": "ant-checkbox",
+                                    "style": Object {},
+                                  },
+                                  "ref": null,
+                                  "rules": Array [
+                                    Object {
+                                      "message": "Error message",
+                                      "required": false,
+                                    },
+                                  ],
+                                  "trigger": "onChange",
+                                  "validate": Array [
+                                    Object {
+                                      "rules": Array [
+                                        Object {
+                                          "message": "Error message",
+                                          "required": false,
+                                        },
+                                      ],
+                                      "trigger": Array [
+                                        "onChange",
+                                      ],
+                                    },
+                                  ],
+                                  "valuePropName": "checked",
+                                }
+                              }
+                              defaultChecked={false}
+                              id="TestCheckbox"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              prefixCls="ant-checkbox"
+                              style={Object {}}
+                              type="checkbox"
+                            >
+                              <span
+                                className="ant-checkbox"
+                                style={Object {}}
+                              >
+                                <input
+                                  checked={false}
+                                  className="ant-checkbox-input"
+                                  data-__field={
+                                    Object {
+                                      "name": "TestCheckbox",
+                                    }
+                                  }
+                                  data-__meta={
+                                    Object {
+                                      "checked": false,
+                                      "name": "TestCheckbox",
+                                      "originalProps": Object {
+                                        "children": "Checkbox",
+                                        "indeterminate": false,
+                                        "onChange": [Function],
+                                        "prefixCls": "ant-checkbox",
+                                        "style": Object {},
+                                      },
+                                      "ref": null,
+                                      "rules": Array [
+                                        Object {
+                                          "message": "Error message",
+                                          "required": false,
+                                        },
+                                      ],
+                                      "trigger": "onChange",
+                                      "validate": Array [
+                                        Object {
+                                          "rules": Array [
+                                            Object {
+                                              "message": "Error message",
+                                              "required": false,
+                                            },
+                                          ],
+                                          "trigger": Array [
+                                            "onChange",
+                                          ],
+                                        },
+                                      ],
+                                      "valuePropName": "checked",
+                                    }
+                                  }
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onFocus={[Function]}
+                                  type="checkbox"
+                                />
+                                <span
+                                  className="ant-checkbox-inner"
+                                />
+                              </span>
+                            </Checkbox>
+                            <span>
+                              Checkbox
+                            </span>
+                          </label>
+                        </Checkbox>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+        </CustomCheckbox>
+        <button
+          type="submit"
+        />
+      </form>
+    </Form>
+  </TestForm>
+</Form(TestForm)>
+`;

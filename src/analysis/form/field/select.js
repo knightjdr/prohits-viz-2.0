@@ -19,10 +19,9 @@ const CustomSelect = ({
   required,
   style,
 }) => {
-  const decoratorOptions = {};
-  if (required) {
-    decoratorOptions.rules = [{ required: true, message: errorMessage }];
-  }
+  const decoratorOptions = {
+    rules: [{ required, message: errorMessage }],
+  };
   if (input.value) {
     decoratorOptions.initialValue = input.value;
   }

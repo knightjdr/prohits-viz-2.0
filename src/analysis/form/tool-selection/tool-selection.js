@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Alert, Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
 import CustomField from '../field/field';
+import SelectChange from '../field/select-change';
 
 import './tool-selection.css';
 
@@ -26,9 +29,9 @@ const infoMessages = {
   ),
 };
 
-const ToolSelection = ({
+export const ToolSelectionComponent = ({
+  form,
   getFieldDecorator,
-  getFieldValue,
 }) => {
   const toolElement = (
     <div className="ToolSelection-container">
@@ -48,6 +51,7 @@ const ToolSelection = ({
           errorMessage="Please select the analysis type"
           getFieldDecorator={getFieldDecorator}
           name="analysisType"
+          onChange={SelectChange}
           options={[
             { disabled: true, text: 'Bait v bait', value: 'baitbait' },
             { disabled: true, text: 'Correlation', value: 'correlation' },
@@ -63,7 +67,7 @@ const ToolSelection = ({
           type="select"
         />
         {
-          getFieldValue('analysisType') &&
+          form.analysisType &&
           <div className="ToolSelection-tool-description">
             <Alert
               message={infoMessages.dotplot}
@@ -80,9 +84,18 @@ const ToolSelection = ({
   );
 };
 
-ToolSelection.propTypes = {
+ToolSelectionComponent.propTypes = {
+  form: PropTypes.shape({}).isRequired,
   getFieldDecorator: PropTypes.func.isRequired,
-  getFieldValue: PropTypes.func.isRequired,
 };
 
-export default ToolSelection;
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  form: AnalysisFormSelector(state),
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+)(ToolSelectionComponent);
+
+export default ConnectedContainer;
