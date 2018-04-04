@@ -12,6 +12,7 @@ const FileInput = ({
   getFieldDecorator,
   onClickSample,
   onFileChange,
+  setFieldsValue,
 }) => (
   <div className="FileInput-container">
     <Divider>File selection</Divider>
@@ -27,7 +28,7 @@ const FileInput = ({
       for information on input formats. Click
       <button
         className="nobutton FileInput-sample-button"
-        onClick={onClickSample}
+        onClick={() => { onClickSample(setFieldsValue); }}
       >
         here
       </button>
@@ -50,9 +51,11 @@ const FileInput = ({
         type="select"
       />
       <CustomField
+        errorMessage="Please select a file"
         getFieldDecorator={getFieldDecorator}
         name="file"
         onChange={onFileChange}
+        required
         style={{
           marginLeft: 10,
           minWidth: 150,
@@ -62,6 +65,7 @@ const FileInput = ({
       <CustomField
         getFieldDecorator={getFieldDecorator}
         name="sampleFile"
+        onChange={() => {}}
         style={{
           display: 'none',
         }}
@@ -75,6 +79,7 @@ FileInput.propTypes = {
   getFieldDecorator: PropTypes.func.isRequired,
   onClickSample: PropTypes.func.isRequired,
   onFileChange: PropTypes.func.isRequired,
+  setFieldsValue: PropTypes.func.isRequired,
 };
 
 export default FileInput;

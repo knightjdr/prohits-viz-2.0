@@ -2,6 +2,6 @@
 ** to input.onChange */
 
 const SelectChange = (value, input) => {
-  input.onChange(value);
+  input.onChange(value || null);
 };
 export default SelectChange;

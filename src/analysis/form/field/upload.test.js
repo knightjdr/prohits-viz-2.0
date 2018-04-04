@@ -1,79 +1,82 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Checkbox from './checkbox';
+import Upload, { getFile } from './upload';
 import TestForm from './__mocks__/form-wrapper';
 
 const inputOnChange = jest.fn();
 const onChange = jest.fn();
+const file = new File([''], 'samplefile.txt', { type: 'text/plain' });
 
-describe('Checkbox', () => {
-  test('Renders with false as initial value', () => {
+describe('Select', () => {
+  test('Renders with inital value', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: [],
         }}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{}}
         />
       </TestForm>,
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeFalsy();
+    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([]);
   });
 
-  test('Is true when checked programmatically', () => {
+  test('Value can be set programmatically programmatically', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: [],
         }}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{}}
         />
       </TestForm>,
     );
     wrapper.instance().setFieldsValue({
-      TestCheckbox: true,
+      TestFile: [file],
     });
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeTruthy();
+    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([file]);
   });
 
-  test('On change called on checkbox click', () => {
+  test('On change called when file added', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: [],
         }}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{}}
         />
       </TestForm>,
     );
     const input = wrapper.find('input');
-    input.simulate('change');
+    input.simulate('change', { target: { files: [file] } });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -82,15 +85,16 @@ describe('Checkbox', () => {
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: [],
         }}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{}}
         />
       </TestForm>,
@@ -98,10 +102,10 @@ describe('Checkbox', () => {
     wrapper.setProps({
       input: {
         onChange: inputOnChange,
-        value: true,
+        value: [file],
       },
     });
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeTruthy();
+    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([file]);
   });
 
   test('Submit called on button click and submits with no errors', () => {
@@ -110,28 +114,28 @@ describe('Checkbox', () => {
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: [file],
         }}
         onSubmit={onSubmitSpy}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{}}
         />
       </TestForm>,
     );
-    const button = wrapper.find('button');
+    const button = wrapper.find('button [type="submit"]');
     button.simulate('submit');
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toBeUndefined();
+    expect(wrapper.instance().getFieldError('TestFile')).toBeUndefined();
   });
 
-  /* Checkbox should never be required, so these tests are inappropriate
-  ** test('Submit when required and value is undefined gives error', () => {
+  test('Submit when required and value is undefined gives error', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -139,21 +143,20 @@ describe('Checkbox', () => {
           value: undefined,
         }}
       >
-        <Checkbox
+        <Upload
           errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
           required
           style={{}}
         />
       </TestForm>,
     );
-    const button = wrapper.find('button');
+    const button = wrapper.find('button [type="submit"]');
     button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toEqual(['Error message']);
+    expect(wrapper.instance().getFieldError('TestFile')).toEqual(['Error message']);
   });
 
   test('Submit when not required and value is undefined gives no error', () => {
@@ -164,42 +167,51 @@ describe('Checkbox', () => {
           value: undefined,
         }}
       >
-        <Checkbox
+        <Upload
           errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
           required={false}
           style={{}}
         />
       </TestForm>,
     );
-    const button = wrapper.find('button');
+    const button = wrapper.find('button [type="submit"]');
     button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toBeUndefined();
-  }); */
+    expect(wrapper.instance().getFieldError('TestFile')).toBeUndefined();
+  });
 
   test('Can add custom style', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: undefined,
+          value: [],
         }}
       >
-        <Checkbox
+        <Upload
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestFile"
           onChange={onChange}
-          placeHolder="Checkbox"
+          required
           style={{ backgroundColor: '#000' }}
         />
       </TestForm>,
     );
-    const checkboxStyle = wrapper.find('Checkbox').first().props().style;
-    expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
+    const uploadStyle = wrapper.find('Button').props().style;
+    expect(uploadStyle).toHaveProperty('backgroundColor', '#000');
+  });
+
+  test('getFile returns an array when given one or a fileList if given an object', () => {
+    const testArr = ['a'];
+    const testObj = {
+      fileList: testArr,
+    };
+    expect(getFile(testArr)).toEqual(testArr);
+    expect(getFile(testObj)).toEqual(testArr);
   });
 });

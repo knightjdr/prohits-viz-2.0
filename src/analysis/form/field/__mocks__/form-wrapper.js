@@ -37,6 +37,7 @@ TestForm.propTypes = {
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
+      PropTypes.array,
       PropTypes.bool,
       PropTypes.number,
       PropTypes.string,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox Renders with no value 1`] = `
+exports[`Checkbox Renders with false as initial value 1`] = `
 <Form(TestForm)
   input={
     Object {
@@ -52,7 +52,6 @@ exports[`Checkbox Renders with no value 1`] = `
         onSubmit={[Function]}
       >
         <CustomCheckbox
-          errorMessage="Error message"
           getFieldDecorator={[Function]}
           input={
             Object {
@@ -63,7 +62,6 @@ exports[`Checkbox Renders with no value 1`] = `
           name="TestCheckbox"
           onChange={[Function]}
           placeHolder="Checkbox"
-          required={false}
           style={Object {}}
         >
           <FormItem
@@ -86,12 +84,13 @@ exports[`Checkbox Renders with no value 1`] = `
                     className="ant-form-item-control-wrapper"
                   >
                     <div
-                      className="ant-form-item-control"
+                      className="ant-form-item-control has-success"
                     >
                       <span
                         className="ant-form-item-children"
                       >
                         <Checkbox
+                          checked={false}
                           data-__field={
                             Object {
                               "name": "TestCheckbox",
@@ -99,7 +98,7 @@ exports[`Checkbox Renders with no value 1`] = `
                           }
                           data-__meta={
                             Object {
-                              "checked": false,
+                              "initialValue": false,
                               "name": "TestCheckbox",
                               "originalProps": Object {
                                 "children": "Checkbox",
@@ -109,26 +108,8 @@ exports[`Checkbox Renders with no value 1`] = `
                                 "style": Object {},
                               },
                               "ref": null,
-                              "rules": Array [
-                                Object {
-                                  "message": "Error message",
-                                  "required": false,
-                                },
-                              ],
                               "trigger": "onChange",
-                              "validate": Array [
-                                Object {
-                                  "rules": Array [
-                                    Object {
-                                      "message": "Error message",
-                                      "required": false,
-                                    },
-                                  ],
-                                  "trigger": Array [
-                                    "onChange",
-                                  ],
-                                },
-                              ],
+                              "validate": Array [],
                               "valuePropName": "checked",
                             }
                           }
@@ -143,6 +124,7 @@ exports[`Checkbox Renders with no value 1`] = `
                             style={Object {}}
                           >
                             <Checkbox
+                              checked={false}
                               className=""
                               data-__field={
                                 Object {
@@ -151,7 +133,7 @@ exports[`Checkbox Renders with no value 1`] = `
                               }
                               data-__meta={
                                 Object {
-                                  "checked": false,
+                                  "initialValue": false,
                                   "name": "TestCheckbox",
                                   "originalProps": Object {
                                     "children": "Checkbox",
@@ -161,26 +143,8 @@ exports[`Checkbox Renders with no value 1`] = `
                                     "style": Object {},
                                   },
                                   "ref": null,
-                                  "rules": Array [
-                                    Object {
-                                      "message": "Error message",
-                                      "required": false,
-                                    },
-                                  ],
                                   "trigger": "onChange",
-                                  "validate": Array [
-                                    Object {
-                                      "rules": Array [
-                                        Object {
-                                          "message": "Error message",
-                                          "required": false,
-                                        },
-                                      ],
-                                      "trigger": Array [
-                                        "onChange",
-                                      ],
-                                    },
-                                  ],
+                                  "validate": Array [],
                                   "valuePropName": "checked",
                                 }
                               }
@@ -207,7 +171,7 @@ exports[`Checkbox Renders with no value 1`] = `
                                   }
                                   data-__meta={
                                     Object {
-                                      "checked": false,
+                                      "initialValue": false,
                                       "name": "TestCheckbox",
                                       "originalProps": Object {
                                         "children": "Checkbox",
@@ -217,26 +181,8 @@ exports[`Checkbox Renders with no value 1`] = `
                                         "style": Object {},
                                       },
                                       "ref": null,
-                                      "rules": Array [
-                                        Object {
-                                          "message": "Error message",
-                                          "required": false,
-                                        },
-                                      ],
                                       "trigger": "onChange",
-                                      "validate": Array [
-                                        Object {
-                                          "rules": Array [
-                                            Object {
-                                              "message": "Error message",
-                                              "required": false,
-                                            },
-                                          ],
-                                          "trigger": Array [
-                                            "onChange",
-                                          ],
-                                        },
-                                      ],
+                                      "validate": Array [],
                                       "valuePropName": "checked",
                                     }
                                   }

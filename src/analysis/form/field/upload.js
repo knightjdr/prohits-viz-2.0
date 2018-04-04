@@ -36,10 +36,12 @@ const CustomUpload = ({
 }) => {
   const decoratorOptions = {
     getValueFromEvent: getFile,
+    initialValue: input.value || [],
     rules: [{ required, message: errorMessage }],
+    validateTrigger: ['onChange', 'onSubmit'],
   };
   return (
-    <FormItem>
+    <FormItem help="">
       {
         getFieldDecorator(
           name,
@@ -65,8 +67,14 @@ const CustomUpload = ({
   );
 };
 
+CustomUpload.defaultProps = {
+  errorMessage: 'Required',
+  required: false,
+  style: {},
+};
+
 CustomUpload.propTypes = {
-  errorMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   getFieldDecorator: PropTypes.func.isRequired,
   input: PropTypes.shape({
     onChange: PropTypes.func,
@@ -78,8 +86,8 @@ CustomUpload.propTypes = {
   }).isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool.isRequired,
-  style: PropTypes.shape({}).isRequired,
+  required: PropTypes.bool,
+  style: PropTypes.shape({}),
 };
 
 export default CustomUpload;

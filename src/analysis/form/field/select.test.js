@@ -1,79 +1,92 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Checkbox from './checkbox';
+import Select from './select';
 import TestForm from './__mocks__/form-wrapper';
 
 const inputOnChange = jest.fn();
 const onChange = jest.fn();
+const options = [
+  { text: 'option1', value: 1 },
+  { text: 'option2', value: 2 },
+];
 
-describe('Checkbox', () => {
-  test('Renders with false as initial value', () => {
+describe('Select', () => {
+  test('Renders with no value', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: undefined,
         }}
       >
-        <Checkbox
+        <Select
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
+          required
           style={{}}
         />
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeFalsy();
+    expect(wrapper.instance().getFieldValue('TestSelect')).toBeUndefined();
   });
 
-  test('Is true when checked programmatically', () => {
+  test('Value can be set programmatically programmatically', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: undefined,
         }}
       >
-        <Checkbox
+        <Select
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
+          required
           style={{}}
         />
       </TestForm>,
     );
     wrapper.instance().setFieldsValue({
-      TestCheckbox: true,
+      TestSelect: 1,
     });
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeTruthy();
+    expect(wrapper.instance().getFieldValue('TestSelect')).toBe(1);
   });
 
-  test('On change called on checkbox click', () => {
+  test('On change called when option changes', () => {
     const wrapper = mount(
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: 1,
         }}
       >
-        <Checkbox
+        <Select
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
+          required
           style={{}}
         />
       </TestForm>,
     );
-    const input = wrapper.find('input');
-    input.simulate('change');
+    const select = wrapper.find('Select').first();
+    select.props().onChange();
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -82,15 +95,18 @@ describe('Checkbox', () => {
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: undefined,
         }}
       >
-        <Checkbox
+        <Select
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
+          required
           style={{}}
         />
       </TestForm>,
@@ -98,10 +114,10 @@ describe('Checkbox', () => {
     wrapper.setProps({
       input: {
         onChange: inputOnChange,
-        value: true,
+        value: 1,
       },
     });
-    expect(wrapper.instance().getFieldValue('TestCheckbox')).toBeTruthy();
+    expect(wrapper.instance().getFieldValue('TestSelect')).toBe(1);
   });
 
   test('Submit called on button click and submits with no errors', () => {
@@ -110,42 +126,18 @@ describe('Checkbox', () => {
       <TestForm
         input={{
           onChange: inputOnChange,
-          value: false,
+          value: 1,
         }}
         onSubmit={onSubmitSpy}
       >
-        <Checkbox
-          getFieldDecorator={jest.fn()}
-          input={{}}
-          name="TestCheckbox"
-          onChange={onChange}
-          placeHolder="Checkbox"
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button');
-    button.simulate('submit');
-    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toBeUndefined();
-  });
-
-  /* Checkbox should never be required, so these tests are inappropriate
-  ** test('Submit when required and value is undefined gives error', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-      >
-        <Checkbox
+        <Select
           errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
           required
           style={{}}
         />
@@ -153,7 +145,34 @@ describe('Checkbox', () => {
     );
     const button = wrapper.find('button');
     button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toEqual(['Error message']);
+    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
+    expect(wrapper.instance().getFieldError('TestSelect')).toBeUndefined();
+  });
+
+  test('Submit when required and value is undefined gives error', () => {
+    const wrapper = mount(
+      <TestForm
+        input={{
+          onChange: inputOnChange,
+          value: undefined,
+        }}
+      >
+        <Select
+          errorMessage="Error message"
+          getFieldDecorator={jest.fn()}
+          input={{}}
+          name="TestSelect"
+          onChange={onChange}
+          options={options}
+          placeHolder="Select..."
+          required
+          style={{}}
+        />
+      </TestForm>,
+    );
+    const button = wrapper.find('button');
+    button.simulate('submit');
+    expect(wrapper.instance().getFieldError('TestSelect')).toEqual(['Error message']);
   });
 
   test('Submit when not required and value is undefined gives no error', () => {
@@ -164,13 +183,14 @@ describe('Checkbox', () => {
           value: undefined,
         }}
       >
-        <Checkbox
+        <Select
           errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
           required={false}
           style={{}}
         />
@@ -178,8 +198,8 @@ describe('Checkbox', () => {
     );
     const button = wrapper.find('button');
     button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestCheckbox')).toBeUndefined();
-  }); */
+    expect(wrapper.instance().getFieldError('TestSelect')).toBeUndefined();
+  });
 
   test('Can add custom style', () => {
     const wrapper = mount(
@@ -189,17 +209,20 @@ describe('Checkbox', () => {
           value: undefined,
         }}
       >
-        <Checkbox
+        <Select
+          errorMessage="Error message"
           getFieldDecorator={jest.fn()}
           input={{}}
-          name="TestCheckbox"
+          name="TestSelect"
           onChange={onChange}
-          placeHolder="Checkbox"
+          options={options}
+          placeHolder="Select..."
+          required={false}
           style={{ backgroundColor: '#000' }}
         />
       </TestForm>,
     );
-    const checkboxStyle = wrapper.find('Checkbox').first().props().style;
-    expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
+    const selectStyle = wrapper.find('Select').first().props().style;
+    expect(selectStyle).toHaveProperty('backgroundColor', '#000');
   });
 });

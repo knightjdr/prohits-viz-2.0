@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import FileInput from './file/file-input-container';
 import FormStepSelector from '../../state/selectors/form-step-selector';
+import HeaderSelection from './header-selection/header-selection';
 import NextStep from './next-step/next-step';
 import ToolSelection from './tool-selection/tool-selection';
 import { incrementFormStep } from '../../state/set/form-step-actions';
@@ -18,7 +19,7 @@ export const AnalysisFormComponent = ({
   onSubmit,
   step,
 }) => {
-  const { getFieldDecorator } = form;
+  const { getFieldDecorator, setFieldsValue } = form;
   return (
     <div className="Form-container">
       <Form>
@@ -26,6 +27,7 @@ export const AnalysisFormComponent = ({
           <FileInput
             change={change}
             getFieldDecorator={getFieldDecorator}
+            setFieldsValue={setFieldsValue}
           />
           <NextStep
             currentStep={step}
@@ -48,19 +50,27 @@ export const AnalysisFormComponent = ({
           }
           {
             step > 1 &&
-            <div className="Form-submit-container">
-              <Button
-                className="success-button"
-                onClick={(e) => { onSubmit(e, form); }}
-              >
-                Submit
-              </Button>
-              <Button
-                className="Form-options-button"
-                type="primary"
-              >
-                Options
-              </Button>
+            <div>
+              <HeaderSelection getFieldDecorator={getFieldDecorator} />
+              <div>
+                Hit the submit button when ready or customize advanced options. Your
+                current analysis will include all preys with an FDR meeting the filter
+                of 0.01 and with at least 0 AvgSpec.
+              </div>
+              <div className="Form-submit-container">
+                <Button
+                  className="success-button"
+                  onClick={(e) => { onSubmit(e, form); }}
+                >
+                  Submit
+                </Button>
+                <Button
+                  className="Form-options-button"
+                  type="primary"
+                >
+                  Options
+                </Button>
+              </div>
             </div>
           }
         </div>

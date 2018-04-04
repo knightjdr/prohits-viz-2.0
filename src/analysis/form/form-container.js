@@ -4,8 +4,8 @@ import StoreForm from './store-form';
 
 class FormContainer extends Component {
   onSubmit = (e, form) => {
-    form.validateFields((err, values) => {
-      if (!err) {
+    form.validateFields((errs, values) => {
+      if (!errs) {
         console.log('Received values of form: ', values);
       }
     });

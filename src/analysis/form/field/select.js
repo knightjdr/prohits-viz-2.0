@@ -21,10 +21,10 @@ const CustomSelect = ({
 }) => {
   const decoratorOptions = {
     rules: [{ required, message: errorMessage }],
+    initialValue: input.value || undefined,
+    validateTrigger: ['onChange', 'onSubmit'],
+    valuePropName: 'value',
   };
-  if (input.value) {
-    decoratorOptions.initialValue = input.value;
-  }
   return (
     <FormItem>
       {
@@ -33,6 +33,7 @@ const CustomSelect = ({
           decoratorOptions,
         )(
           <Select
+            allowClear
             onChange={(value) => { onChange(value, input); }}
             placeholder={placeHolder}
             style={style}
@@ -53,8 +54,16 @@ const CustomSelect = ({
   );
 };
 
+CustomSelect.defaultProps = {
+  errorMessage: 'Required',
+  options: [],
+  placeHolder: 'Select',
+  required: false,
+  style: {},
+};
+
 CustomSelect.propTypes = {
-  errorMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   getFieldDecorator: PropTypes.func.isRequired,
   input: PropTypes.shape({
     onChange: PropTypes.func,
@@ -69,12 +78,15 @@ CustomSelect.propTypes = {
     PropTypes.shape({
       disabled: PropTypes.bool,
       text: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
     }),
-  ).isRequired,
-  placeHolder: PropTypes.string.isRequired,
-  required: PropTypes.bool.isRequired,
-  style: PropTypes.shape({}).isRequired,
+  ),
+  placeHolder: PropTypes.string,
+  required: PropTypes.bool,
+  style: PropTypes.shape({}),
 };
 
 export default CustomSelect;

@@ -8,18 +8,15 @@ const FormItem = Form.Item;
 ** be set from the redux store's 'input' */
 
 const CustomCheckbox = ({
-  errorMessage,
   getFieldDecorator,
   input,
   name,
   onChange,
   placeHolder, // use for label
-  required,
   style,
 }) => {
   const decoratorOptions = {
-    rules: [{ required, message: errorMessage }],
-    checked: input.value || false,
+    initialValue: input.value || false,
     valuePropName: 'checked',
   };
   return (
@@ -42,13 +39,11 @@ const CustomCheckbox = ({
 };
 
 CustomCheckbox.defaultProps = {
-  errorMessage: '',
-  required: false,
+  placeHolder: 'Check',
   style: {},
 };
 
 CustomCheckbox.propTypes = {
-  errorMessage: PropTypes.string,
   getFieldDecorator: PropTypes.func.isRequired,
   input: PropTypes.shape({
     onChange: PropTypes.func,
@@ -59,8 +54,7 @@ CustomCheckbox.propTypes = {
   }).isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  placeHolder: PropTypes.string.isRequired,
-  required: PropTypes.bool,
+  placeHolder: PropTypes.string,
   style: PropTypes.shape({}),
 };
 

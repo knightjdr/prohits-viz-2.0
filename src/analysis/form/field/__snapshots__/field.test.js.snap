@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field Field renders 1`] = `
+<field
+  component={[Function]}
+  name="TestCheckbox"
+/>
+`;
