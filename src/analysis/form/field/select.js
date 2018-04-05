@@ -10,52 +10,47 @@ const { Option } = Select;
 
 const CustomSelect = ({
   errorMessage,
-  getFieldDecorator,
   input,
-  name,
+  label,
+  meta,
   onChange,
   options,
   placeHolder,
   required,
   style,
 }) => {
-  const decoratorOptions = {
-    rules: [{ required, message: errorMessage }],
-    initialValue: input.value || undefined,
-    validateTrigger: ['onChange', 'onSubmit'],
-    valuePropName: 'value',
-  };
+  const { error } = meta;
+  const formError = required && error;
   return (
-    <FormItem>
-      {
-        getFieldDecorator(
-          name,
-          decoratorOptions,
-        )(
-          <Select
-            allowClear
-            onChange={(value) => { onChange(value, input); }}
-            placeholder={placeHolder}
-            style={style}
+    <FormItem
+      label={label}
+      help={formError ? errorMessage : ''}
+      validateStatus={formError ? 'error' : ''}
+    >
+      <Select
+        allowClear
+        onChange={(value) => { onChange(value, input); }}
+        placeholder={placeHolder}
+        style={style}
+        value={input.value || undefined}
+      >
+        { options.map(option => (
+          <Option
+            disabled={option.disabled}
+            key={option.value}
+            value={option.value}
           >
-            { options.map(option => (
-              <Option
-                disabled={option.disabled}
-                key={option.value}
-                value={option.value}
-              >
-                { option.text }
-              </Option>
-            ))}
-          </Select>,
-        )
-      }
+            { option.text }
+          </Option>
+        ))}
+      </Select>
     </FormItem>
   );
 };
 
 CustomSelect.defaultProps = {
   errorMessage: 'Required',
+  label: null,
   options: [],
   placeHolder: 'Select',
   required: false,
@@ -64,7 +59,6 @@ CustomSelect.defaultProps = {
 
 CustomSelect.propTypes = {
   errorMessage: PropTypes.string,
-  getFieldDecorator: PropTypes.func.isRequired,
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
@@ -72,7 +66,12 @@ CustomSelect.propTypes = {
       PropTypes.number,
     ]),
   }).isRequired,
-  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool,
+    warning: PropTypes.string,
+  }).isRequired,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({

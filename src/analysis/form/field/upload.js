@@ -27,55 +27,48 @@ const FormItem = Form.Item;
 
 const CustomUpload = ({
   errorMessage,
-  getFieldDecorator,
   input,
-  name,
+  label,
+  meta,
   onChange,
   required,
   style,
 }) => {
-  const decoratorOptions = {
-    getValueFromEvent: getFile,
-    initialValue: input.value || [],
-    rules: [{ required, message: errorMessage }],
-    validateTrigger: ['onChange', 'onSubmit'],
-  };
+  const { error } = meta;
+  const formError = required && error;
   return (
-    <FormItem help="">
-      {
-        getFieldDecorator(
-          name,
-          decoratorOptions,
-        )(
-          <Upload
-            fileList={input.value || []}
-            onChange={(value) => { onChange(value, input); }}
-            {...config}
-          >
-            <Button
-              style={style}
-            >
-              <FontAwesomeIcon
-                className="FileInput-fa-icon"
-                icon={faFilePlus}
-              /> Select File
-            </Button>
-          </Upload>,
-        )
-      }
+    <FormItem
+      label={label}
+      help={formError ? errorMessage : ''}
+      validateStatus={formError ? 'error' : ''}
+    >
+      <Upload
+        fileList={input.value || []}
+        onChange={(value) => { onChange(value, input); }}
+        {...config}
+      >
+        <Button
+          style={style}
+        >
+          <FontAwesomeIcon
+            className="FileInput-fa-icon"
+            icon={faFilePlus}
+          /> Select File
+        </Button>
+      </Upload>
     </FormItem>
   );
 };
 
 CustomUpload.defaultProps = {
   errorMessage: 'Required',
+  label: null,
   required: false,
   style: {},
 };
 
 CustomUpload.propTypes = {
   errorMessage: PropTypes.string,
-  getFieldDecorator: PropTypes.func.isRequired,
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
@@ -84,7 +77,12 @@ CustomUpload.propTypes = {
       PropTypes.number,
     ]),
   }).isRequired,
-  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool,
+    warning: PropTypes.string,
+  }).isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   style: PropTypes.shape({}),

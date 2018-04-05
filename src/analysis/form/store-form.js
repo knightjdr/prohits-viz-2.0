@@ -1,25 +1,31 @@
-/* This is a redux form wrapper for the ant design form. It is needed because
-**  each has a prop 'form' that would conflict with each other otherwise */
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Form } from 'antd';
 import { reduxForm } from 'redux-form';
 
-import AnalysisForm from './analysis-form';
+import FileInput from './file/file-input-container';
+
+import './analysis-form.css';
 
 export const storeForm = ({
   change,
-  onSubmit,
+  handleSubmit,
 }) => (
-  <AnalysisForm
-    change={change}
-    onSubmit={onSubmit}
-  />
+  <div className="Form-container">
+    <Form onSubmit={handleSubmit}>
+      <div className="Form-fields">
+        <FileInput
+          change={change}
+        />
+      </div>
+    </Form>
+  </div>
 );
 
 storeForm.propTypes = {
   // prop from reduxForm; use to set form programmatically
   change: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 const connectedForm = reduxForm({

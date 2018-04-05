@@ -3,12 +3,8 @@ import React, { Component } from 'react';
 import StoreForm from './store-form';
 
 class FormContainer extends Component {
-  onSubmit = (e, form) => {
-    form.validateFields((errs, values) => {
-      if (!errs) {
-        console.log('Received values of form: ', values);
-      }
-    });
+  onSubmit = (values) => {
+    console.log(values);
   }
   render() {
     return (

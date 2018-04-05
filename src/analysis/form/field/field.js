@@ -11,9 +11,8 @@ import CustomUpload from './upload';
 
 export const WrappedField = ({
   errorMessage,
-  getFieldDecorator,
   field,
-  name,
+  label,
   onChange,
   options,
   placeHolder,
@@ -21,16 +20,14 @@ export const WrappedField = ({
   style,
   type,
 }) => {
-  const { input } = field;
+  const { input, meta } = field;
   switch (type) {
     case 'checkbox':
       return (
         <CustomCheckbox
-          getFieldDecorator={getFieldDecorator}
           input={input}
-          name={name}
+          label={label}
           onChange={onChange}
-          placeHolder={placeHolder}
           style={style}
         />
       );
@@ -38,9 +35,9 @@ export const WrappedField = ({
       return (
         <CustomSelect
           errorMessage={errorMessage}
-          getFieldDecorator={getFieldDecorator}
+          label={label}
           input={input}
-          name={name}
+          meta={meta}
           onChange={onChange}
           options={options}
           placeHolder={placeHolder}
@@ -52,9 +49,9 @@ export const WrappedField = ({
       return (
         <CustomUpload
           errorMessage={errorMessage}
-          getFieldDecorator={getFieldDecorator}
+          label={label}
           input={input}
-          name={name}
+          meta={meta}
           onChange={onChange}
           required={required}
           style={style}

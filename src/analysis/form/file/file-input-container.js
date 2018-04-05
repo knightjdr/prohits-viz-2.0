@@ -10,7 +10,7 @@ import { clearFileHeader, setFileHeader } from '../../../state/set/header-action
 const SampleHeader = 'Bait\tPrey\tPreyGene\tSpec\tSpecSum\tAvgSpec\tNumReplicates\tctrlCounts\tAvgP\tMaxP\tTopoAvgP\tTopoMaxP\tSaintScore\tlogOddsScore\tFoldChange\tBFDR\tboosted_by\tUniqueSpec\tUniqueSpecSum\tUniqueAvgSpec\tPreySequenceLength\n';
 
 export class FileInputContainer extends Component {
-  onClickSample = (setFieldsValue) => {
+  onClickSample = () => {
     const sampleFile = new File([SampleHeader], 'samplefile.txt', { type: 'text/plain' });
     sampleFile.uid = 'rc-upload-sampleFile';
     const sampleObj = {
@@ -18,7 +18,6 @@ export class FileInputContainer extends Component {
       fileList: [sampleFile],
     };
     this.props.change('fileType', 'saint');
-    setFieldsValue({ fileType: 'saint' });
     this.props.change('sampleFile', true);
     this.onFileChange(
       sampleObj,
@@ -57,10 +56,8 @@ export class FileInputContainer extends Component {
   render() {
     return (
       <FileInput
-        getFieldDecorator={this.props.getFieldDecorator}
         onClickSample={this.onClickSample}
         onFileChange={this.onFileChange}
-        setFieldsValue={this.props.setFieldsValue}
       />
     );
   }
@@ -69,8 +66,6 @@ export class FileInputContainer extends Component {
 FileInputContainer.propTypes = {
   change: PropTypes.func.isRequired,
   clearFileHeader: PropTypes.func.isRequired,
-  getFieldDecorator: PropTypes.func.isRequired,
-  setFieldsValue: PropTypes.func.isRequired,
   setFileHeader: PropTypes.func.isRequired,
 };
 
