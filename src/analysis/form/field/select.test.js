@@ -4,10 +4,20 @@ import { mount } from 'enzyme';
 import Select from './select';
 import TestForm from './__mocks__/form-wrapper';
 
-const inputOnChange = jest.fn();
+const inputChange = jest.fn();
 const onChange = jest.fn();
 const options = [
   { text: 'option1', value: 1 },
+  { text: 'option2', value: 2 },
+];
+const optionsGroup = [
+  {
+    group: true,
+    text: 'group1',
+    children: [
+      { text: 'option1', value: 1 },
+    ],
+  },
   { text: 'option2', value: 2 },
 ];
 
@@ -16,14 +26,15 @@ describe('Select', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
@@ -34,48 +45,48 @@ describe('Select', () => {
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().getFieldValue('TestSelect')).toBeUndefined();
+    const select = wrapper.find('Select').first();
+    expect(select.props().value).toBeUndefined();
   });
 
-  test('Value can be set programmatically programmatically', () => {
+  test('Renders with group', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
-          options={options}
+          options={optionsGroup}
           placeHolder="Select..."
           required
           style={{}}
         />
       </TestForm>,
     );
-    wrapper.instance().setFieldsValue({
-      TestSelect: 1,
-    });
-    expect(wrapper.instance().getFieldValue('TestSelect')).toBe(1);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('On change called when option changes', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
-          value: 1,
+          change: inputChange,
+          value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
@@ -94,14 +105,15 @@ describe('Select', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
@@ -113,27 +125,29 @@ describe('Select', () => {
     );
     wrapper.setProps({
       input: {
-        onChange: inputOnChange,
+        change: inputChange,
         value: 1,
       },
     });
-    expect(wrapper.instance().getFieldValue('TestSelect')).toBe(1);
+    const select = wrapper.find('Select').first();
+    expect(select.props().value).toBe(1);
   });
 
-  test('Submit called on button click and submits with no errors', () => {
+  test('Submit called on button click', () => {
     const onSubmitSpy = jest.fn();
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
-          value: 1,
+          change: inputChange,
+          value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
         onSubmit={onSubmitSpy}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
@@ -146,21 +160,21 @@ describe('Select', () => {
     const button = wrapper.find('button');
     button.simulate('submit');
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    expect(wrapper.instance().getFieldError('TestSelect')).toBeUndefined();
   });
 
-  test('Submit when required and value is undefined gives error', () => {
+  test('Submit error adds prop visualization queue', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: undefined,
         }}
+        meta={{ error: 'Error message', touched: true, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
@@ -170,54 +184,30 @@ describe('Select', () => {
         />
       </TestForm>,
     );
-    const button = wrapper.find('button');
-    button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestSelect')).toEqual(['Error message']);
-  });
-
-  test('Submit when not required and value is undefined gives no error', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-      >
-        <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
-          input={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required={false}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button');
-    button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestSelect')).toBeUndefined();
+    expect(wrapper).toMatchSnapshot();
+    const formItem = wrapper.find('FormItem');
+    expect(formItem.props().help).toBe('Error message');
+    expect(formItem.props().validateStatus).toBe('error');
   });
 
   test('Can add custom style', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Select
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
+          allowClear
           input={{}}
+          meta={{}}
           name="TestSelect"
           onChange={onChange}
           options={options}
           placeHolder="Select..."
-          required={false}
+          required
           style={{ backgroundColor: '#000' }}
         />
       </TestForm>,

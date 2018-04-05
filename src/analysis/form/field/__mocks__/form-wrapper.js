@@ -4,28 +4,25 @@ import { Form } from 'antd';
 
 const TestForm = ({
   children,
-  form,
   input,
+  meta,
   onSubmit,
-}) => {
-  const { getFieldDecorator } = form;
-  return (
-    <Form onSubmit={(e) => { onSubmit(e, form); }}>
-      {
-        React.cloneElement(
-          children,
-          {
-            getFieldDecorator,
-            input,
-          },
-        )
-      }
-      <button
-        type="submit"
-      />
-    </Form>
-  );
-};
+}) => (
+  <Form onSubmit={(e) => { onSubmit(e); }}>
+    {
+      React.cloneElement(
+        children,
+        {
+          input,
+          meta,
+        },
+      )
+    }
+    <button
+      type="submit"
+    />
+  </Form>
+);
 
 TestForm.defaultProps = {
   onSubmit: (e, form) => { form.validateFields(); },
@@ -33,9 +30,8 @@ TestForm.defaultProps = {
 
 TestForm.propTypes = {
   children: PropTypes.shape({}).isRequired,
-  form: PropTypes.shape({}).isRequired,
   input: PropTypes.shape({
-    onChange: PropTypes.func,
+    change: PropTypes.func,
     value: PropTypes.oneOfType([
       PropTypes.array,
       PropTypes.bool,
@@ -43,7 +39,12 @@ TestForm.propTypes = {
       PropTypes.string,
     ]),
   }).isRequired,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool,
+    warning: PropTypes.string,
+  }).isRequired,
   onSubmit: PropTypes.func,
 };
 
-export default Form.create()(TestForm);
+export default TestForm;

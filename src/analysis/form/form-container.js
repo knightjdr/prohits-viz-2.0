@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import StoreForm from './store-form';
+import AnalysisForm from './analysis-form';
 
 class FormContainer extends Component {
   onSubmit = (values) => {
@@ -8,7 +8,7 @@ class FormContainer extends Component {
   }
   render() {
     return (
-      <StoreForm
+      <AnalysisForm
         onSubmit={this.onSubmit}
       />
     );

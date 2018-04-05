@@ -12,21 +12,12 @@ const config = {
   action: '',
   beforeUpload: () => (false),
 };
-
-export const getFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e && e.fileList;
-};
-
 const FormItem = Form.Item;
 
 /* upload field wrapped in Ant design's <FormItem>, whose initial state will
 ** be set from the redux store's 'input' */
 
 const CustomUpload = ({
-  errorMessage,
   input,
   label,
   meta,
@@ -34,12 +25,12 @@ const CustomUpload = ({
   required,
   style,
 }) => {
-  const { error } = meta;
-  const formError = required && error;
+  const { error, touched } = meta;
+  const formError = required && touched && error;
   return (
     <FormItem
       label={label}
-      help={formError ? errorMessage : ''}
+      help={formError ? error : ''}
       validateStatus={formError ? 'error' : ''}
     >
       <Upload
@@ -61,14 +52,12 @@ const CustomUpload = ({
 };
 
 CustomUpload.defaultProps = {
-  errorMessage: 'Required',
   label: null,
   required: false,
   style: {},
 };
 
 CustomUpload.propTypes = {
-  errorMessage: PropTypes.string,
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([

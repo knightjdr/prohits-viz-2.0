@@ -10,13 +10,11 @@ jest.mock('redux-form/lib/Field', () => 'field');
 
 const field = {
   input: {
-    onChange: jest.fn(),
+    change: jest.fn(),
     value: 'test',
   },
 };
 const options = {
-  errorMessage: null,
-  getFieldDecorator: jest.fn(),
   field,
   name: 'TestField',
   onChange: jest.fn(),
@@ -50,7 +48,6 @@ describe('Field', () => {
   test('Field renders', () => {
     const wrapper = shallow(
       <CustomField
-        getFieldDecorator={jest.fn()}
         name="TestCheckbox"
         type="checkbox"
       />,
@@ -61,7 +58,6 @@ describe('Field', () => {
   test('Field integration wraps checkbox', () => {
     const wrapper = shallow(
       <CustomField
-        getFieldDecorator={jest.fn()}
         name="TestCheckbox"
         type="checkbox"
       />,
@@ -72,7 +68,6 @@ describe('Field', () => {
   test('Field integration wraps select', () => {
     const wrapper = shallow(
       <CustomField
-        getFieldDecorator={jest.fn()}
         name="TestSelect"
         type="select"
       />,
@@ -83,7 +78,6 @@ describe('Field', () => {
   test('Field integration wraps upload', () => {
     const wrapper = shallow(
       <CustomField
-        getFieldDecorator={jest.fn()}
         name="TestUpload"
         type="upload"
       />,
@@ -94,7 +88,6 @@ describe('Field', () => {
   test('Field integration wraps other', () => {
     const wrapper = shallow(
       <CustomField
-        getFieldDecorator={jest.fn()}
         name="TestUpload"
         type="other"
       />,

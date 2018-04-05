@@ -9,8 +9,8 @@ import SelectChange from '../field/select-change';
 import './file-input.css';
 
 const FileInput = ({
-  onClickSample,
   onFileChange,
+  selectSampleFile,
 }) => (
   <div className="FileInput-container">
     <Divider>File selection</Divider>
@@ -26,7 +26,7 @@ const FileInput = ({
       for information on input formats. Click
       <button
         className="nobutton FileInput-sample-button"
-        onClick={onClickSample}
+        onClick={selectSampleFile}
         type="button"
       >
         here
@@ -35,7 +35,6 @@ const FileInput = ({
     </div>
     <div className="FileInput-select-container">
       <CustomField
-        errorMessage="Please select the file type"
         name="fileType"
         onChange={SelectChange}
         options={[
@@ -50,7 +49,6 @@ const FileInput = ({
       />
       <div className="FileInput-upload-wrapper">
         <CustomField
-          errorMessage="Please select a file"
           name="file"
           onChange={onFileChange}
           required
@@ -62,7 +60,6 @@ const FileInput = ({
       </div>
       <CustomField
         name="sampleFile"
-        onChange={() => {}}
         style={{
           display: 'none',
         }}
@@ -73,8 +70,8 @@ const FileInput = ({
 );
 
 FileInput.propTypes = {
-  onClickSample: PropTypes.func.isRequired,
   onFileChange: PropTypes.func.isRequired,
+  selectSampleFile: PropTypes.func.isRequired,
 };
 
 export default FileInput;

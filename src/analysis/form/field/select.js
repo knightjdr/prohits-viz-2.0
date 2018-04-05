@@ -3,13 +3,13 @@ import React from 'react';
 import { Form, Select } from 'antd';
 
 const FormItem = Form.Item;
-const { Option } = Select;
+const { OptGroup, Option } = Select;
 
 /* select menu wrapped in Ant design's <FormItem>, whose initial state will
 ** be set from the redux store's 'input' */
 
 const CustomSelect = ({
-  errorMessage,
+  allowClear,
   input,
   label,
   meta,
@@ -19,37 +19,63 @@ const CustomSelect = ({
   required,
   style,
 }) => {
-  const { error } = meta;
-  const formError = required && error;
+  const { error, touched } = meta;
+  const formError = required && touched && error;
   return (
     <FormItem
       label={label}
-      help={formError ? errorMessage : ''}
+      help={formError ? error : ''}
       validateStatus={formError ? 'error' : ''}
     >
       <Select
-        allowClear
+        allowClear={allowClear}
         onChange={(value) => { onChange(value, input); }}
         placeholder={placeHolder}
         style={style}
         value={input.value || undefined}
       >
-        { options.map(option => (
-          <Option
-            disabled={option.disabled}
-            key={option.value}
-            value={option.value}
-          >
-            { option.text }
-          </Option>
-        ))}
+        {
+          options.map((option) => {
+            // group options if passed group object with children
+            if (option.group) {
+              return (
+                <OptGroup
+                  key={option.text}
+                  label={option.text}
+                >
+                  {
+                    option.children.map(child => (
+                      <Option
+                        disabled={child.disabled}
+                        key={child.value}
+                        value={child.value}
+                      >
+                        { child.text }
+                      </Option>
+                    ))
+                  }
+                </OptGroup>
+              );
+            }
+            // return individual options
+            return (
+              <Option
+                disabled={option.disabled}
+                key={option.value}
+                value={option.value}
+              >
+                { option.text }
+              </Option>
+            );
+          })
+        }
       </Select>
     </FormItem>
   );
 };
 
 CustomSelect.defaultProps = {
-  errorMessage: 'Required',
+  allowClear: false,
   label: null,
   options: [],
   placeHolder: 'Select',
@@ -58,7 +84,7 @@ CustomSelect.defaultProps = {
 };
 
 CustomSelect.propTypes = {
-  errorMessage: PropTypes.string,
+  allowClear: PropTypes.bool,
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
@@ -75,7 +101,11 @@ CustomSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      children: PropTypes.arrayOf(
+        PropTypes.shape({}),
+      ),
       disabled: PropTypes.bool,
+      group: PropTypes.bool,
       text: PropTypes.string,
       value: PropTypes.oneOfType([
         PropTypes.string,

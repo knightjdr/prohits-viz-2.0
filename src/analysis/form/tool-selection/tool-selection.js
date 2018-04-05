@@ -31,7 +31,6 @@ const infoMessages = {
 
 export const ToolSelectionComponent = ({
   form,
-  getFieldDecorator,
 }) => {
   const toolElement = (
     <div className="ToolSelection-container">
@@ -48,8 +47,6 @@ export const ToolSelectionComponent = ({
       </div>
       <div className="ToolSelection-select-container">
         <CustomField
-          errorMessage="Please select the analysis type"
-          getFieldDecorator={getFieldDecorator}
           name="analysisType"
           onChange={SelectChange}
           options={[
@@ -86,7 +83,6 @@ export const ToolSelectionComponent = ({
 
 ToolSelectionComponent.propTypes = {
   form: PropTypes.shape({}).isRequired,
-  getFieldDecorator: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */

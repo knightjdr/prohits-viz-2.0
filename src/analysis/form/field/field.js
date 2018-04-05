@@ -10,7 +10,7 @@ import CustomUpload from './upload';
 ** wraps it in redux form's <Field> component and Ant design's <FormItem> */
 
 export const WrappedField = ({
-  errorMessage,
+  allowClear,
   field,
   label,
   onChange,
@@ -34,7 +34,7 @@ export const WrappedField = ({
     case 'select':
       return (
         <CustomSelect
-          errorMessage={errorMessage}
+          allowClear={allowClear}
           label={label}
           input={input}
           meta={meta}
@@ -48,7 +48,6 @@ export const WrappedField = ({
     case 'upload':
       return (
         <CustomUpload
-          errorMessage={errorMessage}
           label={label}
           input={input}
           meta={meta}
@@ -62,6 +61,11 @@ export const WrappedField = ({
   }
 };
 
+/* wrap field component with redux Field. Adds input and meta props.
+** input has 'change' and 'value' keys. 'change' is a method for setting
+** the redux value programatically via an onChange handler of the form
+** field, while 'value' has the current redux form field value. The 'meta'
+** object has 'error', 'touched' and 'warning' keys for form interactions */
 const CustomField = props => (
   <Field
     component={field => (

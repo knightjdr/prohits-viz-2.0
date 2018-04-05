@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileInputContainer Renders initially 1`] = `
+<FileInput
+  onFileChange={[Function]}
+  selectSampleFile={[Function]}
+/>
+`;

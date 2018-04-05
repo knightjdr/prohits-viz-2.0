@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analysis Renders 1`] = `
+<div>
+  <NavbarContainer
+    background={true}
+    links={
+      Array [
+        Object {
+          "route": "/visualization",
+          "text": "VISUALIZATION",
+        },
+        Object {
+          "route": "/help",
+          "text": "HELP",
+        },
+      ]
+    }
+  />
+  <FormContainer />
+</div>
+`;

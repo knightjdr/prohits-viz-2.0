@@ -24,6 +24,7 @@ const CustomCheckbox = ({
 
 CustomCheckbox.defaultProps = {
   label: null,
+  onChange: null,
   style: {},
 };
 
@@ -36,7 +37,7 @@ CustomCheckbox.propTypes = {
     ]),
   }).isRequired,
   label: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   style: PropTypes.shape({}),
 };
 

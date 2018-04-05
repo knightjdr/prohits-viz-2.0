@@ -21,8 +21,6 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
     className="ToolSelection-select-container"
   >
     <CustomField
-      errorMessage="Please select the analysis type"
-      getFieldDecorator={[Function]}
       name="analysisType"
       onChange={[Function]}
       options={
@@ -103,8 +101,6 @@ exports[`ToolSelectionComponent Renders item without selected analysis type 1`] 
     className="ToolSelection-select-container"
   >
     <CustomField
-      errorMessage="Please select the analysis type"
-      getFieldDecorator={[Function]}
       name="analysisType"
       onChange={[Function]}
       options={

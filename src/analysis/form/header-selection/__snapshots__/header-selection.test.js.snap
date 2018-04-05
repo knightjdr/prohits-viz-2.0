@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderSelection Renders 1`] = `
+<div
+  className="HeaderSelection-container"
+>
+  <Divider>
+    Columns
+  </Divider>
+  <div>
+    Specify the columns to use in your anaylsis if they have not been preselected. See
+    <Component
+      className="decorate-link inline-add-margins"
+      to="/help/tools"
+    >
+      here
+    </Component>
+    to learn about how the columns are used in your analysis.
+  </div>
+  <div
+    className="HeaderSelection-select-container"
+  >
+    <CustomField
+      label="Bait column"
+      name="bait"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "test",
+            "value": "test",
+          },
+        ]
+      }
+      placeHolder="Bait column..."
+      required={true}
+      style={
+        Object {
+          "gridColumn": 1,
+          "gridRow": 1,
+        }
+      }
+      type="select"
+    />
+    <CustomField
+      label="Prey column"
+      name="prey"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "test",
+            "value": "test",
+          },
+        ]
+      }
+      placeHolder="Prey column..."
+      required={true}
+      style={
+        Object {
+          "gridColumn": 2,
+          "gridRow": 1,
+        }
+      }
+      type="select"
+    />
+    <CustomField
+      label="Abundance column"
+      name="abundance"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "test",
+            "value": "test",
+          },
+        ]
+      }
+      placeHolder="Abundance column..."
+      required={true}
+      style={
+        Object {
+          "gridColumn": 1,
+          "gridRow": 2,
+        }
+      }
+      type="select"
+    />
+    <CustomField
+      label="Score column"
+      name="score"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "test",
+            "value": "test",
+          },
+        ]
+      }
+      placeHolder="Score column..."
+      required={true}
+      style={
+        Object {
+          "gridColumn": 2,
+          "gridRow": 2,
+        }
+      }
+      type="select"
+    />
+  </div>
+</div>
+`;

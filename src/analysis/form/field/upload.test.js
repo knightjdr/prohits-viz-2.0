@@ -1,26 +1,27 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Upload, { getFile } from './upload';
+import Upload from './upload';
 import TestForm from './__mocks__/form-wrapper';
 
-const inputOnChange = jest.fn();
+const inputChange = jest.fn();
 const onChange = jest.fn();
 const file = new File([''], 'samplefile.txt', { type: 'text/plain' });
+file.uid = 'rc-upload-sampleFile';
 
 describe('Select', () => {
   test('Renders with inital value', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
-          value: [],
+          change: inputChange,
+          value: undefined,
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -28,46 +29,22 @@ describe('Select', () => {
         />
       </TestForm>,
     );
-    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([]);
-  });
-
-  test('Value can be set programmatically programmatically', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: [],
-        }}
-      >
-        <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
-          input={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    wrapper.instance().setFieldsValue({
-      TestFile: [file],
-    });
-    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([file]);
+    const upload = wrapper.find('Upload').first();
+    expect(upload.props().fileList).toEqual([]);
   });
 
   test('On change called when file added', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: [],
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -84,14 +61,14 @@ describe('Select', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: [],
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -101,27 +78,28 @@ describe('Select', () => {
     );
     wrapper.setProps({
       input: {
-        onChange: inputOnChange,
+        change: inputChange,
         value: [file],
       },
     });
-    expect(wrapper.instance().getFieldValue('TestFile')).toEqual([file]);
+    const upload = wrapper.find('Upload').first();
+    expect(upload.props().fileList).toEqual([file]);
   });
 
-  test('Submit called on button click and submits with no errors', () => {
+  test('Submit called on button click', () => {
     const onSubmitSpy = jest.fn();
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: [file],
         }}
+        meta={{ error: '', touched: false, warning: '' }}
         onSubmit={onSubmitSpy}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -132,21 +110,20 @@ describe('Select', () => {
     const button = wrapper.find('button [type="submit"]');
     button.simulate('submit');
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    expect(wrapper.instance().getFieldError('TestFile')).toBeUndefined();
   });
 
-  test('Submit when required and value is undefined gives error', () => {
+  test('Submit error adds prop visualization queue', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
-          value: undefined,
+          change: inputChange,
+          value: [],
         }}
+        meta={{ error: 'Error message', touched: true, warning: '' }}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -154,47 +131,23 @@ describe('Select', () => {
         />
       </TestForm>,
     );
-    const button = wrapper.find('button [type="submit"]');
-    button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestFile')).toEqual(['Error message']);
-  });
-
-  test('Submit when not required and value is undefined gives no error', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-      >
-        <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
-          input={{}}
-          name="TestFile"
-          onChange={onChange}
-          required={false}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button [type="submit"]');
-    button.simulate('submit');
-    expect(wrapper.instance().getFieldError('TestFile')).toBeUndefined();
+    const formItem = wrapper.find('FormItem');
+    expect(formItem.props().help).toBe('Error message');
+    expect(formItem.props().validateStatus).toBe('error');
   });
 
   test('Can add custom style', () => {
     const wrapper = mount(
       <TestForm
         input={{
-          onChange: inputOnChange,
+          change: inputChange,
           value: [],
         }}
+        meta={{ error: '', touched: false, warning: '' }}
       >
         <Upload
-          errorMessage="Error message"
-          getFieldDecorator={jest.fn()}
           input={{}}
+          meta={{}}
           name="TestFile"
           onChange={onChange}
           required
@@ -204,14 +157,5 @@ describe('Select', () => {
     );
     const uploadStyle = wrapper.find('Button').props().style;
     expect(uploadStyle).toHaveProperty('backgroundColor', '#000');
-  });
-
-  test('getFile returns an array when given one or a fileList if given an object', () => {
-    const testArr = ['a'];
-    const testObj = {
-      fileList: testArr,
-    };
-    expect(getFile(testArr)).toEqual(testArr);
-    expect(getFile(testObj)).toEqual(testArr);
   });
 });

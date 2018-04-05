@@ -8,7 +8,6 @@ describe('ToolSelectionComponent', () => {
     const wrapper = shallow(
       <ToolSelectionComponent
         form={{}}
-        getFieldDecorator={() => {}}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -18,7 +17,6 @@ describe('ToolSelectionComponent', () => {
     const wrapper = shallow(
       <ToolSelectionComponent
         form={{ analysisType: 'dotplot' }}
-        getFieldDecorator={() => {}}
       />,
     );
     expect(wrapper).toMatchSnapshot();

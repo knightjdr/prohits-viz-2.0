@@ -2,16 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import CustomField from '../field/field';
-import HeaderSelector from '../../../state/selectors/header-selector';
 import SelectChange from '../field/select-change';
 
 import './header-selection.css';
 
-export const HeaderSelectionComponent = ({
-  getFieldDecorator,
+const HeaderSelection = ({
+  columns,
 }) => {
   const headerElement = (
     <div className="HeaderSelection-container">
@@ -29,14 +27,11 @@ export const HeaderSelectionComponent = ({
       </div>
       <div className="HeaderSelection-select-container">
         <CustomField
-          errorMessage="Please select the bait column"
-          getFieldDecorator={getFieldDecorator}
+          label="Bait column"
           name="bait"
           onChange={SelectChange}
-          options={[
-            { text: 'Bait', value: 'Bait' },
-          ]}
-          placeHolder="Bait..."
+          options={columns.bait.options}
+          placeHolder="Bait column..."
           required
           style={{
             gridColumn: 1,
@@ -45,14 +40,11 @@ export const HeaderSelectionComponent = ({
           type="select"
         />
         <CustomField
-          errorMessage="Please select the prey column"
-          getFieldDecorator={getFieldDecorator}
+          label="Prey column"
           name="prey"
           onChange={SelectChange}
-          options={[
-            { text: 'Prey', value: 'prey' },
-          ]}
-          placeHolder="Prey..."
+          options={columns.prey.options}
+          placeHolder="Prey column..."
           required
           style={{
             gridColumn: 2,
@@ -61,14 +53,11 @@ export const HeaderSelectionComponent = ({
           type="select"
         />
         <CustomField
-          errorMessage="Please select the abundance column"
-          getFieldDecorator={getFieldDecorator}
+          label="Abundance column"
           name="abundance"
           onChange={SelectChange}
-          options={[
-            { text: 'AvgSpec', value: 'AvgSpec' },
-          ]}
-          placeHolder="Abundance..."
+          options={columns.abundance.options}
+          placeHolder="Abundance column..."
           required
           style={{
             gridColumn: 1,
@@ -77,14 +66,11 @@ export const HeaderSelectionComponent = ({
           type="select"
         />
         <CustomField
-          errorMessage="Please select the score column"
-          getFieldDecorator={getFieldDecorator}
+          label="Score column"
           name="score"
           onChange={SelectChange}
-          options={[
-            { text: 'BFDR', value: 'BFDR' },
-          ]}
-          placeHolder="Score..."
+          options={columns.score.options}
+          placeHolder="Score column..."
           required
           style={{
             gridColumn: 2,
@@ -100,17 +86,25 @@ export const HeaderSelectionComponent = ({
   );
 };
 
-HeaderSelectionComponent.propTypes = {
-  getFieldDecorator: PropTypes.func.isRequired,
+HeaderSelection.defaultProps = {
+  columns: {},
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  header: HeaderSelector(state),
-});
+HeaderSelection.propTypes = {
+  columns: PropTypes.shape({
+    abundance: PropTypes.shape({
+      options: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    bait: PropTypes.shape({
+      options: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    prey: PropTypes.shape({
+      options: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    score: PropTypes.shape({
+      options: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+  }),
+};
 
-const ConnectedContainer = connect(
-  mapStateToProps,
-)(HeaderSelectionComponent);
-
-export default ConnectedContainer;
+export default HeaderSelection;

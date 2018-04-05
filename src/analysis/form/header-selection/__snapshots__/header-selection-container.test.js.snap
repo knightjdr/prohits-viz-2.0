@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsListContainer Renders initially 1`] = `
+<HeaderSelection
+  columns={
+    Object {
+      "abundance": Object {
+        "initialValue": "test",
+      },
+      "bait": Object {
+        "initialValue": "test",
+      },
+      "prey": Object {
+        "initialValue": "test",
+      },
+      "score": Object {
+        "initialValue": "test",
+      },
+    }
+  }
+/>
+`;
