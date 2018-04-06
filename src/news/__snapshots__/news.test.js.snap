@@ -7,8 +7,16 @@ exports[`News Renders item when ID specified 1`] = `
     links={
       Array [
         Object {
-          "route": "/news",
-          "text": "NEWS",
+          "route": "/analysis",
+          "text": "ANALYSIS",
+        },
+        Object {
+          "route": "/visualization",
+          "text": "VISUALIZATION",
+        },
+        Object {
+          "route": "/help",
+          "text": "HELP",
         },
       ]
     }
@@ -40,8 +48,16 @@ exports[`News Renders list when no ID specified 1`] = `
     links={
       Array [
         Object {
-          "route": "/news",
-          "text": "NEWS",
+          "route": "/analysis",
+          "text": "ANALYSIS",
+        },
+        Object {
+          "route": "/visualization",
+          "text": "VISUALIZATION",
+        },
+        Object {
+          "route": "/help",
+          "text": "HELP",
         },
       ]
     }

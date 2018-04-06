@@ -9,6 +9,10 @@ const links = [
     text: 'VISUALIZATION',
   },
   {
+    route: '/news',
+    text: 'NEWS',
+  },
+  {
     route: '/help',
     text: 'HELP',
   },

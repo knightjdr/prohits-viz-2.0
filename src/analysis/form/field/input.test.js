@@ -2,30 +2,16 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import InfoModal from './info-modal';
-import Select from './select';
+import Input from './input';
 import TestForm from './__mocks__/form-wrapper';
 
 jest.mock('./info-modal');
 
 const inputOnChange = jest.fn();
 const onChange = jest.fn();
-const options = [
-  { text: 'option1', value: 1 },
-  { text: 'option2', value: 2 },
-];
-const optionsGroup = [
-  {
-    group: true,
-    text: 'group1',
-    children: [
-      { text: 'option1', value: 1 },
-    ],
-  },
-  { text: 'option2', value: 2 },
-];
 
-describe('Select', () => {
-  test('Renders with no value and help message', () => {
+describe('Input', () => {
+  test('Renders with no value, help message and type = text', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -34,24 +20,23 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
         />
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    const select = wrapper.find('Select').first();
-    expect(select.props().value).toBeUndefined();
+    const input = wrapper.find('Input').first();
+    expect(input.props().type).toBe('text');
+    expect(input.props().value).toBeUndefined();
     expect(wrapper.find('svg.CustomField-help').length).toBe(1);
   });
 
@@ -64,15 +49,13 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
           input={{}}
           label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
         />
@@ -91,16 +74,14 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
           helpMessage="help"
           label="Label"
           input={{}}
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
         />
@@ -122,15 +103,13 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
           helpMessage="help"
           input={{}}
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
         />
@@ -143,7 +122,7 @@ describe('Select', () => {
     expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
   });
 
-  test('Renders with group', () => {
+  test('Renders with specified type', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -152,23 +131,25 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={optionsGroup}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
+          type="number"
         />
       </TestForm>,
     );
-    expect(wrapper).toMatchSnapshot();
+    const input = wrapper.find('Input').first();
+    expect(input.props().type).toBe('number');
   });
 
-  test('On change called when option changes', () => {
+  test('On change called when input changes', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -177,21 +158,22 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
+          type="number"
         />
       </TestForm>,
     );
-    const select = wrapper.find('Select').first();
-    select.props().onChange();
+    const input = wrapper.find('Input').first();
+    input.simulate('change');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -204,16 +186,17 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
+          type="number"
         />
       </TestForm>,
     );
@@ -223,8 +206,8 @@ describe('Select', () => {
         value: 1,
       },
     });
-    const select = wrapper.find('Select').first();
-    expect(select.props().value).toBe(1);
+    const input = wrapper.find('Input').first();
+    expect(input.props().value).toBe(1);
   });
 
   test('Submit called on button click', () => {
@@ -238,16 +221,17 @@ describe('Select', () => {
         meta={{ error: '', touched: false, warning: '' }}
         onSubmit={onSubmitSpy}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
+          type="number"
         />
       </TestForm>,
     );
@@ -265,16 +249,17 @@ describe('Select', () => {
         }}
         meta={{ error: 'Error message', touched: true, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{}}
+          type="number"
         />
       </TestForm>,
     );
@@ -293,20 +278,21 @@ describe('Select', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Select
-          allowClear
+        <Input
+          helpMessage="help"
           input={{}}
+          label="Label"
           meta={{}}
-          name="TestSelect"
+          name="TestInput"
           onChange={onChange}
-          options={options}
-          placeHolder="Select..."
+          placeHolder="Input..."
           required
           style={{ backgroundColor: '#000' }}
+          type="number"
         />
       </TestForm>,
     );
-    const selectStyle = wrapper.find('Select').first().props().style;
-    expect(selectStyle).toHaveProperty('backgroundColor', '#000');
+    const inputStyle = wrapper.find('Input').first().props().style;
+    expect(inputStyle).toHaveProperty('backgroundColor', '#000');
   });
 });

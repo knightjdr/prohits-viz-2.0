@@ -8,6 +8,7 @@ import FileInput from './file/file-input-container';
 import FormStepSelector from '../../state/selectors/form-step-selector';
 import HeaderSelection from './header-selection/header-selection-container';
 import NextStep from './next-step/next-step';
+import Options from './options/options';
 import Submit from './submit/submit';
 import ToolSelection from './tool-selection/tool-selection';
 import Validation from './validation/validation';
@@ -17,8 +18,10 @@ import './analysis-form.css';
 
 export const AnalysisFormComponent = ({
   change,
+  handleOptions,
   handleSubmit,
   nextStep,
+  showOptions,
   step,
 }) => (
   <div className="Form-container">
@@ -50,7 +53,11 @@ export const AnalysisFormComponent = ({
           step > 1 &&
           <div>
             <HeaderSelection change={change} />
-            <Submit />
+            <Submit
+              handleOptions={handleOptions}
+              showOptions={showOptions}
+            />
+            <Options show={showOptions} />
           </div>
         }
       </div>
@@ -59,9 +66,13 @@ export const AnalysisFormComponent = ({
 );
 
 AnalysisFormComponent.propTypes = {
-  change: PropTypes.func.isRequired, // prop from reduxForm; use to set form programmatically
+  // prop from reduxForm; use to set form values programmatically
+  change: PropTypes.func.isRequired,
+  handleOptions: PropTypes.func.isRequired,
+  // onSubmit prop converted to handleSubmit by redux form
   handleSubmit: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
+  showOptions: PropTypes.bool.isRequired,
   step: PropTypes.number.isRequired,
 };
 

@@ -29,7 +29,7 @@ export const toRouteNodes = (routes = HelpRoutes) => {
   return routeArr;
 };
 
-export const HelpDetails = ({
+export const HelpDetailsComponent = ({
   location,
 }) => {
   const breadcrumbElement = RoutesFromPath(location.pathname).map(path => (
@@ -60,10 +60,10 @@ export const HelpDetails = ({
   );
 };
 
-HelpDetails.propTypes = {
+HelpDetailsComponent.propTypes = {
   location: PropTypes.shape({
     path: PropTypes.string,
   }).isRequired,
 };
 
-export default withRouter(HelpDetails);
+export default withRouter(HelpDetailsComponent);

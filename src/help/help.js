@@ -15,6 +15,10 @@ const links = [
     route: '/visualization',
     text: 'VISUALIZATION',
   },
+  {
+    route: '/news',
+    text: 'NEWS',
+  },
 ];
 
 const Help = () => (

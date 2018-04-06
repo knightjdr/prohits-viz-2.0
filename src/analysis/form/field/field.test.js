@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import CustomField, { WrappedField } from './field';
 
 jest.mock('./checkbox');
+jest.mock('./input');
 jest.mock('./select');
 jest.mock('./upload');
 jest.mock('redux-form/lib/Field', () => 'field');
@@ -28,6 +29,11 @@ describe('Field', () => {
   test('componentElement returns checkbox', () => {
     const component = WrappedField({ ...options, ...{ type: 'checkbox' } });
     expect(component.type().props.className).toBe('checkbox');
+  });
+
+  test('componentElement returns input', () => {
+    const component = WrappedField({ ...options, ...{ type: 'input' } });
+    expect(component.type().props.className).toBe('input');
   });
 
   test('componentElement returns select', () => {
@@ -63,6 +69,16 @@ describe('Field', () => {
       />,
     );
     expect(wrapper.props().component(field).type().props.className).toBe('checkbox');
+  });
+
+  test('Field integration wraps input', () => {
+    const wrapper = shallow(
+      <CustomField
+        name="TestInput"
+        type="input"
+      />,
+    );
+    expect(wrapper.props().component(field).type().props.className).toBe('input');
   });
 
   test('Field integration wraps select', () => {

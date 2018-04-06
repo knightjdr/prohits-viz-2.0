@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import RoutesFromPath from '../../helpers/routes-from-path';
-import { HelpDetails } from './help-details';
+import { HelpDetailsComponent } from './help-details';
 
 // mock HelpRoutes
 jest.mock('../help-routes/help-routes');
@@ -14,7 +14,7 @@ RoutesFromPath.mockReturnValue(['help']);
 describe('HelpDetails', () => {
   test('Renders', () => {
     const wrapper = shallow(
-      <HelpDetails
+      <HelpDetailsComponent
         location={{
           path: '/help',
         }}

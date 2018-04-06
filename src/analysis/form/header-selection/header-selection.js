@@ -4,7 +4,7 @@ import { Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import CustomField from '../field/field';
-import SelectChange from '../field/select-change';
+import DefaultChange from '../field/default-change';
 
 import './header-selection.css';
 
@@ -15,21 +15,20 @@ const HeaderSelection = ({
     <div className="HeaderSelection-container">
       <Divider>Columns</Divider>
       <div>
-        Specify the columns to use in your anaylsis if they have not been
-        preselected. See
+        Specify the columns to use if they have not been preselected. See
         <NavLink
           className="decorate-link inline-add-margins"
-          to="/help/tools"
+          to="/help/format"
         >
           here
         </NavLink>
-        to learn about how the columns are used in your analysis.
+        to learn about how the columns are used during analysis.
       </div>
       <div className="HeaderSelection-select-container">
         <CustomField
           label="Bait column"
           name="bait"
-          onChange={SelectChange}
+          onChange={DefaultChange}
           options={columns.bait.options}
           placeHolder="Bait column..."
           required
@@ -42,7 +41,7 @@ const HeaderSelection = ({
         <CustomField
           label="Prey column"
           name="prey"
-          onChange={SelectChange}
+          onChange={DefaultChange}
           options={columns.prey.options}
           placeHolder="Prey column..."
           required
@@ -55,7 +54,7 @@ const HeaderSelection = ({
         <CustomField
           label="Abundance column"
           name="abundance"
-          onChange={SelectChange}
+          onChange={DefaultChange}
           options={columns.abundance.options}
           placeHolder="Abundance column..."
           required
@@ -68,7 +67,7 @@ const HeaderSelection = ({
         <CustomField
           label="Score column"
           name="score"
-          onChange={SelectChange}
+          onChange={DefaultChange}
           options={columns.score.options}
           placeHolder="Score column..."
           required

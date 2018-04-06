@@ -16,6 +16,10 @@ exports[`Help It renders 1`] = `
           "route": "/visualization",
           "text": "VISUALIZATION",
         },
+        Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
       ]
     }
   />

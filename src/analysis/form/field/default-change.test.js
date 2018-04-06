@@ -1,11 +1,11 @@
-import SelectChange from './select-change';
+import DefaultChange from './default-change';
 
-describe('SelectChange', () => {
+describe('DefaultChange', () => {
   test('OnChange called', () => {
     const input = {
       onChange: jest.fn(),
     };
-    SelectChange('value', input);
+    DefaultChange('value', input);
     expect(input.onChange).toHaveBeenCalledTimes(1);
     expect(input.onChange).toHaveBeenCalledWith('value');
   });
@@ -14,7 +14,7 @@ describe('SelectChange', () => {
     const input = {
       onChange: jest.fn(),
     };
-    SelectChange(undefined, input);
+    DefaultChange(undefined, input);
     expect(input.onChange).toHaveBeenCalledTimes(1);
     expect(input.onChange).toHaveBeenCalledWith(null);
   });

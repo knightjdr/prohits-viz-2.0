@@ -4,7 +4,7 @@ import { Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 import CustomField from '../field/field';
-import SelectChange from '../field/select-change';
+import DefaultChange from '../field/default-change';
 
 import './file-input.css';
 
@@ -36,7 +36,7 @@ const FileInput = ({
     <div className="FileInput-select-container">
       <CustomField
         name="fileType"
-        onChange={SelectChange}
+        onChange={DefaultChange}
         options={[
           { text: 'SAINT', value: 'saint' },
           { disabled: true, text: 'CRAPome', value: 'crapome' },

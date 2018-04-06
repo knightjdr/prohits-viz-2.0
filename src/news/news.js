@@ -11,8 +11,16 @@ import './news.css';
 
 const links = [
   {
-    route: '/news',
-    text: 'NEWS',
+    route: '/analysis',
+    text: 'ANALYSIS',
+  },
+  {
+    route: '/visualization',
+    text: 'VISUALIZATION',
+  },
+  {
+    route: '/help',
+    text: 'HELP',
   },
 ];
 

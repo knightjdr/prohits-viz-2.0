@@ -10,6 +10,10 @@ const links = [
     text: 'ANALYSIS',
   },
   {
+    route: '/news',
+    text: 'NEWS',
+  },
+  {
     route: '/help',
     text: 'HELP',
   },

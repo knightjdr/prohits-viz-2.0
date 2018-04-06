@@ -8,14 +8,14 @@ exports[`HeaderSelection Renders 1`] = `
     Columns
   </Divider>
   <div>
-    Specify the columns to use in your anaylsis if they have not been preselected. See
+    Specify the columns to use if they have not been preselected. See
     <Component
       className="decorate-link inline-add-margins"
-      to="/help/tools"
+      to="/help/format"
     >
       here
     </Component>
-    to learn about how the columns are used in your analysis.
+    to learn about how the columns are used during analysis.
   </div>
   <div
     className="HeaderSelection-select-container"

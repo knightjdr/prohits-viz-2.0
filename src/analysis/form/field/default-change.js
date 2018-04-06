@@ -1,7 +1,7 @@
 /* takes a string input value and updates the redux form by passing this value
 ** to input.onChange */
 
-const SelectChange = (value, input) => {
+const DefaultChange = (value, input) => {
   input.onChange(value || null);
 };
-export default SelectChange;
+export default DefaultChange;

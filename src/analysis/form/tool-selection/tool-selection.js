@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
 import CustomField from '../field/field';
-import SelectChange from '../field/select-change';
+import DefaultChange from '../field/default-change';
 
 import './tool-selection.css';
 
@@ -48,7 +48,7 @@ export const ToolSelectionComponent = ({
       <div className="ToolSelection-select-container">
         <CustomField
           name="analysisType"
-          onChange={SelectChange}
+          onChange={DefaultChange}
           options={[
             { disabled: true, text: 'Bait v bait', value: 'baitbait' },
             { disabled: true, text: 'Correlation', value: 'correlation' },

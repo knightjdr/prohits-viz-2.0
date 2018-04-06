@@ -11,6 +11,10 @@ exports[`Analysis Renders 1`] = `
           "text": "VISUALIZATION",
         },
         Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
+        Object {
           "route": "/help",
           "text": "HELP",
         },

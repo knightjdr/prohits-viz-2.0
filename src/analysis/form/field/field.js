@@ -3,6 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 import CustomCheckbox from './checkbox';
+import CustomInput from './input';
 import CustomSelect from './select';
 import CustomUpload from './upload';
 
@@ -12,6 +13,8 @@ import CustomUpload from './upload';
 export const WrappedField = ({
   allowClear,
   field,
+  helpMessage,
+  inputType,
   label,
   onChange,
   options,
@@ -31,10 +34,25 @@ export const WrappedField = ({
           style={style}
         />
       );
+    case 'input':
+      return (
+        <CustomInput
+          label={label}
+          helpMessage={helpMessage}
+          input={input}
+          meta={meta}
+          onChange={onChange}
+          placeHolder={placeHolder}
+          required={required}
+          style={style}
+          type={inputType}
+        />
+      );
     case 'select':
       return (
         <CustomSelect
           allowClear={allowClear}
+          helpMessage={helpMessage}
           label={label}
           input={input}
           meta={meta}

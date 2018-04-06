@@ -4,7 +4,7 @@ exports[`Select Renders with group 1`] = `
 <TestForm
   input={
     Object {
-      "change": [Function],
+      "onChange": [Function],
       "value": undefined,
     }
   }
@@ -29,9 +29,10 @@ exports[`Select Renders with group 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        helpMessage={null}
         input={
           Object {
-            "change": [Function],
+            "onChange": [Function],
             "value": undefined,
           }
         }
@@ -67,199 +68,106 @@ exports[`Select Renders with group 1`] = `
         required={true}
         style={Object {}}
       >
-        <FormItem
-          colon={true}
-          hasFeedback={false}
-          help=""
-          label={null}
-          prefixCls="ant-form"
-          validateStatus=""
+        <div
+          className="CustomField-container"
         >
-          <Row
-            className="ant-form-item"
-            gutter={0}
+          <FormItem
+            className="CustomField-formItem"
+            colon={true}
+            hasFeedback={false}
+            help=""
+            label={null}
+            prefixCls="ant-form"
+            validateStatus=""
           >
-            <div
-              className="ant-row ant-form-item"
+            <Row
+              className="ant-form-item CustomField-formItem"
+              gutter={0}
             >
-              <Col
-                className="ant-form-item-control-wrapper"
-                key=".$wrapper"
+              <div
+                className="ant-row ant-form-item CustomField-formItem"
               >
-                <div
+                <Col
                   className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
                 >
                   <div
-                    className="ant-form-item-control"
+                    className="ant-form-item-control-wrapper"
                   >
-                    <span
-                      className="ant-form-item-children"
+                    <div
+                      className="ant-form-item-control"
                     >
-                      <Select
-                        allowClear={true}
-                        choiceTransitionName="zoom"
-                        onChange={[Function]}
-                        placeholder="Select..."
-                        prefixCls="ant-select"
-                        showSearch={false}
-                        style={Object {}}
-                        transitionName="slide-up"
+                      <span
+                        className="ant-form-item-children"
                       >
-                        <LocaleReceiver
-                          componentName="Select"
-                          defaultLocale={
-                            Object {
-                              "notFoundContent": "Not Found",
-                            }
-                          }
+                        <Select
+                          allowClear={true}
+                          choiceTransitionName="zoom"
+                          onChange={[Function]}
+                          placeholder="Select..."
+                          prefixCls="ant-select"
+                          showSearch={false}
+                          style={Object {}}
+                          transitionName="slide-up"
                         >
-                          <Select
-                            allowClear={true}
-                            backfill={false}
-                            choiceTransitionName="zoom"
-                            className=""
-                            combobox={false}
-                            defaultActiveFirstOption={true}
-                            defaultOpen={false}
-                            dropdownMatchSelectWidth={true}
-                            dropdownMenuStyle={Object {}}
-                            dropdownStyle={Object {}}
-                            labelInValue={false}
-                            multiple={false}
-                            notFoundContent="Not Found"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onDeselect={[Function]}
-                            onFocus={[Function]}
-                            onInputKeyDown={[Function]}
-                            onSearch={[Function]}
-                            onSelect={[Function]}
-                            optionFilterProp="value"
-                            optionLabelProp="children"
-                            placeholder="Select..."
-                            prefixCls="ant-select"
-                            showAction={
-                              Array [
-                                "click",
-                              ]
+                          <LocaleReceiver
+                            componentName="Select"
+                            defaultLocale={
+                              Object {
+                                "notFoundContent": "Not Found",
+                              }
                             }
-                            showArrow={true}
-                            showSearch={false}
-                            style={Object {}}
-                            tags={false}
-                            transitionName="slide-up"
                           >
-                            <SelectTrigger
+                            <Select
+                              allowClear={true}
+                              backfill={false}
+                              choiceTransitionName="zoom"
+                              className=""
                               combobox={false}
                               defaultActiveFirstOption={true}
+                              defaultOpen={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
-                              inputValue=""
+                              labelInValue={false}
                               multiple={false}
-                              onDropdownVisibleChange={[Function]}
-                              onMenuDeselect={[Function]}
-                              onMenuSelect={[Function]}
-                              onPopupFocus={[Function]}
-                              options={Array []}
+                              notFoundContent="Not Found"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDeselect={[Function]}
+                              onFocus={[Function]}
+                              onInputKeyDown={[Function]}
+                              onSearch={[Function]}
+                              onSelect={[Function]}
+                              optionFilterProp="value"
+                              optionLabelProp="children"
+                              placeholder="Select..."
                               prefixCls="ant-select"
                               showAction={
                                 Array [
                                   "click",
                                 ]
                               }
+                              showArrow={true}
                               showSearch={false}
+                              style={Object {}}
+                              tags={false}
                               transitionName="slide-up"
-                              value={Array []}
-                              visible={false}
                             >
-                              <Trigger
-                                action={Array []}
-                                afterPopupVisibleChange={[Function]}
-                                blurDelay={0.15}
-                                builtinPlacements={
-                                  Object {
-                                    "bottomLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "tl",
-                                        "bl",
-                                      ],
-                                    },
-                                    "topLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        -4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "bl",
-                                        "tl",
-                                      ],
-                                    },
-                                  }
-                                }
+                              <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
-                                defaultPopupVisible={false}
-                                destroyPopupOnHide={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
-                                focusDelay={0}
-                                getDocument={[Function]}
-                                getPopupClassNameFromAlign={[Function]}
-                                hideAction={
-                                  Array [
-                                    "click",
-                                  ]
-                                }
                                 inputValue=""
-                                mask={false}
-                                maskClosable={true}
-                                mouseEnterDelay={0}
-                                mouseLeaveDelay={0.1}
                                 multiple={false}
                                 onDropdownVisibleChange={[Function]}
                                 onMenuDeselect={[Function]}
                                 onMenuSelect={[Function]}
-                                onPopupAlign={[Function]}
-                                onPopupVisibleChange={[Function]}
+                                onPopupFocus={[Function]}
                                 options={Array []}
-                                popup={
-                                  <DropdownMenu
-                                    defaultActiveFirstOption={true}
-                                    dropdownMenuStyle={Object {}}
-                                    firstActiveValue={undefined}
-                                    inputValue=""
-                                    menuItems={Array []}
-                                    multiple={false}
-                                    onMenuDeselect={[Function]}
-                                    onMenuSelect={[Function]}
-                                    onPopupFocus={[Function]}
-                                    onPopupScroll={undefined}
-                                    prefixCls="ant-select-dropdown"
-                                    value={Array []}
-                                    visible={false}
-                                  />
-                                }
-                                popupAlign={Object {}}
-                                popupClassName="ant-select-dropdown--single"
-                                popupPlacement="bottomLeft"
-                                popupStyle={Object {}}
-                                popupTransitionName="slide-up"
-                                popupVisible={false}
-                                prefixCls="ant-select-dropdown"
+                                prefixCls="ant-select"
                                 showAction={
                                   Array [
                                     "click",
@@ -270,88 +178,186 @@ exports[`Select Renders with group 1`] = `
                                 value={Array []}
                                 visible={false}
                               >
-                                <div
-                                  className="ant-select ant-select-enabled ant-select-allow-clear"
-                                  key="trigger"
-                                  onBlur={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onMouseDown={[Function]}
-                                  onTouchStart={[Function]}
-                                  style={Object {}}
+                                <Trigger
+                                  action={Array []}
+                                  afterPopupVisibleChange={[Function]}
+                                  blurDelay={0.15}
+                                  builtinPlacements={
+                                    Object {
+                                      "bottomLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "tl",
+                                          "bl",
+                                        ],
+                                      },
+                                      "topLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          -4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "bl",
+                                          "tl",
+                                        ],
+                                      },
+                                    }
+                                  }
+                                  combobox={false}
+                                  defaultActiveFirstOption={true}
+                                  defaultPopupVisible={false}
+                                  destroyPopupOnHide={false}
+                                  dropdownMatchSelectWidth={true}
+                                  dropdownMenuStyle={Object {}}
+                                  dropdownStyle={Object {}}
+                                  focusDelay={0}
+                                  getDocument={[Function]}
+                                  getPopupClassNameFromAlign={[Function]}
+                                  hideAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  inputValue=""
+                                  mask={false}
+                                  maskClosable={true}
+                                  mouseEnterDelay={0}
+                                  mouseLeaveDelay={0.1}
+                                  multiple={false}
+                                  onDropdownVisibleChange={[Function]}
+                                  onMenuDeselect={[Function]}
+                                  onMenuSelect={[Function]}
+                                  onPopupAlign={[Function]}
+                                  onPopupVisibleChange={[Function]}
+                                  options={Array []}
+                                  popup={
+                                    <DropdownMenu
+                                      defaultActiveFirstOption={true}
+                                      dropdownMenuStyle={Object {}}
+                                      firstActiveValue={undefined}
+                                      inputValue=""
+                                      menuItems={Array []}
+                                      multiple={false}
+                                      onMenuDeselect={[Function]}
+                                      onMenuSelect={[Function]}
+                                      onPopupFocus={[Function]}
+                                      onPopupScroll={undefined}
+                                      prefixCls="ant-select-dropdown"
+                                      value={Array []}
+                                      visible={false}
+                                    />
+                                  }
+                                  popupAlign={Object {}}
+                                  popupClassName="ant-select-dropdown--single"
+                                  popupPlacement="bottomLeft"
+                                  popupStyle={Object {}}
+                                  popupTransitionName="slide-up"
+                                  popupVisible={false}
+                                  prefixCls="ant-select-dropdown"
+                                  showAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  showSearch={false}
+                                  transitionName="slide-up"
+                                  value={Array []}
+                                  visible={false}
                                 >
                                   <div
-                                    aria-autocomplete="list"
-                                    aria-expanded={false}
-                                    aria-haspopup="true"
-                                    className="ant-select-selection
-                                              ant-select-selection--single"
-                                    key="selection"
-                                    onKeyDown={[Function]}
-                                    role="combobox"
-                                    tabIndex={0}
+                                    className="ant-select ant-select-enabled ant-select-allow-clear"
+                                    key="trigger"
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onTouchStart={[Function]}
+                                    style={Object {}}
                                   >
                                     <div
-                                      className="ant-select-selection__rendered"
+                                      aria-autocomplete="list"
+                                      aria-expanded={false}
+                                      aria-haspopup="true"
+                                      className="ant-select-selection
+                                                ant-select-selection--single"
+                                      key="selection"
+                                      onKeyDown={[Function]}
+                                      role="combobox"
+                                      tabIndex={0}
                                     >
                                       <div
-                                        className="ant-select-selection__placeholder"
+                                        className="ant-select-selection__rendered"
+                                      >
+                                        <div
+                                          className="ant-select-selection__placeholder"
+                                          onClick={[Function]}
+                                          onMouseDown={[Function]}
+                                          style={
+                                            Object {
+                                              "WebkitUserSelect": "none",
+                                              "display": "block",
+                                              "userSelect": "none",
+                                            }
+                                          }
+                                          unselectable="unselectable"
+                                        >
+                                          Select...
+                                        </div>
+                                      </div>
+                                      <span
+                                        className="ant-select-arrow"
+                                        key="arrow"
                                         onClick={[Function]}
-                                        onMouseDown={[Function]}
                                         style={
                                           Object {
                                             "WebkitUserSelect": "none",
-                                            "display": "block",
                                             "userSelect": "none",
                                           }
                                         }
                                         unselectable="unselectable"
                                       >
-                                        Select...
-                                      </div>
+                                        <b />
+                                      </span>
                                     </div>
-                                    <span
-                                      className="ant-select-arrow"
-                                      key="arrow"
-                                      onClick={[Function]}
-                                      style={
-                                        Object {
-                                          "WebkitUserSelect": "none",
-                                          "userSelect": "none",
-                                        }
-                                      }
-                                      unselectable="unselectable"
-                                    >
-                                      <b />
-                                    </span>
                                   </div>
-                                </div>
-                              </Trigger>
-                            </SelectTrigger>
-                          </Select>
-                        </LocaleReceiver>
-                      </Select>
-                    </span>
-                    <Animate
-                      animation={Object {}}
-                      component=""
-                      componentProps={Object {}}
-                      key="help"
-                      onAppear={[Function]}
-                      onEnd={[Function]}
-                      onEnter={[Function]}
-                      onLeave={[Function]}
-                      transitionAppear={true}
-                      transitionEnter={true}
-                      transitionLeave={true}
-                      transitionName="show-help"
-                    />
+                                </Trigger>
+                              </SelectTrigger>
+                            </Select>
+                          </LocaleReceiver>
+                        </Select>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </div>
-          </Row>
-        </FormItem>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+        </div>
       </CustomSelect>
       <button
         type="submit"
@@ -361,11 +367,11 @@ exports[`Select Renders with group 1`] = `
 </TestForm>
 `;
 
-exports[`Select Renders with no value 1`] = `
+exports[`Select Renders with no value and help message 1`] = `
 <TestForm
   input={
     Object {
-      "change": [Function],
+      "onChange": [Function],
       "value": undefined,
     }
   }
@@ -390,13 +396,14 @@ exports[`Select Renders with no value 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        helpMessage="help"
         input={
           Object {
-            "change": [Function],
+            "onChange": [Function],
             "value": undefined,
           }
         }
-        label={null}
+        label="Label"
         meta={
           Object {
             "error": "",
@@ -422,199 +429,123 @@ exports[`Select Renders with no value 1`] = `
         required={true}
         style={Object {}}
       >
-        <FormItem
-          colon={true}
-          hasFeedback={false}
-          help=""
-          label={null}
-          prefixCls="ant-form"
-          validateStatus=""
+        <div
+          className="CustomField-container"
         >
-          <Row
-            className="ant-form-item"
-            gutter={0}
+          <FormItem
+            className="CustomField-formItem"
+            colon={true}
+            hasFeedback={false}
+            help=""
+            label="Label"
+            prefixCls="ant-form"
+            validateStatus=""
           >
-            <div
-              className="ant-row ant-form-item"
+            <Row
+              className="ant-form-item CustomField-formItem"
+              gutter={0}
             >
-              <Col
-                className="ant-form-item-control-wrapper"
-                key=".$wrapper"
+              <div
+                className="ant-row ant-form-item CustomField-formItem"
               >
-                <div
-                  className="ant-form-item-control-wrapper"
+                <Col
+                  className="ant-form-item-label"
+                  key=".$label"
                 >
                   <div
-                    className="ant-form-item-control"
+                    className="ant-form-item-label"
                   >
-                    <span
-                      className="ant-form-item-children"
+                    <label
+                      className=""
+                      htmlFor={null}
+                      onClick={[Function]}
+                      title="Label"
                     >
-                      <Select
-                        allowClear={true}
-                        choiceTransitionName="zoom"
-                        onChange={[Function]}
-                        placeholder="Select..."
-                        prefixCls="ant-select"
-                        showSearch={false}
-                        style={Object {}}
-                        transitionName="slide-up"
+                      Label
+                    </label>
+                  </div>
+                </Col>
+                <Col
+                  className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
+                >
+                  <div
+                    className="ant-form-item-control-wrapper"
+                  >
+                    <div
+                      className="ant-form-item-control"
+                    >
+                      <span
+                        className="ant-form-item-children"
                       >
-                        <LocaleReceiver
-                          componentName="Select"
-                          defaultLocale={
-                            Object {
-                              "notFoundContent": "Not Found",
-                            }
-                          }
+                        <Select
+                          allowClear={true}
+                          choiceTransitionName="zoom"
+                          onChange={[Function]}
+                          placeholder="Select..."
+                          prefixCls="ant-select"
+                          showSearch={false}
+                          style={Object {}}
+                          transitionName="slide-up"
                         >
-                          <Select
-                            allowClear={true}
-                            backfill={false}
-                            choiceTransitionName="zoom"
-                            className=""
-                            combobox={false}
-                            defaultActiveFirstOption={true}
-                            defaultOpen={false}
-                            dropdownMatchSelectWidth={true}
-                            dropdownMenuStyle={Object {}}
-                            dropdownStyle={Object {}}
-                            labelInValue={false}
-                            multiple={false}
-                            notFoundContent="Not Found"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onDeselect={[Function]}
-                            onFocus={[Function]}
-                            onInputKeyDown={[Function]}
-                            onSearch={[Function]}
-                            onSelect={[Function]}
-                            optionFilterProp="value"
-                            optionLabelProp="children"
-                            placeholder="Select..."
-                            prefixCls="ant-select"
-                            showAction={
-                              Array [
-                                "click",
-                              ]
+                          <LocaleReceiver
+                            componentName="Select"
+                            defaultLocale={
+                              Object {
+                                "notFoundContent": "Not Found",
+                              }
                             }
-                            showArrow={true}
-                            showSearch={false}
-                            style={Object {}}
-                            tags={false}
-                            transitionName="slide-up"
                           >
-                            <SelectTrigger
+                            <Select
+                              allowClear={true}
+                              backfill={false}
+                              choiceTransitionName="zoom"
+                              className=""
                               combobox={false}
                               defaultActiveFirstOption={true}
+                              defaultOpen={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
-                              inputValue=""
+                              labelInValue={false}
                               multiple={false}
-                              onDropdownVisibleChange={[Function]}
-                              onMenuDeselect={[Function]}
-                              onMenuSelect={[Function]}
-                              onPopupFocus={[Function]}
-                              options={Array []}
+                              notFoundContent="Not Found"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDeselect={[Function]}
+                              onFocus={[Function]}
+                              onInputKeyDown={[Function]}
+                              onSearch={[Function]}
+                              onSelect={[Function]}
+                              optionFilterProp="value"
+                              optionLabelProp="children"
+                              placeholder="Select..."
                               prefixCls="ant-select"
                               showAction={
                                 Array [
                                   "click",
                                 ]
                               }
+                              showArrow={true}
                               showSearch={false}
+                              style={Object {}}
+                              tags={false}
                               transitionName="slide-up"
-                              value={Array []}
-                              visible={false}
                             >
-                              <Trigger
-                                action={Array []}
-                                afterPopupVisibleChange={[Function]}
-                                blurDelay={0.15}
-                                builtinPlacements={
-                                  Object {
-                                    "bottomLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "tl",
-                                        "bl",
-                                      ],
-                                    },
-                                    "topLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        -4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "bl",
-                                        "tl",
-                                      ],
-                                    },
-                                  }
-                                }
+                              <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
-                                defaultPopupVisible={false}
-                                destroyPopupOnHide={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
-                                focusDelay={0}
-                                getDocument={[Function]}
-                                getPopupClassNameFromAlign={[Function]}
-                                hideAction={
-                                  Array [
-                                    "click",
-                                  ]
-                                }
                                 inputValue=""
-                                mask={false}
-                                maskClosable={true}
-                                mouseEnterDelay={0}
-                                mouseLeaveDelay={0.1}
                                 multiple={false}
                                 onDropdownVisibleChange={[Function]}
                                 onMenuDeselect={[Function]}
                                 onMenuSelect={[Function]}
-                                onPopupAlign={[Function]}
-                                onPopupVisibleChange={[Function]}
+                                onPopupFocus={[Function]}
                                 options={Array []}
-                                popup={
-                                  <DropdownMenu
-                                    defaultActiveFirstOption={true}
-                                    dropdownMenuStyle={Object {}}
-                                    firstActiveValue={undefined}
-                                    inputValue=""
-                                    menuItems={Array []}
-                                    multiple={false}
-                                    onMenuDeselect={[Function]}
-                                    onMenuSelect={[Function]}
-                                    onPopupFocus={[Function]}
-                                    onPopupScroll={undefined}
-                                    prefixCls="ant-select-dropdown"
-                                    value={Array []}
-                                    visible={false}
-                                  />
-                                }
-                                popupAlign={Object {}}
-                                popupClassName="ant-select-dropdown--single"
-                                popupPlacement="bottomLeft"
-                                popupStyle={Object {}}
-                                popupTransitionName="slide-up"
-                                popupVisible={false}
-                                prefixCls="ant-select-dropdown"
+                                prefixCls="ant-select"
                                 showAction={
                                   Array [
                                     "click",
@@ -625,88 +556,612 @@ exports[`Select Renders with no value 1`] = `
                                 value={Array []}
                                 visible={false}
                               >
-                                <div
-                                  className="ant-select ant-select-enabled ant-select-allow-clear"
-                                  key="trigger"
-                                  onBlur={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onMouseDown={[Function]}
-                                  onTouchStart={[Function]}
-                                  style={Object {}}
+                                <Trigger
+                                  action={Array []}
+                                  afterPopupVisibleChange={[Function]}
+                                  blurDelay={0.15}
+                                  builtinPlacements={
+                                    Object {
+                                      "bottomLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "tl",
+                                          "bl",
+                                        ],
+                                      },
+                                      "topLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          -4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "bl",
+                                          "tl",
+                                        ],
+                                      },
+                                    }
+                                  }
+                                  combobox={false}
+                                  defaultActiveFirstOption={true}
+                                  defaultPopupVisible={false}
+                                  destroyPopupOnHide={false}
+                                  dropdownMatchSelectWidth={true}
+                                  dropdownMenuStyle={Object {}}
+                                  dropdownStyle={Object {}}
+                                  focusDelay={0}
+                                  getDocument={[Function]}
+                                  getPopupClassNameFromAlign={[Function]}
+                                  hideAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  inputValue=""
+                                  mask={false}
+                                  maskClosable={true}
+                                  mouseEnterDelay={0}
+                                  mouseLeaveDelay={0.1}
+                                  multiple={false}
+                                  onDropdownVisibleChange={[Function]}
+                                  onMenuDeselect={[Function]}
+                                  onMenuSelect={[Function]}
+                                  onPopupAlign={[Function]}
+                                  onPopupVisibleChange={[Function]}
+                                  options={Array []}
+                                  popup={
+                                    <DropdownMenu
+                                      defaultActiveFirstOption={true}
+                                      dropdownMenuStyle={Object {}}
+                                      firstActiveValue={undefined}
+                                      inputValue=""
+                                      menuItems={Array []}
+                                      multiple={false}
+                                      onMenuDeselect={[Function]}
+                                      onMenuSelect={[Function]}
+                                      onPopupFocus={[Function]}
+                                      onPopupScroll={undefined}
+                                      prefixCls="ant-select-dropdown"
+                                      value={Array []}
+                                      visible={false}
+                                    />
+                                  }
+                                  popupAlign={Object {}}
+                                  popupClassName="ant-select-dropdown--single"
+                                  popupPlacement="bottomLeft"
+                                  popupStyle={Object {}}
+                                  popupTransitionName="slide-up"
+                                  popupVisible={false}
+                                  prefixCls="ant-select-dropdown"
+                                  showAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  showSearch={false}
+                                  transitionName="slide-up"
+                                  value={Array []}
+                                  visible={false}
                                 >
                                   <div
-                                    aria-autocomplete="list"
-                                    aria-expanded={false}
-                                    aria-haspopup="true"
-                                    className="ant-select-selection
-                                              ant-select-selection--single"
-                                    key="selection"
-                                    onKeyDown={[Function]}
-                                    role="combobox"
-                                    tabIndex={0}
+                                    className="ant-select ant-select-enabled ant-select-allow-clear"
+                                    key="trigger"
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onTouchStart={[Function]}
+                                    style={Object {}}
                                   >
                                     <div
-                                      className="ant-select-selection__rendered"
+                                      aria-autocomplete="list"
+                                      aria-expanded={false}
+                                      aria-haspopup="true"
+                                      className="ant-select-selection
+                                                ant-select-selection--single"
+                                      key="selection"
+                                      onKeyDown={[Function]}
+                                      role="combobox"
+                                      tabIndex={0}
                                     >
                                       <div
-                                        className="ant-select-selection__placeholder"
+                                        className="ant-select-selection__rendered"
+                                      >
+                                        <div
+                                          className="ant-select-selection__placeholder"
+                                          onClick={[Function]}
+                                          onMouseDown={[Function]}
+                                          style={
+                                            Object {
+                                              "WebkitUserSelect": "none",
+                                              "display": "block",
+                                              "userSelect": "none",
+                                            }
+                                          }
+                                          unselectable="unselectable"
+                                        >
+                                          Select...
+                                        </div>
+                                      </div>
+                                      <span
+                                        className="ant-select-arrow"
+                                        key="arrow"
                                         onClick={[Function]}
-                                        onMouseDown={[Function]}
                                         style={
                                           Object {
                                             "WebkitUserSelect": "none",
-                                            "display": "block",
                                             "userSelect": "none",
                                           }
                                         }
                                         unselectable="unselectable"
                                       >
-                                        Select...
-                                      </div>
+                                        <b />
+                                      </span>
                                     </div>
-                                    <span
-                                      className="ant-select-arrow"
-                                      key="arrow"
-                                      onClick={[Function]}
-                                      style={
-                                        Object {
-                                          "WebkitUserSelect": "none",
-                                          "userSelect": "none",
-                                        }
-                                      }
-                                      unselectable="unselectable"
-                                    >
-                                      <b />
-                                    </span>
                                   </div>
-                                </div>
-                              </Trigger>
-                            </SelectTrigger>
-                          </Select>
-                        </LocaleReceiver>
-                      </Select>
-                    </span>
-                    <Animate
-                      animation={Object {}}
-                      component=""
-                      componentProps={Object {}}
-                      key="help"
-                      onAppear={[Function]}
-                      onEnd={[Function]}
-                      onEnter={[Function]}
-                      onLeave={[Function]}
-                      transitionAppear={true}
-                      transitionEnter={true}
-                      transitionLeave={true}
-                      transitionName="show-help"
-                    />
+                                </Trigger>
+                              </SelectTrigger>
+                            </Select>
+                          </LocaleReceiver>
+                        </Select>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </div>
-          </Row>
-        </FormItem>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+          <FontAwesomeIcon$1
+            border={false}
+            className="CustomField-help"
+            fixedWidth={false}
+            flip={null}
+            icon={
+              Object {
+                "icon": Array [
+                  448,
+                  512,
+                  Array [],
+                  "f2fd",
+                  "M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 430c-25.365 0-46-20.636-46-46 0-25.365 20.635-46 46-46s46 20.635 46 46c0 25.364-20.635 46-46 46zm40-131.333V300c0 6.627-5.373 12-12 12h-56c-6.627 0-12-5.373-12-12v-4c0-41.059 31.128-57.472 54.652-70.66 20.171-11.309 32.534-19 32.534-33.976 0-19.81-25.269-32.958-45.698-32.958-27.19 0-39.438 13.139-57.303 35.797-4.045 5.13-11.46 6.069-16.665 2.122l-34.699-26.31c-5.068-3.843-6.251-10.972-2.715-16.258C141.4 112.957 176.158 90 230.655 90c56.366 0 116.531 43.998 116.531 102 0 77.02-83.186 78.205-83.186 106.667z",
+                ],
+                "iconName": "question-square",
+                "prefix": "fas",
+              }
+            }
+            listItem={false}
+            mask={null}
+            name=""
+            onClick={[Function]}
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size="2x"
+            spin={false}
+            symbol={false}
+            transform={null}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-question-square fa-w-14 fa-2x CustomField-help"
+              data-icon="question-square"
+              data-prefix="fas"
+              onClick={[Function]}
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 430c-25.365 0-46-20.636-46-46 0-25.365 20.635-46 46-46s46 20.635 46 46c0 25.364-20.635 46-46 46zm40-131.333V300c0 6.627-5.373 12-12 12h-56c-6.627 0-12-5.373-12-12v-4c0-41.059 31.128-57.472 54.652-70.66 20.171-11.309 32.534-19 32.534-33.976 0-19.81-25.269-32.958-45.698-32.958-27.19 0-39.438 13.139-57.303 35.797-4.045 5.13-11.46 6.069-16.665 2.122l-34.699-26.31c-5.068-3.843-6.251-10.972-2.715-16.258C141.4 112.957 176.158 90 230.655 90c56.366 0 116.531 43.998 116.531 102 0 77.02-83.186 78.205-83.186 106.667z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </FontAwesomeIcon$1>
+        </div>
+      </CustomSelect>
+      <button
+        type="submit"
+      />
+    </form>
+  </Form>
+</TestForm>
+`;
+
+exports[`Select Renders with without help message 1`] = `
+<TestForm
+  input={
+    Object {
+      "onChange": [Function],
+      "value": undefined,
+    }
+  }
+  meta={
+    Object {
+      "error": "",
+      "touched": false,
+      "warning": "",
+    }
+  }
+  onSubmit={[Function]}
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <form
+      className="ant-form ant-form-horizontal"
+      onSubmit={[Function]}
+    >
+      <CustomSelect
+        allowClear={true}
+        helpMessage={null}
+        input={
+          Object {
+            "onChange": [Function],
+            "value": undefined,
+          }
+        }
+        label="Label"
+        meta={
+          Object {
+            "error": "",
+            "touched": false,
+            "warning": "",
+          }
+        }
+        name="TestSelect"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "text": "option1",
+              "value": 1,
+            },
+            Object {
+              "text": "option2",
+              "value": 2,
+            },
+          ]
+        }
+        placeHolder="Select..."
+        required={true}
+        style={Object {}}
+      >
+        <div
+          className="CustomField-container"
+        >
+          <FormItem
+            className="CustomField-formItem"
+            colon={true}
+            hasFeedback={false}
+            help=""
+            label="Label"
+            prefixCls="ant-form"
+            validateStatus=""
+          >
+            <Row
+              className="ant-form-item CustomField-formItem"
+              gutter={0}
+            >
+              <div
+                className="ant-row ant-form-item CustomField-formItem"
+              >
+                <Col
+                  className="ant-form-item-label"
+                  key=".$label"
+                >
+                  <div
+                    className="ant-form-item-label"
+                  >
+                    <label
+                      className=""
+                      htmlFor={null}
+                      onClick={[Function]}
+                      title="Label"
+                    >
+                      Label
+                    </label>
+                  </div>
+                </Col>
+                <Col
+                  className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
+                >
+                  <div
+                    className="ant-form-item-control-wrapper"
+                  >
+                    <div
+                      className="ant-form-item-control"
+                    >
+                      <span
+                        className="ant-form-item-children"
+                      >
+                        <Select
+                          allowClear={true}
+                          choiceTransitionName="zoom"
+                          onChange={[Function]}
+                          placeholder="Select..."
+                          prefixCls="ant-select"
+                          showSearch={false}
+                          style={Object {}}
+                          transitionName="slide-up"
+                        >
+                          <LocaleReceiver
+                            componentName="Select"
+                            defaultLocale={
+                              Object {
+                                "notFoundContent": "Not Found",
+                              }
+                            }
+                          >
+                            <Select
+                              allowClear={true}
+                              backfill={false}
+                              choiceTransitionName="zoom"
+                              className=""
+                              combobox={false}
+                              defaultActiveFirstOption={true}
+                              defaultOpen={false}
+                              dropdownMatchSelectWidth={true}
+                              dropdownMenuStyle={Object {}}
+                              dropdownStyle={Object {}}
+                              labelInValue={false}
+                              multiple={false}
+                              notFoundContent="Not Found"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDeselect={[Function]}
+                              onFocus={[Function]}
+                              onInputKeyDown={[Function]}
+                              onSearch={[Function]}
+                              onSelect={[Function]}
+                              optionFilterProp="value"
+                              optionLabelProp="children"
+                              placeholder="Select..."
+                              prefixCls="ant-select"
+                              showAction={
+                                Array [
+                                  "click",
+                                ]
+                              }
+                              showArrow={true}
+                              showSearch={false}
+                              style={Object {}}
+                              tags={false}
+                              transitionName="slide-up"
+                            >
+                              <SelectTrigger
+                                combobox={false}
+                                defaultActiveFirstOption={true}
+                                dropdownMatchSelectWidth={true}
+                                dropdownMenuStyle={Object {}}
+                                dropdownStyle={Object {}}
+                                inputValue=""
+                                multiple={false}
+                                onDropdownVisibleChange={[Function]}
+                                onMenuDeselect={[Function]}
+                                onMenuSelect={[Function]}
+                                onPopupFocus={[Function]}
+                                options={Array []}
+                                prefixCls="ant-select"
+                                showAction={
+                                  Array [
+                                    "click",
+                                  ]
+                                }
+                                showSearch={false}
+                                transitionName="slide-up"
+                                value={Array []}
+                                visible={false}
+                              >
+                                <Trigger
+                                  action={Array []}
+                                  afterPopupVisibleChange={[Function]}
+                                  blurDelay={0.15}
+                                  builtinPlacements={
+                                    Object {
+                                      "bottomLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "tl",
+                                          "bl",
+                                        ],
+                                      },
+                                      "topLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          -4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "bl",
+                                          "tl",
+                                        ],
+                                      },
+                                    }
+                                  }
+                                  combobox={false}
+                                  defaultActiveFirstOption={true}
+                                  defaultPopupVisible={false}
+                                  destroyPopupOnHide={false}
+                                  dropdownMatchSelectWidth={true}
+                                  dropdownMenuStyle={Object {}}
+                                  dropdownStyle={Object {}}
+                                  focusDelay={0}
+                                  getDocument={[Function]}
+                                  getPopupClassNameFromAlign={[Function]}
+                                  hideAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  inputValue=""
+                                  mask={false}
+                                  maskClosable={true}
+                                  mouseEnterDelay={0}
+                                  mouseLeaveDelay={0.1}
+                                  multiple={false}
+                                  onDropdownVisibleChange={[Function]}
+                                  onMenuDeselect={[Function]}
+                                  onMenuSelect={[Function]}
+                                  onPopupAlign={[Function]}
+                                  onPopupVisibleChange={[Function]}
+                                  options={Array []}
+                                  popup={
+                                    <DropdownMenu
+                                      defaultActiveFirstOption={true}
+                                      dropdownMenuStyle={Object {}}
+                                      firstActiveValue={undefined}
+                                      inputValue=""
+                                      menuItems={Array []}
+                                      multiple={false}
+                                      onMenuDeselect={[Function]}
+                                      onMenuSelect={[Function]}
+                                      onPopupFocus={[Function]}
+                                      onPopupScroll={undefined}
+                                      prefixCls="ant-select-dropdown"
+                                      value={Array []}
+                                      visible={false}
+                                    />
+                                  }
+                                  popupAlign={Object {}}
+                                  popupClassName="ant-select-dropdown--single"
+                                  popupPlacement="bottomLeft"
+                                  popupStyle={Object {}}
+                                  popupTransitionName="slide-up"
+                                  popupVisible={false}
+                                  prefixCls="ant-select-dropdown"
+                                  showAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  showSearch={false}
+                                  transitionName="slide-up"
+                                  value={Array []}
+                                  visible={false}
+                                >
+                                  <div
+                                    className="ant-select ant-select-enabled ant-select-allow-clear"
+                                    key="trigger"
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onTouchStart={[Function]}
+                                    style={Object {}}
+                                  >
+                                    <div
+                                      aria-autocomplete="list"
+                                      aria-expanded={false}
+                                      aria-haspopup="true"
+                                      className="ant-select-selection
+                                                ant-select-selection--single"
+                                      key="selection"
+                                      onKeyDown={[Function]}
+                                      role="combobox"
+                                      tabIndex={0}
+                                    >
+                                      <div
+                                        className="ant-select-selection__rendered"
+                                      >
+                                        <div
+                                          className="ant-select-selection__placeholder"
+                                          onClick={[Function]}
+                                          onMouseDown={[Function]}
+                                          style={
+                                            Object {
+                                              "WebkitUserSelect": "none",
+                                              "display": "block",
+                                              "userSelect": "none",
+                                            }
+                                          }
+                                          unselectable="unselectable"
+                                        >
+                                          Select...
+                                        </div>
+                                      </div>
+                                      <span
+                                        className="ant-select-arrow"
+                                        key="arrow"
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "WebkitUserSelect": "none",
+                                            "userSelect": "none",
+                                          }
+                                        }
+                                        unselectable="unselectable"
+                                      >
+                                        <b />
+                                      </span>
+                                    </div>
+                                  </div>
+                                </Trigger>
+                              </SelectTrigger>
+                            </Select>
+                          </LocaleReceiver>
+                        </Select>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+        </div>
       </CustomSelect>
       <button
         type="submit"
@@ -720,7 +1175,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
 <TestForm
   input={
     Object {
-      "change": [Function],
+      "onChange": [Function],
       "value": undefined,
     }
   }
@@ -745,9 +1200,10 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        helpMessage={null}
         input={
           Object {
-            "change": [Function],
+            "onChange": [Function],
             "value": undefined,
           }
         }
@@ -777,199 +1233,106 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
         required={true}
         style={Object {}}
       >
-        <FormItem
-          colon={true}
-          hasFeedback={false}
-          help="Error message"
-          label={null}
-          prefixCls="ant-form"
-          validateStatus="error"
+        <div
+          className="CustomField-container"
         >
-          <Row
-            className="ant-form-item ant-form-item-with-help"
-            gutter={0}
+          <FormItem
+            className="CustomField-formItem"
+            colon={true}
+            hasFeedback={false}
+            help="Error message"
+            label={null}
+            prefixCls="ant-form"
+            validateStatus="error"
           >
-            <div
-              className="ant-row ant-form-item ant-form-item-with-help"
+            <Row
+              className="ant-form-item ant-form-item-with-help CustomField-formItem"
+              gutter={0}
             >
-              <Col
-                className="ant-form-item-control-wrapper"
-                key=".$wrapper"
+              <div
+                className="ant-row ant-form-item ant-form-item-with-help CustomField-formItem"
               >
-                <div
+                <Col
                   className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
                 >
                   <div
-                    className="ant-form-item-control has-error"
+                    className="ant-form-item-control-wrapper"
                   >
-                    <span
-                      className="ant-form-item-children"
+                    <div
+                      className="ant-form-item-control has-error"
                     >
-                      <Select
-                        allowClear={true}
-                        choiceTransitionName="zoom"
-                        onChange={[Function]}
-                        placeholder="Select..."
-                        prefixCls="ant-select"
-                        showSearch={false}
-                        style={Object {}}
-                        transitionName="slide-up"
+                      <span
+                        className="ant-form-item-children"
                       >
-                        <LocaleReceiver
-                          componentName="Select"
-                          defaultLocale={
-                            Object {
-                              "notFoundContent": "Not Found",
-                            }
-                          }
+                        <Select
+                          allowClear={true}
+                          choiceTransitionName="zoom"
+                          onChange={[Function]}
+                          placeholder="Select..."
+                          prefixCls="ant-select"
+                          showSearch={false}
+                          style={Object {}}
+                          transitionName="slide-up"
                         >
-                          <Select
-                            allowClear={true}
-                            backfill={false}
-                            choiceTransitionName="zoom"
-                            className=""
-                            combobox={false}
-                            defaultActiveFirstOption={true}
-                            defaultOpen={false}
-                            dropdownMatchSelectWidth={true}
-                            dropdownMenuStyle={Object {}}
-                            dropdownStyle={Object {}}
-                            labelInValue={false}
-                            multiple={false}
-                            notFoundContent="Not Found"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onDeselect={[Function]}
-                            onFocus={[Function]}
-                            onInputKeyDown={[Function]}
-                            onSearch={[Function]}
-                            onSelect={[Function]}
-                            optionFilterProp="value"
-                            optionLabelProp="children"
-                            placeholder="Select..."
-                            prefixCls="ant-select"
-                            showAction={
-                              Array [
-                                "click",
-                              ]
+                          <LocaleReceiver
+                            componentName="Select"
+                            defaultLocale={
+                              Object {
+                                "notFoundContent": "Not Found",
+                              }
                             }
-                            showArrow={true}
-                            showSearch={false}
-                            style={Object {}}
-                            tags={false}
-                            transitionName="slide-up"
                           >
-                            <SelectTrigger
+                            <Select
+                              allowClear={true}
+                              backfill={false}
+                              choiceTransitionName="zoom"
+                              className=""
                               combobox={false}
                               defaultActiveFirstOption={true}
+                              defaultOpen={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
-                              inputValue=""
+                              labelInValue={false}
                               multiple={false}
-                              onDropdownVisibleChange={[Function]}
-                              onMenuDeselect={[Function]}
-                              onMenuSelect={[Function]}
-                              onPopupFocus={[Function]}
-                              options={Array []}
+                              notFoundContent="Not Found"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDeselect={[Function]}
+                              onFocus={[Function]}
+                              onInputKeyDown={[Function]}
+                              onSearch={[Function]}
+                              onSelect={[Function]}
+                              optionFilterProp="value"
+                              optionLabelProp="children"
+                              placeholder="Select..."
                               prefixCls="ant-select"
                               showAction={
                                 Array [
                                   "click",
                                 ]
                               }
+                              showArrow={true}
                               showSearch={false}
+                              style={Object {}}
+                              tags={false}
                               transitionName="slide-up"
-                              value={Array []}
-                              visible={false}
                             >
-                              <Trigger
-                                action={Array []}
-                                afterPopupVisibleChange={[Function]}
-                                blurDelay={0.15}
-                                builtinPlacements={
-                                  Object {
-                                    "bottomLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "tl",
-                                        "bl",
-                                      ],
-                                    },
-                                    "topLeft": Object {
-                                      "offset": Array [
-                                        0,
-                                        -4,
-                                      ],
-                                      "overflow": Object {
-                                        "adjustX": 0,
-                                        "adjustY": 1,
-                                      },
-                                      "points": Array [
-                                        "bl",
-                                        "tl",
-                                      ],
-                                    },
-                                  }
-                                }
+                              <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
-                                defaultPopupVisible={false}
-                                destroyPopupOnHide={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
-                                focusDelay={0}
-                                getDocument={[Function]}
-                                getPopupClassNameFromAlign={[Function]}
-                                hideAction={
-                                  Array [
-                                    "click",
-                                  ]
-                                }
                                 inputValue=""
-                                mask={false}
-                                maskClosable={true}
-                                mouseEnterDelay={0}
-                                mouseLeaveDelay={0.1}
                                 multiple={false}
                                 onDropdownVisibleChange={[Function]}
                                 onMenuDeselect={[Function]}
                                 onMenuSelect={[Function]}
-                                onPopupAlign={[Function]}
-                                onPopupVisibleChange={[Function]}
+                                onPopupFocus={[Function]}
                                 options={Array []}
-                                popup={
-                                  <DropdownMenu
-                                    defaultActiveFirstOption={true}
-                                    dropdownMenuStyle={Object {}}
-                                    firstActiveValue={undefined}
-                                    inputValue=""
-                                    menuItems={Array []}
-                                    multiple={false}
-                                    onMenuDeselect={[Function]}
-                                    onMenuSelect={[Function]}
-                                    onPopupFocus={[Function]}
-                                    onPopupScroll={undefined}
-                                    prefixCls="ant-select-dropdown"
-                                    value={Array []}
-                                    visible={false}
-                                  />
-                                }
-                                popupAlign={Object {}}
-                                popupClassName="ant-select-dropdown--single"
-                                popupPlacement="bottomLeft"
-                                popupStyle={Object {}}
-                                popupTransitionName="slide-up"
-                                popupVisible={false}
-                                prefixCls="ant-select-dropdown"
+                                prefixCls="ant-select"
                                 showAction={
                                   Array [
                                     "click",
@@ -980,104 +1343,202 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                                 value={Array []}
                                 visible={false}
                               >
-                                <div
-                                  className="ant-select ant-select-enabled ant-select-allow-clear"
-                                  key="trigger"
-                                  onBlur={[Function]}
-                                  onClick={[Function]}
-                                  onFocus={[Function]}
-                                  onMouseDown={[Function]}
-                                  onTouchStart={[Function]}
-                                  style={Object {}}
+                                <Trigger
+                                  action={Array []}
+                                  afterPopupVisibleChange={[Function]}
+                                  blurDelay={0.15}
+                                  builtinPlacements={
+                                    Object {
+                                      "bottomLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "tl",
+                                          "bl",
+                                        ],
+                                      },
+                                      "topLeft": Object {
+                                        "offset": Array [
+                                          0,
+                                          -4,
+                                        ],
+                                        "overflow": Object {
+                                          "adjustX": 0,
+                                          "adjustY": 1,
+                                        },
+                                        "points": Array [
+                                          "bl",
+                                          "tl",
+                                        ],
+                                      },
+                                    }
+                                  }
+                                  combobox={false}
+                                  defaultActiveFirstOption={true}
+                                  defaultPopupVisible={false}
+                                  destroyPopupOnHide={false}
+                                  dropdownMatchSelectWidth={true}
+                                  dropdownMenuStyle={Object {}}
+                                  dropdownStyle={Object {}}
+                                  focusDelay={0}
+                                  getDocument={[Function]}
+                                  getPopupClassNameFromAlign={[Function]}
+                                  hideAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  inputValue=""
+                                  mask={false}
+                                  maskClosable={true}
+                                  mouseEnterDelay={0}
+                                  mouseLeaveDelay={0.1}
+                                  multiple={false}
+                                  onDropdownVisibleChange={[Function]}
+                                  onMenuDeselect={[Function]}
+                                  onMenuSelect={[Function]}
+                                  onPopupAlign={[Function]}
+                                  onPopupVisibleChange={[Function]}
+                                  options={Array []}
+                                  popup={
+                                    <DropdownMenu
+                                      defaultActiveFirstOption={true}
+                                      dropdownMenuStyle={Object {}}
+                                      firstActiveValue={undefined}
+                                      inputValue=""
+                                      menuItems={Array []}
+                                      multiple={false}
+                                      onMenuDeselect={[Function]}
+                                      onMenuSelect={[Function]}
+                                      onPopupFocus={[Function]}
+                                      onPopupScroll={undefined}
+                                      prefixCls="ant-select-dropdown"
+                                      value={Array []}
+                                      visible={false}
+                                    />
+                                  }
+                                  popupAlign={Object {}}
+                                  popupClassName="ant-select-dropdown--single"
+                                  popupPlacement="bottomLeft"
+                                  popupStyle={Object {}}
+                                  popupTransitionName="slide-up"
+                                  popupVisible={false}
+                                  prefixCls="ant-select-dropdown"
+                                  showAction={
+                                    Array [
+                                      "click",
+                                    ]
+                                  }
+                                  showSearch={false}
+                                  transitionName="slide-up"
+                                  value={Array []}
+                                  visible={false}
                                 >
                                   <div
-                                    aria-autocomplete="list"
-                                    aria-expanded={false}
-                                    aria-haspopup="true"
-                                    className="ant-select-selection
-                                              ant-select-selection--single"
-                                    key="selection"
-                                    onKeyDown={[Function]}
-                                    role="combobox"
-                                    tabIndex={0}
+                                    className="ant-select ant-select-enabled ant-select-allow-clear"
+                                    key="trigger"
+                                    onBlur={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseDown={[Function]}
+                                    onTouchStart={[Function]}
+                                    style={Object {}}
                                   >
                                     <div
-                                      className="ant-select-selection__rendered"
+                                      aria-autocomplete="list"
+                                      aria-expanded={false}
+                                      aria-haspopup="true"
+                                      className="ant-select-selection
+                                                ant-select-selection--single"
+                                      key="selection"
+                                      onKeyDown={[Function]}
+                                      role="combobox"
+                                      tabIndex={0}
                                     >
                                       <div
-                                        className="ant-select-selection__placeholder"
+                                        className="ant-select-selection__rendered"
+                                      >
+                                        <div
+                                          className="ant-select-selection__placeholder"
+                                          onClick={[Function]}
+                                          onMouseDown={[Function]}
+                                          style={
+                                            Object {
+                                              "WebkitUserSelect": "none",
+                                              "display": "block",
+                                              "userSelect": "none",
+                                            }
+                                          }
+                                          unselectable="unselectable"
+                                        >
+                                          Select...
+                                        </div>
+                                      </div>
+                                      <span
+                                        className="ant-select-arrow"
+                                        key="arrow"
                                         onClick={[Function]}
-                                        onMouseDown={[Function]}
                                         style={
                                           Object {
                                             "WebkitUserSelect": "none",
-                                            "display": "block",
                                             "userSelect": "none",
                                           }
                                         }
                                         unselectable="unselectable"
                                       >
-                                        Select...
-                                      </div>
+                                        <b />
+                                      </span>
                                     </div>
-                                    <span
-                                      className="ant-select-arrow"
-                                      key="arrow"
-                                      onClick={[Function]}
-                                      style={
-                                        Object {
-                                          "WebkitUserSelect": "none",
-                                          "userSelect": "none",
-                                        }
-                                      }
-                                      unselectable="unselectable"
-                                    >
-                                      <b />
-                                    </span>
                                   </div>
-                                </div>
-                              </Trigger>
-                            </SelectTrigger>
-                          </Select>
-                        </LocaleReceiver>
-                      </Select>
-                    </span>
-                    <Animate
-                      animation={Object {}}
-                      component=""
-                      componentProps={Object {}}
-                      key="help"
-                      onAppear={[Function]}
-                      onEnd={[Function]}
-                      onEnter={[Function]}
-                      onLeave={[Function]}
-                      transitionAppear={true}
-                      transitionEnter={true}
-                      transitionLeave={true}
-                      transitionName="show-help"
-                    >
-                      <AnimateChild
+                                </Trigger>
+                              </SelectTrigger>
+                            </Select>
+                          </LocaleReceiver>
+                        </Select>
+                      </span>
+                      <Animate
                         animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
                         key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
                         transitionAppear={true}
                         transitionEnter={true}
                         transitionLeave={true}
                         transitionName="show-help"
                       >
-                        <div
-                          className="ant-form-explain"
+                        <AnimateChild
+                          animation={Object {}}
                           key="help"
+                          transitionAppear={true}
+                          transitionEnter={true}
+                          transitionLeave={true}
+                          transitionName="show-help"
                         >
-                          Error message
-                        </div>
-                      </AnimateChild>
-                    </Animate>
+                          <div
+                            className="ant-form-explain"
+                            key="help"
+                          >
+                            Error message
+                          </div>
+                        </AnimateChild>
+                      </Animate>
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </div>
-          </Row>
-        </FormItem>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+        </div>
       </CustomSelect>
       <button
         type="submit"
