@@ -1,0 +1,120 @@
+@import 'theme/_theme.scss';
+
+$circle-w: 40px;
+$circle-bg: $backdrop-light;
+$arrow-bg: $accent-dark;
+$bezier: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$bezier-bounce: cubic-bezier(.87,-.41,.19,1.44);
+$anim-timing: 3s;
+
+.ArrowPrompt-down-prompt {
+  left: -50%;
+  position: relative;
+}
+.ArrowPrompt-down-prompt-container {
+  bottom: 10px;
+  left: 50%;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+}
+.ArrowPrompt-down-text {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+.ArrowPrompt-down-text-arrow-container {
+  align-items: center;
+  display: flex;
+}
+.ArrowPrompt-container {
+  text-align: center;
+  width: $circle-w;
+  height: $circle-w;
+  transform: translateY(0%);
+  filter: url("#goo");
+}
+.ArrowPrompt-circle {
+  background: $circle-bg;
+  border-radius: 50%;
+  display: inline-block;
+  height: $circle-w;
+  width: $circle-w;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  transform-origin: 0%;
+}
+.ArrowPrompt-circle-top {
+  height: $circle-w / 3;
+  width: $circle-w / 2.4;
+  animation: blob-1-anim $anim-timing $bezier infinite;
+  z-index: 0;
+  top: 4px;
+}
+.ArrowPrompt-circle-bottom {
+  height: $circle-w / 3;
+  width: $circle-w / 2.4;
+  animation: blob-2-anim $anim-timing $bezier infinite;
+  z-index: 9;
+  bottom: 0px;
+}
+.ArrowPrompt-st-arrow{
+  fill: $arrow-bg;
+  animation: scrolly $anim-timing $bezier forwards infinite;
+  perspective: 9000px;
+  transform: translateZ(0);
+  transform-origin: bottom;
+}
+.ArrowPrompt-svg {
+  z-index: 9;
+  position:relative;
+}
+@keyframes blob-1-anim {
+  0%{
+    transform:translateX(-50%) translateY(0);
+  }
+  14%{
+    transform:translateX(-50%) translateY(-8px);
+  }
+  24% {
+    transform:translateX(-50%) translateY(0);
+  }
+  100% {
+    transform:translateX(-50%) translateY(0);
+  }
+}
+@keyframes blob-2-anim {
+  0% {
+    transform: scale(1) translate(-50%, 0px);
+  }
+  30% {
+    transform: scale(1) translate(-50%, 0px);
+  }
+  70% {
+    transform: scale(1) translate(-50%, 0px);
+  }
+  95% {
+    transform: scale(1) translate(-50%, 12px);
+  }
+  100% {
+    transform: scale(1) translate(-50%, 0px);
+  }
+}
+@keyframes scrolly {
+  0% {
+    transform: translate3d(0,-150%,0) rotateX(90deg) scale(0.5) skewX(3deg);
+  }
+  30% {
+    transform: translate3d(0,0,0) rotateX(0deg) scale(1) skewX(0deg);
+  }
+  70% {
+    transform: translate3d(0,0,0) rotateX(0deg) scale(1) skewX(0deg);
+  }
+  95% {
+    transform: translate3d(0,50%,0) rotateX(-90deg) scale(0.5) skewX(-3deg);
+  }
+  100% {
+    transform: translate3d(0,50%,0) rotateX(-90deg) scale(0.5) skewX(-3deg);
+  }
+}
