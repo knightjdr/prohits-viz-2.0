@@ -105,7 +105,10 @@ CustomSelect.defaultProps = {
 
 CustomSelect.propTypes = {
   allowClear: PropTypes.bool,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([
+    PropTypes.shape({}),
+    PropTypes.string,
+  ]),
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([

@@ -1,22 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Divider } from 'antd';
 
+import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
+import Info from './info/info';
 
 import './options.css';
 
 const Options = ({
+  form,
   show,
 }) => {
+  const { analysisType } = form;
   const optionsElement = (
     <div className="Options-container">
       <Divider>Advanced options</Divider>
       <CustomField
-        helpMessage="The score direction defines how the scoring system in the
-        input file works, i.e. are smaller scores better that large scores, or
-        vice versa?"
+        helpMessage={Info[analysisType].scoreDir}
         label="Score direction"
         name="scoreDir"
         onChange={DefaultChange}
@@ -29,11 +32,7 @@ const Options = ({
         type="select"
       />
       <CustomField
-        helpMessage="All preys that satisfy this score filter for at least one
-        bait will be displayed on the dot plot. If a prey satisfies this filter
-        for at least one bait, all the quantitative values for this prey – even
-        those that did not satisfy the cutoff in particular bait-prey pairs -
-        will also be included."
+        helpMessage={Info[analysisType].primaryFilter}
         inputType="number"
         label="Primary filter"
         name="primaryFilter"
@@ -43,12 +42,7 @@ const Options = ({
         type="input"
       />
       <CustomField
-        helpMessage="Interactions that do no pass the primary score filter but
-        pass this secondary filter will be marked with an intermediate intensity
-        edge in the dot plot. Interactions that do not pass either filter will be
-        marked with a low intensity edge. The secondary filter can be adjusted
-        depending on the dataset to allow a greater or lesser number of interactions
-        into this 'medium' confidence range."
+        helpMessage={Info[analysisType].secondaryFilter}
         inputType="number"
         label="Secondary filter"
         name="secondaryFilter"
@@ -56,6 +50,22 @@ const Options = ({
         placeHolder="Secondary filter..."
         required
         type="input"
+      />
+      <CustomField
+        helpMessage={Info[analysisType].colorScale}
+        label="Fill color scale"
+        name="fillColorScale"
+        onChange={DefaultChange}
+        options={[
+          { text: 'Blue to black', value: 'blueBlack' },
+          { text: 'Red to black', value: 'redBlack' },
+          { text: 'Yellow to black', value: 'yellowBlack' },
+          { text: 'Green to black', value: 'greenBlack' },
+          { text: 'Greyscale', value: 'greyscale' },
+        ]}
+        placeHolder="Fill color scale..."
+        required
+        type="select"
       />
     </div>
   );
@@ -65,7 +75,19 @@ const Options = ({
 };
 
 Options.propTypes = {
+  form: PropTypes.shape({
+    analysisType: PropTypes.string,
+  }).isRequired,
   show: PropTypes.bool.isRequired,
 };
 
-export default Options;
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  form: AnalysisFormSelector(state),
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+)(Options);
+
+export default ConnectedContainer;

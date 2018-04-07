@@ -65,12 +65,15 @@ CustomInput.defaultProps = {
 };
 
 CustomInput.propTypes = {
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([
+    PropTypes.shape({}),
+    PropTypes.string,
+  ]),
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
-      PropTypes.string,
       PropTypes.number,
+      PropTypes.string,
     ]),
   }).isRequired,
   label: PropTypes.string,

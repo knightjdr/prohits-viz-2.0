@@ -2,11 +2,19 @@ import React from 'react';
 import { Modal } from 'antd';
 
 const InfoModal = (title, message) => {
+  const content = typeof message === 'string' ?
+    (
+      <p>
+        {message}
+      </p>
+    )
+    :
+    message;
   Modal.info({
     title,
     content: (
       <div>
-        <p>{message}</p>
+        {content}
       </div>
     ),
     maskClosable: true,
