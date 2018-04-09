@@ -36,6 +36,15 @@
 .News-item-navlink:visited, {
   color: $accent-dark;
 }
+.News-item-share-buttons {
+  margin-top: 20px;
+}
+.News-item-share-buttons > div:not(:last-child) {
+  margin-bottom: 5px;
+}
+.News-item-share-buttons-title {
+  font-weight: 600;
+}
 @media screen and (max-width: 680px) {
   .News-item-navbutton-container {
     display: none;

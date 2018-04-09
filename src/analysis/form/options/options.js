@@ -7,29 +7,24 @@ import AnalysisFormSelector from '../../../state/selectors/analysis-form-selecto
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
 import Info from './info/info';
+import ScoreDir from './dynamic-options/score-dir-container';
 
 import './options.css';
 
 const Options = ({
+  change,
   form,
   show,
 }) => {
-  const { analysisType } = form;
+  const { analysisType, score, scoreDir } = form;
   const optionsElement = (
     <div className="Options-container">
       <Divider>Advanced options</Divider>
-      <CustomField
-        helpMessage={Info[analysisType].scoreDir}
-        label="Score direction"
-        name="scoreDir"
-        onChange={DefaultChange}
-        options={[
-          { text: 'smaller values are better', value: 'lte' },
-          { text: 'larger values are better', value: 'gte' },
-        ]}
-        placeHolder="Score direction..."
-        required
-        type="select"
+      <ScoreDir
+        analysisType={analysisType}
+        change={change}
+        score={score}
+        scoreDir={scoreDir}
       />
       <CustomField
         helpMessage={Info[analysisType].primaryFilter}
@@ -52,6 +47,41 @@ const Options = ({
         type="input"
       />
       <CustomField
+        helpMessage={Info[analysisType].minAbd}
+        inputType="number"
+        label="Minimum abundance value"
+        name="minAbd"
+        onChange={DefaultChange}
+        placeHolder="Minimum abundance value..."
+        required
+        type="input"
+      />
+      <CustomField
+        helpMessage={Info[analysisType].maxAbd}
+        inputType="number"
+        label="Maximum abundance value"
+        name="maxAbd"
+        onChange={DefaultChange}
+        placeHolder="Maximum abundance value..."
+        required
+        type="input"
+      />
+      <CustomField
+        helpMessage={Info[analysisType].log}
+        label="Log transformation"
+        name="log"
+        onChange={DefaultChange}
+        options={[
+          { text: 'none', value: 'none' },
+          { text: '2', value: 2 },
+          { text: 'e', value: 'e' },
+          { text: '10', value: 10 },
+        ]}
+        placeHolder="Log transformation..."
+        required
+        type="select"
+      />
+      <CustomField
         helpMessage={Info[analysisType].colorScale}
         label="Fill color scale"
         name="fillColorScale"
@@ -67,6 +97,22 @@ const Options = ({
         required
         type="select"
       />
+      <CustomField
+        helpMessage={Info[analysisType].colorScale}
+        label="Edge color scale"
+        name="edgeColorScale"
+        onChange={DefaultChange}
+        options={[
+          { text: 'Blue to black', value: 'blueBlack' },
+          { text: 'Red to black', value: 'redBlack' },
+          { text: 'Yellow to black', value: 'yellowBlack' },
+          { text: 'Green to black', value: 'greenBlack' },
+          { text: 'Greyscale', value: 'greyscale' },
+        ]}
+        placeHolder="Edge color scale..."
+        required
+        type="select"
+      />
     </div>
   );
   return (
@@ -75,6 +121,7 @@ const Options = ({
 };
 
 Options.propTypes = {
+  change: PropTypes.func.isRequired,
   form: PropTypes.shape({
     analysisType: PropTypes.string,
   }).isRequired,

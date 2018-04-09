@@ -8,38 +8,28 @@ import Tools from './tools/tools';
 
 import './App.css';
 
-export class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listenerAdded: false,
       hidePrompt: true,
+      onScroll: null,
     };
   }
   componentDidMount = () => {
-    const { scrollTop } = this.elem;
-    if (scrollTop === 0) {
-      this.elem.addEventListener('scroll', this.handleScroll);
-      this.setState({
-        hidePrompt: false,
-        listenerAdded: true,
-      });
-    }
-  }
-  componentWillUnmount = () => {
-    if (this.state.listenerAdded) {
-      this.elem.removeEventListener('scroll', this.handleScroll);
-    }
+    this.setState({
+      hidePrompt: false,
+      onScroll: this.handleScroll,
+    });
   }
   checkTop = (scrollTop) => {
     if (
       !this.state.hidePrompt &&
       scrollTop > 0
     ) {
-      this.elem.removeEventListener('scroll', this.handleScroll);
       this.setState({
         hidePrompt: true,
-        listenerAdded: false,
+        onScroll: null,
       });
     }
   }
@@ -52,6 +42,7 @@ export class App extends Component {
       <div
         className="App"
         ref={(elem) => { this.elem = elem; }}
+        onScroll={this.state.onScroll}
       >
         <Home />
         <Tools />

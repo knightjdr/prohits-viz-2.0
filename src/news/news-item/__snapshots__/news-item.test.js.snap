@@ -73,6 +73,80 @@ exports[`News item It renders when loaded 1`] = `
             </Button>
           </Component>
         </Tooltip>
+        <div
+          className="News-item-share-buttons"
+        >
+          <div
+            className="News-item-share-buttons-title"
+          >
+            Share
+          </div>
+          <CreatedButton
+            className="nobutton"
+            hashtags={
+              Array [
+                "#test",
+              ]
+            }
+            title="test"
+            url="http://localhost:3000/news/abcd"
+            windowHeight={400}
+            windowWidth={550}
+          >
+            <Icon
+              className=""
+              iconBgStyle={Object {}}
+              logoFillColor="white"
+              round={true}
+              size={32}
+            />
+          </CreatedButton>
+          <CreatedButton
+            className="nobutton"
+            hashtag="#test"
+            quote="test"
+            url="http://localhost:3000/news/abcd"
+            windowHeight={400}
+            windowWidth={550}
+          >
+            <Icon
+              className=""
+              iconBgStyle={Object {}}
+              logoFillColor="white"
+              round={true}
+              size={32}
+            />
+          </CreatedButton>
+          <CreatedButton
+            className="nobutton"
+            url="http://localhost:3000/news/abcd"
+            windowHeight={400}
+            windowWidth={550}
+          >
+            <Icon
+              className=""
+              iconBgStyle={Object {}}
+              logoFillColor="white"
+              round={true}
+              size={32}
+            />
+          </CreatedButton>
+          <CreatedButton
+            className="nobutton"
+            onClick={[Function]}
+            openWindow={false}
+            subject="test"
+            url="http://localhost:3000/news/abcd"
+          >
+            <Icon
+              className=""
+              iconBgStyle={Object {}}
+              logoFillColor="white"
+              round={true}
+              size={32}
+            />
+          </CreatedButton>
+        </div>
       </Affix>
     </div>
     <div
@@ -134,10 +208,10 @@ exports[`News item It renders with error 1`] = `
             512,
             Array [],
             "f071",
-            "M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z",
+            "M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.054-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.952 83.154 0l239.94 416.028zm-27.658 15.991l-240-416c-6.16-10.678-21.583-10.634-27.718 0l-240 416C27.983 466.678 35.731 480 48 480h480c12.323 0 19.99-13.369 13.859-23.996zM288 372c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28zm-11.49-212h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM288 372c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z",
           ],
           "iconName": "exclamation-triangle",
-          "prefix": "fas",
+          "prefix": "fal",
         }
       }
       listItem={false}

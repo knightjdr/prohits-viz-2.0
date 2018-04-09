@@ -28,7 +28,9 @@ const testItem = {
     item: {
       date: 'test',
       details: 'test',
+      hashtags: ['#test'],
       headline: 'test',
+      _id: 'abcd',
     },
   },
   loading: {
@@ -56,6 +58,7 @@ describe('News item', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Spin').length).toBe(1);
   });
 
   test('It renders when loaded', () => {
@@ -65,6 +68,7 @@ describe('News item', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('.News-item-content').length).toBe(1);
   });
 
   test('It renders with error', () => {
@@ -74,5 +78,8 @@ describe('News item', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    const text = wrapper.find('.News-item-message').text();
+    const re = RegExp('There was an error retrieving this story');
+    expect(re.test(text)).toBeTruthy();
   });
 });

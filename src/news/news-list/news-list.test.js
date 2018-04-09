@@ -83,6 +83,7 @@ describe('News list', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Spin').length).toBe(1);
   });
 
   test('Renders when loaded', () => {
@@ -95,6 +96,7 @@ describe('News list', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('.News-list-title').length).toBe(1);
   });
 
   test('Renders with error', () => {
@@ -107,6 +109,9 @@ describe('News list', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+    const text = wrapper.find('.News-list-message').text();
+    const re = RegExp('There was an error retrieving the news');
+    expect(re.test(text)).toBeTruthy();
   });
 
   test('ChangePage called on pagination element', () => {

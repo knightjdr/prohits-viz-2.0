@@ -7,7 +7,7 @@ import FileInput from './file-input';
 import ParseHeader from './parse-header';
 import { clearFileHeader, setFileHeader } from '../../../state/set/header-actions';
 
-export const SampleHeader = 'Bait\tPrey\tPreyGene\tSpec\tSpecSum\tAvgSpec\tNumReplicates\tctrlCounts\tAvgP\tMaxP\tTopoAvgP\tTopoMaxP\tSaintScore\tlogOddsScore\tFoldChange\tBFDR\tboosted_by\tUniqueSpec\tUniqueSpecSum\tUniqueAvgSpec\tPreySequenceLength\n';
+export const SampleHeader = 'Bait\tPrey\tPreyGene\tSpec\tSpecSum\tAvgSpec\tNumReplicates\tctrlCounts\tAvgP\tMaxP\tTopoAvgP\tTopoMaxP\tSaintScore\tlogOddsScore\tFoldChange\tBFDR\tUniqueSpec\tUniqueSpecSum\tUniqueAvgSpec\tPreySequenceLength\n';
 
 export class FileInputContainer extends Component {
   onFileChange = (value, input) => {

@@ -57,7 +57,10 @@ export const AnalysisFormComponent = ({
               handleOptions={handleOptions}
               showOptions={showOptions}
             />
-            <Options show={showOptions} />
+            <Options
+              change={change}
+              show={showOptions}
+            />
           </div>
         }
       </div>
