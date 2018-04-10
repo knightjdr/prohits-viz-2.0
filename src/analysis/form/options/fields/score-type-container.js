@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import ScoreDir from './score-dir';
+import ScoreType from './score-type';
 
 const expectedScoreDir = (score) => {
   const scoreMap = {
@@ -19,43 +19,43 @@ const expectedScoreDir = (score) => {
   return scoreMap[score.toLowerCase()] || 'lte';
 };
 
-class ScoreDirContainer extends Component {
+class ScoreTypeContainer extends Component {
   constructor(props) {
     super(props);
-    const { change, score, scoreDir } = this.props;
-    this.setReduxFormState(change, score, scoreDir);
+    const { change, score, scoreType } = this.props;
+    this.setReduxFormState(change, score, scoreType);
   }
   componentWillReceiveProps = (nextProps) => {
     const { change, score } = nextProps;
-    // if score column changes, change scoreDir
+    // if score column changes, change scoreType
     if (score !== this.props.score) {
-      change('scoreDir', expectedScoreDir(score));
+      change('scoreType', expectedScoreDir(score));
     }
   }
-  setReduxFormState = (change, score, scoreDir) => {
+  setReduxFormState = (change, score, scoreType) => {
     if (
-      !scoreDir &&
+      !scoreType &&
       score
     ) {
-      change('scoreDir', expectedScoreDir(score));
+      change('scoreType', expectedScoreDir(score));
     }
   }
   render() {
     return (
-      <ScoreDir analysisType={this.props.analysisType} />
+      <ScoreType analysisType={this.props.analysisType} />
     );
   }
 }
 
-ScoreDirContainer.defaultProps = {
-  scoreDir: undefined,
+ScoreTypeContainer.defaultProps = {
+  scoreType: undefined,
 };
 
-ScoreDirContainer.propTypes = {
+ScoreTypeContainer.propTypes = {
   analysisType: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired,
   score: PropTypes.string.isRequired,
-  scoreDir: PropTypes.string,
+  scoreType: PropTypes.string,
 };
 
-export default ScoreDirContainer;
+export default ScoreTypeContainer;

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Form, Checkbox } from 'antd';
+import { Form, Switch } from 'antd';
 
 const FormItem = Form.Item;
 
-/* checkbox wrapped in Ant design's <FormItem>, whose state will
+/* switch box wrapped in Ant design's <FormItem>, whose state will
 ** be set from the redux store's 'input' */
 
-const CustomCheckbox = ({
+const CustomSwitch = ({
   formItemLayout,
   input,
   label,
@@ -18,22 +18,22 @@ const CustomCheckbox = ({
     {...formItemLayout}
     label={label}
   >
-    <Checkbox
+    <Switch
       checked={input.value || false}
-      onChange={(e) => { onChange(e.target.checked, input); }}
+      onChange={(value) => { onChange(value, input); }}
       style={style}
     />
   </FormItem>
 );
 
-CustomCheckbox.defaultProps = {
+CustomSwitch.defaultProps = {
   formItemLayout: {},
   label: null,
   onChange: null,
   style: {},
 };
 
-CustomCheckbox.propTypes = {
+CustomSwitch.propTypes = {
   formItemLayout: PropTypes.shape({
     labelCol: PropTypes.shape({}),
     wrapperCol: PropTypes.shape({}),
@@ -50,4 +50,4 @@ CustomCheckbox.propTypes = {
   style: PropTypes.shape({}),
 };
 
-export default CustomCheckbox;
+export default CustomSwitch;

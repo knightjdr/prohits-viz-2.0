@@ -5,6 +5,8 @@ import { Field } from 'redux-form';
 import CustomCheckbox from './checkbox';
 import CustomInput from './input';
 import CustomSelect from './select';
+import CustomSwitch from './switch';
+import CustomTextArea from './text-area';
 import CustomUpload from './upload';
 
 /* takes props for an input type and passing it to a custom input that
@@ -13,6 +15,7 @@ import CustomUpload from './upload';
 export const WrappedField = ({
   allowClear,
   field,
+  formItemLayout,
   helpMessage,
   inputType,
   label,
@@ -20,6 +23,7 @@ export const WrappedField = ({
   options,
   placeHolder,
   required,
+  rows,
   style,
   type,
 }) => {
@@ -28,6 +32,7 @@ export const WrappedField = ({
     case 'checkbox':
       return (
         <CustomCheckbox
+          formItemLayout={formItemLayout}
           input={input}
           label={label}
           onChange={onChange}
@@ -60,6 +65,30 @@ export const WrappedField = ({
           options={options}
           placeHolder={placeHolder}
           required={required}
+          style={style}
+        />
+      );
+    case 'switch':
+      return (
+        <CustomSwitch
+          formItemLayout={formItemLayout}
+          input={input}
+          label={label}
+          onChange={onChange}
+          style={style}
+        />
+      );
+    case 'textArea':
+      return (
+        <CustomTextArea
+          label={label}
+          helpMessage={helpMessage}
+          input={input}
+          meta={meta}
+          onChange={onChange}
+          placeHolder={placeHolder}
+          required={required}
+          rows={rows}
           style={style}
         />
       );

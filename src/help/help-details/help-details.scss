@@ -1,8 +1,15 @@
 .HelpDetails-container {
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
   max-height: calc(100vh - 40px);
-  padding: 10px 10px;
 };
+.HelpDetails-flex-container {
+  max-width: 1000px;
+  padding: 10px 30px 10px 20px;
+  text-align: justify;
+  width: calc(100vw - 180px);
+}
 .HelpDetails-pages {
   height: calc(100vh - 145px);
   margin-top: 10px;

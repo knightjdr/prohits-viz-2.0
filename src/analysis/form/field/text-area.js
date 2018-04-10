@@ -8,7 +8,9 @@ import InfoModal from './info-modal';
 
 import './field.css';
 
-/* input menu wrapped in Ant design's <FormItem>, whose initial state will
+const { TextArea } = Input;
+
+/* text area wrapped in Ant design's <FormItem>, whose initial state will
 ** be set from the redux store's 'input' */
 
 const FormItem = Form.Item;
@@ -21,8 +23,8 @@ const CustomInput = ({
   onChange,
   placeHolder,
   required,
+  rows,
   style,
-  type,
 }) => {
   const { error, touched } = meta;
   const formError = required && touched && error;
@@ -34,18 +36,12 @@ const CustomInput = ({
         help={formError ? error : ''}
         validateStatus={formError ? 'error' : ''}
       >
-        <Input
+        <TextArea
           defaultValue={input.value || undefined}
-          onMouseLeave={(value) => {
-            // if user updated input but did not press enter, update
-            if (value !== input.value) {
-              onChange(value, input);
-            }
-          }}
-          onPressEnter={(value) => { onChange(value, input); }}
+          onMouseLeave={(value) => { onChange(value, input); }}
           placeholder={placeHolder}
+          rows={rows}
           style={style}
-          type={type}
         />
       </FormItem>
       {
@@ -66,8 +62,8 @@ CustomInput.defaultProps = {
   label: null,
   placeHolder: 'Select',
   required: false,
+  rows: 5,
   style: {},
-  type: 'text',
 };
 
 CustomInput.propTypes = {
@@ -91,8 +87,8 @@ CustomInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeHolder: PropTypes.string,
   required: PropTypes.bool,
+  rows: PropTypes.number,
   style: PropTypes.shape({}),
-  type: PropTypes.string,
 };
 
 export default CustomInput;
