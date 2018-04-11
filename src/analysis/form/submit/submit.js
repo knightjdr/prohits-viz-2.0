@@ -10,8 +10,8 @@ import AnalysisFormSelector from '../../../state/selectors/analysis-form-selecto
 
 import './submit.css';
 
-const ScoreDirToEntity = scoreDir => (
-  scoreDir === 'gte' ? '≥' : '≤'
+const ScoreDirToEntity = scoreType => (
+  scoreType === 'gte' ? '≥' : '≤'
 );
 
 const Settings = (
@@ -19,12 +19,12 @@ const Settings = (
   abundance,
   abundanceMin,
   score,
-  scoreDir,
+  scoreType,
   primaryFilter,
 ) => {
   switch (analysisType) {
     case 'dotplot':
-      return ` ${score} ${ScoreDirToEntity(scoreDir)} ${primaryFilter}
+      return ` ${score} ${ScoreDirToEntity(scoreType)} ${primaryFilter}
         and with at least ${abundanceMin} ${abundance}.`;
     default:
       return '.';
@@ -42,7 +42,7 @@ export const SubmitComponent = ({
     analysisType,
     primaryFilter,
     score,
-    scoreDir,
+    scoreType,
   } = form;
   const optionsIcon = showOptions ?
     <FontAwesomeIcon icon={faMinusSquare} size="sm" />
@@ -59,7 +59,7 @@ export const SubmitComponent = ({
             abundance,
             abundanceMin,
             score,
-            scoreDir,
+            scoreType,
             primaryFilter,
           )
         }

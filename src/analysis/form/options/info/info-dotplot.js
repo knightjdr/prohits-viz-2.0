@@ -7,6 +7,14 @@ import PreyLengthNormalization from './images/length-normalization.svg';
 import './info.css';
 
 const InfoDotplot = {
+  baitClustering: `The user can generate dot plots without clustering if desired.
+  In this case, a list of bait and prey genes in the desired display order must be
+  supplied in the text boxes. Only baits and preys entered in the text box will be
+  included in the analysis and in the dot plot. Bait and prey names must be entered
+  as they appear in the input file name and are case sensitive. In some cases the
+  user may want to control which baits are shown in the dot plot and their ordering,
+  while wanting to show and cluster all preys, or vice versa. This can be done as well
+  by selecting "cluster all" under the bait or prey options menu.`,
   colorScale: (
     <div>
       Various options are available for the fill and edge color, and these can be
@@ -48,6 +56,14 @@ const InfoDotplot = {
     always occur after control subtraction and prey length normalization but before
     log transformation.`,
   outputFolder: 'The name of the output folder',
+  preyClustering: `The user can generate dot plots without clustering if desired.
+  In this case, a list of bait and prey genes in the desired display order must be
+  supplied in the text boxes. Only baits and preys entered in the text box will be
+  included in the analysis and in the dot plot. Bait and prey names must be entered
+  as they appear in the input file name and are case sensitive. In some cases the
+  user may want to control which baits are shown in the dot plot and their ordering,
+  while wanting to show and cluster all preys, or vice versa. This can be done as well
+  by selecting "cluster all" under the bait or prey options menu.`,
   preyLength: (
     <div>
       The spectral count/abundance value of each prey can be normalized

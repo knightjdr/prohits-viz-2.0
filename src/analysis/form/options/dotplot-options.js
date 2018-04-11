@@ -5,12 +5,13 @@ import Clustering from './fields/clustering-dotplot';
 import ControlSubtraction from './fields/control-subtraction-container';
 import EdgeColorScale from './fields/edge-color-scale';
 import FillColorScale from './fields/fill-color-scale';
+import MaximumAbundance from './fields/maximum-abundance';
 import MinimumAbundance from './fields/minimum-abundance';
 import Log from './fields/log';
 import Normalization from './fields/normalization';
 import Output from './fields/output';
 import PreyLengthNormalization from './fields/prey-length-normalization-container';
-import PrimaryFilter from './fields/primary-filter';
+import PrimaryFilter from './fields/primary-filter-container';
 import ScoreType from './fields/score-type-container';
 import SecondaryFilter from './fields/secondary-filter';
 
@@ -38,11 +39,16 @@ const DotplotOptions = ({
         analysisType={analysisType}
         change={change}
         score={score}
-        scoreDir={scoreType}
+        scoreType={scoreType}
       />
-      <PrimaryFilter analysisType={analysisType} />
+      <PrimaryFilter
+        analysisType={analysisType}
+        change={change}
+        score={score}
+      />
       <SecondaryFilter analysisType={analysisType} />
       <MinimumAbundance analysisType={analysisType} />
+      <MaximumAbundance analysisType={analysisType} />
       <ControlSubtraction
         analysisType={analysisType}
         change={change}
@@ -65,6 +71,7 @@ const DotplotOptions = ({
       <FillColorScale analysisType={analysisType} />
       <EdgeColorScale analysisType={analysisType} />
       <Clustering
+        analysisType={analysisType}
         baitClustering={baitClustering}
         clustering={clustering}
         preyClustering={preyClustering}

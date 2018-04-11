@@ -5,10 +5,12 @@ import { NavLink } from 'react-router-dom';
 import CustomField from '../../field/field';
 import DefaultChange from '../../field/default-change';
 import DefaultCheckboxChange from '../../field/default-checkbox-change';
+import Info from '../info/info';
 
 import './clustering.css';
 
 const Clustering = ({
+  analysisType,
   baitClustering,
   clustering,
   preyClustering,
@@ -92,6 +94,7 @@ const Clustering = ({
       clustering === 'none' &&
       <div>
         <CustomField
+          helpMessage={Info[analysisType].baitClustering}
           label="Bait options"
           name="baitClustering"
           onChange={DefaultChange}
@@ -113,6 +116,7 @@ const Clustering = ({
           />
         }
         <CustomField
+          helpMessage={Info[analysisType].preyClustering}
           label="Prey options"
           name="preyClustering"
           onChange={DefaultChange}
@@ -145,6 +149,7 @@ Clustering.defaultProps = {
 };
 
 Clustering.propTypes = {
+  analysisType: PropTypes.string.isRequired,
   baitClustering: PropTypes.string,
   clustering: PropTypes.string,
   preyClustering: PropTypes.string,

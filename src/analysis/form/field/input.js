@@ -26,6 +26,8 @@ const CustomInput = ({
 }) => {
   const { error, touched } = meta;
   const formError = required && touched && error;
+  // the next condition is to allow input values of 0
+  const defaultValue = Number.isNaN(input.value) && !input.value ? undefined : input.value;
   return (
     <div className="CustomField-container">
       <FormItem
@@ -35,7 +37,7 @@ const CustomInput = ({
         validateStatus={formError ? 'error' : ''}
       >
         <Input
-          defaultValue={input.value || undefined}
+          defaultValue={defaultValue}
           onMouseLeave={(value) => {
             // if user updated input but did not press enter, update
             if (value !== input.value) {
