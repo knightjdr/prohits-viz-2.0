@@ -3,8 +3,8 @@ import React from 'react';
 
 import Clustering from './fields/clustering-dotplot';
 import ControlSubtraction from './fields/control-subtraction-container';
-import EdgeColorScale from './fields/edge-color-scale';
-import FillColorScale from './fields/fill-color-scale';
+import EdgeColor from './fields/edge-color';
+import FillColor from './fields/fill-color';
 import MaximumAbundance from './fields/maximum-abundance';
 import MinimumAbundance from './fields/minimum-abundance';
 import Log from './fields/log';
@@ -13,7 +13,7 @@ import Output from './fields/output';
 import PreyLengthNormalization from './fields/prey-length-normalization-container';
 import PrimaryFilter from './fields/primary-filter-container';
 import ScoreType from './fields/score-type-container';
-import SecondaryFilter from './fields/secondary-filter';
+import SecondaryFilter from './fields/secondary-filter-container';
 
 const DotplotOptions = ({
   change,
@@ -46,7 +46,11 @@ const DotplotOptions = ({
         change={change}
         score={score}
       />
-      <SecondaryFilter analysisType={analysisType} />
+      <SecondaryFilter
+        analysisType={analysisType}
+        change={change}
+        score={score}
+      />
       <MinimumAbundance analysisType={analysisType} />
       <MaximumAbundance analysisType={analysisType} />
       <ControlSubtraction
@@ -68,8 +72,8 @@ const DotplotOptions = ({
         normalization={normalization}
       />
       <Log analysisType={analysisType} />
-      <FillColorScale analysisType={analysisType} />
-      <EdgeColorScale analysisType={analysisType} />
+      <FillColor analysisType={analysisType} />
+      <EdgeColor analysisType={analysisType} />
       <Clustering
         analysisType={analysisType}
         baitClustering={baitClustering}

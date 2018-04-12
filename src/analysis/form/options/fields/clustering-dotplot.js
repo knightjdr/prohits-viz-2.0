@@ -20,13 +20,13 @@ const Clustering = ({
       Clustering
     </div>
     <div className="Clustering-introduction ant-text">
-      See the
+      See the{' '}
       <NavLink
-        className="decorate-link inline-add-margins"
+        className="decorate-link"
         to="/help/tools/dotplot"
       >
         help
-      </NavLink>
+      </NavLink>{' '}
       for clustering options available for this tool.
     </div>
     <CustomField
@@ -48,7 +48,7 @@ const Clustering = ({
           Approximate biclustering (faster):
         </div>
         <CustomField
-          name="biclustering"
+          name="biclusteringApprox"
           onChange={DefaultCheckboxChange}
           type="switch"
         />
@@ -59,7 +59,7 @@ const Clustering = ({
       <div>
         <CustomField
           label="Distance metric"
-          name="distance"
+          name="distanceMetric"
           onChange={DefaultChange}
           options={[
             { text: 'binary', value: 'binary' },

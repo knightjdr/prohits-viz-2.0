@@ -1,4 +1,16 @@
+.ToolSelection-analysis-select {
+  margin-right: 20px;
+  width: 150px;
+}
 .ToolSelection-select-container {
   display: flex;
   margin-top: 15px;
+}
+.ToolSelection-tool-description {
+  min-width: 260px;
+}
+@media (max-width: 499px) {
+  .ToolSelection-select-container {
+    flex-wrap: wrap;
+  }
 }

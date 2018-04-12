@@ -15,13 +15,13 @@ const HeaderSelection = ({
     <div className="HeaderSelection-container">
       <Divider>Columns</Divider>
       <div>
-        Specify the columns to use if they have not been preselected. See
+        Specify the columns to use if they have not been preselected. See{' '}
         <NavLink
-          className="decorate-link inline-add-margins"
+          className="decorate-link"
           to="/help/format"
         >
           here
-        </NavLink>
+        </NavLink>{' '}
         to learn about how the columns are used during analysis.
       </div>
       <div className="HeaderSelection-select-container">

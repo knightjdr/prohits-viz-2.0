@@ -22,7 +22,6 @@ export const WrappedField = ({
   onChange,
   options,
   placeHolder,
-  required,
   rows,
   style,
   type,
@@ -48,7 +47,6 @@ export const WrappedField = ({
           meta={meta}
           onChange={onChange}
           placeHolder={placeHolder}
-          required={required}
           style={style}
           type={inputType}
         />
@@ -64,7 +62,6 @@ export const WrappedField = ({
           onChange={onChange}
           options={options}
           placeHolder={placeHolder}
-          required={required}
           style={style}
         />
       );
@@ -87,7 +84,6 @@ export const WrappedField = ({
           meta={meta}
           onChange={onChange}
           placeHolder={placeHolder}
-          required={required}
           rows={rows}
           style={style}
         />
@@ -99,7 +95,6 @@ export const WrappedField = ({
           input={input}
           meta={meta}
           onChange={onChange}
-          required={required}
           style={style}
         />
       );

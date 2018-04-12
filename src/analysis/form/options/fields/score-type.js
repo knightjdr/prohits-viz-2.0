@@ -14,11 +14,10 @@ const ScoreType = ({
     name="scoreType"
     onChange={DefaultChange}
     options={[
-      { text: 'smaller scores are better', value: 'lte' },
       { text: 'larger scores are better', value: 'gte' },
+      { text: 'smaller scores are better', value: 'lte' },
     ]}
     placeHolder="Score type..."
-    required
     type="select"
   />
 );

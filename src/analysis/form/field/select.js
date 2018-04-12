@@ -23,11 +23,10 @@ const CustomSelect = ({
   onChange,
   options,
   placeHolder,
-  required,
   style,
 }) => {
   const { error, touched } = meta;
-  const formError = required && touched && error;
+  const formError = touched && error;
   return (
     <div className="CustomField-container">
       <FormItem
@@ -99,7 +98,6 @@ CustomSelect.defaultProps = {
   label: null,
   options: [],
   placeHolder: 'Select',
-  required: false,
   style: {},
 };
 
@@ -138,7 +136,6 @@ CustomSelect.propTypes = {
     }),
   ),
   placeHolder: PropTypes.string,
-  required: PropTypes.bool,
   style: PropTypes.shape({}),
 };
 

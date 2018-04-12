@@ -16,13 +16,13 @@ const Output = ({
       Output
     </div>
     <div className="Output-introduction ant-text">
-      See the
+      See the{' '}
       <NavLink
-        className="decorate-link inline-add-margins"
+        className="decorate-link"
         to="/help/tools/dotplot"
       >
         help
-      </NavLink>
+      </NavLink>{' '}
       for detailed information on the files output from this tool.
     </div>
     <CustomField

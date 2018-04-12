@@ -18,14 +18,15 @@
   display: flex !important;
   justify-content: center;
   padding: 10px;
-  width: 1000px; }
+  width: 900px; }
 
 .Spotlight-carousel-description {
   color: #2A3132;
   margin-left: 10px;
-  max-width: 800px; }
+  max-width: 700px; }
 
 .Spotlight-carousel-image-container {
+  margin-top: 5px;
   max-height: 200px;
   max-width: 200px;
   min-width: 200px; }
@@ -54,7 +55,8 @@
   margin-top: 20px; }
 
 .Spotlight-link-container {
-  margin-top: 15px; }
+  margin-bottom: 10px;
+  margin-top: 5px; }
 
 .Spotlight-link {
   color: #AC867C;
@@ -84,15 +86,32 @@
   outline: none;
   padding: 0;
   transition: all .5s;
-  width: 16px; }
+  width: 20px; }
 
 .ant-carousel .slick-dots li.slick-active button {
   background: #AC867C;
   opacity: 1;
-  width: 24px; }
+  width: 30px; }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 899px) {
+  .Spotlight-carousel-container {
+    width: calc(100vw - 9%); }
   .Spotlight-carousel {
-    max-width: calc(100vw - 80px); }
+    max-width: calc(100vw - 9%); }
   .Spotlight-carousel-description {
-    max-width: calc(100vw - 280px); } }
+    max-width: calc(100vw - 32%); }
+  .Spotlight-carousel-image-container {
+    max-height: calc(100vw / 5);
+    max-width: calc(100vw / 5);
+    min-width: calc(100vw / 5); } }
+
+@media screen and (max-width: 699px) {
+  .Spotlight-carousel-container {
+    align-items: flex-start; } }
+
+@media screen and (max-width: 499px) {
+  .Spotlight-carousel-description {
+    text-align: justify;
+    max-width: calc(100vw - 20%); }
+  .Spotlight-carousel-image-container {
+    display: none; } }

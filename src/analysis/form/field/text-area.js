@@ -22,12 +22,11 @@ const CustomInput = ({
   meta,
   onChange,
   placeHolder,
-  required,
   rows,
   style,
 }) => {
   const { error, touched } = meta;
-  const formError = required && touched && error;
+  const formError = touched && error;
   return (
     <div className="CustomField-container">
       <FormItem
@@ -61,7 +60,6 @@ CustomInput.defaultProps = {
   helpMessage: null,
   label: null,
   placeHolder: 'Select',
-  required: false,
   rows: 5,
   style: {},
 };
@@ -86,7 +84,6 @@ CustomInput.propTypes = {
   }).isRequired,
   onChange: PropTypes.func.isRequired,
   placeHolder: PropTypes.string,
-  required: PropTypes.bool,
   rows: PropTypes.number,
   style: PropTypes.shape({}),
 };

@@ -78,7 +78,7 @@ body {
 }
 // button animations
 .pulse-button-primary {
-  animation: pulse-primary 1.25s 5 cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse-primary 1.25s 3 cubic-bezier(0.66, 0, 0, 1);
 }
 .pulse-button-primary:hover {
   animation: none;

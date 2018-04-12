@@ -16,15 +16,14 @@ const infoMessages = {
       This tool takes quantitative information on bait-prey interactions
       and visualizes the interactions as either a dot plot or heat map. This is
       an ideal way of visualizing small to moderately sized data sets (&#8804;
-      20 baits). See the
+      20 baits). See the{' '}
       <NavLink
-        className="decorate-link inline-add-margins"
+        className="decorate-link"
         to="/help/tools/dotplot"
       >
         help
-      </NavLink>
-      for
-      more information on this tool
+      </NavLink>{' '}
+      for more information on this tool
     </span>
   ),
 };
@@ -46,23 +45,20 @@ export const ToolSelectionComponent = ({
         </NavLink>.
       </div>
       <div className="ToolSelection-select-container">
-        <CustomField
-          name="analysisType"
-          onChange={DefaultChange}
-          options={[
-            { disabled: true, text: 'Bait v bait', value: 'baitbait' },
-            { disabled: true, text: 'Correlation', value: 'correlation' },
-            { text: 'Dot plot', value: 'dotplot' },
-            { disabled: true, text: 'Specificity', value: 'specificity' },
-          ]}
-          placeHolder="Analysis type..."
-          required
-          style={{
-            marginRight: 20,
-            width: 150,
-          }}
-          type="select"
-        />
+        <div className="ToolSelection-analysis-select">
+          <CustomField
+            name="analysisType"
+            onChange={DefaultChange}
+            options={[
+              { disabled: true, text: 'Bait v bait', value: 'baitbait' },
+              { disabled: true, text: 'Correlation', value: 'correlation' },
+              { text: 'Dot plot', value: 'dotplot' },
+              { disabled: true, text: 'Specificity', value: 'specificity' },
+            ]}
+            placeHolder="Analysis type..."
+            type="select"
+          />
+        </div>
         {
           form.analysisType &&
           <div className="ToolSelection-tool-description">

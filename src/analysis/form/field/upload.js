@@ -22,11 +22,10 @@ const CustomUpload = ({
   label,
   meta,
   onChange,
-  required,
   style,
 }) => {
   const { error, touched } = meta;
-  const formError = required && touched && error;
+  const formError = touched && error;
   return (
     <FormItem
       label={label}
@@ -53,7 +52,6 @@ const CustomUpload = ({
 
 CustomUpload.defaultProps = {
   label: null,
-  required: false,
   style: {},
 };
 
@@ -73,7 +71,6 @@ CustomUpload.propTypes = {
     warning: PropTypes.string,
   }).isRequired,
   onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool,
   style: PropTypes.shape({}),
 };
 

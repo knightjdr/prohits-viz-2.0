@@ -18,6 +18,7 @@ import './analysis-form.css';
 
 export const AnalysisFormComponent = ({
   change,
+  errors,
   handleOptions,
   handleSubmit,
   nextStep,
@@ -54,6 +55,7 @@ export const AnalysisFormComponent = ({
           <div>
             <HeaderSelection change={change} />
             <Submit
+              errors={errors}
               handleOptions={handleOptions}
               showOptions={showOptions}
             />
@@ -71,6 +73,7 @@ export const AnalysisFormComponent = ({
 AnalysisFormComponent.propTypes = {
   // prop from reduxForm; use to set form values programmatically
   change: PropTypes.func.isRequired,
+  errors: PropTypes.shape({}).isRequired,
   handleOptions: PropTypes.func.isRequired,
   // onSubmit prop converted to handleSubmit by redux form
   handleSubmit: PropTypes.func.isRequired,
@@ -98,6 +101,7 @@ const ConnectedComponent = connect(
 
 const connectedForm = reduxForm({
   destroyOnUnmount: false,
+  enableReinitialize: true,
   form: 'analysisForm',
   touchOnBlur: false, // only validate on submit
   validate: Validation,

@@ -55,8 +55,8 @@ export const HelpDetailsComponent = ({
             { contentElement }
             <RouteNotFound />
           </Switch>
+          <HelpNavButtons />
         </div>
-        <HelpNavButtons />
       </div>
     </div>
   );

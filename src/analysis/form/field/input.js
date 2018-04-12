@@ -20,12 +20,11 @@ const CustomInput = ({
   meta,
   onChange,
   placeHolder,
-  required,
   style,
   type,
 }) => {
   const { error, touched } = meta;
-  const formError = required && touched && error;
+  const formError = touched && error;
   // the next condition is to allow input values of 0
   const defaultValue = Number.isNaN(input.value) && !input.value ? undefined : input.value;
   return (
@@ -67,7 +66,6 @@ CustomInput.defaultProps = {
   helpMessage: null,
   label: null,
   placeHolder: 'Select',
-  required: false,
   style: {},
   type: 'text',
 };
@@ -92,7 +90,6 @@ CustomInput.propTypes = {
   }).isRequired,
   onChange: PropTypes.func.isRequired,
   placeHolder: PropTypes.string,
-  required: PropTypes.bool,
   style: PropTypes.shape({}),
   type: PropTypes.string,
 };

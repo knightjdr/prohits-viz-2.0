@@ -40,3 +40,9 @@
   grid-row: 1;
   grid-column: 1;
   text-transform: uppercase; }
+
+@media (max-width: 499px) {
+  .ToolBox-container {
+    grid-template-columns: 220px 70px;
+    grid-template-rows: 20px 110px;
+    width: 300px; } }

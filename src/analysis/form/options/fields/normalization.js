@@ -14,10 +14,15 @@ const Normalization = ({
   const preyNorm = normalization === 'prey';
   return (
     <div className="Normalization-container">
-      <div className="Normalization-select">
+      <div
+        className="Normalization-select"
+        style={{
+          marginRight: normalization === 'prey' ? 20 : 0,
+        }}
+      >
         <CustomField
           helpMessage={!preyNorm ? Info[analysisType].normalization : null}
-          label="Normalization"
+          label="Bait normalization"
           name="normalization"
           onChange={DefaultChange}
           options={[
@@ -25,7 +30,7 @@ const Normalization = ({
             { text: 'Total abundance', value: 'total' },
             { text: 'Specific prey', value: 'prey' },
           ]}
-          placeHolder="Normalization..."
+          placeHolder="Bait normalization..."
           type="select"
         />
       </div>

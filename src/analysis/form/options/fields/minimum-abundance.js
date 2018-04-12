@@ -15,7 +15,6 @@ const MinimumAbundance = ({
     name="minimumAbundance"
     onChange={DefaultChange}
     placeHolder="Minimum abundance..."
-    required
     type="input"
   />
 );

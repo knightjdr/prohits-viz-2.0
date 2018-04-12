@@ -16,45 +16,41 @@ const FileInput = ({
     <Divider>File selection</Divider>
     <div>
       Specifiy the type of file you would like to analyze and select or drag it
-      to the input below. See the
+      to the input below. See the {' '}
       <NavLink
-        className="decorate-link inline-add-margins"
+        className="decorate-link"
         to="/help/format"
       >
         help
-      </NavLink>
-      for information on input formats. Click
+      </NavLink>{' '}
+      for information on input formats. Click{' '}
       <button
         className="nobutton FileInput-sample-button"
         onClick={selectSampleFile}
         type="button"
       >
         here
-      </button>
+      </button>{' '}
       if you would like to try a sample input file.
     </div>
     <div className="FileInput-select-container">
-      <CustomField
-        name="fileType"
-        onChange={DefaultChange}
-        options={[
-          { text: 'SAINT', value: 'saint' },
-          { disabled: true, text: 'CRAPome', value: 'crapome' },
-          { disabled: true, text: 'Generic', value: 'generic' },
-        ]}
-        placeHolder="File type..."
-        required
-        style={{ width: 150 }}
-        type="select"
-      />
+      <div className="FileInput-select">
+        <CustomField
+          name="fileType"
+          onChange={DefaultChange}
+          options={[
+            { text: 'SAINT', value: 'saint' },
+            { disabled: true, text: 'CRAPome', value: 'crapome' },
+            { disabled: true, text: 'Generic', value: 'generic' },
+          ]}
+          placeHolder="File type..."
+          type="select"
+        />
+      </div>
       <div className="FileInput-upload-wrapper">
         <CustomField
           name="file"
           onChange={onFileChange}
-          required
-          style={{
-            minWidth: 150,
-          }}
           type="upload"
         />
       </div>

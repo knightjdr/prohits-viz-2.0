@@ -11,7 +11,7 @@ const Log = ({
   <CustomField
     helpMessage={Info[analysisType].log}
     label="Log transformation"
-    name="log"
+    name="logTransform"
     onChange={DefaultChange}
     options={[
       { text: 'none', value: 'none' },

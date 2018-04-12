@@ -5,28 +5,28 @@ import CustomField from '../../field/field';
 import DefaultChange from '../../field/default-change';
 import Info from '../info/info';
 
-const EdgeColorScale = ({
+const FillColor = ({
   analysisType,
 }) => (
   <CustomField
     helpMessage={Info[analysisType].colorScale}
-    label="Edge color scale"
-    name="edgeColorScale"
+    label="Fill color scale"
+    name="fillColor"
     onChange={DefaultChange}
     options={[
       { text: 'Blue to black', value: 'blueBlack' },
-      { text: 'Red to black', value: 'redBlack' },
-      { text: 'Yellow to black', value: 'yellowBlack' },
       { text: 'Green to black', value: 'greenBlack' },
       { text: 'Greyscale', value: 'greyscale' },
+      { text: 'Red to black', value: 'redBlack' },
+      { text: 'Yellow to black', value: 'yellowBlack' },
     ]}
-    placeHolder="Edge color scale..."
+    placeHolder="Fill color scale..."
     type="select"
   />
 );
 
-EdgeColorScale.propTypes = {
+FillColor.propTypes = {
   analysisType: PropTypes.string.isRequired,
 };
 
-export default EdgeColorScale;
+export default FillColor;

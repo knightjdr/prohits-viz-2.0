@@ -3,7 +3,7 @@ import faExclamationTriangle from '@fortawesome/fontawesome-pro-light/faExclamat
 import faNewspaper from '@fortawesome/fontawesome-pro-regular/faNewspaper';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Affix, Button, Spin, Tooltip } from 'antd';
+import { Button, Spin, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {
@@ -42,67 +42,62 @@ export const NewsItemComponent = ({
       </div>
     );
   } else if (newsItem.isLoaded) {
+    const newsButtons = (
+      <div className="News-item-navbutton-container">
+        <Tooltip
+          placement="right"
+          title="News archive"
+        >
+          <NavLink
+            className="News-item-navlink"
+            to="/news"
+          >
+            <Button
+              type="primary"
+              shape="circle"
+            >
+              <FontAwesomeIcon
+                icon={faNewspaper}
+              />
+            </Button>
+          </NavLink>
+        </Tooltip>
+        <div className="News-item-share-buttons-title">
+          Share
+        </div>
+        <TwitterShareButton
+          className="nobutton"
+          hashtags={newsItem.item.hashtags}
+          title={newsItem.item.headline}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+        >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+        <FacebookShareButton
+          className="nobutton"
+          hashtag={newsItem.item.hashtags[0]}
+          quote={newsItem.item.headline}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+        >
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+        <GooglePlusShareButton
+          className="nobutton"
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+        >
+          <GooglePlusIcon size={32} round />
+        </GooglePlusShareButton>
+        <EmailShareButton
+          className="nobutton"
+          subject={newsItem.item.headline}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+        >
+          <EmailIcon size={32} round />
+        </EmailShareButton>
+      </div>
+    );
     newsItemElement = (
       <div className="News-item-content">
-        <div className="News-item-navbutton-container">
-          <Affix
-            className="News-item-navbuttons"
-            offsetTop={20}
-          >
-            <Tooltip
-              placement="right"
-              title="News archive"
-            >
-              <NavLink
-                className="News-item-navlink"
-                to="/news"
-              >
-                <Button
-                  type="primary"
-                  shape="circle"
-                >
-                  <FontAwesomeIcon
-                    icon={faNewspaper}
-                  />
-                </Button>
-              </NavLink>
-            </Tooltip>
-            <div className="News-item-share-buttons">
-              <div className="News-item-share-buttons-title">
-                Share
-              </div>
-              <TwitterShareButton
-                className="nobutton"
-                hashtags={newsItem.item.hashtags}
-                title={newsItem.item.headline}
-                url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-              <FacebookShareButton
-                className="nobutton"
-                hashtag={newsItem.item.hashtags[0]}
-                quote={newsItem.item.headline}
-                url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
-              <GooglePlusShareButton
-                className="nobutton"
-                url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
-              >
-                <GooglePlusIcon size={32} round />
-              </GooglePlusShareButton>
-              <EmailShareButton
-                className="nobutton"
-                subject={newsItem.item.headline}
-                url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
-              >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-            </div>
-          </Affix>
-        </div>
         <div className="News-item-story">
           <div className="News-item-headline">
             { newsItem.item.headline }
@@ -110,6 +105,7 @@ export const NewsItemComponent = ({
           <div className="News-item-date">
             { newsItem.item.date }
           </div>
+          {newsButtons}
           <div className="News-item-details">
             { TextToHtml(newsItem.item.details) }
           </div>

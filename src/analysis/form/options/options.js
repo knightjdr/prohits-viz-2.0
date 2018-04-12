@@ -16,7 +16,14 @@ const Options = ({
   show,
 }) => {
   const optionsElement = (
-    <div className="Options-container">
+    <div
+      className="Options-container"
+      style={{
+        height: show ? 'auto' : 0,
+        opacity: show ? 1 : 0,
+        overflow: show ? 'auto' : 'hidden',
+      }}
+    >
       <Divider>Advanced options</Divider>
       <DotplotOptions
         change={change}
@@ -25,9 +32,7 @@ const Options = ({
       />
     </div>
   );
-  return (
-    show ? optionsElement : null
-  );
+  return optionsElement;
 };
 
 Options.propTypes = {

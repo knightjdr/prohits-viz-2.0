@@ -1,9 +1,32 @@
+.Submit-analysis-overview {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.Submit-analysis-overview > *:not(:last-child) {
+  margin-bottom: 5px;
+}
 .Submit-button-container {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-top: 27px;
+}
+.Submit-button-container > *:not(:last-child) {
+  margin-bottom: 10px;
 }
 .Submit-container {
   margin-top: 20px;
 }
 .Submit-options-button {
-  float: right;
+  margin-left: auto;
+}
+.Submit-status-container {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.Submit-tag {
+  cursor: default;
 }

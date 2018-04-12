@@ -7,7 +7,7 @@
   flex-direction: column;
   font-family: BodyText;
   height: auto;
-  margin-top: 20px;
+  margin: 20px 20px 0 20px;
   max-height: 200px;
   max-width: 350px;
   padding: 2px;
@@ -31,6 +31,7 @@
 .Newsfeed-content-news {
   justify-self: left;
   grid-column: 2;
+  text-align: left;
 }
 // menu links
 .Newsfeed-link:link {

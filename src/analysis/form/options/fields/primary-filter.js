@@ -15,7 +15,6 @@ const PrimaryFilter = ({
     name="primaryFilter"
     onChange={DefaultChange}
     placeHolder="Primary filter..."
-    required
     type="input"
   />
 );

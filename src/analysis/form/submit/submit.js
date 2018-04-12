@@ -7,43 +7,17 @@ import { Button } from 'antd';
 import { connect } from 'react-redux';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import Errors from './errors';
+import Settings from './settings';
 
 import './submit.css';
 
-const ScoreDirToEntity = scoreType => (
-  scoreType === 'gte' ? '≥' : '≤'
-);
-
-const Settings = (
-  analysisType,
-  abundance,
-  abundanceMin,
-  score,
-  scoreType,
-  primaryFilter,
-) => {
-  switch (analysisType) {
-    case 'dotplot':
-      return ` ${score} ${ScoreDirToEntity(scoreType)} ${primaryFilter}
-        and with at least ${abundanceMin} ${abundance}.`;
-    default:
-      return '.';
-  }
-};
-
 export const SubmitComponent = ({
+  errors,
   form,
   handleOptions,
   showOptions,
 }) => {
-  const {
-    abundance,
-    abundanceMin,
-    analysisType,
-    primaryFilter,
-    score,
-    scoreType,
-  } = form;
   const optionsIcon = showOptions ?
     <FontAwesomeIcon icon={faMinusSquare} size="sm" />
     :
@@ -51,34 +25,32 @@ export const SubmitComponent = ({
   const headerElement = (
     <div className="Submit-container">
       <div>
-        Hit the submit button when ready or customize options. Your
-        analysis will include all preys with a
-        {
-          Settings(
-            analysisType,
-            abundance,
-            abundanceMin,
-            score,
-            scoreType,
-            primaryFilter,
-          )
-        }
+        Hit the submit button when ready or customize options.
       </div>
-      <div className="Submit-button-container">
-        <Button
-          className="success-button"
-          htmlType="submit"
-          type="submit"
-        >
-          Submit
-        </Button>
-        <Button
-          className="Submit-options-button"
-          onClick={handleOptions}
-          type="primary"
-        >
-          {optionsIcon} Options
-        </Button>
+      <div className="Submit-status-container">
+        <div className="Submit-analysis-overview">
+          <div>
+            Current settings:
+          </div>
+          { Settings(form) }
+        </div>
+        <div className="Submit-button-container">
+          <Button
+            className="success-button"
+            htmlType="submit"
+            type="submit"
+          >
+            Submit
+          </Button>
+          <Button
+            className="Submit-options-button"
+            onClick={handleOptions}
+            type="primary"
+          >
+            {optionsIcon} Options
+          </Button>
+        </div>
+        {Errors(errors)}
       </div>
     </div>
   );
@@ -88,6 +60,7 @@ export const SubmitComponent = ({
 };
 
 SubmitComponent.propTypes = {
+  errors: PropTypes.shape({}).isRequired,
   form: PropTypes.shape({}).isRequired,
   handleOptions: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,

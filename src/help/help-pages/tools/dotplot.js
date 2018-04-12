@@ -30,7 +30,7 @@ const Dotplot = () => (
           a substitute font.” If this occurs, the image will not display correctly.
           To fix this issue on a Mac, follow these steps:
           <ul>
-            <li>
+            <li className="HelpPages-align-left">
               Navigate to /Library/Application Support/Adobe/PDFL/*Current Version*/Fonts/,
               where *Current Version* refers to your version of Adobe.
             </li>
@@ -43,14 +43,14 @@ const Dotplot = () => (
           </ul>
           To fix this issue on Windows:
           <ul>
-            <li>
+            <li className="HelpPages-align-left">
               Navigate to C:\Program Files\Common Files\Adobe\PDFL\*Current Version*\Fonts\,
               where *Current Version* refers to your version of Adobe.
             </li>
             <li>
               Copy the font file AdobePiStd.otf.
             </li>
-            <li>
+            <li className="HelpPages-align-left">
               Transfer the font file AdobePiStd.otf to
               C:\Program Files\Adobe\Adobe Illustrator *Version*\Support Files\Required\Fonts\,
               where *version refers to your version of Adobe illustrator.
