@@ -21,6 +21,6 @@ exports[`Analysis Renders 1`] = `
       ]
     }
   />
-  <FormContainer />
+  <Connect(FormContainerComponent) />
 </div>
 `;

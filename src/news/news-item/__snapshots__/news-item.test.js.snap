@@ -14,11 +14,20 @@ exports[`News item It renders when loaded 1`] = `
     className="News-item-content"
   >
     <div
-      className="News-item-navbutton-container"
+      className="News-item-story"
     >
-      <Affix
-        className="News-item-navbuttons"
-        offsetTop={20}
+      <div
+        className="News-item-headline"
+      >
+        test
+      </div>
+      <div
+        className="News-item-date"
+      >
+        test
+      </div>
+      <div
+        className="News-item-navbutton-container"
       >
         <Tooltip
           arrowPointAtCenter={false}
@@ -74,93 +83,75 @@ exports[`News item It renders when loaded 1`] = `
           </Component>
         </Tooltip>
         <div
-          className="News-item-share-buttons"
+          className="News-item-share-buttons-title"
         >
-          <div
-            className="News-item-share-buttons-title"
-          >
-            Share
-          </div>
-          <CreatedButton
-            className="nobutton"
-            hashtags={
-              Array [
-                "#test",
-              ]
-            }
-            title="test"
-            url="http://localhost:3000/news/abcd"
-            windowHeight={400}
-            windowWidth={550}
-          >
-            <Icon
-              className=""
-              iconBgStyle={Object {}}
-              logoFillColor="white"
-              round={true}
-              size={32}
-            />
-          </CreatedButton>
-          <CreatedButton
-            className="nobutton"
-            hashtag="#test"
-            quote="test"
-            url="http://localhost:3000/news/abcd"
-            windowHeight={400}
-            windowWidth={550}
-          >
-            <Icon
-              className=""
-              iconBgStyle={Object {}}
-              logoFillColor="white"
-              round={true}
-              size={32}
-            />
-          </CreatedButton>
-          <CreatedButton
-            className="nobutton"
-            url="http://localhost:3000/news/abcd"
-            windowHeight={400}
-            windowWidth={550}
-          >
-            <Icon
-              className=""
-              iconBgStyle={Object {}}
-              logoFillColor="white"
-              round={true}
-              size={32}
-            />
-          </CreatedButton>
-          <CreatedButton
-            className="nobutton"
-            onClick={[Function]}
-            openWindow={false}
-            subject="test"
-            url="http://localhost:3000/news/abcd"
-          >
-            <Icon
-              className=""
-              iconBgStyle={Object {}}
-              logoFillColor="white"
-              round={true}
-              size={32}
-            />
-          </CreatedButton>
+          Share
         </div>
-      </Affix>
-    </div>
-    <div
-      className="News-item-story"
-    >
-      <div
-        className="News-item-headline"
-      >
-        test
-      </div>
-      <div
-        className="News-item-date"
-      >
-        test
+        <CreatedButton
+          className="nobutton"
+          hashtags={
+            Array [
+              "#test",
+            ]
+          }
+          title="test"
+          url="undefined/news/abcd"
+          windowHeight={400}
+          windowWidth={550}
+        >
+          <Icon
+            className=""
+            iconBgStyle={Object {}}
+            logoFillColor="white"
+            round={true}
+            size={32}
+          />
+        </CreatedButton>
+        <CreatedButton
+          className="nobutton"
+          hashtag="#test"
+          quote="test"
+          url="undefined/news/abcd"
+          windowHeight={400}
+          windowWidth={550}
+        >
+          <Icon
+            className=""
+            iconBgStyle={Object {}}
+            logoFillColor="white"
+            round={true}
+            size={32}
+          />
+        </CreatedButton>
+        <CreatedButton
+          className="nobutton"
+          url="undefined/news/abcd"
+          windowHeight={400}
+          windowWidth={550}
+        >
+          <Icon
+            className=""
+            iconBgStyle={Object {}}
+            logoFillColor="white"
+            round={true}
+            size={32}
+          />
+        </CreatedButton>
+        <CreatedButton
+          className="nobutton"
+          onClick={[Function]}
+          openWindow={false}
+          subject="test"
+          url="undefined/news/abcd"
+        >
+          <Icon
+            className=""
+            iconBgStyle={Object {}}
+            logoFillColor="white"
+            round={true}
+            size={32}
+          />
+        </CreatedButton>
       </div>
       <div
         className="News-item-details"

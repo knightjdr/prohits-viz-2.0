@@ -8,14 +8,17 @@ exports[`FileInput Renders 1`] = `
     File selection
   </Divider>
   <div>
-    Specifiy the type of file you would like to analyze and select or drag it to the input below. See the
+    Specifiy the type of file you would like to analyze and select or drag it to the input below. See the 
+     
     <Component
-      className="decorate-link inline-add-margins"
+      className="decorate-link"
       to="/help/format"
     >
       help
     </Component>
+     
     for information on input formats. Click
+     
     <button
       className="nobutton FileInput-sample-button"
       onClick={[Function]}
@@ -23,53 +26,46 @@ exports[`FileInput Renders 1`] = `
     >
       here
     </button>
+     
     if you would like to try a sample input file.
   </div>
   <div
     className="FileInput-select-container"
   >
-    <CustomField
-      name="fileType"
-      onChange={[Function]}
-      options={
-        Array [
-          Object {
-            "text": "SAINT",
-            "value": "saint",
-          },
-          Object {
-            "disabled": true,
-            "text": "CRAPome",
-            "value": "crapome",
-          },
-          Object {
-            "disabled": true,
-            "text": "Generic",
-            "value": "generic",
-          },
-        ]
-      }
-      placeHolder="File type..."
-      required={true}
-      style={
-        Object {
-          "width": 150,
+    <div
+      className="FileInput-select"
+    >
+      <CustomField
+        name="fileType"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "text": "SAINT",
+              "value": "saint",
+            },
+            Object {
+              "disabled": true,
+              "text": "CRAPome",
+              "value": "crapome",
+            },
+            Object {
+              "disabled": true,
+              "text": "Generic",
+              "value": "generic",
+            },
+          ]
         }
-      }
-      type="select"
-    />
+        placeHolder="File type..."
+        type="select"
+      />
+    </div>
     <div
       className="FileInput-upload-wrapper"
     >
       <CustomField
         name="file"
         onChange={[Function]}
-        required={true}
-        style={
-          Object {
-            "minWidth": 150,
-          }
-        }
         type="upload"
       />
     </div>

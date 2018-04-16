@@ -5,6 +5,7 @@ import React from 'react';
 import { Form, Input } from 'antd';
 
 import InfoModal from './info-modal';
+import UndefinedIfNotSet from '../../../helpers/undefined-if-not-set';
 
 import './field.css';
 
@@ -26,7 +27,7 @@ const CustomInput = ({
   const { error, touched } = meta;
   const formError = touched && error;
   // the next condition is to allow input values of 0
-  const defaultValue = Number.isNaN(input.value) && !input.value ? undefined : input.value;
+  const defaultValue = UndefinedIfNotSet(input.value);
   return (
     <div className="CustomField-container">
       <FormItem
@@ -38,7 +39,7 @@ const CustomInput = ({
         <Input
           defaultValue={defaultValue}
           onMouseLeave={(value) => {
-            // if user updated input but did not press enter, update
+            // if user changed input then update
             if (value !== input.value) {
               onChange(value, input);
             }

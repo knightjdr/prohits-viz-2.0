@@ -20,42 +20,39 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
   <div
     className="ToolSelection-select-container"
   >
-    <CustomField
-      name="analysisType"
-      onChange={[Function]}
-      options={
-        Array [
-          Object {
-            "disabled": true,
-            "text": "Bait v bait",
-            "value": "baitbait",
-          },
-          Object {
-            "disabled": true,
-            "text": "Correlation",
-            "value": "correlation",
-          },
-          Object {
-            "text": "Dot plot",
-            "value": "dotplot",
-          },
-          Object {
-            "disabled": true,
-            "text": "Specificity",
-            "value": "specificity",
-          },
-        ]
-      }
-      placeHolder="Analysis type..."
-      required={true}
-      style={
-        Object {
-          "marginRight": 20,
-          "width": 150,
+    <div
+      className="ToolSelection-analysis-select"
+    >
+      <CustomField
+        name="analysisType"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "disabled": true,
+              "text": "Bait v bait",
+              "value": "baitbait",
+            },
+            Object {
+              "disabled": true,
+              "text": "Correlation",
+              "value": "correlation",
+            },
+            Object {
+              "text": "Dot plot",
+              "value": "dotplot",
+            },
+            Object {
+              "disabled": true,
+              "text": "Specificity",
+              "value": "specificity",
+            },
+          ]
         }
-      }
-      type="select"
-    />
+        placeHolder="Analysis type..."
+        type="select"
+      />
+    </div>
     <div
       className="ToolSelection-tool-description"
     >
@@ -63,12 +60,14 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
         message={
           <span>
             This tool takes quantitative information on bait-prey interactions and visualizes the interactions as either a dot plot or heat map. This is an ideal way of visualizing small to moderately sized data sets (≤ 20 baits). See the
+             
             <Unknown
-              className="decorate-link inline-add-margins"
+              className="decorate-link"
               to="/help/tools/dotplot"
             >
               help
             </Unknown>
+             
             for more information on this tool
           </span>
         }
@@ -100,42 +99,39 @@ exports[`ToolSelectionComponent Renders item without selected analysis type 1`] 
   <div
     className="ToolSelection-select-container"
   >
-    <CustomField
-      name="analysisType"
-      onChange={[Function]}
-      options={
-        Array [
-          Object {
-            "disabled": true,
-            "text": "Bait v bait",
-            "value": "baitbait",
-          },
-          Object {
-            "disabled": true,
-            "text": "Correlation",
-            "value": "correlation",
-          },
-          Object {
-            "text": "Dot plot",
-            "value": "dotplot",
-          },
-          Object {
-            "disabled": true,
-            "text": "Specificity",
-            "value": "specificity",
-          },
-        ]
-      }
-      placeHolder="Analysis type..."
-      required={true}
-      style={
-        Object {
-          "marginRight": 20,
-          "width": 150,
+    <div
+      className="ToolSelection-analysis-select"
+    >
+      <CustomField
+        name="analysisType"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "disabled": true,
+              "text": "Bait v bait",
+              "value": "baitbait",
+            },
+            Object {
+              "disabled": true,
+              "text": "Correlation",
+              "value": "correlation",
+            },
+            Object {
+              "text": "Dot plot",
+              "value": "dotplot",
+            },
+            Object {
+              "disabled": true,
+              "text": "Specificity",
+              "value": "specificity",
+            },
+          ]
         }
-      }
-      type="select"
-    />
+        placeHolder="Analysis type..."
+        type="select"
+      />
+    </div>
   </div>
 </div>
 `;

@@ -29,17 +29,17 @@ describe('Store in dev env', () => {
 
   test('Add dev tools if in test env', () => {
     process.env.NODE_ENV = 'test';
-    expect(addDevTools()).toBeTruthy();
+    expect(addDevTools()).toEqual({});
   });
 
   test('Do not add dev tools if in prod env', () => {
     process.env.NODE_ENV = 'production';
-    expect(addDevTools()).toBeFalsy();
+    expect(addDevTools()).toEqual({});
   });
 
   test('Do not add dev tools if not defined', () => {
     process.env.NODE_ENV = 'development';
-    global.__REDUX_DEVTOOLS_EXTENSION__ = () => false;
-    expect(addDevTools()).toBeFalsy();
+    global.__REDUX_DEVTOOLS_EXTENSION__ = null;
+    expect(addDevTools()).toEqual({});
   });
 });

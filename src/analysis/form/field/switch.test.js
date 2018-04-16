@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Checkbox from './checkbox';
+import Switch from './switch';
 import TestForm from './__mocks__/form-wrapper';
 
 const inputChange = jest.fn();
 const onChange = jest.fn();
 
-describe('Checkbox', () => {
+describe('Switch', () => {
   test('Renders with false as initial value', () => {
     const wrapper = mount(
       <TestForm
@@ -17,17 +17,17 @@ describe('Checkbox', () => {
         }}
         meta={{}}
       >
-        <Checkbox
+        <Switch
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
           style={{}}
         />
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    const input = wrapper.find('input');
-    expect(input.props().checked).toBeFalsy();
+    const switchEl = wrapper.find('Switch').first();
+    expect(switchEl.props().checked).toBeFalsy();
   });
 
   test('FormItem gets layout props', () => {
@@ -39,13 +39,13 @@ describe('Checkbox', () => {
         }}
         meta={{}}
       >
-        <Checkbox
+        <Switch
           formItemLayout={{
             labelCol: { span: 10 },
             wrapperCol: { span: 20 },
           }}
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
           style={{}}
         />
@@ -56,7 +56,7 @@ describe('Checkbox', () => {
     expect(FormItem.props().wrapperCol).toEqual({ span: 20 });
   });
 
-  test('On change called on checkbox click', () => {
+  test('On change called on switch', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -65,17 +65,17 @@ describe('Checkbox', () => {
         }}
         meta={{}}
       >
-        <Checkbox
+        <Switch
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
-          placeHolder="Checkbox"
+          placeHolder="Switch"
           style={{}}
         />
       </TestForm>,
     );
-    const input = wrapper.find('input');
-    input.simulate('change');
+    const switchEl = wrapper.find('Switch').first();
+    switchEl.simulate('click');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -88,9 +88,9 @@ describe('Checkbox', () => {
         }}
         meta={{}}
       >
-        <Checkbox
+        <Switch
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
           style={{}}
         />
@@ -102,8 +102,8 @@ describe('Checkbox', () => {
         value: true,
       },
     });
-    const input = wrapper.find('input');
-    expect(input.props().checked).toBeTruthy();
+    const switchEl = wrapper.find('Switch').first();
+    expect(switchEl.props().checked).toBeTruthy();
   });
 
   test('Submit called on button click and submits with no errors', () => {
@@ -117,9 +117,9 @@ describe('Checkbox', () => {
         meta={{}}
         onSubmit={onSubmitSpy}
       >
-        <Checkbox
+        <Switch
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
           style={{}}
         />
@@ -128,8 +128,8 @@ describe('Checkbox', () => {
     const button = wrapper.find('button');
     button.simulate('submit');
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    const input = wrapper.find('input');
-    expect(input.props().checked).toBeFalsy();
+    const switchEl = wrapper.find('Switch').first();
+    expect(switchEl.props().checked).toBeFalsy();
   });
 
   test('Can add custom style', () => {
@@ -141,15 +141,15 @@ describe('Checkbox', () => {
         }}
         meta={{}}
       >
-        <Checkbox
+        <Switch
           input={{}}
-          label="TestCheckbox"
+          label="TestSwitch"
           onChange={onChange}
           style={{ backgroundColor: '#000' }}
         />
       </TestForm>,
     );
-    const checkboxStyle = wrapper.find('Checkbox').first().props().style;
+    const checkboxStyle = wrapper.find('Switch').first().props().style;
     expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
   });
 });

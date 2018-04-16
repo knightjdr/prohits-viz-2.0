@@ -4,51 +4,55 @@ exports[`HelpDetails Renders 1`] = `
 <div
   className="HelpDetails-container"
 >
-  <Breadcrumb
-    prefixCls="ant-breadcrumb"
-    separator=">"
-  >
-    <BreadcrumbItem
-      key="help"
-      prefixCls="ant-breadcrumb"
-      separator="/"
-    >
-      <Component
-        to="help"
-      />
-    </BreadcrumbItem>
-  </Breadcrumb>
   <div
-    className="HelpDetails-pages"
+    className="HelpDetails-flex-container"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        key="/help"
-        path="/help"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        key="/help/tools"
-        path="/help/tools"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        key="/help/tools/dotplot"
-        path="/help/tools/dotplot"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        key="/help/visualization"
-        path="/help/visualization"
-      />
-      <RouteNotFound />
-    </Switch>
+    <Breadcrumb
+      prefixCls="ant-breadcrumb"
+      separator=">"
+    >
+      <BreadcrumbItem
+        key="help"
+        prefixCls="ant-breadcrumb"
+        separator="/"
+      >
+        <Component
+          to="help"
+        />
+      </BreadcrumbItem>
+    </Breadcrumb>
+    <div
+      className="HelpDetails-pages"
+    >
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          key="/help"
+          path="/help"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          key="/help/tools"
+          path="/help/tools"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          key="/help/tools/dotplot"
+          path="/help/tools/dotplot"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          key="/help/visualization"
+          path="/help/visualization"
+        />
+        <RouteNotFound />
+      </Switch>
+      <withRouter(HelpNavButtonsContainer) />
+    </div>
   </div>
-  <withRouter(HelpNavButtonsContainer) />
 </div>
 `;

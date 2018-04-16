@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import InfoModal from './info-modal';
-import Input from './input';
+import TextArea from './text-area';
 import TestForm from './__mocks__/form-wrapper';
 import UndefinedIfNotSet from '../../../helpers/undefined-if-not-set';
 
@@ -13,7 +13,7 @@ UndefinedIfNotSet.mockImplementation(value => (value));
 const inputOnChange = jest.fn();
 const onChange = jest.fn();
 
-describe('Input', () => {
+describe('TextArea', () => {
   test('Renders with no value, help message and type = text', () => {
     const wrapper = mount(
       <TestForm
@@ -23,22 +23,23 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
+          rows={5}
         />
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    const input = wrapper.find('Input').first();
-    expect(input.props().type).toBe('text');
+    const input = wrapper.find('textarea');
     expect(input.props().defaultValue).toBeUndefined();
+    expect(input.props().rows).toBe(5);
     expect(wrapper.find('svg.CustomField-help').length).toBe(1);
   });
 
@@ -51,13 +52,13 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
         />
       </TestForm>,
@@ -75,14 +76,14 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           label="Label"
           input={{}}
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
         />
       </TestForm>,
@@ -103,13 +104,13 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
         />
       </TestForm>,
@@ -121,117 +122,61 @@ describe('Input', () => {
     expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
   });
 
-  test('Renders with specified type', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Input
-          helpMessage="help"
-          input={{}}
-          label="Label"
-          meta={{}}
-          name="TestInput"
-          onChange={onChange}
-          placeHolder="Input..."
-          style={{}}
-          type="number"
-        />
-      </TestForm>,
-    );
-    const input = wrapper.find('Input').first();
-    expect(input.props().type).toBe('number');
-  });
-
-  test('On change called on enter', () => {
-    const formInput = {
-      onChange: inputOnChange,
-      value: undefined,
-    };
-    const wrapper = mount(
-      <TestForm
-        input={formInput}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Input
-          helpMessage="help"
-          input={{}}
-          label="Label"
-          meta={{}}
-          name="TestInput"
-          onChange={onChange}
-          placeHolder="Input..."
-          style={{}}
-          type="number"
-        />
-      </TestForm>,
-    );
-    jest.clearAllMocks();
-    const input = wrapper.find('Input').first();
-    input.props().onPressEnter(10);
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith(10, formInput);
-  });
-
   test('On change called on blur when input changes', () => {
-    const formInput = {
+    const formTextArea = {
       onChange: inputOnChange,
       value: undefined,
     };
     const wrapper = mount(
       <TestForm
-        input={formInput}
+        input={formTextArea}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
           type="number"
         />
       </TestForm>,
     );
     jest.clearAllMocks();
-    const input = wrapper.find('Input').first();
+    const input = wrapper.find('textarea');
     input.props().onMouseLeave(10);
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith(10, formInput);
+    expect(onChange).toHaveBeenCalledWith(10, formTextArea);
   });
 
   test('On change not called on blur when input is the same', () => {
-    const formInput = {
+    const formTextArea = {
       onChange: inputOnChange,
       value: undefined,
     };
     const wrapper = mount(
       <TestForm
-        input={formInput}
+        input={formTextArea}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
           type="number"
         />
       </TestForm>,
     );
     jest.clearAllMocks();
-    const input = wrapper.find('Input').first();
+    const input = wrapper.find('textarea');
     input.props().onMouseLeave(undefined);
     expect(onChange).toHaveBeenCalledTimes(0);
   });
@@ -245,14 +190,14 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
           type="number"
         />
@@ -264,7 +209,7 @@ describe('Input', () => {
         value: 1,
       },
     });
-    const input = wrapper.find('Input').first();
+    const input = wrapper.find('textarea');
     expect(input.props().defaultValue).toBe(1);
   });
 
@@ -279,14 +224,14 @@ describe('Input', () => {
         meta={{ error: '', touched: false, warning: '' }}
         onSubmit={onSubmitSpy}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
           type="number"
         />
@@ -306,14 +251,14 @@ describe('Input', () => {
         }}
         meta={{ error: 'Error message', touched: true, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{}}
           type="number"
         />
@@ -334,20 +279,20 @@ describe('Input', () => {
         }}
         meta={{ error: '', touched: false, warning: '' }}
       >
-        <Input
+        <TextArea
           helpMessage="help"
           input={{}}
           label="Label"
           meta={{}}
-          name="TestInput"
+          name="TestTextArea"
           onChange={onChange}
-          placeHolder="Input..."
+          placeHolder="TextArea..."
           style={{ backgroundColor: '#000' }}
           type="number"
         />
       </TestForm>,
     );
-    const inputStyle = wrapper.find('Input').first().props().style;
+    const inputStyle = wrapper.find('textarea').first().props().style;
     expect(inputStyle).toHaveProperty('backgroundColor', '#000');
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input Renders with no value, help message and type = text 1`] = `
+exports[`TextArea Renders with no value, help message and type = text 1`] = `
 <TestForm
   input={
     Object {
@@ -43,11 +43,11 @@ exports[`Input Renders with no value, help message and type = text 1`] = `
             "warning": "",
           }
         }
-        name="TestInput"
+        name="TestTextArea"
         onChange={[Function]}
-        placeHolder="Input..."
+        placeHolder="TextArea..."
+        rows={5}
         style={Object {}}
-        type="text"
       >
         <div
           className="CustomField-container"
@@ -98,25 +98,23 @@ exports[`Input Renders with no value, help message and type = text 1`] = `
                       <span
                         className="ant-form-item-children"
                       >
-                        <Input
-                          disabled={false}
+                        <TextArea
                           onMouseLeave={[Function]}
-                          onPressEnter={[Function]}
-                          placeholder="Input..."
+                          placeholder="TextArea..."
                           prefixCls="ant-input"
+                          rows={5}
                           style={Object {}}
-                          type="text"
                         >
-                          <input
+                          <textarea
                             className="ant-input"
-                            disabled={false}
+                            onChange={[Function]}
                             onKeyDown={[Function]}
                             onMouseLeave={[Function]}
-                            placeholder="Input..."
+                            placeholder="TextArea..."
+                            rows={5}
                             style={Object {}}
-                            type="text"
                           />
-                        </Input>
+                        </TextArea>
                       </span>
                       <Animate
                         animation={Object {}}
@@ -196,7 +194,7 @@ exports[`Input Renders with no value, help message and type = text 1`] = `
 </TestForm>
 `;
 
-exports[`Input Renders with without help message 1`] = `
+exports[`TextArea Renders with without help message 1`] = `
 <TestForm
   input={
     Object {
@@ -239,11 +237,11 @@ exports[`Input Renders with without help message 1`] = `
             "warning": "",
           }
         }
-        name="TestInput"
+        name="TestTextArea"
         onChange={[Function]}
-        placeHolder="Input..."
+        placeHolder="TextArea..."
+        rows={5}
         style={Object {}}
-        type="text"
       >
         <div
           className="CustomField-container"
@@ -294,25 +292,23 @@ exports[`Input Renders with without help message 1`] = `
                       <span
                         className="ant-form-item-children"
                       >
-                        <Input
-                          disabled={false}
+                        <TextArea
                           onMouseLeave={[Function]}
-                          onPressEnter={[Function]}
-                          placeholder="Input..."
+                          placeholder="TextArea..."
                           prefixCls="ant-input"
+                          rows={5}
                           style={Object {}}
-                          type="text"
                         >
-                          <input
+                          <textarea
                             className="ant-input"
-                            disabled={false}
+                            onChange={[Function]}
                             onKeyDown={[Function]}
                             onMouseLeave={[Function]}
-                            placeholder="Input..."
+                            placeholder="TextArea..."
+                            rows={5}
                             style={Object {}}
-                            type="text"
                           />
-                        </Input>
+                        </TextArea>
                       </span>
                       <Animate
                         animation={Object {}}
@@ -344,7 +340,7 @@ exports[`Input Renders with without help message 1`] = `
 </TestForm>
 `;
 
-exports[`Input Submit error adds prop visualization queue 1`] = `
+exports[`TextArea Submit error adds prop visualization queue 1`] = `
 <TestForm
   input={
     Object {
@@ -387,9 +383,10 @@ exports[`Input Submit error adds prop visualization queue 1`] = `
             "warning": "",
           }
         }
-        name="TestInput"
+        name="TestTextArea"
         onChange={[Function]}
-        placeHolder="Input..."
+        placeHolder="TextArea..."
+        rows={5}
         style={Object {}}
         type="number"
       >
@@ -442,25 +439,23 @@ exports[`Input Submit error adds prop visualization queue 1`] = `
                       <span
                         className="ant-form-item-children"
                       >
-                        <Input
-                          disabled={false}
+                        <TextArea
                           onMouseLeave={[Function]}
-                          onPressEnter={[Function]}
-                          placeholder="Input..."
+                          placeholder="TextArea..."
                           prefixCls="ant-input"
+                          rows={5}
                           style={Object {}}
-                          type="number"
                         >
-                          <input
+                          <textarea
                             className="ant-input"
-                            disabled={false}
+                            onChange={[Function]}
                             onKeyDown={[Function]}
                             onMouseLeave={[Function]}
-                            placeholder="Input..."
+                            placeholder="TextArea..."
+                            rows={5}
                             style={Object {}}
-                            type="number"
                           />
-                        </Input>
+                        </TextArea>
                       </span>
                       <Animate
                         animation={Object {}}

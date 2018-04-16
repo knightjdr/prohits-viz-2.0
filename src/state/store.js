@@ -7,12 +7,11 @@ import Reducers from './reducers';
 import Router from '../router/router';
 
 export const addDevTools = () => (
-  (
-    process.env.NODE_ENV === 'development' ||
-    process.env.NODE_ENV === 'test'
-  ) &&
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__()
+  process.env.NODE_ENV === 'development' &&
+  window.__REDUX_DEVTOOLS_EXTENSION__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+    :
+    {}
 );
 
 /* eslint-disable no-underscore-dangle */

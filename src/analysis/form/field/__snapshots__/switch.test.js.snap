@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox Renders with false as initial value 1`] = `
+exports[`Switch Renders with false as initial value 1`] = `
 <TestForm
   input={
     Object {
@@ -21,7 +21,7 @@ exports[`Checkbox Renders with false as initial value 1`] = `
       className="ant-form ant-form-horizontal"
       onSubmit={[Function]}
     >
-      <CustomCheckbox
+      <CustomSwitch
         formItemLayout={Object {}}
         input={
           Object {
@@ -29,7 +29,7 @@ exports[`Checkbox Renders with false as initial value 1`] = `
             "value": undefined,
           }
         }
-        label="TestCheckbox"
+        label="TestSwitch"
         meta={Object {}}
         onChange={[Function]}
         style={Object {}}
@@ -37,7 +37,7 @@ exports[`Checkbox Renders with false as initial value 1`] = `
         <FormItem
           colon={true}
           hasFeedback={false}
-          label="TestCheckbox"
+          label="TestSwitch"
           prefixCls="ant-form"
         >
           <Row
@@ -58,9 +58,9 @@ exports[`Checkbox Renders with false as initial value 1`] = `
                     className=""
                     htmlFor={null}
                     onClick={[Function]}
-                    title="TestCheckbox"
+                    title="TestSwitch"
                   >
-                    TestCheckbox
+                    TestSwitch
                   </label>
                 </div>
               </Col>
@@ -77,47 +77,40 @@ exports[`Checkbox Renders with false as initial value 1`] = `
                     <span
                       className="ant-form-item-children"
                     >
-                      <Checkbox
+                      <Switch
                         checked={false}
-                        indeterminate={false}
                         onChange={[Function]}
-                        prefixCls="ant-checkbox"
+                        prefixCls="ant-switch"
                         style={Object {}}
                       >
-                        <label
-                          className="ant-checkbox-wrapper"
+                        <Switch
+                          checked={false}
+                          checkedChildren={null}
+                          className=""
+                          defaultChecked={false}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          prefixCls="ant-switch"
                           style={Object {}}
+                          unCheckedChildren={null}
                         >
-                          <Checkbox
+                          <span
                             checked={false}
-                            className=""
+                            className="ant-switch"
                             defaultChecked={false}
-                            onBlur={[Function]}
                             onChange={[Function]}
-                            onFocus={[Function]}
-                            prefixCls="ant-checkbox"
+                            onClick={[Function]}
+                            onKeyDown={[Function]}
+                            onMouseUp={[Function]}
                             style={Object {}}
-                            type="checkbox"
+                            tabIndex={0}
                           >
                             <span
-                              className="ant-checkbox"
-                              style={Object {}}
-                            >
-                              <input
-                                checked={false}
-                                className="ant-checkbox-input"
-                                onBlur={[Function]}
-                                onChange={[Function]}
-                                onFocus={[Function]}
-                                type="checkbox"
-                              />
-                              <span
-                                className="ant-checkbox-inner"
-                              />
-                            </span>
-                          </Checkbox>
-                        </label>
-                      </Checkbox>
+                              className="ant-switch-inner"
+                            />
+                          </span>
+                        </Switch>
+                      </Switch>
                     </span>
                     <Animate
                       animation={Object {}}
@@ -139,7 +132,7 @@ exports[`Checkbox Renders with false as initial value 1`] = `
             </div>
           </Row>
         </FormItem>
-      </CustomCheckbox>
+      </CustomSwitch>
       <button
         type="submit"
       />

@@ -41,9 +41,9 @@ export const WrappedField = ({
     case 'input':
       return (
         <CustomInput
-          label={label}
           helpMessage={helpMessage}
           input={input}
+          label={label}
           meta={meta}
           onChange={onChange}
           placeHolder={placeHolder}
@@ -56,8 +56,8 @@ export const WrappedField = ({
         <CustomSelect
           allowClear={allowClear}
           helpMessage={helpMessage}
-          label={label}
           input={input}
+          label={label}
           meta={meta}
           onChange={onChange}
           options={options}
@@ -78,9 +78,9 @@ export const WrappedField = ({
     case 'textArea':
       return (
         <CustomTextArea
-          label={label}
           helpMessage={helpMessage}
           input={input}
+          label={label}
           meta={meta}
           onChange={onChange}
           placeHolder={placeHolder}
@@ -91,8 +91,8 @@ export const WrappedField = ({
     case 'upload':
       return (
         <CustomUpload
-          label={label}
           input={input}
+          label={label}
           meta={meta}
           onChange={onChange}
           style={style}
