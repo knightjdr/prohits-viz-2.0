@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlSubtraction Renders 1`] = `
+<div
+  className="ControlSubtraction-container"
+>
+  <div
+    className="ControlSubtraction-checkbox"
+  >
+    <div
+      className="ControlSubtraction-checkbox-label ant-text"
+    >
+      Control subtraction:
+    </div>
+    <CustomField
+      name="ctrlSub"
+      onChange={[Function]}
+      type="switch"
+    />
+  </div>
+  <div
+    className="ControlSubtraction-select"
+  >
+    <CustomField
+      helpMessage="The average value of a prey across control samples will be subtracted
+        from the detected value for the bait if this is selected. The quantitative value
+        for the prey becomes the value above and beyond what is seen across the control
+        samples. Specify the column to use for controls in the adjacent \\"Control column\\"
+        field. If you are applying multiple transformations to your data, control subtraction
+        will always occur first (before prey length, normalization, bait normalization
+        and log transformation)."
+      label="Control column"
+      name="control"
+      onChange={[Function]}
+      options={Array []}
+      placeHolder="Control column..."
+      type="select"
+    />
+  </div>
+</div>
+`;

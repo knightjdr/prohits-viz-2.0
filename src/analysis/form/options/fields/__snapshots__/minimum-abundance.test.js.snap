@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MinimumAbundance Renders 1`] = `
+<CustomField
+  helpMessage="In addition to the primary filter requirement, a prey must have an abundance
+      value (e.g. spectral count) above this minimum to be included in the analysis.
+      As with the primary filter, once a prey passes this threshold for one bait,
+      all the values for it are returned across all baits and used in the analysis."
+  inputType="number"
+  label="Minimum abundance"
+  name="minimumAbundance"
+  onChange={[Function]}
+  placeHolder="Minimum abundance..."
+  type="input"
+/>
+`;

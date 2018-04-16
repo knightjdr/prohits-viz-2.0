@@ -1,4 +1,4 @@
-const values = {
+export const values = {
   dotplot: {
     biclusteringApprox: false,
     baitClustering: 'baits',

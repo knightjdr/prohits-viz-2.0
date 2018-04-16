@@ -10,7 +10,7 @@ describe('FalsyButNotZero', () => {
     expect(FalsyButNotZero()).toBeTruthy();
   });
 
-  test('Undefiend should return true', () => {
+  test('Undefined should return true', () => {
     expect(FalsyButNotZero(undefined)).toBeTruthy();
   });
 

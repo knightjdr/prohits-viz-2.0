@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DotplotOptions Renders 1`] = `
+<div
+  className="Dotplot-options"
+>
+  <ScoreTypeContainer
+    analysisType="test"
+    change={[Function]}
+    score="test"
+    scoreType="lte"
+  />
+  <PrimaryFilterContainer
+    analysisType="test"
+    change={[Function]}
+    score="test"
+  />
+  <SecondaryFilterContainer
+    analysisType="test"
+    change={[Function]}
+    score="test"
+  />
+  <MinimumAbundance
+    analysisType="test"
+  />
+  <MaximumAbundance
+    analysisType="test"
+  />
+  <ControlSubtractionContainer
+    analysisType="test"
+    change={[Function]}
+    control="test"
+    ctrlSub={true}
+    header={
+      Array [
+        "a",
+        "b",
+      ]
+    }
+  />
+  <PreyLengthNormalizationContainer
+    analysisType="test"
+    change={[Function]}
+    header={
+      Array [
+        "a",
+        "b",
+      ]
+    }
+    preyLength="test"
+    preyLengthNorm={false}
+  />
+  <Normalization
+    analysisType="test"
+    normalization="none"
+  />
+  <Log
+    analysisType="test"
+  />
+  <FillColor
+    analysisType="test"
+  />
+  <EdgeColor
+    analysisType="test"
+  />
+  <Clustering
+    analysisType="test"
+    baitClustering="baits"
+    clustering="test"
+    preyClustering="preys"
+  />
+  <Output
+    analysisType="test"
+  />
+</div>
+`;

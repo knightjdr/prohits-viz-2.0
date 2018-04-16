@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FillColor Renders 1`] = `
+<CustomField
+  helpMessage={
+    <div>
+      Various options are available for the fill and edge color, and these can be applied independently using the approiate menu.
+      <div
+        className="Info-img-container"
+      >
+        <img
+          alt="Color scales"
+          src="color-scales.svg"
+        />
+      </div>
+    </div>
+  }
+  label="Fill color scale"
+  name="fillColor"
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "text": "Blue to black",
+        "value": "blueBlack",
+      },
+      Object {
+        "text": "Green to black",
+        "value": "greenBlack",
+      },
+      Object {
+        "text": "Greyscale",
+        "value": "greyscale",
+      },
+      Object {
+        "text": "Red to black",
+        "value": "redBlack",
+      },
+      Object {
+        "text": "Yellow to black",
+        "value": "yellowBlack",
+      },
+    ]
+  }
+  placeHolder="Fill color scale..."
+  type="select"
+/>
+`;

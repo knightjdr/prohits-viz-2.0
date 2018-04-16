@@ -9,7 +9,7 @@ import HeaderSelector from '../../../state/selectors/header-selector';
 
 import './options.css';
 
-const Options = ({
+export const Options = ({
   change,
   form,
   header,

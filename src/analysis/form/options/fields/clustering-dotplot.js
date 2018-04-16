@@ -56,7 +56,7 @@ const Clustering = ({
     }
     {
       clustering === 'hierarchical' &&
-      <div>
+      <div className="Clustering-hierarchical-container">
         <CustomField
           label="Distance metric"
           name="distanceMetric"
@@ -92,7 +92,7 @@ const Clustering = ({
     }
     {
       clustering === 'none' &&
-      <div>
+      <div className="Clustering-none-container">
         <CustomField
           helpMessage={Info[analysisType].baitClustering}
           label="Bait options"

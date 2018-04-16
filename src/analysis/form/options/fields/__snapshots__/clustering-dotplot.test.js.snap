@@ -1,0 +1,530 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClusteringDotplot Renders for "none" clustering when requiring baits and preys 1`] = `
+<div>
+  <div
+    className="Clustering-header ant-text"
+  >
+    Clustering
+  </div>
+  <div
+    className="Clustering-introduction ant-text"
+  >
+    See the
+     
+    <Component
+      className="decorate-link"
+      to="/help/tools/dotplot"
+    >
+      help
+    </Component>
+     
+    for clustering options available for this tool.
+  </div>
+  <CustomField
+    label="Clustering type"
+    name="clustering"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "none",
+          "value": "none",
+        },
+        Object {
+          "text": "Hierarchical",
+          "value": "hierarchical",
+        },
+        Object {
+          "text": "Biclustering",
+          "value": "biclustering",
+        },
+      ]
+    }
+    placeHolder="Clustering type..."
+    type="select"
+  />
+  <div
+    className="Clustering-none-container"
+  >
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Bait options"
+      name="baitClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply baits",
+            "value": "baits",
+          },
+          Object {
+            "text": "Cluster all baits",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Bait options..."
+      type="select"
+    />
+    <CustomField
+      label="Baits"
+      name="baitList"
+      onChange={[Function]}
+      placeHolder="Baits..."
+      type="textArea"
+    />
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Prey options"
+      name="preyClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply preys",
+            "value": "preys",
+          },
+          Object {
+            "text": "Cluster all preys",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Prey options..."
+      type="select"
+    />
+    <CustomField
+      label="Preys"
+      name="preyList"
+      onChange={[Function]}
+      placeHolder="Preys..."
+      type="textArea"
+    />
+  </div>
+</div>
+`;
+
+exports[`ClusteringDotplot Renders for "none" clustering when requiring only baits 1`] = `
+<div>
+  <div
+    className="Clustering-header ant-text"
+  >
+    Clustering
+  </div>
+  <div
+    className="Clustering-introduction ant-text"
+  >
+    See the
+     
+    <Component
+      className="decorate-link"
+      to="/help/tools/dotplot"
+    >
+      help
+    </Component>
+     
+    for clustering options available for this tool.
+  </div>
+  <CustomField
+    label="Clustering type"
+    name="clustering"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "none",
+          "value": "none",
+        },
+        Object {
+          "text": "Hierarchical",
+          "value": "hierarchical",
+        },
+        Object {
+          "text": "Biclustering",
+          "value": "biclustering",
+        },
+      ]
+    }
+    placeHolder="Clustering type..."
+    type="select"
+  />
+  <div
+    className="Clustering-none-container"
+  >
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Bait options"
+      name="baitClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply baits",
+            "value": "baits",
+          },
+          Object {
+            "text": "Cluster all baits",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Bait options..."
+      type="select"
+    />
+    <CustomField
+      label="Baits"
+      name="baitList"
+      onChange={[Function]}
+      placeHolder="Baits..."
+      type="textArea"
+    />
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Prey options"
+      name="preyClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply preys",
+            "value": "preys",
+          },
+          Object {
+            "text": "Cluster all preys",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Prey options..."
+      type="select"
+    />
+  </div>
+</div>
+`;
+
+exports[`ClusteringDotplot Renders for "none" clustering when requiring only preys 1`] = `
+<div>
+  <div
+    className="Clustering-header ant-text"
+  >
+    Clustering
+  </div>
+  <div
+    className="Clustering-introduction ant-text"
+  >
+    See the
+     
+    <Component
+      className="decorate-link"
+      to="/help/tools/dotplot"
+    >
+      help
+    </Component>
+     
+    for clustering options available for this tool.
+  </div>
+  <CustomField
+    label="Clustering type"
+    name="clustering"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "none",
+          "value": "none",
+        },
+        Object {
+          "text": "Hierarchical",
+          "value": "hierarchical",
+        },
+        Object {
+          "text": "Biclustering",
+          "value": "biclustering",
+        },
+      ]
+    }
+    placeHolder="Clustering type..."
+    type="select"
+  />
+  <div
+    className="Clustering-none-container"
+  >
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Bait options"
+      name="baitClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply baits",
+            "value": "baits",
+          },
+          Object {
+            "text": "Cluster all baits",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Bait options..."
+      type="select"
+    />
+    <CustomField
+      helpMessage="The user can generate dot plots without clustering if desired.
+      In this case, a list of bait and prey genes in the desired display order must be
+      supplied in the text boxes. Only baits and preys entered in the text box will be
+      included in the analysis and in the dot plot. Bait and prey names must be entered
+      as they appear in the input file name and are case sensitive. In some cases the
+      user may want to control which baits are shown in the dot plot and their ordering,
+      while wanting to show and cluster all preys, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the bait or prey options menu."
+      label="Prey options"
+      name="preyClustering"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "Supply preys",
+            "value": "preys",
+          },
+          Object {
+            "text": "Cluster all preys",
+            "value": "none",
+          },
+        ]
+      }
+      placeHolder="Prey options..."
+      type="select"
+    />
+    <CustomField
+      label="Preys"
+      name="preyList"
+      onChange={[Function]}
+      placeHolder="Preys..."
+      type="textArea"
+    />
+  </div>
+</div>
+`;
+
+exports[`ClusteringDotplot Renders for biclustering 1`] = `
+<div>
+  <div
+    className="Clustering-header ant-text"
+  >
+    Clustering
+  </div>
+  <div
+    className="Clustering-introduction ant-text"
+  >
+    See the
+     
+    <Component
+      className="decorate-link"
+      to="/help/tools/dotplot"
+    >
+      help
+    </Component>
+     
+    for clustering options available for this tool.
+  </div>
+  <CustomField
+    label="Clustering type"
+    name="clustering"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "none",
+          "value": "none",
+        },
+        Object {
+          "text": "Hierarchical",
+          "value": "hierarchical",
+        },
+        Object {
+          "text": "Biclustering",
+          "value": "biclustering",
+        },
+      ]
+    }
+    placeHolder="Clustering type..."
+    type="select"
+  />
+  <div
+    className="Clustering-biclustering-checkbox"
+  >
+    <div
+      className="Clustering-biclustering-checkbox-label ant-text"
+    >
+      Approximate biclustering (faster):
+    </div>
+    <CustomField
+      name="biclusteringApprox"
+      onChange={[Function]}
+      type="switch"
+    />
+  </div>
+</div>
+`;
+
+exports[`ClusteringDotplot Renders for hierarchical 1`] = `
+<div>
+  <div
+    className="Clustering-header ant-text"
+  >
+    Clustering
+  </div>
+  <div
+    className="Clustering-introduction ant-text"
+  >
+    See the
+     
+    <Component
+      className="decorate-link"
+      to="/help/tools/dotplot"
+    >
+      help
+    </Component>
+     
+    for clustering options available for this tool.
+  </div>
+  <CustomField
+    label="Clustering type"
+    name="clustering"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "none",
+          "value": "none",
+        },
+        Object {
+          "text": "Hierarchical",
+          "value": "hierarchical",
+        },
+        Object {
+          "text": "Biclustering",
+          "value": "biclustering",
+        },
+      ]
+    }
+    placeHolder="Clustering type..."
+    type="select"
+  />
+  <div
+    className="Clustering-hierarchical-container"
+  >
+    <CustomField
+      label="Distance metric"
+      name="distanceMetric"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "binary",
+            "value": "binary",
+          },
+          Object {
+            "text": "Canberra",
+            "value": "canberra",
+          },
+          Object {
+            "text": "Euclidean",
+            "value": "euclidean",
+          },
+          Object {
+            "text": "Manhattan",
+            "value": "manhattan",
+          },
+          Object {
+            "text": "maximum",
+            "value": "maximum",
+          },
+          Object {
+            "text": "Minkowski",
+            "value": "minkowski",
+          },
+        ]
+      }
+      placeHolder="Distance metric..."
+      type="select"
+    />
+    <CustomField
+      label="Clustering method"
+      name="clusteringMethod"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "average",
+            "value": "average",
+          },
+          Object {
+            "text": "centroid",
+            "value": "centroid",
+          },
+          Object {
+            "text": "complete",
+            "value": "complete",
+          },
+          Object {
+            "text": "McQuitty",
+            "value": "mcquitty",
+          },
+          Object {
+            "text": "median",
+            "value": "median",
+          },
+          Object {
+            "text": "single",
+            "value": "single",
+          },
+          Object {
+            "text": "wards",
+            "value": "wards",
+          },
+        ]
+      }
+      placeHolder="Clustering method..."
+      type="select"
+    />
+  </div>
+</div>
+`;
