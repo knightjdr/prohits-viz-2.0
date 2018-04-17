@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreType Renders 1`] = `
+<CustomField
+  helpMessage="The score type defines how the scoring system in the
+    input file works, i.e. are smaller scores better that large scores, or
+    vice versa?"
+  label="Score type"
+  name="scoreType"
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "text": "larger scores are better",
+        "value": "gte",
+      },
+      Object {
+        "text": "smaller scores are better",
+        "value": "lte",
+      },
+    ]
+  }
+  placeHolder="Score type..."
+  type="select"
+/>
+`;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Options } from './options';
+import { OptionsComponent } from './options';
 
 describe('DotplotOptions', () => {
   test('Renders when visible', () => {
     const wrapper = shallow(
-      <Options
+      <OptionsComponent
         change={jest.fn()}
         form={{}}
         header={['a', 'b']}
@@ -18,7 +18,7 @@ describe('DotplotOptions', () => {
 
   test('Renders when hidden', () => {
     const wrapper = shallow(
-      <Options
+      <OptionsComponent
         change={jest.fn()}
         form={{}}
         header={['a', 'b']}

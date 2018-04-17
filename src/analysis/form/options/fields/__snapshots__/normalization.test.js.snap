@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Normalization Renders for default normalization 1`] = `
+<div
+  className="Normalization-container"
+>
+  <div
+    className="Normalization-select"
+    style={
+      Object {
+        "marginRight": 0,
+      }
+    }
+  >
+    <CustomField
+      helpMessage="No normalization is applied by default, but when baits in the same
+        dataset have been run on instruments with varying sensitivity or dynamic range,
+        normalization should be applied. The options are to normalize by the total abundance
+        for all proteins identified in the run or normalize based on a specific prey.
+        If you are applying multiple transformations to your data, normalization will
+        always occur after control subtraction and prey length normalization but before
+        log transformation."
+      label="Bait normalization"
+      name="normalization"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "none",
+            "value": "none",
+          },
+          Object {
+            "text": "Total abundance",
+            "value": "total",
+          },
+          Object {
+            "text": "Specific prey",
+            "value": "prey",
+          },
+        ]
+      }
+      placeHolder="Bait normalization..."
+      type="select"
+    />
+  </div>
+</div>
+`;
+
+exports[`Normalization Renders for prey normalization 1`] = `
+<div
+  className="Normalization-container"
+>
+  <div
+    className="Normalization-select"
+    style={
+      Object {
+        "marginRight": 20,
+      }
+    }
+  >
+    <CustomField
+      helpMessage={null}
+      label="Bait normalization"
+      name="normalization"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "text": "none",
+            "value": "none",
+          },
+          Object {
+            "text": "Total abundance",
+            "value": "total",
+          },
+          Object {
+            "text": "Specific prey",
+            "value": "prey",
+          },
+        ]
+      }
+      placeHolder="Bait normalization..."
+      type="select"
+    />
+  </div>
+  <div
+    className="Normalization-input"
+  >
+    <CustomField
+      helpMessage="No normalization is applied by default, but when baits in the same
+        dataset have been run on instruments with varying sensitivity or dynamic range,
+        normalization should be applied. The options are to normalize by the total abundance
+        for all proteins identified in the run or normalize based on a specific prey.
+        If you are applying multiple transformations to your data, normalization will
+        always occur after control subtraction and prey length normalization but before
+        log transformation."
+      label="Prey for normalization"
+      name="normalizationPrey"
+      onChange={[Function]}
+      placeHolder="Prey for normalization..."
+      type="input"
+    />
+  </div>
+</div>
+`;

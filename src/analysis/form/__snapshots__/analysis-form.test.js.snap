@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnalysisFormComponent Clicking NextStep component on step 0 triggers nextStep function 1`] = `
+<div
+  className="Form-container"
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <div
+      className="Form-fields"
+    >
+      <Connect(FileInputContainer)
+        change={[Function]}
+      />
+      <NextStep
+        currentStep={0}
+        needed={
+          Array [
+            "file",
+            "fileType",
+          ]
+        }
+        onClick={[Function]}
+        step={0}
+      />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`AnalysisFormComponent Clicking NextStep component on step 1 triggers nextStep function 1`] = `
+<div
+  className="Form-container"
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <div
+      className="Form-fields"
+    >
+      <Connect(FileInputContainer)
+        change={[Function]}
+      />
+      <NextStep
+        currentStep={1}
+        needed={
+          Array [
+            "file",
+            "fileType",
+          ]
+        }
+        onClick={[Function]}
+        step={0}
+      />
+      <div>
+        <ToolSelection />
+        <NextStep
+          currentStep={1}
+          needed={
+            Array [
+              "analysisType",
+              "file",
+              "fileType",
+            ]
+          }
+          onClick={[Function]}
+          step={1}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+        />
+      </div>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`AnalysisFormComponent First step increment shows ToolSelection 1`] = `
+<div
+  className="Form-container"
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <div
+      className="Form-fields"
+    >
+      <Connect(FileInputContainer)
+        change={[Function]}
+      />
+      <NextStep
+        currentStep={1}
+        needed={
+          Array [
+            "file",
+            "fileType",
+          ]
+        }
+        onClick={[Function]}
+        step={0}
+      />
+      <div>
+        <ToolSelection />
+        <NextStep
+          currentStep={1}
+          needed={
+            Array [
+              "analysisType",
+              "file",
+              "fileType",
+            ]
+          }
+          onClick={[Function]}
+          step={1}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+        />
+      </div>
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`AnalysisFormComponent Initially renders only file input 1`] = `
+<div
+  className="Form-container"
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <div
+      className="Form-fields"
+    >
+      <Connect(FileInputContainer)
+        change={[Function]}
+      />
+      <NextStep
+        currentStep={0}
+        needed={
+          Array [
+            "file",
+            "fileType",
+          ]
+        }
+        onClick={[Function]}
+        step={0}
+      />
+    </div>
+  </Form>
+</div>
+`;
+
+exports[`AnalysisFormComponent Second step increment shows Header, submit and options 1`] = `
+<div
+  className="Form-container"
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <div
+      className="Form-fields"
+    >
+      <Connect(FileInputContainer)
+        change={[Function]}
+      />
+      <NextStep
+        currentStep={2}
+        needed={
+          Array [
+            "file",
+            "fileType",
+          ]
+        }
+        onClick={[Function]}
+        step={0}
+      />
+      <div>
+        <ToolSelection />
+        <NextStep
+          currentStep={2}
+          needed={
+            Array [
+              "analysisType",
+              "file",
+              "fileType",
+            ]
+          }
+          onClick={[Function]}
+          step={1}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+        />
+      </div>
+      <div>
+        <HeaderSelection
+          change={[Function]}
+        />
+        <Submit
+          errors={Object {}}
+          handleOptions={[Function]}
+          handleReset={[Function]}
+          showOptions={false}
+        />
+        <Options
+          change={[Function]}
+          show={false}
+        />
+      </div>
+    </div>
+  </Form>
+</div>
+`;

@@ -22,6 +22,7 @@ export const AnalysisFormComponent = ({
   handleOptions,
   handleSubmit,
   nextStep,
+  handleReset,
   showOptions,
   step,
 }) => (
@@ -57,6 +58,7 @@ export const AnalysisFormComponent = ({
             <Submit
               errors={errors}
               handleOptions={handleOptions}
+              handleReset={handleReset}
               showOptions={showOptions}
             />
             <Options
@@ -78,6 +80,7 @@ AnalysisFormComponent.propTypes = {
   // onSubmit prop converted to handleSubmit by redux form
   handleSubmit: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,
   step: PropTypes.number.isRequired,
 };

@@ -24,6 +24,7 @@ const links = [
 const Help = () => (
   <div className="Help-container">
     <Navbar
+      fixed
       links={links}
     />
     <div className="Help-content">

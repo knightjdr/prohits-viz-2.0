@@ -6,6 +6,7 @@ exports[`Home It renders 1`] = `
 >
   <NavbarContainer
     background={false}
+    fixed={false}
     links={
       Array [
         Object {

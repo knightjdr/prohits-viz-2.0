@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Errors Errors returns an element 1`] = `
+<div
+  className="Errors-container"
+>
+  <div
+    className="Errors-header"
+  >
+    Submission errors
+  </div>
+  <div
+    className="Errors-content"
+  >
+    <div
+      key="test"
+    >
+      error
+    </div>
+  </div>
+</div>
+`;

@@ -9,7 +9,7 @@ import HeaderSelector from '../../../state/selectors/header-selector';
 
 import './options.css';
 
-export const Options = ({
+export const OptionsComponent = ({
   change,
   form,
   header,
@@ -35,7 +35,7 @@ export const Options = ({
   return optionsElement;
 };
 
-Options.propTypes = {
+OptionsComponent.propTypes = {
   change: PropTypes.func.isRequired,
   form: PropTypes.shape({
     analysisType: PropTypes.string,
@@ -54,6 +54,6 @@ const mapStateToProps = state => ({
 
 const ConnectedContainer = connect(
   mapStateToProps,
-)(Options);
+)(OptionsComponent);
 
 export default ConnectedContainer;

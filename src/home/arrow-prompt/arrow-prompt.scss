@@ -12,7 +12,7 @@ $anim-timing: 3s;
   position: relative;
 }
 .ArrowPrompt-down-prompt-container {
-  bottom: 10px;
+  top: calc(100vh - 50px);
   left: 50%;
   position: absolute;
   opacity: 1;

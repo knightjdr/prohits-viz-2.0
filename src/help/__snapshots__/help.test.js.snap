@@ -6,6 +6,7 @@ exports[`Help It renders 1`] = `
 >
   <NavbarContainer
     background={true}
+    fixed={true}
     links={
       Array [
         Object {

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
+import ScrollTop from '../../../helpers/scroll-top';
 
 import './tool-selection.css';
 
@@ -19,6 +20,7 @@ const infoMessages = {
       20 baits). See the{' '}
       <NavLink
         className="decorate-link"
+        onClick={ScrollTop}
         to="/help/tools/dotplot"
       >
         help
@@ -39,6 +41,7 @@ export const ToolSelectionComponent = ({
         description of the tools can be found
         <NavLink
           className="decorate-link inline-add-margins-left"
+          onClick={ScrollTop}
           to="/help/tools"
         >
           here

@@ -3,7 +3,7 @@ import faMinusSquare from '@fortawesome/fontawesome-pro-solid/faMinusSquare';
 import faPlusSquare from '@fortawesome/fontawesome-pro-solid/faPlusSquare';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
@@ -16,6 +16,7 @@ export const SubmitComponent = ({
   errors,
   form,
   handleOptions,
+  handleReset,
   showOptions,
 }) => {
   const optionsIcon = showOptions ?
@@ -42,6 +43,18 @@ export const SubmitComponent = ({
           >
             Submit
           </Button>
+          <Tooltip
+            placement="left"
+            title="Reset options"
+          >
+            <Button
+              className="warning-button"
+              onClick={handleReset}
+              type="button"
+            >
+              Reset
+            </Button>
+          </Tooltip>
           <Button
             className="Submit-options-button"
             onClick={handleOptions}
@@ -63,6 +76,7 @@ SubmitComponent.propTypes = {
   errors: PropTypes.shape({}).isRequired,
   form: PropTypes.shape({}).isRequired,
   handleOptions: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,
 };
 

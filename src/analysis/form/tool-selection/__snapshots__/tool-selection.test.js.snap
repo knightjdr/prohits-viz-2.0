@@ -11,6 +11,7 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
     Select the tool you would like to use for your analysis. A detailed description of the tools can be found
     <Component
       className="decorate-link inline-add-margins-left"
+      onClick={[Function]}
       to="/help/tools"
     >
       here
@@ -63,6 +64,7 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
              
             <Unknown
               className="decorate-link"
+              onClick={[Function]}
               to="/help/tools/dotplot"
             >
               help
@@ -90,6 +92,7 @@ exports[`ToolSelectionComponent Renders item without selected analysis type 1`] 
     Select the tool you would like to use for your analysis. A detailed description of the tools can be found
     <Component
       className="decorate-link inline-add-margins-left"
+      onClick={[Function]}
       to="/help/tools"
     >
       here

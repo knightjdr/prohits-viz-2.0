@@ -2,15 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ArrayShallowEqual from '../../../../helpers/array-shallow-equal';
-import ControlSubtraction from './control-subtraction';
 import ControlSubtractionContainer from './control-subtraction-container';
 import FilterHeader from '../../header-selection/filter-header';
 
 jest.mock('../../../../helpers/array-shallow-equal');
-
-// mock child component
-jest.mock('./control-subtraction');
-ControlSubtraction.mockReturnValue(<div />);
 
 // mock filter-header
 jest.mock('../../header-selection/filter-header');
@@ -23,8 +18,7 @@ const change = jest.fn();
 const header = ['column1', 'column2'];
 
 describe('ControlSubtractionContainer', () => {
-  test(`Store updated via setInitialReduxFormState when control not set but
-    can be`, () => {
+  test('Store set on mount', () => {
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options,
@@ -41,8 +35,30 @@ describe('ControlSubtractionContainer', () => {
         header={header}
       />,
     );
+    expect(wrapper.state().options).toEqual(options);
+    FilterHeader.mockRestore();
+  });
+
+  test(`Store updated via setInitialReduxFormState when control is true and
+    can be set`, () => {
+    FilterHeader.mockReturnValue({
+      initialValue: 'column1',
+      options,
+    });
+    /* this is just for mounting, not for running the test. The actual test
+    ** is run with wrapper.instance() but I'm using props consistent with the
+    ** function call */
+    const wrapper = shallow(
+      <ControlSubtractionContainer
+        analysisType="dotplot"
+        change={change}
+        ctrlSub
+        control={undefined}
+        header={header}
+      />,
+    );
     jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, undefined, false, header);
+    wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(wrapper.state().options).toEqual(options);
     expect(change).toHaveBeenCalledTimes(2);
@@ -65,7 +81,7 @@ describe('ControlSubtractionContainer', () => {
         analysisType="dotplot"
         change={change}
         ctrlSub={false}
-        control={undefined}
+        control="column1"
         header={header}
       />,
     );
@@ -89,13 +105,13 @@ describe('ControlSubtractionContainer', () => {
       <ControlSubtractionContainer
         analysisType="dotplot"
         change={change}
-        ctrlSub={false}
+        ctrlSub
         control={undefined}
         header={header}
       />,
     );
     jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, undefined, false, header);
+    wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
     expect(change).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledWith('ctrlSub', false);
     FilterHeader.mockRestore();

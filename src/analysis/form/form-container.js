@@ -11,7 +11,7 @@ export class FormContainerComponent extends Component {
     super(props);
     this.state = {
       errors: {},
-      initialValues: {},
+      initialValues: this.props.form,
       showOptions: false,
     };
   }
@@ -40,6 +40,14 @@ export class FormContainerComponent extends Component {
       showOptions: !showOptions,
     }));
   }
+  handleReset = () => {
+    const { analysisType } = this.props.form;
+    if (analysisType) {
+      this.setState({
+        initialValues: { ...this.props.form, ...InitialValues(analysisType) },
+      });
+    }
+  }
   render() {
     return (
       <AnalysisForm
@@ -48,6 +56,7 @@ export class FormContainerComponent extends Component {
         initialValues={this.state.initialValues}
         onSubmit={this.onSubmit}
         onSubmitFail={this.onSubmitFail}
+        handleReset={this.handleReset}
         showOptions={this.state.showOptions}
       />
     );

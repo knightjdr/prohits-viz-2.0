@@ -3,6 +3,11 @@
 exports[`Navbar Shows background 1`] = `
 <div
   className="Navbar Navbar-default"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
 >
   <Component
     className="Navbar-logo-link"
@@ -38,6 +43,11 @@ exports[`Navbar Shows background 1`] = `
 exports[`Navbar Small screen 1`] = `
 <div
   className="Navbar Navbar-default"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
 >
   <Component
     className="Navbar-logo-link"
@@ -116,6 +126,11 @@ exports[`Navbar Small screen 1`] = `
 exports[`Navbar Transparent background 1`] = `
 <div
   className="Navbar Navbar-transparent"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
 >
   <Component
     className="Navbar-logo-link"

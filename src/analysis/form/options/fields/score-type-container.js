@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import ScoreType from './score-type';
 
-const expectedScoreDir = (score) => {
+export const expectedScoreDir = (score) => {
   const scoreMap = {
     avgp: 'gte',
     bfdr: 'lte',
@@ -48,13 +48,14 @@ class ScoreTypeContainer extends Component {
 }
 
 ScoreTypeContainer.defaultProps = {
+  score: undefined,
   scoreType: undefined,
 };
 
 ScoreTypeContainer.propTypes = {
   analysisType: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired,
-  score: PropTypes.string.isRequired,
+  score: PropTypes.string,
   scoreType: PropTypes.string,
 };
 

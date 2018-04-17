@@ -95,7 +95,7 @@ exports[`News item It renders when loaded 1`] = `
             ]
           }
           title="test"
-          url="undefined/news/abcd"
+          url="http://localhost:3000/news/abcd"
           windowHeight={400}
           windowWidth={550}
         >
@@ -111,7 +111,7 @@ exports[`News item It renders when loaded 1`] = `
           className="nobutton"
           hashtag="#test"
           quote="test"
-          url="undefined/news/abcd"
+          url="http://localhost:3000/news/abcd"
           windowHeight={400}
           windowWidth={550}
         >
@@ -125,7 +125,7 @@ exports[`News item It renders when loaded 1`] = `
         </CreatedButton>
         <CreatedButton
           className="nobutton"
-          url="undefined/news/abcd"
+          url="http://localhost:3000/news/abcd"
           windowHeight={400}
           windowWidth={550}
         >
@@ -142,7 +142,7 @@ exports[`News item It renders when loaded 1`] = `
           onClick={[Function]}
           openWindow={false}
           subject="test"
-          url="undefined/news/abcd"
+          url="http://localhost:3000/news/abcd"
         >
           <Icon
             className=""

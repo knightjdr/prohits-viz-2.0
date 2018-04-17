@@ -2,8 +2,6 @@
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  max-height: calc(100vh - 40px);
-  overflow-y: scroll;
 };
 .HelpDetails-flex-container {
   max-width: 1000px;
@@ -15,5 +13,13 @@
   margin-top: 10px;
   text-align: justify;
 }
-@media (max-width: 499px) {
+@media screen and (max-width: 680px) {
+  .HelpDetails-container {
+    margin-left: 0;
+  }
+}
+@media screen and (min-width: 681px) {
+  .HelpDetails-container {
+    margin-left: 180px;
+  }
 }

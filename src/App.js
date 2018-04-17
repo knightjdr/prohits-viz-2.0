@@ -13,37 +13,42 @@ class App extends Component {
     super(props);
     this.state = {
       hidePrompt: true,
-      onScroll: null,
     };
   }
   componentDidMount = () => {
-    this.setState({
-      hidePrompt: false,
-      onScroll: this.handleScroll,
-    });
+    if (window.scrollY > 0) {
+      this.setState({
+        hidePrompt: true,
+      });
+    } else {
+      window.addEventListener('scroll', this.handleScroll);
+      this.setState({
+        hidePrompt: false,
+      });
+    }
+  }
+  componentWillUnmount = () => {
+    if (!this.state.hidePrompt) {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
   }
   checkTop = (scrollTop) => {
     if (
       !this.state.hidePrompt &&
       scrollTop > 0
     ) {
+      window.removeEventListener('scroll', this.handleScroll);
       this.setState({
         hidePrompt: true,
-        onScroll: null,
       });
     }
   }
   handleScroll = () => {
-    const { scrollTop } = this.elem;
-    this.checkTop(scrollTop);
+    this.checkTop(window.scrollY);
   }
   render() {
     return (
-      <div
-        className="App"
-        ref={(elem) => { this.elem = elem; }}
-        onScroll={this.state.onScroll}
-      >
+      <div className="App">
         <Home />
         <Tools />
         <Spotlight />

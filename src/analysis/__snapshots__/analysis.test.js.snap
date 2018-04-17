@@ -4,6 +4,7 @@ exports[`Analysis Renders 1`] = `
 <div>
   <NavbarContainer
     background={true}
+    fixed={false}
     links={
       Array [
         Object {

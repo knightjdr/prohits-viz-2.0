@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
+import ScrollTop from '../../../helpers/scroll-top';
 
 import './file-input.css';
 
@@ -19,6 +20,7 @@ const FileInput = ({
       to the input below. See the {' '}
       <NavLink
         className="decorate-link"
+        onClick={ScrollTop}
         to="/help/format"
       >
         help

@@ -36,13 +36,19 @@ const Settings = (form) => {
           text: 'Prey length normalization is selected',
         });
       }
-      if (validTypes.normalization.includes(form.normalization)) {
+      if (
+        form.normalization &&
+        validTypes.normalization.includes(form.normalization)
+      ) {
         tagArray.push({
           key: 'normalization',
           text: `Bait normalization: ${form.normalization === 'total' ? 'total abundance' : 'specific prey'}`,
         });
       }
-      if (validTypes.logTransform.includes(form.logTransform)) {
+      if (
+        form.logTransform &&
+        validTypes.logTransform.includes(form.logTransform)
+      ) {
         tagArray.push({
           key: 'logTransform',
           text: `Log transformation: base ${form.logTransform}`,
@@ -50,7 +56,7 @@ const Settings = (form) => {
       }
       tagArray.push({
         key: 'clustering',
-        text: `Clustering type: ${form.clustering}`,
+        text: `Clustering type: ${form.clustering || 'not set'}`,
       });
       return (tagArray.map(tag => (
         <Tag
@@ -61,7 +67,7 @@ const Settings = (form) => {
         </Tag>
       )));
     default:
-      return '.';
+      return null;
   }
 };
 export default Settings;

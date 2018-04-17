@@ -12,6 +12,7 @@ exports[`HeaderSelection Renders 1`] = `
      
     <Component
       className="decorate-link"
+      onClick={[Function]}
       to="/help/format"
     >
       here

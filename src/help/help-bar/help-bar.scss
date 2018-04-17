@@ -12,7 +12,8 @@
   transition: opacity;
 }
 .HelpBar-container {
-  position: relative;
+  position: fixed;
+  top: 40px;
   z-index: 5;
 }
 .HelpBar-panel {
@@ -33,9 +34,6 @@
     transition-duration: 0.8s;
     transition-timing-function: ease-in;
   }
-  .HelpBar-container {
-    position: absolute;
-  }
   .HelpBar-panel {
     padding: 5px 0px;
     width: 0px;
@@ -51,9 +49,6 @@
     opacity: 0;
     transition-duration: 0.2s;
     transition-timing-function: ease-out;
-  }
-  .HelpBar-container {
-    position: relative;
   }
 }
 .HelpBar-breadcrumb-transition-in {

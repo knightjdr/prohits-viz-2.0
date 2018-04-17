@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
+import ScrollTop from '../../../helpers/scroll-top';
 
 import './header-selection.css';
 
@@ -18,6 +19,7 @@ const HeaderSelection = ({
         Specify the columns to use if they have not been preselected. See{' '}
         <NavLink
           className="decorate-link"
+          onClick={ScrollTop}
           to="/help/format"
         >
           here

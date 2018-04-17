@@ -4,7 +4,6 @@ exports[`App Renders 1`] = `
 <App>
   <div
     className="App"
-    onScroll={[Function]}
   >
     <HomeContainer>
       <div />

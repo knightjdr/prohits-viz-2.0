@@ -59,20 +59,17 @@ class ControlSubtractionContainer extends Component {
     this.setState({ options: controlCol.options });
     /* The following logic is to prevent control subtraction from being set
     ** to true when a component remounts after the user has previous set it
-    ** to false. The idea is that the user can only change it from true to false
-    ** if a value was selected for the control column. And since the control
-    ** column cannot be unset, this should serve as a reliable way of telling
-    ** when the user has interacted with the checkbox */
+    ** to false. */
     if (
-      !ctrlSub &&
+      ctrlSub &&
       (
         control ||
-        !controlCol.initialValue
+        controlCol.initialValue
       )
     ) {
-      change('ctrlSub', false);
-    } else {
       change('ctrlSub', true);
+    } else {
+      change('ctrlSub', false);
     }
     // if control is undefined but can be, set it
     if (

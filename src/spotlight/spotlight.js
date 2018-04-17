@@ -22,7 +22,6 @@ export const SpotlightComponent = ({
           <LazyLoad
             height={200}
             offset={100}
-            overflow
           >
             <img
               alt={`${article.authorLastName} highlight`}
