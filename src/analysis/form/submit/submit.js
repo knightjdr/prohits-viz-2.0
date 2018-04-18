@@ -20,9 +20,21 @@ export const SubmitComponent = ({
   showOptions,
 }) => {
   const optionsIcon = showOptions ?
-    <FontAwesomeIcon icon={faMinusSquare} size="sm" />
+    (
+      <FontAwesomeIcon
+        className="Submit-hide-options-icon"
+        icon={faMinusSquare}
+        size="sm"
+      />
+    )
     :
-    <FontAwesomeIcon icon={faPlusSquare} size="sm" />;
+    (
+      <FontAwesomeIcon
+        className="Submit-show-options-icon"
+        icon={faPlusSquare}
+        size="sm"
+      />
+    );
   const headerElement = (
     <div className="Submit-container">
       <div>

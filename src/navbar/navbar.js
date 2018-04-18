@@ -7,6 +7,7 @@ import { Popover } from 'antd';
 
 import Logo from '../assets/logos/logo_nobg.svg';
 import LogoAccent from '../assets/logos/logo_accent_nobg.svg';
+import ScrollTop from '../helpers/scroll-top';
 
 import './navbar.css';
 
@@ -21,6 +22,7 @@ const Navbar = ({
     <NavLink
       className="Navbar-link"
       key={link.text}
+      onClick={ScrollTop}
       to={link.route}
     >
       { link.text }
@@ -55,6 +57,7 @@ const Navbar = ({
     >
       <NavLink
         className="Navbar-logo-link"
+        onClick={ScrollTop}
         to="/"
       >
         <img

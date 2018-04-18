@@ -21,7 +21,7 @@ export const SpotlightComponent = ({
         <div className="Spotlight-carousel-image-container">
           <LazyLoad
             height={200}
-            offset={100}
+            offset={500}
           >
             <img
               alt={`${article.authorLastName} highlight`}
