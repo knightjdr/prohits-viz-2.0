@@ -65,6 +65,7 @@ const Clustering = ({
             { text: 'binary', value: 'binary' },
             { text: 'Canberra', value: 'canberra' },
             { text: 'Euclidean', value: 'euclidean' },
+            { text: 'Jaccard', value: 'jaccard' },
             { text: 'Manhattan', value: 'manhattan' },
             { text: 'maximum', value: 'maximum' },
             { text: 'Minkowski', value: 'minkowski' },
