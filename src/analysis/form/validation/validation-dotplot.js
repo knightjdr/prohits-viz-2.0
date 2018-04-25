@@ -104,7 +104,7 @@ const ValidationDotplot = (values) => {
     errors.clustering = 'Select a valid clustering type';
   }
   if (values.clustering === 'hierarchical') {
-    const validDistance = ['binary', 'canberra', 'euclidean', 'jaccard', 'manhattan', 'maximum', 'minkowski'];
+    const validDistance = ['binary', 'canberra', 'euclidean', 'jaccard', 'manhattan', 'maximum'];
     if (!values.distanceMetric) {
       errors.distanceMetric = 'Specify the distance metric for clustering';
     } else if (!validDistance.includes(values.distanceMetric)) {

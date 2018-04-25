@@ -68,7 +68,6 @@ const Clustering = ({
             { text: 'Jaccard', value: 'jaccard' },
             { text: 'Manhattan', value: 'manhattan' },
             { text: 'maximum', value: 'maximum' },
-            { text: 'Minkowski', value: 'minkowski' },
           ]}
           placeHolder="Distance metric..."
           type="select"
