@@ -1,0 +1,13 @@
+.Selection-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 50px);
+  justify-content: center;
+}
+.Selection-instructions {
+  padding: 0 20px;
+  margin-top: 20px;
+  max-width: 600px;
+  text-align: justify;
+}

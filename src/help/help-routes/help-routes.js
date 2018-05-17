@@ -5,6 +5,7 @@ import Introduction from '../help-pages/introduction/introduction';
 import Recommendations from '../help-pages/recommendations/recommendations';
 import Tools from '../help-pages/tools/tools';
 import Visualization from '../help-pages/visualization/visualization';
+import VizFileFormat from '../help-pages/visualization/file-format';
 
 const HelpRoutes = [
   {
@@ -45,6 +46,12 @@ const HelpRoutes = [
     route: '/help/visualization',
     panelText: 'Visualization',
     children: [
+      {
+        component: VizFileFormat,
+        linkText: 'File format',
+        route: '/help/visualization/format',
+        panelText: 'File format',
+      },
       {
         component: Heatmap,
         linkText: 'Heat map',

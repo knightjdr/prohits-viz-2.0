@@ -99,14 +99,14 @@ const Clustering = ({
           name="baitClustering"
           onChange={DefaultChange}
           options={[
-            { text: 'Supply baits', value: 'baits' },
-            { text: 'Cluster all baits', value: 'none' },
+            { text: 'Supply baits', value: 'none' },
+            { text: 'Cluster all baits', value: 'baits' },
           ]}
           placeHolder="Bait options..."
           type="select"
         />
         {
-          baitClustering === 'baits' &&
+          baitClustering === 'none' &&
           <CustomField
             label="Baits"
             name="baitList"
@@ -121,14 +121,14 @@ const Clustering = ({
           name="preyClustering"
           onChange={DefaultChange}
           options={[
-            { text: 'Supply preys', value: 'preys' },
-            { text: 'Cluster all preys', value: 'none' },
+            { text: 'Supply preys', value: 'none' },
+            { text: 'Cluster all preys', value: 'preys' },
           ]}
           placeHolder="Prey options..."
           type="select"
         />
         {
-          preyClustering === 'preys' &&
+          preyClustering === 'none' &&
           <CustomField
             label="Preys"
             name="preyList"
