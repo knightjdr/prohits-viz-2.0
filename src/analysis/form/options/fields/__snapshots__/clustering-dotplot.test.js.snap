@@ -63,11 +63,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring baits an
         Array [
           Object {
             "text": "Supply baits",
-            "value": "baits",
+            "value": "none",
           },
           Object {
             "text": "Cluster all baits",
-            "value": "none",
+            "value": "baits",
           },
         ]
       }
@@ -97,11 +97,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring baits an
         Array [
           Object {
             "text": "Supply preys",
-            "value": "preys",
+            "value": "none",
           },
           Object {
             "text": "Cluster all preys",
-            "value": "none",
+            "value": "preys",
           },
         ]
       }
@@ -182,11 +182,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only bai
         Array [
           Object {
             "text": "Supply baits",
-            "value": "baits",
+            "value": "none",
           },
           Object {
             "text": "Cluster all baits",
-            "value": "none",
+            "value": "baits",
           },
         ]
       }
@@ -216,11 +216,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only bai
         Array [
           Object {
             "text": "Supply preys",
-            "value": "preys",
+            "value": "none",
           },
           Object {
             "text": "Cluster all preys",
-            "value": "none",
+            "value": "preys",
           },
         ]
       }
@@ -294,11 +294,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only pre
         Array [
           Object {
             "text": "Supply baits",
-            "value": "baits",
+            "value": "none",
           },
           Object {
             "text": "Cluster all baits",
-            "value": "none",
+            "value": "baits",
           },
         ]
       }
@@ -321,11 +321,11 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only pre
         Array [
           Object {
             "text": "Supply preys",
-            "value": "preys",
+            "value": "none",
           },
           Object {
             "text": "Cluster all preys",
-            "value": "none",
+            "value": "preys",
           },
         ]
       }
@@ -470,16 +470,16 @@ exports[`ClusteringDotplot Renders for hierarchical 1`] = `
             "value": "euclidean",
           },
           Object {
+            "text": "Jaccard",
+            "value": "jaccard",
+          },
+          Object {
             "text": "Manhattan",
             "value": "manhattan",
           },
           Object {
             "text": "maximum",
             "value": "maximum",
-          },
-          Object {
-            "text": "Minkowski",
-            "value": "minkowski",
           },
         ]
       }

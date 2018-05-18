@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selection Default view 1`] = `
+<div
+  className="Selection-container"
+>
+  <div
+    className="Selection-error"
+    style={
+      Object {
+        "transform": "scale(0)",
+      }
+    }
+  />
+  <Upload
+    accept=""
+    action=""
+    beforeUpload={[Function]}
+    className=""
+    data={Object {}}
+    disabled={false}
+    listType="text"
+    multiple={false}
+    name="file"
+    onChange={[Function]}
+    prefixCls="ant-upload"
+    showUploadList={true}
+    supportServerRender={true}
+    type="select"
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <FontAwesomeIcon$1
+        border={false}
+        className="FileInput-fa-icon"
+        fixedWidth={false}
+        flip={null}
+        icon={
+          Object {
+            "icon": Array [
+              384,
+              512,
+              Array [],
+              "f319",
+              "M384 121.9v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm48 140c0-6.6-5.4-12-12-12h-60v-60c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v60h-60c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h60v60c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-60h60c6.6 0 12-5.4 12-12v-40z",
+            ],
+            "iconName": "file-plus",
+            "prefix": "fas",
+          }
+        }
+        listItem={false}
+        mask={null}
+        name=""
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        transform={null}
+      />
+       Select File
+    </Button>
+  </Upload>
+  <div
+    className="Selection-instructions"
+  >
+    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
+     
+    <Component
+      className="decorate-link"
+      to="/help/format"
+    >
+      help
+    </Component>
+     
+    for information on the input format.
+  </div>
+</div>
+`;
+
+exports[`Selection Displays an error 1`] = `
+<div
+  className="Selection-container"
+>
+  <div
+    className="Selection-error"
+    style={
+      Object {
+        "transform": "scale(1)",
+      }
+    }
+  >
+    Test error
+  </div>
+  <Upload
+    accept=""
+    action=""
+    beforeUpload={[Function]}
+    className=""
+    data={Object {}}
+    disabled={false}
+    listType="text"
+    multiple={false}
+    name="file"
+    onChange={[Function]}
+    prefixCls="ant-upload"
+    showUploadList={true}
+    supportServerRender={true}
+    type="select"
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <FontAwesomeIcon$1
+        border={false}
+        className="FileInput-fa-icon"
+        fixedWidth={false}
+        flip={null}
+        icon={
+          Object {
+            "icon": Array [
+              384,
+              512,
+              Array [],
+              "f319",
+              "M384 121.9v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm48 140c0-6.6-5.4-12-12-12h-60v-60c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v60h-60c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h60v60c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-60h60c6.6 0 12-5.4 12-12v-40z",
+            ],
+            "iconName": "file-plus",
+            "prefix": "fas",
+          }
+        }
+        listItem={false}
+        mask={null}
+        name=""
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        transform={null}
+      />
+       Select File
+    </Button>
+  </Upload>
+  <div
+    className="Selection-instructions"
+  >
+    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
+     
+    <Component
+      className="decorate-link"
+      to="/help/format"
+    >
+      help
+    </Component>
+     
+    for information on the input format.
+  </div>
+</div>
+`;

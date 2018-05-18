@@ -22,7 +22,7 @@ const links = [
   },
 ];
 
-const Visualization = ({
+export const VisualizationComponent = ({
   match,
 }) => (
   <div>
@@ -47,10 +47,10 @@ const Visualization = ({
   </div>
 );
 
-Visualization.propTypes = {
+VisualizationComponent.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string,
   }).isRequired,
 };
 
-export default withRouter(Visualization);
+export default withRouter(VisualizationComponent);

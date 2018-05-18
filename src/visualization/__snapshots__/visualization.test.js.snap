@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Visualization Renders with base path 1`] = `
+<div>
+  <NavbarContainer
+    background={true}
+    fixed={false}
+    links={
+      Array [
+        Object {
+          "route": "/analysis",
+          "text": "ANALYSIS",
+        },
+        Object {
+          "route": "/news",
+          "text": "NEWS",
+        },
+        Object {
+          "route": "/help",
+          "text": "HELP",
+        },
+      ]
+    }
+  />
+  <div>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="visualization"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="visualization/:vizId"
+      />
+      <RouteNotFound />
+    </Switch>
+  </div>
+</div>
+`;

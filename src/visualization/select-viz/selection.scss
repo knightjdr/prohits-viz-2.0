@@ -5,6 +5,12 @@
   height: calc(100vh - 50px);
   justify-content: center;
 }
+.Selection-error {
+  color: #f44336;
+  margin-bottom: 10px;
+  transform: scaleY(0);
+  transition: scaleY 1s linear;
+}
 .Selection-instructions {
   padding: 0 20px;
   margin-top: 20px;

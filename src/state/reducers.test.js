@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import FormStep from './set/form-step-reducer';
 import Header from './set/header-reducer';
 import Home from './get/home-reducer';
+import InteractiveFile from './set/interactive-file-reducer';
 import News from './get/news-reducer';
 import NewsItem from './get/news-item-reducer';
 import NewsPage from './set/news-page-reducer';
@@ -19,6 +20,7 @@ describe('Store', () => {
     expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
+    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
@@ -46,6 +48,15 @@ describe('Store', () => {
     const action = { type: 'FILL_HOME' };
     store.dispatch(action);
     expect(store.getState().home).toEqual(Home(undefined, action));
+  });
+
+  test('InteractiveFile reducer handles its actions', () => {
+    let action = { type: 'CLEAR_INTERACTIVE_FILE' };
+    store.dispatch(action);
+    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
+    action = { file: {}, type: 'SET_INTERACTIVE_FILE' };
+    store.dispatch(action);
+    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
   });
 
   test('News reducer handles its actions', () => {

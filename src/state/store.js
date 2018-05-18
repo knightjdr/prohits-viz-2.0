@@ -14,7 +14,6 @@ export const addDevTools = () => (
     {}
 );
 
-/* eslint-disable no-underscore-dangle */
 export const store = createStore(
   Reducers,
   addDevTools(),
@@ -22,7 +21,6 @@ export const store = createStore(
     Thunk,
   ),
 );
-/* eslint-enable */
 
 const Store = () => (
   <Provider store={store}>

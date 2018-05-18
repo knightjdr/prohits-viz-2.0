@@ -81,6 +81,16 @@ exports[`TreeRoutes Renders 1`] = `
     }
   >
     <TreeNode
+      key="/help/visualization/format"
+      title={
+        <Unknown
+          to="/help/visualization/format"
+        >
+          File format
+        </Unknown>
+      }
+    />
+    <TreeNode
       key="/help/visualization/heatmap"
       title={
         <Unknown

@@ -38,9 +38,9 @@ describe('ClusteringDotplot', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="baits"
+        baitClustering="none"
         clustering="none"
-        preyClustering="preys"
+        preyClustering="none"
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -55,9 +55,9 @@ describe('ClusteringDotplot', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="baits"
+        baitClustering="none"
         clustering="none"
-        preyClustering="none"
+        preyClustering="preys"
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -69,9 +69,9 @@ describe('ClusteringDotplot', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="none"
+        baitClustering="baits"
         clustering="none"
-        preyClustering="preys"
+        preyClustering="none"
       />,
     );
     expect(wrapper).toMatchSnapshot();

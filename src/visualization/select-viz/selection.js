@@ -15,9 +15,18 @@ const config = {
 };
 
 const Selection = ({
+  err,
   handleFile,
 }) => (
   <div className="Selection-container">
+    <div
+      className="Selection-error"
+      style={{
+        transform: err ? 'scale(1)' : 'scale(0)',
+      }}
+    >
+      {err}
+    </div>
     <Upload
       onChange={handleFile}
       {...config}
@@ -30,7 +39,7 @@ const Selection = ({
       </Button>
     </Upload>
     <div className="Selection-instructions">
-      Select the file to display interactively. This file must be JSON format
+      Select the image to display interactively. This file must be JSON format
       (extension .json). If you have downloaded an analysis results folder from
       ProHits-viz these files will be located in the &quot;interactive&quot;
       subfolder. See the {' '}
@@ -45,7 +54,12 @@ const Selection = ({
   </div>
 );
 
+Selection.defaultProps = {
+  err: null,
+};
+
 Selection.propTypes = {
+  err: PropTypes.string,
   handleFile: PropTypes.func.isRequired,
 };
 
