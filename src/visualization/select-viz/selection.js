@@ -22,7 +22,7 @@ const Selection = ({
     <div
       className="Selection-error"
       style={{
-        transform: err ? 'scale(1)' : 'scale(0)',
+        transform: err ? 'scaleY(1)' : 'scaleY(0)',
       }}
     >
       {err}
