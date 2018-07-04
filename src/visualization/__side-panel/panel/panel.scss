@@ -11,10 +11,10 @@
 @keyframes panelin {
   from {
     opacity: 0;
-    transform: translateX(300px) rotateY(180deg);
+    transform: translateX(350px);
   }
   to {
     opacity: 1;
-    transform: translateX(0) rotateY(0);
+    transform: translateX(0);
   }
 }

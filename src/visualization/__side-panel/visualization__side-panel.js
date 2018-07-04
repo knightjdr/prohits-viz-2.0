@@ -7,6 +7,7 @@ import {
   faInfoCircle,
   faPalette,
   faPenSquare,
+  faSave,
   faTable,
 } from '@fortawesome/pro-light-svg-icons';
 import {
@@ -110,6 +111,13 @@ const SidePanel = ({
           type="button"
         >
           <FontAwesomeIcon icon={faTable} size="2x" />
+        </button>
+        <button
+          className={tab === 'save' ? 'visualization__side-panel-tab-selected' : null}
+          onClick={() => selectTab('save')}
+          type="button"
+        >
+          <FontAwesomeIcon icon={faSave} size="2x" />
         </button>
         <div className="visualization__side-panel-tab-filler" />
       </div>
