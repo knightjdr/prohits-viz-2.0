@@ -2,13 +2,13 @@
 
 exports[`Selection Default view 1`] = `
 <div
-  className="Selection-container"
+  className="visualization__select"
 >
   <div
-    className="Selection-error"
+    className="visualization__select-error"
     style={
       Object {
-        "transform": "scale(0)",
+        "transform": "scaleY(0)",
       }
     }
   />
@@ -66,7 +66,7 @@ exports[`Selection Default view 1`] = `
     </Button>
   </Upload>
   <div
-    className="Selection-instructions"
+    className="visualization__select-instructions"
   >
     Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
      
@@ -84,13 +84,13 @@ exports[`Selection Default view 1`] = `
 
 exports[`Selection Displays an error 1`] = `
 <div
-  className="Selection-container"
+  className="visualization__select"
 >
   <div
-    className="Selection-error"
+    className="visualization__select-error"
     style={
       Object {
-        "transform": "scale(1)",
+        "transform": "scaleY(1)",
       }
     }
   >
@@ -150,7 +150,7 @@ exports[`Selection Displays an error 1`] = `
     </Button>
   </Upload>
   <div
-    className="Selection-instructions"
+    className="visualization__select-instructions"
   >
     Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
      

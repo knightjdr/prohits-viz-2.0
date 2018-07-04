@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Selection from './selection';
+import Selection from './visualization__select';
 
 const handleFile = jest.fn();
 
@@ -16,8 +16,8 @@ describe('Selection', () => {
     expect(wrapper).toMatchSnapshot();
 
     // The error element should not be visible (scale = 0).
-    const errorDiv = wrapper.find('.Selection-error');
-    expect(errorDiv.props().style.transform).toBe('scale(0)');
+    const errorDiv = wrapper.find('.visualization__select-error');
+    expect(errorDiv.props().style.transform).toBe('scaleY(0)');
   });
 
   test('Displays an error', () => {
@@ -30,8 +30,8 @@ describe('Selection', () => {
     expect(wrapper).toMatchSnapshot();
 
     // The error element should be visible (scale = 1) and display text.
-    const errorDiv = wrapper.find('.Selection-error');
-    expect(errorDiv.props().style.transform).toBe('scale(1)');
+    const errorDiv = wrapper.find('.visualization__select-error');
+    expect(errorDiv.props().style.transform).toBe('scaleY(1)');
     expect(errorDiv.text()).toBe('Test error');
   });
 

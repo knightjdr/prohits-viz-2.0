@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
-import DisplayViz from './display-viz/display-viz-container';
+import Display from './__display/visualization__display-container';
 import Navbar from '../navbar/navbar-container';
 import RouteNotFound from '../router/route-not-found';
-import SelectVizType from './select-viz/select-viz-type-container';
+import SelectType from './__select/visualization__select-container';
 
 const links = [
   {
@@ -34,12 +34,12 @@ export const VisualizationComponent = ({
         <Route
           exact
           path={match.path}
-          component={SelectVizType}
+          component={SelectType}
         />
         <Route
           exact
           path={`${match.path}/:vizId`}
-          component={DisplayViz}
+          component={Display}
         />
         <RouteNotFound />
       </Switch>

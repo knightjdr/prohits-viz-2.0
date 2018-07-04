@@ -1,8 +1,10 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faFileAlt from '@fortawesome/fontawesome-pro-solid/faFileAlt';
-import faNewspaper from '@fortawesome/fontawesome-pro-solid/faNewspaper';
-import faQuestion from '@fortawesome/fontawesome-pro-solid/faQuestion';
 import React from 'react';
+import {
+  faFileAlt,
+  faNewspaper,
+  faQuestion,
+} from '@fortawesome/pro-solid-svg-icons';
 
 import ToolBox from './tool-box';
 import Dotplot from '../assets/icons/dotplot.svg';

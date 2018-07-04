@@ -1,9 +1,9 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faExclamationTriangle from '@fortawesome/fontawesome-pro-solid/faExclamationTriangle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { List, Pagination, Spin } from 'antd';
 import { connect } from 'react-redux';
+import { faExclamationTriangle } from '@fortawesome/pro-solid-svg-icons';
 
 import NewsListItem from './news-list-item';
 import NewsPageSelector from '../../state/selectors/news-page-selector';

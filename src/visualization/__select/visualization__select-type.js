@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Heatmap from '../heatmap/heatmap-container';
-import Scatter from '../scatter/scatter-container';
-import Selection from './selection';
+import Heatmap from '../__heatmap/visualization__heatmap-container';
+import Scatter from '../__scatter/visualization__scatter-container';
+import Selection from './visualization__select';
 
-const SelectViz = ({
+const SelectType = ({
   err,
   handleFile,
   vizType,
@@ -26,15 +26,15 @@ const SelectViz = ({
   return vizElement;
 };
 
-SelectViz.defaultProps = {
+SelectType.defaultProps = {
   err: null,
   vizType: null,
 };
 
-SelectViz.propTypes = {
+SelectType.propTypes = {
   err: PropTypes.string,
   handleFile: PropTypes.func.isRequired,
   vizType: PropTypes.string,
 };
 
-export default SelectViz;
+export default SelectType;

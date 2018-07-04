@@ -1,0 +1,87 @@
+/* Button
+   ========================================================================== */
+/*
+** 1. Change the font styles in all browsers.
+** 2. Remove the margin in Firefox and Safari.
+*/
+.button-reset {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1;
+  margin: 0;
+}
+/*
+** Show the overflow in IE.
+** 1. Show the overflow in Edge.
+*/
+.button-reset {
+  overflow: visible;
+}
+/*
+** Remove the inheritance of text transform in Edge, Firefox, and IE.
+** 1. Remove the inheritance of text transform in Firefox.
+*/
+.button-reset {
+  text-transform: none;
+}
+/*
+** Correct the inability to style clickable types in iOS and Safari.
+*/
+.reset-button {
+  -webkit-appearance: button;
+}
+/*
+** Remove the inner border and padding in Firefox.
+**/
+.button-reset::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+/*
+** Restore the focus styles unset by the previous rule.
+*/
+.button-reset:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+/*
+** Remove default styling
+*/
+.button-reset {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.button-reset:focus {
+  outline: 0;
+}
+/*
+** Cursor.
+*/
+@media (max-width: 679px) {
+  .button-reset {
+    cursor: default;
+  }
+}
+@media (min-width: 680px) {
+  .button-reset {
+    cursor: pointer;
+  }
+}
+
+/* Link
+   ========================================================================== */
+/*
+** Remove the gray background on active links in IE 10.
+*/
+.link-reset {
+  background-color: transparent;
+}
+
+/* Image
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+.img-reset {
+  border-style: none;
+}

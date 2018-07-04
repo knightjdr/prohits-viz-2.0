@@ -1,4 +1,4 @@
-import ValidateJson from './validate-json';
+import ValidateJson from './visualization__select-validate';
 
 describe('ValidateJson', () => {
   test('Invalid JSON should return error', () => {

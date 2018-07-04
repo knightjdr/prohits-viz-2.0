@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ValidateJson from './validate-json';
-import { SelectVizTypeContainer } from './select-viz-type-container';
+import ValidateJson from './visualization__select-validate';
+import { SelectContainer } from './visualization__select-container';
 
 const setFile = jest.fn();
 
 // Mock validation.
-jest.mock('./validate-json');
+jest.mock('./visualization__select-validate');
 
 const testFile = { fileList: [new File([''], 'samplefile.txt', { type: 'text/plain' })] };
 const testJson = {
@@ -16,10 +16,10 @@ const testJson = {
   },
 };
 
-describe('SelectVizTypeContainer', () => {
+describe('SelectContainer', () => {
   test('Initial empty state', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -29,7 +29,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('Initial state with a json file in redux store', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         interactiveFile={testJson}
         setFile={setFile}
       />,
@@ -40,7 +40,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('Changing json file prop sets viz type', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -54,7 +54,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('Null interactive file prop change does nothing', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -67,7 +67,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('File loaded and validation', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -92,7 +92,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('Set vizType based on json file imageType property', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -106,7 +106,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('HandleFile handles null input file', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );
@@ -124,7 +124,7 @@ describe('SelectVizTypeContainer', () => {
 
   test('HandleFile handles input file', () => {
     const wrapper = shallow(
-      <SelectVizTypeContainer
+      <SelectContainer
         setFile={setFile}
       />,
     );

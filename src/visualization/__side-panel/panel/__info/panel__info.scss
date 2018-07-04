@@ -1,0 +1,15 @@
+@import '../panel.scss';
+
+.panel__info-settings {
+  display: grid;
+  grid-column-gap: 5px;
+  grid-template-columns: 165px 165px;
+  grid-template-rows: auto auto;
+  margin: 10px 0 20px 0;
+}
+.panel__info-settings > div:nth-child(odd) {
+  justify-self: end;
+}
+.panel__info-settings > div:nth-child(odd)::after {
+  content: ':'
+}

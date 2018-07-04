@@ -1,8 +1,8 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faQuestionSquare from '@fortawesome/fontawesome-pro-solid/faQuestionSquare';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Form, Input } from 'antd';
+import { faQuestionSquare } from '@fortawesome/pro-solid-svg-icons';
 
 import InfoModal from './info-modal';
 import UndefinedIfNotSet from '../../../helpers/undefined-if-not-set';

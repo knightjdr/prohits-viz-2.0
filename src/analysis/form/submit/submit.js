@@ -1,10 +1,12 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faMinusSquare from '@fortawesome/fontawesome-pro-solid/faMinusSquare';
-import faPlusSquare from '@fortawesome/fontawesome-pro-solid/faPlusSquare';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Tooltip } from 'antd';
 import { connect } from 'react-redux';
+import {
+  faMinusSquare,
+  faPlusSquare,
+} from '@fortawesome/pro-solid-svg-icons';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
 import Errors from './errors';

@@ -1,17 +1,17 @@
-.Selection-container {
+.visualization__select {
   align-items: center;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 50px);
   justify-content: center;
 }
-.Selection-error {
+.visualization__select-error {
   color: #f44336;
   margin-bottom: 10px;
   transform: scaleY(0);
   transition: transform 0.2s linear;
 }
-.Selection-instructions {
+.visualization__select-instructions {
   padding: 0 20px;
   margin-top: 20px;
   max-width: 600px;

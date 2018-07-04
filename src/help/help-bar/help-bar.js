@@ -1,8 +1,8 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faChevronSquareDown from '@fortawesome/fontawesome-pro-solid/faChevronSquareDown';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'antd';
+import { faChevronSquareDown } from '@fortawesome/pro-solid-svg-icons';
 
 import TreeRoutes from './tree-routes-container';
 

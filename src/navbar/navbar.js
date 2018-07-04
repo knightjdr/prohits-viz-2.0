@@ -1,9 +1,9 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faBars from '@fortawesome/fontawesome-pro-solid/faBars';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Popover } from 'antd';
+import { faBars } from '@fortawesome/pro-solid-svg-icons';
 
 import Logo from '../assets/logos/logo_nobg.svg';
 import LogoAccent from '../assets/logos/logo_accent_nobg.svg';

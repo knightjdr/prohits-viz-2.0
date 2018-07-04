@@ -1,11 +1,11 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faFilePlus from '@fortawesome/fontawesome-pro-solid/faFilePlus';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Upload } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { faFilePlus } from '@fortawesome/pro-solid-svg-icons';
 
-import './selection.css';
+import './visualization__select.css';
 
 const config = {
   name: 'file',
@@ -18,9 +18,9 @@ const Selection = ({
   err,
   handleFile,
 }) => (
-  <div className="Selection-container">
+  <div className="visualization__select">
     <div
-      className="Selection-error"
+      className="visualization__select-error"
       style={{
         transform: err ? 'scaleY(1)' : 'scaleY(0)',
       }}
@@ -38,7 +38,7 @@ const Selection = ({
         /> Select File
       </Button>
     </Upload>
-    <div className="Selection-instructions">
+    <div className="visualization__select-instructions">
       Select the image to display interactively. This file must be JSON format
       (extension .json). If you have downloaded an analysis results folder from
       ProHits-viz these files will be located in the &quot;interactive&quot;

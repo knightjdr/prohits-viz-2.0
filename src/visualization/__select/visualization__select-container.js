@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import InteractiveFileSelector from '../../state/selectors/interactive-file-selector';
-import SelectVizType from './select-viz-type';
-import ValidateJson from './validate-json';
+import SelectType from './visualization__select-type';
+import ValidateJson from './visualization__select-validate';
 import { setIntFile } from '../../state/set/interactive-file-actions';
 
-/* SelectVizTypeContainer handles user uploads for interactive images, including
+/* SelectContainer handles user uploads for interactive images, including
 ** file validation. */
-export class SelectVizTypeContainer extends Component {
+export class SelectContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       err: null,
-      vizType: this.setVizType(this.props.interactiveFile),
+      vizType: 'heatmap', // this.setVizType(this.props.interactiveFile),
     };
   }
   componentWillReceiveProps = (nextProps) => {
@@ -76,7 +76,7 @@ export class SelectVizTypeContainer extends Component {
   )
   render() {
     return (
-      <SelectVizType
+      <SelectType
         err={this.state.err}
         handleFile={this.handleFile}
         vizType={this.state.vizType}
@@ -85,11 +85,11 @@ export class SelectVizTypeContainer extends Component {
   }
 }
 
-SelectVizTypeContainer.defaultProps = {
+SelectContainer.defaultProps = {
   interactiveFile: null,
 };
 
-SelectVizTypeContainer.propTypes = {
+SelectContainer.propTypes = {
   interactiveFile: PropTypes.shape({
     params: PropTypes.shape({
       imageType: PropTypes.string,
@@ -113,6 +113,6 @@ const mapStateToProps = state => ({
 const ConnectedContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SelectVizTypeContainer);
+)(SelectContainer);
 
 export default ConnectedContainer;

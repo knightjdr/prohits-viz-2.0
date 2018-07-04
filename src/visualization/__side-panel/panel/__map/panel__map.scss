@@ -1,0 +1,28 @@
+@import '../panel.scss';
+
+.panel__map {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 170px);
+  margin-top: 10px;
+}
+.panel__map-inner {
+  display: inline-block;
+  position: relative;
+}
+.panel__map-inner img {
+  height: auto;
+  max-height: calc(100vh - 170px);
+  max-width: 330px;
+  width: auto;
+}
+.panel__map-select {
+  cursor: crosshair;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}

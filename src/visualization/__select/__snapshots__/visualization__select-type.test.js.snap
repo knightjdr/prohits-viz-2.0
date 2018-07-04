@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectType Renders with HeatmapContainer 1`] = `<HeatmapContainer />`;
+
+exports[`SelectType Renders with ScatterContainer 1`] = `<ScatterContainer />`;
+
+exports[`SelectType Renders with upload option when vizType is null 1`] = `
+<Selection
+  err={null}
+  handleFile={[Function]}
+/>
+`;

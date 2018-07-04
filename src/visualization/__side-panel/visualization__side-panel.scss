@@ -1,0 +1,86 @@
+@import 'style/_reset.scss';
+@import 'theme/_theme.scss';
+
+.visualization__side-panel {
+  background-color: $backdrop-light;
+  border-radius: 3px;
+  height: calc(100% - 20px);
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transform: translateX(350);
+  transition: all 0.5s cubic-bezier(.17, .67, .16, .99);
+  width: 350px;
+  z-index: 101;
+}
+.visualization__side-panel-backdrop {
+  background-color: rgba(97, 97, 97, 0);
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: background-color 0.5s ease;
+  width: 100%;
+  z-index: 100;
+}
+.visualization__side-panel-button {
+  @extend .button-reset;
+  background-color: $primary-medium;
+  border-radius: 50%;
+  color: $text-light;
+  height: 40px;
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  transform: translateX(-10px);
+  transform-origin: center;
+  transition: all 0.5s ease;
+  width: 40px;
+  z-index: 102;
+}
+.visualization__side-panel-button:hover {
+  background-color: $primary-dark;
+}
+.visualization__side-panel-container {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.visualization__side-panel-tabs {
+  display: flex;
+}
+.visualization__side-panel-tabs > button {
+  @extend .button-reset;
+  background-color: $backdrop-light;
+  border-bottom: 1px solid $primary-light;
+  height: 50px;
+  transition: background-color 0.5s ease;
+  width: 50px;
+}
+.visualization__side-panel-tabs > button:hover svg {
+  color: $primary-dark;
+  transform: scale(1.2);
+}
+.visualization__side-panel-tabs > :first-child {
+  border-top-left-radius: 3px;
+}
+.visualization__side-panel-tabs > button svg {
+  color: $primary-medium;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+.visualization__side-panel-tab-selected {
+  background-color: $primary-light !important;
+}
+.visualization__side-panel-tab-selected svg {
+  color: $primary-dark !important;
+}
+.visualization__side-panel-tab-filler {
+  border-bottom: 1px solid $primary-light;
+  flex-grow: 1;
+}

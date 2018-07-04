@@ -1,6 +1,4 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faExclamationTriangle from '@fortawesome/fontawesome-pro-light/faExclamationTriangle';
-import faNewspaper from '@fortawesome/fontawesome-pro-regular/faNewspaper';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Spin, Tooltip } from 'antd';
@@ -16,6 +14,8 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
+import { faExclamationTriangle } from '@fortawesome/pro-light-svg-icons';
+import { faNewspaper } from '@fortawesome/pro-regular-svg-icons';
 
 import NewsItemSelector from '../../state/selectors/news-item-selector';
 import TextToHtml from '../../helpers/text-to-html';

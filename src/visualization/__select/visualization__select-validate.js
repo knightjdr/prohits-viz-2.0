@@ -2,11 +2,11 @@ import isJson from '../../helpers/is-json';
 
 const validTypes = ['dotplot', 'heatmap', 'scatter'];
 
-// ValidateJson validates that an input file is JSON formatted and has the
+// SelectValidate validates that an input file is JSON formatted and has the
 // necessary fields and values for the interactive viewer. If the analysis
 // type is "dotplot" or "heatmap", this includes checking for the "column"
 // and "rows" props. The "minimap" is not required.
-const ValidateJson = (jsonString) => {
+const SelectValidate = (jsonString) => {
   const json = isJson(jsonString);
 
   // If the json is not valid, return err.
@@ -95,4 +95,4 @@ const ValidateJson = (jsonString) => {
     json,
   };
 };
-export default ValidateJson;
+export default SelectValidate;

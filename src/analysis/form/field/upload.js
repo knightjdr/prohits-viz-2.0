@@ -1,8 +1,8 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faFilePlus from '@fortawesome/fontawesome-pro-solid/faFilePlus';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, Upload } from 'antd';
+import { faFilePlus } from '@fortawesome/pro-solid-svg-icons';
 
 import './upload.css';
 

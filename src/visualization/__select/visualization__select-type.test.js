@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SelectVizType from './select-viz-type';
+import SelectType from './visualization__select-type';
 
 const handleFile = jest.fn();
 
-describe('SelectVizType', () => {
+describe('SelectType', () => {
   test('Renders with upload option when vizType is null', () => {
     const wrapper = shallow(
-      <SelectVizType handleFile={handleFile} />,
+      <SelectType handleFile={handleFile} />,
     );
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('HeatmapContainer').length).toBe(0);
@@ -18,7 +18,7 @@ describe('SelectVizType', () => {
 
   test('Renders with HeatmapContainer', () => {
     const wrapper = shallow(
-      <SelectVizType
+      <SelectType
         handleFile={handleFile}
         vizType="heatmap"
       />,
@@ -31,7 +31,7 @@ describe('SelectVizType', () => {
 
   test('Renders with ScatterContainer', () => {
     const wrapper = shallow(
-      <SelectVizType
+      <SelectType
         handleFile={handleFile}
         vizType="scatter"
       />,

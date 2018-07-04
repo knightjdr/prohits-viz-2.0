@@ -1,10 +1,12 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faChevronLeft from '@fortawesome/fontawesome-pro-solid/faChevronLeft';
-import faChevronRight from '@fortawesome/fontawesome-pro-solid/faChevronRight';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Icon } from 'antd';
 import { NavLink } from 'react-router-dom';
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/pro-solid-svg-icons';
 
 import './help-nav-buttons.css';
 

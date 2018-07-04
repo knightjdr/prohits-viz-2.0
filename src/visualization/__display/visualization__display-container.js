@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class DisplayVizContainer extends Component {
+export class DisplayContainer extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ export class DisplayVizContainer extends Component {
   }
 }
 
-export default DisplayVizContainer;
+export default DisplayContainer;
