@@ -2,6 +2,10 @@
   animation: panelin 0.3s cubic-bezier(.17, .67, .16, .99);
   padding: 10px;
 }
+.panel__border {
+  margin: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
 .panel__title {
   font-size: 1.1em;
   font-weight: 600;

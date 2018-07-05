@@ -2,10 +2,9 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  faFilter,
+  faCog,
   faGlobeAmericas,
   faInfoCircle,
-  faPalette,
   faPenSquare,
   faSave,
   faTable,
@@ -85,19 +84,13 @@ const SidePanel = ({
           <FontAwesomeIcon icon={faGlobeAmericas} size="2x" />
         </button>
         <button
-          className={tab === 'palette' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('palette')}
+          className={tab === 'settings' ? 'visualization__side-panel-tab-selected' : null}
+          onClick={() => selectTab('settings')}
           type="button"
         >
-          <FontAwesomeIcon icon={faPalette} size="2x" />
+          <FontAwesomeIcon icon={faCog} size="2x" />
         </button>
-        <button
-          className={tab === 'filter' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('filter')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faFilter} size="2x" />
-        </button>
+
         <button
           className={tab === 'annotation' ? 'visualization__side-panel-tab-selected' : null}
           onClick={() => selectTab('annotation')}
