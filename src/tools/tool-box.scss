@@ -1,6 +1,12 @@
-@import 'theme/_theme.scss';
+@import 'style/button';
+@import 'style/style';
+@import 'style/theme';
 
+.toolbox__button {
+  @extend .nobutton;
+}
 .ToolBox-container {
+  @extend .boxshadow;
   background-color: $backdrop-light;
   cursor: pointer;
   display: grid;

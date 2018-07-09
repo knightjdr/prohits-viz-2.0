@@ -44,7 +44,7 @@ const Selection = ({
       ProHits-viz these files will be located in the &quot;interactive&quot;
       subfolder. See the {' '}
       <NavLink
-        className="decorate-link"
+        className="visualization__select-instructions-link"
         to="/help/format"
       >
         help

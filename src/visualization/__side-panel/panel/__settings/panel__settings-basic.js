@@ -2,7 +2,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Select } from 'antd';
-import { faArrowAltCircleRight } from '@fortawesome/pro-light-svg-icons';
+import { faSync } from '@fortawesome/pro-regular-svg-icons';
 
 import './panel__settings.css';
 
@@ -25,7 +25,7 @@ const Basic = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
 ]);

@@ -16,13 +16,13 @@ const Clustering = ({
   preyClustering,
 }) => (
   <div>
-    <div className="Clustering-header ant-text">
+    <div className="Clustering-header">
       Clustering
     </div>
-    <div className="Clustering-introduction ant-text">
+    <div className="Clustering-introduction">
       See the{' '}
       <NavLink
-        className="decorate-link"
+        className="Clustering-introduction-link"
         to="/help/tools/dotplot"
       >
         help
@@ -44,7 +44,7 @@ const Clustering = ({
     {
       clustering === 'biclustering' &&
       <div className="Clustering-biclustering-checkbox">
-        <div className="Clustering-biclustering-checkbox-label ant-text">
+        <div className="Clustering-biclustering-checkbox-label">
           Approximate biclustering (faster):
         </div>
         <CustomField

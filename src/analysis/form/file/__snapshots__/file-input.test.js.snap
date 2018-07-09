@@ -11,7 +11,7 @@ exports[`FileInput Renders 1`] = `
     Specifiy the type of file you would like to analyze and select or drag it to the input below. See the 
      
     <Component
-      className="decorate-link"
+      className="FileInput-link"
       onClick={[Function]}
       to="/help/format"
     >
@@ -21,7 +21,7 @@ exports[`FileInput Renders 1`] = `
     for information on input formats. Click
      
     <button
-      className="nobutton FileInput-sample-button"
+      className="FileInput-sample-button"
       onClick={[Function]}
       type="button"
     >

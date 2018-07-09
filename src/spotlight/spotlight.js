@@ -59,7 +59,7 @@ export const SpotlightComponent = ({
     );
   });
   const spotlightElement = (
-    <div className="Spotlight-container fadein">
+    <div className="Spotlight-container">
       <div className="Spotlight-header">
         SPOTLIGHT
       </div>

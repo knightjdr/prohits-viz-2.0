@@ -51,7 +51,7 @@ export const SubmitComponent = ({
         </div>
         <div className="Submit-button-container">
           <Button
-            className="success-button"
+            className="submit__buttons-submit"
             htmlType="submit"
             type="submit"
           >
@@ -62,7 +62,7 @@ export const SubmitComponent = ({
             title="Reset options"
           >
             <Button
-              className="warning-button"
+              className="submit__buttons-warning"
               onClick={handleReset}
               type="button"
             >

@@ -1,6 +1,10 @@
-@import 'theme/_theme.scss';
+@import 'style/animations';
+@import 'style/style';
+@import 'style/theme';
 
 .Newsfeed-container {
+  @extend .fadein;
+  @extend .boxshadow;
   background-color: $backdrop-light;
   border-radius: 2px;
   display: flex;

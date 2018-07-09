@@ -21,7 +21,7 @@ exports[`SubmitComponent Renders submit view with options 1`] = `
       className="Submit-button-container"
     >
       <Button
-        className="success-button"
+        className="submit__buttons-submit"
         ghost={false}
         htmlType="submit"
         loading={false}
@@ -41,7 +41,7 @@ exports[`SubmitComponent Renders submit view with options 1`] = `
         transitionName="zoom-big-fast"
       >
         <Button
-          className="warning-button"
+          className="submit__buttons-warning"
           ghost={false}
           loading={false}
           onClick={[Function]}
@@ -116,7 +116,7 @@ exports[`SubmitComponent Renders submit view without options 1`] = `
       className="Submit-button-container"
     >
       <Button
-        className="success-button"
+        className="submit__buttons-submit"
         ghost={false}
         htmlType="submit"
         loading={false}
@@ -136,7 +136,7 @@ exports[`SubmitComponent Renders submit view without options 1`] = `
         transitionName="zoom-big-fast"
       >
         <Button
-          className="warning-button"
+          className="submit__buttons-warning"
           ghost={false}
           loading={false}
           onClick={[Function]}

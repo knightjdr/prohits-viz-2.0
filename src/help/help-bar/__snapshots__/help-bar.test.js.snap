@@ -5,7 +5,7 @@ exports[`HelpBar It renders 1`] = `
   className="HelpBar-container"
 >
   <div
-    className="HelpBar-panel boxshadow "
+    className="HelpBar-panel "
   >
     <div
       className="HelpBar-breadcrumb "
@@ -64,7 +64,7 @@ exports[`HelpBar It renders on small screen 1`] = `
   className="HelpBar-container"
 >
   <div
-    className="HelpBar-panel boxshadow HelpBar-panel-transition-out"
+    className="HelpBar-panel HelpBar-panel-transition-out"
   >
     <div
       className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-out"
@@ -123,7 +123,7 @@ exports[`HelpBar It renders on small screen with panel 1`] = `
   className="HelpBar-container"
 >
   <div
-    className="HelpBar-panel boxshadow HelpBar-panel-transition-in"
+    className="HelpBar-panel HelpBar-panel-transition-in"
   >
     <div
       className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-in"
@@ -182,7 +182,7 @@ exports[`HelpBar It renders with panel 1`] = `
   className="HelpBar-container"
 >
   <div
-    className="HelpBar-panel boxshadow "
+    className="HelpBar-panel "
   >
     <div
       className="HelpBar-breadcrumb "

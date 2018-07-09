@@ -71,7 +71,7 @@ exports[`Selection Default view 1`] = `
     Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
      
     <Component
-      className="decorate-link"
+      className="visualization__select-instructions-link"
       to="/help/format"
     >
       help
@@ -155,7 +155,7 @@ exports[`Selection Displays an error 1`] = `
     Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
      
     <Component
-      className="decorate-link"
+      className="visualization__select-instructions-link"
       to="/help/format"
     >
       help

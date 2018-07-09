@@ -1,0 +1,59 @@
+@import 'style/reset';
+@import 'style/button';
+
+.panel__annotation-button {
+  @extend .button-reset;
+  align-items: center;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  font-size: 16px;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+.panel__annotation-button_theme-default {
+  @extend .panel__annotation-button;
+  @extend .default-button;
+}
+.panel__annotation-button_theme-warning {
+  @extend .panel__annotation-button;
+  @extend .warning-button;
+  margin-left: 6px;
+}
+.panel__annotation-annotations-buttons {
+  margin-top: 15px;
+}
+.panel__annotation-annotations-buttons,
+.panel__annotation-markers {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: 165px auto;
+  margin-left: 0;
+}
+.panel__annotation-annotations-buttons > div:nth-child(odd),
+.panel__annotation-markers > div:nth-child(odd) {
+  justify-self: right;
+}
+.panel__annotation-annotations-buttons > div:nth-child(odd)::after,
+.panel__annotation-markers > div:nth-child(odd)::after {
+  content: ':';
+}
+.panel__annotation-annotations-input {
+  display: flex;
+}
+.panel__annotation-annotations-input > :first-child {
+  margin-left: 15px;
+  width: 250px;
+}
+.panel__annotation-annotations-input .ant-input {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.panel__annotation-annotations-input > :last-child {
+  border-radius: 0 4px 4px 0;
+  box-shadow: none;
+}

@@ -4,14 +4,12 @@
   display: flex;
   font-size: 12px;
   justify-content: center;
-  margin-top: 5px;
 }
 .panel__info-settings {
   display: grid;
   grid-column-gap: 5px;
-  grid-template-columns: 165px 165px;
+  grid-template-columns: 50% 50%;
   grid-template-rows: auto auto;
-  margin-top: 10px;
 }
 .panel__info-settings > div:nth-child(odd) {
   justify-self: end;

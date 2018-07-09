@@ -6,7 +6,7 @@ exports[`NextStepComponent Renders nothing when at current step but needed to do
   style={Object {}}
 >
   <Button
-    className="NextStep-button pulse-button-primary"
+    className="NextStep-button"
     ghost={false}
     loading={false}
     onClick={[Function]}

@@ -2,7 +2,7 @@
 
 exports[`Spotlight With articles 1`] = `
 <div
-  className="Spotlight-container fadein"
+  className="Spotlight-container"
 >
   <div
     className="Spotlight-header"

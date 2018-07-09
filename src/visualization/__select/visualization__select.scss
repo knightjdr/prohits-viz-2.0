@@ -1,3 +1,6 @@
+@import 'style/link';
+@import 'style/theme';
+
 .visualization__select {
   align-items: center;
   display: flex;
@@ -6,7 +9,7 @@
   justify-content: center;
 }
 .visualization__select-error {
-  color: #f44336;
+  color: $warning;
   margin-bottom: 10px;
   transform: scaleY(0);
   transition: transform 0.2s linear;
@@ -16,4 +19,7 @@
   margin-top: 20px;
   max-width: 600px;
   text-align: justify;
+}
+.visualization__select-instructions-link {
+  @extend .decorate-link;
 }

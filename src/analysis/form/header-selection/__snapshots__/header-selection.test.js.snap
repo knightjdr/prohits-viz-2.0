@@ -11,7 +11,7 @@ exports[`HeaderSelection Renders 1`] = `
     Specify the columns to use if they have not been preselected. See
      
     <Component
-      className="decorate-link"
+      className="HeaderSelection-link"
       onClick={[Function]}
       to="/help/format"
     >

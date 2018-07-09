@@ -3,17 +3,17 @@
 exports[`ClusteringDotplot Renders for "none" clustering when requiring baits and preys 1`] = `
 <div>
   <div
-    className="Clustering-header ant-text"
+    className="Clustering-header"
   >
     Clustering
   </div>
   <div
-    className="Clustering-introduction ant-text"
+    className="Clustering-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Clustering-introduction-link"
       to="/help/tools/dotplot"
     >
       help
@@ -122,17 +122,17 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring baits an
 exports[`ClusteringDotplot Renders for "none" clustering when requiring only baits 1`] = `
 <div>
   <div
-    className="Clustering-header ant-text"
+    className="Clustering-header"
   >
     Clustering
   </div>
   <div
-    className="Clustering-introduction ant-text"
+    className="Clustering-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Clustering-introduction-link"
       to="/help/tools/dotplot"
     >
       help
@@ -234,17 +234,17 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only bai
 exports[`ClusteringDotplot Renders for "none" clustering when requiring only preys 1`] = `
 <div>
   <div
-    className="Clustering-header ant-text"
+    className="Clustering-header"
   >
     Clustering
   </div>
   <div
-    className="Clustering-introduction ant-text"
+    className="Clustering-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Clustering-introduction-link"
       to="/help/tools/dotplot"
     >
       help
@@ -346,17 +346,17 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only pre
 exports[`ClusteringDotplot Renders for biclustering 1`] = `
 <div>
   <div
-    className="Clustering-header ant-text"
+    className="Clustering-header"
   >
     Clustering
   </div>
   <div
-    className="Clustering-introduction ant-text"
+    className="Clustering-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Clustering-introduction-link"
       to="/help/tools/dotplot"
     >
       help
@@ -391,7 +391,7 @@ exports[`ClusteringDotplot Renders for biclustering 1`] = `
     className="Clustering-biclustering-checkbox"
   >
     <div
-      className="Clustering-biclustering-checkbox-label ant-text"
+      className="Clustering-biclustering-checkbox-label"
     >
       Approximate biclustering (faster):
     </div>
@@ -407,17 +407,17 @@ exports[`ClusteringDotplot Renders for biclustering 1`] = `
 exports[`ClusteringDotplot Renders for hierarchical 1`] = `
 <div>
   <div
-    className="Clustering-header ant-text"
+    className="Clustering-header"
   >
     Clustering
   </div>
   <div
-    className="Clustering-introduction ant-text"
+    className="Clustering-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Clustering-introduction-link"
       to="/help/tools/dotplot"
     >
       help

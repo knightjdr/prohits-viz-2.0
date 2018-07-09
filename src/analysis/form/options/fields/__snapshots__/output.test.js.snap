@@ -3,17 +3,17 @@
 exports[`Output Renders 1`] = `
 <div>
   <div
-    className="Output-header ant-text"
+    className="Output-header"
   >
     Output
   </div>
   <div
-    className="Output-introduction ant-text"
+    className="Output-introduction"
   >
     See the
      
     <Component
-      className="decorate-link"
+      className="Output-introduction-link"
       to="/help/tools/dotplot"
     >
       help

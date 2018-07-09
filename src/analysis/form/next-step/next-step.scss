@@ -1,3 +1,6 @@
+@import 'style/button';
+
 .NextStep-button {
+  @extend .pulse-button-primary;
   float: right;
 }

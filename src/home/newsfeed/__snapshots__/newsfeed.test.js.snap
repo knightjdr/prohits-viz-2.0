@@ -2,7 +2,7 @@
 
 exports[`Newsfeed Renders with news items 1`] = `
 <div
-  className="Newsfeed-container boxshadow fadein"
+  className="Newsfeed-container"
 >
   <div
     className="Newsfeed-header"

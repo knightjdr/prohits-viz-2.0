@@ -33,7 +33,7 @@ const HelpBar = ({
   }
   return (
     <div className="HelpBar-container">
-      <div className={`HelpBar-panel boxshadow ${panelClass}`}>
+      <div className={`HelpBar-panel ${panelClass}`}>
         <div className={`HelpBar-breadcrumb ${breadcrumbClass}`}>
           <TreeRoutes />
         </div>

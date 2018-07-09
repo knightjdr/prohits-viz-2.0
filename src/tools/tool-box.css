@@ -1,3 +1,84 @@
+.nobutton, .toolbox__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer; }
+
+.nobutton:focus, .toolbox__button:focus {
+  outline: 0; }
+
+.button, .default-button,
+.default-button:focus, .success-button,
+.success-button:focus, .warning-button,
+.warning-button:focus {
+  background-position: center;
+  transition: background 0.5s; }
+
+.default-button,
+.default-button:focus {
+  background-color: #336B87;
+  border-color: #336B87;
+  color: #f5f5f5; }
+
+.default-button:hover {
+  background: #1b4459 radial-gradient(circle, transparent 1%, #1b4459 1%) center/15000%;
+  border-color: #1b4459;
+  color: #f5f5f5; }
+
+.default-button:active {
+  background-color: #f5f5f5;
+  background-size: 100%;
+  transition: background 0s; }
+
+.success-button,
+.success-button:focus {
+  background-color: #43a047;
+  border-color: #43a047;
+  color: #f5f5f5; }
+
+.success-button:hover {
+  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+  border-color: #1b5e20;
+  color: #f5f5f5; }
+
+.success-button:active {
+  background-color: #f5f5f5;
+  background-size: 100%;
+  transition: background 0s; }
+
+.warning-button,
+.warning-button:focus {
+  background-color: #f44336;
+  border-color: #f44336;
+  color: #f5f5f5; }
+
+.warning-button:hover {
+  background: #b71c1c radial-gradient(circle, transparent 1%, #b71c1c 1%) center/15000%;
+  border-color: #b71c1c;
+  color: #f5f5f5; }
+
+.warning-button:active {
+  background-color: #f5f5f5;
+  background-size: 100%;
+  transition: background 0s; }
+
+.pulse-button-primary {
+  animation: pulse-primary 1.25s 3 cubic-bezier(0.66, 0, 0, 1); }
+
+.pulse-button-primary:hover {
+  animation: none; }
+
+@keyframes pulse-primary {
+  from {
+    box-shadow: 0 0 0 0 rgba(51, 107, 135, 0.7); }
+  to {
+    box-shadow: 0 0 0 10px rgba(51, 107, 135, 0); } }
+
+.boxshadow, .ToolBox-container {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+.boxshadow-faint {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4); }
+
 .ToolBox-container {
   background-color: #f5f5f5;
   cursor: pointer;

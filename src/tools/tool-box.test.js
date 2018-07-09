@@ -34,7 +34,7 @@ describe('Toolbox', () => {
   });
 
   test('Clicking a nav link scrolls to top', () => {
-    wrapper.find('.Toolbox-button').simulate('click');
+    wrapper.find('.toolbox__button').simulate('click');
     expect(ScrollTop).toHaveBeenCalledTimes(1);
   });
 

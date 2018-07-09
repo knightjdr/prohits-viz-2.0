@@ -1,7 +1,15 @@
+@import 'style/ant';
+@import 'style/link';
+
 .Output-header {
+  @extend .ant-text;
   font-size: 16px;
   font-weight: 500;
 }
 .Output-introduction {
+  @extend .ant-text;
   margin: 10px 0;
+}
+.Output-introduction-link {
+  @extend .decorate-link;
 }

@@ -1,14 +1,23 @@
+@import 'style/ant';
+@import 'style/link';
+
 .Clustering-header {
+  @extend .ant-text;
   font-size: 16px;
   font-weight: 500;
 }
 .Clustering-introduction {
+  @extend .ant-text;
   margin: 10px 0;
+}
+.Clustering-introduction-link {
+  @extend .decorate-link;
 }
 .Clustering-biclustering-checkbox {
   display: flex;
 }
 .Clustering-biclustering-checkbox-label {
+  @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: 250px;

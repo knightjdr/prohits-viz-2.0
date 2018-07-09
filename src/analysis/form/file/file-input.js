@@ -19,7 +19,7 @@ const FileInput = ({
       Specifiy the type of file you would like to analyze and select or drag it
       to the input below. See the {' '}
       <NavLink
-        className="decorate-link"
+        className="FileInput-link"
         onClick={ScrollTop}
         to="/help/format"
       >
@@ -27,7 +27,7 @@ const FileInput = ({
       </NavLink>{' '}
       for information on input formats. Click{' '}
       <button
-        className="nobutton FileInput-sample-button"
+        className="FileInput-sample-button"
         onClick={selectSampleFile}
         type="button"
       >

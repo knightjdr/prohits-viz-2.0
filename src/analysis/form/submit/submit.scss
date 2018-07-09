@@ -1,3 +1,5 @@
+@import 'style/button';
+
 .Submit-analysis-overview {
   display: flex;
   flex-direction: column;
@@ -29,4 +31,10 @@
 }
 .Submit-tag {
   cursor: default;
+}
+.submit__buttons-submit {
+  @extend .success-button;
+}
+.submit__buttons-warning {
+  @extend .warning-button;
 }

@@ -2,14 +2,14 @@
 
 exports[`Toolbox It renders 1`] = `
 <button
-  className="Toolbox-button nobutton"
+  className="toolbox__button"
   onClick={[Function]}
 >
   <Component
     to="/test"
   >
     <div
-      className="ToolBox-container boxshadow"
+      className="ToolBox-container"
     >
       <div
         className="ToolBox-image"

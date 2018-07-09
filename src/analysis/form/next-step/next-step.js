@@ -28,7 +28,7 @@ export const NextStepComponent = ({
         style={style}
       >
         <Button
-          className="NextStep-button pulse-button-primary"
+          className="NextStep-button"
           onClick={onClick}
           type="primary"
         >

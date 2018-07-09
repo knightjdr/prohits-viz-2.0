@@ -1,5 +1,10 @@
+@import 'style/link';
+
 .HeaderSelection-container {
     margin-top: 25px;
+}
+.HeaderSelection-link {
+  @extend .decorate-link;
 }
 .HeaderSelection-select-container {
   display: grid;

@@ -1,33 +1,23 @@
 @import 'style/reset';
-@import 'theme/theme';
-@import '../panel.scss';
+@import 'style/button';
+@import 'style/theme';
 
 .panel__settings-button {
   @extend .button-reset;
+  @extend .default-button;
   align-items: center;
-  background-color: $primary-medium;
   background-position: center;
   border-radius: 0 4px 4px 0;
-  color: $text-light;
   display: flex;
-  font-size: 18px;
+  font-size: 16px;
   height: 32px;
   justify-content: center;
-  transition: background 0.5s ease;
   width: 32px;
 }
 .panel__settings-button_round-borders-all {
   border-radius: 4px;
   justify-self: end;
   margin-left: 70px;
-}
-.panel__settings-button:hover {
-  background: $primary-dark radial-gradient(circle, transparent 1%, $primary-dark 1%) center/15000%;
-}
-.panel__settings-button:active {
-  background-color: $primary-light;
-  background-size: 100%;
-  transition: background 0s;
 }
 .panel__settings-basic,
 .panel__settings-filter,
@@ -38,7 +28,6 @@
   grid-row-gap: 10px;
   grid-template-columns: 150px 155px;
   margin-left: 0;
-  margin-top: 15px;
 }
 .panel__settings-basic > div:nth-child(even),
 .panel__settings-filter > div:nth-child(even),

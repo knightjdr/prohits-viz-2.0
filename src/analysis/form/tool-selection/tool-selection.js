@@ -19,7 +19,7 @@ const infoMessages = {
       an ideal way of visualizing small to moderately sized data sets (&#8804;
       20 baits). See the{' '}
       <NavLink
-        className="decorate-link"
+        className="tool-selection__link"
         onClick={ScrollTop}
         to="/help/tools/dotplot"
       >
@@ -40,7 +40,7 @@ export const ToolSelectionComponent = ({
         Select the tool you would like to use for your analysis. A detailed
         description of the tools can be found
         <NavLink
-          className="decorate-link inline-add-margins-left"
+          className="tool-selection__link"
           onClick={ScrollTop}
           to="/help/tools"
         >

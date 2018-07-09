@@ -8,7 +8,7 @@ exports[`ControlSubtraction Renders 1`] = `
     className="ControlSubtraction-checkbox"
   >
     <div
-      className="ControlSubtraction-checkbox-label ant-text"
+      className="ControlSubtraction-checkbox-label"
     >
       Control subtraction:
     </div>

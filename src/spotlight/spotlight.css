@@ -1,3 +1,12 @@
+.fadein, .Spotlight-container {
+  animation: fadein 1s; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 .Spotlight-container {
   background-image: url("../assets/background/pattern.svg");
   background-repeat: no-repeat;

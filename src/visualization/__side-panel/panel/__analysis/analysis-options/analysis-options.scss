@@ -1,0 +1,8 @@
+.analysis-options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.analysis-options__type-select.ant-select {
+  min-width: 150px;
+}

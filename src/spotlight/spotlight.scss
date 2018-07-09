@@ -1,6 +1,8 @@
-@import 'theme/_theme.scss';
+@import 'style/animations';
+@import 'style/theme';
 
 .Spotlight-container {
+  @extend .fadein;
   background-image: url('../assets/background/pattern.svg');
   background-repeat: no-repeat;
   background-size: cover;

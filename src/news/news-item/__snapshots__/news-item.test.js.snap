@@ -88,7 +88,7 @@ exports[`News item It renders when loaded 1`] = `
           Share
         </div>
         <CreatedButton
-          className="nobutton"
+          className="News-item-share-button"
           hashtags={
             Array [
               "#test",
@@ -108,7 +108,7 @@ exports[`News item It renders when loaded 1`] = `
           />
         </CreatedButton>
         <CreatedButton
-          className="nobutton"
+          className="News-item-share-button"
           hashtag="#test"
           quote="test"
           url="http://localhost:3000/news/abcd"
@@ -124,7 +124,7 @@ exports[`News item It renders when loaded 1`] = `
           />
         </CreatedButton>
         <CreatedButton
-          className="nobutton"
+          className="News-item-share-button"
           url="http://localhost:3000/news/abcd"
           windowHeight={400}
           windowWidth={550}
@@ -138,7 +138,7 @@ exports[`News item It renders when loaded 1`] = `
           />
         </CreatedButton>
         <CreatedButton
-          className="nobutton"
+          className="News-item-share-button"
           onClick={[Function]}
           openWindow={false}
           subject="test"

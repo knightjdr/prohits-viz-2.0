@@ -1,0 +1,84 @@
+@import 'style/theme';
+
+// remove styling from buttons
+.nobutton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.nobutton:focus {
+  outline: 0;
+}
+
+// button types
+.button {
+  background-position: center;
+  transition: background 0.5s;
+}
+.default-button,
+.default-button:focus {
+  @extend .button;
+  background-color: $primary-medium;
+  border-color: $primary-medium;
+  color: $text-light;
+}
+.default-button:hover {
+  background: #1b4459 radial-gradient(circle, transparent 1%, #1b4459 1%) center/15000%;
+  border-color: #1b4459;
+  color: $text-light;
+}
+.default-button:active {
+  background-color: $text-light;
+  background-size: 100%;
+  transition: background 0s;
+}
+.success-button,
+.success-button:focus {
+  @extend .button;
+  background-color: #43a047;
+  border-color: #43a047;
+  color: $text-light;
+}
+.success-button:hover {
+  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+  border-color: #1b5e20;
+  color: $text-light;
+}
+.success-button:active {
+  background-color: $text-light;
+  background-size: 100%;
+  transition: background 0s;
+}
+.warning-button,
+.warning-button:focus {
+  @extend .button;
+  background-color: #f44336;
+  border-color: #f44336;
+  color: $text-light;
+}
+.warning-button:hover {
+  background: #b71c1c radial-gradient(circle, transparent 1%, #b71c1c 1%) center/15000%;
+  border-color: #b71c1c;
+  color: $text-light;
+}
+.warning-button:active {
+  background-color: $text-light;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+// button animations
+.pulse-button-primary {
+  animation: pulse-primary 1.25s 3 cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse-button-primary:hover {
+  animation: none;
+}
+@keyframes pulse-primary {
+  from {
+    box-shadow: 0 0 0 0 rgba(51, 107, 135, 0.7);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(51, 107, 135, 0);
+  }
+}

@@ -10,7 +10,7 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
   <div>
     Select the tool you would like to use for your analysis. A detailed description of the tools can be found
     <Component
-      className="decorate-link inline-add-margins-left"
+      className="tool-selection__link"
       onClick={[Function]}
       to="/help/tools"
     >
@@ -63,7 +63,7 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
             This tool takes quantitative information on bait-prey interactions and visualizes the interactions as either a dot plot or heat map. This is an ideal way of visualizing small to moderately sized data sets (≤ 20 baits). See the
              
             <Unknown
-              className="decorate-link"
+              className="tool-selection__link"
               onClick={[Function]}
               to="/help/tools/dotplot"
             >
@@ -91,7 +91,7 @@ exports[`ToolSelectionComponent Renders item without selected analysis type 1`] 
   <div>
     Select the tool you would like to use for your analysis. A detailed description of the tools can be found
     <Component
-      className="decorate-link inline-add-margins-left"
+      className="tool-selection__link"
       onClick={[Function]}
       to="/help/tools"
     >

@@ -12,13 +12,13 @@ const Output = ({
   analysisType,
 }) => (
   <div>
-    <div className="Output-header ant-text">
+    <div className="Output-header">
       Output
     </div>
-    <div className="Output-introduction ant-text">
+    <div className="Output-introduction">
       See the{' '}
       <NavLink
-        className="decorate-link"
+        className="Output-introduction-link"
         to="/help/tools/dotplot"
       >
         help

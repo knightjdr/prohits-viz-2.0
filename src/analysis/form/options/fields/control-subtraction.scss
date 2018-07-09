@@ -1,3 +1,5 @@
+@import 'style/ant';
+
 .ControlSubtraction-container {
   display: flex;
   flex-wrap: wrap;
@@ -10,6 +12,7 @@
   width: 25%;
 }
 .ControlSubtraction-checkbox-label {
+  @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: 170px;

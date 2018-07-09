@@ -18,7 +18,7 @@ const HeaderSelection = ({
       <div>
         Specify the columns to use if they have not been preselected. See{' '}
         <NavLink
-          className="decorate-link"
+          className="HeaderSelection-link"
           onClick={ScrollTop}
           to="/help/format"
         >

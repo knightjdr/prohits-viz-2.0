@@ -14,7 +14,7 @@ const PreyLengthNormalization = ({
 }) => (
   <div className="PreyLengthNormalization-container">
     <div className="PreyLengthNormalization-checkbox">
-      <div className="PreyLengthNormalization-checkbox-label ant-text">
+      <div className="PreyLengthNormalization-checkbox-label">
         Normalize to prey length:
       </div>
       <CustomField

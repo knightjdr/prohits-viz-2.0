@@ -14,7 +14,7 @@ const ControlSubtraction = ({
 }) => (
   <div className="ControlSubtraction-container">
     <div className="ControlSubtraction-checkbox">
-      <div className="ControlSubtraction-checkbox-label ant-text">
+      <div className="ControlSubtraction-checkbox-label">
         Control subtraction:
       </div>
       <CustomField

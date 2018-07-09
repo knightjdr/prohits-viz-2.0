@@ -5,7 +5,7 @@ import {
   Select,
   Switch,
 } from 'antd';
-import { faArrowAltCircleRight } from '@fortawesome/pro-light-svg-icons';
+import { faSync } from '@fortawesome/pro-regular-svg-icons';
 
 import './panel__settings.css';
 
@@ -31,7 +31,7 @@ const Palette = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
   <div key="fill-color-label">
@@ -51,7 +51,7 @@ const Palette = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
   <div key="invert-color-label">
@@ -63,7 +63,7 @@ const Palette = ({
       className="panel__settings-button panel__settings-button_round-borders-all"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
 ]);

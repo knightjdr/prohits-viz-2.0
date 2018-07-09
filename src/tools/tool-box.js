@@ -27,13 +27,13 @@ const ToolBox = ({
   const imageElement = getImageElement(image);
   return (
     <button
-      className="Toolbox-button nobutton"
+      className="toolbox__button"
       onClick={ScrollTop}
     >
       <NavLink
         to={route}
       >
-        <div className="ToolBox-container boxshadow">
+        <div className="ToolBox-container">
           <div className="ToolBox-image">
             { imageElement }
           </div>

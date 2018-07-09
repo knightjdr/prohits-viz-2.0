@@ -66,7 +66,7 @@ export const NewsItemComponent = ({
           Share
         </div>
         <TwitterShareButton
-          className="nobutton"
+          className="News-item-share-button"
           hashtags={newsItem.item.hashtags}
           title={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
@@ -74,7 +74,7 @@ export const NewsItemComponent = ({
           <TwitterIcon size={32} round />
         </TwitterShareButton>
         <FacebookShareButton
-          className="nobutton"
+          className="News-item-share-button"
           hashtag={newsItem.item.hashtags[0]}
           quote={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
@@ -82,13 +82,13 @@ export const NewsItemComponent = ({
           <FacebookIcon size={32} round />
         </FacebookShareButton>
         <GooglePlusShareButton
-          className="nobutton"
+          className="News-item-share-button"
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
         >
           <GooglePlusIcon size={32} round />
         </GooglePlusShareButton>
         <EmailShareButton
-          className="nobutton"
+          className="News-item-share-button"
           subject={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
         >

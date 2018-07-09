@@ -1,4 +1,6 @@
-@import 'theme/_theme.scss';
+@import 'style/button';
+@import 'style/link';
+@import 'style/theme';
 
 .FileInput-container {
   display: flex;
@@ -7,7 +9,11 @@
 .FileInput-fa-icon {
   margin-right: 5px;
 }
+.FileInput-link {
+  @extend .decorate-link;
+}
 .FileInput-sample-button {
+  @extend .nobutton;
   color: $primary-medium;
   padding: 0;
   text-decoration: underline;

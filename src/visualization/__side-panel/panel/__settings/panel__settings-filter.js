@@ -2,7 +2,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { InputNumber } from 'antd';
-import { faArrowAltCircleRight } from '@fortawesome/pro-light-svg-icons';
+import { faSync } from '@fortawesome/pro-regular-svg-icons';
 
 import './panel__settings.css';
 
@@ -20,7 +20,7 @@ const Filter = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
   <div key="min-abundance-label">
@@ -34,7 +34,7 @@ const Filter = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
   <div key="primary-filter-label">
@@ -49,7 +49,7 @@ const Filter = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
   <div key="secondary-filter-label">
@@ -64,7 +64,7 @@ const Filter = ({
       className="panel__settings-button"
       type="button"
     >
-      <FontAwesomeIcon icon={faArrowAltCircleRight} />
+      <FontAwesomeIcon icon={faSync} />
     </button>
   </div>,
 ]);

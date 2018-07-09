@@ -1,3 +1,9 @@
+@import 'style/link';
+
+.tool-selection__link {
+  @extend .decorate-link;
+  margin-left: 5px;
+}
 .ToolSelection-analysis-select {
   margin-right: 20px;
   width: 150px;

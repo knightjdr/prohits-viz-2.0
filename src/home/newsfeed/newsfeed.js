@@ -11,7 +11,7 @@ export const NewsfeedComponent = ({
   news,
 }) => {
   const newsElement = (
-    <div className="Newsfeed-container boxshadow fadein">
+    <div className="Newsfeed-container">
       <div className="Newsfeed-header">
         News
       </div>
