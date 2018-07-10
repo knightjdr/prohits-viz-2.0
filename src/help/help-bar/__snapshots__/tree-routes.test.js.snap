@@ -100,6 +100,27 @@ exports[`TreeRoutes Renders 1`] = `
         </Unknown>
       }
     />
+    <TreeNode
+      key="/help/visualization/save"
+      title={
+        <Unknown
+          to="/help/visualization/save"
+        >
+          Save
+        </Unknown>
+      }
+    >
+      <TreeNode
+        key="/help/visualization/save/archive"
+        title={
+          <Unknown
+            to="/help/visualization/save/archive"
+          >
+            Archive
+          </Unknown>
+        }
+      />
+    </TreeNode>
   </TreeNode>
 </Tree>
 `;

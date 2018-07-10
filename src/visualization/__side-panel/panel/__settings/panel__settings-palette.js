@@ -12,14 +12,17 @@ import './panel__settings.css';
 const { Option } = Select;
 
 const Palette = ({
-  palette,
+  changeSetting,
+  settings,
+  updateSetting,
 }) => ([
   <div key="edge-color-label">
     Edge color
   </div>,
   <div key="edge-color-input">
     <Select
-      value={palette.edge}
+      onChange={(value) => { changeSetting('edgeColor', value); }}
+      value={settings.edgeColor}
     >
       <Option value="blueBlack">blue-black</Option>
       <Option value="greenBlack">green-black</Option>
@@ -29,6 +32,7 @@ const Palette = ({
     </Select>
     <button
       className="panel__settings-button"
+      onClick={() => { updateSetting('edgeColor'); }}
       type="button"
     >
       <FontAwesomeIcon icon={faSync} />
@@ -39,7 +43,8 @@ const Palette = ({
   </div>,
   <div key="fill-color-input">
     <Select
-      value={palette.fill}
+      onChange={(value) => { changeSetting('fillColor', value); }}
+      value={settings.fillColor}
     >
       <Option value="blueBlack">blue-black</Option>
       <Option value="greenBlack">green-black</Option>
@@ -49,6 +54,7 @@ const Palette = ({
     </Select>
     <button
       className="panel__settings-button"
+      onClick={() => { updateSetting('fillColor'); }}
       type="button"
     >
       <FontAwesomeIcon icon={faSync} />
@@ -58,9 +64,13 @@ const Palette = ({
     Invert color gradient
   </div>,
   <div key="invert-color-input">
-    <Switch checked={palette.invert} />
+    <Switch
+      onChange={(value) => { changeSetting('invertColor', value); }}
+      checked={settings.invertColor}
+    />
     <button
       className="panel__settings-button panel__settings-button_round-borders-all"
+      onClick={() => { updateSetting('invertColor'); }}
       type="button"
     >
       <FontAwesomeIcon icon={faSync} />
@@ -69,7 +79,9 @@ const Palette = ({
 ]);
 
 Palette.propTypes = {
-  palette: PropTypes.shape({}).isRequired,
+  changeSetting: PropTypes.func.isRequired,
+  settings: PropTypes.shape({}).isRequired,
+  updateSetting: PropTypes.func.isRequired,
 };
 
 export default Palette;

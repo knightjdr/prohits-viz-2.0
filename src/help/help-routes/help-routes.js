@@ -1,8 +1,10 @@
+import Archive from '../help-pages/visualization/save/archive';
 import Dotplot from '../help-pages/tools/dotplot';
 import FileFormat from '../help-pages/file-format/file-format';
 import Heatmap from '../help-pages/visualization/heatmap';
 import Introduction from '../help-pages/introduction/introduction';
 import Recommendations from '../help-pages/recommendations/recommendations';
+import Save from '../help-pages/visualization/save/save';
 import Tools from '../help-pages/tools/tools';
 import Visualization from '../help-pages/visualization/visualization';
 import VizFileFormat from '../help-pages/visualization/file-format';
@@ -57,6 +59,20 @@ const HelpRoutes = [
         linkText: 'Heat map',
         route: '/help/visualization/heatmap',
         panelText: 'Heat map',
+      },
+      {
+        component: Save,
+        linkText: 'Save',
+        route: '/help/visualization/save',
+        panelText: 'Save',
+        children: [
+          {
+            component: Archive,
+            linkText: 'Archive',
+            route: '/help/visualization/save/archive',
+            panelText: 'Archive',
+          },
+        ],
       },
     ],
   },

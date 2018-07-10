@@ -52,3 +52,24 @@
   border-top-right-radius: 0;
   width: 115px;
 }
+.panel__settings-warning {
+  margin-left: 40px;
+  margin-top: 25px;
+  text-align: center;
+  width: 250px;
+}
+.panel__settings-warning > :first-child {
+  color: $warning;
+}
+.panel__settings-warning-button {
+  align-items: center;
+  background-color: $primary-medium;
+  background-position: center;
+  border-radius: 4px;
+  color: $text-light;
+  display: inline-flex;
+  font-size: 10px;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
+}

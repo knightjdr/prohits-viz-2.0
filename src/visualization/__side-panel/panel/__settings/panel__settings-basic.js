@@ -9,20 +9,24 @@ import './panel__settings.css';
 const { Option } = Select;
 
 const Basic = ({
-  basic,
+  changeSetting,
+  settings,
+  updateSetting,
 }) => ([
   <div key="image-type-label">
     Image type
   </div>,
   <div key="image-type-input">
     <Select
-      value={basic.type}
+      onChange={(value) => { changeSetting('imageType', value); }}
+      value={settings.imageType}
     >
       <Option value="dotplot">dot plot</Option>
       <Option value="heatmap">heat map</Option>
     </Select>
     <button
       className="panel__settings-button"
+      onClick={() => { updateSetting('imageType'); }}
       type="button"
     >
       <FontAwesomeIcon icon={faSync} />
@@ -31,7 +35,9 @@ const Basic = ({
 ]);
 
 Basic.propTypes = {
-  basic: PropTypes.shape({}).isRequired,
+  changeSetting: PropTypes.func.isRequired,
+  settings: PropTypes.shape({}).isRequired,
+  updateSetting: PropTypes.func.isRequired,
 };
 
 export default Basic;

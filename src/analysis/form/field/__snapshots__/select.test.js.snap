@@ -120,6 +120,7 @@ exports[`Select Renders with group 1`] = `
                           >
                             <Select
                               allowClear={true}
+                              autoClearSearchValue={true}
                               backfill={false}
                               choiceTransitionName="zoom"
                               className=""
@@ -152,6 +153,7 @@ exports[`Select Renders with group 1`] = `
                               showSearch={false}
                               style={Object {}}
                               tags={false}
+                              tokenSeparators={Array []}
                               transitionName="slide-up"
                             >
                               <SelectTrigger
@@ -243,6 +245,7 @@ exports[`Select Renders with group 1`] = `
                                   options={Array []}
                                   popup={
                                     <DropdownMenu
+                                      backfillValue={undefined}
                                       defaultActiveFirstOption={true}
                                       dropdownMenuStyle={Object {}}
                                       firstActiveValue={undefined}
@@ -310,7 +313,7 @@ exports[`Select Renders with group 1`] = `
                                               "userSelect": "none",
                                             }
                                           }
-                                          unselectable="unselectable"
+                                          unselectable="on"
                                         >
                                           Select...
                                         </div>
@@ -325,7 +328,7 @@ exports[`Select Renders with group 1`] = `
                                             "userSelect": "none",
                                           }
                                         }
-                                        unselectable="unselectable"
+                                        unselectable="on"
                                       >
                                         <b />
                                       </span>
@@ -498,6 +501,7 @@ exports[`Select Renders with no value and help message 1`] = `
                           >
                             <Select
                               allowClear={true}
+                              autoClearSearchValue={true}
                               backfill={false}
                               choiceTransitionName="zoom"
                               className=""
@@ -530,6 +534,7 @@ exports[`Select Renders with no value and help message 1`] = `
                               showSearch={false}
                               style={Object {}}
                               tags={false}
+                              tokenSeparators={Array []}
                               transitionName="slide-up"
                             >
                               <SelectTrigger
@@ -621,6 +626,7 @@ exports[`Select Renders with no value and help message 1`] = `
                                   options={Array []}
                                   popup={
                                     <DropdownMenu
+                                      backfillValue={undefined}
                                       defaultActiveFirstOption={true}
                                       dropdownMenuStyle={Object {}}
                                       firstActiveValue={undefined}
@@ -688,7 +694,7 @@ exports[`Select Renders with no value and help message 1`] = `
                                               "userSelect": "none",
                                             }
                                           }
-                                          unselectable="unselectable"
+                                          unselectable="on"
                                         >
                                           Select...
                                         </div>
@@ -703,7 +709,7 @@ exports[`Select Renders with no value and help message 1`] = `
                                             "userSelect": "none",
                                           }
                                         }
-                                        unselectable="unselectable"
+                                        unselectable="on"
                                       >
                                         <b />
                                       </span>
@@ -924,6 +930,7 @@ exports[`Select Renders with without help message 1`] = `
                           >
                             <Select
                               allowClear={true}
+                              autoClearSearchValue={true}
                               backfill={false}
                               choiceTransitionName="zoom"
                               className=""
@@ -956,6 +963,7 @@ exports[`Select Renders with without help message 1`] = `
                               showSearch={false}
                               style={Object {}}
                               tags={false}
+                              tokenSeparators={Array []}
                               transitionName="slide-up"
                             >
                               <SelectTrigger
@@ -1047,6 +1055,7 @@ exports[`Select Renders with without help message 1`] = `
                                   options={Array []}
                                   popup={
                                     <DropdownMenu
+                                      backfillValue={undefined}
                                       defaultActiveFirstOption={true}
                                       dropdownMenuStyle={Object {}}
                                       firstActiveValue={undefined}
@@ -1114,7 +1123,7 @@ exports[`Select Renders with without help message 1`] = `
                                               "userSelect": "none",
                                             }
                                           }
-                                          unselectable="unselectable"
+                                          unselectable="on"
                                         >
                                           Select...
                                         </div>
@@ -1129,7 +1138,7 @@ exports[`Select Renders with without help message 1`] = `
                                             "userSelect": "none",
                                           }
                                         }
-                                        unselectable="unselectable"
+                                        unselectable="on"
                                       >
                                         <b />
                                       </span>
@@ -1285,6 +1294,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                           >
                             <Select
                               allowClear={true}
+                              autoClearSearchValue={true}
                               backfill={false}
                               choiceTransitionName="zoom"
                               className=""
@@ -1317,6 +1327,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                               showSearch={false}
                               style={Object {}}
                               tags={false}
+                              tokenSeparators={Array []}
                               transitionName="slide-up"
                             >
                               <SelectTrigger
@@ -1408,6 +1419,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                                   options={Array []}
                                   popup={
                                     <DropdownMenu
+                                      backfillValue={undefined}
                                       defaultActiveFirstOption={true}
                                       dropdownMenuStyle={Object {}}
                                       firstActiveValue={undefined}
@@ -1475,7 +1487,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                                               "userSelect": "none",
                                             }
                                           }
-                                          unselectable="unselectable"
+                                          unselectable="on"
                                         >
                                           Select...
                                         </div>
@@ -1490,7 +1502,7 @@ exports[`Select Submit error adds prop visualization queue 1`] = `
                                             "userSelect": "none",
                                           }
                                         }
-                                        unselectable="unselectable"
+                                        unselectable="on"
                                       >
                                         <b />
                                       </span>

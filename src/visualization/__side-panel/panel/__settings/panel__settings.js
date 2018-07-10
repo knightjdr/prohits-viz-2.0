@@ -1,5 +1,10 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {
+  faExclamationCircle,
+  faSync,
+} from '@fortawesome/pro-solid-svg-icons';
 
 import Basic from './panel__settings-basic';
 import Filters from './panel__settings-filter';
@@ -8,9 +13,9 @@ import Palette from './panel__settings-palette';
 import './panel__settings.css';
 
 const Settings = ({
-  basic,
-  filters,
-  palette,
+  changeSetting,
+  settings,
+  updateSetting,
 }) => (
   <div className="panel">
     <div className="panel__title">
@@ -18,7 +23,9 @@ const Settings = ({
     </div>
     <div className="panel__settings-basic">
       <Basic
-        basic={basic}
+        changeSetting={changeSetting}
+        settings={settings}
+        updateSetting={updateSetting}
       />
     </div>
     <div className="panel__border" />
@@ -27,7 +34,9 @@ const Settings = ({
     </div>
     <div className="panel__settings-palette">
       <Palette
-        palette={palette}
+        changeSetting={changeSetting}
+        settings={settings}
+        updateSetting={updateSetting}
       />
     </div>
     <div className="panel__border" />
@@ -36,16 +45,29 @@ const Settings = ({
     </div>
     <div className="panel__settings-filter">
       <Filters
-        filters={filters}
+        changeSetting={changeSetting}
+        settings={settings}
+        updateSetting={updateSetting}
       />
+    </div>
+    <div className="panel__settings-warning">
+      <FontAwesomeIcon icon={faExclamationCircle} />{' '}
+      <span>
+        Settings will only take effect after pressing
+        the refresh{' '}
+        <span className="panel__settings-warning-button">
+          <FontAwesomeIcon icon={faSync} />
+        </span>{' '}
+        button.
+      </span>
     </div>
   </div>
 );
 
 Settings.propTypes = {
-  basic: PropTypes.shape({}).isRequired,
-  filters: PropTypes.shape({}).isRequired,
-  palette: PropTypes.shape({}).isRequired,
+  changeSetting: PropTypes.func.isRequired,
+  settings: PropTypes.shape({}).isRequired,
+  updateSetting: PropTypes.func.isRequired,
 };
 
 export default Settings;

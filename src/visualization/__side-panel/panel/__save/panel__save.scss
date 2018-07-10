@@ -1,6 +1,26 @@
+@import 'style/link';
 @import 'style/reset';
 @import 'style/button';
+@import 'style/theme';
 
+.panel__save-archive > :first-child {
+  align-items: center;
+  display: flex;
+}
+.panel__save-archive > :first-child > div {
+  margin-left: 115px;
+}
+.panel__save-archive > :first-child > div::after {
+  content: ':';
+  margin-right: 10px;
+}
+.panel__save-archive > :last-child {
+  margin-top: 25px;
+  text-align: justify;
+}
+.panel__save-archive > :last-child > :first-child {
+  color: $warning;
+}
 .panel__save-button {
   @extend .button-reset;
   @extend .default-button;
@@ -28,6 +48,9 @@
 .panel__save-image .ant-select-selection {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+}
+.panel__save-link {
+  @extend .decorate-link;
 }
 .panel__save-session {
   align-items: center;

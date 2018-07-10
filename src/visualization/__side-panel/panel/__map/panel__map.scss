@@ -1,10 +1,21 @@
-@import '../panel.scss';
+@import 'style/button';
 
 .panel__map {
   align-items: center;
   display: flex;
   justify-content: center;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 195px);
+}
+.panel__map-annotation {
+  border: 1px solid black;
+  position: absolute !important;
+}
+.panel__map-annotations {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .panel__map-inner {
   display: inline-block;
@@ -12,11 +23,12 @@
 }
 .panel__map-inner img {
   height: auto;
-  max-height: calc(100vh - 170px);
+  max-height: calc(100vh - 195px);
   max-width: 320px;
   width: auto;
 }
 .panel__map-select {
+  @extend .nobutton;
   cursor: crosshair;
   height: 100%;
   left: 0;
@@ -24,4 +36,11 @@
   top: 0;
   width: 100%;
   z-index: 2;
+}
+.panel__map-switch {
+  display: flex;
+  justify-content: center;
+}
+.panel__map-switch > :first-child {
+  margin-right: 10px;
 }

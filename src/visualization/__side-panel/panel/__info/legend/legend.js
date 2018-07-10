@@ -2,7 +2,7 @@ import Dotplot from './legend__dotplot';
 import Heatmap from './legend__heatmap';
 
 const Legend = (params) => {
-  switch (params.type) {
+  switch (params.imageType) {
     case 'dotplot':
       return Dotplot(params);
     case 'heatmap':

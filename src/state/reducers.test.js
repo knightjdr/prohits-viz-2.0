@@ -1,13 +1,18 @@
 import { createStore } from 'redux';
 
 // reducers
+import Annotations from './set/visualization/annotation-reducer';
 import FormStep from './set/form-step-reducer';
 import Header from './set/header-reducer';
 import Home from './get/home-reducer';
 import InteractiveFile from './set/interactive-file-reducer';
+import Map from './set/visualization/map-reducer';
 import News from './get/news-reducer';
 import NewsItem from './get/news-item-reducer';
 import NewsPage from './set/news-page-reducer';
+import Parameters from './set/visualization/params-reducer';
+import Position from './set/visualization/position-reducer';
+import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
 
 // create store
@@ -17,13 +22,18 @@ describe('Store', () => {
   test(`check that initial state of the root reducer matches
     what child reducers return given an empty action`,
   () => {
+    expect(store.getState().annotations).toEqual(Annotations(undefined, {}));
     expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, {}));
+    expect(store.getState().minimap).toEqual(Map(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
+    expect(store.getState().parameters).toEqual(Parameters(undefined, {}));
+    expect(store.getState().position).toEqual(Position(undefined, {}));
+    expect(store.getState().settings).toEqual(Settings(undefined, {}));
   });
 
   test('FormStep reducer handles its actions', () => {
@@ -59,7 +69,7 @@ describe('Store', () => {
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
   });
 
-  test('News reducer handles its actions', () => {
+  test('news reducer handles its actions', () => {
     let action = { type: 'GET_NEWS' };
     store.dispatch(action);
     expect(store.getState().news).toEqual(News(undefined, action));
@@ -71,7 +81,7 @@ describe('Store', () => {
     expect(store.getState().news).toEqual(News(undefined, action));
   });
 
-  test('News item reducer handles its actions', () => {
+  test('news item reducer handles its actions', () => {
     let action = { id: 'id', type: 'GET_NEWS_ITEM' };
     store.dispatch(action);
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
@@ -83,9 +93,21 @@ describe('Store', () => {
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
   });
 
-  test('News page reducer handles its actions', () => {
+  test('news page reducer handles its actions', () => {
     const action = { page: ['a'], pageIndex: 2, type: 'SET_NEWS_PAGE' };
     store.dispatch(action);
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, action));
+  });
+
+  test('position reducer handles its actions', () => {
+    const action = { type: 'UPDATE_POSITION', x: 0.5, y: 0.4 };
+    store.dispatch(action);
+    expect(store.getState().position).toEqual(Position(undefined, action));
+  });
+
+  test('visualization settings reducer handles its actions', () => {
+    const action = { setting: 'a', type: 'UPDATE_SETTING', value: 'b' };
+    store.dispatch(action);
+    expect(store.getState().settings).toEqual(Settings(undefined, action));
   });
 });
