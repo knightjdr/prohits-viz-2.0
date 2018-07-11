@@ -14,6 +14,9 @@ const FileFormat = () => (
       to use as they cannot be automatically recognized.
     </p>
     <p>
+      Sample files.
+    </p>
+    <p>
       For detailed information on tools that generate compatible input for ProHits-viz,
       see the references and links below:
       <h3>Publications:</h3>
