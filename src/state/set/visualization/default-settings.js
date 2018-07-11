@@ -1,5 +1,6 @@
 const Settings = {
   abundanceCap: 50,
+  cellSize: 20,
   edgeColor: 'blueBlack',
   fillColor: 'blueBlack',
   imageType: 'dotplot',

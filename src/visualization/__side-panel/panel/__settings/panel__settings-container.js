@@ -12,6 +12,7 @@ export class SettingsContainer extends Component {
     this.state = {
       settings: {
         abundanceCap: this.props.abundanceCap,
+        cellSize: this.props.cellSize,
         edgeColor: this.props.edgeColor,
         fillColor: this.props.fillColor,
         imageType: this.props.imageType,
@@ -45,6 +46,7 @@ export class SettingsContainer extends Component {
 
 SettingsContainer.propTypes = {
   abundanceCap: PropTypes.number.isRequired,
+  cellSize: PropTypes.number.isRequired,
   edgeColor: PropTypes.string.isRequired,
   fillColor: PropTypes.string.isRequired,
   imageType: PropTypes.string.isRequired,
@@ -58,6 +60,7 @@ SettingsContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   abundanceCap: SettingSelector(state, 'abundanceCap'),
+  cellSize: SettingSelector(state, 'cellSize'),
   edgeColor: SettingSelector(state, 'edgeColor'),
   fillColor: SettingSelector(state, 'fillColor'),
   imageType: SettingSelector(state, 'imageType'),
