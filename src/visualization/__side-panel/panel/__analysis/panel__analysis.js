@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import AnalysisOptions from './analysis-options/analysis-options-container';
-import ContextMenu from './context-menu/context-menu-container';
+import ContextMenu from './context-menu/context-menu';
 import GeneSelection from './panel__analysis-gene-selection';
 
 import './panel__analysis.css';

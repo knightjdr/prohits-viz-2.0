@@ -7,7 +7,7 @@ class SidePanelContainer extends Component {
     super(props);
     this.state = {
       isVisible: true,
-      tab: 'map',
+      tab: 'annotation',
     };
   }
   selectTab = (tab) => {

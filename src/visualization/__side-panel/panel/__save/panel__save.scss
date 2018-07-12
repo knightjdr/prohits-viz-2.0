@@ -6,9 +6,7 @@
 .panel__save-archive > :first-child {
   align-items: center;
   display: flex;
-}
-.panel__save-archive > :first-child > div {
-  margin-left: 115px;
+  justify-content: center;
 }
 .panel__save-archive > :first-child > div::after {
   content: ':';
@@ -58,14 +56,15 @@
   flex-direction: column;
 }
 .panel__save-session .ant-input {
-  width: 200px;
+  width: 182px;
 }
 .panel__save-session-grid {
   align-items: center;
   display: grid;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  grid-template-columns: 160px 140px;
+  grid-template-columns: auto auto;
+  justify-content: center;
   margin-left: 0;
   margin-top: 15px;
 }

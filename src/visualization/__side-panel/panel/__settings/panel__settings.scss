@@ -14,7 +14,7 @@
   justify-content: center;
   width: 32px;
 }
-.panel__settings-button_round-borders-all {
+.panel__settings-button-invert {
   border-radius: 4px;
   justify-self: end;
   margin-left: 70px;
@@ -27,6 +27,7 @@
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-template-columns: 150px 155px;
+  justify-content: center;
   margin-left: 0;
 }
 .panel__settings-basic > div:nth-child(even),
@@ -45,21 +46,23 @@
 .panel__settings-palette > div:nth-child(odd)::after {
   content: ':';
 }
-.panel__settings-filter .ant-input-number,
 .panel__settings-basic .ant-select-selection,
+.panel__settings-basic .ant-input-number,
+.panel__settings-filter .ant-input-number,
 .panel__settings-palette .ant-select-selection {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   width: 115px;
 }
 .panel__settings-warning {
-  margin-left: 40px;
+  display: flex;
   margin-top: 25px;
-  text-align: center;
-  width: 250px;
+  justify-content: center;
 }
 .panel__settings-warning > :first-child {
   color: $warning;
+  margin-right: 10px;
+  margin-top: 3px;
 }
 .panel__settings-warning-button {
   align-items: center;
@@ -72,4 +75,32 @@
   height: 20px;
   justify-content: center;
   width: 20px;
+}
+.panel__settings-warning-text {
+  max-width: 260px;
+  text-align: justify;
+}
+@media (max-width: 374px) {
+  .panel__settings-basic,
+  .panel__settings-filter,
+  .panel__settings-palette {
+    align-items: center;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: 150px 115px;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .panel__settings-basic .ant-select-selection,
+  .panel__settings-basic .ant-input-number,
+  .panel__settings-filter .ant-input-number,
+  .panel__settings-palette .ant-select-selection {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    width: 75px;
+  }
+  .panel__settings-button-invert {
+    margin-left: 30px;
+  }
 }

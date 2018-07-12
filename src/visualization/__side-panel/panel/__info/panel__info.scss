@@ -9,10 +9,8 @@
 .panel__info-legend-save {
   align-items: center;
   display: flex;
+  justify-content: center;
   margin-top: 20px;
-}
-.panel__info-legend-save > div {
-  margin-left: 90px;
 }
 .panel__info-legend-save > div::after {
   content: ':';

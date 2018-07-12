@@ -1,42 +1,43 @@
 import DeepCopy from '../../../helpers/deep-copy';
 
 import {
-  ADD_ANNOTATION,
-  CLEAR_ALL_ANNOTATIONS,
-  CLEAR_LAST_ANNOTATION,
-  SET_ANNOTATION_COLOR,
-} from './annotation-actions';
+  ADD_MARKER,
+  CLEAR_ALL_MARKERS,
+  CLEAR_LAST_MARKER,
+  SET_MARKER_COLOR,
+} from './marker-actions';
 
-import Test from '../../../visualization/test/annotations';
+import Test from '../../../visualization/test/markers';
 
-const Annotations = (state = Test, action) => {
+const Markers = (state = Test, action) => {
   let newList;
   switch (action.type) {
-    case ADD_ANNOTATION:
+    case ADD_MARKER:
       return {
         ...state,
         list: [
           ...DeepCopy(state.list),
           {
-            text: action.text,
+            height: action.height,
+            width: action.width,
             x: action.x,
             y: action.y,
           },
         ],
       };
-    case CLEAR_ALL_ANNOTATIONS:
+    case CLEAR_ALL_MARKERS:
       return {
         ...state,
         list: [],
       };
-    case CLEAR_LAST_ANNOTATION:
+    case CLEAR_LAST_MARKER:
       newList = DeepCopy(state.list);
       newList.pop();
       return {
         ...state,
         list: newList,
       };
-    case SET_ANNOTATION_COLOR:
+    case SET_MARKER_COLOR:
       return {
         ...state,
         ...{
@@ -47,4 +48,4 @@ const Annotations = (state = Test, action) => {
       return state;
   }
 };
-export default Annotations;
+export default Markers;

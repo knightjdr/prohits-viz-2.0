@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
 import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
+import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import Round from '../../../../helpers/round';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
@@ -33,6 +34,7 @@ export class MapContainer extends Component {
     return (
       <Map
         annotations={this.props.annotations}
+        markers={this.props.markers}
         minimap={this.props.minimap}
         navigatePosition={this.navigatePosition}
         showAnnotations={this.state.showAnnotations}
@@ -43,9 +45,8 @@ export class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-  annotations: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
+  annotations: PropTypes.shape({}).isRequired,
+  markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
@@ -53,6 +54,7 @@ MapContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
+  markers: MarkerSelector(state),
   minimap: MapSelector(state),
 });
 

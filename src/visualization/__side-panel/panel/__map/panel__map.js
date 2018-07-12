@@ -8,6 +8,7 @@ import './panel__map.css';
 
 const Map = ({
   annotations,
+  markers,
   minimap,
   navigatePosition,
   showAnnotations,
@@ -17,6 +18,7 @@ const Map = ({
     (
       <Annotations
         annotations={annotations}
+        markers={markers}
       />
     )
     :
@@ -59,9 +61,8 @@ Map.defaultProps = {
 };
 
 Map.propTypes = {
-  annotations: PropTypes.arrayOf(
-    PropTypes.shape({}),
-  ).isRequired,
+  annotations: PropTypes.shape({}).isRequired,
+  markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
   navigatePosition: PropTypes.func.isRequired,
   showAnnotations: PropTypes.bool.isRequired,

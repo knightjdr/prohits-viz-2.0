@@ -7,6 +7,7 @@ import formStep from './set/form-step-reducer';
 import header from './set/header-reducer';
 import home from './get/home-reducer';
 import interactiveFile from './set/interactive-file-reducer';
+import markers from './set/visualization/marker-reducer';
 import minimap from './set/visualization/map-reducer';
 import news from './get/news-reducer';
 import newsItem from './get/news-item-reducer';
@@ -22,6 +23,7 @@ const Reducers = combineReducers({
   header,
   home,
   interactiveFile,
+  markers,
   minimap,
   news,
   newsItem,

@@ -8,11 +8,10 @@ describe('SettingsReducer set reducer', () => {
   });
 
   it('should handle UPDATE_SETTING', () => {
-    const expectedState = Object.assign(
-      {},
-      DefaultState,
-      { imageType: 'test' },
-    );
+    const expectedState = {
+      ...DefaultState,
+      ...{ imageType: 'test' },
+    };
     expect(SettingsReducer(undefined, {
       setting: 'imageType',
       type: actions.UPDATE_SETTING,

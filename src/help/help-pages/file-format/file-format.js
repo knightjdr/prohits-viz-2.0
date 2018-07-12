@@ -19,24 +19,24 @@ const FileFormat = () => (
     <p>
       For detailed information on tools that generate compatible input for ProHits-viz,
       see the references and links below:
-      <h3>Publications:</h3>
-      <ul>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/21131968" rel="noopener noreferrer" target="_blank">SAINT</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/24513533" rel="noopener noreferrer" target="_blank">SAINTexpress</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/22352807" rel="noopener noreferrer" target="_blank">SAINT-MS1</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/20944583" rel="noopener noreferrer" target="_blank">ProHits</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/22948730" rel="noopener noreferrer" target="_blank">ProHits Protocol</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/27132685" rel="noopener noreferrer" target="_blank">ProHits 4.0</a></li>
-        <li><a href="http://www.ncbi.nlm.nih.gov/pubmed/23921808" rel="noopener noreferrer" target="_blank">CRAPome</a></li>
-      </ul>
-      <h3>Sites:</h3>
-      <ul>
-        <li><a href="http://saint-apms.sourceforge.net/Main.html" rel="noopener noreferrer" target="_blank">saint-apms.sourceforge.net</a></li>
-        <li><a href="http://prohitsms.com" rel="noopener noreferrer" target="_blank">ProHits</a></li>
-        <li><a href="http://www.crapome.org" rel="noopener noreferrer" target="_blank">CRAPome</a></li>
-        <li><a href="https://usegalaxyp.org/" rel="noopener noreferrer" target="_blank">GalaxyP</a></li>
-      </ul>
     </p>
+    <strong>Publications:</strong>
+    <ul>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/21131968" rel="noopener noreferrer" target="_blank">SAINT</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/24513533" rel="noopener noreferrer" target="_blank">SAINTexpress</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/22352807" rel="noopener noreferrer" target="_blank">SAINT-MS1</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/20944583" rel="noopener noreferrer" target="_blank">ProHits</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/22948730" rel="noopener noreferrer" target="_blank">ProHits Protocol</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/27132685" rel="noopener noreferrer" target="_blank">ProHits 4.0</a></li>
+      <li><a className="basic-link" href="http://www.ncbi.nlm.nih.gov/pubmed/23921808" rel="noopener noreferrer" target="_blank">CRAPome</a></li>
+    </ul>
+    <strong>Sites:</strong>
+    <ul>
+      <li><a className="basic-link" href="http://saint-apms.sourceforge.net/Main.html" rel="noopener noreferrer" target="_blank">SAINT</a></li>
+      <li><a className="basic-link" href="http://prohitsms.com" rel="noopener noreferrer" target="_blank">ProHits</a></li>
+      <li><a className="basic-link" href="http://www.crapome.org" rel="noopener noreferrer" target="_blank">CRAPome</a></li>
+      <li><a className="basic-link" href="https://usegalaxyp.org/" rel="noopener noreferrer" target="_blank">GalaxyP</a></li>
+    </ul>
   </div>
 );
 

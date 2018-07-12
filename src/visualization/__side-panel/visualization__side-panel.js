@@ -19,16 +19,6 @@ import Panel from './panel/panel';
 import './visualization__side-panel.css';
 
 const showPanel = {
-  backdrop: {
-    false: {
-      backgroundColor: 'rgba(97, 97, 97, 0)',
-      pointerEvents: 'none',
-    },
-    true: {
-      backgroundColor: 'rgba(97, 97, 97, 0.5)',
-      pointerEvents: 'auto',
-    },
-  },
   button: {
     false: {
       transform: 'translateX(0)',
@@ -58,74 +48,70 @@ const SidePanel = ({
   selectTab,
   tab,
   togglePanel,
-}) => (
-  <div className="visualization__side-panel-container">
-    <div
-      className="visualization__side-panel-backdrop"
-      style={showPanel.backdrop[isVisible]}
-    />
-    <div
-      className="visualization__side-panel"
-      style={showPanel.sidePanel[isVisible]}
-    >
-      <div className="visualization__side-panel-tabs">
-        <button
-          className={tab === 'info' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('info')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faInfoCircle} size="2x" />
-        </button>
-        <button
-          className={tab === 'map' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('map')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faGlobeAmericas} size="2x" />
-        </button>
-        <button
-          className={tab === 'settings' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('settings')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faCog} size="2x" />
-        </button>
+}) => ([
+  <div
+    className="visualization__side-panel"
+    key="side-panel"
+    style={showPanel.sidePanel[isVisible]}
+  >
+    <div className="visualization__side-panel-tabs">
+      <button
+        className={tab === 'info' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('info')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faInfoCircle} size="2x" />
+      </button>
+      <button
+        className={tab === 'map' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('map')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faGlobeAmericas} size="2x" />
+      </button>
+      <button
+        className={tab === 'settings' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('settings')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faCog} size="2x" />
+      </button>
 
-        <button
-          className={tab === 'annotation' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('annotation')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faPenSquare} size="2x" />
-        </button>
-        <button
-          className={tab === 'analysis' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('analysis')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faTable} size="2x" />
-        </button>
-        <button
-          className={tab === 'save' ? 'visualization__side-panel-tab-selected' : null}
-          onClick={() => selectTab('save')}
-          type="button"
-        >
-          <FontAwesomeIcon icon={faSave} size="2x" />
-        </button>
-        <div className="visualization__side-panel-tab-filler" />
-      </div>
-      {Panel[tab]}
+      <button
+        className={tab === 'annotation' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('annotation')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faPenSquare} size="2x" />
+      </button>
+      <button
+        className={tab === 'analysis' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('analysis')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faTable} size="2x" />
+      </button>
+      <button
+        className={tab === 'save' ? 'visualization__side-panel-tab-selected' : null}
+        onClick={() => selectTab('save')}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSave} size="2x" />
+      </button>
+      <div className="visualization__side-panel-tab-filler" />
     </div>
-    <button
-      className="visualization__side-panel-button"
-      onClick={togglePanel}
-      style={showPanel.button[isVisible]}
-      type="button"
-    >
-      <FontAwesomeIcon icon={showPanel.icon[isVisible]} size="lg" />
-    </button>
-  </div>
-);
+    {Panel[tab]}
+  </div>,
+  <button
+    className="visualization__side-panel-button"
+    key="side-panel-button"
+    onClick={togglePanel}
+    style={showPanel.button[isVisible]}
+    type="button"
+  >
+    <FontAwesomeIcon icon={showPanel.icon[isVisible]} size="lg" />
+  </button>,
+]);
 
 SidePanel.propTypes = {
   isVisible: PropTypes.bool.isRequired,

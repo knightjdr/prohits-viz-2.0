@@ -21,45 +21,39 @@ const Settings = ({
     <div className="panel__title">
       Basic settings
     </div>
-    <div className="panel__settings-basic">
-      <Basic
-        changeSetting={changeSetting}
-        settings={settings}
-        updateSetting={updateSetting}
-      />
-    </div>
+    <Basic
+      changeSetting={changeSetting}
+      settings={settings}
+      updateSetting={updateSetting}
+    />
     <div className="panel__border" />
     <div className="panel__title">
       Colour palette
     </div>
-    <div className="panel__settings-palette">
-      <Palette
-        changeSetting={changeSetting}
-        settings={settings}
-        updateSetting={updateSetting}
-      />
-    </div>
+    <Palette
+      changeSetting={changeSetting}
+      settings={settings}
+      updateSetting={updateSetting}
+    />
     <div className="panel__border" />
     <div className="panel__title">
       Filters
     </div>
-    <div className="panel__settings-filter">
-      <Filters
-        changeSetting={changeSetting}
-        settings={settings}
-        updateSetting={updateSetting}
-      />
-    </div>
+    <Filters
+      changeSetting={changeSetting}
+      settings={settings}
+      updateSetting={updateSetting}
+    />
     <div className="panel__settings-warning">
-      <FontAwesomeIcon icon={faExclamationCircle} />{' '}
-      <span>
-        Settings will only take effect after pressing
+      <FontAwesomeIcon icon={faExclamationCircle} />
+      <div className="panel__settings-warning-text">
+        A setting change will only take effect after pressing
         the refresh{' '}
         <span className="panel__settings-warning-button">
           <FontAwesomeIcon icon={faSync} />
         </span>{' '}
         button.
-      </span>
+      </div>
     </div>
   </div>
 );

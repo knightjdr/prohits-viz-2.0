@@ -42,3 +42,12 @@
 .panel__analysis-selection-header {
   font-weight: 600;
 }
+@media (max-width: 374px) {
+  .panel__analysis-select {
+    width: 90px;
+  }
+  .panel__analysis-selection-grid {
+    grid-column-gap: 4px;
+    grid-template-columns: 90px auto 90px auto;
+  }
+}

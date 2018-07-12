@@ -10,74 +10,76 @@ const Filter = ({
   changeSetting,
   settings,
   updateSetting,
-}) => ([
-  <div key="abundance-cap-label">
-    Abundance cap
-  </div>,
-  <div key="abundance-cap-input">
-    <InputNumber
-      onChange={(value) => { changeSetting('abundanceCap', value); }}
-      value={settings.abundanceCap}
-    />
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('abundanceCap'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-  <div key="min-abundance-label">
-    Abundance minimum
-  </div>,
-  <div key="min-abundance-input">
-    <InputNumber
-      onChange={(value) => { changeSetting('minAbundance', value); }}
-      value={settings.minAbundance}
-    />
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('minAbundance'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-  <div key="primaryFilter-filter-label">
-    Primary filter
-  </div>,
-  <div key="primaryFilter-filter-input">
-    <InputNumber
-      onChange={(value) => { changeSetting('primaryFilter', value); }}
-      step="0.01"
-      value={settings.primaryFilter}
-    />
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('primaryFilter'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-  <div key="secondaryFilter-filter-label">
-    Secondary filter
-  </div>,
-  <div key="secondaryFilter-filter-input">
-    <InputNumber
-      onChange={(value) => { changeSetting('secondaryFilter', value); }}
-      step="0.01"
-      value={settings.secondaryFilter}
-    />
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('secondaryFilter'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-]);
+}) => (
+  <div className="panel__settings-filter">
+    <div>
+      Abundance cap
+    </div>
+    <div>
+      <InputNumber
+        onChange={(value) => { changeSetting('abundanceCap', value); }}
+        value={settings.abundanceCap}
+      />
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('abundanceCap'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+    <div>
+      Abundance minimum
+    </div>
+    <div>
+      <InputNumber
+        onChange={(value) => { changeSetting('minAbundance', value); }}
+        value={settings.minAbundance}
+      />
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('minAbundance'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+    <div>
+      Primary filter
+    </div>
+    <div>
+      <InputNumber
+        onChange={(value) => { changeSetting('primaryFilter', value); }}
+        step="0.01"
+        value={settings.primaryFilter}
+      />
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('primaryFilter'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+    <div>
+      Secondary filter
+    </div>
+    <div>
+      <InputNumber
+        onChange={(value) => { changeSetting('secondaryFilter', value); }}
+        step="0.01"
+        value={settings.secondaryFilter}
+      />
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('secondaryFilter'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+  </div>
+);
 
 Filter.propTypes = {
   changeSetting: PropTypes.func.isRequired,

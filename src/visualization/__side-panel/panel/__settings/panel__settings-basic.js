@@ -11,47 +11,54 @@ import './panel__settings.css';
 
 const { Option } = Select;
 
+const RoundInput = value => Math.round(value);
+
 const Basic = ({
   changeSetting,
   settings,
   updateSetting,
-}) => ([
-  <div key="image-type-label">
-    Image type
-  </div>,
-  <div key="image-type-input">
-    <Select
-      onChange={(value) => { changeSetting('imageType', value); }}
-      value={settings.imageType}
-    >
-      <Option value="dotplot">dot plot</Option>
-      <Option value="heatmap">heat map</Option>
-    </Select>
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('imageType'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-  <div key="cell-size-label">
-    Cell size
-  </div>,
-  <div key="cell-size-input">
-    <InputNumber
-      onChange={(value) => { changeSetting('cellSize', value); }}
-      value={settings.cellSize}
-    />
-    <button
-      className="panel__settings-button"
-      onClick={() => { updateSetting('cellSize'); }}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faSync} />
-    </button>
-  </div>,
-]);
+}) => (
+  <div className="panel__settings-basic">
+    <div>
+      Image type
+    </div>
+    <div>
+      <Select
+        onChange={(value) => { changeSetting('imageType', value); }}
+        value={settings.imageType}
+      >
+        <Option value="dotplot">dot plot</Option>
+        <Option value="heatmap">heat map</Option>
+      </Select>
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('imageType'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+    <div>
+      Cell size
+    </div>
+    <div>
+      <InputNumber
+        onChange={(value) => { changeSetting('cellSize', value); }}
+        min={1}
+        parser={RoundInput}
+        step={1}
+        value={settings.cellSize}
+      />
+      <button
+        className="panel__settings-button"
+        onClick={() => { updateSetting('cellSize'); }}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faSync} />
+      </button>
+    </div>
+  </div>
+);
 
 Basic.propTypes = {
   changeSetting: PropTypes.func.isRequired,

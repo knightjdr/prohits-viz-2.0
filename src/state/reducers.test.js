@@ -7,6 +7,7 @@ import Header from './set/header-reducer';
 import Home from './get/home-reducer';
 import InteractiveFile from './set/interactive-file-reducer';
 import Map from './set/visualization/map-reducer';
+import Marker from './set/visualization/marker-reducer';
 import News from './get/news-reducer';
 import NewsItem from './get/news-item-reducer';
 import NewsPage from './set/news-page-reducer';
@@ -27,6 +28,7 @@ describe('Store', () => {
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, {}));
+    expect(store.getState().markers).toEqual(Marker(undefined, {}));
     expect(store.getState().minimap).toEqual(Map(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
     expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));

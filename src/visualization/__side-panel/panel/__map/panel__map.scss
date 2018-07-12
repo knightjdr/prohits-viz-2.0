@@ -1,4 +1,5 @@
 @import 'style/button';
+@import 'style/theme';
 
 .panel__map {
   align-items: center;
@@ -7,8 +8,11 @@
   height: calc(100vh - 195px);
 }
 .panel__map-annotation {
-  border: 1px solid black;
+  background-color: $warning;
+  border-radius: 50%;
+  height: 10px;
   position: absolute !important;
+  width: 10px;
 }
 .panel__map-annotations {
   height: 100%;
@@ -27,6 +31,10 @@
   max-width: 320px;
   width: auto;
 }
+.panel__map-marker {
+  border: 1px solid black;
+  position: absolute !important;
+}
 .panel__map-select {
   @extend .nobutton;
   cursor: crosshair;
@@ -40,6 +48,7 @@
 .panel__map-switch {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 .panel__map-switch > :first-child {
   margin-right: 10px;

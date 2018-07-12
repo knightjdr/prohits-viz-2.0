@@ -24,6 +24,19 @@
   font-weight: bold;
   font-style: normal; }
 
+.decorate-link,
+.decorate-link:hover {
+  text-decoration: underline; }
+
+a.basic-link {
+  color: #336B87; }
+
+a.basic-link:hover {
+  color: #AC867C; }
+
+a.basic-link:visited {
+  color: #763626 !important; }
+
 [tooltip] {
   position: relative; }
 
