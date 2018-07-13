@@ -1,4 +1,4 @@
-import DefaultState from '../../../visualization/test/map';
+import DefaultState from '../../../visualization/test-files/map';
 import MapReducer from './map-reducer';
 
 describe('MapReducer set reducer', () => {

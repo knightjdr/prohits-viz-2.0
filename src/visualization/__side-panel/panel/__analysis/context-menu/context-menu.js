@@ -8,8 +8,11 @@ import './context-menu.css';
 const ContextMenu = ({
   canPaste,
   closeMenu,
+  copyAll,
+  copySelected,
   left,
   show,
+  toggleModal,
   top,
 }) => (
   <ClickOutside callback={closeMenu}>
@@ -22,23 +25,35 @@ const ContextMenu = ({
         visibility: show ? 'visible' : 'hidden',
       }}
     >
-      <div>
+      <button
+        onClick={copySelected}
+        type="button"
+      >
         Copy selected
-      </div>
-      <div>
+      </button>
+      <button
+        onClick={copyAll}
+        type="button"
+      >
         Copy all
-      </div>
+      </button>
       {
         canPaste &&
-        <div>
+        <button
+          onClick={() => { toggleModal('pasteAppend'); }}
+          type="button"
+        >
           Paste (append)
-        </div>
+        </button>
       }
       {
         canPaste &&
-        <div>
+        <button
+          onClick={() => { toggleModal('pasteReplace'); }}
+          type="button"
+        >
           Paste and replace
-        </div>
+        </button>
       }
     </div>
   </ClickOutside>
@@ -54,9 +69,12 @@ ContextMenu.defaultProps = {
 ContextMenu.propTypes = {
   canPaste: PropTypes.bool,
   closeMenu: PropTypes.func.isRequired,
+  copyAll: PropTypes.func.isRequired,
+  copySelected: PropTypes.func.isRequired,
   left: PropTypes.number,
   show: PropTypes.bool,
   top: PropTypes.number,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default ContextMenu;

@@ -1,7 +1,12 @@
 import DeepCopy from '../../../helpers/deep-copy';
-import DefaultState from '../../../visualization/test/annotations';
 import AnnotationReducer from './annotation-reducer';
 import * as actions from './annotation-actions';
+
+// import DefaultState from '../../../visualization/test/annotations';
+const DefaultState = {
+  color: '#f44336',
+  list: [],
+};
 
 jest.mock('../../../helpers/deep-copy');
 DeepCopy.mockReturnValue(DefaultState.list);
@@ -44,7 +49,7 @@ describe('AnnotationReducer set reducer', () => {
   it('should handle CLEAR_LAST_ANNOTATION', () => {
     const expectedState = {
       ...DefaultState,
-      list: [DefaultState.list[0]],
+      list: [],
     };
     expect(AnnotationReducer(undefined, {
       type: actions.CLEAR_LAST_ANNOTATION,

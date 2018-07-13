@@ -8,11 +8,14 @@ import Select from './panel__analysis-select';
 import './panel__analysis';
 
 const GeneSelection = ({
+  arrangeSelected,
   columns,
+  columnsSelected,
   openContextMenu,
+  listSelect,
+  listSwap,
   rows,
-  selectedColumns,
-  selectedRows,
+  rowsSelected,
 }) => (
   <div className="panel__analysis-selection">
     <div className="panel__analysis-selection-grid">
@@ -25,18 +28,22 @@ const GeneSelection = ({
       </div>
       <div />
       <Select
+        listSelect={listSelect}
         openContextMenu={openContextMenu}
         options={columns}
+        target="columns"
       />
       <div className="panel__analysis-selection-button-group">
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { listSwap('columns', 'columnsSelected', 'columnMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { listSwap('columnsSelected', 'columns', 'columnMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />
@@ -44,18 +51,22 @@ const GeneSelection = ({
       </div>
       <Select
         canPaste
+        listSelect={listSelect}
         openContextMenu={openContextMenu}
-        options={selectedColumns}
+        options={columnsSelected}
+        target="columnsSelected"
       />
       <div className="panel__analysis-selection-button-group">
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { arrangeSelected('columnsSelected', -1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} />
         </button>
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { arrangeSelected('columnsSelected', 1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={180} />
@@ -72,18 +83,22 @@ const GeneSelection = ({
       </div>
       <div />
       <Select
+        listSelect={listSelect}
         openContextMenu={openContextMenu}
         options={rows}
+        target="rows"
       />
       <div className="panel__analysis-selection-button-group">
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { listSwap('rows', 'rowsSelected', 'rowMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { listSwap('rowsSelected', 'rows', 'rowMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />
@@ -91,18 +106,22 @@ const GeneSelection = ({
       </div>
       <Select
         canPaste
+        listSelect={listSelect}
         openContextMenu={openContextMenu}
-        options={selectedRows}
+        options={rowsSelected}
+        target="rowsSelected"
       />
       <div className="panel__analysis-selection-button-group">
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { arrangeSelected('rowsSelected', -1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} />
         </button>
         <button
           className="panel__analysis-select-arrow"
+          onClick={() => { arrangeSelected('rowsSelected', 1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={180} />
@@ -113,17 +132,20 @@ const GeneSelection = ({
 );
 
 GeneSelection.propTypes = {
+  arrangeSelected: PropTypes.func.isRequired,
   columns: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  columnsSelected: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+  listSelect: PropTypes.func.isRequired,
+  listSwap: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
-  selectedColumns: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
-  selectedRows: PropTypes.arrayOf(
+  rowsSelected: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
 };

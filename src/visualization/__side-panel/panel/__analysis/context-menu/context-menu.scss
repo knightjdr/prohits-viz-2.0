@@ -1,3 +1,4 @@
+@import 'style/reset';
 @import 'style/style';
 @import 'style/theme';
 
@@ -6,6 +7,8 @@
   background-color: $backdrop-light;
   border: 1px solid #9e9e9e;
   border-radius: 2px;
+  display: flex;
+  flex-direction: column;
   height: auto;
   left: 75px;
   opacity: 0;
@@ -16,12 +19,13 @@
   width: auto;
   z-index: 10;
 }
-.context-menu > div {
+.context-menu > button {
+  @extend .button-reset;
   background-color: $backdrop-light;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 8px 10px;
   transition: background-color 0.5s ease;
 }
-.context-menu > div:hover {
+.context-menu > button:hover {
   background-color: rgba(66, 134, 244, 0.4);
 }

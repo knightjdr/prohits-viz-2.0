@@ -14,6 +14,7 @@ const { Option } = Select;
 const Palette = ({
   changeSetting,
   settings,
+  storeSettings,
   updateSetting,
 }) => (
   <div className="panel__settings-palette">
@@ -32,7 +33,12 @@ const Palette = ({
         <Option value="greyscale">greyscale</Option>
       </Select>
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.edgeColor === settings.edgeColor ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('edgeColor'); }}
         type="button"
       >
@@ -54,7 +60,12 @@ const Palette = ({
         <Option value="greyscale">greyscale</Option>
       </Select>
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.fillColor === settings.fillColor ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('fillColor'); }}
         type="button"
       >
@@ -70,7 +81,12 @@ const Palette = ({
         checked={settings.invertColor}
       />
       <button
-        className="panel__settings-button panel__settings-button-invert"
+        className={
+          storeSettings.invertColor === settings.invertColor ?
+          'panel__settings-button_theme-sync panel__settings-button-invert'
+          :
+          'panel__settings-button_theme-notsync panel__settings-button-invert'
+        }
         onClick={() => { updateSetting('invertColor'); }}
         type="button"
       >
@@ -82,7 +98,16 @@ const Palette = ({
 
 Palette.propTypes = {
   changeSetting: PropTypes.func.isRequired,
-  settings: PropTypes.shape({}).isRequired,
+  settings: PropTypes.shape({
+    edgeColor: PropTypes.string,
+    fillColor: PropTypes.string,
+    invertColor: PropTypes.bool,
+  }).isRequired,
+  storeSettings: PropTypes.shape({
+    edgeColor: PropTypes.string,
+    fillColor: PropTypes.string,
+    invertColor: PropTypes.bool,
+  }).isRequired,
   updateSetting: PropTypes.func.isRequired,
 };
 

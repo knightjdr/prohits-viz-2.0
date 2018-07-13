@@ -5,22 +5,26 @@ import './panel__analysis';
 
 const Select = ({
   canPaste,
+  listSelect,
   openContextMenu,
   options,
+  target,
 }) => (
   <select
     className="panel__analysis-select"
     multiple
-    onContextMenu={(e) => { openContextMenu(e, canPaste); }}
+    onChange={(e) => { listSelect(e, target); }}
+    onContextMenu={(e) => { openContextMenu(e, canPaste, target); }}
   >
-    {options.map(item => (
+    [<option className="panel__analysis-select_option-hidden" value="">Placeholder</option>,
+    ...{options.map(item => (
       <option
         key={item}
         value={item}
       >
         {item}
       </option>
-    ))}
+    ))}]
   </select>
 );
 
@@ -30,10 +34,12 @@ Select.defaultProps = {
 
 Select.propTypes = {
   canPaste: PropTypes.bool,
+  listSelect: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  target: PropTypes.string.isRequired,
 };
 
 export default Select;

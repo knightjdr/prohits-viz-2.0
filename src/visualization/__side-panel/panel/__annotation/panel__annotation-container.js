@@ -33,6 +33,11 @@ export class AnnotationContainer extends Component {
   addAnnotation = () => {
     this.props.addAnnotation(this.state.annotation, this.props.position.x, this.props.position.y);
   }
+  clearSearch = () => {
+    this.setState({
+      searchTerm: '',
+    });
+  }
   closeAnnotationColorPicker = () => {
     this.setState({
       showAnnotationPicker: false,
@@ -50,7 +55,7 @@ export class AnnotationContainer extends Component {
     this.props.setMarkerColor(color.hex);
   }
   handleSearch = () => {
-    console.log(this.state.searchTerm)
+    console.log(this.state.searchTerm);
   }
   toggleAnnotationColorPicker = () => {
     this.setState(({ showAnnotationPicker }) => ({
@@ -92,6 +97,7 @@ export class AnnotationContainer extends Component {
         clearAllMarkers={this.props.clearAllMarkers}
         clearLastAnnotation={this.props.clearLastAnnotation}
         clearLastMarker={this.props.clearLastMarker}
+        clearSearch={this.clearSearch}
         closeAnnotationColorPicker={this.closeAnnotationColorPicker}
         closeMarkerColorPicker={this.closeMarkerColorPicker}
         handleAnnotationColor={this.handleAnnotationColor}

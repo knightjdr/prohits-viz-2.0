@@ -1,4 +1,4 @@
-import Test from '../../../visualization/test/map';
+import Test from '../../../visualization/test-files/map';
 
 const Map = (state = Test, action) => {
   switch (action.type) {

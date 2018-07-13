@@ -9,4 +9,11 @@ describe('Visualization settings set actions', () => {
     };
     expect(actions.updateSetting('a', 'b')).toEqual(expectedAction);
   });
+
+  it('should dispatch an action to reset settings', () => {
+    const expectedAction = {
+      type: actions.RESET_SETTINGS,
+    };
+    expect(actions.resetSettings()).toEqual(expectedAction);
+  });
 });

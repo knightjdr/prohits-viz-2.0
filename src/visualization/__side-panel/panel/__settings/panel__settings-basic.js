@@ -16,6 +16,7 @@ const RoundInput = value => Math.round(value);
 const Basic = ({
   changeSetting,
   settings,
+  storeSettings,
   updateSetting,
 }) => (
   <div className="panel__settings-basic">
@@ -31,7 +32,12 @@ const Basic = ({
         <Option value="heatmap">heat map</Option>
       </Select>
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.imageType === settings.imageType ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('imageType'); }}
         type="button"
       >
@@ -50,7 +56,12 @@ const Basic = ({
         value={settings.cellSize}
       />
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.cellSize === settings.cellSize ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('cellSize'); }}
         type="button"
       >
@@ -63,6 +74,10 @@ const Basic = ({
 Basic.propTypes = {
   changeSetting: PropTypes.func.isRequired,
   settings: PropTypes.shape({
+    cellSize: PropTypes.number,
+    imageType: PropTypes.string,
+  }).isRequired,
+  storeSettings: PropTypes.shape({
     cellSize: PropTypes.number,
     imageType: PropTypes.string,
   }).isRequired,

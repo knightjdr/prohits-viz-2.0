@@ -1,7 +1,13 @@
 import DeepCopy from '../../../helpers/deep-copy';
-import DefaultState from '../../../visualization/test/markers';
 import MarkerReducer from './marker-reducer';
 import * as actions from './marker-actions';
+
+// import DefaultState from '../../../visualization/test/markers';
+
+const DefaultState = {
+  color: '#000000',
+  list: [],
+};
 
 jest.mock('../../../helpers/deep-copy');
 DeepCopy.mockReturnValue(DefaultState.list);
@@ -46,7 +52,7 @@ describe('Marker set reducer', () => {
   it('should handle CLEAR_LAST_MARKER', () => {
     const expectedState = {
       ...DefaultState,
-      list: [DefaultState.list[0]],
+      list: [],
     };
     expect(MarkerReducer(undefined, {
       type: actions.CLEAR_LAST_MARKER,

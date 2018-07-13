@@ -11,6 +11,19 @@ import {
 
 import ClickOutside from '../../../../components/click-outside/click-outside';
 
+const showPicker = {
+  false: {
+    opacity: 0,
+    transform: 'scale(0)',
+    visibility: 'hidden',
+  },
+  true: {
+    opacity: 1,
+    transform: 'scale(1)',
+    visibility: 'visible',
+  },
+};
+
 const Markers = ({
   clearAllMarkers,
   clearLastMarker,
@@ -72,9 +85,7 @@ const Markers = ({
     </div>
     <div
       className="panel__annotation-markers-color-picker"
-      style={{
-        display: showMarkerPicker ? 'block' : 'none',
-      }}
+      style={showPicker[showMarkerPicker]}
     >
       <ClickOutside
         callback={closeMarkerColorPicker}

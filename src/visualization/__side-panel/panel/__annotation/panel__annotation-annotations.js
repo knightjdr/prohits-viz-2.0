@@ -15,6 +15,19 @@ import {
 
 import ClickOutside from '../../../../components/click-outside/click-outside';
 
+const showPicker = {
+  false: {
+    opacity: 0,
+    transform: 'scale(0)',
+    visibility: 'hidden',
+  },
+  true: {
+    opacity: 1,
+    transform: 'scale(1)',
+    visibility: 'visible',
+  },
+};
+
 const Annotations = ({
   addAnnotation,
   annotation,
@@ -93,9 +106,7 @@ const Annotations = ({
     </div>
     <div
       className="panel__annotation-annotations-color-picker"
-      style={{
-        display: showAnnotationPicker ? 'block' : 'none',
-      }}
+      style={showPicker[showAnnotationPicker]}
     >
       <ClickOutside
         callback={closeAnnotationColorPicker}

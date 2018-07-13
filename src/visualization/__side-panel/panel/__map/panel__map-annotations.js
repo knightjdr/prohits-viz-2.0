@@ -29,8 +29,8 @@ const Annotations = ({
         key={ShortID.generate()}
         style={{
           backgroundColor: annotations.color,
-          left: `${annotation.x * 100}%`,
-          top: `${annotation.y * 100}%`,
+          left: `calc(${annotation.x * 100}% - 5px)`,
+          top: `calc(${annotation.y * 100}% - 5px)`,
         }}
         tooltip-position="top"
       />

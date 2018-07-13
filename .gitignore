@@ -23,5 +23,5 @@ yarn-error.log*
 # css (using sass)
 src/**/*.css
 
-# test file
-src/visualization/test/**
+# test files
+src/visualization/test-files/**

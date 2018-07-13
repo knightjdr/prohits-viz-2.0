@@ -7,9 +7,12 @@ import {
   SET_MARKER_COLOR,
 } from './marker-actions';
 
-import Test from '../../../visualization/test/markers';
+// import DefaultState from '../../../visualization/test/markers';
 
-const Markers = (state = Test, action) => {
+const Markers = (state = {
+  color: '#000000',
+  list: [],
+}, action) => {
   let newList;
   switch (action.type) {
     case ADD_MARKER:

@@ -2,9 +2,13 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Input } from 'antd';
-import { faSearch } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faSearch,
+  faTrashAlt,
+} from '@fortawesome/pro-solid-svg-icons';
 
 const Search = ({
+  clearSearch,
   handleSearch,
   searchTerm,
   updateSearchTerm,
@@ -25,10 +29,25 @@ const Search = ({
         <FontAwesomeIcon icon={faSearch} />
       </button>
     </div>
+    <div className="panel__annotation-search-grid">
+      <div>
+        Clear searches
+      </div>
+      <div>
+        <button
+          className="panel__annotation-button_theme-warning"
+          onClick={clearSearch}
+          type="button"
+        >
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </button>
+      </div>
+    </div>
   </div>
 );
 
 Search.propTypes = {
+  clearSearch: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
   searchTerm: PropTypes.string.isRequired,
   updateSearchTerm: PropTypes.func.isRequired,

@@ -1,4 +1,4 @@
-import DefaultState from '../../../visualization/test/params';
+import DefaultState from '../../../visualization/test-files/params';
 import ParamsReducer from './params-reducer';
 
 describe('ParamsReducer set reducer', () => {

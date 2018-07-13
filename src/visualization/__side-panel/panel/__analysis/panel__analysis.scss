@@ -6,6 +6,9 @@
   height: 170px;
   width: 120px;
 }
+.panel__analysis-select_option-hidden {
+  display: none,
+}
 .panel__analysis-select:focus {
   outline: 0;
 }

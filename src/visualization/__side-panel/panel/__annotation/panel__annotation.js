@@ -15,6 +15,7 @@ const Annotation = ({
   clearAllMarkers,
   clearLastAnnotation,
   clearLastMarker,
+  clearSearch,
   closeAnnotationColorPicker,
   closeMarkerColorPicker,
   handleAnnotationColor,
@@ -71,6 +72,7 @@ const Annotation = ({
       Search
     </div>
     <Search
+      clearSearch={clearSearch}
       handleSearch={handleSearch}
       searchTerm={searchTerm}
       updateSearchTerm={updateSearchTerm}
@@ -86,6 +88,7 @@ Annotation.propTypes = {
   clearAllMarkers: PropTypes.func.isRequired,
   clearLastAnnotation: PropTypes.func.isRequired,
   clearLastMarker: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired,
   closeAnnotationColorPicker: PropTypes.func.isRequired,
   closeMarkerColorPicker: PropTypes.func.isRequired,
   handleAnnotationColor: PropTypes.func.isRequired,

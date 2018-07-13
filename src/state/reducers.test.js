@@ -38,7 +38,27 @@ describe('Store', () => {
     expect(store.getState().settings).toEqual(Settings(undefined, {}));
   });
 
-  test('FormStep reducer handles its actions', () => {
+  test('visualization annotation reducer handles its actions', () => {
+    let action = {
+      text: 'test',
+      type: 'ADD_ANNOTATION',
+      x: 0.1,
+      y: 0.2,
+    };
+    store.dispatch(action);
+    expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    action = { type: 'CLEAR_ALL_ANNOTATIONS' };
+    store.dispatch(action);
+    expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    action = { type: 'CLEAR_LAST_ANNOTATION' };
+    store.dispatch(action);
+    expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    action = { color: '#000000', type: 'SET_ANNOTATION_COLOR' };
+    store.dispatch(action);
+    expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+  });
+
+  test('form step reducer handles its actions', () => {
     let action = { step: 1, type: 'INCREMENT_FORM_STEP' };
     store.dispatch(action);
     expect(store.getState().formStep).toEqual(FormStep(undefined, action));
@@ -47,7 +67,7 @@ describe('Store', () => {
     expect(store.getState().formStep).toEqual(FormStep(undefined, action));
   });
 
-  test('Header reducer handles its actions', () => {
+  test('header reducer handles its actions', () => {
     let action = { header: ['column1', 'column2'], type: 'SET_FILE_HEADER' };
     store.dispatch(action);
     expect(store.getState().header).toEqual(Header(undefined, action));
@@ -56,19 +76,40 @@ describe('Store', () => {
     expect(store.getState().header).toEqual(Header(undefined, action));
   });
 
-  test('Home reducer handles its actions', () => {
+  test('home reducer handles its actions', () => {
     const action = { type: 'FILL_HOME' };
     store.dispatch(action);
     expect(store.getState().home).toEqual(Home(undefined, action));
   });
 
-  test('InteractiveFile reducer handles its actions', () => {
+  test('interactive file reducer handles its actions', () => {
     let action = { type: 'CLEAR_INTERACTIVE_FILE' };
     store.dispatch(action);
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
     action = { file: {}, type: 'SET_INTERACTIVE_FILE' };
     store.dispatch(action);
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
+  });
+
+  test('visualization marker reducer handles its actions', () => {
+    let action = {
+      height: 0.5,
+      type: 'ADD_MARKER',
+      width: 0.5,
+      x: 0.1,
+      y: 0.2,
+    };
+    store.dispatch(action);
+    expect(store.getState().markers).toEqual(Marker(undefined, action));
+    action = { type: 'CLEAR_ALL_MARKERS' };
+    store.dispatch(action);
+    expect(store.getState().markers).toEqual(Marker(undefined, action));
+    action = { type: 'CLEAR_LAST_MARKER' };
+    store.dispatch(action);
+    expect(store.getState().markers).toEqual(Marker(undefined, action));
+    action = { color: '#0000ff', type: 'SET_MARKER_COLOR' };
+    store.dispatch(action);
+    expect(store.getState().markers).toEqual(Marker(undefined, action));
   });
 
   test('news reducer handles its actions', () => {
@@ -108,7 +149,10 @@ describe('Store', () => {
   });
 
   test('visualization settings reducer handles its actions', () => {
-    const action = { setting: 'a', type: 'UPDATE_SETTING', value: 'b' };
+    let action = { setting: 'a', type: 'UPDATE_SETTING', value: 'b' };
+    store.dispatch(action);
+    expect(store.getState().settings).toEqual(Settings(undefined, action));
+    action = { type: 'RESET_SETTINGS' };
     store.dispatch(action);
     expect(store.getState().settings).toEqual(Settings(undefined, action));
   });

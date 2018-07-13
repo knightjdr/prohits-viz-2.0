@@ -70,7 +70,8 @@
       "!src/test/*",
       "!src/index.js",
       "!src/registerServiceWorker.js",
-      "!src/setupTests.js"
+      "!src/setupTests.js",
+      "!src/visualization/test-files/*"
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"

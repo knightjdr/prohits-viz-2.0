@@ -7,6 +7,7 @@ const Settings = {
   invertColor: false,
   minAbundance: 0,
   primaryFilter: 0.01,
+  reset: false,
   secondaryFilter: 0.05,
 };
 export default Settings;

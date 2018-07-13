@@ -1,0 +1,39 @@
+@import 'style/reset';
+@import 'style/button';
+@import 'style/theme';
+
+.paste-modal .ant-modal-body {
+  padding-top: 0;
+}
+.paste-modal .ant-modal-footer {
+  border: none;
+}
+.paste-modal .ant-modal-footer > div > :first-child {
+  @extend .button-reset;
+  @extend .warning-button;
+  margin-right: 10px;
+  padding: 0 10px;
+  width: 65px;
+}
+.paste-modal .ant-modal-footer > div > :last-child {
+  @extend .button-reset;
+  @extend .success-button;
+  padding: 0 10px;
+  width: 65px;
+}
+.paste-modal .ant-modal-header {
+  border: none;
+}
+.paste-modal-help {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.paste-modal-help > :first-child {
+  color: $primary-medium;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+.paste-modal-help > :last-child {
+  text-align: justify;
+}

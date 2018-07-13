@@ -9,6 +9,7 @@ import './panel__settings.css';
 const Filter = ({
   changeSetting,
   settings,
+  storeSettings,
   updateSetting,
 }) => (
   <div className="panel__settings-filter">
@@ -21,7 +22,12 @@ const Filter = ({
         value={settings.abundanceCap}
       />
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.abundanceCap === settings.abundanceCap ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('abundanceCap'); }}
         type="button"
       >
@@ -37,7 +43,12 @@ const Filter = ({
         value={settings.minAbundance}
       />
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.minAbundance === settings.minAbundance ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('minAbundance'); }}
         type="button"
       >
@@ -54,7 +65,12 @@ const Filter = ({
         value={settings.primaryFilter}
       />
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.primaryFilter === settings.primaryFilter ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('primaryFilter'); }}
         type="button"
       >
@@ -71,7 +87,12 @@ const Filter = ({
         value={settings.secondaryFilter}
       />
       <button
-        className="panel__settings-button"
+        className={
+          storeSettings.secondaryFilter === settings.secondaryFilter ?
+          'panel__settings-button_theme-sync'
+          :
+          'panel__settings-button_theme-notsync'
+        }
         onClick={() => { updateSetting('secondaryFilter'); }}
         type="button"
       >
@@ -83,7 +104,18 @@ const Filter = ({
 
 Filter.propTypes = {
   changeSetting: PropTypes.func.isRequired,
-  settings: PropTypes.shape({}).isRequired,
+  settings: PropTypes.shape({
+    abundanceCap: PropTypes.number,
+    minAbundance: PropTypes.number,
+    primaryFilter: PropTypes.number,
+    secondaryFilter: PropTypes.number,
+  }).isRequired,
+  storeSettings: PropTypes.shape({
+    abundanceCap: PropTypes.number,
+    minAbundance: PropTypes.number,
+    primaryFilter: PropTypes.number,
+    secondaryFilter: PropTypes.number,
+  }).isRequired,
   updateSetting: PropTypes.func.isRequired,
 };
 

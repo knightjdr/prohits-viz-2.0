@@ -7,9 +7,12 @@ import {
   SET_ANNOTATION_COLOR,
 } from './annotation-actions';
 
-import Test from '../../../visualization/test/annotations';
+// import Default from '../../../visualization/test/annotations';
 
-const Annotations = (state = Test, action) => {
+const Annotations = (state = {
+  color: '#f44336',
+  list: [],
+}, action) => {
   let newList;
   switch (action.type) {
     case ADD_ANNOTATION:
