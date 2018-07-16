@@ -16,7 +16,7 @@ const Search = ({
   <div className="panel__annotation-search">
     <div className="panel__annotation-annotations-input">
       <Input
-        onChange={updateSearchTerm}
+        onChange={(e) => { updateSearchTerm(e.target.value); }}
         onPressEnter={handleSearch}
         placeholder="Gene name"
         value={searchTerm}

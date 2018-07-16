@@ -28,7 +28,7 @@
   position: absolute;
   right: 5px;
   top: 17px;
-  transform: translateX(-23px);
+  transform: translateX(-20px);
   transform-origin: center;
   transition: all 0.5s ease;
   width: 36px;
@@ -76,4 +76,7 @@
 .visualization__side-panel-tab-filler {
   border-bottom: 1px solid $primary-light;
   flex-grow: 1;
+}
+@media (max-width: 374px) {
+
 }

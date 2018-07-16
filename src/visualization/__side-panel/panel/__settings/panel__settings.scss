@@ -88,32 +88,6 @@
   justify-content: center;
   width: 32px;
 }
-.panel__settings-warning {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-.panel__settings-warning > :first-child {
-  color: $warning;
-  margin-right: 10px;
-  margin-top: 4px;
-}
-.panel__settings-warning-button {
-  align-items: center;
-  background-color: $primary-medium;
-  background-position: center;
-  border-radius: 4px;
-  color: $text-light;
-  display: inline-flex;
-  font-size: 10px;
-  height: 20px;
-  justify-content: center;
-  width: 20px;
-}
-.panel__settings-warning-text {
-  max-width: 260px;
-  text-align: justify;
-}
 @media (max-width: 374px) {
   .panel__settings-basic,
   .panel__settings-filter,

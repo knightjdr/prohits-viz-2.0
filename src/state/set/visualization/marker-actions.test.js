@@ -29,4 +29,11 @@ describe('Visualization marker set actions', () => {
     };
     expect(actions.setMarkerColor('#000000')).toEqual(expectedAction);
   });
+
+  it('should dispatch an action to toggle recording selection markers', () => {
+    const expectedAction = {
+      type: actions.TOGGLE_RECORD_MARKER,
+    };
+    expect(actions.toggleRecordMarker()).toEqual(expectedAction);
+  });
 });

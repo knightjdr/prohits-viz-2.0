@@ -24,7 +24,7 @@ const showPanel = {
       transform: 'translateX(0)',
     },
     true: {
-      transform: 'translateX(-23px)',
+      transform: 'translateX(-20px)',
     },
   },
   icon: {

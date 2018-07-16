@@ -6,37 +6,36 @@ import Annotation from './panel__annotation';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
+import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import {
   addAnnotation,
   clearAllAnnotations,
   clearLastAnnotation,
   setAnnotationColor,
+  toggleMoveAnnotation,
 } from '../../../../state/set/visualization/annotation-actions';
 import {
   clearAllMarkers,
   clearLastMarker,
   setMarkerColor,
+  toggleRecordMarker,
 } from '../../../../state/set/visualization/marker-actions';
+import {
+  clearSearch,
+  setSearchTerm,
+} from '../../../../state/set/visualization/search-actions';
 
 export class AnnotationContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       annotation: '',
-      move: false,
-      record: false,
-      searchTerm: '',
       showAnnotationPicker: false,
       showMarkerPicker: false,
     };
   }
   addAnnotation = () => {
     this.props.addAnnotation(this.state.annotation, this.props.position.x, this.props.position.y);
-  }
-  clearSearch = () => {
-    this.setState({
-      searchTerm: '',
-    });
   }
   closeAnnotationColorPicker = () => {
     this.setState({
@@ -67,24 +66,9 @@ export class AnnotationContainer extends Component {
       showMarkerPicker: !showMarkerPicker,
     }));
   }
-  toggleMove = () => {
-    this.setState(({ move }) => ({
-      move: !move,
-    }));
-  }
-  toggleRecord = () => {
-    this.setState(({ record }) => ({
-      record: !record,
-    }));
-  }
   updateAnnotation = (e) => {
     this.setState({
       annotation: e.target.value,
-    });
-  }
-  updateSearchTerm = (e) => {
-    this.setState({
-      searchTerm: e.target.value,
     });
   }
   render() {
@@ -97,24 +81,24 @@ export class AnnotationContainer extends Component {
         clearAllMarkers={this.props.clearAllMarkers}
         clearLastAnnotation={this.props.clearLastAnnotation}
         clearLastMarker={this.props.clearLastMarker}
-        clearSearch={this.clearSearch}
+        clearSearch={this.props.clearSearch}
         closeAnnotationColorPicker={this.closeAnnotationColorPicker}
         closeMarkerColorPicker={this.closeMarkerColorPicker}
         handleAnnotationColor={this.handleAnnotationColor}
         handleMarkerColor={this.handleMarkerColor}
         handleSearch={this.handleSearch}
         markerColor={this.props.markers.color}
-        move={this.state.move}
-        record={this.state.record}
-        searchTerm={this.state.searchTerm}
+        move={this.props.annotations.move}
+        record={this.props.markers.record}
+        searchTerm={this.props.search.term}
         showAnnotationPicker={this.state.showAnnotationPicker}
         showMarkerPicker={this.state.showMarkerPicker}
         toggleAnnotationColorPicker={this.toggleAnnotationColorPicker}
         toggleMarkerColorPicker={this.toggleMarkerColorPicker}
-        toggleMove={this.toggleMove}
-        toggleRecord={this.toggleRecord}
+        toggleMove={this.props.toggleMoveAnnotation}
+        toggleRecord={this.props.toggleRecordMarker}
         updateAnnotation={this.updateAnnotation}
-        updateSearchTerm={this.updateSearchTerm}
+        updateSearchTerm={this.props.setSearchTerm}
       />
     );
   }
@@ -123,21 +107,30 @@ export class AnnotationContainer extends Component {
 AnnotationContainer.propTypes = {
   annotations: PropTypes.shape({
     color: PropTypes.string,
+    move: PropTypes.bool,
   }).isRequired,
   addAnnotation: PropTypes.func.isRequired,
   clearAllAnnotations: PropTypes.func.isRequired,
   clearAllMarkers: PropTypes.func.isRequired,
   clearLastAnnotation: PropTypes.func.isRequired,
   clearLastMarker: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired,
   markers: PropTypes.shape({
     color: PropTypes.string,
+    record: PropTypes.bool,
   }).isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  search: PropTypes.shape({
+    term: PropTypes.string,
+  }).isRequired,
   setAnnotationColor: PropTypes.func.isRequired,
   setMarkerColor: PropTypes.func.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
+  toggleMoveAnnotation: PropTypes.func.isRequired,
+  toggleRecordMarker: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
@@ -145,6 +138,7 @@ const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
   markers: MarkerSelector(state),
   position: PositionSelector(state),
+  search: SearchSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -163,11 +157,23 @@ const mapDispatchToProps = dispatch => ({
   clearLastMarker: () => {
     dispatch(clearLastMarker());
   },
+  clearSearch: () => {
+    dispatch(clearSearch());
+  },
   setAnnotationColor: (hex) => {
     dispatch(setAnnotationColor(hex));
   },
   setMarkerColor: (hex) => {
     dispatch(setMarkerColor(hex));
+  },
+  setSearchTerm: (term) => {
+    dispatch(setSearchTerm(term));
+  },
+  toggleMoveAnnotation: () => {
+    dispatch(toggleMoveAnnotation());
+  },
+  toggleRecordMarker: () => {
+    dispatch(toggleRecordMarker());
   },
 });
 

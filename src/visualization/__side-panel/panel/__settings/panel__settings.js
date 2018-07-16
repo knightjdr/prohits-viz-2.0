@@ -1,10 +1,5 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  faExclamationCircle,
-  faSync,
-} from '@fortawesome/pro-solid-svg-icons';
 
 import Basic from './panel__settings-basic';
 import Filters from './panel__settings-filter';
@@ -21,17 +16,6 @@ const Settings = ({
   updateSetting,
 }) => (
   <div className="panel">
-    <div className="panel__settings-warning">
-      <FontAwesomeIcon icon={faExclamationCircle} />
-      <div className="panel__settings-warning-text">
-        A setting change will only take effect after pressing
-        the refresh{' '}
-        <span className="panel__settings-warning-button">
-          <FontAwesomeIcon icon={faSync} />
-        </span>{' '}
-        button.
-      </div>
-    </div>
     <div className="panel__title">
       Basic settings
     </div>

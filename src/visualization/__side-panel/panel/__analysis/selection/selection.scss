@@ -1,0 +1,56 @@
+@import 'style/reset';
+@import 'style/button';
+
+.selection > div:not(:first-child) {
+  margin-top: 10px;
+}
+.selection__button-group {
+  display: flex;
+  flex-direction: column;
+}
+.selection__button-group > :first-child {
+  margin-bottom: 5px;
+}
+.selection__grid {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 2px;
+  grid-template-columns: 120px auto 120px auto;
+  grid-template-rows: auto 170px;
+  justify-items: center;
+}
+.selection__header {
+  font-weight: 600;
+}
+.selection__select {
+  border-radius: 4px 0 0 4px;
+  height: 170px;
+  width: 120px;
+}
+.selection__select_option-hidden {
+  display: none,
+}
+.selection__select:focus {
+  outline: 0;
+}
+.selection__select-arrow {
+  @extend .button-reset;
+  @extend .default-button;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+  align-items: center;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  width: 25px;
+}
+@media (max-width: 374px) {
+  .selection__grid {
+    grid-column-gap: 4px;
+    grid-template-columns: 90px auto 90px auto;
+  }
+  .selection__select {
+    width: 90px;
+  }
+}

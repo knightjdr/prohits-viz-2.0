@@ -1,11 +1,14 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { faArchive, faExclamationCircle } from '@fortawesome/pro-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
 import './panel__save.css';
 
-const Archive = () => (
+const Archive = ({
+  archive,
+}) => (
   <div className="panel__save-archive">
     <div>
       <div>
@@ -13,6 +16,7 @@ const Archive = () => (
       </div>
       <button
         className="panel__save-button"
+        onClick={archive}
         type="button"
       >
         <FontAwesomeIcon icon={faArchive} />
@@ -36,5 +40,9 @@ const Archive = () => (
     </div>
   </div>
 );
+
+Archive.propTypes = {
+  archive: PropTypes.func.isRequired,
+};
 
 export default Archive;

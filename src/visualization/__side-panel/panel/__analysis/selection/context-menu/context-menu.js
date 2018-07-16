@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ClickOutside from '../../../../../components/click-outside/click-outside';
+import ClickOutside from '../../../../../../components/click-outside/click-outside';
 
 import './context-menu.css';
 

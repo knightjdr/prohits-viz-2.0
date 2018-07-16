@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Analysis from './__analysis/panel__analysis-container';
+import Analysis from './__analysis/panel__analysis';
 import Annotation from './__annotation/panel__annotation-container';
 import Info from './__info/panel__info-container';
 import Map from './__map/panel__map-container';

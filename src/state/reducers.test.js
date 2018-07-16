@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 // reducers
 import Annotations from './set/visualization/annotation-reducer';
 import FormStep from './set/form-step-reducer';
+import Genes from './set/visualization/genes-reducer';
 import Header from './set/header-reducer';
 import Home from './get/home-reducer';
 import InteractiveFile from './set/interactive-file-reducer';
@@ -13,6 +14,8 @@ import NewsItem from './get/news-item-reducer';
 import NewsPage from './set/news-page-reducer';
 import Parameters from './set/visualization/params-reducer';
 import Position from './set/visualization/position-reducer';
+import Save from './set/visualization/save-reducer';
+import Search from './set/visualization/search-reducer';
 import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
 
@@ -25,6 +28,7 @@ describe('Store', () => {
   () => {
     expect(store.getState().annotations).toEqual(Annotations(undefined, {}));
     expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
+    expect(store.getState().genes).toEqual(Genes(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, {}));
@@ -35,10 +39,12 @@ describe('Store', () => {
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
     expect(store.getState().parameters).toEqual(Parameters(undefined, {}));
     expect(store.getState().position).toEqual(Position(undefined, {}));
+    expect(store.getState().save).toEqual(Save(undefined, {}));
+    expect(store.getState().search).toEqual(Search(undefined, {}));
     expect(store.getState().settings).toEqual(Settings(undefined, {}));
   });
 
-  test('visualization annotation reducer handles its actions', () => {
+  test('annotation visualization reducer handles its actions', () => {
     let action = {
       text: 'test',
       type: 'ADD_ANNOTATION',
@@ -56,6 +62,9 @@ describe('Store', () => {
     action = { color: '#000000', type: 'SET_ANNOTATION_COLOR' };
     store.dispatch(action);
     expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    action = { type: 'TOGGLE_MOVE_ANNOTATION' };
+    store.dispatch(action);
+    expect(store.getState().annotations).toEqual(Annotations({ color: '#000000', list: [] }, action));
   });
 
   test('form step reducer handles its actions', () => {
@@ -65,6 +74,27 @@ describe('Store', () => {
     action = { type: 'CLEAR_FORM_STEP' };
     store.dispatch(action);
     expect(store.getState().formStep).toEqual(FormStep(undefined, action));
+  });
+
+  test('genes visualization reducer handles its actions', () => {
+    let action = {
+      columns: [],
+      rows: [],
+      type: 'SET_SELECTIONS',
+    };
+    store.dispatch(action);
+    expect(store.getState().genes).toEqual(Genes(undefined, action));
+    action = {
+      selections: {
+        columns: [],
+        columnsSelected: [],
+        rows: [],
+        rowsSelected: [],
+      },
+      type: 'STORE_SELECTIONS',
+    };
+    store.dispatch(action);
+    expect(store.getState().genes).toEqual(Genes(undefined, action));
   });
 
   test('header reducer handles its actions', () => {
@@ -91,7 +121,13 @@ describe('Store', () => {
     expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
   });
 
-  test('visualization marker reducer handles its actions', () => {
+  test('minimap visualization reducer handles its actions', () => {
+    const action = { type: 'TOGGLE_ANNOTATIONS' };
+    store.dispatch(action);
+    expect(store.getState().minimap).toEqual(Map(undefined, action));
+  });
+
+  test('marker visualization reducer handles its actions', () => {
     let action = {
       height: 0.5,
       type: 'ADD_MARKER',
@@ -110,6 +146,9 @@ describe('Store', () => {
     action = { color: '#0000ff', type: 'SET_MARKER_COLOR' };
     store.dispatch(action);
     expect(store.getState().markers).toEqual(Marker(undefined, action));
+    action = { type: 'TOGGLE_RECORD_MARKER' };
+    store.dispatch(action);
+    expect(store.getState().markers).toEqual(Marker({ color: '#0000ff', list: [] }, action));
   });
 
   test('news reducer handles its actions', () => {
@@ -148,7 +187,25 @@ describe('Store', () => {
     expect(store.getState().position).toEqual(Position(undefined, action));
   });
 
-  test('visualization settings reducer handles its actions', () => {
+  test('save visualization reducer handles its actions', () => {
+    let action = { imageType: 'png', type: 'SAVE_IMAGE_TYPE' };
+    store.dispatch(action);
+    expect(store.getState().save).toEqual(Save(undefined, action));
+    action = { name: 'test name', type: 'SAVE_SESSION_NAME' };
+    store.dispatch(action);
+    expect(store.getState().save).toEqual(Save({ imageType: 'png' }, action));
+  });
+
+  test('search visualization reducer handles its actions', () => {
+    let action = { type: 'CLEAR_SEARCH' };
+    store.dispatch(action);
+    expect(store.getState().search).toEqual(Search(undefined, action));
+    action = { term: 'testTerm', type: 'SET_SEARCH_TERM' };
+    store.dispatch(action);
+    expect(store.getState().search).toEqual(Search(undefined, action));
+  });
+
+  test('settings visualization reducer handles its actions', () => {
     let action = { setting: 'a', type: 'UPDATE_SETTING', value: 'b' };
     store.dispatch(action);
     expect(store.getState().settings).toEqual(Settings(undefined, action));

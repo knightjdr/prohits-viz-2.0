@@ -7,6 +7,7 @@ import * as actions from './marker-actions';
 const DefaultState = {
   color: '#000000',
   list: [],
+  record: false,
 };
 
 jest.mock('../../../helpers/deep-copy');
@@ -67,6 +68,16 @@ describe('Marker set reducer', () => {
     expect(MarkerReducer(undefined, {
       color: '#000000',
       type: actions.SET_MARKER_COLOR,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle TOGGLE_RECORD_MARKER', () => {
+    const expectedState = {
+      ...DefaultState,
+      record: true,
+    };
+    expect(MarkerReducer(undefined, {
+      type: actions.TOGGLE_RECORD_MARKER,
     })).toEqual(expectedState);
   });
 });

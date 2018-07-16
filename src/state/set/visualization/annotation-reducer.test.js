@@ -6,6 +6,7 @@ import * as actions from './annotation-actions';
 const DefaultState = {
   color: '#f44336',
   list: [],
+  move: false,
 };
 
 jest.mock('../../../helpers/deep-copy');
@@ -64,6 +65,16 @@ describe('AnnotationReducer set reducer', () => {
     expect(AnnotationReducer(undefined, {
       color: '#000000',
       type: actions.SET_ANNOTATION_COLOR,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle TOGGLE_MOVE_ANNOTATION', () => {
+    const expectedState = {
+      ...DefaultState,
+      move: true,
+    };
+    expect(AnnotationReducer(undefined, {
+      type: actions.TOGGLE_MOVE_ANNOTATION,
     })).toEqual(expectedState);
   });
 });

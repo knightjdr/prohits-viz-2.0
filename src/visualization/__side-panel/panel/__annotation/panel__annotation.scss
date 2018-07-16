@@ -59,7 +59,7 @@
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-template-columns: auto auto;
-  justify-content: center;
+  justify-content: flex;
   margin-left: 0;
 }
 .panel__annotation-annotations-buttons > div:nth-child(even) > button,
@@ -108,9 +108,17 @@
   z-index: 100;
 }
 .panel__annotation-search-grid {
+  justify-content: flex-end;
+  margin-left: 15px;
   margin-top: 15px;
+  width: 282px;
 }
 @media (max-width: 374px) {
+  .panel__annotation-search-grid {
+    justify-content: center;
+    margin-left: 0;
+    width: 100%;
+  }
   .panel__annotation-annotations-input > :first-child,
   .panel__annotation-search-input > :first-child {
     margin-left: 0;

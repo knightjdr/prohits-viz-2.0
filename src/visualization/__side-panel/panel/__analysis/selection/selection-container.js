@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import Analysis from './panel__analysis';
-import CopyToClipboard from '../../../../helpers/copy-to-clipboard';
+import CopyToClipboard from '../../../../../helpers/copy-to-clipboard';
+import GeneSelector from '../../../../../state/selectors/visualization/genes-selector';
+import Selection from './selection';
+import { storeSelections } from '../../../../../state/set/visualization/genes-actions';
 
-class AnalysisContainer extends Component {
+class SelectionContainer extends Component {
   constructor(props) {
     super(props);
     this.elementRef = React.createRef();
     this.state = {
       canPasteContext: true,
-      columnMap: this.mapList(this.props.columns),
-      columns: [...this.props.columns],
+      columns: [...this.props.genes.columns],
       columnsHighlighted: [],
-      columnsSelected: [],
+      columnsSelected: [...this.props.genes.columnsSelected],
       columnsSelectedHighlighted: [],
       contextPos: {
         left: 0,
@@ -22,14 +24,21 @@ class AnalysisContainer extends Component {
       contextTarget: null,
       pasteText: '',
       pasteType: null,
-      rowMap: this.mapList(this.props.rows),
-      rows: [...this.props.rows],
+      rows: [...this.props.genes.rows],
       rowsHighlighted: [],
-      rowsSelected: [],
+      rowsSelected: [...this.props.genes.rowsSelected],
       rowsSelectedHighlighted: [],
       showContext: false,
       showModal: false,
     };
+  }
+  componentWillUnmount = () => {
+    this.props.storeSelections({
+      columns: this.state.columns,
+      columnsSelected: this.state.columnsSelected,
+      rows: this.state.rows,
+      rowsSelected: this.state.rowsSelected,
+    });
   }
   arrangeSelected = (target, by) => {
     const selected = by > 0 ?
@@ -77,7 +86,7 @@ class AnalysisContainer extends Component {
       ...this.state[target],
       ...this.state[`${source}Highlighted`],
     ].sort((a, b) => (
-      this.state[sortBy][a] - this.state[sortBy][b]
+      this.props.genes[sortBy][a] - this.props.genes[sortBy][b]
     ));
     // Remove highlighted genes from source list.
     newState[source] = this.state[source].filter(gene => (
@@ -87,13 +96,6 @@ class AnalysisContainer extends Component {
     newState[`${source}Highlighted`] = [];
     this.setState(newState);
   }
-  mapList = list => (
-    list.reduce(((obj, gene, index) => {
-      const newGene = {};
-      newGene[gene] = index;
-      return { ...obj, ...newGene };
-    }), {})
-  )
   openContextMenu = (e, canPaste, target) => {
     e.preventDefault();
     const rect = this.elementRef.current.getBoundingClientRect();
@@ -110,10 +112,17 @@ class AnalysisContainer extends Component {
     });
   }
   paste = () => {
-    if (this.state.pasteType === 'pasteAppend') {
-      this.pasteAppend();
+    if (this.state.pasteText) {
+      if (this.state.pasteType === 'pasteAppend') {
+        this.pasteAppend();
+      } else {
+        this.pasteReplace();
+      }
     } else {
-      this.pasteReplace();
+      this.setState({
+        pasteType: null,
+        showModal: false,
+      });
     }
   }
   pasteAppend = () => {
@@ -141,10 +150,10 @@ class AnalysisContainer extends Component {
   pasteReplace = () => {
     // Get name of map and full list of genes.
     const mapName = `${this.state.contextTarget.replace('sSelected', '')}Map`;
-    const genes = Object.keys(this.state[mapName]);
+    const genes = Object.keys(this.props.genes[mapName]);
     /* Convert paste text to array, remove duplicates and remove any genes not
     ** in full gene list. */
-    const list = [...new Set(this.state.pasteText.split(/[\s+,+]+/))]
+    const list = [...new Set(this.state.pasteText.split(/[\s,]+/))]
       .filter(item => (genes.includes(item)));
     // Source list name.
     const source = this.state.contextTarget.replace('Selected', '');
@@ -154,7 +163,7 @@ class AnalysisContainer extends Component {
       ...this.state[source].filter(item => (!list.includes(item))),
       ...this.state[`${source}Selected`].filter(item => (!list.includes(item))),
     ].sort((a, b) => (
-      this.state[mapName][a] - this.state[mapName][b]
+      this.props.genes[mapName][a] - this.props.genes[mapName][b]
     ));
     newState[`${source}Selected`] = list;
     this.setState({
@@ -168,6 +177,7 @@ class AnalysisContainer extends Component {
     this.setState(({ showModal }) => ({
       pasteText: '',
       pasteType,
+      showContext: false,
       showModal: !showModal,
     }));
   }
@@ -179,7 +189,7 @@ class AnalysisContainer extends Component {
   render() {
     return (
       <div ref={this.elementRef}>
-        <Analysis
+        <Selection
           arrangeSelected={this.arrangeSelected}
           canPasteContext={this.state.canPasteContext}
           closeContextMenu={this.closeContextMenu}
@@ -206,14 +216,32 @@ class AnalysisContainer extends Component {
   }
 }
 
-AnalysisContainer.defaultProps = {
-  columns: ['gene-a', 'gene-b', 'gene-c'],
-  rows: ['gene-d', 'gene-e', 'gene-f'],
+SelectionContainer.propTypes = {
+  genes: PropTypes.shape({
+    columnMap: PropTypes.shape({}),
+    columns: PropTypes.arrayOf(PropTypes.string),
+    columnsSelected: PropTypes.arrayOf(PropTypes.string),
+    rowMap: PropTypes.shape({}),
+    rows: PropTypes.arrayOf(PropTypes.string),
+    rowsSelected: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  storeSelections: PropTypes.func.isRequired,
 };
 
-AnalysisContainer.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.string),
-  rows: PropTypes.arrayOf(PropTypes.string),
-};
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  genes: GeneSelector(state),
+});
 
-export default AnalysisContainer;
+const mapDispatchToProps = dispatch => ({
+  storeSelections: (selections) => {
+    dispatch(storeSelections(selections));
+  },
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SelectionContainer);
+
+export default ConnectedContainer;

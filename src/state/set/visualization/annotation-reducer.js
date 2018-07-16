@@ -5,6 +5,7 @@ import {
   CLEAR_ALL_ANNOTATIONS,
   CLEAR_LAST_ANNOTATION,
   SET_ANNOTATION_COLOR,
+  TOGGLE_MOVE_ANNOTATION,
 } from './annotation-actions';
 
 // import Default from '../../../visualization/test/annotations';
@@ -12,6 +13,7 @@ import {
 const Annotations = (state = {
   color: '#f44336',
   list: [],
+  move: false,
 }, action) => {
   let newList;
   switch (action.type) {
@@ -44,6 +46,13 @@ const Annotations = (state = {
         ...state,
         ...{
           color: action.color,
+        },
+      };
+    case TOGGLE_MOVE_ANNOTATION:
+      return {
+        ...state,
+        ...{
+          move: !state.move,
         },
       };
     default:

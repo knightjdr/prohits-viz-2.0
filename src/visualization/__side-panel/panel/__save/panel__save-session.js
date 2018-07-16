@@ -10,11 +10,16 @@ import {
 import './panel__save.css';
 
 const SaveSession = ({
+  saveSessionBrowser,
+  saveSessionFile,
+  saveSessionName,
   sessionName,
 }) => (
   <div className="panel__save-session">
     <Input
+      onChange={(e) => { saveSessionName(e.target.value); }}
       placeholder="Session name"
+      value={sessionName}
     />
     <div className="panel__save-session-grid">
       <div>
@@ -22,6 +27,7 @@ const SaveSession = ({
       </div>
       <button
         className="panel__save-button"
+        onClick={saveSessionBrowser}
         type="button"
       >
         <FontAwesomeIcon icon={faBrowser} />
@@ -31,6 +37,7 @@ const SaveSession = ({
       </div>
       <button
         className="panel__save-button"
+        onClick={saveSessionFile}
         type="button"
       >
         <FontAwesomeIcon icon={faFileDownload} />
@@ -40,6 +47,9 @@ const SaveSession = ({
 );
 
 SaveSession.propTypes = {
+  saveSessionBrowser: PropTypes.func.isRequired,
+  saveSessionFile: PropTypes.func.isRequired,
+  saveSessionName: PropTypes.func.isRequired,
   sessionName: PropTypes.string.isRequired,
 };
 

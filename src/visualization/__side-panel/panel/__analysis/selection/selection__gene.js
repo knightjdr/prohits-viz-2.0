@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { faArrowUp } from '@fortawesome/pro-solid-svg-icons';
 
-import Select from './panel__analysis-select';
+import Select from './selection__select';
 
-import './panel__analysis';
+import './selection.css';
 
 const GeneSelection = ({
   arrangeSelected,
@@ -17,13 +17,13 @@ const GeneSelection = ({
   rows,
   rowsSelected,
 }) => (
-  <div className="panel__analysis-selection">
-    <div className="panel__analysis-selection-grid">
-      <div className="panel__analysis-selection-header">
+  <div className="selection">
+    <div className="selection__grid">
+      <div className="selection__header">
         Columns
       </div>
       <div />
-      <div className="panel__analysis-selection-header">
+      <div className="selection__header">
         Selected
       </div>
       <div />
@@ -33,16 +33,16 @@ const GeneSelection = ({
         options={columns}
         target="columns"
       />
-      <div className="panel__analysis-selection-button-group">
+      <div className="selection__button-group">
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { listSwap('columns', 'columnsSelected', 'columnMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { listSwap('columnsSelected', 'columns', 'columnMap'); }}
           type="button"
         >
@@ -56,16 +56,16 @@ const GeneSelection = ({
         options={columnsSelected}
         target="columnsSelected"
       />
-      <div className="panel__analysis-selection-button-group">
+      <div className="selection__button-group">
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { arrangeSelected('columnsSelected', -1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} />
         </button>
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { arrangeSelected('columnsSelected', 1); }}
           type="button"
         >
@@ -73,12 +73,12 @@ const GeneSelection = ({
         </button>
       </div>
     </div>
-    <div className="panel__analysis-selection-grid">
-      <div className="panel__analysis-selection-header">
+    <div className="selection__grid">
+      <div className="selection__header">
         Rows
       </div>
       <div />
-      <div className="panel__analysis-selection-header">
+      <div className="selection__header">
         Selected
       </div>
       <div />
@@ -88,16 +88,16 @@ const GeneSelection = ({
         options={rows}
         target="rows"
       />
-      <div className="panel__analysis-selection-button-group">
+      <div className="selection__button-group">
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { listSwap('rows', 'rowsSelected', 'rowMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { listSwap('rowsSelected', 'rows', 'rowMap'); }}
           type="button"
         >
@@ -111,16 +111,16 @@ const GeneSelection = ({
         options={rowsSelected}
         target="rowsSelected"
       />
-      <div className="panel__analysis-selection-button-group">
+      <div className="selection__button-group">
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { arrangeSelected('rowsSelected', -1); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} />
         </button>
         <button
-          className="panel__analysis-select-arrow"
+          className="selection__select-arrow"
           onClick={() => { arrangeSelected('rowsSelected', 1); }}
           type="button"
         >

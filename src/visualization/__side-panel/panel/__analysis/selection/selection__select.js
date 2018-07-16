@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import './panel__analysis';
+import './selection.css';
 
 const Select = ({
   canPaste,
@@ -11,12 +11,12 @@ const Select = ({
   target,
 }) => (
   <select
-    className="panel__analysis-select"
+    className="selection__select"
     multiple
     onChange={(e) => { listSelect(e, target); }}
     onContextMenu={(e) => { openContextMenu(e, canPaste, target); }}
   >
-    [<option className="panel__analysis-select_option-hidden" value="">Placeholder</option>,
+    [<option className="selection__select_option-hidden" value="">Placeholder</option>,
     ...{options.map(item => (
       <option
         key={item}

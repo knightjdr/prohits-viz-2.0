@@ -5,6 +5,7 @@ import {
   CLEAR_ALL_MARKERS,
   CLEAR_LAST_MARKER,
   SET_MARKER_COLOR,
+  TOGGLE_RECORD_MARKER,
 } from './marker-actions';
 
 // import DefaultState from '../../../visualization/test/markers';
@@ -12,6 +13,7 @@ import {
 const Markers = (state = {
   color: '#000000',
   list: [],
+  record: false,
 }, action) => {
   let newList;
   switch (action.type) {
@@ -45,6 +47,13 @@ const Markers = (state = {
         ...state,
         ...{
           color: action.color,
+        },
+      };
+    case TOGGLE_RECORD_MARKER:
+      return {
+        ...state,
+        ...{
+          record: !state.record,
         },
       };
     default:

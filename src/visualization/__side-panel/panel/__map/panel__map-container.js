@@ -7,20 +7,10 @@ import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import Round from '../../../../helpers/round';
+import { toggleAnnotations } from '../../../../state/set/visualization/map-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAnnotations: false,
-    };
-  }
-  toggleAnnotations = () => {
-    this.setState(({ showAnnotations }) => ({
-      showAnnotations: !showAnnotations,
-    }));
-  }
   navigatePosition = (e) => {
     const rect = e.target.getBoundingClientRect();
     // Calculate mouse position as percentage of container.
@@ -35,10 +25,10 @@ export class MapContainer extends Component {
       <Map
         annotations={this.props.annotations}
         markers={this.props.markers}
-        minimap={this.props.minimap}
+        minimap={this.props.minimap.image}
         navigatePosition={this.navigatePosition}
-        showAnnotations={this.state.showAnnotations}
-        toggleAnnotations={this.toggleAnnotations}
+        showAnnotations={this.props.minimap.showAnnotations}
+        toggleAnnotations={this.props.toggleAnnotations}
       />
     );
   }
@@ -47,7 +37,11 @@ export class MapContainer extends Component {
 MapContainer.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
   markers: PropTypes.shape({}).isRequired,
-  minimap: PropTypes.string.isRequired,
+  minimap: PropTypes.shape({
+    image: PropTypes.string,
+    showAnnotations: PropTypes.bool,
+  }).isRequired,
+  toggleAnnotations: PropTypes.func.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
 
@@ -59,6 +53,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  toggleAnnotations: () => {
+    dispatch(toggleAnnotations());
+  },
   updatePosition: (x, y) => {
     dispatch(updatePosition(x, y));
   },
