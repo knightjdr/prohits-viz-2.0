@@ -25,3 +25,6 @@ src/**/*.css
 
 # test files
 src/visualization/test-files/**
+
+# vscode
+/.vscode

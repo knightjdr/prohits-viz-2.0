@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map panel should render with annotations 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="panel__title"
+  >
+    Mini map
+  </div>
+  <div
+    className="panel__map"
+  >
+    <div
+      className="panel__map-inner"
+    >
+      <img
+        alt="Mini map"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+      />
+      <Annotations
+        annotations={
+          Object {
+            "color": "#0000ff",
+            "list": Array [
+              Object {
+                "text": "a",
+                "x": 0.1,
+                "y": 0.2,
+              },
+            ],
+          }
+        }
+        markers={
+          Object {
+            "color": "#000000",
+            "list": Array [
+              Object {
+                "height": 0.1,
+                "width": 0.1,
+                "x": 0.1,
+                "y": 0.1,
+              },
+            ],
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="panel__map-switch"
+  >
+    <div>
+      Annotations:
+    </div>
+    <Switch
+      checked={true}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+  </div>
+</div>
+`;
+
+exports[`Map panel should render without annotations 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="panel__title"
+  >
+    Mini map
+  </div>
+  <div
+    className="panel__map"
+  >
+    <div
+      className="panel__map-inner"
+    >
+      <img
+        alt="Mini map"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+      />
+      <button
+        className="panel__map-select"
+        onClick={[Function]}
+        type="button"
+      />
+    </div>
+  </div>
+  <div
+    className="panel__map-switch"
+  >
+    <div>
+      Annotations:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+  </div>
+</div>
+`;

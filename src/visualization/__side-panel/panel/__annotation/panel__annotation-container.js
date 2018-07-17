@@ -141,6 +141,7 @@ const mapStateToProps = state => ({
   search: SearchSelector(state),
 });
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   addAnnotation: (text, x, y) => {
     dispatch(addAnnotation(text, x, y));

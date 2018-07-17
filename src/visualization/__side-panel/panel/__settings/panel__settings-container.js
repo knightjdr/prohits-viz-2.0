@@ -38,9 +38,9 @@ export class SettingsContainer extends Component {
   }
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.reset) {
-      this.restoreAllSettings(nextProps);
+      this.restoreAllSettings(nextProps, this.state.settings, this.state.storeSettings);
     } else {
-      this.restoreStoreSettings(nextProps);
+      this.syncStoreSettings(nextProps, this.state.storeSettings);
     }
   }
   changeSetting = (setting, value) => {
@@ -53,14 +53,17 @@ export class SettingsContainer extends Component {
       },
     }));
   }
-  restoreAllSettings = (nextProps) => {
+  resetImage = () => {
+    console.log('reset image');
+  }
+  restoreAllSettings = (nextProps, settings, storeSettings) => {
     // Find settings that have changed.
-    const updateSettings = Object.keys(this.state.settings).filter(prop => (
-      this.state.settings[prop] !== nextProps[prop]
+    const updateSettings = Object.keys(settings).filter(prop => (
+      settings[prop] !== nextProps[prop]
     ));
     // Find store settings that have changed.
-    const updateStoreSettings = Object.keys(this.state.storeSettings).filter(prop => (
-      this.state.storeSettings[prop] !== nextProps[prop]
+    const updateStoreSettings = Object.keys(storeSettings).filter(prop => (
+      storeSettings[prop] !== nextProps[prop]
     ));
     // Create object of new changes and merge with state.
     const newSettings = updateSettings.reduce(((obj, setting) => {
@@ -73,7 +76,7 @@ export class SettingsContainer extends Component {
       newPair[setting] = nextProps[setting];
       return { ...obj, ...newPair };
     }), {});
-    this.setState(({ settings, storeSettings }) => ({
+    this.setState({
       settings: {
         ...settings,
         ...newSettings,
@@ -82,12 +85,12 @@ export class SettingsContainer extends Component {
         ...storeSettings,
         ...newStoreSettings,
       },
-    }));
+    });
   }
-  restoreStoreSettings = (nextProps) => {
+  syncStoreSettings = (nextProps, storeSettings) => {
     // Find store settings that have changed.
-    const updateStoreSettings = Object.keys(this.state.storeSettings).filter(prop => (
-      this.state.storeSettings[prop] !== nextProps[prop]
+    const updateStoreSettings = Object.keys(storeSettings).filter(prop => (
+      storeSettings[prop] !== nextProps[prop]
     ));
     // If settings have changed, create object of new changes and merge with state.
     if (updateStoreSettings.length > 0) {
@@ -96,22 +99,25 @@ export class SettingsContainer extends Component {
         newPair[setting] = nextProps[setting];
         return { ...obj, ...newPair };
       }), {});
-      this.setState(({ storeSettings }) => ({
+      this.setState({
         storeSettings: {
           ...storeSettings,
           ...newSettings,
         },
-      }));
+      });
     }
   }
   updateSetting = (setting) => {
-    this.props.updateSetting(setting, this.state.settings[setting]);
+    if (this.state.settings[setting] !== this.state.storeSettings[setting]) {
+      this.props.updateSetting(setting, this.state.settings[setting]);
+    }
   }
   render() {
     return (
       <Settings
         changeSetting={this.changeSetting}
         settings={this.state.settings}
+        resetImage={this.resetImage}
         resetSettings={this.props.resetSettings}
         storeSettings={this.state.storeSettings}
         updateSetting={this.updateSetting}
@@ -149,6 +155,7 @@ const mapStateToProps = state => ({
   secondaryFilter: SettingSelector(state, 'secondaryFilter'),
 });
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   resetSettings: () => {
     dispatch(resetSettings());

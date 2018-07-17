@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Annotation panel should render 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="panel__title"
+  >
+    Annotations
+  </div>
+  <Annotations
+    addAnnotation={[Function]}
+    annotation=""
+    annotationColor="#ff0000"
+    clearAllAnnotations={[Function]}
+    clearLastAnnotation={[Function]}
+    closeAnnotationColorPicker={[Function]}
+    handleAnnotationColor={[Function]}
+    move={false}
+    showAnnotationPicker={false}
+    toggleAnnotationColorPicker={[Function]}
+    toggleMove={[Function]}
+    updateAnnotation={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Markers
+  </div>
+  <Markers
+    clearAllMarkers={[Function]}
+    clearLastMarker={[Function]}
+    closeMarkerColorPicker={[Function]}
+    handleMarkerColor={[Function]}
+    markerColor="#000000"
+    record={false}
+    showMarkerPicker={false}
+    toggleMarkerColorPicker={[Function]}
+    toggleRecord={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Search
+  </div>
+  <Search
+    clearSearch={[Function]}
+    handleSearch={[Function]}
+    searchTerm=""
+    updateSearchTerm={[Function]}
+  />
+</div>
+`;

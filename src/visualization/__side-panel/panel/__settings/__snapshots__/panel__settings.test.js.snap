@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings panel should render 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="panel__title"
+  >
+    Basic settings
+  </div>
+  <Basic
+    changeSetting={[Function]}
+    settings={Object {}}
+    storeSettings={Object {}}
+    updateSetting={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Colour palette
+  </div>
+  <Palette
+    changeSetting={[Function]}
+    settings={Object {}}
+    storeSettings={Object {}}
+    updateSetting={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Filters
+  </div>
+  <Filter
+    changeSetting={[Function]}
+    settings={Object {}}
+    storeSettings={Object {}}
+    updateSetting={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Reset
+  </div>
+  <Reset
+    resetImage={[Function]}
+    resetSettings={[Function]}
+  />
+</div>
+`;

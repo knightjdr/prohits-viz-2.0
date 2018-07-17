@@ -52,6 +52,7 @@ const mapStateToProps = state => ({
   minimap: MapSelector(state),
 });
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   toggleAnnotations: () => {
     dispatch(toggleAnnotations());

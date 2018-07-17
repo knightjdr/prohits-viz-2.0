@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heatmap legend should render 1`] = `
+<svg
+  height="80"
+  id="legend"
+  viewBox="0 0 200 80"
+  width="200"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      id="legendGradient"
+    >
+      <stop
+        offset="0%"
+        stopColor="#ffffff"
+      />
+      <stop
+        offset="50%"
+        stopColor="#ff0000"
+      />
+      <stop
+        offset="100%"
+        stopColor="#000000"
+      />
+    </linearGradient>
+  </defs>
+  <g>
+    <text
+      textAnchor="middle"
+      x="100"
+      y="20"
+    >
+      Abundance
+    </text>
+    <rect
+      fill="url('#legendGradient')"
+      height="20"
+      width="150"
+      x="25"
+      y="30"
+    />
+    <text
+      textAnchor="middle"
+      x="25"
+      y="65"
+    >
+      0
+    </text>
+    <text
+      textAnchor="middle"
+      x="175"
+      y="65"
+    >
+      50
+    </text>
+  </g>
+</svg>
+`;

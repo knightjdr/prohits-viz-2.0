@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/pro-regular-svg-icons';
 
 const Reset = ({
+  resetImage,
   resetSettings,
 }) => (
   <div className="panel__settings-reset">
@@ -25,6 +26,7 @@ const Reset = ({
     </div>
     <button
       className="panel__settings-reset-button"
+      onClick={resetImage}
       type="button"
     >
       <FontAwesomeIcon icon={faImage} />
@@ -33,6 +35,7 @@ const Reset = ({
 );
 
 Reset.propTypes = {
+  resetImage: PropTypes.func.isRequired,
   resetSettings: PropTypes.func.isRequired,
 };
 

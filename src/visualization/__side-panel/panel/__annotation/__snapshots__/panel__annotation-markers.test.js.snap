@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marker component on annotation panel should render 1`] = `
+<div
+  className="panel__annotation-markers"
+>
+  <div
+    className="panel__annotation-markers-inner"
+  >
+    <div>
+      Record selections
+    </div>
+    <div>
+      <Switch
+        checked={false}
+        onChange={[Function]}
+        prefixCls="ant-switch"
+      />
+    </div>
+    <div>
+      Marker color
+    </div>
+    <div>
+      <button
+        className="panel__annotation-button_theme-default"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f53f",
+                "M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+              ],
+              "iconName": "palette",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <div>
+      Clear last
+    </div>
+    <div>
+      <button
+        className="panel__annotation-button_theme-warning"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f12d",
+                "M497.941 273.941c18.745-18.745 18.745-49.137 0-67.882l-160-160c-18.745-18.745-49.136-18.746-67.883 0l-256 256c-18.745 18.745-18.745 49.137 0 67.882l96 96A48.004 48.004 0 0 0 144 480h356c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12H355.883l142.058-142.059zm-302.627-62.627l137.373 137.373L265.373 416H150.628l-80-80 124.686-124.686z",
+              ],
+              "iconName": "eraser",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <div>
+      Clear all
+    </div>
+    <div
+      key="marker-clear-all-button"
+    >
+      <button
+        className="panel__annotation-button_theme-warning"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f2ed",
+                "M0 84V56c0-13.3 10.7-24 24-24h112l9.4-18.7c4-8.2 12.3-13.3 21.4-13.3h114.3c9.1 0 17.4 5.1 21.5 13.3L312 32h112c13.3 0 24 10.7 24 24v28c0 6.6-5.4 12-12 12H12C5.4 96 0 90.6 0 84zm416 56v324c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V140c0-6.6 5.4-12 12-12h360c6.6 0 12 5.4 12 12zm-272 68c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208z",
+              ],
+              "iconName": "trash-alt",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="panel__annotation-markers-color-picker"
+    style={
+      Object {
+        "opacity": 0,
+        "transform": "scale(0)",
+        "visibility": "hidden",
+      }
+    }
+  >
+    <OnClickOutside(ClickOutsideWrapper)
+      callback={[Function]}
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      stopPropagation={false}
+    >
+      <ColorPicker
+        color="#000000"
+        disableAlpha={true}
+        onChangeComplete={[Function]}
+      />
+    </OnClickOutside(ClickOutsideWrapper)>
+  </div>
+</div>
+`;
+
+exports[`Marker component on annotation panel should render with record toggle on and color picker rendered 1`] = `
+<div
+  className="panel__annotation-markers"
+>
+  <div
+    className="panel__annotation-markers-inner"
+  >
+    <div>
+      Record selections
+    </div>
+    <div>
+      <Switch
+        checked={true}
+        onChange={[Function]}
+        prefixCls="ant-switch"
+      />
+    </div>
+    <div>
+      Marker color
+    </div>
+    <div>
+      <button
+        className="panel__annotation-button_theme-default"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f53f",
+                "M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z",
+              ],
+              "iconName": "palette",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <div>
+      Clear last
+    </div>
+    <div>
+      <button
+        className="panel__annotation-button_theme-warning"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f12d",
+                "M497.941 273.941c18.745-18.745 18.745-49.137 0-67.882l-160-160c-18.745-18.745-49.136-18.746-67.883 0l-256 256c-18.745 18.745-18.745 49.137 0 67.882l96 96A48.004 48.004 0 0 0 144 480h356c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12H355.883l142.058-142.059zm-302.627-62.627l137.373 137.373L265.373 416H150.628l-80-80 124.686-124.686z",
+              ],
+              "iconName": "eraser",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <div>
+      Clear all
+    </div>
+    <div
+      key="marker-clear-all-button"
+    >
+      <button
+        className="panel__annotation-button_theme-warning"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f2ed",
+                "M0 84V56c0-13.3 10.7-24 24-24h112l9.4-18.7c4-8.2 12.3-13.3 21.4-13.3h114.3c9.1 0 17.4 5.1 21.5 13.3L312 32h112c13.3 0 24 10.7 24 24v28c0 6.6-5.4 12-12 12H12C5.4 96 0 90.6 0 84zm416 56v324c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V140c0-6.6 5.4-12 12-12h360c6.6 0 12 5.4 12 12zm-272 68c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208zm96 0c0-8.8-7.2-16-16-16s-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208z",
+              ],
+              "iconName": "trash-alt",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="panel__annotation-markers-color-picker"
+    style={
+      Object {
+        "opacity": 1,
+        "transform": "scale(1)",
+        "visibility": "visible",
+      }
+    }
+  >
+    <OnClickOutside(ClickOutsideWrapper)
+      callback={[Function]}
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      stopPropagation={false}
+    >
+      <ColorPicker
+        color="#000000"
+        disableAlpha={true}
+        onChangeComplete={[Function]}
+      />
+    </OnClickOutside(ClickOutsideWrapper)>
+  </div>
+</div>
+`;

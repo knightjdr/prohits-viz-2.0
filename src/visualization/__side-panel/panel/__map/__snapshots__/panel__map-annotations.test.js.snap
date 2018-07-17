@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map panel annotations should render 1`] = `
+<div
+  className="panel__map-annotations"
+>
+  <div
+    className="panel__map-marker"
+    key="a"
+    style={
+      Object {
+        "borderColor": "#000000",
+        "height": "10%",
+        "left": "10%",
+        "top": "10%",
+        "width": "10%",
+      }
+    }
+  />
+  <div
+    className="panel__map-marker"
+    key="b"
+    style={
+      Object {
+        "borderColor": "#000000",
+        "height": "20%",
+        "left": "50%",
+        "top": "50%",
+        "width": "30%",
+      }
+    }
+  />
+  <div
+    className="panel__map-annotation"
+    key="c"
+    style={
+      Object {
+        "backgroundColor": "#0000ff",
+        "left": "calc(10% - 5px)",
+        "top": "calc(20% - 5px)",
+      }
+    }
+    tooltip="a"
+    tooltip-position="top"
+  />
+  <div
+    className="panel__map-annotation"
+    key="d"
+    style={
+      Object {
+        "backgroundColor": "#0000ff",
+        "left": "calc(20% - 5px)",
+        "top": "calc(40% - 5px)",
+      }
+    }
+    tooltip="b"
+    tooltip-position="top"
+  />
+</div>
+`;

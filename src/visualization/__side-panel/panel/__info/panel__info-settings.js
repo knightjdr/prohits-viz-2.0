@@ -2,16 +2,14 @@ import React from 'react';
 
 import ConvertCamel from '../../../../helpers/convert-camel';
 
-// Do not show parameter keys for things in this array.
-const omitKeys = ['colorSpace', 'imageType'];
-
-// Convert score type value as indicated in this object.
-const scoreType = {
-  gte: 'larger scores better',
-  lte: 'smaller scores better',
-};
-
 const InfoSettings = (params) => {
+  // Do not show parameter keys for things in this array.
+  const omitKeys = ['colorSpace', 'imageType'];
+  // Convert score type value as indicated in this object.
+  const scoreType = {
+    gte: 'larger scores better',
+    lte: 'smaller scores better',
+  };
   const sortedKeys = Object.keys(params).sort();
   return sortedKeys.map((key) => {
     if (

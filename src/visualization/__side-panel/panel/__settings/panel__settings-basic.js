@@ -11,7 +11,7 @@ import './panel__settings.css';
 
 const { Option } = Select;
 
-const RoundInput = value => Math.round(value);
+export const RoundInput = value => Math.round(value);
 
 const Basic = ({
   changeSetting,
