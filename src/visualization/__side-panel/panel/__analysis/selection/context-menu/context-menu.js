@@ -73,8 +73,8 @@ ContextMenu.propTypes = {
   copySelected: PropTypes.func.isRequired,
   left: PropTypes.number,
   show: PropTypes.bool,
-  top: PropTypes.number,
   toggleModal: PropTypes.func.isRequired,
+  top: PropTypes.number,
 };
 
 export default ContextMenu;

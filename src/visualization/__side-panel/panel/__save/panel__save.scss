@@ -1,7 +1,6 @@
 @import 'style/link';
 @import 'style/reset';
 @import 'style/button';
-@import 'style/theme';
 
 .panel__save-archive > :first-child {
   align-items: center;
@@ -49,32 +48,4 @@
 }
 .panel__save-link {
   @extend .decorate-link;
-}
-.panel__save-session {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.panel__save-session .ant-input {
-  width: 182px;
-}
-.panel__save-session-grid {
-  align-items: center;
-  display: grid;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  margin-left: 0;
-  margin-top: 15px;
-}
-.panel__save-session-grid > div:nth-child(even) {
-  align-items: center;
-  display: flex;
-}
-.panel__save-session-grid > div:nth-child(odd) {
-  justify-self: right;
-}
-.panel__save-session-grid > div:nth-child(odd)::after {
-  content: ':';
 }

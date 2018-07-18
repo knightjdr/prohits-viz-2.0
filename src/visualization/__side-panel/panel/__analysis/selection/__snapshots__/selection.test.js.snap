@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analysis selection panel component should render 1`] = `
+<div>
+  <ContextMenu
+    canPaste={false}
+    closeMenu={[Function]}
+    copyAll={[Function]}
+    copySelected={[Function]}
+    left={0}
+    show={false}
+    toggleModal={[Function]}
+    top={0}
+  />
+  <div
+    className="panel__title"
+  >
+    Gene selection
+  </div>
+  <GeneSelection
+    arrangeSelected={[Function]}
+    columns={Array []}
+    columnsSelected={Array []}
+    listSelect={[Function]}
+    listSwap={[Function]}
+    openContextMenu={[Function]}
+    rows={Array []}
+    rowsSelected={Array []}
+  />
+  <PasteModal
+    cancel={[Function]}
+    paste={[Function]}
+    pasteText=""
+    updatePasteList={[Function]}
+    visible={false}
+  />
+</div>
+`;

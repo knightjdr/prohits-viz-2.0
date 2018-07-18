@@ -51,7 +51,7 @@ export const NewsListComponent = ({
           className="News-list-pagination"
           current={newsPage.pageIndex}
           hideOnSinglePage
-          onChange={(page) => { changePage(page); }}
+          onChange={changePage}
           pageSize={pageLength}
           total={news.list.length}
         />

@@ -36,14 +36,14 @@ const GeneSelection = ({
       <div className="selection__button-group">
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('columns', 'columnsSelected', 'columnMap'); }}
+          onClick={() => { listSwap('columns', 'columnsSelected', false); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('columnsSelected', 'columns', 'columnMap'); }}
+          onClick={() => { listSwap('columnsSelected', 'columns', true, 'columnMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />
@@ -91,14 +91,14 @@ const GeneSelection = ({
       <div className="selection__button-group">
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('rows', 'rowsSelected', 'rowMap'); }}
+          onClick={() => { listSwap('rows', 'rowsSelected', false); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('rowsSelected', 'rows', 'rowMap'); }}
+          onClick={() => { listSwap('rowsSelected', 'rows', true, 'rowMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />

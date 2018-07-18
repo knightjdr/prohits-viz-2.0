@@ -7,7 +7,7 @@ import GeneSelector from '../../../../../state/selectors/visualization/genes-sel
 import Selection from './selection';
 import { storeSelections } from '../../../../../state/set/visualization/genes-actions';
 
-class SelectionContainer extends Component {
+export class SelectionContainer extends Component {
   constructor(props) {
     super(props);
     this.elementRef = React.createRef();
@@ -61,7 +61,9 @@ class SelectionContainer extends Component {
   }
   copyAll = () => {
     const copyList = this.state[this.state.contextTarget].join('\r\n');
-    CopyToClipboard(copyList);
+    if (copyList.length > 0) {
+      CopyToClipboard(copyList);
+    }
     this.closeContextMenu();
   }
   copySelected = () => {
@@ -79,15 +81,18 @@ class SelectionContainer extends Component {
     newState[`${target}Highlighted`] = highlighted;
     this.setState(newState);
   }
-  listSwap = (source, target, sortBy) => {
+  listSwap = (source, target, sort, sortBy) => {
     const newState = {};
-    // Add highlighted genes in source to target list and sort based on map.
+    // Add highlighted genes in source to target list and sort if requested.
     newState[target] = [
       ...this.state[target],
       ...this.state[`${source}Highlighted`],
-    ].sort((a, b) => (
-      this.props.genes[sortBy][a] - this.props.genes[sortBy][b]
-    ));
+    ];
+    newState[target] = sort ?
+      newState[target].sort((a, b) => (
+        this.props.genes[sortBy][a] - this.props.genes[sortBy][b]
+      ))
+      : newState[target];
     // Remove highlighted genes from source list.
     newState[source] = this.state[source].filter(gene => (
       !this.state[`${source}Highlighted`].includes(gene)
@@ -233,6 +238,8 @@ const mapStateToProps = state => ({
   genes: GeneSelector(state),
 });
 
+
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   storeSelections: (selections) => {
     dispatch(storeSelections(selections));

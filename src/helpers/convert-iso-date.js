@@ -1,10 +1,24 @@
-import Moment from 'moment';
+const Months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
-// converts an ISO_8601 date to local 'Month Day, Year'
 const ConvertISODate = (isoDate) => {
-  if (Moment(isoDate, Moment.ISO_8601, true).isValid()) {
-    return Moment(isoDate).format('MMMM D, YYYY');
-  }
-  return null;
+  const utcDate = new Date(isoDate);
+  const localDate = new Date(utcDate.getTime() + (utcDate.getTimezoneOffset() * 60000));
+  const day = localDate.getDate();
+  const month = Months[localDate.getMonth()];
+  const year = localDate.getFullYear();
+  return `${month} ${day}, ${year}`;
 };
 export default ConvertISODate;

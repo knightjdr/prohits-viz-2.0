@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gene select should render 1`] = `
+<div
+  className="selection"
+>
+  <div
+    className="selection__grid"
+  >
+    <div
+      className="selection__header"
+    >
+      Columns
+    </div>
+    <div />
+    <div
+      className="selection__header"
+    >
+      Selected
+    </div>
+    <div />
+    <Select
+      canPaste={false}
+      listSelect={[Function]}
+      openContextMenu={[Function]}
+      options={
+        Array [
+          "a",
+          "b",
+        ]
+      }
+      target="columns"
+    />
+    <div
+      className="selection__button-group"
+    >
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={90}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={270}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <Select
+      canPaste={true}
+      listSelect={[Function]}
+      openContextMenu={[Function]}
+      options={
+        Array [
+          "c",
+        ]
+      }
+      target="columnsSelected"
+    />
+    <div
+      className="selection__button-group"
+    >
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={180}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="selection__grid"
+  >
+    <div
+      className="selection__header"
+    >
+      Rows
+    </div>
+    <div />
+    <div
+      className="selection__header"
+    >
+      Selected
+    </div>
+    <div />
+    <Select
+      canPaste={false}
+      listSelect={[Function]}
+      openContextMenu={[Function]}
+      options={
+        Array [
+          "e",
+        ]
+      }
+      target="rows"
+    />
+    <div
+      className="selection__button-group"
+    >
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={90}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={270}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+    <Select
+      canPaste={true}
+      listSelect={[Function]}
+      openContextMenu={[Function]}
+      options={
+        Array [
+          "d",
+          "f",
+        ]
+      }
+      target="rowsSelected"
+    />
+    <div
+      className="selection__button-group"
+    >
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+      <button
+        className="selection__select-arrow"
+        onClick={[Function]}
+        type="button"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f062",
+                "M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z",
+              ],
+              "iconName": "arrow-up",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={180}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

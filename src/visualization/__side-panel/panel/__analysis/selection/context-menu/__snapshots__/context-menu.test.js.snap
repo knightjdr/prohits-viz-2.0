@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context menu should display render paste options when "canPaste" is true 1`] = `
+<OnClickOutside(ClickOutsideWrapper)
+  callback={[Function]}
+  eventTypes={
+    Array [
+      "mousedown",
+      "touchstart",
+    ]
+  }
+  excludeScrollbar={false}
+  outsideClickIgnoreClass="ignore-react-onclickoutside"
+  preventDefault={false}
+  stopPropagation={false}
+>
+  <div
+    className="context-menu"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 1,
+        "top": 0,
+        "visibility": "visible",
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy selected
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy all
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Paste (append)
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Paste and replace
+    </button>
+  </div>
+</OnClickOutside(ClickOutsideWrapper)>
+`;
+
+exports[`Context menu should display when "show" is true 1`] = `
+<OnClickOutside(ClickOutsideWrapper)
+  callback={[Function]}
+  eventTypes={
+    Array [
+      "mousedown",
+      "touchstart",
+    ]
+  }
+  excludeScrollbar={false}
+  outsideClickIgnoreClass="ignore-react-onclickoutside"
+  preventDefault={false}
+  stopPropagation={false}
+>
+  <div
+    className="context-menu"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 1,
+        "top": 0,
+        "visibility": "visible",
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy selected
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy all
+    </button>
+  </div>
+</OnClickOutside(ClickOutsideWrapper)>
+`;
+
+exports[`Context menu should not display when "show" is false 1`] = `
+<OnClickOutside(ClickOutsideWrapper)
+  callback={[Function]}
+  eventTypes={
+    Array [
+      "mousedown",
+      "touchstart",
+    ]
+  }
+  excludeScrollbar={false}
+  outsideClickIgnoreClass="ignore-react-onclickoutside"
+  preventDefault={false}
+  stopPropagation={false}
+>
+  <div
+    className="context-menu"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "top": 0,
+        "visibility": "hidden",
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy selected
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Copy all
+    </button>
+  </div>
+</OnClickOutside(ClickOutsideWrapper)>
+`;

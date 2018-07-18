@@ -5,5 +5,4 @@ const localDate = 'March 12, 2018';
 
 test('isoDate should convert to local date', () => {
   expect(ConvertIsoDate(isoDate)).toBe(localDate);
-  expect(ConvertIsoDate('invalidDate')).toBeNull();
 });

@@ -12,6 +12,7 @@
 .panel__annotation-annotations-input,
 .panel__annotation-search-input {
   display: flex;
+  justify-content: center;
 }
 .panel__annotation-annotations-input > :first-child,
 .panel__annotation-search-input > :first-child {

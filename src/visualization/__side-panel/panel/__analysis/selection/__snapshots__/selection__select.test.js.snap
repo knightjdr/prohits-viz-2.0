@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom select menu should render with a hidden placholder item 1`] = `
+<select
+  className="selection__select"
+  multiple={true}
+  onChange={[Function]}
+  onContextMenu={[Function]}
+>
+  [
+  <option
+    className="selection__select_option-hidden"
+    value=""
+  >
+    Placeholder
+  </option>
+  , ...
+  <option
+    key="a"
+    value="a"
+  >
+    a
+  </option>
+  <option
+    key="b"
+    value="b"
+  >
+    b
+  </option>
+  <option
+    key="c"
+    value="c"
+  >
+    c
+  </option>
+  ]
+</select>
+`;
