@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Name component on info panel should render 1`] = `
+<div
+  className="panel__info-name"
+>
+  <div>
+    File/session name:
+  </div>
+  <div>
+    test
+  </div>
+  <div>
+    <Popconfirm
+      cancelText="No"
+      okText="Yes"
+      okType="primary"
+      onConfirm={[Function]}
+      placement="bottomRight"
+      prefixCls="ant-popover"
+      title="Confirm open new file."
+      transitionName="zoom-big"
+      trigger="click"
+    >
+      <Button
+        ghost={false}
+        loading={false}
+        prefixCls="ant-btn"
+      >
+        Load new file
+      </Button>
+    </Popconfirm>
+  </div>
+</div>
+`;

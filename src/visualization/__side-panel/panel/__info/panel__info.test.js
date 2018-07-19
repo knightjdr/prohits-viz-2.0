@@ -11,7 +11,8 @@ describe('Info panel', () => {
       <InfoPanel
         downloadLegend={downloadLegend}
         legend={{}}
-        params={{}}
+        loadNewFile={jest.fn()}
+        params={{ name: 'test' }}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -22,7 +23,8 @@ describe('Info panel', () => {
       <InfoPanel
         downloadLegend={downloadLegend}
         legend={{}}
-        params={{}}
+        loadNewFile={jest.fn()}
+        params={{ name: 'test' }}
       />,
     );
     wrapper.find('button').simulate('click');

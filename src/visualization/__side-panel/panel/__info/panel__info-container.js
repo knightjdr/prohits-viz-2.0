@@ -30,11 +30,15 @@ export class InfoContainer extends Component {
     const svg = document.getElementById('legend').outerHTML;
     Download(svg, 'legend.svg', 'image/svg+xml');
   }
+  loadNewFile = () => {
+    console.log('load new file');
+  }
   render() {
     return (
       <Info
         downloadLegend={this.downloadLegend}
         legend={this.state.legend}
+        loadNewFile={this.loadNewFile}
         params={this.props.params}
       />
     );

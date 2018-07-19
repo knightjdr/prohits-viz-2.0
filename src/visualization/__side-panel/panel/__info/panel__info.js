@@ -4,6 +4,7 @@ import React from 'react';
 import { faDownload } from '@fortawesome/pro-solid-svg-icons';
 
 import Legend from './legend/legend';
+import Name from './panel__info-name';
 import Settings from './panel__info-settings';
 
 import './panel__info.css';
@@ -11,15 +12,19 @@ import './panel__info.css';
 const Info = ({
   downloadLegend,
   legend,
+  loadNewFile,
   params,
 }) => (
   <div className="panel">
+    <Name
+      loadNewFile={loadNewFile}
+      name={params.name}
+    />
+    <div className="panel__border" />
     <div className="panel__title">
       Analysis settings
     </div>
-    <div className="panel__info-settings">
-      {Settings(params)}
-    </div>
+    {Settings(params)}
     <div className="panel__border" />
     <div className="panel__title">
       Legend
@@ -45,6 +50,7 @@ const Info = ({
 Info.propTypes = {
   downloadLegend: PropTypes.func.isRequired,
   legend: PropTypes.shape({}).isRequired,
+  loadNewFile: PropTypes.func.isRequired,
   params: PropTypes.shape({}).isRequired,
 };
 

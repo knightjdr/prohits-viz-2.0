@@ -49,8 +49,8 @@ const Basic = ({
     </div>
     <div>
       <InputNumber
-        onChange={(value) => { changeSetting('cellSize', value); }}
         min={1}
+        onChange={(value) => { changeSetting('cellSize', value); }}
         parser={RoundInput}
         step={1}
         value={settings.cellSize}

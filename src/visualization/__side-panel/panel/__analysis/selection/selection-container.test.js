@@ -295,6 +295,125 @@ describe('Gene select', () => {
     expect(wrapper.state('showContext')).toBeTruthy();
   });
 
+  it('should append paste items to end of list, removing duplicates and missing values', () => {
+    const wrapper = shallow(
+      <SelectionContainer
+        genes={genes}
+        storeSelections={storeSelections}
+      />,
+    );
+    wrapper.setState({
+      contextTarget: 'columnsSelected',
+      columns: ['a', 'c'],
+      columnsSelected: ['b'],
+      pasteText: 'a,c,b,a,d',
+      showModal: true,
+    });
+    wrapper.instance().pasteAppend();
+    expect(wrapper.state('columns')).toEqual([]);
+    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
+    expect(wrapper.state('pasteText')).toBe('');
+    expect(wrapper.state('pasteType')).toBeNull();
+    expect(wrapper.state('showModal')).toBeFalsy();
+  });
+
+  it('should append paste items and replace list, removing duplicates and missing values', () => {
+    const wrapper = shallow(
+      <SelectionContainer
+        genes={genes}
+        storeSelections={storeSelections}
+      />,
+    );
+    wrapper.setState({
+      contextTarget: 'columnsSelected',
+      columns: ['a', 'c'],
+      columnsSelected: ['b'],
+      pasteText: 'a,c,a,d',
+      showModal: true,
+    });
+    wrapper.instance().pasteReplace();
+    expect(wrapper.state('columns')).toEqual(['b']);
+    expect(wrapper.state('columnsSelected')).toEqual(['a', 'c']);
+    expect(wrapper.state('pasteText')).toBe('');
+    expect(wrapper.state('pasteType')).toBeNull();
+    expect(wrapper.state('showModal')).toBeFalsy();
+
+    // Ensure replaced items return to list in sorted order
+    wrapper.setState({
+      contextTarget: 'columnsSelected',
+      columns: ['a'],
+      columnsSelected: ['c', 'b'],
+      pasteText: 'a,a,d',
+      showModal: true,
+    });
+    wrapper.instance().pasteReplace();
+    expect(wrapper.state('columns')).toEqual(['b', 'c']);
+    expect(wrapper.state('columnsSelected')).toEqual(['a']);
+  });
+
+  it('should not add/paste items when there is no text to paste', () => {
+    const wrapper = shallow(
+      <SelectionContainer
+        genes={genes}
+        storeSelections={storeSelections}
+      />,
+    );
+    wrapper.setState({
+      pasteText: '',
+      pasteType: 'pasteAppend',
+      showModal: true,
+    });
+    wrapper.instance().paste();
+    expect(wrapper.state('pasteType')).toBeNull();
+    expect(wrapper.state('showModal')).toBeFalsy();
+  });
+
+  it('should add/paste items to end of list', () => {
+    const wrapper = shallow(
+      <SelectionContainer
+        genes={genes}
+        storeSelections={storeSelections}
+      />,
+    );
+    wrapper.setState({
+      contextTarget: 'columnsSelected',
+      columns: ['a', 'c'],
+      columnsSelected: ['b'],
+      pasteText: 'a,c',
+      pasteType: 'pasteAppend',
+      showModal: true,
+    });
+    wrapper.instance().paste();
+    expect(wrapper.state('columns')).toEqual([]);
+    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
+    expect(wrapper.state('pasteText')).toBe('');
+    expect(wrapper.state('pasteType')).toBeNull();
+    expect(wrapper.state('showModal')).toBeFalsy();
+  });
+
+  it('should add/paste items and replace list', () => {
+    const wrapper = shallow(
+      <SelectionContainer
+        genes={genes}
+        storeSelections={storeSelections}
+      />,
+    );
+    wrapper.setState({
+      contextTarget: 'columnsSelected',
+      columns: ['a', 'c'],
+      columnsSelected: ['b'],
+      pasteText: 'a,c',
+      pasteType: 'pasteReplace',
+      showModal: true,
+    });
+    wrapper.instance().paste();
+    expect(wrapper.state('columns')).toEqual(['b']);
+    expect(wrapper.state('columnsSelected')).toEqual(['a', 'c']);
+    expect(wrapper.state('pasteText')).toBe('');
+    expect(wrapper.state('pasteType')).toBeNull();
+    expect(wrapper.state('showModal')).toBeFalsy();
+  });
+
   it('should toggle modal', () => {
     const wrapper = shallow(
       <SelectionContainer

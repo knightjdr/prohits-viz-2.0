@@ -13,6 +13,8 @@ import Save from './panel__save';
 import SaveSelector from '../../../../state/selectors/visualization/save-selector';
 import { saveImageType, saveSessionName } from '../../../../state/set/visualization/save-actions';
 
+const PAGELENGTH = 5;
+
 export class SaveContainer extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ export class SaveContainer extends Component {
     IndexedDBGetall().then((sessions) => {
       this.setState({
         sessions,
-        sessionsPageArr: sessions.slice(0, 5),
+        sessionsPageArr: sessions.slice(0, PAGELENGTH),
       });
     });
   }
@@ -36,10 +38,10 @@ export class SaveContainer extends Component {
     console.log('archive');
   }
   changePage = (page) => {
-    const startIndex = (page - 1) * 5;
+    const startIndex = (page - 1) * PAGELENGTH;
     this.setState(({ sessions }) => ({
       sessionsPage: page,
-      sessionsPageArr: sessions.slice(startIndex, startIndex + 5),
+      sessionsPageArr: sessions.slice(startIndex, startIndex + PAGELENGTH),
     }));
   }
   deleteSession = (id, name) => {
@@ -49,7 +51,14 @@ export class SaveContainer extends Component {
         return IndexedDBGetall();
       })
       .then((sessions) => {
-        this.setState({ sessions });
+        this.setState(({ sessionsPage }) => {
+          const updatedPage = this.updatePage(sessions, sessionsPage);
+          return {
+            sessions,
+            sessionsPage: updatedPage.sessionsPage,
+            sessionsPageArr: updatedPage.sessionsPageArr,
+          };
+        });
       })
       .catch(() => {
         Notification(`Session '${name}' could not be deleted.`, false);
@@ -75,7 +84,14 @@ export class SaveContainer extends Component {
         return IndexedDBGetall();
       })
       .then((sessions) => {
-        this.setState({ sessions });
+        this.setState(({ sessionsPage }) => {
+          const updatedPage = this.updatePage(sessions, sessionsPage);
+          return {
+            sessions,
+            sessionsPage: updatedPage.sessionsPage,
+            sessionsPageArr: updatedPage.sessionsPageArr,
+          };
+        });
       })
       .catch(() => {
         Notification(`Session '${name}' could not be saved.`, false);
@@ -84,6 +100,17 @@ export class SaveContainer extends Component {
   saveSessionFile = () => {
     const name = `${this.props.save.name}.json` || 'prohits-viz-session.json';
     Download(JSON.stringify({}), name, 'application/json');
+  }
+  updatePage = (sessions, sessionsPage) => {
+    const page = sessions.length > (sessionsPage - 1) * PAGELENGTH ?
+      sessionsPage
+      :
+      sessionsPage - 1;
+    const startIndex = (page - 1) * PAGELENGTH;
+    return {
+      sessionsPage: page,
+      sessionsPageArr: sessions.slice(startIndex, startIndex + PAGELENGTH),
+    };
   }
   render() {
     return (

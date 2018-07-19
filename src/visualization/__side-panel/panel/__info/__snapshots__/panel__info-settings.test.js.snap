@@ -3,45 +3,49 @@
 exports[`Info panel settings should render omitted, string and array properties 1`] = `
 <div>
   <div
-    key="b-name"
-  />
-  <div
-    key="b-value"
-  >
-    string param
-  </div>
-  <div
-    key="c-name"
-  />
-  <div
-    key="c-value"
-  >
-    string param
-  </div>
-  <div
-    key="d-name"
-  />
-  <div
-    key="d-value"
+    className="panel__info-settings"
   >
     <div
-      key="e"
+      key="b-name"
+    />
+    <div
+      key="b-value"
     >
-      e
+      string param
     </div>
     <div
-      key="f"
+      key="c-name"
+    />
+    <div
+      key="c-value"
     >
-      f
+      string param
     </div>
-  </div>
-  <div
-    key="scoreType-name"
-  />
-  <div
-    key="scoreType-value"
-  >
-    smaller scores better
+    <div
+      key="d-name"
+    />
+    <div
+      key="d-value"
+    >
+      <div
+        key="e"
+      >
+        e
+      </div>
+      <div
+        key="f"
+      >
+        f
+      </div>
+    </div>
+    <div
+      key="scoreType-name"
+    />
+    <div
+      key="scoreType-value"
+    >
+      smaller scores better
+    </div>
   </div>
 </div>
 `;

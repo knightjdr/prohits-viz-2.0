@@ -4,6 +4,13 @@ exports[`Info panel should render 1`] = `
 <div
   className="panel"
 >
+  <Name
+    loadNewFile={[Function]}
+    name="test"
+  />
+  <div
+    className="panel__border"
+  />
   <div
     className="panel__title"
   >
