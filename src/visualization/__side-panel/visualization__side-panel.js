@@ -21,15 +21,11 @@ import './visualization__side-panel.css';
 const showPanel = {
   button: {
     false: {
-      transform: 'translateX(0)',
+      opacity: 1,
     },
     true: {
-      transform: 'translateX(-20px)',
+      opacity: 0,
     },
-  },
-  icon: {
-    false: faBars,
-    true: faArrowRight,
   },
   sidePanel: {
     false: {
@@ -99,6 +95,13 @@ const SidePanel = ({
         <FontAwesomeIcon icon={faSave} size="2x" />
       </button>
       <div className="visualization__side-panel-tab-filler" />
+      <button
+        className="visualization__side-panel-button-close"
+        onClick={togglePanel}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faArrowRight} size="lg" />
+      </button>
     </div>
     {Panel[tab]}
   </div>,
@@ -109,7 +112,7 @@ const SidePanel = ({
     style={showPanel.button[isVisible]}
     type="button"
   >
-    <FontAwesomeIcon icon={showPanel.icon[isVisible]} size="lg" />
+    <FontAwesomeIcon icon={faBars} size="lg" />
   </button>,
 ]);
 

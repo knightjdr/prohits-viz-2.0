@@ -1,25 +1,27 @@
-import IndexedDBOpen from './indexeddb-open';
-import IndexedDBSupport from './indexeddb-support';
+import Open from './indexeddb-open';
 
-const IndexedDBSave = item => (
-  new Promise((resolve, reject) => {
-    if (IndexedDBSupport()) {
-      IndexedDBOpen()
-        .then((db) => {
-          const tx = db.transaction('session', 'readwrite');
-          const store = tx.objectStore('session');
-          store.add(item);
-          return tx.complete;
-        })
-        .then(() => {
-          resolve();
-        })
-        .catch(() => {
-          reject();
-        });
-    } else {
-      reject();
-    }
+const ResolveRequest = (db, item, store = 'session') => (
+  new Promise((resolve) => {
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).add(item);
+    tx.oncomplete = () => {
+      resolve();
+    };
   })
 );
-export default IndexedDBSave;
+
+const Save = (item, store) => (
+  new Promise((resolve, reject) => {
+    Open()
+      .then(db => (
+        ResolveRequest(db, item, store)
+      ))
+      .then(() => {
+        resolve();
+      })
+      .catch(() => {
+        reject();
+      });
+  })
+);
+export default Save;

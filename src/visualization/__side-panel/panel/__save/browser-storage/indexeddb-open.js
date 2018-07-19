@@ -1,12 +1,24 @@
-import Idb from 'idb';
+import Support from './indexeddb-support';
+import Upgrade from './indexeddb-upgrade';
 
 /* Opens the IndexDB or creates it if it doesn't exist. */
-const IndexedDBOpen = () => (
-  Idb.open('prohits-viz', 1, (upgradeDb) => {
-    if (!upgradeDb.objectStoreNames.contains('session')) {
-      const sessionOS = upgradeDb.createObjectStore('session', { keyPath: 'id', autoIncrement: true });
-      sessionOS.createIndex('id', 'id', { unique: true });
+const Open = (name = 'prohits-viz', version = 1) => (
+  new Promise((resolve, reject) => {
+    if (Support()) {
+      const indexedDB = window.indexedDB ||
+      window.mozIndexedDB ||
+      window.webkitIndexedDB ||
+      window.msIndexedDB;
+      const request = indexedDB.open(name, version);
+      request.onupgradeneeded = () => {
+        Upgrade(request.result);
+      };
+      request.onsuccess = (e) => {
+        resolve(e.target.result);
+      };
+    } else {
+      reject();
     }
   })
 );
-export default IndexedDBOpen;
+export default Open;

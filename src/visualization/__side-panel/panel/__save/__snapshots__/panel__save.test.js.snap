@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Save component should render 1`] = `
+<div
+  className="panel"
+>
+  <div
+    className="panel__title"
+  >
+    Save image
+  </div>
+  <SaveImage
+    handleImageType={[Function]}
+    imageType="svg"
+    saveImage={[Function]}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Save session
+  </div>
+  <SaveSession
+    changePage={[Function]}
+    deleteSession={[Function]}
+    openSession={[Function]}
+    saveSessionBrowser={[Function]}
+    saveSessionFile={[Function]}
+    saveSessionName={[Function]}
+    sessionItemsTotal={5}
+    sessionName=""
+    sessions={Array []}
+    sessionsPage={1}
+    storageSupport={true}
+  />
+  <div
+    className="panel__border"
+  />
+  <div
+    className="panel__title"
+  >
+    Archive session
+  </div>
+  <Archive
+    archive={[Function]}
+  />
+</div>
+`;

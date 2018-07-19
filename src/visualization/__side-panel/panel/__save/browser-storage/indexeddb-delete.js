@@ -1,14 +1,21 @@
-import IndexedDBOpen from './indexeddb-open';
+import Open from './indexeddb-open';
 
-const IndexedDBDelete = id => (
+const ResolveRequest = (db, id, store = 'session') => (
+  new Promise((resolve) => {
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).delete(id);
+    tx.oncomplete = () => {
+      resolve();
+    };
+  })
+);
+
+const Delete = (id, store) => (
   new Promise((resolve, reject) => {
-    IndexedDBOpen()
-      .then((db) => {
-        const tx = db.transaction('session', 'readwrite');
-        const store = tx.objectStore('session');
-        store.delete(id);
-        return tx.complete;
-      })
+    Open()
+      .then(db => (
+        ResolveRequest(db, id, store)
+      ))
       .then(() => {
         resolve();
       })
@@ -17,4 +24,4 @@ const IndexedDBDelete = id => (
       });
   })
 );
-export default IndexedDBDelete;
+export default Delete;

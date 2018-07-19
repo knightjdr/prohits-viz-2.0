@@ -1,24 +1,31 @@
-import IndexedDBOpen from './indexeddb-open';
-import IndexedDBSupport from './indexeddb-support';
+import Open from './indexeddb-open';
 
-const IndexedDBGet = id => (
-  new Promise((resolve, reject) => {
-    if (IndexedDBSupport()) {
-      IndexedDBOpen()
-        .then((db) => {
-          const tx = db.transaction('session', 'readonly');
-          const store = tx.objectStore('session');
-          return store.get(id);
-        })
-        .then((session) => {
-          resolve(session);
-        })
-        .catch(() => {
-          reject();
-        });
-    } else {
-      reject();
-    }
+const ResolveRequest = (db, id, store = 'session') => (
+  new Promise((resolve) => {
+    const tx = db.transaction(store, 'readonly');
+    const request = tx.objectStore(store).get(id);
+    request.onsuccess = () => {
+      resolve(request.result);
+    };
   })
 );
-export default IndexedDBGet;
+
+const Get = (id, store) => (
+  new Promise((resolve, reject) => {
+    Open()
+      .then(db => (
+        ResolveRequest(db, id, store)
+      ))
+      .then((session) => {
+        // If id cannot be found, session will be undefined.
+        if (!session) {
+          reject();
+        }
+        resolve(session);
+      })
+      .catch(() => {
+        reject();
+      });
+  })
+);
+export default Get;

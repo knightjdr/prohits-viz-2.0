@@ -3,7 +3,7 @@ import React from 'react';
 import { faCheck, faTimes } from '@fortawesome/pro-solid-svg-icons';
 import { notification } from 'antd';
 
-const notificationType = {
+export const notificationType = {
   false: {
     icon: <FontAwesomeIcon icon={faTimes} style={{ color: '#f44336' }} />,
     message: 'Failure',

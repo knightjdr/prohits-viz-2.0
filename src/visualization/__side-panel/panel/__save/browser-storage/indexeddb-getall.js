@@ -1,30 +1,33 @@
 import ConvertISODate from '../../../../../helpers/convert-iso-date';
-import IndexedDBOpen from './indexeddb-open';
-import IndexedDBSupport from './indexeddb-support';
+import Open from './indexeddb-open';
 
-const IndexedDBGetall = () => (
-  new Promise((resolve, reject) => {
-    if (IndexedDBSupport()) {
-      IndexedDBOpen()
-        .then((db) => {
-          const tx = db.transaction('session', 'readonly');
-          const store = tx.objectStore('session');
-          return store.getAll();
-        })
-        .then((sessions) => {
-          const info = sessions.map(session => ({
-            date: ConvertISODate(session.date),
-            id: session.id,
-            name: session.name,
-          }));
-          resolve(info);
-        })
-        .catch(() => {
-          reject();
-        });
-    } else {
-      reject();
-    }
+const ResolveRequest = (db, store = 'session') => (
+  new Promise((resolve) => {
+    const tx = db.transaction(store, 'readonly');
+    const request = tx.objectStore(store).getAll();
+    request.onsuccess = () => {
+      resolve(request.result);
+    };
   })
 );
-export default IndexedDBGetall;
+
+const Getall = store => (
+  new Promise((resolve, reject) => {
+    Open()
+      .then(db => (
+        ResolveRequest(db, store)
+      ))
+      .then((sessions) => {
+        const info = sessions.map(session => ({
+          date: ConvertISODate(session.date),
+          id: session.id,
+          name: session.name,
+        }));
+        resolve(info);
+      })
+      .catch(() => {
+        reject();
+      });
+  })
+);
+export default Getall;
