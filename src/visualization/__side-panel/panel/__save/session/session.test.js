@@ -9,7 +9,7 @@ const props = {
   openSession: jest.fn(),
   sessionItemsTotal: 5,
   sessionName: 'test',
-  sessions: [],
+  sessions: [{ id: 1, name: 'a', date: 'today' }],
   sessionsPage: 1,
 };
 
@@ -25,7 +25,7 @@ describe('Save session component', () => {
     saveSessionName.mockClear();
   });
 
-  it('should render with support for indexeddb storage', () => {
+  it('should render with support for indexeddb storage and sessions present', () => {
     const wrapper = shallow(
       <Session
         saveSessionBrowser={saveSessionBrowser}
@@ -46,6 +46,20 @@ describe('Save session component', () => {
         saveSessionName={saveSessionName}
         storageSupport={false}
         {...props}
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render with support for indexeddb storage but no sessions saved', () => {
+    const wrapper = shallow(
+      <Session
+        saveSessionBrowser={saveSessionBrowser}
+        saveSessionFile={saveSessionFile}
+        saveSessionName={saveSessionName}
+        storageSupport={false}
+        {...props}
+        sessions={[]}
       />,
     );
     expect(wrapper).toMatchSnapshot();

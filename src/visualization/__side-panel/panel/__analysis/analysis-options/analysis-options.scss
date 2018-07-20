@@ -1,8 +1,19 @@
+@import 'style/reset';
+@import 'style/button';
+
 .analysis-options {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
+.analysis-options__button {
+  @extend .button-reset;
+  @extend .success-button;
+  border-radius: 4px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0 10px;
+};
 .analysis-options__type-select.ant-select {
   min-width: 150px;
 }

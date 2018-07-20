@@ -1,0 +1,55 @@
+@import 'style/theme';
+
+.analysis-option {
+  margin-top: 10px;
+  width: 100%;
+}
+.analysis-option .ant-input-number,
+.analysis-option .ant-select {
+  width: 100%;
+}
+.analysis-option ul {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 30px;
+}
+.analysis-option__help {
+  margin-top: 5px;
+  text-align: justify;
+}
+.analysis-option__help > :first-child {
+  color: $primary-dark;
+}
+.anaylsis-option__advanced {
+  margin-top: 15px;
+}
+.anaylsis-option__advanced-inner {
+  margin-top: 15px;
+}
+.anaylsis-option__advanced-inner > :not(:last-child) {
+  margin-bottom: 15px;
+}
+.anaylsis-option__advanced-inner-checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+.anaylsis-option__advanced-inner-checkboxes > * {
+  margin-left: 0 !important;
+}
+.anaylsis-option__advanced-label {
+  font-weight: bold;
+  text-align: center;
+}
+.analysis-option__label {
+  font-weight: bold;
+  margin-bottom: 3px;
+  margin-top: 20px;
+  text-align: center;
+}
+.analysis-option__database {
+  display: flex;
+  flex-direction: column;
+}
+.analysis-option__database > * {
+  margin-left: 0 !important;
+}

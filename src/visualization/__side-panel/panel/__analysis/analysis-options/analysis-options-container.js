@@ -6,11 +6,11 @@ class AnalysisOptionsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: undefined,
+      type: 'go',
     };
   }
   handleType = (type) => {
-    console.log(type);
+    this.setState({ type });
   }
   render() {
     return (

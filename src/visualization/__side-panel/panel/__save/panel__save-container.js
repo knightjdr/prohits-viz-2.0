@@ -25,7 +25,7 @@ export class SaveContainer extends Component {
       storageSupport: IndexedDBSupport(),
     };
   }
-  componentDidMount = () => {
+  componentWillMount = () => {
     // Check for saved sessions.
     IndexedDBGetall().then((sessions) => {
       this.setState({
@@ -98,7 +98,7 @@ export class SaveContainer extends Component {
       });
   }
   saveSessionFile = () => {
-    const name = `${this.props.save.name}.json` || 'prohits-viz-session.json';
+    const name = this.props.save.name ? `${this.props.save.name}.json` : 'prohits-viz-session.json';
     Download(JSON.stringify({}), name, 'application/json');
   }
   updatePage = (sessions, sessionsPage) => {
@@ -149,6 +149,7 @@ const mapStateToProps = state => ({
   save: SaveSelector(state),
 });
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   saveImageType: (imageType) => {
     dispatch(saveImageType(imageType));

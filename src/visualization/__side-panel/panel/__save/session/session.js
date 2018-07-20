@@ -60,6 +60,7 @@ const SaveSession = ({
     </div>
     {
       storageSupport &&
+      sessions.length > 0 &&
       <Browser
         changePage={changePage}
         deleteSession={deleteSession}
