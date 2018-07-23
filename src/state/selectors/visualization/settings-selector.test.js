@@ -2,7 +2,9 @@ import SettingsSelector from './settings-selector';
 
 const state = {
   settings: {
-    imageType: 'test',
+    current: {
+      imageType: 'test',
+    },
   },
 };
 

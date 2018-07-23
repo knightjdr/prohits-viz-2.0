@@ -3,32 +3,37 @@ import {
   STORE_SELECTIONS,
 } from './genes-actions';
 
-const DefaultState = {
-  columnMap: { 'gene-a': 0, 'gene-b': 1, 'gene-c': 2 },
-  columns: ['gene-a', 'gene-b', 'gene-c'],
+const Genes = (state = {
+  columnMap: {},
+  columns: [],
   columnsSelected: [],
-  rowMap: { 'gene-d': 0, 'gene-e': 1, 'gene-f': 2 },
-  rows: ['gene-d', 'gene-e', 'gene-f'],
+  rowMap: {},
+  rows: [],
   rowsSelected: [],
-};
-
-/* Map list names to object with index */
-export const MapList = list => (
-  list.reduce(((obj, gene, index) => {
-    const newGene = {};
-    newGene[gene] = index;
-    return { ...obj, ...newGene };
-  }), {})
-);
-
-const Genes = (state = DefaultState, action) => {
+}, action) => {
   switch (action.type) {
+    case 'CLEAR_INTERACTIVE_FILE':
+      return {
+        columnMap: {},
+        columns: [],
+        columnsSelected: [],
+        rowMap: {},
+        rows: [],
+        rowsSelected: [],
+      };
+    case 'PARSE_INTERACTIVE_FILE':
+      return {
+        columnMap: { ...action.file.genes.columnMap },
+        columns: [...action.file.genes.columns],
+        columnsSelected: [...action.file.genes.columnsSelected],
+        rowMap: { ...action.file.genes.rowMap },
+        rows: [...action.file.genes.rows],
+        rowsSelected: [...action.file.genes.rowsSelected],
+      };
     case SET_SELECTIONS:
       return {
         ...state,
-        columnMap: MapList(action.columns),
         columns: action.columns,
-        rowMap: MapList(action.rows),
         rows: action.rows,
       };
     case STORE_SELECTIONS:

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { resetSettings, updateSetting } from '../../../../state/set/visualization/settings-actions';
 import Settings from './panel__settings';
+import SettingResetSelector from '../../../../state/selectors/visualization/settings-reset-selector';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 
 export class SettingsContainer extends Component {
@@ -151,7 +152,7 @@ const mapStateToProps = state => ({
   invertColor: SettingSelector(state, 'invertColor'),
   minAbundance: SettingSelector(state, 'minAbundance'),
   primaryFilter: SettingSelector(state, 'primaryFilter'),
-  reset: SettingSelector(state, 'reset'),
+  reset: SettingResetSelector(state),
   secondaryFilter: SettingSelector(state, 'secondaryFilter'),
 });
 

@@ -17,6 +17,8 @@ const SelectValidate = (jsonString) => {
     };
   }
 
+  const { columns, params, rows } = json;
+  
   // The file should have a "params" key that is an object.
   if (
     !Object.prototype.hasOwnProperty.call(json, 'params') ||
@@ -30,8 +32,8 @@ const SelectValidate = (jsonString) => {
 
   // The image type should be specified.
   if (
-    !json.params.imageType ||
-    !validTypes.includes(json.params.imageType)
+    !params.imageType ||
+    !validTypes.includes(params.imageType)
   ) {
     return {
       err: true,
@@ -41,13 +43,14 @@ const SelectValidate = (jsonString) => {
 
   // Validate dotplot/heatmaps.
   if (
-    json.params.imageType === 'dotplot' ||
-    json.params.imageType === 'heatmap'
+    params.imageType === 'dotplot' ||
+    params.imageType === 'heatmap'
   ) {
-    // The file should have a "column" key that is an array.
+    // The file should have a "column" key container a "names" array.
     if (
-      !Object.prototype.hasOwnProperty.call(json, 'columns') ||
-      !Array.isArray(json.columns)
+      !columns ||
+      !Object.prototype.hasOwnProperty.call(columns, 'names') ||
+      !Array.isArray(columns.names)
     ) {
       return {
         err: true,
@@ -55,22 +58,23 @@ const SelectValidate = (jsonString) => {
       };
     }
 
-    // The file should have a "rows" key that is an array.
+    // The file should have a "rows" key with an array list.
     if (
-      !Object.prototype.hasOwnProperty.call(json, 'rows') ||
-      !Array.isArray(json.rows)
+      !rows ||
+      !Object.prototype.hasOwnProperty.call(rows, 'list') ||
+      !Array.isArray(rows.list)
     ) {
       return {
         err: true,
-        message: 'The JSON object must have a "rows" property with an array of row values',
+        message: 'The JSON object must have a "rows" property with a list of row values',
       };
     }
 
     // The row entries should have "data" and "name" props.
     if (
-      json.rows.length === 0 ||
-      !Object.prototype.hasOwnProperty.call(json.rows[0], 'data') ||
-      !Object.prototype.hasOwnProperty.call(json.rows[0], 'name')
+      rows.list.length === 0 ||
+      !Object.prototype.hasOwnProperty.call(rows.list[0], 'data') ||
+      !Object.prototype.hasOwnProperty.call(rows.list[0], 'name')
     ) {
       return {
         err: true,
@@ -80,8 +84,8 @@ const SelectValidate = (jsonString) => {
 
     // The row data prop should be an array with a "value" key.
     if (
-      !Array.isArray(json.rows[0].data) ||
-      !Object.prototype.hasOwnProperty.call(json.rows[0].data[0], 'value')
+      !Array.isArray(rows.list[0].data) ||
+      !Object.prototype.hasOwnProperty.call(rows.list[0].data[0], 'value')
     ) {
       return {
         err: true,

@@ -35,12 +35,24 @@ const Markers = (state = {
         ...state,
         list: [],
       };
+    case 'CLEAR_INTERACTIVE_FILE':
+      return {
+        color: '#000000',
+        list: [],
+        record: false,
+      };
     case CLEAR_LAST_MARKER:
       newList = DeepCopy(state.list);
       newList.pop();
       return {
         ...state,
         list: newList,
+      };
+    case 'PARSE_INTERACTIVE_FILE':
+      return {
+        color: action.file.markers.color,
+        list: DeepCopy(action.file.markers.list),
+        record: action.file.markers.record,
       };
     case SET_MARKER_COLOR:
       return {

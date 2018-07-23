@@ -1,11 +1,11 @@
 export const CLEAR_INTERACTIVE_FILE = 'CLEAR_INTERACTIVE_FILE';
-export const SET_INTERACTIVE_FILE = 'SET_INTERACTIVE_FILE';
+export const PARSE_INTERACTIVE_FILE = 'PARSE_INTERACTIVE_FILE';
 
-export const clearIntFile = () => ({
+export const clearFile = () => ({
   type: 'CLEAR_INTERACTIVE_FILE',
 });
 
-export const setIntFile = file => ({
+export const parseFile = file => ({
   file,
-  type: 'SET_INTERACTIVE_FILE',
+  type: 'PARSE_INTERACTIVE_FILE',
 });

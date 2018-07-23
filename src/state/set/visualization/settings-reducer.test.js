@@ -1,6 +1,11 @@
-import DefaultState from './default-settings';
 import SettingsReducer from './settings-reducer';
 import * as actions from './settings-actions';
+
+const DefaultState = {
+  current: {},
+  default: {},
+  reset: false,
+};
 
 describe('SettingsReducer set reducer', () => {
   it('should return a default initial state', () => {
@@ -10,7 +15,10 @@ describe('SettingsReducer set reducer', () => {
   it('should handle UPDATE_SETTING', () => {
     const expectedState = {
       ...DefaultState,
-      imageType: 'test',
+      current: {
+        ...DefaultState.current,
+        imageType: 'test',
+      },
       reset: false,
     };
     expect(SettingsReducer(undefined, {

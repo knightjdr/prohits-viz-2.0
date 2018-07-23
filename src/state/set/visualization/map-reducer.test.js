@@ -1,9 +1,8 @@
-import TestMap from '../../../visualization/test-files/map';
 import MapReducer from './map-reducer';
 import * as actions from './map-actions';
 
 const DefaultState = {
-  image: TestMap,
+  image: null,
   showAnnotations: false,
 };
 
@@ -14,7 +13,7 @@ describe('MapReducer set reducer', () => {
 
   it('should handle TOGGLE_ANNOTATIONS', () => {
     const expectedState = {
-      image: TestMap,
+      image: null,
       showAnnotations: true,
     };
     expect(MapReducer(undefined, {

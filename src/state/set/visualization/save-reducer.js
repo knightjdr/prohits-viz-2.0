@@ -3,11 +3,17 @@ import {
   SAVE_SESSION_NAME,
 } from './save-actions';
 
-const Save = (state = {
+const defaultState = {
   imageType: 'svg',
   name: '',
-}, action) => {
+};
+
+const Save = (state = { ...defaultState }, action) => {
   switch (action.type) {
+    case 'CLEAR_INTERACTIVE_FILE':
+      return { ...defaultState };
+    case 'PARSE_INTERACTIVE_FILE':
+      return { ...action.file.save };
     case SAVE_IMAGE_TYPE:
       return {
         ...state,

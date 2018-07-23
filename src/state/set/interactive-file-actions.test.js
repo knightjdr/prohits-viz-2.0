@@ -5,14 +5,14 @@ describe('Interactive file set actions', () => {
     const expectedAction = {
       type: actions.CLEAR_INTERACTIVE_FILE,
     };
-    expect(actions.clearIntFile()).toEqual(expectedAction);
+    expect(actions.clearFile()).toEqual(expectedAction);
   });
 
-  it('Should dispatch an action to set the file', () => {
+  it('Should dispatch an action to parse the file', () => {
     const expectedAction = {
       file: {},
-      type: actions.SET_INTERACTIVE_FILE,
+      type: actions.PARSE_INTERACTIVE_FILE,
     };
-    expect(actions.setIntFile({})).toEqual(expectedAction);
+    expect(actions.parseFile({})).toEqual(expectedAction);
   });
 });

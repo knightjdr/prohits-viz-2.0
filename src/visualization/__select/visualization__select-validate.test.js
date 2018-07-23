@@ -37,61 +37,61 @@ describe('ValidateJson', () => {
 });
 
 describe('ValidateJson for dotplot/heatmap', () => {
-  test('Missing columns prop or columns not equal to array returns an error', () => {
+  test('Missing columns prop or columns does not have an array of names returns an error', () => {
     // Missing "columns" property.
     let jsonString = '{"params": {"imageType": "dotplot"}}';
     let json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('The JSON object must have a "column" property with an array of column names');
 
-    // "columns" value is not an array.
-    jsonString = '{"params": {"imageType": "dotplot"}}';
+    // "columns.names" value is not an array.
+    jsonString = '{"columns": { "names": {} }, "params": {"imageType": "dotplot"}}';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('The JSON object must have a "column" property with an array of column names');
   });
 
   test('Missing rows prop or rows not equal to array returns an error', () => {
-    // Missing "columns" property.
-    let jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}}';
+    // Missing "rows" property.
+    let jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}}';
     let json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
-    expect(json.message).toBe('The JSON object must have a "rows" property with an array of row values');
+    expect(json.message).toBe('The JSON object must have a "rows" property with a list of row values');
 
-    // "columns" value is not an array.
-    jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": {}}';
+    // row ""list"" value is not an array.
+    jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": {} } }';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
-    expect(json.message).toBe('The JSON object must have a "rows" property with an array of row values');
+    expect(json.message).toBe('The JSON object must have a "rows" property with a list of row values');
   });
 
   test('Each entry in the rows array should have a data and names prop of correct type', () => {
     // Missing props.
-    let jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": []}';
+    let jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [] }}';
     let json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('Each "rows" entry should have a "data" and "name" prop');
 
     // Missing data prop.
-    jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": [{"name": "test"}]}';
+    jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [{"name": "test"}] } }';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('Each "rows" entry should have a "data" and "name" prop');
 
     // Missing name prop.
-    jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": [{"data": []}]}';
+    jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [{"data": []}] } }';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('Each "rows" entry should have a "data" and "name" prop');
 
     // Data prop of incorrect type.
-    jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": [{"data": {}, "name": "test"}]}';
+    jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [{"data": {}, "name": "test"}]} }';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('The row data should be an array with at least a "value" key');
 
     // Data prop missing value.
-    jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": [{"data": [{}], "name": "test"}]}';
+    jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [{"data": [{}], "name": "test"}]} }';
     json = ValidateJson(jsonString);
     expect(json.err).toBeTruthy();
     expect(json.message).toBe('The row data should be an array with at least a "value" key');
@@ -99,26 +99,26 @@ describe('ValidateJson for dotplot/heatmap', () => {
 
   test('Valid dotplot data', () => {
     // Data prop missing value.
-    const jsonString = '{"columns": ["a", "b"], "params": {"imageType": "dotplot"}, "rows": [{"data": [{"value": 1}], "name": "test"}]}';
+    const jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "dotplot"}, "rows": { "list": [{"data": [{"value": 1}], "name": "test"}]} }';
     const json = ValidateJson(jsonString);
     expect(json.err).toBeFalsy();
     const parsed = {
-      columns: ['a', 'b'],
+      columns: { names: ['a', 'b'] },
       params: { imageType: 'dotplot' },
-      rows: [{ data: [{ value: 1 }], name: 'test' }],
+      rows: { list: [{ data: [{ value: 1 }], name: 'test' }] },
     };
     expect(json.json).toEqual(parsed);
   });
 
   test('Valid heatmap data', () => {
     // Data prop missing value.
-    const jsonString = '{"columns": ["a", "b"], "params": {"imageType": "heatmap"}, "rows": [{"data": [{"value": 1}], "name": "test"}]}';
+    const jsonString = '{"columns": { "names": ["a", "b"] }, "params": {"imageType": "heatmap"}, "rows": { "list": [{"data": [{"value": 1}], "name": "test"}]} }';
     const json = ValidateJson(jsonString);
     expect(json.err).toBeFalsy();
     const parsed = {
-      columns: ['a', 'b'],
+      columns: { names: ['a', 'b'] },
       params: { imageType: 'heatmap' },
-      rows: [{ data: [{ value: 1 }], name: 'test' }],
+      rows: { list: [{ data: [{ value: 1 }], name: 'test' }] },
     };
     expect(json.json).toEqual(parsed);
   });

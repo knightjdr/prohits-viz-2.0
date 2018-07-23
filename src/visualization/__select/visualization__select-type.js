@@ -13,6 +13,8 @@ const SelectType = ({
   let vizElement;
   if (vizType === 'heatmap') {
     vizElement = <Heatmap />;
+  } else if (vizType === 'dotplot') {
+    vizElement = <Heatmap />;
   } else if (vizType === 'scatter') {
     vizElement = <Scatter />;
   } else {

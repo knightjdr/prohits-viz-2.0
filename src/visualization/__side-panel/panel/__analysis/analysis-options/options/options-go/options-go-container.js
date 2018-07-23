@@ -6,7 +6,7 @@ export class GoContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAdvanced: true,
+      showAdvanced: false,
       form: {
         advanced_options_on: true,
         domain_size_type: 'annotated',

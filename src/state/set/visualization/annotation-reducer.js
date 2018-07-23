@@ -34,12 +34,24 @@ const Annotations = (state = {
         ...state,
         list: [],
       };
+    case 'CLEAR_INTERACTIVE_FILE':
+      return {
+        color: '#f44336',
+        list: [],
+        move: false,
+      };
     case CLEAR_LAST_ANNOTATION:
       newList = DeepCopy(state.list);
       newList.pop();
       return {
         ...state,
         list: newList,
+      };
+    case 'PARSE_INTERACTIVE_FILE':
+      return {
+        color: action.file.annotations.color,
+        list: DeepCopy(action.file.annotations.list),
+        move: action.file.annotations.move,
       };
     case SET_ANNOTATION_COLOR:
       return {

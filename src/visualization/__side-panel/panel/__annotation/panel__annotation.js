@@ -80,10 +80,17 @@ const Annotation = ({
   </div>
 );
 
+Annotation.defaultProps = {
+  annotationColor: '#f44336',
+  markerColor: '#000000',
+  move: false,
+  record: false,
+};
+
 Annotation.propTypes = {
   addAnnotation: PropTypes.func.isRequired,
   annotation: PropTypes.string.isRequired,
-  annotationColor: PropTypes.string.isRequired,
+  annotationColor: PropTypes.string,
   clearAllAnnotations: PropTypes.func.isRequired,
   clearAllMarkers: PropTypes.func.isRequired,
   clearLastAnnotation: PropTypes.func.isRequired,
@@ -94,9 +101,9 @@ Annotation.propTypes = {
   handleAnnotationColor: PropTypes.func.isRequired,
   handleMarkerColor: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  markerColor: PropTypes.string.isRequired,
-  move: PropTypes.bool.isRequired,
-  record: PropTypes.bool.isRequired,
+  markerColor: PropTypes.string,
+  move: PropTypes.bool,
+  record: PropTypes.bool,
   searchTerm: PropTypes.string.isRequired,
   showAnnotationPicker: PropTypes.bool.isRequired,
   showMarkerPicker: PropTypes.bool.isRequired,

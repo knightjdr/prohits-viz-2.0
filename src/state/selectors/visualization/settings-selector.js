@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const getSetting = (state, property) => state.settings[property];
+const getSetting = (state, property) => state.settings.current[property];
 
 const GetSetting = createSelector(
   [getSetting],

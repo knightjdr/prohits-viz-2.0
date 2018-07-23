@@ -1,12 +1,19 @@
-import Test from '../../../visualization/test-files/map';
-
 import { TOGGLE_ANNOTATIONS } from './map-actions';
 
-const Map = (state = {
-  image: Test,
+const defaultState = {
+  image: null,
   showAnnotations: false,
-}, action) => {
+};
+
+const Map = (state = { ...defaultState }, action) => {
   switch (action.type) {
+    case 'CLEAR_INTERACTIVE_FILE':
+      return { ...defaultState };
+    case 'PARSE_INTERACTIVE_FILE':
+      return {
+        image: action.file.minimap.image,
+        showAnnotations: action.file.minimap.showAnnotations,
+      };
     case TOGGLE_ANNOTATIONS:
       return {
         ...state,

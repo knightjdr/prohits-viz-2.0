@@ -4,71 +4,58 @@ import { shallow } from 'enzyme';
 import ValidateJson from './visualization__select-validate';
 import { SelectContainer } from './visualization__select-container';
 
-const setFile = jest.fn();
-
 // Mock validation.
 jest.mock('./visualization__select-validate');
 
-const testFile = { fileList: [new File([''], 'samplefile.txt', { type: 'text/plain' })] };
-const testJson = {
-  params: {
-    imageType: 'heatmap',
-  },
-};
+const testFile = { fileList: [{ originFileObj: new File([''], 'samplefile.txt', { type: 'text/plain' }) }] };
+
+const parseFile = jest.fn();
 
 describe('SelectContainer', () => {
+  beforeEach(() => {
+    /* Clear call count */
+    parseFile.mockClear();
+  });
+
   test('Initial empty state', () => {
     const wrapper = shallow(
       <SelectContainer
-        setFile={setFile}
+        params={{ imageType: null }}
+        parseFile={parseFile}
       />,
     );
     expect(wrapper.state().err).toBeNull();
     expect(wrapper.state().vizType).toBeNull();
   });
 
-  test('Initial state with a json file in redux store', () => {
+  test('Initial state with a params in redux store', () => {
     const wrapper = shallow(
       <SelectContainer
-        interactiveFile={testJson}
-        setFile={setFile}
+        params={{ imageType: 'heatmap' }}
+        parseFile={parseFile}
       />,
     );
     expect(wrapper.state().err).toBeNull();
     expect(wrapper.state().vizType).toBe('heatmap');
   });
 
-  test('Changing json file prop sets viz type', () => {
+  test('Changing params image type prop sets viz type', () => {
     const wrapper = shallow(
       <SelectContainer
-        setFile={setFile}
+        params={{ imageType: null }}
+        parseFile={parseFile}
       />,
     );
     jest.clearAllMocks();
-    const vizSpy = jest.spyOn(wrapper.instance(), 'setVizType');
-
-    wrapper.setProps({ interactiveFile: { params: { imageType: 'scatter' } } });
-    expect(vizSpy).toHaveBeenCalledTimes(1);
+    wrapper.setProps({ params: { imageType: 'scatter' } });
     expect(wrapper.state().vizType).toBe('scatter');
   });
 
-  test('Null interactive file prop change does nothing', () => {
+  test('File loaded and validated', () => {
     const wrapper = shallow(
       <SelectContainer
-        setFile={setFile}
-      />,
-    );
-    jest.clearAllMocks();
-    const vizSpy = jest.spyOn(wrapper.instance(), 'setVizType');
-
-    wrapper.setProps({ interactiveFile: null });
-    expect(vizSpy).toHaveBeenCalledTimes(0);
-  });
-
-  test('File loaded and validation', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        setFile={setFile}
+        params={{ imageType: null }}
+        parseFile={parseFile}
       />,
     );
     jest.clearAllMocks();
@@ -77,37 +64,24 @@ describe('SelectContainer', () => {
     // Error with file validation.
     ValidateJson.mockReturnValue({ err: true, message: 'Test error' });
     onFileLoad('test');
-    expect(setFile).toHaveBeenCalledTimes(0);
+    expect(parseFile).toHaveBeenCalledTimes(0);
     expect(wrapper.state().err).toBe('Test error');
 
     // Succesful file reading and validation.
     ValidateJson.mockReturnValue({ err: null, json: {} });
     onFileLoad('test');
-    expect(setFile).toHaveBeenCalledTimes(1);
+    expect(parseFile).toHaveBeenCalledTimes(1);
     expect(wrapper.state().err).toBeNull();
 
     // Restore mock.
     ValidateJson.mockRestore();
   });
 
-  test('Set vizType based on json file imageType property', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        setFile={setFile}
-      />,
-    );
-    const { setVizType } = wrapper.instance();
-    expect(setVizType()).toBeNull();
-    expect(setVizType(testJson)).toBe('heatmap');
-    expect(setVizType({ params: { imageType: 'dotplot' } })).toBe('heatmap');
-    expect(setVizType({ params: { imageType: 'scatter' } })).toBe('scatter');
-    expect(setVizType({ params: { imageType: 'unknown' } })).toBeNull();
-  });
-
   test('HandleFile handles null input file', () => {
     const wrapper = shallow(
       <SelectContainer
-        setFile={setFile}
+        params={{ imageType: null }}
+        parseFile={parseFile}
       />,
     );
     jest.clearAllMocks();
@@ -125,7 +99,8 @@ describe('SelectContainer', () => {
   test('HandleFile handles input file', () => {
     const wrapper = shallow(
       <SelectContainer
-        setFile={setFile}
+        params={{ imageType: null }}
+        parseFile={parseFile}
       />,
     );
     jest.clearAllMocks();

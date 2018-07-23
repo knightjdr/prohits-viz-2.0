@@ -1,39 +1,32 @@
-import GeneReducer, { MapList } from './genes-reducer';
+import GeneReducer from './genes-reducer';
 import * as actions from './genes-actions';
 
 const DefaultState = {
-  columnMap: { 'gene-a': 0, 'gene-b': 1, 'gene-c': 2 },
-  columns: ['gene-a', 'gene-b', 'gene-c'],
+  columnMap: {},
+  columns: [],
   columnsSelected: [],
-  rowMap: { 'gene-d': 0, 'gene-e': 1, 'gene-f': 2 },
-  rows: ['gene-d', 'gene-e', 'gene-f'],
+  rowMap: {},
+  rows: [],
   rowsSelected: [],
 };
 
-describe('Map list', () => {
-  it(`should map an array to an object with array values as props and
-  index as the value`, () => {
-    const arr = ['a', 'b', 'c'];
-    expect(MapList(arr)).toEqual({ a: 0, b: 1, c: 2 });
-  });
-});
-
 describe('Gene selection set reducer', () => {
-  it('should return a default initial state', () => {
+  it('should return an empty initial state', () => {
     expect(GeneReducer(undefined, {})).toEqual(DefaultState);
   });
 
   it('should handle SET_SELECTIONS', () => {
     const expectedState = {
+      ...DefaultState,
       columnMap: { a: 0, b: 1, c: 2 },
       columns: ['a', 'b', 'c'],
-      columnsSelected: [],
       rowMap: { d: 0, e: 1, f: 2 },
       rows: ['d', 'e', 'f'],
-      rowsSelected: [],
     };
     expect(GeneReducer(undefined, {
+      columnMap: { a: 0, b: 1, c: 2 },
       columns: ['a', 'b', 'c'],
+      rowMap: { d: 0, e: 1, f: 2 },
       rows: ['d', 'e', 'f'],
       type: actions.SET_SELECTIONS,
     })).toEqual(expectedState);

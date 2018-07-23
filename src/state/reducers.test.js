@@ -6,7 +6,6 @@ import FormStep from './set/form-step-reducer';
 import Genes from './set/visualization/genes-reducer';
 import Header from './set/header-reducer';
 import Home from './get/home-reducer';
-import InteractiveFile from './set/interactive-file-reducer';
 import Map from './set/visualization/map-reducer';
 import Marker from './set/visualization/marker-reducer';
 import News from './get/news-reducer';
@@ -31,7 +30,6 @@ describe('Store', () => {
     expect(store.getState().genes).toEqual(Genes(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
     expect(store.getState().home).toEqual(Home(undefined, {}));
-    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, {}));
     expect(store.getState().markers).toEqual(Marker(undefined, {}));
     expect(store.getState().minimap).toEqual(Map(undefined, {}));
     expect(store.getState().news).toEqual(News(undefined, {}));
@@ -78,7 +76,9 @@ describe('Store', () => {
 
   test('genes visualization reducer handles its actions', () => {
     let action = {
+      columnMap: {},
       columns: [],
+      rowMap: {},
       rows: [],
       type: 'SET_SELECTIONS',
     };
@@ -110,15 +110,6 @@ describe('Store', () => {
     const action = { type: 'FILL_HOME' };
     store.dispatch(action);
     expect(store.getState().home).toEqual(Home(undefined, action));
-  });
-
-  test('interactive file reducer handles its actions', () => {
-    let action = { type: 'CLEAR_INTERACTIVE_FILE' };
-    store.dispatch(action);
-    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
-    action = { file: {}, type: 'SET_INTERACTIVE_FILE' };
-    store.dispatch(action);
-    expect(store.getState().interactiveFile).toEqual(InteractiveFile(undefined, action));
   });
 
   test('minimap visualization reducer handles its actions', () => {

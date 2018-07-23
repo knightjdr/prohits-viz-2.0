@@ -6,8 +6,8 @@ class SidePanelContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: true,
-      tab: 'analysis',
+      isVisible: false,
+      tab: 'info',
     };
   }
   selectTab = (tab) => {

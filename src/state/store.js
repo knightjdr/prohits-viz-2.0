@@ -1,6 +1,6 @@
 import React from 'react';
 import Thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 
 import Reducers from './reducers';
@@ -11,14 +11,14 @@ export const addDevTools = () => (
   window.__REDUX_DEVTOOLS_EXTENSION__ ?
     window.__REDUX_DEVTOOLS_EXTENSION__()
     :
-    {}
+    f => f
 );
 
 export const store = createStore(
   Reducers,
-  addDevTools(),
-  applyMiddleware(
-    Thunk,
+  compose(
+    applyMiddleware(Thunk),
+    addDevTools(),
   ),
 );
 

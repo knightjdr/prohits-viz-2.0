@@ -24,6 +24,7 @@ yarn-error.log*
 src/**/*.css
 
 # test files
+src/state/test-state/**
 src/visualization/test-files/**
 
 # vscode

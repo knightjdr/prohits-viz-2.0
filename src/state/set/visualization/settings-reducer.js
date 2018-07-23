@@ -3,21 +3,39 @@ import {
   UPDATE_SETTING,
 } from './settings-actions';
 
-import Default from './default-settings';
-
-const Settings = (state = { ...Default }, action) => {
+const Settings = (state = {
+  current: {},
+  default: {},
+  reset: false,
+}, action) => {
   const updateState = {};
   switch (action.type) {
+    case 'CLEAR_INTERACTIVE_FILE':
+      return {
+        current: {},
+        default: {},
+        reset: false,
+      };
+    case 'PARSE_INTERACTIVE_FILE':
+      return {
+        current: { ...action.file.settings.current },
+        default: { ...action.file.settings.default },
+        reset: false,
+      };
     case RESET_SETTINGS:
       return {
-        ...Default,
+        ...state,
+        current: { ...state.default },
         reset: true,
       };
     case UPDATE_SETTING:
       updateState[action.setting] = action.value;
       return {
         ...state,
-        ...updateState,
+        current: {
+          ...state.current,
+          ...updateState,
+        },
         reset: false,
       };
     default:

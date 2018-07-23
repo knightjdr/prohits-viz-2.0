@@ -58,6 +58,7 @@ const Map = ({
 
 Map.defaultProps = {
   minimap: null,
+  showAnnotations: false,
 };
 
 Map.propTypes = {
@@ -65,7 +66,7 @@ Map.propTypes = {
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
   navigatePosition: PropTypes.func.isRequired,
-  showAnnotations: PropTypes.bool.isRequired,
+  showAnnotations: PropTypes.bool,
   toggleAnnotations: PropTypes.func.isRequired,
 };
 
