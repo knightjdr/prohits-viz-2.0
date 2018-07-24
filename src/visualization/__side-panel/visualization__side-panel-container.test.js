@@ -7,7 +7,7 @@ describe('Visualization panel container', () => {
   it('should set initial state', () => {
     const wrapper = shallow(<VisualizationPanelContainer />);
     // isVisible will ultimate be false, but is true during development.
-    expect(wrapper.state('isVisible')).toBeTruthy();
+    expect(wrapper.state('isVisible')).toBeFalsy();
     expect(wrapper.state('tab')).toBe('info');
   });
 
@@ -19,8 +19,8 @@ describe('Visualization panel container', () => {
 
   it('should toggle the panel', () => {
     const wrapper = shallow(<VisualizationPanelContainer />);
-    expect(wrapper.state('isVisible')).toBeTruthy();
-    wrapper.instance().togglePanel();
     expect(wrapper.state('isVisible')).toBeFalsy();
+    wrapper.instance().togglePanel();
+    expect(wrapper.state('isVisible')).toBeTruthy();
   });
 });

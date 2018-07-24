@@ -1,36 +1,20 @@
-import {
-  MapList,
-  setSelections,
-  SET_SELECTIONS,
-  storeSelections,
-  STORE_SELECTIONS,
-} from './genes-actions';
-
-describe('Map list', () => {
-  it(`should map an array to an object with array values as props and
-  index as the value`, () => {
-    const arr = ['a', 'b', 'c'];
-    expect(MapList(arr)).toEqual({ a: 0, b: 1, c: 2 });
-  });
-});
+import * as actions from './genes-actions';
 
 describe('Visualization gene selections set actions', () => {
   it('should dispatch an action to set selections', () => {
     const expectedAction = {
-      columnMap: {},
       columns: [],
-      rowMap: {},
       rows: [],
-      type: SET_SELECTIONS,
+      type: actions.SET_SELECTIONS,
     };
-    expect(setSelections([], [])).toEqual(expectedAction);
+    expect(actions.setSelections([], [])).toEqual(expectedAction);
   });
 
   it('should dispatch an action to store selections', () => {
     const expectedAction = {
       selections: {},
-      type: STORE_SELECTIONS,
+      type: actions.STORE_SELECTIONS,
     };
-    expect(storeSelections({})).toEqual(expectedAction);
+    expect(actions.storeSelections({})).toEqual(expectedAction);
   });
 });

@@ -1,8 +1,6 @@
-// deep copy a variable
-const DeepCopy = (arr) => {
-  if (!arr) {
-    return null;
-  }
-  return JSON.parse(JSON.stringify(arr));
-};
+// Deep copy an object.
+const DeepCopy = obj => (
+  obj ? JSON.parse(JSON.stringify(obj)) : null
+);
+
 export default DeepCopy;

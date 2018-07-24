@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Upload } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { faFilePlus } from '@fortawesome/pro-solid-svg-icons';
+import { faCog, faFilePlus } from '@fortawesome/pro-solid-svg-icons';
 
 import './visualization__select.css';
 
@@ -17,6 +17,7 @@ const config = {
 const Selection = ({
   err,
   handleFile,
+  loading,
 }) => (
   <div className="visualization__select">
     <div
@@ -32,12 +33,17 @@ const Selection = ({
       {...config}
     >
       <Button>
-        <FontAwesomeIcon
-          className="FileInput-fa-icon"
-          icon={faFilePlus}
-        /> Select File
+        <FontAwesomeIcon className="FileInput-fa-icon" icon={faFilePlus} /> Select File
       </Button>
     </Upload>
+    <div
+      className="visualization__select-loading"
+      style={{
+        transform: loading ? 'scaleY(1)' : 'scaleY(0)',
+      }}
+    >
+      <FontAwesomeIcon icon={faCog} spin /> loading...
+    </div>
     <div className="visualization__select-instructions">
       Select the image to display interactively. This file must be JSON format
       (extension .json). If you have downloaded an analysis results folder from
@@ -61,6 +67,7 @@ Selection.defaultProps = {
 Selection.propTypes = {
   err: PropTypes.string,
   handleFile: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Selection;

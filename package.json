@@ -83,7 +83,7 @@
       "!src/index.js",
       "!src/registerServiceWorker.js",
       "!src/setupTests.js",
-      "!src/state/test-files/*",
+      "!src/state/test-state/*",
       "!src/visualization/test-files/*"
     ],
     "moduleNameMapper": {

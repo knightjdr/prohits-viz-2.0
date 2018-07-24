@@ -6,10 +6,11 @@ import Selection from './visualization__select';
 const handleFile = jest.fn();
 
 describe('Selection', () => {
-  test('Default view', () => {
+  test('should display default view', () => {
     const wrapper = shallow(
       <Selection
         err=""
+        loading={false}
         handleFile={handleFile}
       />,
     );
@@ -18,12 +19,17 @@ describe('Selection', () => {
     // The error element should not be visible (scale = 0).
     const errorDiv = wrapper.find('.visualization__select-error');
     expect(errorDiv.props().style.transform).toBe('scaleY(0)');
+
+    // The loading message should not be rendered.
+    const loadingDiv = wrapper.find('.visualization__select-loading');
+    expect(loadingDiv.props().style.transform).toBe('scaleY(0)');
   });
 
-  test('Displays an error', () => {
+  test('should display an error', () => {
     const wrapper = shallow(
       <Selection
         err="Test error"
+        loading={false}
         handleFile={handleFile}
       />,
     );
@@ -35,10 +41,26 @@ describe('Selection', () => {
     expect(errorDiv.text()).toBe('Test error');
   });
 
-  test('Click upload button calls handleFile prop', () => {
+  test('should display loading message', () => {
     const wrapper = shallow(
       <Selection
         err=""
+        loading
+        handleFile={handleFile}
+      />,
+    );
+    expect(wrapper).toMatchSnapshot();
+
+    // The loading element should be visible (scale = 1).
+    const loadingDiv = wrapper.find('.visualization__select-loading');
+    expect(loadingDiv.props().style.transform).toBe('scaleY(1)');
+  });
+
+  test('should call handleFile prop on button click', () => {
+    const wrapper = shallow(
+      <Selection
+        err=""
+        loading={false}
         handleFile={handleFile}
       />,
     );

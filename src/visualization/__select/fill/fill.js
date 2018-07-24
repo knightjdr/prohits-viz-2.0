@@ -1,9 +1,11 @@
-import Dotplot from './fill__dotplot';
+import Heatmap from './fill__heatmap';
 
 const Fill = (name, file) => {
   switch (file.params.imageType) {
     case 'dotplot':
-      return Dotplot(name, file);
+      return Heatmap(name, file);
+    case 'heatmap':
+      return Heatmap(name, file);
     default:
       return file;
   }

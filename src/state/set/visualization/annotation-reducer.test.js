@@ -1,6 +1,7 @@
 import DeepCopy from '../../../helpers/deep-copy';
 import AnnotationReducer from './annotation-reducer';
 import * as actions from './annotation-actions';
+import * as fileActions from '../interactive-file-actions';
 
 // import DefaultState from '../../../visualization/test/annotations';
 const DefaultState = {
@@ -12,7 +13,7 @@ const DefaultState = {
 jest.mock('../../../helpers/deep-copy');
 DeepCopy.mockReturnValue(DefaultState.list);
 
-describe('AnnotationReducer set reducer', () => {
+describe('Annotation set reducer', () => {
   it('should return an empty initial state', () => {
     expect(AnnotationReducer(undefined, {})).toEqual(DefaultState);
   });
@@ -47,6 +48,15 @@ describe('AnnotationReducer set reducer', () => {
     })).toEqual(expectedState);
   });
 
+  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+    const expectedState = {
+      ...DefaultState,
+    };
+    expect(AnnotationReducer(undefined, {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    })).toEqual(expectedState);
+  });
+
   it('should handle CLEAR_LAST_ANNOTATION', () => {
     const expectedState = {
       ...DefaultState,
@@ -54,6 +64,26 @@ describe('AnnotationReducer set reducer', () => {
     };
     expect(AnnotationReducer(undefined, {
       type: actions.CLEAR_LAST_ANNOTATION,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE', () => {
+    const list = [{ text: 'test', x: 0.1, y: 0.1 }];
+    DeepCopy.mockReturnValueOnce(list);
+    const expectedState = {
+      color: '#000000',
+      list,
+      move: true,
+    };
+    expect(AnnotationReducer(undefined, {
+      file: {
+        annotations: {
+          color: '#000000',
+          list,
+          move: true,
+        },
+      },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
     })).toEqual(expectedState);
   });
 

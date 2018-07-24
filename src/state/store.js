@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import Reducers from './reducers';
 import Router from '../router/router';
+import TestState from './test-state/test-state';
 
 export const addDevTools = () => (
   process.env.NODE_ENV === 'development' &&
@@ -16,6 +17,7 @@ export const addDevTools = () => (
 
 export const store = createStore(
   Reducers,
+  TestState,
   compose(
     applyMiddleware(Thunk),
     addDevTools(),

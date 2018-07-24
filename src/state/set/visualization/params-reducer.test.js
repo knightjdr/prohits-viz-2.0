@@ -1,7 +1,33 @@
 import ParamsReducer from './params-reducer';
+import * as fileActions from '../interactive-file-actions';
 
 describe('ParamsReducer set reducer', () => {
   it('should return an empty initial state', () => {
     expect(ParamsReducer(undefined, {})).toEqual({});
+  });
+
+  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+    const expectedState = {};
+    expect(ParamsReducer(undefined, {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE', () => {
+    const expectedState = {
+      a: 'test1',
+      b: 'test2',
+      c: 'test3',
+    };
+    expect(ParamsReducer(undefined, {
+      file: {
+        params: {
+          a: 'test1',
+          b: 'test2',
+          c: 'test3',
+        },
+      },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
+    })).toEqual(expectedState);
   });
 });

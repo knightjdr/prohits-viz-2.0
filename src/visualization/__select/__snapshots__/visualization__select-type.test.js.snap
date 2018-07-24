@@ -8,5 +8,20 @@ exports[`SelectType Renders with upload option when vizType is null 1`] = `
 <Selection
   err={null}
   handleFile={[Function]}
+  loading={false}
+/>
+`;
+
+exports[`Visualization control should render for dotplots 1`] = `<HeatmapContainer />`;
+
+exports[`Visualization control should render for heatmaps 1`] = `<HeatmapContainer />`;
+
+exports[`Visualization control should render for scatter plots 1`] = `<ScatterContainer />`;
+
+exports[`Visualization control should render with upload option when vizType is null 1`] = `
+<Selection
+  err={null}
+  handleFile={[Function]}
+  loading={false}
 />
 `;

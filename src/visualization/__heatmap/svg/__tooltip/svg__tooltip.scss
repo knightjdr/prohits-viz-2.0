@@ -1,0 +1,15 @@
+@import 'style/style';
+@import 'style/theme';
+
+.svg__tooltip {
+  @extend .boxshadow-faint;
+  background-color: $backdrop-light;
+  border-radius: 2px;
+  opacity: 0;
+  padding: 4px;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  transform: scale(0.8);
+  transform-origin: top left;
+}

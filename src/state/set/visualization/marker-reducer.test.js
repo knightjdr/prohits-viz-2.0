@@ -1,6 +1,7 @@
 import DeepCopy from '../../../helpers/deep-copy';
 import MarkerReducer from './marker-reducer';
 import * as actions from './marker-actions';
+import * as fileActions from '../interactive-file-actions';
 
 // import DefaultState from '../../../visualization/test/markers';
 
@@ -50,6 +51,15 @@ describe('Marker set reducer', () => {
     })).toEqual(expectedState);
   });
 
+  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+    const expectedState = {
+      ...DefaultState,
+    };
+    expect(MarkerReducer(undefined, {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    })).toEqual(expectedState);
+  });
+
   it('should handle CLEAR_LAST_MARKER', () => {
     const expectedState = {
       ...DefaultState,
@@ -57,6 +67,33 @@ describe('Marker set reducer', () => {
     };
     expect(MarkerReducer(undefined, {
       type: actions.CLEAR_LAST_MARKER,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE', () => {
+    const list = [
+      {
+        height: 0.5,
+        width: 0.5,
+        x: 0.1,
+        y: 0.1,
+      },
+    ];
+    DeepCopy.mockReturnValueOnce(list);
+    const expectedState = {
+      color: '#ff0000',
+      list,
+      record: true,
+    };
+    expect(MarkerReducer(undefined, {
+      file: {
+        markers: {
+          color: '#ff0000',
+          list,
+          record: true,
+        },
+      },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
     })).toEqual(expectedState);
   });
 

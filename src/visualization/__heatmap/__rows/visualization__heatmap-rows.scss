@@ -1,0 +1,9 @@
+.visualization__heatmap-rows {
+  background-color: #2196f3;
+  height: calc(100% - 120px); // change to auto.
+  left: 10px;
+  max-height: calc(100% - 120px); // 100 for column name div + 20 padding. 
+  position: absolute;
+  top: 110px; // Container padding.
+  width: 100px;
+}

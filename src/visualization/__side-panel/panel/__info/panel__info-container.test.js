@@ -24,10 +24,15 @@ const params = {
   secondaryFilter: 0.05,
 };
 
+const clearFile = jest.fn();
+
 describe('Info panel container', () => {
   it('should transfer props to state object called legend', () => {
     const wrapper = shallow(
-      <InfoContainer {...params} />,
+      <InfoContainer
+        {...params}
+        clearFile={clearFile}
+      />,
     );
 
     // Calls color gradient with edge and fill props.
@@ -50,9 +55,12 @@ describe('Info panel container', () => {
     });
   });
 
-  it('downloadLegend method should trigger download function', () => {
+  it('should trigger download function via downloadLegend method ', () => {
     const wrapper = shallow(
-      <InfoContainer {...params} />,
+      <InfoContainer
+        {...params}
+        clearFile={clearFile}
+      />,
     );
 
     // Mock document method.
@@ -70,5 +78,19 @@ describe('Info panel container', () => {
     Object.defineProperty(document, 'getElementById', {
       value: getElementById,
     });
+  });
+
+  it('should trigger load file prop on load new file method call', () => {
+    const wrapper = shallow(
+      <InfoContainer
+        {...params}
+        clearFile={clearFile}
+      />,
+    );
+    clearFile.mockClear();
+
+    // Test click.
+    wrapper.instance().loadNewFile();
+    expect(clearFile).toHaveBeenCalled();
   });
 });

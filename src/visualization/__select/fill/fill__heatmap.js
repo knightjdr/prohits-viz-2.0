@@ -1,14 +1,14 @@
-import Annotations from './fill__dotplot-annotations';
-import Columns from './fill__dotplot-columns';
-import Genes from './fill__dotplot-genes';
-import Map from './fill__dotplot-map';
-import Markers from './fill__dotplot-markers';
-import Position from './fill__dotplot-position';
-import Rows from './fill__dotplot-rows';
-import Save from './fill__dotplot-save';
-import Settings from './fill__dotplot-settings';
+import Annotations from './fill__annotations';
+import Columns from './fill__columns';
+import Genes from './fill__genes';
+import Map from './fill__map';
+import Markers from './fill__markers';
+import Position from './fill__position';
+import Rows from './fill__rows';
+import Save from './fill__save';
+import Settings from './fill__settings';
 
-const Dotplot = (name, file) => {
+const Heatmap = (name, file) => {
   const {
     annotations,
     columns,
@@ -39,4 +39,4 @@ const Dotplot = (name, file) => {
     settings: Settings(params.imageType, settings),
   };
 };
-export default Dotplot;
+export default Heatmap;
