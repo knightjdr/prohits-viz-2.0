@@ -1,3 +1,5 @@
+import * as fileActions from '../interactive-file-actions';
+
 import { TOGGLE_ANNOTATIONS } from './map-actions';
 
 const defaultState = {
@@ -7,9 +9,9 @@ const defaultState = {
 
 const Map = (state = { ...defaultState }, action) => {
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return { ...defaultState };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         image: action.file.minimap.image,
         showAnnotations: action.file.minimap.showAnnotations,

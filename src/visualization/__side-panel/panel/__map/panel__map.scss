@@ -35,6 +35,11 @@
   border: 1px solid black;
   position: absolute !important;
 }
+.panel__map-position {
+  border: 1px dashed #000000;
+  pointer-events: none;
+  position: absolute;
+}
 .panel__map-select {
   @extend .nobutton;
   cursor: crosshair;

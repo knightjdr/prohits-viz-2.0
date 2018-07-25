@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const getRows = state => state.rows;
+const getRows = state => state.rows.list;
 
 const GetRows = createSelector(
   [getRows],

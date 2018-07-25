@@ -5,15 +5,15 @@ export const NEWS_ITEM_ERROR = 'NEWS_ITEM_ERROR';
 export const fillNewsItem = (id, item) => ({
   id,
   item,
-  type: 'FILL_NEWS_ITEM',
+  type: FILL_NEWS_ITEM,
 });
 export const getNewsItem = id => ({
   id,
-  type: 'GET_NEWS_ITEM',
+  type: GET_NEWS_ITEM,
 });
 export const newsItemError = id => ({
   id,
-  type: 'NEWS_ITEM_ERROR',
+  type: NEWS_ITEM_ERROR,
 });
 
 // thunks

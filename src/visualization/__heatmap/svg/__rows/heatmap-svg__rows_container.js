@@ -2,27 +2,27 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ColumnsSelector from '../../../../state/selectors/visualization/columns-selector';
-import Columns from './heatmap-svg__columns';
 import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
+import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
+import Rows from './heatmap-svg__rows';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import TrimText from '../helpers/trim-text';
 
-export class ColumnsContainer extends Component {
+export class RowsContainer extends Component {
   constructor(props) {
     super(props);
     const {
       cellSize,
-      columns,
       dimensions,
+      rows,
       position,
     } = this.props;
     const fontSize = this.fontSize(cellSize);
     this.state = {
       fontSize,
-      names: this.checkColumnSize(
-        this.getPage(columns.names, position.x, dimensions.pageX),
+      names: this.checkRowSize(
+        this.getPage(rows, position.y, dimensions.pageY),
         fontSize,
       ),
     };
@@ -30,42 +30,42 @@ export class ColumnsContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     const {
       cellSize,
-      columns,
       dimensions,
       position,
+      rows,
     } = nextProps;
-    this.updateFontSize(cellSize, this.props.cellSize, columns);
+    this.updateFontSize(cellSize, this.props.cellSize, rows);
     this.updatePage(
-      position.x,
-      this.props.position.x,
-      dimensions.pageX,
-      this.props.dimensions.pageX,
-      columns.names,
+      position.y,
+      this.props.position.y,
+      dimensions.pageY,
+      this.props.dimensions.pageY,
+      rows,
     );
   }
-  getPage = (names, x, pageX) => {
-    const pageStart = x * names.length;
-    const pageEnd = pageStart + pageX;
-    return names.slice(pageStart, pageEnd);
+  getPage = (rows, y, pageY) => {
+    const pageStart = y * rows.length;
+    const pageEnd = pageStart + pageY;
+    return rows.slice(pageStart, pageEnd);
   }
-  checkColumnSize = (names, fontSize) => (
+  checkRowSize = (names, fontSize) => (
     names.map(name => TrimText(name, 'BodyText', `${fontSize}px`, 98))
   )
   fontSize = cellSize => cellSize * 0.6
-  updateFontSize = (cellSize, prevCellSize, columns) => {
+  updateFontSize = (cellSize, prevCellSize, rows) => {
     if (cellSize !== prevCellSize) {
       const fontSize = this.fontSize(cellSize);
       this.setState({
         fontSize,
-        names: this.checkColumnSize(columns.names, fontSize),
+        names: this.checkRowSize(rows, fontSize),
       });
     }
   }
-  updatePage = (x, prevX, pageX, prevPageX, names) => {
-    if (x !== prevX || pageX !== prevPageX) {
+  updatePage = (y, prevY, pageY, prevPageY, rows) => {
+    if (y !== prevY || pageY !== prevPageY) {
       this.setState(({ fontSize }) => ({
         names: this.checkRowSize(
-          this.getPage(names, x, pageX),
+          this.getPage(rows, y, pageY),
           fontSize,
         ),
       }));
@@ -73,50 +73,44 @@ export class ColumnsContainer extends Component {
   }
   render() {
     return (
-      <Columns
+      <Rows
         cellSize={this.props.cellSize}
         fontSize={this.state.fontSize}
         names={this.state.names}
         openContextMenu={this.props.openContextMenu}
-        sortRows={this.props.sortRows}
-        reference={this.props.columns.ref}
         toggleTooltip={this.props.toggleTooltip}
       />
     );
   }
 }
 
-ColumnsContainer.defaultProps = {
+RowsContainer.defaultProps = {
   cellSize: 20,
 };
 
-ColumnsContainer.propTypes = {
+RowsContainer.propTypes = {
   cellSize: PropTypes.number,
-  columns: PropTypes.shape({
-    names: PropTypes.arrayOf(PropTypes.string),
-    ref: PropTypes.string,
-  }).isRequired,
   dimensions: PropTypes.shape({
-    pageX: PropTypes.number,
+    pageY: PropTypes.number,
   }).isRequired,
   openContextMenu: PropTypes.func.isRequired,
   position: PropTypes.shape({
-    x: PropTypes.number,
+    y: PropTypes.number,
   }).isRequired,
-  sortRows: PropTypes.func.isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   cellSize: SettingSelector(state, 'cellSize'),
-  columns: ColumnsSelector(state),
   dimensions: DimensionsSelector(state),
   position: PositionSelector(state),
+  rows: RowNameSelector(state),
 });
 
 const ConnectedContainer = connect(
   mapStateToProps,
-)(ColumnsContainer);
+)(RowsContainer);
 
 export default ConnectedContainer;

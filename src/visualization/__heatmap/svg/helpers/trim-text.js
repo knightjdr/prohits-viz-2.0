@@ -16,6 +16,7 @@ const TrimText = (
     } while (context.measureText(`${trimmedText}...`).width > width);
   }
   return {
+    original: text,
     text: trimmed ? `${trimmedText}...` : trimmedText,
     trimmed,
   };

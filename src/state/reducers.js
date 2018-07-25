@@ -4,6 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 // reducers
 import annotations from './set/visualization/annotation-reducer';
 import columns from './set/visualization/columns-reducer';
+import dimensions from './set/visualization/dimension-reducer';
 import formStep from './set/form-step-reducer';
 import genes from './set/visualization/genes-reducer';
 import header from './set/header-reducer';
@@ -23,6 +24,7 @@ import settings from './set/visualization/settings-reducer';
 const Reducers = combineReducers({
   annotations,
   columns,
+  dimensions,
   form: formReducer,
   formStep,
   genes,

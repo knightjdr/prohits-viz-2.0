@@ -1,3 +1,5 @@
+import * as fileActions from '../interactive-file-actions';
+
 import {
   SAVE_IMAGE_TYPE,
   SAVE_SESSION_NAME,
@@ -10,9 +12,9 @@ const defaultState = {
 
 const Save = (state = { ...defaultState }, action) => {
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return { ...defaultState };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.save };
     case SAVE_IMAGE_TYPE:
       return {

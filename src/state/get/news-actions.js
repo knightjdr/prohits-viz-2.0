@@ -4,13 +4,13 @@ export const NEWS_ERROR = 'NEWS_ERROR';
 
 export const fillNews = list => ({
   list,
-  type: 'FILL_NEWS',
+  type: FILL_NEWS,
 });
 export const getNews = () => ({
-  type: 'GET_NEWS',
+  type: GET_NEWS,
 });
 export const newsError = () => ({
-  type: 'NEWS_ERROR',
+  type: NEWS_ERROR,
 });
 
 // thunks

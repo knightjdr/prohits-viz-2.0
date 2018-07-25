@@ -1,3 +1,5 @@
+import * as fileActions from '../interactive-file-actions';
+
 import {
   SET_SELECTIONS,
   STORE_SELECTIONS,
@@ -12,7 +14,7 @@ const Genes = (state = {
   rowsSelected: [],
 }, action) => {
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         columnMap: {},
         columns: [],
@@ -21,7 +23,7 @@ const Genes = (state = {
         rows: [],
         rowsSelected: [],
       };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         columnMap: { ...action.file.genes.columnMap },
         columns: [...action.file.genes.columns],

@@ -2,7 +2,7 @@ export const FILL_HOME = 'FILL_HOME';
 
 export const fillHome = data => ({
   data,
-  type: 'FILL_HOME',
+  type: FILL_HOME,
 });
 
 // thunks

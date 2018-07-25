@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 // reducers
 import Annotations from './set/visualization/annotation-reducer';
 import Columns from './set/visualization/columns-reducer';
+import Dimensions from './set/visualization/dimension-reducer';
 import FormStep from './set/form-step-reducer';
 import Genes from './set/visualization/genes-reducer';
 import Header from './set/header-reducer';
@@ -39,12 +40,13 @@ const file = {
   params: { fillColor: 'blueBlack' },
   position: { x: 0, y: 0 },
   rows: {
+    direction: 'asc',
     list: [
       { data: {}, name: 'a' },
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ],
-    order: ['a', 'b', 'c'],
+    sortBy: 1,
   },
   save: { imageType: 'png', name: 'test' },
   settings: {
@@ -59,6 +61,7 @@ describe('Store', () => {
   () => {
     expect(store.getState().annotations).toEqual(Annotations(undefined, {}));
     expect(store.getState().columns).toEqual(Columns(undefined, {}));
+    expect(store.getState().dimensions).toEqual(Dimensions(undefined, {}));
     expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
     expect(store.getState().genes).toEqual(Genes(undefined, {}));
     expect(store.getState().header).toEqual(Header(undefined, {}));
@@ -97,6 +100,18 @@ describe('Store', () => {
     action = { type: 'TOGGLE_MOVE_ANNOTATION' };
     store.dispatch(action);
     expect(store.getState().annotations).toEqual(Annotations({ color: '#000000', list: [] }, action));
+  });
+
+  test('dimension reducer handles its actions', () => {
+    const action = {
+      height: 0.5,
+      pageX: 25,
+      pageY: 30,
+      type: 'SET_DIMENSIONS',
+      width: 0.3,
+    };
+    store.dispatch(action);
+    expect(store.getState().dimensions).toEqual(Dimensions(undefined, action));
   });
 
   test('form step reducer handles its actions', () => {
@@ -206,7 +221,7 @@ describe('Store', () => {
     expect(store.getState().newsPage).toEqual(NewsPage(undefined, action));
   });
 
-  test('position reducer handles its actions', () => {  
+  test('position reducer handles its actions', () => {
     const action = { type: 'UPDATE_POSITION', x: 0.5, y: 0.4 };
     store.dispatch(action);
     expect(store.getState().position).toEqual(Position(undefined, action));

@@ -1,4 +1,5 @@
 import ColumnsReducer from './columns-reducer';
+import * as actions from './columns-actions';
 import * as fileActions from '../interactive-file-actions';
 
 // import DefaultState from '../../../visualization/test/annotations';
@@ -6,7 +7,6 @@ const DefaultState = {
   ref: null,
   names: [],
 };
-
 
 describe('Columns set reducer', () => {
   it('should return an empty initial state', () => {
@@ -35,6 +35,17 @@ describe('Columns set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
+    })).toEqual(expectedState);
+  });
+
+  it('should handle SET_REFERENCE', () => {
+    const expectedState = {
+      names: [],
+      ref: 'a',
+    };
+    expect(ColumnsReducer(undefined, {
+      ref: 'a',
+      type: actions.SET_REFERENCE,
     })).toEqual(expectedState);
   });
 });

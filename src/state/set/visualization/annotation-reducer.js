@@ -1,4 +1,5 @@
 import DeepCopy from '../../../helpers/deep-copy';
+import * as fileActions from '../interactive-file-actions';
 
 import {
   ADD_ANNOTATION,
@@ -34,7 +35,7 @@ const Annotations = (state = {
         ...state,
         list: [],
       };
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         color: '#f44336',
         list: [],
@@ -47,7 +48,7 @@ const Annotations = (state = {
         ...state,
         list: newList,
       };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         color: action.file.annotations.color,
         list: DeepCopy(action.file.annotations.list),

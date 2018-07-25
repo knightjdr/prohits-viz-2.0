@@ -8,9 +8,11 @@ import './panel__map.css';
 
 const Map = ({
   annotations,
+  dimensions,
   markers,
   minimap,
   navigatePosition,
+  position,
   showAnnotations,
   toggleAnnotations,
 }) => {
@@ -27,7 +29,17 @@ const Map = ({
         className="panel__map-select"
         onClick={navigatePosition}
         type="button"
-      />
+      >
+        <div
+          className="panel__map-position"
+          style={{
+            height: `${dimensions.height * 100}%`,
+            left: `${position.x * 100}%`,
+            top: `${position.y * 100}%`,
+            width: `${dimensions.width * 100}%`,
+          }}
+        />
+      </button>
     );
   return (
     <div className="panel">
@@ -63,9 +75,17 @@ Map.defaultProps = {
 
 Map.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
+  dimensions: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+  }).isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
   navigatePosition: PropTypes.func.isRequired,
+  position: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }).isRequired,
   showAnnotations: PropTypes.bool,
   toggleAnnotations: PropTypes.func.isRequired,
 };

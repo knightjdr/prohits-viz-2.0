@@ -1,3 +1,5 @@
+import * as fileActions from '../interactive-file-actions';
+
 import {
   RESET_SETTINGS,
   UPDATE_SETTING,
@@ -10,13 +12,13 @@ const Settings = (state = {
 }, action) => {
   const updateState = {};
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         current: {},
         default: {},
         reset: false,
       };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         current: { ...action.file.settings.current },
         default: { ...action.file.settings.default },

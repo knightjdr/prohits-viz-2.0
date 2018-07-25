@@ -1,3 +1,5 @@
+import * as fileActions from '../interactive-file-actions';
+
 import { UPDATE_POSITION } from './position-actions';
 
 const defaultState = {
@@ -7,19 +9,16 @@ const defaultState = {
 
 const Position = (state = { ...defaultState }, action) => {
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return { ...defaultState };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.position };
     case UPDATE_POSITION:
-      return Object.assign(
-        {},
-        state,
-        {
-          x: action.x,
-          y: action.y,
-        },
-      );
+      return {
+        ...state,
+        x: action.x,
+        y: action.y,
+      };
     default:
       return state;
   }

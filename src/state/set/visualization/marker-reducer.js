@@ -1,4 +1,5 @@
 import DeepCopy from '../../../helpers/deep-copy';
+import * as fileActions from '../interactive-file-actions';
 
 import {
   ADD_MARKER,
@@ -35,7 +36,7 @@ const Markers = (state = {
         ...state,
         list: [],
       };
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         color: '#000000',
         list: [],
@@ -48,7 +49,7 @@ const Markers = (state = {
         ...state,
         list: newList,
       };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         color: action.file.markers.color,
         list: DeepCopy(action.file.markers.list),

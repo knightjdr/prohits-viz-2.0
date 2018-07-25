@@ -1,19 +1,30 @@
 import DeepCopy from '../../../helpers/deep-copy';
+import { UPDATE_ROWS } from './rows-actions';
+import * as fileActions from '../interactive-file-actions';
 
 const Rows = (state = {
+  direction: null,
   list: [],
-  order: [],
+  sortBy: null,
 }, action) => {
   switch (action.type) {
-    case 'CLEAR_INTERACTIVE_FILE':
+    case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
+        direction: null,
         list: [],
-        order: [],
+        sortBy: null,
       };
-    case 'PARSE_INTERACTIVE_FILE':
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
+        direction: action.file.rows.direction,
         list: DeepCopy(action.file.rows.list),
-        order: [...action.file.rows.order],
+        sortBy: action.file.rows.sortBy,
+      };
+    case UPDATE_ROWS:
+      return {
+        direction: action.direction,
+        list: DeepCopy(action.list),
+        sortBy: action.sortBy,
       };
     default:
       return state;

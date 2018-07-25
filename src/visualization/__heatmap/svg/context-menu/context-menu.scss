@@ -1,0 +1,29 @@
+@import 'style/reset';
+@import 'style/style';
+@import 'style/theme';
+
+.context-menu-column {
+  @extend .boxshadow-faint;
+  background-color: $backdrop-light;
+  border: 1px solid #9e9e9e;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  opacity: 0;
+  position: fixed;
+  transition: opacity 0.5s ease;
+  visibility: hidden;
+  width: auto;
+  z-index: 10;
+}
+.context-menu-column > button {
+  @extend .button-reset;
+  background-color: $backdrop-light;
+  cursor: pointer;
+  padding: 8px 10px;
+  transition: background-color 0.5s ease;
+}
+.context-menu-column > button:hover {
+  background-color: rgba(66, 134, 244, 0.4);
+}
