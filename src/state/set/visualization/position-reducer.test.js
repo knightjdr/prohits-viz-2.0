@@ -44,4 +44,10 @@ describe('Position set reducer', () => {
       y: 0.5,
     })).toEqual({ x: 0.5, y: 0.5 });
   });
+
+  it('should handle UPDATE_ROWS', () => {
+    expect(PositionReducer(undefined, {
+      type: actions.UPDATE_ROWS,
+    })).toEqual({ x: 0, y: 0 });
+  });
 });

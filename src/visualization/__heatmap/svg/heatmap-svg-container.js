@@ -59,7 +59,14 @@ export class SvgContainer extends Component {
   setDimensions = (cellSize, columns, rows) => {
     const height = this.calculateHeight(cellSize, rows);
     const width = this.calculateWidth(cellSize, columns);
-    this.props.setDimensions(height.pageYFrac, width.pageX, height.pageY, width.pageXFrac);
+    this.props.setDimensions(
+      height.rows,
+      width.columns,
+      height.pageYFrac,
+      width.pageX,
+      height.pageY,
+      width.pageXFrac,
+    );
     this.setState({
       height,
       showSvg: true,
@@ -81,12 +88,14 @@ export class SvgContainer extends Component {
       height.heatmap = rowNum * cellSize;
       height.pageY = rowNum;
       height.pageYFrac = 1;
+      height.rows = rowNum;
       height.wrapper = height.heatmap + COL_MARGIN;
     } else {
       height.arrowsY = true;
       height.heatmap = heatmap;
       height.pageY = pageY;
-      height.pageYFrac = Round(pageY / rowNum, 2);
+      height.pageYFrac = Round(pageY / rowNum, 4);
+      height.rows = rowNum;
       height.wrapper = wrapper;
     }
     return height;
@@ -106,12 +115,14 @@ export class SvgContainer extends Component {
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
       width.pageXFrac = 1;
+      width.columns = columnNum;
       width.wrapper = width.heatmap + ROW_MARGIN;
     } else {
       width.arrowsX = true;
       width.heatmap = heatmap;
       width.pageX = pageX;
-      width.pageXFrac = Round(pageX / columnNum, 2);
+      width.pageXFrac = Round(pageX / columnNum, 4);
+      width.columns = columnNum;
       width.wrapper = wrapper;
     }
     return width;
@@ -135,7 +146,7 @@ export class SvgContainer extends Component {
     if (shiftKey) {
       const columnIndex = this.props.columns.names.indexOf(column);
       const refIndex = this.props.columns.names.indexOf(this.props.columns.ref);
-      this.props.sortRows(columnIndex, direction, refIndex);
+      this.props.sortRows(columnIndex, direction, refIndex >= 0 ? refIndex : null);
     }
   }
   toggleTooltip = (needsTooltip, display, text, left = 0, top = 0) => {
@@ -201,14 +212,14 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  setDimensions: (height, pageX, pageY, width) => {
-    dispatch(setDimensions(height, pageX, pageY, width));
+  setDimensions: (rows, columns, height, pageX, pageY, width) => {
+    dispatch(setDimensions(rows, columns, height, pageX, pageY, width));
   },
   setReference: (ref) => {
     dispatch(setReference(ref));
   },
-  sortRows: (index, direction) => {
-    dispatch(sortRows(index, direction));
+  sortRows: (index, direction, ref) => {
+    dispatch(sortRows(index, direction, ref));
   },
 });
 

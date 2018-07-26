@@ -8,7 +8,7 @@ const Rows = ({
   openContextMenu,
   toggleTooltip,
 }) => {
-  const textOffset = (cellSize / 2) - (fontSize / 4);
+  const textOffset = (cellSize / 2) - (fontSize / 3);
   return (
     <g transform="translate(0 100)">
       {

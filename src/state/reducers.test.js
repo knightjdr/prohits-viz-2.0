@@ -22,7 +22,7 @@ import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
 
 // create store
-const store = createStore(Reducers);
+let store;
 
 const file = {
   annotations: { color: '#000000', list: [], move: true },
@@ -46,6 +46,7 @@ const file = {
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ],
+    order: ['a', 'b', 'c'],
     sortBy: 1,
   },
   save: { imageType: 'png', name: 'test' },
@@ -56,6 +57,10 @@ const file = {
 };
 
 describe('Store', () => {
+  beforeEach(() => {
+    store = createStore(Reducers);
+  });
+
   test(`check that initial state of the root reducer matches
     what child reducers return given an empty action`,
   () => {
@@ -100,6 +105,15 @@ describe('Store', () => {
     action = { type: 'TOGGLE_MOVE_ANNOTATION' };
     store.dispatch(action);
     expect(store.getState().annotations).toEqual(Annotations({ color: '#000000', list: [] }, action));
+  });
+
+  test('columns reducer handles its actions', () => {
+    const action = {
+      ref: 'a',
+      type: 'SET_REFERENCE',
+    };
+    store.dispatch(action);
+    expect(store.getState().columns).toEqual(Columns(undefined, action));
   });
 
   test('dimension reducer handles its actions', () => {
@@ -277,5 +291,17 @@ describe('Store', () => {
     expect(store.getState().rows).toEqual(Rows(undefined, action));
     expect(store.getState().save).toEqual(Save(undefined, action));
     expect(store.getState().settings).toEqual(Settings(undefined, action));
+  });
+
+  test('reducers handle row update actions', () => {
+    const action = {
+      direction: 'desc',
+      id: 1,
+      sortBy: 2,
+      type: 'UPDATE_ROWS',
+    };
+    store.dispatch(action);
+    expect(store.getState().position).toEqual(Position(undefined, action));
+    expect(store.getState().rows).toEqual(Rows(undefined, action));
   });
 });

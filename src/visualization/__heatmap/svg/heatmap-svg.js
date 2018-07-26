@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
+import Arrows from './__arrows/heatmap-svg__arrows-container';
 import Columns from './__columns/heatmap-svg__columns-container';
 import ContextMenuColumns from './context-menu/context-menu';
-import Rows from './__rows/heatmap-svg__rows_container';
+import Plot from './plot/heatmap-svg__plot-container';
+import Rows from './__rows/heatmap-svg__rows-container';
 import Tooltip from './__tooltip/svg__tooltip';
 
 import './heatmap-svg.css';
@@ -26,7 +28,7 @@ const Svg = ({
   show &&
   <Fragment>
     <svg xmlns="http://www.w3.org/2000/svg" height={height.wrapper} width={width.wrapper}>
-      <rect fill="#f44336" height={height.heatmap} width={width.heatmap} x="100" y="100" />
+      <Plot />
       <Columns
         openContextMenu={openColumnContextMenu}
         sortRows={sortRows}
@@ -37,6 +39,22 @@ const Svg = ({
         toggleTooltip={toggleTooltip}
       />
     </svg>
+    {
+      height.arrowsY &&
+      <Arrows
+        direction="vertical"
+        height={height}
+        width={width}
+      />
+    }
+    {
+      width.arrowsX &&
+      <Arrows
+        direction="horizontal"
+        height={height}
+        width={width}
+      />
+    }
     <ContextMenuColumns
       closeMenu={closeContextMenu}
       left={contextPos.left}

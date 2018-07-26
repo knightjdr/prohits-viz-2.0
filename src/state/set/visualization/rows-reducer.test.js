@@ -6,7 +6,9 @@ import * as fileActions from '../interactive-file-actions';
 // import DefaultState from '../../../visualization/test/annotations';
 const DefaultState = {
   direction: null,
+  id: null,
   list: [],
+  order: [],
   sortBy: null,
 };
 
@@ -35,7 +37,9 @@ describe('Rows set reducer', () => {
     DeepCopy.mockReturnValue(list);
     const expectedState = {
       direction: 'asc',
+      id: null,
       list,
+      order: ['a', 'b', 'c'],
       sortBy: 1,
     };
     expect(RowsReducer(undefined, {
@@ -43,6 +47,7 @@ describe('Rows set reducer', () => {
         rows: {
           direction: 'asc',
           list,
+          order: ['a', 'b', 'c'],
           sortBy: 1,
         },
       },
@@ -59,11 +64,14 @@ describe('Rows set reducer', () => {
     DeepCopy.mockReturnValue(list);
     const expectedState = {
       direction: 'asc',
+      id: 1,
       list,
+      order: [],
       sortBy: 1,
     };
     expect(RowsReducer(undefined, {
       direction: 'asc',
+      id: 1,
       list,
       sortBy: 1,
       type: actions.UPDATE_ROWS,

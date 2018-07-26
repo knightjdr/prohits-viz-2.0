@@ -1,6 +1,7 @@
 import * as fileActions from '../interactive-file-actions';
 
 import { UPDATE_POSITION } from './position-actions';
+import { UPDATE_ROWS } from './rows-actions';
 
 const defaultState = {
   x: 0,
@@ -15,9 +16,13 @@ const Position = (state = { ...defaultState }, action) => {
       return { ...action.file.position };
     case UPDATE_POSITION:
       return {
-        ...state,
         x: action.x,
         y: action.y,
+      };
+    case UPDATE_ROWS:
+      return {
+        ...state,
+        y: 0,
       };
     default:
       return state;

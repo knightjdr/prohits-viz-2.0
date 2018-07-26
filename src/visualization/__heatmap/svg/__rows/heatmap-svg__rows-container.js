@@ -7,6 +7,7 @@ import PositionSelector from '../../../../state/selectors/visualization/position
 import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
 import Rows from './heatmap-svg__rows';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
+import SortSeletor from '../../../../state/selectors/visualization/sort-selector';
 import TrimText from '../helpers/trim-text';
 
 export class RowsContainer extends Component {
@@ -33,6 +34,7 @@ export class RowsContainer extends Component {
       dimensions,
       position,
       rows,
+      sortInfo,
     } = nextProps;
     this.updateFontSize(cellSize, this.props.cellSize, rows);
     this.updatePage(
@@ -40,6 +42,8 @@ export class RowsContainer extends Component {
       this.props.position.y,
       dimensions.pageY,
       this.props.dimensions.pageY,
+      sortInfo.id,
+      this.props.sortInfo.id,
       rows,
     );
   }
@@ -61,8 +65,12 @@ export class RowsContainer extends Component {
       });
     }
   }
-  updatePage = (y, prevY, pageY, prevPageY, rows) => {
-    if (y !== prevY || pageY !== prevPageY) {
+  updatePage = (y, prevY, pageY, prevPageY, sortId, prevSortId, rows) => {
+    if (
+      y !== prevY ||
+      pageY !== prevPageY ||
+      sortId !== prevSortId
+    ) {
       this.setState(({ fontSize }) => ({
         names: this.checkRowSize(
           this.getPage(rows, y, pageY),
@@ -98,6 +106,9 @@ RowsContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sortInfo: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };
 
@@ -107,6 +118,7 @@ const mapStateToProps = state => ({
   dimensions: DimensionsSelector(state),
   position: PositionSelector(state),
   rows: RowNameSelector(state),
+  sortInfo: SortSeletor(state),
 });
 
 const ConnectedContainer = connect(

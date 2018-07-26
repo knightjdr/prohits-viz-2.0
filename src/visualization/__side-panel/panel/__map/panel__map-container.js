@@ -36,8 +36,8 @@ export class MapContainer extends Component {
     } else if (y < 0) {
       y = 0;
     }
-    x = Round(x, 2);
-    y = Round(y, 2);
+    x = Round(x, 4);
+    y = Round(y, 4);
     this.props.updatePosition(x, y);
   }
   render() {
