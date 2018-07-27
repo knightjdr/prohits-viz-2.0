@@ -48,9 +48,8 @@ export class RowsContainer extends Component {
     );
   }
   getPage = (rows, y, pageY) => {
-    const pageStart = y * rows.length;
-    const pageEnd = pageStart + pageY;
-    return rows.slice(pageStart, pageEnd);
+    const pageEnd = y + pageY;
+    return rows.slice(y, pageEnd);
   }
   checkRowSize = (names, fontSize) => (
     names.map(name => TrimText(name, 'BodyText', `${fontSize}px`, 98))
@@ -92,12 +91,8 @@ export class RowsContainer extends Component {
   }
 }
 
-RowsContainer.defaultProps = {
-  cellSize: 20,
-};
-
 RowsContainer.propTypes = {
-  cellSize: PropTypes.number,
+  cellSize: PropTypes.number.isRequired,
   dimensions: PropTypes.shape({
     pageY: PropTypes.number,
   }).isRequired,

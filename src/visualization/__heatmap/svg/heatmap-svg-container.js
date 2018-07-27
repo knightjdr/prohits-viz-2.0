@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ColumnsSelector from '../../../state/selectors/visualization/columns-selector';
-import Round from '../../../helpers/round';
 import RowNameSelector from '../../../state/selectors/visualization/row-name-selector';
 import SettingSelector from '../../../state/selectors/visualization/settings-selector';
 import Svg from './heatmap-svg';
@@ -19,11 +18,8 @@ export class SvgContainer extends Component {
     super(props);
     this.wrapperRef = React.createRef();
     this.state = {
-      contextPos: {
-        left: 0,
-        top: 0,
-      },
       contextColumnTarget: '',
+      contextEvent: null,
       height: {
         arrowsY: false, // Should the vertical navigation arrows be shown?
         heatmap: 0, // Height of heat map in the svg.
@@ -51,10 +47,7 @@ export class SvgContainer extends Component {
     this.setDimensions(cellSize, columns, rows);
   }
   componentWillReceiveProps = (nextProps) => {
-    const { cellSize, columns, rows } = nextProps;
-    if (cellSize !== this.props.cellSize) {
-      this.setDimensions(cellSize, columns, rows);
-    }
+    this.updateDimensions(nextProps, this.props.cellSize);
   }
   setDimensions = (cellSize, columns, rows) => {
     const height = this.calculateHeight(cellSize, rows);
@@ -62,10 +55,8 @@ export class SvgContainer extends Component {
     this.props.setDimensions(
       height.rows,
       width.columns,
-      height.pageYFrac,
       width.pageX,
       height.pageY,
-      width.pageXFrac,
     );
     this.setState({
       height,
@@ -77,7 +68,7 @@ export class SvgContainer extends Component {
     // Maximum sizes.
     const wrapper = this.wrapperRef.current.getBoundingClientRect().height;
     const heatmap = wrapper - COL_MARGIN;
-    const pageY = Math.floor(heatmap / this.props.cellSize);
+    const pageY = Math.floor(heatmap / cellSize);
 
     /* If there are not enough rows to fill available height,
     ** shrink the dimensions to what is needed */
@@ -87,14 +78,12 @@ export class SvgContainer extends Component {
       height.arrowsY = false;
       height.heatmap = rowNum * cellSize;
       height.pageY = rowNum;
-      height.pageYFrac = 1;
       height.rows = rowNum;
       height.wrapper = height.heatmap + COL_MARGIN;
     } else {
       height.arrowsY = true;
-      height.heatmap = heatmap;
+      height.heatmap = pageY * cellSize;
       height.pageY = pageY;
-      height.pageYFrac = Round(pageY / rowNum, 4);
       height.rows = rowNum;
       height.wrapper = wrapper;
     }
@@ -104,7 +93,7 @@ export class SvgContainer extends Component {
     // Maximum sizes.
     const wrapper = this.wrapperRef.current.getBoundingClientRect().width;
     const heatmap = wrapper - ROW_MARGIN;
-    const pageX = Math.floor(heatmap / this.props.cellSize);
+    const pageX = Math.floor(heatmap / cellSize);
 
     /* If there are not enough columns to fill available width,
     ** shrink the dimensions to what is needed */
@@ -114,31 +103,31 @@ export class SvgContainer extends Component {
       width.arrowsX = false;
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
-      width.pageXFrac = 1;
       width.columns = columnNum;
       width.wrapper = width.heatmap + ROW_MARGIN;
     } else {
       width.arrowsX = true;
-      width.heatmap = heatmap;
+      width.heatmap = pageX * cellSize;
       width.pageX = pageX;
-      width.pageXFrac = Round(pageX / columnNum, 4);
       width.columns = columnNum;
       width.wrapper = wrapper;
     }
     return width;
   }
   closeContextMenu = () => {
-    this.setState({ showColumnContext: false });
+    this.setState({
+      contextEvent: null,
+      showColumnContext: false,
+    });
   }
   openColumnContextMenu = (e, column) => {
     e.preventDefault();
-    const limitLeft = window.innerWidth - 130;
     this.setState({
-      contextPos: {
-        left: e.clientX < limitLeft ? e.clientX : limitLeft,
-        top: e.clientY,
-      },
       contextColumnTarget: column,
+      contextEvent: {
+        clientX: e.clientX,
+        clientY: e.clientY,
+      },
       showColumnContext: true,
     });
   }
@@ -161,6 +150,11 @@ export class SvgContainer extends Component {
       });
     }
   }
+  updateDimensions = ({ cellSize, columns, rows }, prevCellSize) => {
+    if (cellSize !== prevCellSize) {
+      this.setDimensions(cellSize, columns, rows);
+    }
+  }
   render() {
     return (
       <div
@@ -170,7 +164,7 @@ export class SvgContainer extends Component {
         <Svg
           closeContextMenu={this.closeContextMenu}
           contextColumnTarget={this.state.contextColumnTarget}
-          contextPos={this.state.contextPos}
+          contextEvent={this.state.contextEvent}
           height={this.state.height}
           openColumnContextMenu={this.openColumnContextMenu}
           reference={this.props.columns.ref}
@@ -187,12 +181,8 @@ export class SvgContainer extends Component {
   }
 }
 
-SvgContainer.defaultProps = {
-  cellSize: 20,
-};
-
 SvgContainer.propTypes = {
-  cellSize: PropTypes.number,
+  cellSize: PropTypes.number.isRequired,
   columns: PropTypes.shape({
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
@@ -212,8 +202,8 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  setDimensions: (rows, columns, height, pageX, pageY, width) => {
-    dispatch(setDimensions(rows, columns, height, pageX, pageY, width));
+  setDimensions: (rows, columns, height, width) => {
+    dispatch(setDimensions(rows, columns, height, width));
   },
   setReference: (ref) => {
     dispatch(setReference(ref));

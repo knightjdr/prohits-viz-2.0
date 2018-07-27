@@ -13,7 +13,7 @@ import './heatmap-svg.css';
 const Svg = ({
   closeContextMenu,
   contextColumnTarget,
-  contextPos,
+  contextEvent,
   height,
   openColumnContextMenu,
   reference,
@@ -57,29 +57,26 @@ const Svg = ({
     }
     <ContextMenuColumns
       closeMenu={closeContextMenu}
-      left={contextPos.left}
+      event={contextEvent}
       reference={reference}
       setReference={setReference}
       show={showColumnContext}
       sortRows={sortRows}
       target={contextColumnTarget}
-      top={contextPos.top}
     />
     <Tooltip {...tooltip} />
   </Fragment>
 );
 
 Svg.defaultProps = {
+  contextEvent: null,
   reference: null,
 };
 
 Svg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
   contextColumnTarget: PropTypes.string.isRequired,
-  contextPos: PropTypes.shape({
-    left: PropTypes.number,
-    top: PropTypes.number,
-  }).isRequired,
+  contextEvent: PropTypes.shape({}),
   height: PropTypes.shape({
     arrowsY: PropTypes.bool,
     heatmap: PropTypes.number,

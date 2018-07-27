@@ -1,4 +1,4 @@
-/* Return a function that will map an number to an output integer range.
+/* Return a function that will map a number to an output integer range.
 ** Checks to make sure the input number is within the input range. */
 
 const SetRange = (inMin, inMax, outMin, outMax) => {

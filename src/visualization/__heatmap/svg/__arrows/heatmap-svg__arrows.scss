@@ -1,4 +1,5 @@
 @import 'style/reset';
+@import 'style/theme';
 
 .heatmap-svg__arrows {
   display: flex;
@@ -12,5 +13,10 @@
 }
 .heatmap-svg__arrows-button {
   @extend .button-reset;
+  color: #2e3738;
   font-size: 1.5em;
+}
+.heatmap-svg__arrows-button_font-small {
+  @extend .heatmap-svg__arrows-button;
+  font-size: 1.3em;
 }

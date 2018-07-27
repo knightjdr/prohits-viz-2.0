@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import Arrows from './heatmap-svg__arrows';
 import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import Round from '../../../../helpers/round';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class ArrowsContainer extends Component {
@@ -15,52 +13,101 @@ export class ArrowsContainer extends Component {
     const {
       dimension,
       direction,
+      position,
       height,
       width,
     } = this.props;
+    const length = direction === 'horizontal' ? dimension.columns : dimension.rows;
+    const pageType = direction === 'horizontal' ? 'pageX' : 'pageY';
+    const vertex = direction === 'horizontal' ? 'x' : 'y';
     this.state = {
-      length: direction === 'horizontal' ? dimension.columns : dimension.rows,
-      page: direction === 'horizontal' ? dimension.pageX : dimension.pageY,
-      position: this.setPosition(direction, height.wrapper, width.wrapper),
+      arrowOpacity: this.setOpacity(position, vertex, length, dimension[pageType]),
+      elPosition: this.setPosition(direction, height.heatmap, width.wrapper),
+      length,
+      page: dimension[pageType],
+      pageType,
+      vertex,
     };
   }
+  componentWillReceiveProps = (nextProps) => {
+    this.updateOpacity(nextProps, this.props.position, this.state.vertex);
+    this.updateElPosition(nextProps, this.props.height, this.props.width);
+    this.updatePage(nextProps, this.props.dimension, this.state.pageType);
+  }
+  setOpacity = (position, vertex, length, page) => ({
+    down: position[vertex] >= length - page,
+    up: position[vertex] === 0,
+  })
   setPosition = (direction, height, width) => (
     direction === 'horizontal' ?
       {
-        bottom: window.innerHeight - height - 55,
-        right: ((window.innerWidth - width) / 2) + 15,
+        bottom: window.innerHeight - height - 160,
+        right: ((window.innerWidth - width) / 2) + 13,
         transform: 'rotate(-90deg)',
       }
       :
       {
-        bottom: window.innerHeight - height - 45,
+        bottom: window.innerHeight - height - 152,
         right: ((window.innerWidth - width) / 2) - 15,
         transform: null,
       }
   )
-  nextRow = (change) => {
-    const y = Round((change / this.state.length) + this.props.position.y, 4);
-    if (y >= 0 && y <= 1) {
-      this.props.updatePosition(this.props.position.x, y);
+  changePosition = (change) => {
+    const newPosition = {
+      x: this.props.position.x,
+      y: this.props.position.y,
+    };
+    const { length, page, vertex } = this.state;
+    newPosition[vertex] = this.props.position[vertex] + change;
+    if (newPosition[vertex] <= 0) {
+      newPosition[vertex] = 0;
+    } else if (newPosition[vertex] >= length - page) {
+      newPosition[vertex] = length - page;
+    }
+    this.props.updatePosition(newPosition.x, newPosition.y);
+  }
+  updateElPosition = ({ height, width }, prevHeight, prevWidth) => {
+    if (
+      height.heatmap !== prevHeight.heatmap ||
+      width.wrapper !== prevWidth.wrapper
+    ) {
+      this.setState(({ direction }) => ({
+        elPosition: this.setPosition(direction, height.heatmap, width.wrapper),
+      }));
+    }
+  }
+  updateOpacity = ({ position }, prevPosition, vertex) => {
+    if (position[vertex] !== prevPosition[vertex]) {
+      this.setState(({ length, page }) => ({
+        arrowOpacity: this.setOpacity(position, vertex, length, page),
+      }));
+    }
+  }
+  updatePage = ({ dimension }, prevDimension, pageType) => {
+    if (dimension[pageType] !== prevDimension[pageType]) {
+      this.setState({
+        page: dimension[pageType],
+      });
     }
   }
   render() {
     return (
       <Arrows
-        nextRow={this.nextRow}
-        position={this.state.position}
+        arrowOpacity={this.state.arrowOpacity}
+        changePosition={this.changePosition}
+        elPosition={this.state.elPosition}
+        length={this.state.length}
+        page={this.state.page}
       />
     );
   }
 }
 
 ArrowsContainer.defaultProps = {
-  cellSize: 20,
   direction: 'vertical',
 };
 
 ArrowsContainer.propTypes = {
-  cellSize: PropTypes.number,
   dimension: PropTypes.shape({
     columns: PropTypes.number,
     pageX: PropTypes.number,
@@ -69,7 +116,7 @@ ArrowsContainer.propTypes = {
   }).isRequired,
   direction: PropTypes.string,
   height: PropTypes.shape({
-    wrapper: PropTypes.number,
+    heatmap: PropTypes.number,
   }).isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
@@ -84,7 +131,6 @@ ArrowsContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   dimension: DimensionSelector(state),
-  cellSize: SettingSelector(state, 'cellSize'),
   position: PositionSelector(state),
 });
 

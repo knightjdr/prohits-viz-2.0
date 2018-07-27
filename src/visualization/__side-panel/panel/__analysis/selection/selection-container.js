@@ -17,10 +17,7 @@ export class SelectionContainer extends Component {
       columnsHighlighted: [],
       columnsSelected: [...this.props.genes.columnsSelected],
       columnsSelectedHighlighted: [],
-      contextPos: {
-        left: 0,
-        top: 0,
-      },
+      contextEvent: null,
       contextTarget: null,
       pasteText: '',
       pasteType: null,
@@ -56,6 +53,7 @@ export class SelectionContainer extends Component {
   }
   closeContextMenu = () => {
     this.setState({
+      contextEvent: null,
       showContext: false,
     });
   }
@@ -108,9 +106,9 @@ export class SelectionContainer extends Component {
     const top = e.clientY - rect.top;
     this.setState({
       canPasteContext: canPaste,
-      contextPos: {
-        left: left > 210 ? 210 : left,
-        top,
+      contextEvent: {
+        clientX: left,
+        clientY: top,
       },
       contextTarget: target,
       showContext: true,
@@ -200,7 +198,7 @@ export class SelectionContainer extends Component {
           closeContextMenu={this.closeContextMenu}
           columns={this.state.columns}
           columnsSelected={this.state.columnsSelected}
-          contextPos={this.state.contextPos}
+          contextEvent={this.state.contextEvent}
           copyAll={this.copyAll}
           copyList={this.state.copyList}
           copySelected={this.copySelected}

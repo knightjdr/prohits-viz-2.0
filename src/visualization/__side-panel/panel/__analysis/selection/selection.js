@@ -13,7 +13,7 @@ const Selection = ({
   closeContextMenu,
   columns,
   columnsSelected,
-  contextPos,
+  contextEvent,
   copyAll,
   copySelected,
   listSelect,
@@ -34,9 +34,8 @@ const Selection = ({
       closeMenu={closeContextMenu}
       copyAll={copyAll}
       copySelected={copySelected}
-      left={contextPos.left}
+      event={contextEvent}
       show={showContext}
-      top={contextPos.top}
       toggleModal={toggleModal}
     />
     <div className="panel__title">
@@ -62,6 +61,10 @@ const Selection = ({
   </div>
 );
 
+Selection.defaultProps = {
+  contextEvent: null,
+};
+
 Selection.propTypes = {
   arrangeSelected: PropTypes.func.isRequired,
   canPasteContext: PropTypes.bool.isRequired,
@@ -72,10 +75,7 @@ Selection.propTypes = {
   columnsSelected: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
-  contextPos: PropTypes.shape({
-    left: PropTypes.number,
-    top: PropTypes.number,
-  }).isRequired,
+  contextEvent: PropTypes.shape({}),
   copyAll: PropTypes.func.isRequired,
   copySelected: PropTypes.func.isRequired,
   listSelect: PropTypes.func.isRequired,

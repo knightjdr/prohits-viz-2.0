@@ -3,7 +3,13 @@ import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
 import Deepcopy from '../../../helpers/deep-copy';
-import { sortMethod, sortRows, updateRows, UPDATE_ROWS } from './rows-actions';
+import {
+  sortDefault,
+  sortMethod,
+  sortRows,
+  updateRows,
+  UPDATE_ROWS,
+} from './rows-actions';
 
 // configure mock store
 const middlewares = [thunk];
@@ -17,6 +23,38 @@ const list = [
 
 jest.mock('../../../helpers/deep-copy');
 Deepcopy.mockReturnValue(list);
+
+describe('Default row sort', () => {
+  afterAll(() => {
+    fetchMock.restore();
+  });
+
+  it('should sort rows based on order in store', () => {
+    const rows = {
+      direction: null,
+      id: null,
+      list,
+      order: ['c', 'a', 'b'],
+      sortBy: null,
+    };
+    const sortedRows = [
+      { data: [{ value: 2 }, { value: 3 }], name: 'c' },
+      { data: [{ value: 1 }, { value: 4 }], name: 'a' },
+      { data: [{ value: 5 }, { value: 2 }], name: 'b' },
+    ];
+    const store = mockStore({ rows });
+    store.dispatch(sortDefault());
+    const expectedActions = store.getActions();
+    expect(expectedActions.length).toBe(1);
+    expect(expectedActions).toContainEqual({
+      direction: null,
+      id: 1,
+      list: sortedRows,
+      sortBy: null,
+      type: UPDATE_ROWS,
+    });
+  });
+});
 
 describe('Row sort method', () => {
   it('should return a method for sorting rows by an index in ascending order by ref', () => {

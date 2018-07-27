@@ -10,6 +10,26 @@ export const updateRows = (direction, list, sortBy, id) => ({
   type: UPDATE_ROWS,
 });
 
+/* Sorts rows based on the default (input) order */
+export const sortDefault = () => (
+  (dispatch, getState) => {
+    const { id, list, order } = getState().rows;
+    const currentMap = list.reduce((listMap, item, index) => {
+      const newProp = {};
+      newProp[item.name] = index;
+      return {
+        ...listMap,
+        ...newProp,
+      };
+    }, {});
+    const sortedList = order.map(item => list[currentMap[item]]);
+
+    // Create or update ID.
+    const newId = id ? id + 1 : 1;
+    dispatch(updateRows(null, sortedList, null, newId));
+  }
+);
+
 /* Sort methods for row list. Assumes each row item has a data object with
 ** a numeric value prop and a name prop for fallback sorting when the
 ** value is the same. */

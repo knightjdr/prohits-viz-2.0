@@ -61,7 +61,7 @@ const Filter = ({
     <div>
       <InputNumber
         onChange={(value) => { changeSetting('primaryFilter', value); }}
-        step="0.01"
+        step={0.01}
         value={settings.primaryFilter}
       />
       <button
@@ -83,7 +83,7 @@ const Filter = ({
     <div>
       <InputNumber
         onChange={(value) => { changeSetting('secondaryFilter', value); }}
-        step="0.01"
+        step={0.01}
         value={settings.secondaryFilter}
       />
       <button
@@ -105,10 +105,22 @@ const Filter = ({
 Filter.propTypes = {
   changeSetting: PropTypes.func.isRequired,
   settings: PropTypes.shape({
-    abundanceCap: PropTypes.number,
-    minAbundance: PropTypes.number,
-    primaryFilter: PropTypes.number,
-    secondaryFilter: PropTypes.number,
+    abundanceCap: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    minAbundance: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    primaryFilter: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    secondaryFilter: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
   }).isRequired,
   storeSettings: PropTypes.shape({
     abundanceCap: PropTypes.number,

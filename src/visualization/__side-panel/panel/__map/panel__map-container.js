@@ -8,11 +8,36 @@ import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import Round from '../../../../helpers/round';
 import { toggleAnnotations } from '../../../../state/set/visualization/map-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    const { dimensions, markers, position } = this.props;
+    this.state = {
+      markers: this.convertMarkers(dimensions, markers),
+      rangeBox: this.setRange(dimensions, position),
+    };
+  }
+  componentWillReceiveProps = (nextProps) => {
+    this.updateRange(nextProps, this.props.dimensions, this.props.position);
+  }
+  setRange = (dimensions, position) => ({
+    height: `${(dimensions.pageY / dimensions.rows) * 100}%`,
+    left: `${(position.x / dimensions.columns) * 100}%`,
+    top: `${(position.y / dimensions.rows) * 100}%`,
+    width: `${(dimensions.pageX / dimensions.columns) * 100}%`,
+  })
+  convertMarkers = (dimensions, markers) => ({
+    color: markers.color,
+    list: markers.list.map(marker => ({
+      height: marker.height / dimensions.rows,
+      width: marker.width / dimensions.columns,
+      x: marker.x / dimensions.columns,
+      y: marker.y / dimensions.rows,
+    })),
+  })
   navigatePosition = (e) => {
     const rect = e.target.getBoundingClientRect();
     // Calculate mouse position as percentage of container.
@@ -21,7 +46,14 @@ export class MapContainer extends Component {
 
     /* Move x and y positions so that event click represents center of
     ** new region. So move x by width / 2 and y by height / 2. */
-    const { height, width } = this.props.dimensions;
+    const {
+      columns,
+      pageX,
+      pageY,
+      rows,
+    } = this.props.dimensions;
+    const height = pageY / rows;
+    const width = pageX / columns;
     x -= width / 2;
     y -= height / 2;
 
@@ -36,19 +68,33 @@ export class MapContainer extends Component {
     } else if (y < 0) {
       y = 0;
     }
-    x = Round(x, 4);
-    y = Round(y, 4);
+
+    // Convert x an y to cell numbers.
+    x = Math.round(x * columns);
+    y = Math.round(y * rows);
     this.props.updatePosition(x, y);
+  }
+  updateRange = ({ dimensions, position }, prevDimensions, prevPosition) => {
+    if (
+      dimensions.pageX !== prevDimensions.pageX ||
+      dimensions.pageY !== prevDimensions.pageY ||
+      position.x !== prevPosition.x ||
+      position.y !== prevPosition.y
+    ) {
+      this.setState({
+        rangeBox: this.setRange(dimensions, position),
+      });
+    }
   }
   render() {
     return (
       <Map
         annotations={this.props.annotations}
         dimensions={this.props.dimensions}
-        markers={this.props.markers}
+        markers={this.state.markers}
         minimap={this.props.minimap.image}
         navigatePosition={this.navigatePosition}
-        position={this.props.position}
+        rangeBox={this.state.rangeBox}
         showAnnotations={this.props.minimap.showAnnotations}
         toggleAnnotations={this.props.toggleAnnotations}
       />
@@ -59,8 +105,10 @@ export class MapContainer extends Component {
 MapContainer.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
   dimensions: PropTypes.shape({
-    height: PropTypes.number,
-    width: PropTypes.number,
+    columns: PropTypes.number,
+    pageX: PropTypes.number,
+    pageY: PropTypes.number,
+    rows: PropTypes.number,
   }).isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.shape({

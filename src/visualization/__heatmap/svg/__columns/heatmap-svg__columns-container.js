@@ -44,9 +44,8 @@ export class ColumnsContainer extends Component {
     );
   }
   getPage = (names, x, pageX) => {
-    const pageStart = x * names.length;
-    const pageEnd = pageStart + pageX;
-    return names.slice(pageStart, pageEnd);
+    const pageEnd = x + pageX;
+    return names.slice(x, pageEnd);
   }
   checkColumnSize = (names, fontSize) => (
     names.map(name => TrimText(name, 'BodyText', `${fontSize}px`, 98))
@@ -86,12 +85,8 @@ export class ColumnsContainer extends Component {
   }
 }
 
-ColumnsContainer.defaultProps = {
-  cellSize: 20,
-};
-
 ColumnsContainer.propTypes = {
-  cellSize: PropTypes.number,
+  cellSize: PropTypes.number.isRequired,
   columns: PropTypes.shape({
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
