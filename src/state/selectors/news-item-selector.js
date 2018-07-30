@@ -10,18 +10,12 @@ export const addDateIfNotNull = item => (
 
 const GetNewsItem = createSelector(
   [getNewsItem],
-  newsItem => Object.assign(
-    {},
-    newsItem,
-    {
-      item: Object.assign(
-        {},
-        newsItem.item,
-        {
-          date: addDateIfNotNull(newsItem.item),
-        },
-      ),
+  newsItem => ({
+    ...newsItem,
+    item: {
+      ...newsItem.item,
+      date: addDateIfNotNull(newsItem.item),
     },
-  ),
+  }),
 );
 export default GetNewsItem;

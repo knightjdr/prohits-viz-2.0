@@ -1,26 +1,27 @@
 import AnalysisFormSelector from './analysis-form-selector';
 
-const state = {
-  empty: {},
-  emptyForm: { form: {} },
-  withAnalysisForm: { form: { analysisForm: { values: { field: 'test' } } } },
-  withAnalysisFormNoValues: { form: { analysisForm: {} } },
-};
-
-describe('AnalysisForm selector', () => {
-  it('Redux form not created', () => {
-    expect(AnalysisFormSelector(state.empty)).toEqual({});
+describe('Analysis form selector', () => {
+  it('should return empty object when redux form', () => {
+    const currentState = {};
+    const expectValue = {};
+    expect(AnalysisFormSelector(currentState)).toEqual(expectValue);
   });
 
-  it('Redux form created but analysisForm not present', () => {
-    expect(AnalysisFormSelector(state.emptyForm)).toEqual({});
+  it('should return empty object when redux form created but analysisForm not present', () => {
+    const currentState = { form: {} };
+    const expectValue = {};
+    expect(AnalysisFormSelector(currentState)).toEqual(expectValue);
   });
 
-  it('Redux and analysisForm present, but no values set', () => {
-    expect(AnalysisFormSelector(state.withAnalysisFormNoValues)).toEqual({});
+  it('should return empty object when redux form and analysisForm present, but no values set', () => {
+    const currentState = { form: { analysisForm: {} } };
+    const expectValue = {};
+    expect(AnalysisFormSelector(currentState)).toEqual(expectValue);
   });
 
-  it('Redux and analysisForm present, and values set', () => {
-    expect(AnalysisFormSelector(state.withAnalysisForm)).toEqual({ field: 'test' });
+  it('should return form', () => {
+    const currentState = { form: { analysisForm: { values: { field: 'test' } } } };
+    const expectValue = { field: 'test' };
+    expect(AnalysisFormSelector(currentState)).toEqual(expectValue);
   });
 });

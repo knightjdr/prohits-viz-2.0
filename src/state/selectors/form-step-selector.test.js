@@ -1,12 +1,11 @@
 import FormStepSelector from './form-step-selector';
 
-const state = {
-  formStep: 2,
-};
-const expectedStep = 2;
-
-describe('FormStepSelector', () => {
-  it('Should return current step', () => {
-    expect(FormStepSelector(state)).toEqual(expectedStep);
+describe('Form step selector', () => {
+  it('should return current step', () => {
+    const currentState = {
+      formStep: 2,
+    };
+    const expectedValue = 2;
+    expect(FormStepSelector(currentState)).toEqual(expectedValue);
   });
 });

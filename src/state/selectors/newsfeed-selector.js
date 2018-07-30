@@ -7,15 +7,10 @@ const getNewsfeed = state => state.home.news;
 const GetNewsfeedWithDate = createSelector(
   [getNewsfeed],
   newsFeed => (
-    newsFeed.map(item => (
-      Object.assign(
-        {},
-        item,
-        {
-          date: ConvertIsoDate(item.dbDate),
-        },
-      )
-    ))
+    newsFeed.map(item => ({
+      ...item,
+      date: ConvertIsoDate(item.dbDate),
+    }))
   ),
 );
 export default GetNewsfeedWithDate;

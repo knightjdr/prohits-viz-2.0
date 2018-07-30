@@ -5,18 +5,22 @@ import NewsItemSelector, { addDateIfNotNull } from './news-item-selector';
 jest.mock('../../helpers/convert-iso-date');
 ConvertIsoDate.mockReturnValue('date');
 
-const state = {
-  newsItem: { item: { headline: 'test' } },
-};
-const expectedNews = { item: { headline: 'test', date: 'date' } };
-
-describe('News item selector', () => {
-  it('Should return a news item', () => {
-    expect(NewsItemSelector(state)).toEqual(expectedNews);
+describe('Add date to news item', () => {
+  it('should return a date', () => {
+    expect(addDateIfNotNull('item')).toEqual('date');
   });
 
-  it('Should return a date or null based on input', () => {
-    expect(addDateIfNotNull('item')).toEqual('date');
+  it('should return null', () => {
     expect(addDateIfNotNull()).toBeNull();
+  });
+});
+
+describe('News item selector', () => {
+  it('should return a news item', () => {
+    const currentState = {
+      newsItem: { item: { headline: 'test' } },
+    };
+    const expectedValue = { item: { headline: 'test', date: 'date' } };
+    expect(NewsItemSelector(currentState)).toEqual(expectedValue);
   });
 });

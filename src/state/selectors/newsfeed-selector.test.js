@@ -5,15 +5,14 @@ import NewsfeedSelector from './newsfeed-selector';
 jest.mock('../../helpers/convert-iso-date');
 ConvertIsoDate.mockReturnValue('date');
 
-const state = {
-  home: {
-    news: [{ a: 'test' }],
-  },
-};
-const expectedNews = [{ a: 'test', date: 'date' }];
-
 describe('Newsfeed selector', () => {
   it('should return array of news items with date', () => {
-    expect(NewsfeedSelector(state)).toEqual(expectedNews);
+    const currentState = {
+      home: {
+        news: [{ a: 'test' }],
+      },
+    };
+    const expectedValue = [{ a: 'test', date: 'date' }];
+    expect(NewsfeedSelector(currentState)).toEqual(expectedValue);
   });
 });

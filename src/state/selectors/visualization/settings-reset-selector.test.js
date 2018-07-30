@@ -1,13 +1,12 @@
 import SettingsResetSelector from './settings-reset-selector';
 
-const state = {
-  settings: {
-    reset: false,
-  },
-};
-
 describe('Settings reset selector', () => {
-  it('should return the specified setting', () => {
+  it('should return the reset boolean from settings', () => {
+    const state = {
+      settings: {
+        reset: false,
+      },
+    };
     expect(SettingsResetSelector(state)).toBeFalsy();
   });
 });

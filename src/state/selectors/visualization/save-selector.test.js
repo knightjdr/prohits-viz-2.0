@@ -1,11 +1,10 @@
 import SaveSelector from './save-selector';
 
-const state = {
-  imageType: 'svg',
-};
-
 describe('Save selector', () => {
   it('should return save options', () => {
+    const state = {
+      imageType: 'svg',
+    };
     expect(SaveSelector(state)).toEqual(state.save);
   });
 });
