@@ -1,4 +1,4 @@
-import PanelSelector from './columns-selector';
+import PanelSelector from './panel-selector';
 
 describe('Panel selector', () => {
   it('should return panel visibility state', () => {

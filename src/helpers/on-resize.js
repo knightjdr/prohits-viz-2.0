@@ -2,7 +2,7 @@
 
 const OnResize = (component, func, timeout = 500) => {
   if (component.resizeTimeout) {
-    clearTimeout(this.resizeTimeout);
+    clearTimeout(component.resizeTimeout);
   }
   component.resizeTimeout = setTimeout(() => {
     func();

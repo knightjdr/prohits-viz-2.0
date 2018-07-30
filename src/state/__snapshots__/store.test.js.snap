@@ -15,3 +15,19 @@ exports[`Store It renders 1`] = `
   <Routes />
 </Provider>
 `;
+
+exports[`Store should render 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Routes />
+</Provider>
+`;

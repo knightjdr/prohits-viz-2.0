@@ -30,6 +30,11 @@ export const sortDefault = () => (
   }
 );
 
+// If the difference between two pairs is zero, sort by string,
+export const sortPairByLocale = (value, a, b) => (
+  value !== 0 ? value : a.localeCompare(b, 'en', { sensitivity: 'base' })
+);
+
 /* Sort methods for row list. Assumes each row item has a data object with
 ** a numeric value prop and a name prop for fallback sorting when the
 ** value is the same. */
@@ -40,12 +45,12 @@ export const sortMethod = (sortBy, direction, ref) => {
       const refA = a.data[ref].value === 0 ? 0.001 : a.data[ref].value;
       const refB = b.data[ref].value === 0 ? 0.001 : b.data[ref].value;
       const sortValue = (a.data[sortBy].value / refA) - (b.data[sortBy].value / refB);
-      return sortValue !== 0 ? sortValue : a.name.localeCompare(b.name);
+      return sortPairByLocale(sortValue, a.name, b.name);
     };
   } else if (direction === 'asc') {
     return (a, b) => {
       const sortValue = a.data[sortBy].value - b.data[sortBy].value;
-      return sortValue !== 0 ? sortValue : a.name.localeCompare(b.name);
+      return sortPairByLocale(sortValue, a.name, b.name);
     };
   } else if (direction === 'desc' && typeof ref === 'number') {
     return (a, b) => {
@@ -53,12 +58,12 @@ export const sortMethod = (sortBy, direction, ref) => {
       const refA = a.data[ref].value === 0 ? 0.001 : a.data[ref].value;
       const refB = b.data[ref].value === 0 ? 0.001 : b.data[ref].value;
       const sortValue = (b.data[sortBy].value / refB) - (a.data[sortBy].value / refA);
-      return sortValue !== 0 ? sortValue : b.name.localeCompare(a.name);
+      return sortPairByLocale(sortValue, b.name, a.name);
     };
   }
   return (a, b) => {
     const sortValue = b.data[sortBy].value - a.data[sortBy].value;
-    return sortValue !== 0 ? sortValue : b.name.localeCompare(a.name);
+    return sortPairByLocale(sortValue, b.name, a.name);
   };
 };
 
