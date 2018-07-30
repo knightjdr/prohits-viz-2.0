@@ -9,8 +9,6 @@ import {
   TOGGLE_RECORD_MARKER,
 } from './marker-actions';
 
-// import DefaultState from '../../../visualization/test/markers';
-
 const Markers = (state = {
   color: '#000000',
   list: [],

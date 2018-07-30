@@ -8,7 +8,7 @@ const Header = (state = [], action) => {
     case CLEAR_FILE_HEADER:
       return [];
     case SET_FILE_HEADER:
-      return Object.assign([], action.header);
+      return [...action.header];
     default:
       return state;
   }

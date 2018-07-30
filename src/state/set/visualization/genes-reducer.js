@@ -41,10 +41,10 @@ const Genes = (state = {
     case STORE_SELECTIONS:
       return {
         ...state,
-        columns: action.selections.columns,
-        columnsSelected: action.selections.columnsSelected,
-        rows: action.selections.rows,
-        rowsSelected: action.selections.rowsSelected,
+        columns: [...action.selections.columns],
+        columnsSelected: [...action.selections.columnsSelected],
+        rows: [...action.selections.rows],
+        rowsSelected: [...action.selections.rowsSelected],
       };
     default:
       return state;

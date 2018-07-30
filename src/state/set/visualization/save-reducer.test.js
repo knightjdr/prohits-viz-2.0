@@ -9,24 +9,23 @@ const DefaultState = {
 
 describe('Save set reducer', () => {
   it('should return a default initial state', () => {
-    expect(SaveReducer(undefined, {})).toEqual(DefaultState);
+    const action = {};
+    const expectedState = DefaultState;
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
     const expectedState = {
       ...DefaultState,
     };
-    expect(SaveReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
-    const expectedState = {
-      imageType: 'png',
-      name: 'test',
-    };
-    expect(SaveReducer(undefined, {
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
       file: {
         save: {
           imageType: 'png',
@@ -34,28 +33,35 @@ describe('Save set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      imageType: 'png',
+      name: 'test',
+    };
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle SAVE_IMAGE_TYPE', () => {
+  it('should handle SAVE_IMAGE_TYPE action', () => {
+    const action = {
+      imageType: 'png',
+      type: actions.SAVE_IMAGE_TYPE,
+    };
     const expectedState = {
       imageType: 'png',
       name: '',
     };
-    expect(SaveReducer(undefined, {
-      imageType: 'png',
-      type: actions.SAVE_IMAGE_TYPE,
-    })).toEqual(expectedState);
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle SAVE_SESSION_NAME', () => {
+  it('should handle SAVE_SESSION_NAME action', () => {
+    const action = {
+      name: 'testname',
+      type: actions.SAVE_SESSION_NAME,
+    };
     const expectedState = {
       imageType: 'svg',
       name: 'testname',
     };
-    expect(SaveReducer(undefined, {
-      name: 'testname',
-      type: actions.SAVE_SESSION_NAME,
-    })).toEqual(expectedState);
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 });

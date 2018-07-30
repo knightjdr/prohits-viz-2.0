@@ -3,7 +3,6 @@ import RowsReducer from './rows-reducer';
 import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
 
-// import DefaultState from '../../../visualization/test/annotations';
 const DefaultState = {
   direction: null,
   id: null,
@@ -16,33 +15,29 @@ jest.mock('../../../helpers/deep-copy');
 
 describe('Rows set reducer', () => {
   it('should return an empty initial state', () => {
-    expect(RowsReducer(undefined, {})).toEqual(DefaultState);
+    const action = {};
+    const expectedState = DefaultState;
+    expect(RowsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
     const expectedState = {
       ...DefaultState,
     };
-    expect(RowsReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(RowsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
     const list = [
       { data: {}, name: 'a' },
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
     DeepCopy.mockReturnValue(list);
-    const expectedState = {
-      direction: 'asc',
-      id: null,
-      list,
-      order: ['a', 'b', 'c'],
-      sortBy: 1,
-    };
-    expect(RowsReducer(undefined, {
+    const action = {
       file: {
         rows: {
           direction: 'asc',
@@ -52,16 +47,31 @@ describe('Rows set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      direction: 'asc',
+      id: null,
+      list,
+      order: ['a', 'b', 'c'],
+      sortBy: 1,
+    };
+    expect(RowsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle UPDATE_ROWS', () => {
+  it('should handle UPDATE_ROWS action', () => {
     const list = [
       { data: {}, name: 'a' },
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
     DeepCopy.mockReturnValue(list);
+    const action = {
+      direction: 'asc',
+      id: 1,
+      list,
+      sortBy: 1,
+      type: actions.UPDATE_ROWS,
+    };
     const expectedState = {
       direction: 'asc',
       id: 1,
@@ -69,12 +79,6 @@ describe('Rows set reducer', () => {
       order: [],
       sortBy: 1,
     };
-    expect(RowsReducer(undefined, {
-      direction: 'asc',
-      id: 1,
-      list,
-      sortBy: 1,
-      type: actions.UPDATE_ROWS,
-    })).toEqual(expectedState);
+    expect(RowsReducer(undefined, action)).toEqual(expectedState);
   });
 });

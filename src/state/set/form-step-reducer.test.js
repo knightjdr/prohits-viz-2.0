@@ -1,27 +1,27 @@
 import FormStepReducer from './form-step-reducer';
 import * as actions from './form-step-actions';
 
-const step = 2;
-const state = {
-  empty: 0,
-  set: 2,
-};
-
-describe('FormStepReducer set reducer', () => {
-  it('Should return the initial state', () => {
-    expect(FormStepReducer(undefined, {})).toEqual(state.empty);
+describe('Form step set reducer', () => {
+  it('should return the initial state', () => {
+    const action = {};
+    const expectedState = 0;
+    expect(FormStepReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('Should handle INCREMENT_FORM_STEP', () => {
-    expect(FormStepReducer(undefined, {
-      step,
+  it('should handle INCREMENT_FORM_STEP action', () => {
+    const action = {
+      step: 2,
       type: actions.INCREMENT_FORM_STEP,
-    })).toEqual(state.set);
+    };
+    const expectedState = 2;
+    expect(FormStepReducer(undefined, action)).toBe(expectedState);
   });
 
-  it('Should handle CLEAR_FORM_STEP', () => {
-    expect(FormStepReducer(undefined, {
+  it('should handle CLEAR_FORM_STEP action', () => {
+    const action = {
       type: actions.CLEAR_FORM_STEP,
-    })).toEqual(state.empty);
+    };
+    const expectedState = 0;
+    expect(FormStepReducer(undefined, action)).toEqual(expectedState);
   });
 });

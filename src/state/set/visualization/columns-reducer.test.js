@@ -2,7 +2,6 @@ import ColumnsReducer from './columns-reducer';
 import * as actions from './columns-actions';
 import * as fileActions from '../interactive-file-actions';
 
-// import DefaultState from '../../../visualization/test/annotations';
 const DefaultState = {
   ref: null,
   names: [],
@@ -10,24 +9,23 @@ const DefaultState = {
 
 describe('Columns set reducer', () => {
   it('should return an empty initial state', () => {
-    expect(ColumnsReducer(undefined, {})).toEqual(DefaultState);
+    const action = {};
+    const expectedState = DefaultState;
+    expect(ColumnsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
     const expectedState = {
       ...DefaultState,
     };
-    expect(ColumnsReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(ColumnsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
-    const expectedState = {
-      ref: 'a',
-      names: ['a', 'b', 'c'],
-    };
-    expect(ColumnsReducer(undefined, {
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
       file: {
         columns: {
           ref: 'a',
@@ -35,17 +33,23 @@ describe('Columns set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      ref: 'a',
+      names: ['a', 'b', 'c'],
+    };
+    expect(ColumnsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle SET_REFERENCE', () => {
+  it('should handle SET_REFERENCE action', () => {
+    const action = {
+      ref: 'a',
+      type: actions.SET_REFERENCE,
+    };
     const expectedState = {
       names: [],
       ref: 'a',
     };
-    expect(ColumnsReducer(undefined, {
-      ref: 'a',
-      type: actions.SET_REFERENCE,
-    })).toEqual(expectedState);
+    expect(ColumnsReducer(undefined, action)).toEqual(expectedState);
   });
 });

@@ -3,23 +3,21 @@ import * as fileActions from '../interactive-file-actions';
 
 describe('ParamsReducer set reducer', () => {
   it('should return an empty initial state', () => {
-    expect(ParamsReducer(undefined, {})).toEqual({});
-  });
-
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+    const action = {};
     const expectedState = {};
-    expect(ParamsReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(ParamsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
-    const expectedState = {
-      a: 'test1',
-      b: 'test2',
-      c: 'test3',
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
-    expect(ParamsReducer(undefined, {
+    const expectedState = {};
+    expect(ParamsReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
       file: {
         params: {
           a: 'test1',
@@ -28,6 +26,12 @@ describe('ParamsReducer set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      a: 'test1',
+      b: 'test2',
+      c: 'test3',
+    };
+    expect(ParamsReducer(undefined,action )).toEqual(expectedState);
   });
 });

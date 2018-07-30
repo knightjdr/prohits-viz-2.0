@@ -9,24 +9,23 @@ const DefaultState = {
 
 describe('Position set reducer', () => {
   it('should return a default initial state', () => {
-    expect(PositionReducer(undefined, {})).toEqual(DefaultState);
+    const action = {};
+    const expectedState = DefaultState;
+    expect(PositionReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
     const expectedState = {
       ...DefaultState,
     };
-    expect(PositionReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(PositionReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
-    const expectedState = {
-      x: 0.3,
-      y: 0.4,
-    };
-    expect(PositionReducer(undefined, {
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
       file: {
         position: {
           x: 0.3,
@@ -34,20 +33,27 @@ describe('Position set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      x: 0.3,
+      y: 0.4,
+    };
+    expect(PositionReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle UPDATE_POSITION', () => {
-    expect(PositionReducer(undefined, {
+  it('should handle UPDATE_POSITION action', () => {
+    const action = {
       type: actions.UPDATE_POSITION,
       x: 0.5,
       y: 0.5,
-    })).toEqual({ x: 0.5, y: 0.5 });
+    };
+    expect(PositionReducer(undefined, action)).toEqual({ x: 0.5, y: 0.5 });
   });
 
-  it('should handle UPDATE_ROWS', () => {
-    expect(PositionReducer(undefined, {
+  it('should handle UPDATE_ROWS action', () => {
+    const action = {
       type: actions.UPDATE_ROWS,
-    })).toEqual({ x: 0, y: 0 });
+    };
+    expect(PositionReducer(undefined, action)).toEqual({ x: 0, y: 0 });
   });
 });

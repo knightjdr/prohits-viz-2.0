@@ -9,8 +9,6 @@ import {
   TOGGLE_MOVE_ANNOTATION,
 } from './annotation-actions';
 
-// import Default from '../../../visualization/test/annotations';
-
 const Annotations = (state = {
   color: '#f44336',
   list: [],

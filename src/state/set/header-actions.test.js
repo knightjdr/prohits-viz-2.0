@@ -1,9 +1,8 @@
 import * as actions from './header-actions';
 
-const header = ['column1', 'column2'];
-
 describe('File header set actions', () => {
-  it('Should dispatch an action to set the header', () => {
+  it('should dispatch an action to set the header', () => {
+    const header = ['column1', 'column2'];
     const expectedAction = {
       header,
       type: actions.SET_FILE_HEADER,
@@ -11,7 +10,7 @@ describe('File header set actions', () => {
     expect(actions.setFileHeader(header)).toEqual(expectedAction);
   });
 
-  it('Should dispatch an action to clear the header', () => {
+  it('should dispatch an action to clear the header', () => {
     const expectedAction = {
       type: actions.CLEAR_FILE_HEADER,
     };

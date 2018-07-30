@@ -25,11 +25,13 @@ jest.mock('../../../helpers/deep-copy');
 Deepcopy.mockReturnValue(list);
 
 describe('Default row sort', () => {
+  let expectedActions;
+
   afterAll(() => {
     fetchMock.restore();
   });
 
-  it('should sort rows based on order in store', () => {
+  beforeAll(() => {
     const rows = {
       direction: null,
       id: null,
@@ -37,15 +39,21 @@ describe('Default row sort', () => {
       order: ['c', 'a', 'b'],
       sortBy: null,
     };
+    const store = mockStore({ rows });
+    store.dispatch(sortDefault());
+    expectedActions = store.getActions();
+  });
+
+  it('should dispatch a single action', () => {
+    expect(expectedActions.length).toBe(1);
+  });
+
+  it('should sort rows based on order in store', () => {
     const sortedRows = [
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
-    const store = mockStore({ rows });
-    store.dispatch(sortDefault());
-    const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: null,
       id: 1,
@@ -133,7 +141,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
@@ -158,7 +165,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1, 'asc'));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
@@ -184,7 +190,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
@@ -210,7 +215,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
@@ -236,7 +240,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(0));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
@@ -261,7 +264,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1, 'desc', 0));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
@@ -286,7 +288,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1, 'asc', 0));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
@@ -311,7 +312,6 @@ describe('Row actions', () => {
     const store = mockStore({ rows });
     store.dispatch(sortRows(1));
     const expectedActions = store.getActions();
-    expect(expectedActions.length).toBe(1);
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 2,

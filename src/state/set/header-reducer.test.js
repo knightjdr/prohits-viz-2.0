@@ -1,27 +1,28 @@
 import HeaderReducer from './header-reducer';
 import * as actions from './header-actions';
 
-const header = ['column1', 'column2'];
-const state = {
-  empty: [],
-  set: header,
-};
-
 describe('File header set reducer', () => {
-  it('Should return the initial state', () => {
-    expect(HeaderReducer(undefined, {})).toEqual(state.empty);
+  it('should return the initial state', () => {
+    const action = {};
+    const expectedState = [];
+    expect(HeaderReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('Should handle SET_FILE_HEADER', () => {
-    expect(HeaderReducer(undefined, {
+  it('should handle SET_FILE_HEADER action', () => {
+    const header = ['column1', 'column2'];
+    const action = {
       header,
       type: actions.SET_FILE_HEADER,
-    })).toEqual(state.set);
+    };
+    const expectedState = header;
+    expect(HeaderReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('Should handle CLEAR_FILE_HEADER', () => {
-    expect(HeaderReducer(undefined, {
+  it('should handle CLEAR_FILE_HEADER action', () => {
+    const action = {
       type: actions.CLEAR_FILE_HEADER,
-    })).toEqual(state.empty);
+    };
+    const expectedState = [];
+    expect(HeaderReducer(undefined, action)).toEqual(expectedState);
   });
 });

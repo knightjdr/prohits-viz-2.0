@@ -1,31 +1,33 @@
 import SearchReducer from './search-reducer';
 import * as actions from './search-actions';
 
-const DefaultState = {
-  term: '',
-};
-
 describe('Search reducer', () => {
   it('should return empty initial state', () => {
-    expect(SearchReducer(undefined, {})).toEqual(DefaultState);
-  });
-
-  it('should handle CLEAR_SEARCH', () => {
+    const action = {};
     const expectedState = {
       term: '',
     };
-    expect(SearchReducer(undefined, {
-      type: actions.CLEAR_SEARCH,
-    })).toEqual(expectedState);
+    expect(SearchReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle SET_SEARCH_TERM', () => {
+  it('should handle CLEAR_SEARCH action', () => {
+    const action = {
+      type: actions.CLEAR_SEARCH,
+    };
+    const expectedState = {
+      term: '',
+    };
+    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle SET_SEARCH_TERM action', () => {
+    const action = {
+      term: 'testTerm',
+      type: actions.SET_SEARCH_TERM,
+    };
     const expectedState = {
       term: 'testTerm',
     };
-    expect(SearchReducer(undefined, {
-      term: 'testTerm',
-      type: actions.SET_SEARCH_TERM,
-    })).toEqual(expectedState);
+    expect(SearchReducer(undefined, action)).toEqual(expectedState);
   });
 });

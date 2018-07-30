@@ -7,26 +7,25 @@ const DefaultState = {
   showAnnotations: false,
 };
 
-describe('MapReducer set reducer', () => {
+describe('Map set reducer', () => {
   it('should return an empty initial state', () => {
-    expect(MapReducer(undefined, {})).toEqual(DefaultState);
+    const action = {};
+    const expectedState = DefaultState;
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle CLEAR_INTERACTIVE_FILE', () => {
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
     const expectedState = {
       ...DefaultState,
     };
-    expect(MapReducer(undefined, {
-      type: fileActions.CLEAR_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE', () => {
-    const expectedState = {
-      image: 'image',
-      showAnnotations: true,
-    };
-    expect(MapReducer(undefined, {
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
       file: {
         minimap: {
           image: 'image',
@@ -34,16 +33,22 @@ describe('MapReducer set reducer', () => {
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
-    })).toEqual(expectedState);
+    };
+    const expectedState = {
+      image: 'image',
+      showAnnotations: true,
+    };
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle TOGGLE_ANNOTATIONS', () => {
+  it('should handle TOGGLE_ANNOTATIONS action', () => {
+    const action = {
+      type: actions.TOGGLE_ANNOTATIONS,
+    };
     const expectedState = {
       image: null,
       showAnnotations: true,
     };
-    expect(MapReducer(undefined, {
-      type: actions.TOGGLE_ANNOTATIONS,
-    })).toEqual(expectedState);
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 });

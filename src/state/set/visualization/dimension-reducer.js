@@ -1,13 +1,11 @@
 import { SET_DIMENSIONS } from './dimension-actions';
 
-const defaultState = {
+const Dimension = (state = {
   columns: 0,
-  height: 0,
+  pageX: 0,
+  pageY: 0,
   rows: 0,
-  width: 0,
-};
-
-const Dimension = (state = { ...defaultState }, action) => {
+}, action) => {
   switch (action.type) {
     case SET_DIMENSIONS:
       return {

@@ -1,7 +1,7 @@
 import * as actions from './news-page-actions';
 
 describe('News page set actions', () => {
-  it('Should dispatch an action to set the page', () => {
+  it('should dispatch an action to set the page', () => {
     const expectedAction = {
       page: ['a'],
       pageIndex: 2,
