@@ -1,62 +1,66 @@
 import NewsReducer from './news-reducer';
 import * as actions from './news-actions';
 
-const state = {
-  empty: {
-    error: false,
-    isLoaded: false,
-    isLoading: false,
-    list: [],
-  },
-  error: {
-    error: true,
-    isLoaded: false,
-    isLoading: false,
-    list: [],
-  },
-  get: {
-    error: false,
-    isLoaded: false,
-    isLoading: true,
-    list: [],
-  },
-  success: {
-    error: false,
-    isLoaded: true,
-    isLoading: false,
-    list: ['a', 'b'],
-  },
+const emptyState = {
+  error: false,
+  isLoaded: false,
+  isLoading: false,
+  list: [],
 };
-const testResponse = ['a', 'b'];
 
 describe('News reducer', () => {
-  it('Should return the initial state', () => {
-    expect(NewsReducer(undefined, {})).toEqual(state.empty);
+  it('should return the initial state', () => {
+    const action = {};
+    const expectedState = emptyState;
+    expect(NewsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('Should handle GET_NEWS', () => {
-    expect(NewsReducer(undefined, {
+  it('should handle GET_NEWS action', () => {
+    const action = {
       type: actions.GET_NEWS,
-    })).toEqual(state.get);
+    };
+    const expectedState = {
+      error: false,
+      isLoaded: false,
+      isLoading: true,
+      list: [],
+    };
+    expect(NewsReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('Should handle FILL_NEWS', () => {
-    expect(NewsReducer(undefined, {
-      list: testResponse,
+    const action = {
+      list: ['a', 'b'],
       type: actions.FILL_NEWS,
-    })).toEqual(state.success);
+    };
+    const expectedState = {
+      error: false,
+      isLoaded: true,
+      isLoading: false,
+      list: ['a', 'b'],
+    };
+    expect(NewsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('Should handle NEWS_ERROR', () => {
-    expect(NewsReducer(undefined, {
+  it('should handle NEWS_ERROR action', () => {
+    const action = {
       type: actions.NEWS_ERROR,
-    })).toEqual(state.error);
+    };
+    const expectedState = {
+      error: true,
+      isLoaded: false,
+      isLoading: false,
+      list: [],
+    };
+    expect(NewsReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle missing action', () => {
-    expect(NewsReducer(undefined, {
-      data: testResponse,
+    const action = {
+      data: ['a', 'b'],
       type: null,
-    })).toEqual(state.empty);
+    };
+    const expectedState = emptyState;
+    expect(NewsReducer(undefined, action)).toEqual(expectedState);
   });
 });

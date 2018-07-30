@@ -6,9 +6,11 @@ export const fillNews = list => ({
   list,
   type: FILL_NEWS,
 });
+
 export const getNews = () => ({
   type: GET_NEWS,
 });
+
 export const newsError = () => ({
   type: NEWS_ERROR,
 });
@@ -16,16 +18,18 @@ export const newsError = () => ({
 // thunks
 const fetchNews = () => (
   (dispatch, getState) => {
-    // if we already have the home page news, do nothing
+    // If we already have the home page news, do nothing.
     if (getState().news.isLoaded) {
       return null;
     }
     dispatch(getNews());
-    // set headers
+
+    // Set headers.
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     const url = `${process.env.REACT_APP_API_ROOT}/news/`;
-    // fetch and handle response
+
+    // f=Fetch and handle response.
     return fetch(url, {
       cache: 'no-store',
       headers,

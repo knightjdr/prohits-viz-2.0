@@ -23,63 +23,94 @@ describe('News actions', () => {
     fetchMock.restore();
   });
 
-  it('Should dispatch an action to get news', () => {
+  it('should dispatch an action to get news', () => {
     const expectedAction = {
       type: actions.GET_NEWS,
     };
     expect(actions.getNews()).toEqual(expectedAction);
   });
 
-  it('Should dispatch an action to fill news state', () => {
+  it('should dispatch an action to fill news state', () => {
+    const action = news.success;
     const expectedAction = {
       list: news.success,
       type: actions.FILL_NEWS,
     };
-    expect(actions.fillNews(news.success)).toEqual(expectedAction);
+    expect(actions.fillNews(action)).toEqual(expectedAction);
   });
 
-  it('Should dispatch an error action', () => {
+  it('should dispatch an error action', () => {
     const expectedAction = {
       type: actions.NEWS_ERROR,
     };
     expect(actions.newsError()).toEqual(expectedAction);
   });
 
-  it('No actions dispatched if state already loaded', () => {
+  it('should not dispatch an action if state already loaded', () => {
     const store = mockStore({ news: { isLoaded: true } });
     expect(store.dispatch(FetchNews())).toBeNull();
   });
 
-  it('Calls get and fill actions if the fetch response was successful', () => {
-    fetchMock.getOnce('*', { body: { news: news.success } });
-    const store = mockStore({ news: news.initial });
-    return store.dispatch(FetchNews())
-      .then(() => {
-        const expectedActions = store.getActions();
-        expect(expectedActions.length).toBe(2);
-        expect(expectedActions).toContainEqual({
-          type: actions.GET_NEWS,
+  describe('on successfuly fetch response', () => {
+    let expectedActions;
+    let store;
+
+    beforeAll(async (done) => {
+      fetchMock.getOnce('*', { body: { news: news.success } });
+      store = mockStore({ news: news.initial });
+      store.dispatch(FetchNews())
+        .then(() => {
+          expectedActions = store.getActions();
+          done();
         });
-        expect(expectedActions).toContainEqual({
-          list: news.success,
-          type: actions.FILL_NEWS,
-        });
+    });
+
+    it('should dispatch two actions', () => {
+      expect(expectedActions.length).toBe(2);
+    });
+
+    it('should dispatch get news action', () => {
+      expect(expectedActions).toContainEqual({
+        type: actions.GET_NEWS,
       });
+    });
+
+    it('should dispatch fill news action', () => {
+      expect(expectedActions).toContainEqual({
+        list: news.success,
+        type: actions.FILL_NEWS,
+      });
+    });
   });
 
-  it('Error action called if fetch response was unsuccessful', () => {
-    fetchMock.getOnce('*', { status: 400 }, { overwriteRoutes: true });
-    const store = mockStore({ news: news.initial });
-    return store.dispatch(FetchNews())
-      .then(() => {
-        const expectedActions = store.getActions();
-        expect(expectedActions.length).toBe(2);
-        expect(expectedActions).toContainEqual({
-          type: actions.GET_NEWS,
+  describe('on unsuccessfuly fetch response', () => {
+    let expectedActions;
+    let store;
+
+    beforeAll(async (done) => {
+      fetchMock.getOnce('*', { status: 400 }, { overwriteRoutes: true });
+      store = mockStore({ news: news.initial });
+      store.dispatch(FetchNews())
+        .then(() => {
+          expectedActions = store.getActions();
+          done();
         });
-        expect(expectedActions).toContainEqual({
-          type: actions.NEWS_ERROR,
-        });
+    });
+
+    it('should dispatch two actions', () => {
+      expect(expectedActions.length).toBe(2);
+    });
+
+    it('should dispatch get news action', () => {
+      expect(expectedActions).toContainEqual({
+        type: actions.GET_NEWS,
       });
+    });
+
+    it('should dispatch fill news action', () => {
+      expect(expectedActions).toContainEqual({
+        type: actions.NEWS_ERROR,
+      });
+    });
   });
 });

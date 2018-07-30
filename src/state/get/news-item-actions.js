@@ -7,18 +7,21 @@ export const fillNewsItem = (id, item) => ({
   item,
   type: FILL_NEWS_ITEM,
 });
+
 export const getNewsItem = id => ({
   id,
   type: GET_NEWS_ITEM,
 });
+
 export const newsItemError = id => ({
   id,
   type: NEWS_ITEM_ERROR,
 });
 
-// thunks
+// Thunks.
 const fetchNewsItem = newsId => (
   (dispatch, getState) => {
+    // If item is already in state, do nothing.
     if (
       getState().newsItem &&
       getState().newsItem.id === newsId
@@ -26,11 +29,13 @@ const fetchNewsItem = newsId => (
       return null;
     }
     dispatch(getNewsItem(newsId));
-    // set headers
+
+    // Set headers.
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     const url = `${process.env.REACT_APP_API_ROOT}/news/${newsId}`;
-    // fetch and handle response
+
+    // Fetch and handle response.
     return fetch(url, {
       cache: 'no-store',
       headers,

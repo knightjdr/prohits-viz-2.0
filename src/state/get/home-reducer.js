@@ -7,14 +7,11 @@ const Home = (state = {
 }, action) => {
   switch (action.type) {
     case FILL_HOME:
-      return Object.assign(
-        {},
-        state,
-        {
-          isLoaded: true,
-        },
-        action.data,
-      );
+      return {
+        ...state,
+        isLoaded: true,
+        ...action.data,
+      };
     default:
       return state;
   }

@@ -8,21 +8,20 @@ const Tooltip = ({
   left,
   text,
   top,
-}) => {
-  return (
-    <div
-      className="svg__tooltip"
-      style={{
-        left,
-        opacity: display ? 1 : 0,
-        top,
-        transform: display ? 'scale(1)' : 'scale(0.8)',
-      }}
-    >
-      {text}
-    </div>
-  );
-};
+}) => (
+  <div
+    className="svg__tooltip"
+    style={{
+      left,
+      opacity: display ? 1 : 0,
+      top,
+      transform: display ? 'scale(1)' : 'scale(0.8)',
+      visibility: display ? 'visible' : 'hidden',
+    }}
+  >
+    {text}
+  </div>
+);
 
 Tooltip.defaultProps = {
   display: false,

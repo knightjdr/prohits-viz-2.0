@@ -21,7 +21,7 @@ const Rows = ({
               key={name.original}
               onContextMenu={(e) => { openContextMenu(e, name.original); }}
               onMouseEnter={(e) => {
-                toggleTooltip(name.trimmed, true, name.original, e.clientX, 50);
+                toggleTooltip(name.trimmed, true, name.original, e.clientX, e.clientY - 80);
               }}
               onMouseLeave={() => { toggleTooltip(name.trimmed, false, name.original); }}
               textAnchor="end"

@@ -26,6 +26,7 @@ const Arrows = ({
   elPosition,
   length,
   page,
+  show,
 }) => (
   <div
     className="heatmap-svg__arrows"
@@ -33,6 +34,7 @@ const Arrows = ({
       bottom: elPosition.bottom,
       right: elPosition.right,
       transform: elPosition.transform,
+      visibility: show ? 'visible' : 'hidden',
     }}
   >
     <button
@@ -99,6 +101,7 @@ Arrows.propTypes = {
   }).isRequired,
   length: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
+  show: PropTypes.bool.isRequired,
 };
 
 export default Arrows;

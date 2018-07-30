@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ColumnsSelector from '../../../state/selectors/visualization/columns-selector';
+import OnResize from '../../../helpers/on-resize';
+import PanelSelector from '../../../state/selectors/visualization/panel-selector';
 import RowNameSelector from '../../../state/selectors/visualization/row-name-selector';
 import SettingSelector from '../../../state/selectors/visualization/settings-selector';
 import Svg from './heatmap-svg';
@@ -10,8 +12,11 @@ import { setDimensions } from '../../../state/set/visualization/dimension-action
 import { setReference } from '../../../state/set/visualization/columns-actions';
 import { sortRows } from '../../../state/set/visualization/rows-actions';
 
+import './heatmap-svg.css';
+
 const COL_MARGIN = 100;
 const ROW_MARGIN = 100;
+const SIDE_PANEL = 400;
 
 export class SvgContainer extends Component {
   constructor(props) {
@@ -36,8 +41,10 @@ export class SvgContainer extends Component {
       },
       width: {
         arrowsX: false, // Should the horizontal navigation arrows be shown?
+        canTranslate: false, // Should the image translate when the side panel opens?
         heatmap: 0, // Width of heat map in the svg.
         pageX: 0, // The number of heat map cells along the x axis.
+        translate: 0, // The amount to translate the wrapper by if canTranslate = true.
         wrapper: 0, // The width of the entire svg.
       },
     };
@@ -45,9 +52,16 @@ export class SvgContainer extends Component {
   componentDidMount = () => {
     const { cellSize, columns, rows } = this.props;
     this.setDimensions(cellSize, columns, rows);
+    window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
     this.updateDimensions(nextProps, this.props.cellSize);
+  }
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.onResize);
+  }
+  onResize = () => {
+    OnResize(this, this.resizeEnd, 800);
   }
   setDimensions = (cellSize, columns, rows) => {
     const height = this.calculateHeight(cellSize, rows);
@@ -101,15 +115,18 @@ export class SvgContainer extends Component {
     const width = {};
     if (pageX > columnNum) {
       width.arrowsX = false;
+      width.canTranslate = true;
+      width.columns = columnNum;
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
-      width.columns = columnNum;
       width.wrapper = width.heatmap + ROW_MARGIN;
+      width.translate = this.translateAmount(width.wrapper, window.innerWidth);
     } else {
       width.arrowsX = true;
+      width.columns = columnNum;
+      width.canTranslate = false;
       width.heatmap = pageX * cellSize;
       width.pageX = pageX;
-      width.columns = columnNum;
       width.wrapper = wrapper;
     }
     return width;
@@ -122,14 +139,21 @@ export class SvgContainer extends Component {
   }
   openColumnContextMenu = (e, column) => {
     e.preventDefault();
+    const rect = this.wrapperRef.current.getBoundingClientRect();
+    const left = e.clientX - rect.left;
+    const top = e.clientY - rect.top;
     this.setState({
       contextColumnTarget: column,
       contextEvent: {
-        clientX: e.clientX,
-        clientY: e.clientY,
+        clientX: left,
+        clientY: top,
       },
       showColumnContext: true,
     });
+  }
+  resizeEnd = () => {
+    const { cellSize, columns, rows } = this.props;
+    this.setDimensions(cellSize, columns, rows);
   }
   sortRows = (shiftKey, column, direction) => {
     if (shiftKey) {
@@ -140,15 +164,24 @@ export class SvgContainer extends Component {
   }
   toggleTooltip = (needsTooltip, display, text, left = 0, top = 0) => {
     if (needsTooltip) {
-      this.setState({
+      const { panel } = this.props;
+      this.setState(({ width }) => ({
         tooltip: {
           display,
-          left,
+          left: panel ? left + width.translate : left,
           text,
           top,
         },
-      });
+      }));
     }
+  }
+  translateAmount = (width, window) => {
+    const freeWidth = window - width;
+    if (freeWidth > SIDE_PANEL) {
+      return SIDE_PANEL / 2;
+    }
+    // Subtract 20 pixels to ensure image does overflow into padding.
+    return (freeWidth / 2) - 20;
   }
   updateDimensions = ({ cellSize, columns, rows }, prevCellSize) => {
     if (cellSize !== prevCellSize) {
@@ -156,10 +189,15 @@ export class SvgContainer extends Component {
     }
   }
   render() {
+    const { panel } = this.props;
+    const { width } = this.state;
     return (
       <div
         className="heatmap-svg__wrapper"
         ref={this.wrapperRef}
+        style={{
+          transform: width.canTranslate && panel ? `translate(-${width.translate}px)` : 'translate(0)',
+        }}
       >
         <Svg
           closeContextMenu={this.closeContextMenu}
@@ -187,6 +225,7 @@ SvgContainer.propTypes = {
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
   }).isRequired,
+  panel: PropTypes.bool.isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   setDimensions: PropTypes.func.isRequired,
   setReference: PropTypes.func.isRequired,
@@ -197,6 +236,7 @@ SvgContainer.propTypes = {
 const mapStateToProps = state => ({
   cellSize: SettingSelector(state, 'cellSize'),
   columns: ColumnsSelector(state),
+  panel: PanelSelector(state),
   rows: RowNameSelector(state),
 });
 

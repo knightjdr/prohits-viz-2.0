@@ -27,6 +27,7 @@ export class PlotContainer extends Component {
       edgeColor,
       fillColor,
       imageType,
+      invertColor,
       minAbundance,
       rows,
       position,
@@ -36,7 +37,7 @@ export class PlotContainer extends Component {
     } = this.props;
     this.edgeGradient = ColorGradient(edgeColor, NUM_COLORS, false);
     this.edgeRange = SetEdgeRange(primaryFilter, secondaryFilter, scoreType, 0, NUM_COLORS - 1);
-    this.fillGradient = ColorGradient(fillColor, NUM_COLORS, false);
+    this.fillGradient = ColorGradient(fillColor, NUM_COLORS, invertColor);
     this.fillRange = SetRange(minAbundance, abundanceCap, 0, NUM_COLORS - 1);
     this.getPage = GetPage(imageType);
     this.state = {
@@ -57,7 +58,7 @@ export class PlotContainer extends Component {
     this.updateEdgeGradient(nextProps, this.props.edgeColor);
     this.updateEdgeRange(nextProps, this.props.primaryFilter, this.props.secondaryFilter);
     this.updateEdgeSize(nextProps, this.props.cellSize);
-    this.updateFillGradient(nextProps, this.props.fillColor);
+    this.updateFillGradient(nextProps, this.props.fillColor, this.props.invertColor);
     this.updateFillRange(nextProps, this.props.minAbundance, this.props.abundanceCap);
     this.updateImageType(nextProps, this.props.imageType);
     this.updatePage(
@@ -65,6 +66,38 @@ export class PlotContainer extends Component {
       this.props.position,
       this.props.dimensions,
       this.props.sortInfo.id,
+    );
+  }
+  shouldComponentUpdate(nextProps) {
+    const {
+      abundanceCap,
+      cellSize,
+      dimensions,
+      edgeColor,
+      fillColor,
+      imageType,
+      invertColor,
+      minAbundance,
+      position,
+      primaryFilter,
+      secondaryFilter,
+      sortInfo,
+    } = nextProps;
+    return (
+      abundanceCap !== this.props.abundanceCap ||
+      cellSize !== this.props.cellSize ||
+      dimensions.pageX !== this.props.dimensions.pageX ||
+      dimensions.pageY !== this.props.dimensions.pageY ||
+      edgeColor !== this.props.edgeColor ||
+      fillColor !== this.props.fillColor ||
+      imageType !== this.props.imageType ||
+      invertColor !== this.props.invertColor ||
+      minAbundance !== this.props.minAbundance ||
+      position.x !== this.props.position.x ||
+      position.y !== this.props.position.y ||
+      primaryFilter !== this.props.primaryFilter ||
+      secondaryFilter !== this.props.secondaryFilter ||
+      sortInfo.id !== this.props.sortInfo.id
     );
   }
   setEdgeSize = cellSize => (
@@ -132,11 +165,15 @@ export class PlotContainer extends Component {
     cellSize,
     dimensions,
     fillColor,
+    invertColor,
     position,
     rows,
-  }, prevFillColor) => {
-    if (fillColor !== prevFillColor) {
-      this.fillGradient = ColorGradient(fillColor, NUM_COLORS, false);
+  }, prevFillColor, prevInvertColor) => {
+    if (
+      fillColor !== prevFillColor ||
+      invertColor !== prevInvertColor
+    ) {
+      this.fillGradient = ColorGradient(fillColor, NUM_COLORS, invertColor);
       this.setState({
         page: this.getPage(
           rows,
@@ -251,6 +288,7 @@ PlotContainer.propTypes = {
   edgeColor: PropTypes.string.isRequired,
   fillColor: PropTypes.string.isRequired,
   imageType: PropTypes.string.isRequired,
+  invertColor: PropTypes.bool.isRequired,
   minAbundance: PropTypes.number.isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
@@ -282,6 +320,7 @@ const mapStateToProps = state => ({
   edgeColor: SettingSelector(state, 'edgeColor'),
   fillColor: SettingSelector(state, 'fillColor'),
   imageType: SettingSelector(state, 'imageType'),
+  invertColor: SettingSelector(state, 'invertColor'),
   minAbundance: SettingSelector(state, 'minAbundance'),
   position: PositionSelector(state),
   primaryFilter: SettingSelector(state, 'primaryFilter'),

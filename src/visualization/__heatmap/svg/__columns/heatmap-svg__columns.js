@@ -36,7 +36,7 @@ const Columns = ({
               onClick={(e) => { sortRows(e.shiftKey, name.original); }}
               onContextMenu={(e) => { openContextMenu(e, name.original); }}
               onMouseEnter={(e) => {
-                toggleTooltip(name.trimmed, true, name.original, e.clientX, 50);
+                toggleTooltip(name.trimmed, true, name.original, e.clientX, 0);
               }}
               onMouseLeave={() => { toggleTooltip(name.trimmed, false, name.original); }}
               textAnchor="end"

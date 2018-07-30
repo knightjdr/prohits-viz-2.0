@@ -6,32 +6,37 @@ const emptyState = {
   news: [],
   spotlight: [],
 };
-const stateWithData = {
-  isLoaded: true,
-  news: ['a', 'b'],
-  spotlight: ['a', 'b'],
-};
 const testResponse = {
   news: ['a', 'b'],
   spotlight: ['a', 'b'],
 };
 
-describe('home reducer', () => {
+describe('Home reducer', () => {
   it('should return the initial state', () => {
-    expect(HomeReducer(undefined, {})).toEqual(emptyState);
+    const action = {};
+    const expectedState = emptyState;
+    expect(HomeReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle FILL_HOME', () => {
-    expect(HomeReducer(undefined, {
+  it('should handle FILL_HOME action', () => {
+    const action = {
       data: testResponse,
       type: actions.FILL_HOME,
-    })).toEqual(stateWithData);
+    };
+    const expectedState = {
+      isLoaded: true,
+      news: ['a', 'b'],
+      spotlight: ['a', 'b'],
+    };
+    expect(HomeReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle missing action', () => {
-    expect(HomeReducer(undefined, {
+    const action = {
       data: testResponse,
       type: null,
-    })).toEqual(emptyState);
+    };
+    const expectedState = emptyState;
+    expect(HomeReducer(undefined, action)).toEqual(expectedState);
   });
 });

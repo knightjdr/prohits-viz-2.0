@@ -4,7 +4,7 @@
 .heatmap-svg__arrows {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   transform-origin: bottom right;
   width: auto;
 }

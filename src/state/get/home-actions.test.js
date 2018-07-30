@@ -18,34 +18,46 @@ describe('Home actions', () => {
     fetchMock.restore();
   });
 
-  it('should create an action to fill home state', () => {
+  it('should dispatch an action to fill home state', () => {
+    const action = data.success;
     const expectedAction = {
       data: data.success,
       type: actions.FILL_HOME,
     };
-    expect(actions.fillHome(data.success)).toEqual(expectedAction);
+    expect(actions.fillHome(action)).toEqual(expectedAction);
   });
 
-  it('no actions called if state already loaded', () => {
+  it('should not dispatch an action if state already loaded', () => {
     const store = mockStore({ home: { isLoaded: true } });
     expect(store.dispatch(FetchHome())).toBeNull();
   });
 
-  it('calls fill action if the fetch response was successful', () => {
-    fetchMock.getOnce('*', { body: data.success });
-    const store = mockStore({ home: data.initial });
-    return store.dispatch(FetchHome())
-      .then(() => {
-        const expectedActions = store.getActions();
-        expect(expectedActions.length).toBe(1);
-        expect(expectedActions).toContainEqual({
-          data: data.success,
-          type: actions.FILL_HOME,
+  describe('on successful fetch response', () => {
+    let expectedActions;
+    let store;
+    beforeAll(async (done) => {
+      fetchMock.getOnce('*', { body: data.success });
+      store = mockStore({ home: data.initial });
+      store.dispatch(FetchHome())
+        .then(() => {
+          expectedActions = store.getActions();
+          done();
         });
+    });
+
+    it('should dispatch a single action', () => {
+      expect(expectedActions.length).toBe(1);
+    });
+
+    it('should dispatch fill action', () => {
+      expect(expectedActions).toContainEqual({
+        data: data.success,
+        type: actions.FILL_HOME,
       });
+    });
   });
 
-  it('no actions called if fetch response was unsuccessful', () => {
+  it('should not dispatch an action if fetch response was unsuccessful', () => {
     fetchMock.getOnce('*', { status: 400 }, { overwriteRoutes: true });
     const store = mockStore({ home: data.initial });
     return store.dispatch(FetchHome())

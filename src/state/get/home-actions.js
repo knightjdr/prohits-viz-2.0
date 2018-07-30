@@ -8,16 +8,16 @@ export const fillHome = data => ({
 // thunks
 const fetchHome = () => (
   (dispatch, getState) => {
-    // if we already have the home page news, do nothing
+    // If we already have the home page news, do nothing.
     if (getState().home.isLoaded) {
       return null;
     }
-    // set headers
+    // Set headers.
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     const url = `${process.env.REACT_APP_API_ROOT}/home/`;
-    // fetch and handle response
-    // since this is just loading optional home page info, do nothing on error
+    /* Fetch and handle response. Since this is just loading optional
+    ** home page info, do nothing on error. */
     return fetch(url, {
       cache: 'no-store',
       headers,

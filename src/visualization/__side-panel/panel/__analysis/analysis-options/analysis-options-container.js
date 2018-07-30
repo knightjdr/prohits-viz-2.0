@@ -6,7 +6,7 @@ class AnalysisOptionsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: 'go',
+      type: undefined,
     };
   }
   handleType = (type) => {

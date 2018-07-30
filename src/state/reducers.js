@@ -14,6 +14,7 @@ import minimap from './set/visualization/map-reducer';
 import news from './get/news-reducer';
 import newsItem from './get/news-item-reducer';
 import newsPage from './set/news-page-reducer';
+import panel from './set/visualization/panel-reducer';
 import parameters from './set/visualization/params-reducer';
 import position from './set/visualization/position-reducer';
 import rows from './set/visualization/rows-reducer';
@@ -35,6 +36,7 @@ const Reducers = combineReducers({
   news,
   newsItem,
   newsPage,
+  panel,
   parameters,
   position,
   rows,
