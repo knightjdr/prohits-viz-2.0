@@ -25,12 +25,14 @@ const Annotation = ({
   move,
   record,
   searchTerm,
+  show,
   showAnnotationPicker,
   showMarkerPicker,
   toggleAnnotationColorPicker,
   toggleMarkerColorPicker,
   toggleMove,
   toggleRecord,
+  toggleShow,
   updateAnnotation,
   updateSearchTerm,
 }) => (
@@ -47,9 +49,11 @@ const Annotation = ({
       closeAnnotationColorPicker={closeAnnotationColorPicker}
       handleAnnotationColor={handleAnnotationColor}
       move={move}
+      show={show}
       showAnnotationPicker={showAnnotationPicker}
       toggleAnnotationColorPicker={toggleAnnotationColorPicker}
       toggleMove={toggleMove}
+      toggleShow={toggleShow}
       updateAnnotation={updateAnnotation}
     />
     <div className="panel__border" />
@@ -85,6 +89,7 @@ Annotation.defaultProps = {
   markerColor: '#000000',
   move: false,
   record: false,
+  show: false,
 };
 
 Annotation.propTypes = {
@@ -105,12 +110,14 @@ Annotation.propTypes = {
   move: PropTypes.bool,
   record: PropTypes.bool,
   searchTerm: PropTypes.string.isRequired,
+  show: PropTypes.bool,
   showAnnotationPicker: PropTypes.bool.isRequired,
   showMarkerPicker: PropTypes.bool.isRequired,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
   toggleMarkerColorPicker: PropTypes.func.isRequired,
   toggleMove: PropTypes.func.isRequired,
   toggleRecord: PropTypes.func.isRequired,
+  toggleShow: PropTypes.func.isRequired,
   updateAnnotation: PropTypes.func.isRequired,
   updateSearchTerm: PropTypes.func.isRequired,
 };

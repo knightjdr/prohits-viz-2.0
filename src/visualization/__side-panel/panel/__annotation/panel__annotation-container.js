@@ -12,6 +12,7 @@ import {
   clearAllAnnotations,
   clearLastAnnotation,
   setAnnotationColor,
+  toggleAnnotations,
   toggleMoveAnnotation,
 } from '../../../../state/set/visualization/annotation-actions';
 import {
@@ -91,12 +92,14 @@ export class AnnotationContainer extends Component {
         move={this.props.annotations.move}
         record={this.props.markers.record}
         searchTerm={this.props.search.term}
+        show={this.props.annotations.show}
         showAnnotationPicker={this.state.showAnnotationPicker}
         showMarkerPicker={this.state.showMarkerPicker}
         toggleAnnotationColorPicker={this.toggleAnnotationColorPicker}
         toggleMarkerColorPicker={this.toggleMarkerColorPicker}
         toggleMove={this.props.toggleMoveAnnotation}
         toggleRecord={this.props.toggleRecordMarker}
+        toggleShow={this.props.toggleAnnotations}
         updateAnnotation={this.updateAnnotation}
         updateSearchTerm={this.props.setSearchTerm}
       />
@@ -108,6 +111,7 @@ AnnotationContainer.propTypes = {
   annotations: PropTypes.shape({
     color: PropTypes.string,
     move: PropTypes.bool,
+    show: PropTypes.bool,
   }).isRequired,
   addAnnotation: PropTypes.func.isRequired,
   clearAllAnnotations: PropTypes.func.isRequired,
@@ -129,6 +133,7 @@ AnnotationContainer.propTypes = {
   setAnnotationColor: PropTypes.func.isRequired,
   setMarkerColor: PropTypes.func.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
+  toggleAnnotations: PropTypes.func.isRequired,
   toggleMoveAnnotation: PropTypes.func.isRequired,
   toggleRecordMarker: PropTypes.func.isRequired,
 };
@@ -169,6 +174,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setSearchTerm: (term) => {
     dispatch(setSearchTerm(term));
+  },
+  toggleAnnotations: () => {
+    dispatch(toggleAnnotations());
   },
   toggleMoveAnnotation: () => {
     dispatch(toggleMoveAnnotation());

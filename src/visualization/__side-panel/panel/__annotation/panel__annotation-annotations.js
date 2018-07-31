@@ -37,9 +37,11 @@ const Annotations = ({
   closeAnnotationColorPicker,
   handleAnnotationColor,
   move,
+  show,
   showAnnotationPicker,
   toggleAnnotationColorPicker,
   toggleMove,
+  toggleShow,
   updateAnnotation,
 }) => (
   <div className="panel__annotation-annotations">
@@ -77,6 +79,15 @@ const Annotations = ({
         <Switch
           checked={move}
           onChange={toggleMove}
+        />
+      </div>
+      <div>
+        Show
+      </div>
+      <div>
+        <Switch
+          checked={show}
+          onChange={toggleShow}
         />
       </div>
       <div>
@@ -130,9 +141,11 @@ Annotations.propTypes = {
   closeAnnotationColorPicker: PropTypes.func.isRequired,
   handleAnnotationColor: PropTypes.func.isRequired,
   move: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired,
   showAnnotationPicker: PropTypes.bool.isRequired,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
   toggleMove: PropTypes.func.isRequired,
+  toggleShow: PropTypes.func.isRequired,
   updateAnnotation: PropTypes.func.isRequired,
 };
 

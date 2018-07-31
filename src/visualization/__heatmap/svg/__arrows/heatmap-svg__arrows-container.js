@@ -53,14 +53,14 @@ export class ArrowsContainer extends Component {
   setPosition = (direction, height, width) => (
     direction === 'horizontal' ?
       {
-        bottom: 0,
+        bottom: -5,
         right: ((window.innerWidth - 50) - width.wrapper) / 2,
         transform: 'rotate(-90deg)',
       }
       :
       {
         bottom: height.wrapper - height.heatmap - 100,
-        right: (((window.innerWidth - 50) - width.wrapper) / 2) - 25,
+        right: (((window.innerWidth - 50) - width.wrapper) / 2) - 35,
         transform: null,
       }
   )
