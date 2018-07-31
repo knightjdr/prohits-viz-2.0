@@ -8,7 +8,8 @@ import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import { toggleAnnotations } from '../../../../state/set/visualization/map-actions';
+import { syncMap } from '../../../../state/set/visualization/map-actions';
+import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class MapContainer extends Component {
@@ -21,6 +22,7 @@ export class MapContainer extends Component {
     };
   }
   componentWillReceiveProps = (nextProps) => {
+    this.updateMarkers(nextProps, this.props.markers);
     this.updateRange(nextProps, this.props.dimensions, this.props.position);
   }
   setRange = (dimensions, position) => ({
@@ -74,6 +76,13 @@ export class MapContainer extends Component {
     y = Math.round(y * rows);
     this.props.updatePosition(x, y);
   }
+  updateMarkers = ({ dimensions, markers }, prevMarkers) => {
+    if (markers.list.length !== prevMarkers.list.length) {
+      this.setState({
+        markers: this.convertMarkers(dimensions, markers),
+      });
+    }
+  }
   updateRange = ({ dimensions, position }, prevDimensions, prevPosition) => {
     if (
       dimensions.pageX !== prevDimensions.pageX ||
@@ -91,11 +100,16 @@ export class MapContainer extends Component {
       <Map
         annotations={this.props.annotations}
         dimensions={this.props.dimensions}
+        isSyncing={this.props.minimap.isSyncing}
         markers={this.state.markers}
         minimap={this.props.minimap.image}
         navigatePosition={this.navigatePosition}
         rangeBox={this.state.rangeBox}
-        showAnnotations={this.props.minimap.showAnnotations}
+        showAnnotations={this.props.annotations.show}
+        synced={this.props.minimap.synced}
+        syncError={this.props.minimap.synced}
+        syncImage={this.props.minimap.syncImage}
+        syncMap={this.props.syncMap}
         toggleAnnotations={this.props.toggleAnnotations}
       />
     );
@@ -103,7 +117,9 @@ export class MapContainer extends Component {
 }
 
 MapContainer.propTypes = {
-  annotations: PropTypes.shape({}).isRequired,
+  annotations: PropTypes.shape({
+    show: PropTypes.bool,
+  }).isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     pageX: PropTypes.number,
@@ -113,12 +129,16 @@ MapContainer.propTypes = {
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.shape({
     image: PropTypes.string,
-    showAnnotations: PropTypes.bool,
+    isSyncing: PropTypes.bool,
+    synced: PropTypes.bool,
+    syncError: PropTypes.bool,
+    syncImage: PropTypes.string,
   }).isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
@@ -134,6 +154,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  syncMap: () => {
+    dispatch(syncMap());
+  },
   toggleAnnotations: () => {
     dispatch(toggleAnnotations());
   },

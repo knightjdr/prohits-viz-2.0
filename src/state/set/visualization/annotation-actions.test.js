@@ -29,6 +29,13 @@ describe('Visualization annotation set actions', () => {
     expect(actions.setAnnotationColor('#000000')).toEqual(expectedAction);
   });
 
+  it('should dispatch an action to toggle annotations', () => {
+    const expectedAction = {
+      type: actions.TOGGLE_ANNOTATIONS,
+    };
+    expect(actions.toggleAnnotations()).toEqual(expectedAction);
+  });
+
   it('should dispatch an action to toggle moving annotations', () => {
     const expectedAction = {
       type: actions.TOGGLE_MOVE_ANNOTATION,

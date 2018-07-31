@@ -1,6 +1,15 @@
 import Deepcopy from '../../../helpers/deep-copy';
 
+export const RESTORE_ROWS = 'RESTORE_ROWS';
 export const UPDATE_ROWS = 'UPDATE_ROWS';
+
+export const restoreRows = (direction, list, sortBy, id) => ({
+  direction,
+  id,
+  list,
+  sortBy,
+  type: RESTORE_ROWS,
+});
 
 export const updateRows = (direction, list, sortBy, id) => ({
   direction,
@@ -26,7 +35,7 @@ export const sortDefault = () => (
 
     // Create or update ID.
     const newId = id ? id + 1 : 1;
-    dispatch(updateRows(null, sortedList, null, newId));
+    dispatch(restoreRows(null, sortedList, null, newId));
   }
 );
 

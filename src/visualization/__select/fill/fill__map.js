@@ -5,7 +5,8 @@ const Map = (userMap) => {
 
   const {
     image,
-    showAnnotations,
+    synced,
+    syncImage,
   } = userMap;
 
   // Confirm data uri exists and is valid.
@@ -13,10 +14,14 @@ const Map = (userMap) => {
     image
     :
     null;
-  minimap.showAnnotations = typeof showAnnotations === 'boolean' ?
-    showAnnotations
+
+  // Confirm data uri exists and is valid.
+  minimap.syncImage = syncImage && ValidateUri(syncImage) ?
+    syncImage
     :
-    false;
+    null;
+
+  minimap.synced = typeof synced === 'boolean' ? synced : true;
   return minimap;
 };
 export default Map;

@@ -2,6 +2,7 @@ export const ADD_ANNOTATION = 'ADD_ANNOTATION';
 export const CLEAR_ALL_ANNOTATIONS = 'CLEAR_ALL_ANNOTATIONS';
 export const CLEAR_LAST_ANNOTATION = 'CLEAR_LAST_ANNOTATION';
 export const SET_ANNOTATION_COLOR = 'SET_ANNOTATION_COLOR';
+export const TOGGLE_ANNOTATIONS = 'TOGGLE_ANNOTATIONS';
 export const TOGGLE_MOVE_ANNOTATION = 'TOGGLE_MOVE_ANNOTATION';
 
 export const addAnnotation = (text, x, y) => ({
@@ -22,6 +23,10 @@ export const clearLastAnnotation = () => ({
 export const setAnnotationColor = color => ({
   color,
   type: SET_ANNOTATION_COLOR,
+});
+
+export const toggleAnnotations = () => ({
+  type: TOGGLE_ANNOTATIONS,
 });
 
 export const toggleMoveAnnotation = () => ({

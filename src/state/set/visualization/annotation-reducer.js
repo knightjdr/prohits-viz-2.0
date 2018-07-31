@@ -6,6 +6,7 @@ import {
   CLEAR_ALL_ANNOTATIONS,
   CLEAR_LAST_ANNOTATION,
   SET_ANNOTATION_COLOR,
+  TOGGLE_ANNOTATIONS,
   TOGGLE_MOVE_ANNOTATION,
 } from './annotation-actions';
 
@@ -13,6 +14,7 @@ const Annotations = (state = {
   color: '#f44336',
   list: [],
   move: false,
+  show: false,
 }, action) => {
   let newList;
   switch (action.type) {
@@ -38,6 +40,7 @@ const Annotations = (state = {
         color: '#f44336',
         list: [],
         move: false,
+        show: false,
       };
     case CLEAR_LAST_ANNOTATION:
       newList = DeepCopy(state.list);
@@ -51,12 +54,20 @@ const Annotations = (state = {
         color: action.file.annotations.color,
         list: DeepCopy(action.file.annotations.list),
         move: action.file.annotations.move,
+        show: false,
       };
     case SET_ANNOTATION_COLOR:
       return {
         ...state,
         ...{
           color: action.color,
+        },
+      };
+    case TOGGLE_ANNOTATIONS:
+      return {
+        ...state,
+        ...{
+          show: !state.show,
         },
       };
     case TOGGLE_MOVE_ANNOTATION:

@@ -17,6 +17,7 @@ describe('Annotation selector', () => {
             y: 60,
           },
         ],
+        show: false,
       },
     };
     expect(AnnotationSelector(state)).toEqual(state.annotations);

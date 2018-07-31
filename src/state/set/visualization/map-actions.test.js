@@ -1,10 +1,25 @@
 import * as actions from './map-actions';
 
-describe('Visualization map set actions', () => {
-  it('should dispatch an action to toggle annotations', () => {
+describe('Map set actions', () => {
+  it('should dispatch an action that the map is synched', () => {
     const expectedAction = {
-      type: actions.TOGGLE_ANNOTATIONS,
+      syncImage: 'image',
+      type: actions.MAP_SYNCHED,
     };
-    expect(actions.toggleAnnotations()).toEqual(expectedAction);
+    expect(actions.mapSynced('image')).toEqual(expectedAction);
+  });
+
+  it('should dispatch an action that the map is synchronizing', () => {
+    const expectedAction = {
+      type: actions.MAP_SYNCHRONIZING,
+    };
+    expect(actions.synchronizeMap()).toEqual(expectedAction);
+  });
+
+  it('should dispatch an action that the synchronizing gave an error', () => {
+    const expectedAction = {
+      type: actions.SYNC_ERROR,
+    };
+    expect(actions.synchError()).toEqual(expectedAction);
   });
 });

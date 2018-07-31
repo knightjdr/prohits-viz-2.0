@@ -63,7 +63,7 @@ export class ColumnsContainer extends Component {
   updatePage = (x, prevX, pageX, prevPageX, names) => {
     if (x !== prevX || pageX !== prevPageX) {
       this.setState(({ fontSize }) => ({
-        names: this.checkRowSize(
+        names: this.checkColumnSize(
           this.getPage(names, x, pageX),
           fontSize,
         ),

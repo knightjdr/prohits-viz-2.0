@@ -1,25 +1,59 @@
+import * as actions from './map-actions';
 import * as fileActions from '../interactive-file-actions';
-
-import { TOGGLE_ANNOTATIONS } from './map-actions';
+import * as rowActions from './rows-actions';
 
 const defaultState = {
   image: null,
-  showAnnotations: false,
+  isSyncing: false,
+  synced: true,
+  syncError: false,
+  syncImage: null,
 };
 
 const Map = (state = { ...defaultState }, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return { ...defaultState };
-    case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        image: action.file.minimap.image,
-        showAnnotations: action.file.minimap.showAnnotations,
-      };
-    case TOGGLE_ANNOTATIONS:
+    case actions.MAP_SYNCHED:
       return {
         ...state,
-        showAnnotations: !state.showAnnotations,
+        isSyncing: false,
+        synced: true,
+        syncError: false,
+        syncImage: action.syncImage,
+      };
+    case actions.MAP_SYNCHRONIZING:
+      return {
+        ...state,
+        isSyncing: true,
+        synced: false,
+        syncError: false,
+      };
+    case fileActions.PARSE_INTERACTIVE_FILE:
+      return {
+        ...defaultState,
+        image: action.file.minimap.image,
+        synced: action.file.minimap.synced,
+        syncImage: action.file.minimap.syncImage,
+      };
+    case rowActions.RESTORE_ROWS:
+      return {
+        ...state,
+        synced: true,
+        syncImage: null,
+      };
+    case actions.SYNC_ERROR:
+      return {
+        ...state,
+        isSyncing: false,
+        synced: false,
+        syncError: true,
+      };
+    case rowActions.UPDATE_ROWS:
+      return {
+        ...state,
+        synced: false,
+        syncImage: null,
       };
     default:
       return state;

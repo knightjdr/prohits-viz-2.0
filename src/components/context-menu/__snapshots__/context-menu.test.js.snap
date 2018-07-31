@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context menu view when rendered hidden should match snapshot 1`] = `
+<OnClickOutside(ClickOutsideWrapper)
+  callback={[Function]}
+  eventTypes={
+    Array [
+      "mousedown",
+      "touchstart",
+    ]
+  }
+  excludeScrollbar={false}
+  outsideClickIgnoreClass="ignore-react-onclickoutside"
+  preventDefault={false}
+  stopPropagation={false}
+>
+  <div
+    className="context-menu"
+    style={
+      Object {
+        "height": "auto",
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "top": 0,
+        "visibility": "hidden",
+      }
+    }
+  >
+    <div
+      className="child"
+    />
+  </div>
+</OnClickOutside(ClickOutsideWrapper)>
+`;
+
+exports[`Context menu view when rendered visible should match snapshot 1`] = `
+<OnClickOutside(ClickOutsideWrapper)
+  callback={[Function]}
+  eventTypes={
+    Array [
+      "mousedown",
+      "touchstart",
+    ]
+  }
+  excludeScrollbar={false}
+  outsideClickIgnoreClass="ignore-react-onclickoutside"
+  preventDefault={false}
+  stopPropagation={false}
+>
+  <div
+    className="context-menu"
+    style={
+      Object {
+        "height": "auto",
+        "left": 0,
+        "opacity": 1,
+        "pointerEvents": "auto",
+        "top": 0,
+        "visibility": "visible",
+      }
+    }
+  >
+    <div
+      className="child"
+    />
+  </div>
+</OnClickOutside(ClickOutsideWrapper)>
+`;

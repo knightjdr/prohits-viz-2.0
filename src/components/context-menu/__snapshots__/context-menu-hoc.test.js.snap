@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context menu HOC should create wrapper component and match snapshot 1`] = `
+<_ContextMenu
+  closeMenu={[Function]}
+  event={
+    Object {
+      "clientX": 0,
+      "clientY": 0,
+    }
+  }
+  show={true}
+>
+  <ContextMenu
+    closeMenu={[Function]}
+    height="auto"
+    left={0}
+    setRef={
+      Object {
+        "current": <div
+          class="context-menu-mock-wrapper"
+      >
+          <div
+              class="child"
+          />
+      </div>,
+      }
+    }
+    show={true}
+    top={0}
+  >
+    <div
+      className="context-menu-mock-wrapper"
+    >
+      <component
+        closeMenu={[Function]}
+        event={
+          Object {
+            "clientX": 0,
+            "clientY": 0,
+          }
+        }
+        show={true}
+      >
+        <div
+          className="child"
+        />
+      </component>
+    </div>
+  </ContextMenu>
+</_ContextMenu>
+`;

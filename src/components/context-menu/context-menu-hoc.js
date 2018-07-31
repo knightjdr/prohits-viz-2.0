@@ -7,13 +7,20 @@ const ContextMenu = (WrappedComponent) => {
   class _ContextMenu extends Component {
     constructor(props) {
       super(props);
-      const { event, show } = this.props;
+      const { show } = this.props;
       this.menuRef = React.createRef();
       this.state = {
         height: show ? 'auto' : 0,
-        left: show ? this.setLeft(event) : 0,
-        top: show ? this.setTop(event) : 0,
+        left: 0,
+        top: 0,
       };
+    }
+    componentDidMount = () => {
+      const { event, show } = this.props;
+      this.setState({
+        left: show ? this.setLeft(event.clientX) : 0,
+        top: show ? this.setTop(event.clientY) : 0,
+      });
     }
     componentWillReceiveProps = (nextProps) => {
       this.updateMenu(nextProps, this.props.show);

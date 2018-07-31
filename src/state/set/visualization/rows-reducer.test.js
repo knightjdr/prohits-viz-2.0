@@ -58,6 +58,30 @@ describe('Rows set reducer', () => {
     expect(RowsReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it('should handle RESTORE_ROWS action', () => {
+    const list = [
+      { data: {}, name: 'a' },
+      { data: {}, name: 'b' },
+      { data: {}, name: 'c' },
+    ];
+    DeepCopy.mockReturnValue(list);
+    const action = {
+      direction: null,
+      id: 1,
+      list,
+      sortBy: null,
+      type: actions.RESTORE_ROWS,
+    };
+    const expectedState = {
+      direction: null,
+      id: 1,
+      list,
+      order: [],
+      sortBy: null,
+    };
+    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it('should handle UPDATE_ROWS action', () => {
     const list = [
       { data: {}, name: 'a' },

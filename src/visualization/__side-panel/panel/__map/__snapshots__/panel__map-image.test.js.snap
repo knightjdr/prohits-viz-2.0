@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Minimap image should render with minimap and match snapshot 1`] = `
+<div
+  className="panel__map-inner"
+>
+  <img
+    alt="Mini map"
+    src="map"
+  />
+  <button
+    className="panel__map-select"
+    onClick={[Function]}
+    type="button"
+  >
+    <div
+      className="panel__map-position"
+      style={
+        Object {
+          "height": "20%",
+          "left": "20%",
+          "top": "20%",
+          "width": "20%",
+        }
+      }
+    />
+  </button>
+</div>
+`;

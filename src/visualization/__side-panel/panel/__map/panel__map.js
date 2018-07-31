@@ -2,17 +2,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Switch } from 'antd';
 
-import Annotations from './panel__map-annotations';
+import Image from './panel__map-image';
+import Synced from './panel__map-sync';
 
 import './panel__map.css';
 
 const Map = ({
   annotations,
+  isSyncing,
   markers,
   minimap,
   navigatePosition,
   rangeBox,
   showAnnotations,
+  synced,
+  syncError,
+  syncImage,
+  syncMap,
   toggleAnnotations,
 }) => (
   <div className="panel">
@@ -20,31 +26,25 @@ const Map = ({
       Mini map
     </div>
     <div className="panel__map">
-      <div className="panel__map-inner">
-        <img
-          alt="Mini map"
-          src={minimap}
-        />
-        <button
-          className="panel__map-select"
-          onClick={navigatePosition}
-          type="button"
-        >
-          <div
-            className="panel__map-position"
-            style={rangeBox}
+      {
+        synced && (minimap || syncImage) ?
+          <Image
+            annotations={annotations}
+            minimap={minimap}
+            navigatePosition={navigatePosition}
+            rangeBox={rangeBox}
+            showAnnotations={showAnnotations}
+            syncImage={syncImage}
+            markers={markers}
           />
-          {
-            showAnnotations &&
-            (
-              <Annotations
-                annotations={annotations}
-                markers={markers}
-              />
-            )
-          }
-        </button>
-      </div>
+          :
+          <Synced
+            minimap={minimap}
+            isSyncing={isSyncing}
+            syncError={syncError}
+            syncMap={syncMap}
+          />
+      }
     </div>
     <div className="panel__map-switch">
       <div>
@@ -61,10 +61,12 @@ const Map = ({
 Map.defaultProps = {
   minimap: null,
   showAnnotations: false,
+  syncImage: null,
 };
 
 Map.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
+  isSyncing: PropTypes.bool.isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
   navigatePosition: PropTypes.func.isRequired,
@@ -75,6 +77,10 @@ Map.propTypes = {
     width: PropTypes.string,
   }).isRequired,
   showAnnotations: PropTypes.bool,
+  synced: PropTypes.bool.isRequired,
+  syncError: PropTypes.bool.isRequired,
+  syncImage: PropTypes.string,
+  syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
 };
 

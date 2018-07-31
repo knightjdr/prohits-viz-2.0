@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 import Deepcopy from '../../../helpers/deep-copy';
 import {
+  RESTORE_ROWS,
   sortDefault,
   sortMethod,
   sortPairByLocale,
@@ -77,7 +78,7 @@ describe('Default row sort', () => {
         id: 1,
         list: sortedRows,
         sortBy: null,
-        type: UPDATE_ROWS,
+        type: RESTORE_ROWS,
       });
     });
   });
@@ -111,7 +112,7 @@ describe('Default row sort', () => {
         id: 2,
         list: sortedRows,
         sortBy: null,
-        type: UPDATE_ROWS,
+        type: RESTORE_ROWS,
       });
     });
   });

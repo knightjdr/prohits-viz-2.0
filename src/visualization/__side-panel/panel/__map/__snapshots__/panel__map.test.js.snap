@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map panel should render with annotations 1`] = `
+exports[`Map panel should render when in sync and match snapshot 1`] = `
 <div
   className="panel"
 >
@@ -12,41 +12,15 @@ exports[`Map panel should render with annotations 1`] = `
   <div
     className="panel__map"
   >
-    <div
-      className="panel__map-inner"
-    >
-      <img
-        alt="Mini map"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-      />
-      <Annotations
-        annotations={
-          Object {
-            "color": "#0000ff",
-            "list": Array [
-              Object {
-                "text": "a",
-                "x": 0.1,
-                "y": 0.2,
-              },
-            ],
-          }
-        }
-        markers={
-          Object {
-            "color": "#000000",
-            "list": Array [
-              Object {
-                "height": 0.1,
-                "width": 0.1,
-                "x": 0.1,
-                "y": 0.1,
-              },
-            ],
-          }
-        }
-      />
-    </div>
+    <Image
+      annotations={Object {}}
+      markers={Object {}}
+      minimap="image"
+      navigatePosition={[Function]}
+      rangeBox={Object {}}
+      showAnnotations={false}
+      syncImage={null}
+    />
   </div>
   <div
     className="panel__map-switch"
@@ -55,7 +29,7 @@ exports[`Map panel should render with annotations 1`] = `
       Annotations:
     </div>
     <Switch
-      checked={true}
+      checked={false}
       onChange={[Function]}
       prefixCls="ant-switch"
     />
@@ -63,7 +37,7 @@ exports[`Map panel should render with annotations 1`] = `
 </div>
 `;
 
-exports[`Map panel should render without annotations 1`] = `
+exports[`Map panel should render when not in sync and match snapshot 1`] = `
 <div
   className="panel"
 >
@@ -75,19 +49,12 @@ exports[`Map panel should render without annotations 1`] = `
   <div
     className="panel__map"
   >
-    <div
-      className="panel__map-inner"
-    >
-      <img
-        alt="Mini map"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
-      />
-      <button
-        className="panel__map-select"
-        onClick={[Function]}
-        type="button"
-      />
-    </div>
+    <Synced
+      isSyncing={false}
+      minimap="image"
+      syncError={false}
+      syncMap={[Function]}
+    />
   </div>
   <div
     className="panel__map-switch"
