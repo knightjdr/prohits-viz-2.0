@@ -1,12 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Marker component on annotation panel should render 1`] = `
+exports[`Marker component on annotation panel should render and match snapshot 1`] = `
 <div
   className="panel__annotation-markers"
 >
   <div
     className="panel__annotation-markers-inner"
   >
+    <div>
+      Show markers
+    </div>
+    <div>
+      <Switch
+        checked={true}
+        onChange={[Function]}
+        prefixCls="ant-switch"
+      />
+    </div>
     <div>
       Record selections
     </div>
@@ -173,13 +183,23 @@ exports[`Marker component on annotation panel should render 1`] = `
 </div>
 `;
 
-exports[`Marker component on annotation panel should render with record toggle on and color picker rendered 1`] = `
+exports[`Marker component on annotation panel should render with color picker and toggles on and match snapshot 1`] = `
 <div
   className="panel__annotation-markers"
 >
   <div
     className="panel__annotation-markers-inner"
   >
+    <div>
+      Show markers
+    </div>
+    <div>
+      <Switch
+        checked={true}
+        onChange={[Function]}
+        prefixCls="ant-switch"
+      />
+    </div>
     <div>
       Record selections
     </div>

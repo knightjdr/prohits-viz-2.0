@@ -25,12 +25,14 @@ const Annotation = ({
   handleSearch,
   markerColor,
   record,
-  searchTerm,
+  search,
   show,
   showAnnotationPicker,
   showMarkerPicker,
+  showMarkers,
   toggleAnnotationColorPicker,
   toggleMarkerColorPicker,
+  toggleMarkers,
   toggleRecord,
   toggleShow,
   updateAnnotation,
@@ -68,7 +70,9 @@ const Annotation = ({
       markerColor={markerColor}
       record={record}
       showMarkerPicker={showMarkerPicker}
+      showMarkers={showMarkers}
       toggleMarkerColorPicker={toggleMarkerColorPicker}
+      toggleMarkers={toggleMarkers}
       toggleRecord={toggleRecord}
     />
     <div className="panel__border" />
@@ -78,7 +82,7 @@ const Annotation = ({
     <Search
       clearSearch={clearSearch}
       handleSearch={handleSearch}
-      searchTerm={searchTerm}
+      search={search}
       updateSearchTerm={updateSearchTerm}
     />
   </div>
@@ -89,6 +93,7 @@ Annotation.defaultProps = {
   markerColor: '#000000',
   record: false,
   show: true,
+  showMarkers: true,
 };
 
 Annotation.propTypes = {
@@ -109,12 +114,18 @@ Annotation.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   markerColor: PropTypes.string,
   record: PropTypes.bool,
-  searchTerm: PropTypes.string.isRequired,
+  search: PropTypes.shape({
+    match: PropTypes.bool,
+    search: PropTypes.bool,
+    term: PropTypes.string,
+  }).isRequired,
   show: PropTypes.bool,
   showAnnotationPicker: PropTypes.bool.isRequired,
   showMarkerPicker: PropTypes.bool.isRequired,
+  showMarkers: PropTypes.bool,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
   toggleMarkerColorPicker: PropTypes.func.isRequired,
+  toggleMarkers: PropTypes.func.isRequired,
   toggleRecord: PropTypes.func.isRequired,
   toggleShow: PropTypes.func.isRequired,
   updateAnnotation: PropTypes.func.isRequired,

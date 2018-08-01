@@ -180,12 +180,6 @@ describe('Store', () => {
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles TOGGLE_MOVE_ANNOTATION action', () => {
-      const action = { type: 'TOGGLE_MOVE_ANNOTATION' };
-      store.dispatch(action);
-      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
-    });
-
     it('handles UPDATE_ANNOTATION action', () => {
       const action = { list: [], type: 'UPDATE_ANNOTATION' };
       store.dispatch(action);
@@ -355,6 +349,12 @@ describe('Store', () => {
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
+    it('handles TOGGLE_MARKERS action', () => {
+      const action = { type: 'TOGGLE_MARKERS' };
+      store.dispatch(action);
+      expect(store.getState().markers).toEqual(Marker(undefined, action));
+    });
+
     it('handles TOGGLE_RECORD_MARKER action', () => {
       const action = { type: 'TOGGLE_RECORD_MARKER' };
       store.dispatch(action);
@@ -465,7 +465,19 @@ describe('Store', () => {
     });
 
     it('handles SET_SEARCH_TERM action', () => {
-      const action = { term: 'testTerm', type: 'SET_SEARCH_TERM' };
+      const action = { term: 'test', type: 'SET_SEARCH_TERM' };
+      store.dispatch(action);
+      expect(store.getState().search).toEqual(Search(undefined, action));
+    });
+
+    it('handles SET_SEARCH_RESULTS action', () => {
+      const action = {
+        columns: {},
+        match: false,
+        rows: {},
+        term: 'testTerm',
+        type: 'SET_SEARCH_TERM',
+      };
       store.dispatch(action);
       expect(store.getState().search).toEqual(Search(undefined, action));
     });
@@ -490,7 +502,7 @@ describe('Store', () => {
     });
   });
 
-  describe('dispatching interactive file action:', () => {
+  describe('dispatching interactive file action', () => {
     describe('CLEAR_INTERACTIVE_FILE', () => {
       const action = { type: 'CLEAR_INTERACTIVE_FILE' };
       const store = createStore(Reducers);
@@ -633,6 +645,40 @@ describe('Store', () => {
       it('to rows reducer', () => {
         expect(store.getState().rows).toEqual(Rows(undefined, action));
       });
+    });
+  });
+
+  describe('dispatching TOGGLE_ANNOTATIONS action', () => {
+    const action = { type: 'TOGGLE_ANNOTATIONS' };
+    const store = createStore(Reducers);
+
+    beforeAll(() => {
+      store.dispatch(action);
+    });
+
+    it('to annotation reducer', () => {
+      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    });
+
+    it('to marker reducer', () => {
+      expect(store.getState().markers).toEqual(Marker(undefined, action));
+    });
+  });
+
+  describe('dispatching TOGGLE_RECORD_MARKER action', () => {
+    const action = { type: 'TOGGLE_RECORD_MARKER' };
+    const store = createStore(Reducers);
+
+    beforeAll(() => {
+      store.dispatch(action);
+    });
+
+    it('to annotation reducer', () => {
+      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    });
+
+    it('to marker reducer', () => {
+      expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
   });
 });

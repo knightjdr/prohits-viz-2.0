@@ -5,6 +5,7 @@ import MapPanel from './panel__map';
 
 const navigatePosition = jest.fn();
 const toggleAnnotations = jest.fn();
+const toggleMarkers = jest.fn();
 
 describe('Map panel', () => {
   describe('should render when in sync', () => {
@@ -20,10 +21,12 @@ describe('Map panel', () => {
           navigatePosition={navigatePosition}
           rangeBox={{}}
           showAnnotations={false}
+          showMarkers={false}
           synced
           syncError={false}
           syncMap={jest.fn()}
           toggleAnnotations={toggleAnnotations}
+          toggleMarkers={toggleMarkers}
         />,
       );
     });
@@ -54,11 +57,13 @@ describe('Map panel', () => {
           navigatePosition={navigatePosition}
           rangeBox={{}}
           showAnnotations={false}
+          showMarkers={false}
           synced
           syncError={false}
           syncImage="synced"
           syncMap={jest.fn()}
           toggleAnnotations={toggleAnnotations}
+          toggleMarkers={toggleMarkers}
         />,
       );
     });
@@ -85,10 +90,12 @@ describe('Map panel', () => {
           navigatePosition={navigatePosition}
           rangeBox={{}}
           showAnnotations={false}
+          showMarkers={false}
           synced={false}
           syncError={false}
           syncMap={jest.fn()}
           toggleAnnotations={toggleAnnotations}
+          toggleMarkers={toggleMarkers}
         />,
       );
     });
@@ -116,13 +123,37 @@ describe('Map panel', () => {
         navigatePosition={navigatePosition}
         rangeBox={{}}
         showAnnotations={false}
+        showMarkers={false}
         synced
         syncError={false}
         syncMap={jest.fn()}
         toggleAnnotations={toggleAnnotations}
+        toggleMarkers={toggleMarkers}
       />,
     );
-    wrapper.find('Switch').simulate('change');
+    wrapper.find('Switch').first().simulate('change');
     expect(toggleAnnotations).toHaveBeenCalledTimes(1);
+  });
+
+  it('on clicking switch should trigger toggle markers function', () => {
+    const wrapper = shallow(
+      <MapPanel
+        annotations={{}}
+        isSyncing={false}
+        markers={{}}
+        minimap="image"
+        navigatePosition={navigatePosition}
+        rangeBox={{}}
+        showAnnotations={false}
+        showMarkers={false}
+        synced
+        syncError={false}
+        syncMap={jest.fn()}
+        toggleAnnotations={toggleAnnotations}
+        toggleMarkers={toggleMarkers}
+      />,
+    );
+    wrapper.find('Switch').last().simulate('change');
+    expect(toggleMarkers).toHaveBeenCalledTimes(1);
   });
 });

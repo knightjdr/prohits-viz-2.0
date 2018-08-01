@@ -32,11 +32,22 @@ const Markers = ({
   markerColor,
   record,
   showMarkerPicker,
+  showMarkers,
   toggleMarkerColorPicker,
   toggleRecord,
+  toggleMarkers,
 }) => (
   <div className="panel__annotation-markers">
     <div className="panel__annotation-markers-inner">
+      <div>
+        Show markers
+      </div>
+      <div>
+        <Switch
+          checked={showMarkers}
+          onChange={toggleMarkers}
+        />
+      </div>
       <div>
         Record selections
       </div>
@@ -100,6 +111,10 @@ const Markers = ({
   </div>
 );
 
+Markers.defaultProps = {
+  showMarkers: true,
+};
+
 Markers.propTypes = {
   clearAllMarkers: PropTypes.func.isRequired,
   clearLastMarker: PropTypes.func.isRequired,
@@ -108,6 +123,8 @@ Markers.propTypes = {
   markerColor: PropTypes.string.isRequired,
   record: PropTypes.bool.isRequired,
   showMarkerPicker: PropTypes.bool.isRequired,
+  showMarkers: PropTypes.bool,
+  toggleMarkers: PropTypes.func.isRequired,
   toggleMarkerColorPicker: PropTypes.func.isRequired,
   toggleRecord: PropTypes.func.isRequired,
 };

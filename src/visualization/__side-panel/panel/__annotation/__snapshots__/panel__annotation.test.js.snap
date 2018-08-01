@@ -16,11 +16,13 @@ exports[`Annotation panel should render 1`] = `
     clearAllAnnotations={[Function]}
     clearLastAnnotation={[Function]}
     closeAnnotationColorPicker={[Function]}
+    fontSize={12}
     handleAnnotationColor={[Function]}
-    move={false}
+    handleAnnotationSize={[Function]}
+    show={true}
     showAnnotationPicker={false}
     toggleAnnotationColorPicker={[Function]}
-    toggleMove={[Function]}
+    toggleShow={[Function]}
     updateAnnotation={[Function]}
   />
   <div
@@ -39,7 +41,9 @@ exports[`Annotation panel should render 1`] = `
     markerColor="#000000"
     record={false}
     showMarkerPicker={false}
+    showMarkers={true}
     toggleMarkerColorPicker={[Function]}
+    toggleMarkers={[Function]}
     toggleRecord={[Function]}
   />
   <div
@@ -53,7 +57,7 @@ exports[`Annotation panel should render 1`] = `
   <Search
     clearSearch={[Function]}
     handleSearch={[Function]}
-    searchTerm=""
+    search={Object {}}
     updateSearchTerm={[Function]}
   />
 </div>

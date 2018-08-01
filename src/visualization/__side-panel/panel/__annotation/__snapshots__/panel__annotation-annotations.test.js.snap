@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Annotation component on annotation panel should render 1`] = `
+exports[`Annotation component on annotation panel should render and match snapshot 1`] = `
 <div
   className="panel__annotation-annotations"
 >
@@ -55,7 +55,20 @@ exports[`Annotation component on annotation panel should render 1`] = `
     className="panel__annotation-annotations-buttons"
   >
     <div>
-      Annotation color
+      Annotation font size
+    </div>
+    <div
+      className="panel__annotation-annotations-fontsize"
+    >
+      <InputNumber
+        onChange={[Function]}
+        prefixCls="ant-input-number"
+        step={1}
+        value={12}
+      />
+    </div>
+    <div>
+      Annotation dot color
     </div>
     <div>
       <button
@@ -95,7 +108,7 @@ exports[`Annotation component on annotation panel should render 1`] = `
       </button>
     </div>
     <div>
-      Move
+      Show
     </div>
     <div>
       <Switch
@@ -218,7 +231,7 @@ exports[`Annotation component on annotation panel should render 1`] = `
 </div>
 `;
 
-exports[`Annotation component on annotation panel should render with move toggle on and color picker rendered 1`] = `
+exports[`Annotation component on annotation panel should render with color picker and toggle on and match snapshot 1`] = `
 <div
   className="panel__annotation-annotations"
 >
@@ -273,7 +286,20 @@ exports[`Annotation component on annotation panel should render with move toggle
     className="panel__annotation-annotations-buttons"
   >
     <div>
-      Annotation color
+      Annotation font size
+    </div>
+    <div
+      className="panel__annotation-annotations-fontsize"
+    >
+      <InputNumber
+        onChange={[Function]}
+        prefixCls="ant-input-number"
+        step={1}
+        value={12}
+      />
+    </div>
+    <div>
+      Annotation dot color
     </div>
     <div>
       <button
@@ -313,7 +339,7 @@ exports[`Annotation component on annotation panel should render with move toggle
       </button>
     </div>
     <div>
-      Move
+      Show
     </div>
     <div>
       <Switch

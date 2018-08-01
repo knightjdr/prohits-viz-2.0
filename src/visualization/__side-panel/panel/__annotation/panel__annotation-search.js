@@ -3,14 +3,26 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Input } from 'antd';
 import {
+  faExclamationTriangle,
   faSearch,
   faTrashAlt,
 } from '@fortawesome/pro-solid-svg-icons';
 
+const warningStyle = {
+  false: {
+    height: 0,
+    opacity: 0,
+  },
+  true: {
+    height: 31,
+    opacity: 1,
+  },
+};
+
 const Search = ({
   clearSearch,
   handleSearch,
-  searchTerm,
+  search,
   updateSearchTerm,
 }) => (
   <div className="panel__annotation-search">
@@ -19,7 +31,7 @@ const Search = ({
         onChange={(e) => { updateSearchTerm(e.target.value); }}
         onPressEnter={handleSearch}
         placeholder="Gene name"
-        value={searchTerm}
+        value={search.term}
       />
       <button
         className="panel__annotation-button_theme-default"
@@ -29,9 +41,18 @@ const Search = ({
         <FontAwesomeIcon icon={faSearch} />
       </button>
     </div>
+    <div
+      className="panel__annotation-search-warning"
+      style={warningStyle[Boolean(search.searched && !search.match)]}
+    >
+      <FontAwesomeIcon icon={faExclamationTriangle} />
+      <div>
+        No match found.
+      </div>
+    </div>
     <div className="panel__annotation-search-grid">
       <div>
-        Clear searches
+        Clear search
       </div>
       <div>
         <button
@@ -49,7 +70,11 @@ const Search = ({
 Search.propTypes = {
   clearSearch: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  searchTerm: PropTypes.string.isRequired,
+  search: PropTypes.shape({
+    match: PropTypes.bool,
+    search: PropTypes.bool,
+    term: PropTypes.string,
+  }).isRequired,
   updateSearchTerm: PropTypes.func.isRequired,
 };
 

@@ -19,6 +19,7 @@ exports[`Map panel should render when in sync and match snapshot 1`] = `
       navigatePosition={[Function]}
       rangeBox={Object {}}
       showAnnotations={false}
+      showMarkers={false}
       syncImage={null}
     />
   </div>
@@ -27,6 +28,14 @@ exports[`Map panel should render when in sync and match snapshot 1`] = `
   >
     <div>
       Annotations:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <div>
+      Markers:
     </div>
     <Switch
       checked={false}
@@ -61,6 +70,14 @@ exports[`Map panel should render when not in sync and match snapshot 1`] = `
   >
     <div>
       Annotations:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <div>
+      Markers:
     </div>
     <Switch
       checked={false}

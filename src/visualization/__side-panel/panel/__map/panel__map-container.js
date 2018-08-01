@@ -10,6 +10,7 @@ import MarkerSelector from '../../../../state/selectors/visualization/marker-sel
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import { syncMap } from '../../../../state/set/visualization/map-actions';
 import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
+import { toggleMarkers } from '../../../../state/set/visualization/marker-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class MapContainer extends Component {
@@ -106,11 +107,13 @@ export class MapContainer extends Component {
         navigatePosition={this.navigatePosition}
         rangeBox={this.state.rangeBox}
         showAnnotations={this.props.annotations.show}
+        showMarkers={this.props.markers.show}
         synced={this.props.minimap.synced}
         syncError={this.props.minimap.synced}
         syncImage={this.props.minimap.syncImage}
         syncMap={this.props.syncMap}
         toggleAnnotations={this.props.toggleAnnotations}
+        toggleMarkers={this.props.toggleMarkers}
       />
     );
   }
@@ -126,7 +129,9 @@ MapContainer.propTypes = {
     pageY: PropTypes.number,
     rows: PropTypes.number,
   }).isRequired,
-  markers: PropTypes.shape({}).isRequired,
+  markers: PropTypes.shape({
+    show: PropTypes.bool,
+  }).isRequired,
   minimap: PropTypes.shape({
     image: PropTypes.string,
     isSyncing: PropTypes.bool,
@@ -140,6 +145,7 @@ MapContainer.propTypes = {
   }).isRequired,
   syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
+  toggleMarkers: PropTypes.func.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
 
@@ -159,6 +165,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleAnnotations: () => {
     dispatch(toggleAnnotations());
+  },
+  toggleMarkers: () => {
+    dispatch(toggleMarkers());
   },
   updatePosition: (x, y) => {
     dispatch(updatePosition(x, y));

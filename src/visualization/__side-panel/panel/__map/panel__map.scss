@@ -14,7 +14,8 @@
   position: absolute !important;
   width: 10px;
 }
-.panel__map-annotations {
+.panel__map-annotations,
+.panel__map-markers {
   height: 100%;
   left: 0;
   position: absolute;
@@ -56,7 +57,7 @@
   justify-content: center;
   margin-top: 10px;
 }
-.panel__map-switch > :first-child {
+.panel__map-switch > :not(:last-child) {
   margin-right: 10px;
 }
 .panel__map-sync {

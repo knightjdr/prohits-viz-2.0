@@ -15,11 +15,13 @@ const Map = ({
   navigatePosition,
   rangeBox,
   showAnnotations,
+  showMarkers,
   synced,
   syncError,
   syncImage,
   syncMap,
   toggleAnnotations,
+  toggleMarkers,
 }) => (
   <div className="panel">
     <div className="panel__title">
@@ -34,6 +36,7 @@ const Map = ({
             navigatePosition={navigatePosition}
             rangeBox={rangeBox}
             showAnnotations={showAnnotations}
+            showMarkers={showMarkers}
             syncImage={syncImage}
             markers={markers}
           />
@@ -54,6 +57,13 @@ const Map = ({
         onChange={toggleAnnotations}
         checked={showAnnotations}
       />
+      <div>
+        Markers:
+      </div>
+      <Switch
+        onChange={toggleMarkers}
+        checked={showMarkers}
+      />
     </div>
   </div>
 );
@@ -61,6 +71,7 @@ const Map = ({
 Map.defaultProps = {
   minimap: null,
   showAnnotations: false,
+  showMarkers: false,
   syncImage: null,
 };
 
@@ -77,11 +88,13 @@ Map.propTypes = {
     width: PropTypes.string,
   }).isRequired,
   showAnnotations: PropTypes.bool,
+  showMarkers: PropTypes.bool,
   synced: PropTypes.bool.isRequired,
   syncError: PropTypes.bool.isRequired,
   syncImage: PropTypes.string,
   syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
+  toggleMarkers: PropTypes.func.isRequired,
 };
 
 export default Map;

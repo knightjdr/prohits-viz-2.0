@@ -36,6 +36,7 @@ describe('Map panel container', () => {
         position={position}
         syncMap={jest.fn()}
         toggleAnnotations={jest.fn()}
+        toggleMarkers={jest.fn()}
         updatePosition={updatePosition}
       />,
     );

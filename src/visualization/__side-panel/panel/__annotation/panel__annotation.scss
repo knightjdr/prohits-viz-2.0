@@ -1,5 +1,6 @@
 @import 'style/reset';
 @import 'style/button';
+@import 'style/theme';
 
 .panel__annotation-annotations,
 .panel__annotation-markers {
@@ -117,6 +118,19 @@
   margin-left: 15px;
   margin-top: 15px;
   width: 282px;
+}
+.panel__annotation-search-warning {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 31px;
+  padding-top: 10px;
+  transform-origin: top center;
+  transition: all 0.3s ease;
+}
+.panel__annotation-search-warning > :first-child {
+  color: $warning;
+  margin-right: 5px;
 }
 @media (max-width: 374px) {
   .panel__annotation-search-grid {

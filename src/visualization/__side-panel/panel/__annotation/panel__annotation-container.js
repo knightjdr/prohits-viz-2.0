@@ -21,10 +21,12 @@ import {
   clearAllMarkers,
   clearLastMarker,
   setMarkerColor,
+  toggleMarkers,
   toggleRecordMarker,
 } from '../../../../state/set/visualization/marker-actions';
 import {
   clearSearch,
+  searchGenes,
   setSearchTerm,
 } from '../../../../state/set/visualization/search-actions';
 
@@ -60,9 +62,6 @@ export class AnnotationContainer extends Component {
   handleMarkerColor = (color) => {
     this.props.setMarkerColor(color.hex);
   }
-  handleSearch = () => {
-    console.log(this.state.searchTerm);
-  }
   toggleAnnotationColorPicker = () => {
     this.setState(({ showAnnotationPicker }) => ({
       showAnnotationPicker: !showAnnotationPicker,
@@ -95,15 +94,17 @@ export class AnnotationContainer extends Component {
         handleAnnotationColor={this.handleAnnotationColor}
         handleAnnotationSize={this.props.setAnnotationSize}
         handleMarkerColor={this.handleMarkerColor}
-        handleSearch={this.handleSearch}
+        handleSearch={this.props.searchGenes}
         markerColor={this.props.markers.color}
         record={this.props.markers.record}
-        searchTerm={this.props.search.term}
+        search={this.props.search}
         show={this.props.annotations.show}
         showAnnotationPicker={this.state.showAnnotationPicker}
         showMarkerPicker={this.state.showMarkerPicker}
+        showMarkers={this.props.markers.show}
         toggleAnnotationColorPicker={this.toggleAnnotationColorPicker}
         toggleMarkerColorPicker={this.toggleMarkerColorPicker}
+        toggleMarkers={this.props.toggleMarkers}
         toggleRecord={this.props.toggleRecordMarker}
         toggleShow={this.props.toggleAnnotations}
         updateAnnotation={this.updateAnnotation}
@@ -121,6 +122,8 @@ AnnotationContainer.propTypes = {
   }).isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
+    pageX: PropTypes.number,
+    pageY: PropTypes.number,
     rows: PropTypes.number,
   }).isRequired,
   addAnnotation: PropTypes.func.isRequired,
@@ -132,19 +135,24 @@ AnnotationContainer.propTypes = {
   markers: PropTypes.shape({
     color: PropTypes.string,
     record: PropTypes.bool,
+    show: PropTypes.bool,
   }).isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
   search: PropTypes.shape({
+    match: PropTypes.bool,
+    search: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
+  searchGenes: PropTypes.func.isRequired,
   setAnnotationColor: PropTypes.func.isRequired,
   setAnnotationSize: PropTypes.func.isRequired,
   setMarkerColor: PropTypes.func.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
+  toggleMarkers: PropTypes.func.isRequired,
   toggleRecordMarker: PropTypes.func.isRequired,
 };
 
@@ -177,6 +185,9 @@ const mapDispatchToProps = dispatch => ({
   clearSearch: () => {
     dispatch(clearSearch());
   },
+  searchGenes: (term) => {
+    dispatch(searchGenes(term));
+  },
   setAnnotationColor: (hex) => {
     dispatch(setAnnotationColor(hex));
   },
@@ -191,6 +202,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleAnnotations: () => {
     dispatch(toggleAnnotations());
+  },
+  toggleMarkers: () => {
+    dispatch(toggleMarkers());
   },
   toggleRecordMarker: () => {
     dispatch(toggleRecordMarker());

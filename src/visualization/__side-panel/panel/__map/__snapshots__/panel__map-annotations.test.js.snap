@@ -5,34 +5,8 @@ exports[`Map panel annotations should render 1`] = `
   className="panel__map-annotations"
 >
   <div
-    className="panel__map-marker"
-    key="a"
-    style={
-      Object {
-        "borderColor": "#000000",
-        "height": "10%",
-        "left": "10%",
-        "top": "10%",
-        "width": "10%",
-      }
-    }
-  />
-  <div
-    className="panel__map-marker"
-    key="b"
-    style={
-      Object {
-        "borderColor": "#000000",
-        "height": "20%",
-        "left": "50%",
-        "top": "50%",
-        "width": "30%",
-      }
-    }
-  />
-  <div
     className="panel__map-annotation"
-    key="c"
+    key="a"
     style={
       Object {
         "backgroundColor": "#0000ff",
@@ -45,7 +19,7 @@ exports[`Map panel annotations should render 1`] = `
   />
   <div
     className="panel__map-annotation"
-    key="d"
+    key="b"
     style={
       Object {
         "backgroundColor": "#0000ff",

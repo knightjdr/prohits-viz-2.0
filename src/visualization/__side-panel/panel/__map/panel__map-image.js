@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Annotations from './panel__map-annotations';
+import Markers from './panel__map-markers';
 
 import './panel__map.css';
 
@@ -12,6 +13,7 @@ const Image = ({
   navigatePosition,
   rangeBox,
   showAnnotations,
+  showMarkers,
   syncImage,
 }) => (
   <div className="panel__map-inner">
@@ -30,12 +32,11 @@ const Image = ({
       />
       {
         showAnnotations &&
-        (
-          <Annotations
-            annotations={annotations}
-            markers={markers}
-          />
-        )
+        <Annotations annotations={annotations} />
+      }
+      {
+        showMarkers &&
+        <Markers markers={markers} />
       }
     </button>
   </div>
@@ -43,7 +44,8 @@ const Image = ({
 
 Image.defaultProps = {
   minimap: null,
-  showAnnotations: false,
+  showAnnotations: true,
+  showMarkers: true,
   syncImage: null,
 };
 
@@ -59,6 +61,7 @@ Image.propTypes = {
     width: PropTypes.string,
   }).isRequired,
   showAnnotations: PropTypes.bool,
+  showMarkers: PropTypes.bool,
   syncImage: PropTypes.string,
 };
 

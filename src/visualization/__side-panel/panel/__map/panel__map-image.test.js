@@ -23,6 +23,7 @@ describe('Minimap image', () => {
             width: '20%',
           }}
           showAnnotations={false}
+          showMarkers={false}
           syncImage={null}
         />,
       );
@@ -83,6 +84,7 @@ describe('Minimap image', () => {
           width: '20%',
         }}
         showAnnotations={false}
+        showMarkers={false}
         syncImage="syncImage"
       />,
     );
@@ -103,9 +105,31 @@ describe('Minimap image', () => {
           width: '20%',
         }}
         showAnnotations
+        showMarkers={false}
         syncImage="syncImage"
       />,
     );
     expect(wrapper.find('Annotations').length).toBe(1);
+  });
+
+  it('should render with markers', () => {
+    const wrapper = shallow(
+      <Image
+        annotations={{}}
+        markers={{}}
+        minimap="map"
+        navigatePosition={navigatePosition}
+        rangeBox={{
+          height: '20%',
+          left: '20%',
+          top: '20%',
+          width: '20%',
+        }}
+        showAnnotations={false}
+        showMarkers
+        syncImage="syncImage"
+      />,
+    );
+    expect(wrapper.find('Markers').length).toBe(1);
   });
 });

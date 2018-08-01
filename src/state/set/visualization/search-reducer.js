@@ -1,19 +1,34 @@
-import {
-  CLEAR_SEARCH,
-  SET_SEARCH_TERM,
-} from './search-actions';
+import * as actions from './search-actions';
 
 const Search = (state = {
+  columns: {},
+  match: false,
+  rows: {},
+  searched: false,
   term: '',
 }, action) => {
   switch (action.type) {
-    case CLEAR_SEARCH:
+    case actions.CLEAR_SEARCH:
       return {
+        columns: {},
+        match: false,
+        rows: {},
+        searched: false,
         term: '',
       };
-    case SET_SEARCH_TERM:
+    case actions.SET_SEARCH_RESULTS:
+      return {
+        columns: { ...action.columns },
+        match: action.match,
+        rows: { ...action.rows },
+        searched: true,
+        term: action.term,
+      };
+    case actions.SET_SEARCH_TERM:
       return {
         ...state,
+        match: false,
+        searched: false,
         term: action.term,
       };
     default:

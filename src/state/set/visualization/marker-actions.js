@@ -2,6 +2,7 @@ export const ADD_MARKER = 'ADD_MARKER';
 export const CLEAR_ALL_MARKERS = 'CLEAR_ALL_MARKERS';
 export const CLEAR_LAST_MARKER = 'CLEAR_LAST_MARKER';
 export const SET_MARKER_COLOR = 'SET_MARKER_COLOR';
+export const TOGGLE_MARKERS = 'TOGGLE_MARKER';
 export const TOGGLE_RECORD_MARKER = 'TOGGLE_RECORD_MARKER';
 
 export const addMarker = (height, width, x, y) => ({
@@ -23,6 +24,10 @@ export const clearLastMarker = () => ({
 export const setMarkerColor = color => ({
   color,
   type: SET_MARKER_COLOR,
+});
+
+export const toggleMarkers = () => ({
+  type: TOGGLE_MARKERS,
 });
 
 export const toggleRecordMarker = () => ({
