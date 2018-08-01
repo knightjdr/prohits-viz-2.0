@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 
 import Annotation from './panel__annotation';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
+import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
+import Round from '../../../../helpers/round';
 import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import {
   addAnnotation,
   clearAllAnnotations,
   clearLastAnnotation,
   setAnnotationColor,
+  setAnnotationSize,
   toggleAnnotations,
-  toggleMoveAnnotation,
 } from '../../../../state/set/visualization/annotation-actions';
 import {
   clearAllMarkers,
@@ -36,7 +38,11 @@ export class AnnotationContainer extends Component {
     };
   }
   addAnnotation = () => {
-    this.props.addAnnotation(this.state.annotation, this.props.position.x, this.props.position.y);
+    const { dimensions, position } = this.props;
+    // Center annotation in current view.
+    const x = Round((position.x + (dimensions.pageX / 2)) / dimensions.columns, 2);
+    const y = Round((position.y + (dimensions.pageY / 2)) / dimensions.rows, 2);
+    this.props.addAnnotation(this.state.annotation, x, y);
   }
   closeAnnotationColorPicker = () => {
     this.setState({
@@ -85,11 +91,12 @@ export class AnnotationContainer extends Component {
         clearSearch={this.props.clearSearch}
         closeAnnotationColorPicker={this.closeAnnotationColorPicker}
         closeMarkerColorPicker={this.closeMarkerColorPicker}
+        fontSize={this.props.annotations.fontSize}
         handleAnnotationColor={this.handleAnnotationColor}
+        handleAnnotationSize={this.props.setAnnotationSize}
         handleMarkerColor={this.handleMarkerColor}
         handleSearch={this.handleSearch}
         markerColor={this.props.markers.color}
-        move={this.props.annotations.move}
         record={this.props.markers.record}
         searchTerm={this.props.search.term}
         show={this.props.annotations.show}
@@ -97,7 +104,6 @@ export class AnnotationContainer extends Component {
         showMarkerPicker={this.state.showMarkerPicker}
         toggleAnnotationColorPicker={this.toggleAnnotationColorPicker}
         toggleMarkerColorPicker={this.toggleMarkerColorPicker}
-        toggleMove={this.props.toggleMoveAnnotation}
         toggleRecord={this.props.toggleRecordMarker}
         toggleShow={this.props.toggleAnnotations}
         updateAnnotation={this.updateAnnotation}
@@ -110,8 +116,12 @@ export class AnnotationContainer extends Component {
 AnnotationContainer.propTypes = {
   annotations: PropTypes.shape({
     color: PropTypes.string,
-    move: PropTypes.bool,
+    fontSize: PropTypes.number,
     show: PropTypes.bool,
+  }).isRequired,
+  dimensions: PropTypes.shape({
+    columns: PropTypes.number,
+    rows: PropTypes.number,
   }).isRequired,
   addAnnotation: PropTypes.func.isRequired,
   clearAllAnnotations: PropTypes.func.isRequired,
@@ -131,16 +141,17 @@ AnnotationContainer.propTypes = {
     term: PropTypes.string,
   }).isRequired,
   setAnnotationColor: PropTypes.func.isRequired,
+  setAnnotationSize: PropTypes.func.isRequired,
   setMarkerColor: PropTypes.func.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
-  toggleMoveAnnotation: PropTypes.func.isRequired,
   toggleRecordMarker: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
+  dimensions: DimensionSelector(state),
   markers: MarkerSelector(state),
   position: PositionSelector(state),
   search: SearchSelector(state),
@@ -169,6 +180,9 @@ const mapDispatchToProps = dispatch => ({
   setAnnotationColor: (hex) => {
     dispatch(setAnnotationColor(hex));
   },
+  setAnnotationSize: (fontSize) => {
+    dispatch(setAnnotationSize(fontSize));
+  },
   setMarkerColor: (hex) => {
     dispatch(setMarkerColor(hex));
   },
@@ -177,9 +191,6 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleAnnotations: () => {
     dispatch(toggleAnnotations());
-  },
-  toggleMoveAnnotation: () => {
-    dispatch(toggleMoveAnnotation());
   },
   toggleRecordMarker: () => {
     dispatch(toggleRecordMarker());

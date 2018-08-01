@@ -5,9 +5,9 @@ import * as fileActions from '../interactive-file-actions';
 
 const DefaultState = {
   color: '#f44336',
+  fontSize: 12,
   list: [],
-  move: false,
-  show: false,
+  show: true,
 };
 
 jest.mock('../../../helpers/deep-copy');
@@ -81,7 +81,7 @@ describe('Annotation set reducer', () => {
         annotations: {
           color: '#000000',
           list,
-          move: true,
+          show: false,
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
@@ -89,7 +89,6 @@ describe('Annotation set reducer', () => {
     const expectedState = {
       color: '#000000',
       list,
-      move: true,
       show: false,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -107,24 +106,39 @@ describe('Annotation set reducer', () => {
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it('should handle SET_ANNOTATION_SIZE action', () => {
+    const action = {
+      fontSize: 14,
+      type: actions.SET_ANNOTATION_SIZE,
+    };
+    const expectedState = {
+      ...DefaultState,
+      fontSize: 14,
+    };
+    expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it('should handle TOGGLE_ANNOTATIONS action', () => {
     const action = {
       type: actions.TOGGLE_ANNOTATIONS,
     };
     const expectedState = {
       ...DefaultState,
-      show: true,
+      show: false,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle TOGGLE_MOVE_ANNOTATION action', () => {
+  it('should handle UPDATE_ANNOTATION action', () => {
+    const list = [{ text: 'test', x: 0.1, y: 0.1 }];
+    DeepCopy.mockReturnValueOnce(list);
     const action = {
-      type: actions.TOGGLE_MOVE_ANNOTATION,
+      list,
+      type: actions.UPDATE_ANNOTATION,
     };
     const expectedState = {
       ...DefaultState,
-      move: true,
+      list,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });

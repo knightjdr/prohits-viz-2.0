@@ -1,4 +1,53 @@
+import configureMockStore from 'redux-mock-store';
+import deepFreeze from 'deep-freeze';
+import thunk from 'redux-thunk';
+
 import * as actions from './annotation-actions';
+
+// configure mock store
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('Annotation update', () => {
+  let expectedActions;
+
+  beforeAll(() => {
+    const annotations = {
+      color: '#000000',
+      fontSize: 12,
+      list: [
+        { text: 'a', x: 0, y: 0 },
+        { text: 'b', x: 0, y: 0 },
+        { text: 'c', x: 0, y: 0 },
+      ],
+      show: true,
+    };
+    const store = mockStore({ annotations });
+    deepFreeze(store);
+    store.dispatch(actions.updateList(1, 0.5, 0.5));
+    expectedActions = store.getActions();
+  });
+
+  afterAll(() => {
+    actions.updateAnnotation.mockRestore();
+  });
+
+  it('should dispatch a single action', () => {
+    expect(expectedActions.length).toBe(1);
+  });
+
+  it('should update the annotation at the given index', () => {
+    const updatedAnnoations = [
+      { text: 'a', x: 0, y: 0 },
+      { text: 'b', x: 0.5, y: 0.5 },
+      { text: 'c', x: 0, y: 0 },
+    ];
+    expect(expectedActions).toContainEqual({
+      list: updatedAnnoations,
+      type: actions.UPDATE_ANNOTATION,
+    });
+  });
+});
 
 describe('Visualization annotation set actions', () => {
   it('should dispatch an action to add an annotation', () => {
@@ -29,6 +78,14 @@ describe('Visualization annotation set actions', () => {
     expect(actions.setAnnotationColor('#000000')).toEqual(expectedAction);
   });
 
+  it('should dispatch an action to set annotation font size', () => {
+    const expectedAction = {
+      fontSize: 14,
+      type: actions.SET_ANNOTATION_SIZE,
+    };
+    expect(actions.setAnnotationSize(14)).toEqual(expectedAction);
+  });
+
   it('should dispatch an action to toggle annotations', () => {
     const expectedAction = {
       type: actions.TOGGLE_ANNOTATIONS,
@@ -36,10 +93,11 @@ describe('Visualization annotation set actions', () => {
     expect(actions.toggleAnnotations()).toEqual(expectedAction);
   });
 
-  it('should dispatch an action to toggle moving annotations', () => {
+  it('should dispatch an action to update annotations', () => {
     const expectedAction = {
-      type: actions.TOGGLE_MOVE_ANNOTATION,
+      list: [],
+      type: actions.UPDATE_ANNOTATION,
     };
-    expect(actions.toggleMoveAnnotation()).toEqual(expectedAction);
+    expect(actions.updateAnnotation([])).toEqual(expectedAction);
   });
 });

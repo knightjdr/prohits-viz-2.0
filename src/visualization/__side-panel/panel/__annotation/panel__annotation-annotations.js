@@ -4,6 +4,7 @@ import React from 'react';
 import { ChromePicker } from 'react-color';
 import {
   Input,
+  InputNumber,
   Switch,
 } from 'antd';
 import {
@@ -35,12 +36,12 @@ const Annotations = ({
   clearAllAnnotations,
   clearLastAnnotation,
   closeAnnotationColorPicker,
+  fontSize,
   handleAnnotationColor,
-  move,
+  handleAnnotationSize,
   show,
   showAnnotationPicker,
   toggleAnnotationColorPicker,
-  toggleMove,
   toggleShow,
   updateAnnotation,
 }) => (
@@ -61,7 +62,16 @@ const Annotations = ({
     </div>
     <div className="panel__annotation-annotations-buttons">
       <div>
-        Annotation color
+        Annotation font size
+      </div>
+      <div className="panel__annotation-annotations-fontsize">
+        <InputNumber
+          onChange={handleAnnotationSize}
+          value={fontSize}
+        />
+      </div>
+      <div>
+        Annotation dot color
       </div>
       <div>
         <button
@@ -71,15 +81,6 @@ const Annotations = ({
         >
           <FontAwesomeIcon icon={faPalette} />
         </button>
-      </div>
-      <div>
-        Move
-      </div>
-      <div>
-        <Switch
-          checked={move}
-          onChange={toggleMove}
-        />
       </div>
       <div>
         Show
@@ -139,12 +140,12 @@ Annotations.propTypes = {
   clearAllAnnotations: PropTypes.func.isRequired,
   clearLastAnnotation: PropTypes.func.isRequired,
   closeAnnotationColorPicker: PropTypes.func.isRequired,
+  fontSize: PropTypes.number.isRequired,
   handleAnnotationColor: PropTypes.func.isRequired,
-  move: PropTypes.bool.isRequired,
+  handleAnnotationSize: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   showAnnotationPicker: PropTypes.bool.isRequired,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
-  toggleMove: PropTypes.func.isRequired,
   toggleShow: PropTypes.func.isRequired,
   updateAnnotation: PropTypes.func.isRequired,
 };

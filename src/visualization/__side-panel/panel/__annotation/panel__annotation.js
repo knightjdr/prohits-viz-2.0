@@ -18,11 +18,12 @@ const Annotation = ({
   clearSearch,
   closeAnnotationColorPicker,
   closeMarkerColorPicker,
+  fontSize,
   handleAnnotationColor,
+  handleAnnotationSize,
   handleMarkerColor,
   handleSearch,
   markerColor,
-  move,
   record,
   searchTerm,
   show,
@@ -30,7 +31,6 @@ const Annotation = ({
   showMarkerPicker,
   toggleAnnotationColorPicker,
   toggleMarkerColorPicker,
-  toggleMove,
   toggleRecord,
   toggleShow,
   updateAnnotation,
@@ -47,12 +47,12 @@ const Annotation = ({
       clearAllAnnotations={clearAllAnnotations}
       clearLastAnnotation={clearLastAnnotation}
       closeAnnotationColorPicker={closeAnnotationColorPicker}
+      fontSize={fontSize}
       handleAnnotationColor={handleAnnotationColor}
-      move={move}
+      handleAnnotationSize={handleAnnotationSize}
       show={show}
       showAnnotationPicker={showAnnotationPicker}
       toggleAnnotationColorPicker={toggleAnnotationColorPicker}
-      toggleMove={toggleMove}
       toggleShow={toggleShow}
       updateAnnotation={updateAnnotation}
     />
@@ -87,9 +87,8 @@ const Annotation = ({
 Annotation.defaultProps = {
   annotationColor: '#f44336',
   markerColor: '#000000',
-  move: false,
   record: false,
-  show: false,
+  show: true,
 };
 
 Annotation.propTypes = {
@@ -103,11 +102,12 @@ Annotation.propTypes = {
   clearSearch: PropTypes.func.isRequired,
   closeAnnotationColorPicker: PropTypes.func.isRequired,
   closeMarkerColorPicker: PropTypes.func.isRequired,
+  fontSize: PropTypes.number.isRequired,
   handleAnnotationColor: PropTypes.func.isRequired,
+  handleAnnotationSize: PropTypes.func.isRequired,
   handleMarkerColor: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
   markerColor: PropTypes.string,
-  move: PropTypes.bool,
   record: PropTypes.bool,
   searchTerm: PropTypes.string.isRequired,
   show: PropTypes.bool,
@@ -115,7 +115,6 @@ Annotation.propTypes = {
   showMarkerPicker: PropTypes.bool.isRequired,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
   toggleMarkerColorPicker: PropTypes.func.isRequired,
-  toggleMove: PropTypes.func.isRequired,
   toggleRecord: PropTypes.func.isRequired,
   toggleShow: PropTypes.func.isRequired,
   updateAnnotation: PropTypes.func.isRequired,

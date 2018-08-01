@@ -174,14 +174,20 @@ describe('Store', () => {
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles TOGGLE_ANNOTATIONS action', () => {
-      const action = { type: 'TOGGLE_ANNOTATIONS' };
+    it('handles SET_ANNOTATION_SIZE action', () => {
+      const action = { fontSize: 14, type: 'SET_ANNOTATION_SIZE' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
     it('handles TOGGLE_MOVE_ANNOTATION action', () => {
       const action = { type: 'TOGGLE_MOVE_ANNOTATION' };
+      store.dispatch(action);
+      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    });
+
+    it('handles UPDATE_ANNOTATION action', () => {
+      const action = { list: [], type: 'UPDATE_ANNOTATION' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });

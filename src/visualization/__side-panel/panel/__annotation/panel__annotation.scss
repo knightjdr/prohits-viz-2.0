@@ -9,6 +9,10 @@
   display: flex;
   justify-content: center;
 }
+.panel__annotation-annotations-fontsize,
+.ant-input-number {
+  width: 60px;
+}
 .panel__annotation-annotations-input,
 .panel__annotation-search-input {
   display: flex;

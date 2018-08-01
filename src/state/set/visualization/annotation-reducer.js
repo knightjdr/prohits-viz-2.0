@@ -1,24 +1,16 @@
 import DeepCopy from '../../../helpers/deep-copy';
+import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
-
-import {
-  ADD_ANNOTATION,
-  CLEAR_ALL_ANNOTATIONS,
-  CLEAR_LAST_ANNOTATION,
-  SET_ANNOTATION_COLOR,
-  TOGGLE_ANNOTATIONS,
-  TOGGLE_MOVE_ANNOTATION,
-} from './annotation-actions';
 
 const Annotations = (state = {
   color: '#f44336',
+  fontSize: 12,
   list: [],
-  move: false,
-  show: false,
+  show: true,
 }, action) => {
   let newList;
   switch (action.type) {
-    case ADD_ANNOTATION:
+    case actions.ADD_ANNOTATION:
       return {
         ...state,
         list: [
@@ -30,7 +22,7 @@ const Annotations = (state = {
           },
         ],
       };
-    case CLEAR_ALL_ANNOTATIONS:
+    case actions.CLEAR_ALL_ANNOTATIONS:
       return {
         ...state,
         list: [],
@@ -38,11 +30,11 @@ const Annotations = (state = {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         color: '#f44336',
+        fontSize: 12,
         list: [],
-        move: false,
-        show: false,
+        show: true,
       };
-    case CLEAR_LAST_ANNOTATION:
+    case actions.CLEAR_LAST_ANNOTATION:
       newList = DeepCopy(state.list);
       newList.pop();
       return {
@@ -52,30 +44,29 @@ const Annotations = (state = {
     case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         color: action.file.annotations.color,
+        fontSize: action.file.annotations.fontSize,
         list: DeepCopy(action.file.annotations.list),
-        move: action.file.annotations.move,
-        show: false,
+        show: action.file.annotations.show,
       };
-    case SET_ANNOTATION_COLOR:
+    case actions.SET_ANNOTATION_COLOR:
       return {
         ...state,
-        ...{
-          color: action.color,
-        },
+        color: action.color,
       };
-    case TOGGLE_ANNOTATIONS:
+    case actions.SET_ANNOTATION_SIZE:
       return {
         ...state,
-        ...{
-          show: !state.show,
-        },
+        fontSize: action.fontSize,
       };
-    case TOGGLE_MOVE_ANNOTATION:
+    case actions.TOGGLE_ANNOTATIONS:
       return {
         ...state,
-        ...{
-          move: !state.move,
-        },
+        show: !state.show,
+      };
+    case actions.UPDATE_ANNOTATION:
+      return {
+        ...state,
+        list: action.list,
       };
     default:
       return state;

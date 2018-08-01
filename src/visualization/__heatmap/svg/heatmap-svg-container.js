@@ -71,6 +71,8 @@ export class SvgContainer extends Component {
       width.columns,
       width.pageX,
       height.pageY,
+      height.heatmap,
+      width.heatmap,
     );
     this.setState({
       height,
@@ -242,8 +244,8 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  setDimensions: (rows, columns, height, width) => {
-    dispatch(setDimensions(rows, columns, height, width));
+  setDimensions: (rows, columns, pageY, pageX, height, width) => {
+    dispatch(setDimensions(rows, columns, pageY, pageX, height, width));
   },
   setReference: (ref) => {
     dispatch(setReference(ref));

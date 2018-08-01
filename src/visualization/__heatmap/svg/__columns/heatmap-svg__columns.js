@@ -23,6 +23,7 @@ const Columns = ({
                 fill="#90afc5"
                 height="100"
                 key={`${name.original}-reference`}
+                onContextMenu={(e) => { openContextMenu(e, name.original); }}
                 width={cellSize}
                 x={i * cellSize}
                 y="0"
