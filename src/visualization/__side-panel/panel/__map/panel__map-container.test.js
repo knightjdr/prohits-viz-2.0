@@ -34,6 +34,7 @@ describe('Map panel container', () => {
           syncImage: null,
         }}
         position={position}
+        search={{}}
         syncMap={jest.fn()}
         toggleAnnotations={jest.fn()}
         toggleMarkers={jest.fn()}

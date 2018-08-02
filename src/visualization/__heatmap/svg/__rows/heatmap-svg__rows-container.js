@@ -6,6 +6,7 @@ import DimensionsSelector from '../../../../state/selectors/visualization/dimens
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
 import Rows from './heatmap-svg__rows';
+import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import SortSeletor from '../../../../state/selectors/visualization/sort-selector';
 import TrimText from '../helpers/trim-text';
@@ -47,6 +48,22 @@ export class RowsContainer extends Component {
       rows,
     );
   }
+  shouldComponentUpdate = (nextProps) => {
+    const {
+      cellSize,
+      dimensions,
+      position,
+      search,
+      sortInfo,
+    } = nextProps;
+    return (
+      cellSize !== this.props.cellSize ||
+      dimensions.pageY !== this.props.dimensions.pageY ||
+      position.y !== this.props.position.y ||
+      search.match ||
+      sortInfo.id !== this.props.sortInfo.id
+    );
+  }
   getPage = (rows, y, pageY) => {
     const pageEnd = y + pageY;
     return rows.slice(y, pageEnd);
@@ -85,6 +102,7 @@ export class RowsContainer extends Component {
         fontSize={this.state.fontSize}
         names={this.state.names}
         openContextMenu={this.props.openContextMenu}
+        search={this.props.search}
         toggleTooltip={this.props.toggleTooltip}
       />
     );
@@ -101,6 +119,11 @@ RowsContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  search: PropTypes.shape({
+    match: PropTypes.bool,
+    rows: PropTypes.shape({}),
+    term: PropTypes.string,
+  }).isRequired,
   sortInfo: PropTypes.shape({
     id: PropTypes.number,
   }).isRequired,
@@ -113,6 +136,7 @@ const mapStateToProps = state => ({
   dimensions: DimensionsSelector(state),
   position: PositionSelector(state),
   rows: RowNameSelector(state),
+  search: SearchSelector(state),
   sortInfo: SortSeletor(state),
 });
 

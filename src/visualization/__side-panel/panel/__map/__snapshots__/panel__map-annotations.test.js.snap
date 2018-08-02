@@ -1,12 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map panel annotations should render 1`] = `
-<div
-  className="panel__map-annotations"
->
+exports[`Map panel annotations should render and match snapshot 1`] = `
+<React.Fragment>
   <div
     className="panel__map-annotation"
-    key="a"
+    key="1"
     style={
       Object {
         "backgroundColor": "#0000ff",
@@ -19,7 +17,7 @@ exports[`Map panel annotations should render 1`] = `
   />
   <div
     className="panel__map-annotation"
-    key="b"
+    key="1"
     style={
       Object {
         "backgroundColor": "#0000ff",
@@ -30,5 +28,5 @@ exports[`Map panel annotations should render 1`] = `
     tooltip="b"
     tooltip-position="top"
   />
-</div>
+</React.Fragment>
 `;

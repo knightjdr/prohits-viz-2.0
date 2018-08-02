@@ -8,14 +8,13 @@
   height: calc(100vh - 195px);
 }
 .panel__map-annotation {
-  background-color: $warning;
+  background-color: #4caf50;
   border-radius: 50%;
   height: 10px;
   position: absolute !important;
   width: 10px;
 }
-.panel__map-annotations,
-.panel__map-markers {
+.panel__map-annotations {
   height: 100%;
   left: 0;
   position: absolute;
@@ -40,6 +39,13 @@
   border: 1px dashed #000000;
   pointer-events: none;
   position: absolute;
+}
+.panel__map-search-match {
+  background-color: $success;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute !important;
+  width: 10px;
 }
 .panel__map-select {
   @extend .nobutton;

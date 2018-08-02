@@ -24,6 +24,9 @@ exports[`Minimap image should render with minimap and match snapshot 1`] = `
         }
       }
     />
+    <div
+      className="panel__map-annotations"
+    />
   </button>
 </div>
 `;

@@ -7,6 +7,7 @@ const Columns = ({
   names,
   openContextMenu,
   reference,
+  search,
   sortRows,
   toggleTooltip,
 }) => {
@@ -15,8 +16,25 @@ const Columns = ({
     <g transform="translate(100 0)">
       {
         names.reduce((textElements, name, i) => {
-          // 98px is used as the height of the text to give a bit of padding.
+          // 98px is used as the height of the text to give a bit of bottom padding.
           const x = Math.round((i * cellSize) + textOffset);
+          if (
+            search.term &&
+            search.match &&
+            search.columns[name.original]
+          ) {
+            textElements.push(
+              <rect
+                fill="#4caf50"
+                height="100"
+                key={`${name.original}-match`}
+                onContextMenu={(e) => { openContextMenu(e, name.original); }}
+                width={cellSize}
+                x={i * cellSize}
+                y="0"
+              />,
+            );
+          }
           if (reference === name.original) {
             textElements.push(
               <rect
@@ -71,6 +89,11 @@ Columns.propTypes = {
   ).isRequired,
   openContextMenu: PropTypes.func.isRequired,
   reference: PropTypes.string,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    term: PropTypes.string,
+  }).isRequired,
   sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };

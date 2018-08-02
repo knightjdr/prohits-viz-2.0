@@ -1,3 +1,5 @@
+import Round from '../../../helpers/round';
+
 export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
@@ -30,11 +32,13 @@ export const queryArray = (arr, query) => {
   // First match.
   const first = lcArray.findIndex(str => str.indexOf(lcQuery) >= 0);
 
-  // All matches mapped to object.
-  const matchedObject = lcArray.reduce((matches, str) => {
-    if (str.toLowerCase().indexOf(lcQuery) > -1) {
+  /* All matches mapped to object. For value, use array element's
+  ** relative position. */
+  const arrLen = lcArray.length;
+  const matchedObject = lcArray.reduce((matches, str, index) => {
+    if (str.indexOf(lcQuery) > -1) {
       const newMatch = {};
-      newMatch[str] = 1;
+      newMatch[arr[index]] = Round((index + 0.5) / arrLen, 2);
       return {
         ...matches,
         ...newMatch,
@@ -48,7 +52,9 @@ export const queryArray = (arr, query) => {
   };
 };
 
-/* Get the new position corresponding to the first search matches. */
+/* Get the new position corresponding to the first search matches, but limit
+** by page size, i.e. if a new position is too close to the image boundaries,
+** set the position to the accepted limits. */
 export const newPosition = (firstCellX, firstCellY, dimensions, position) => {
   let newX;
   if (typeof firstCellX === 'number') {
@@ -65,7 +71,7 @@ export const newPosition = (firstCellX, firstCellY, dimensions, position) => {
     const limitY = dimensions.rows - dimensions.pageY;
     newY = firstCellY <= limitY ? firstCellY : limitY;
   } else {
-    newY = position.Y;
+    newY = position.y;
   }
 
   return {
@@ -82,11 +88,17 @@ export const searchMatch = (obj1, obj2) => (
 /* Search columns and rows for matches to the search term. */
 export const searchGenes = () => (
   (dispatch, getState) => {
-    const { dimensions, position } = getState();
-    const { term } = getState().search;
+    const {
+      columns,
+      dimensions,
+      position,
+      rows,
+      search,
+    } = getState();
+    const { term } = search;
     if (term) {
-      const { names } = getState().columns;
-      const { list } = getState().rows;
+      const { names } = columns;
+      const { list } = rows;
       const rowNames = list.map(item => item.name);
 
       // Check rows and columns for matches.

@@ -3,6 +3,7 @@ import React from 'react';
 
 import Annotations from './panel__map-annotations';
 import Markers from './panel__map-markers';
+import Search from './panel__map-search';
 
 import './panel__map.css';
 
@@ -12,6 +13,7 @@ const Image = ({
   minimap,
   navigatePosition,
   rangeBox,
+  search,
   showAnnotations,
   showMarkers,
   syncImage,
@@ -30,14 +32,21 @@ const Image = ({
         className="panel__map-position"
         style={rangeBox}
       />
-      {
-        showAnnotations &&
-        <Annotations annotations={annotations} />
-      }
-      {
-        showMarkers &&
-        <Markers markers={markers} />
-      }
+      <div className="panel__map-annotations">
+        {
+          showMarkers &&
+          <Markers markers={markers} />
+        }
+        {
+          search.term &&
+          search.match &&
+          <Search search={search} />
+        }
+        {
+          showAnnotations &&
+          <Annotations annotations={annotations} />
+        }
+      </div>
     </button>
   </div>
 );
@@ -59,6 +68,12 @@ Image.propTypes = {
     left: PropTypes.string,
     top: PropTypes.string,
     width: PropTypes.string,
+  }).isRequired,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    rows: PropTypes.shape({}),
+    term: PropTypes.string,
   }).isRequired,
   showAnnotations: PropTypes.bool,
   showMarkers: PropTypes.bool,

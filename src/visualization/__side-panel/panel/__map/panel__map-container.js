@@ -8,6 +8,7 @@ import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
+import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import { syncMap } from '../../../../state/set/visualization/map-actions';
 import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
 import { toggleMarkers } from '../../../../state/set/visualization/marker-actions';
@@ -106,6 +107,7 @@ export class MapContainer extends Component {
         minimap={this.props.minimap.image}
         navigatePosition={this.navigatePosition}
         rangeBox={this.state.rangeBox}
+        search={this.props.search}
         showAnnotations={this.props.annotations.show}
         showMarkers={this.props.markers.show}
         synced={this.props.minimap.synced}
@@ -143,6 +145,12 @@ MapContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    rows: PropTypes.shape({}),
+    term: PropTypes.string,
+  }).isRequired,
   syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
   toggleMarkers: PropTypes.func.isRequired,
@@ -156,6 +164,7 @@ const mapStateToProps = state => ({
   markers: MarkerSelector(state),
   minimap: MapSelector(state),
   position: PositionSelector(state),
+  search: SearchSelector(state),
 });
 
 /* istanbul ignore next */

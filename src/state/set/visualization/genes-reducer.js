@@ -1,9 +1,6 @@
+import * as actions from './genes-actions';
 import * as fileActions from '../interactive-file-actions';
-
-import {
-  SET_SELECTIONS,
-  STORE_SELECTIONS,
-} from './genes-actions';
+import * as rowActions from './rows-actions';
 
 const Genes = (state = {
   columnMap: {},
@@ -32,19 +29,31 @@ const Genes = (state = {
         rows: [...action.file.genes.rows],
         rowsSelected: [...action.file.genes.rowsSelected],
       };
-    case SET_SELECTIONS:
+    case rowActions.RESTORE_ROWS:
+      return {
+        ...state,
+        rowMap: { ...action.rows.map },
+        rows: [...action.rows.list],
+      };
+    case actions.SET_SELECTIONS:
       return {
         ...state,
         columns: action.columns,
         rows: action.rows,
       };
-    case STORE_SELECTIONS:
+    case actions.STORE_SELECTIONS:
       return {
         ...state,
         columns: [...action.selections.columns],
         columnsSelected: [...action.selections.columnsSelected],
         rows: [...action.selections.rows],
         rowsSelected: [...action.selections.rowsSelected],
+      };
+    case rowActions.UPDATE_ROWS:
+      return {
+        ...state,
+        rowMap: { ...action.rows.map },
+        rows: [...action.rows.list],
       };
     default:
       return state;

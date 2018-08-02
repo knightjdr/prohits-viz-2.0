@@ -3,21 +3,41 @@ import Deepcopy from '../../../helpers/deep-copy';
 export const RESTORE_ROWS = 'RESTORE_ROWS';
 export const UPDATE_ROWS = 'UPDATE_ROWS';
 
-export const restoreRows = (direction, list, sortBy, id) => ({
+export const restoreRows = (direction, list, sortBy, id, rows) => ({
   direction,
   id,
   list,
+  rows,
   sortBy,
   type: RESTORE_ROWS,
 });
 
-export const updateRows = (direction, list, sortBy, id) => ({
+export const updateRows = (direction, list, sortBy, id, rows) => ({
   direction,
   id,
   list,
+  rows,
   sortBy,
   type: UPDATE_ROWS,
 });
+
+/* Creates a list of row names and a map to the index */
+export const rowMapping = (list) => {
+  // Get list of rows names for selection box map.
+  const rows = list.map(item => item.name);
+  const rowMap = rows.reduce((mappedItems, item, index) => {
+    const newItem = {};
+    newItem[item] = index;
+    return {
+      ...mappedItems,
+      ...newItem,
+    };
+  }, {});
+  return {
+    list: rows,
+    map: rowMap,
+  };
+};
 
 /* Sorts rows based on the default (input) order */
 export const sortDefault = () => (
@@ -33,9 +53,12 @@ export const sortDefault = () => (
     }, {});
     const sortedList = order.map(item => list[currentMap[item]]);
 
+    // Create row list.
+    const rows = rowMapping(sortedList);
+
     // Create or update ID.
     const newId = id ? id + 1 : 1;
-    dispatch(restoreRows(null, sortedList, null, newId));
+    dispatch(restoreRows(null, sortedList, null, newId, rows));
   }
 );
 
@@ -104,8 +127,11 @@ export const sortRows = (requestedSortBy, requestedDirection, ref) => (
     const sortedList = Deepcopy(list);
     sortedList.sort(sortMethod(requestedSortBy, sortDirection, ref));
 
+    // Create row list.
+    const rows = rowMapping(sortedList);
+
     // Create or update ID.
     const newId = id ? id + 1 : 1;
-    dispatch(updateRows(sortDirection, sortedList, requestedSortBy, newId));
+    dispatch(updateRows(sortDirection, sortedList, requestedSortBy, newId, rows));
   }
 );

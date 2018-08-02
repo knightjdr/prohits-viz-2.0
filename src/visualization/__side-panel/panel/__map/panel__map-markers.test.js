@@ -1,14 +1,9 @@
 import React from 'react';
-import ShortID from 'shortid';
 import { shallow } from 'enzyme';
 
 import Markers from './panel__map-markers';
 
 jest.mock('shortid');
-ShortID.mockReturnValueOnce('a')
-  .mockReturnValueOnce('b')
-  .mockReturnValueOnce('c')
-  .mockReturnValueOnce('d');
 
 const markers = {
   color: '#000000',
@@ -29,10 +24,25 @@ const markers = {
 };
 
 describe('Map panel markers', () => {
-  it('should render', () => {
-    const wrapper = shallow(
-      <Markers markers={markers} />,
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('should render', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Markers markers={markers} />,
+      );
+    });
+
+    it('and match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('and markers should have dimensions matching inputs as percentages', () => {
+      const div = wrapper.find('.panel__map-marker').at(1);
+      expect(div.props().style.height).toBe('20%');
+      expect(div.props().style.left).toBe('50%');
+      expect(div.props().style.top).toBe('50%');
+      expect(div.props().style.width).toBe('30%');
+    });
   });
 });

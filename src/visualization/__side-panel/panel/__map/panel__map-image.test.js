@@ -22,6 +22,10 @@ describe('Minimap image', () => {
             top: '20%',
             width: '20%',
           }}
+          search={{
+            match: false,
+            term: '',
+          }}
           showAnnotations={false}
           showMarkers={false}
           syncImage={null}
@@ -63,6 +67,10 @@ describe('Minimap image', () => {
           top: '20%',
           width: '20%',
         }}
+        search={{
+          match: false,
+          term: '',
+        }}
         showAnnotations={false}
         syncImage="syncImage"
       />,
@@ -70,26 +78,6 @@ describe('Minimap image', () => {
     expect(wrapper.find('img').props().src).toBe('syncImage');
   });
 
-  it('should render without annotations', () => {
-    const wrapper = shallow(
-      <Image
-        annotations={{}}
-        markers={{}}
-        minimap="map"
-        navigatePosition={navigatePosition}
-        rangeBox={{
-          height: '20%',
-          left: '20%',
-          top: '20%',
-          width: '20%',
-        }}
-        showAnnotations={false}
-        showMarkers={false}
-        syncImage="syncImage"
-      />,
-    );
-    expect(wrapper.find('Annotations').length).toBe(0);
-  });
 
   it('should render with annotations', () => {
     const wrapper = shallow(
@@ -103,6 +91,10 @@ describe('Minimap image', () => {
           left: '20%',
           top: '20%',
           width: '20%',
+        }}
+        search={{
+          match: false,
+          term: '',
         }}
         showAnnotations
         showMarkers={false}
@@ -125,11 +117,40 @@ describe('Minimap image', () => {
           top: '20%',
           width: '20%',
         }}
+        search={{
+          match: false,
+          term: '',
+        }}
         showAnnotations={false}
         showMarkers
         syncImage="syncImage"
       />,
     );
     expect(wrapper.find('Markers').length).toBe(1);
+  });
+
+  it('should render with search', () => {
+    const wrapper = shallow(
+      <Image
+        annotations={{}}
+        markers={{}}
+        minimap="map"
+        navigatePosition={navigatePosition}
+        rangeBox={{
+          height: '20%',
+          left: '20%',
+          top: '20%',
+          width: '20%',
+        }}
+        search={{
+          match: true,
+          term: 'test',
+        }}
+        showAnnotations={false}
+        showMarkers={false}
+        syncImage="syncImage"
+      />,
+    );
+    expect(wrapper.find('Search').length).toBe(1);
   });
 });

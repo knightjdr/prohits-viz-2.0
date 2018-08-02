@@ -1,12 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map panel markers should render 1`] = `
-<div
-  className="panel__map-markers"
->
+exports[`Map panel markers should render and match snapshot 1`] = `
+<React.Fragment>
   <div
     className="panel__map-marker"
-    key="a"
+    key="1"
     style={
       Object {
         "borderColor": "#000000",
@@ -19,7 +17,7 @@ exports[`Map panel markers should render 1`] = `
   />
   <div
     className="panel__map-marker"
-    key="b"
+    key="1"
     style={
       Object {
         "borderColor": "#000000",
@@ -30,5 +28,5 @@ exports[`Map panel markers should render 1`] = `
       }
     }
   />
-</div>
+</React.Fragment>
 `;

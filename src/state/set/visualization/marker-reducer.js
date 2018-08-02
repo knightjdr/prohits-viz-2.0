@@ -1,7 +1,6 @@
 import DeepCopy from '../../../helpers/deep-copy';
 import * as fileActions from '../interactive-file-actions';
 import * as actions from './marker-actions';
-import { TOGGLE_ANNOTATIONS } from './annotation-actions';
 
 const Markers = (state = {
   color: '#000000',
@@ -53,11 +52,6 @@ const Markers = (state = {
       return {
         ...state,
         color: action.color,
-      };
-    case TOGGLE_ANNOTATIONS:
-      return {
-        ...state,
-        record: false,
       };
     case actions.TOGGLE_MARKERS:
       return {

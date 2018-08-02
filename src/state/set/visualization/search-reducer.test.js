@@ -1,5 +1,6 @@
 import SearchReducer from './search-reducer';
 import * as actions from './search-actions';
+import { RESTORE_ROWS, UPDATE_ROWS } from './rows-actions';
 
 describe('Search reducer', () => {
   it('should return empty initial state', () => {
@@ -17,6 +18,20 @@ describe('Search reducer', () => {
   it('should handle CLEAR_SEARCH action', () => {
     const action = {
       type: actions.CLEAR_SEARCH,
+    };
+    const expectedState = {
+      columns: {},
+      match: false,
+      rows: {},
+      searched: false,
+      term: '',
+    };
+    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle RESTORE_ROWS action', () => {
+    const action = {
+      type: RESTORE_ROWS,
     };
     const expectedState = {
       columns: {},
@@ -57,6 +72,20 @@ describe('Search reducer', () => {
       rows: {},
       searched: false,
       term: 'testTerm',
+    };
+    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle UPDATE_ROWS action', () => {
+    const action = {
+      type: UPDATE_ROWS,
+    };
+    const expectedState = {
+      columns: {},
+      match: false,
+      rows: {},
+      searched: false,
+      term: '',
     };
     expect(SearchReducer(undefined, action)).toEqual(expectedState);
   });

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
-import Annotations from './__annotations/heatmap-svg__annotations-container';
 import Arrows from './__arrows/heatmap-svg__arrows-container';
 import Columns from './__columns/heatmap-svg__columns-container';
 import ContextMenuColumns from './context-menu/context-menu';
+import Overlay from './__overlay/heatmap-svg__overlay-container';
 import Plot from './plot/heatmap-svg__plot-container';
 import Rows from './__rows/heatmap-svg__rows-container';
 import Tooltip from './__tooltip/svg__tooltip';
@@ -30,7 +30,7 @@ const Svg = ({
   <Fragment>
     <svg xmlns="http://www.w3.org/2000/svg" height={height.wrapper} width={width.wrapper}>
       <Plot />
-      <Annotations />
+      <Overlay />
       <Columns
         openContextMenu={openColumnContextMenu}
         sortRows={sortRows}

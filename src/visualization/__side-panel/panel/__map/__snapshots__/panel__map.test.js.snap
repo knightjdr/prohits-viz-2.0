@@ -18,6 +18,7 @@ exports[`Map panel should render when in sync and match snapshot 1`] = `
       minimap="image"
       navigatePosition={[Function]}
       rangeBox={Object {}}
+      search={Object {}}
       showAnnotations={false}
       showMarkers={false}
       syncImage={null}

@@ -1,17 +1,8 @@
 import configureMockStore from 'redux-mock-store';
-import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
 import Deepcopy from '../../../helpers/deep-copy';
-import {
-  RESTORE_ROWS,
-  sortDefault,
-  sortMethod,
-  sortPairByLocale,
-  sortRows,
-  updateRows,
-  UPDATE_ROWS,
-} from './rows-actions';
+import * as actions from './rows-actions';
 
 // configure mock store
 const middlewares = [thunk];
@@ -26,28 +17,74 @@ const list = [
 jest.mock('../../../helpers/deep-copy');
 Deepcopy.mockReturnValue(list);
 
+describe('Row actions', () => {
+  it('should dispatch an action to restore the rows', () => {
+    const rows = {
+      list: ['a', 'b', 'c'],
+      map: { a: 0, b: 1, c: 2 },
+    };
+    const expectedAction = {
+      direction: 'asc',
+      id: 1,
+      list,
+      rows,
+      sortBy: 0,
+      type: actions.RESTORE_ROWS,
+    };
+    expect(actions.restoreRows('asc', list, 0, 1, rows)).toEqual(expectedAction);
+  });
+
+  it('should dispatch an action to update the rows', () => {
+    const rows = {
+      list: ['a', 'b', 'c'],
+      map: { a: 0, b: 1, c: 2 },
+    };
+    const expectedAction = {
+      direction: 'asc',
+      id: 1,
+      list,
+      rows,
+      sortBy: 0,
+      type: actions.UPDATE_ROWS,
+    };
+    expect(actions.updateRows('asc', list, 0, 1, rows)).toEqual(expectedAction);
+  });
+});
+
+describe('Row mapping', () => {
+  let rows;
+  beforeAll(() => {
+    const sortedList = [{ name: 'a' }, { name: 'b' }, { name: 'c' }];
+    rows = actions.rowMapping(sortedList);
+  });
+
+  it('should create an array of row names', () => {
+    expect(rows.list).toEqual(['a', 'b', 'c']);
+  });
+
+  it('should create a map of rowNames to indices', () => {
+    expect(rows.map).toEqual({ a: 0, b: 1, c: 2 });
+  });
+});
+
 describe('Sort by locale', () => {
   it('should sort by value when not zero', () => {
-    expect(sortPairByLocale(1, 'a', 'b')).toBe(1);
+    expect(actions.sortPairByLocale(1, 'a', 'b')).toBe(1);
   });
 
   it('should sort by input strings when value is zero', () => {
-    expect(sortPairByLocale(0, 'a', 'b')).toBe(-1);
-    expect(sortPairByLocale(0, 'b', '1')).toBe(1);
+    expect(actions.sortPairByLocale(0, 'a', 'b')).toBe(-1);
+    expect(actions.sortPairByLocale(0, 'b', '1')).toBe(1);
   });
 
   it('should sort case insensitive', () => {
-    expect(sortPairByLocale(0, 'a', 'B')).toBe(-1);
-    expect(sortPairByLocale(0, 'B', 'a')).toBe(1);
+    expect(actions.sortPairByLocale(0, 'a', 'B')).toBe(-1);
+    expect(actions.sortPairByLocale(0, 'B', 'a')).toBe(1);
   });
 });
 
 describe('Default row sort', () => {
   let expectedActions;
-
-  afterAll(() => {
-    fetchMock.restore();
-  });
 
   describe('with no existing index', () => {
     beforeAll(() => {
@@ -59,7 +96,7 @@ describe('Default row sort', () => {
         sortBy: null,
       };
       const store = mockStore({ rows });
-      store.dispatch(sortDefault());
+      store.dispatch(actions.sortDefault());
       expectedActions = store.getActions();
     });
 
@@ -68,6 +105,10 @@ describe('Default row sort', () => {
     });
 
     it('should sort rows based on order in store', () => {
+      const rows = {
+        list: ['c', 'a', 'b'],
+        map: { c: 0, a: 1, b: 2 },
+      };
       const sortedRows = [
         { data: [{ value: 2 }, { value: 3 }], name: 'c' },
         { data: [{ value: 1 }, { value: 4 }], name: 'a' },
@@ -77,8 +118,9 @@ describe('Default row sort', () => {
         direction: null,
         id: 1,
         list: sortedRows,
+        rows,
         sortBy: null,
-        type: RESTORE_ROWS,
+        type: actions.RESTORE_ROWS,
       });
     });
   });
@@ -93,7 +135,7 @@ describe('Default row sort', () => {
         sortBy: null,
       };
       const store = mockStore({ rows });
-      store.dispatch(sortDefault());
+      store.dispatch(actions.sortDefault());
       expectedActions = store.getActions();
     });
 
@@ -102,6 +144,10 @@ describe('Default row sort', () => {
     });
 
     it('should increment index', () => {
+      const rows = {
+        list: ['c', 'a', 'b'],
+        map: { c: 0, a: 1, b: 2 },
+      };
       const sortedRows = [
         { data: [{ value: 2 }, { value: 3 }], name: 'c' },
         { data: [{ value: 1 }, { value: 4 }], name: 'a' },
@@ -111,8 +157,9 @@ describe('Default row sort', () => {
         direction: null,
         id: 2,
         list: sortedRows,
+        rows,
         sortBy: null,
-        type: RESTORE_ROWS,
+        type: actions.RESTORE_ROWS,
       });
     });
   });
@@ -120,7 +167,7 @@ describe('Default row sort', () => {
 
 describe('Row sort method', () => {
   it('should return a method for sorting rows by an index in ascending order by ref', () => {
-    const func = sortMethod(0, 'asc', 1);
+    const func = actions.sortMethod(0, 'asc', 1);
     expect(func(list[0], list[1])).toBe(-2.25);
   });
 
@@ -130,19 +177,19 @@ describe('Row sort method', () => {
       { data: [{ value: 5 }, { value: 0 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
     ];
-    const func = sortMethod(0, 'asc', 1);
+    const func = actions.sortMethod(0, 'asc', 1);
     expect(func(zeroList[0], zeroList[1])).toBe(-4000);
     expect(func(zeroList[0], zeroList[2])).toBeCloseTo(999.334, 2);
     expect(func(zeroList[2], zeroList[0])).toBeCloseTo(-999.334, 2);
   });
 
   it('should return a method for sorting rows by an index in ascending order', () => {
-    const func = sortMethod(0, 'asc');
+    const func = actions.sortMethod(0, 'asc');
     expect(func(list[0], list[1])).toBe(-4);
   });
 
   it('should return a method for sorting rows by an index in descending order by ref', () => {
-    const func = sortMethod(0, 'desc', 1);
+    const func = actions.sortMethod(0, 'desc', 1);
     expect(func(list[0], list[1])).toBe(2.25);
   });
 
@@ -152,34 +199,19 @@ describe('Row sort method', () => {
       { data: [{ value: 5 }, { value: 0 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
     ];
-    const func = sortMethod(0, 'desc', 1);
+    const func = actions.sortMethod(0, 'desc', 1);
     expect(func(zeroList[0], zeroList[1])).toBe(4000);
     expect(func(zeroList[0], zeroList[2])).toBeCloseTo(-999.334, 2);
     expect(func(zeroList[2], zeroList[0])).toBeCloseTo(999.334, 2);
   });
 
   it('should return a method for sorting rows by an index in descending order', () => {
-    const func = sortMethod(0, 'desc');
+    const func = actions.sortMethod(0, 'desc');
     expect(func(list[0], list[1])).toBe(4);
   });
 });
 
-describe('Row actions', () => {
-  afterAll(() => {
-    fetchMock.restore();
-  });
-
-  it('should dispatch an action to update the rows', () => {
-    const expectedAction = {
-      direction: 'asc',
-      id: 1,
-      list,
-      sortBy: 0,
-      type: UPDATE_ROWS,
-    };
-    expect(updateRows('asc', list, 0, 1)).toEqual(expectedAction);
-  });
-
+describe('Row update', () => {
   it('should sort rows in descending order by default', () => {
     const rows = {
       direction: null,
@@ -187,20 +219,25 @@ describe('Row actions', () => {
       list,
       sortBy: null,
     };
+    const rowlist = {
+      list: ['a', 'c', 'b'],
+      map: { a: 0, c: 1, b: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1));
+    store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -211,20 +248,25 @@ describe('Row actions', () => {
       list,
       sortBy: null,
     };
+    const rowlist = {
+      list: ['b', 'c', 'a'],
+      map: { b: 0, c: 1, a: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1, 'asc'));
+    store.dispatch(actions.sortRows(1, 'asc'));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -236,20 +278,25 @@ describe('Row actions', () => {
       list,
       sortBy: 1,
     };
+    const rowlist = {
+      list: ['b', 'c', 'a'],
+      map: { b: 0, c: 1, a: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1));
+    store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -261,20 +308,25 @@ describe('Row actions', () => {
       list,
       sortBy: 1,
     };
+    const rowlist = {
+      list: ['a', 'c', 'b'],
+      map: { a: 0, c: 1, b: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1));
+    store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -286,20 +338,25 @@ describe('Row actions', () => {
       list,
       sortBy: 1,
     };
+    const rowlist = {
+      list: ['b', 'c', 'a'],
+      map: { b: 0, c: 1, a: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(0));
+    store.dispatch(actions.sortRows(0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 0,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -310,20 +367,25 @@ describe('Row actions', () => {
       list,
       sortBy: null,
     };
+    const rowlist = {
+      list: ['a', 'c', 'b'],
+      map: { a: 0, c: 1, b: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1, 'desc', 0));
+    store.dispatch(actions.sortRows(1, 'desc', 0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -334,20 +396,25 @@ describe('Row actions', () => {
       list,
       sortBy: null,
     };
+    const rowlist = {
+      list: ['b', 'c', 'a'],
+      map: { b: 0, c: 1, a: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1, 'asc', 0));
+    store.dispatch(actions.sortRows(1, 'asc', 0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'asc',
       id: 1,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 
@@ -358,20 +425,25 @@ describe('Row actions', () => {
       list,
       sortBy: null,
     };
+    const rowlist = {
+      list: ['a', 'c', 'b'],
+      map: { a: 0, c: 1, b: 2 },
+    };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
     const store = mockStore({ rows });
-    store.dispatch(sortRows(1));
+    store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
       direction: 'desc',
       id: 2,
       list: sortedRows,
+      rows: rowlist,
       sortBy: 1,
-      type: UPDATE_ROWS,
+      type: actions.UPDATE_ROWS,
     });
   });
 });

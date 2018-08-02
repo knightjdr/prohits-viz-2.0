@@ -1,4 +1,5 @@
 import * as actions from './search-actions';
+import { RESTORE_ROWS, UPDATE_ROWS } from './rows-actions';
 
 const Search = (state = {
   columns: {},
@@ -9,6 +10,14 @@ const Search = (state = {
 }, action) => {
   switch (action.type) {
     case actions.CLEAR_SEARCH:
+      return {
+        columns: {},
+        match: false,
+        rows: {},
+        searched: false,
+        term: '',
+      };
+    case RESTORE_ROWS:
       return {
         columns: {},
         match: false,
@@ -30,6 +39,14 @@ const Search = (state = {
         match: false,
         searched: false,
         term: action.term,
+      };
+    case UPDATE_ROWS:
+      return {
+        columns: {},
+        match: false,
+        rows: {},
+        searched: false,
+        term: '',
       };
     default:
       return state;

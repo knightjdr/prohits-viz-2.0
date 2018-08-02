@@ -1,6 +1,7 @@
 import GeneReducer from './genes-reducer';
 import * as actions from './genes-actions';
 import * as fileActions from '../interactive-file-actions';
+import * as rowActions from './rows-actions';
 
 const DefaultState = {
   columnMap: {},
@@ -53,6 +54,22 @@ describe('Gene selection set reducer', () => {
     expect(GeneReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it('should handle RESTORE_ROWS action', () => {
+    const action = {
+      rows: {
+        list: ['d', 'e', 'f'],
+        map: { d: 0, e: 1, f: 2 },
+      },
+      type: rowActions.RESTORE_ROWS,
+    };
+    const expectedState = {
+      ...DefaultState,
+      rowMap: { d: 0, e: 1, f: 2 },
+      rows: ['d', 'e', 'f'],
+    };
+    expect(GeneReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it('should handle SET_SELECTIONS action', () => {
     const action = {
       columns: ['a', 'b', 'c'],
@@ -90,5 +107,21 @@ describe('Gene selection set reducer', () => {
       rowsSelected: ['e'],
     };
     expect(GeneReducer(initialState, action)).toEqual(expectedState);
+  });
+
+  it('should handle UPDATE_ROWS action', () => {
+    const action = {
+      rows: {
+        list: ['d', 'e', 'f'],
+        map: { d: 0, e: 1, f: 2 },
+      },
+      type: rowActions.UPDATE_ROWS,
+    };
+    const expectedState = {
+      ...DefaultState,
+      rowMap: { d: 0, e: 1, f: 2 },
+      rows: ['d', 'e', 'f'],
+    };
+    expect(GeneReducer(undefined, action)).toEqual(expectedState);
   });
 });

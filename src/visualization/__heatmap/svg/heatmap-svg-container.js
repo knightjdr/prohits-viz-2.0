@@ -15,6 +15,7 @@ import { sortRows } from '../../../state/set/visualization/rows-actions';
 import './heatmap-svg.css';
 
 const COL_MARGIN = 100;
+const EXTRA_PADDING = 2;
 const ROW_MARGIN = 100;
 const SIDE_PANEL = 400;
 
@@ -95,7 +96,7 @@ export class SvgContainer extends Component {
       height.heatmap = rowNum * cellSize;
       height.pageY = rowNum;
       height.rows = rowNum;
-      height.wrapper = height.heatmap + COL_MARGIN;
+      height.wrapper = height.heatmap + COL_MARGIN + EXTRA_PADDING;
     } else {
       height.arrowsY = true;
       height.heatmap = pageY * cellSize;
@@ -121,7 +122,7 @@ export class SvgContainer extends Component {
       width.columns = columnNum;
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
-      width.wrapper = width.heatmap + ROW_MARGIN;
+      width.wrapper = width.heatmap + ROW_MARGIN + EXTRA_PADDING;
       width.translate = this.translateAmount(width.wrapper, window.innerWidth);
     } else {
       width.arrowsX = true;

@@ -180,6 +180,12 @@ describe('Store', () => {
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
+    it('handles TOGGLE_ANNOTATIONS action', () => {
+      const action = { type: 'TOGGLE_ANNOTATIONS' };
+      store.dispatch(action);
+      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
+    });
+
     it('handles UPDATE_ANNOTATION action', () => {
       const action = { list: [], type: 'UPDATE_ANNOTATION' };
       store.dispatch(action);
@@ -650,23 +656,6 @@ describe('Store', () => {
 
   describe('dispatching TOGGLE_ANNOTATIONS action', () => {
     const action = { type: 'TOGGLE_ANNOTATIONS' };
-    const store = createStore(Reducers);
-
-    beforeAll(() => {
-      store.dispatch(action);
-    });
-
-    it('to annotation reducer', () => {
-      expect(store.getState().annotations).toEqual(Annotations(undefined, action));
-    });
-
-    it('to marker reducer', () => {
-      expect(store.getState().markers).toEqual(Marker(undefined, action));
-    });
-  });
-
-  describe('dispatching TOGGLE_RECORD_MARKER action', () => {
-    const action = { type: 'TOGGLE_RECORD_MARKER' };
     const store = createStore(Reducers);
 
     beforeAll(() => {

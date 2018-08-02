@@ -1,14 +1,7 @@
 import React from 'react';
-import ShortID from 'shortid';
 import { shallow } from 'enzyme';
 
 import Annotations from './panel__map-annotations';
-
-jest.mock('shortid');
-ShortID.mockReturnValueOnce('a')
-  .mockReturnValueOnce('b')
-  .mockReturnValueOnce('c')
-  .mockReturnValueOnce('d');
 
 const annotations = {
   color: '#0000ff',
@@ -19,10 +12,23 @@ const annotations = {
 };
 
 describe('Map panel annotations', () => {
-  it('should render', () => {
-    const wrapper = shallow(
-      <Annotations annotations={annotations} />,
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('should render', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Annotations annotations={annotations} />,
+      );
+    });
+
+    it('and match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('and annotations should have position matching inputs as % - 5px', () => {
+      const div = wrapper.find('.panel__map-annotation').first();
+      expect(div.props().style.left).toBe('calc(10% - 5px)');
+      expect(div.props().style.top).toBe('calc(20% - 5px)');
+    });
   });
 });

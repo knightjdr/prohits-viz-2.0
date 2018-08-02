@@ -6,6 +6,7 @@ import ColumnsSelector from '../../../../state/selectors/visualization/columns-s
 import Columns from './heatmap-svg__columns';
 import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
+import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import TrimText from '../helpers/trim-text';
 
@@ -43,6 +44,22 @@ export class ColumnsContainer extends Component {
       columns.names,
     );
   }
+  shouldComponentUpdate = (nextProps) => {
+    const {
+      cellSize,
+      columns,
+      dimensions,
+      position,
+      search,
+    } = nextProps;
+    return (
+      cellSize !== this.props.cellSize ||
+      columns.ref !== this.props.columns.ref ||
+      dimensions.pageX !== this.props.dimensions.pageX ||
+      position.x !== this.props.position.x ||
+      search.match
+    );
+  }
   getPage = (names, x, pageX) => {
     const pageEnd = x + pageX;
     return names.slice(x, pageEnd);
@@ -77,6 +94,7 @@ export class ColumnsContainer extends Component {
         fontSize={this.state.fontSize}
         names={this.state.names}
         openContextMenu={this.props.openContextMenu}
+        search={this.props.search}
         sortRows={this.props.sortRows}
         reference={this.props.columns.ref}
         toggleTooltip={this.props.toggleTooltip}
@@ -98,6 +116,11 @@ ColumnsContainer.propTypes = {
   position: PropTypes.shape({
     x: PropTypes.number,
   }).isRequired,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    term: PropTypes.string,
+  }).isRequired,
   sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };
@@ -108,6 +131,7 @@ const mapStateToProps = state => ({
   columns: ColumnsSelector(state),
   dimensions: DimensionsSelector(state),
   position: PositionSelector(state),
+  search: SearchSelector(state),
 });
 
 const ConnectedContainer = connect(

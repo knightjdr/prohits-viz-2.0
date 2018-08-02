@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search dots on map panel should render and match snapshot 1`] = `
+<React.Fragment>
+  <div
+    className="panel__map-search-match"
+    key="1"
+    style={
+      Object {
+        "left": "calc(20% - 5px)",
+        "top": -5,
+      }
+    }
+    tooltip="a"
+    tooltip-position="right"
+  />
+  <div
+    className="panel__map-search-match"
+    key="1"
+    style={
+      Object {
+        "left": "calc(50% - 5px)",
+        "top": -5,
+      }
+    }
+    tooltip="b"
+    tooltip-position="right"
+  />
+  <div
+    className="panel__map-search-match"
+    key="1"
+    style={
+      Object {
+        "left": -5,
+        "top": "calc(10% - 5px)",
+      }
+    }
+    tooltip="c"
+    tooltip-position="right"
+  />
+  <div
+    className="panel__map-search-match"
+    key="1"
+    style={
+      Object {
+        "left": -5,
+        "top": "calc(90% - 5px)",
+      }
+    }
+    tooltip="d"
+    tooltip-position="right"
+  />
+</React.Fragment>
+`;

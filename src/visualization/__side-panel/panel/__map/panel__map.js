@@ -14,6 +14,7 @@ const Map = ({
   minimap,
   navigatePosition,
   rangeBox,
+  search,
   showAnnotations,
   showMarkers,
   synced,
@@ -35,6 +36,7 @@ const Map = ({
             minimap={minimap}
             navigatePosition={navigatePosition}
             rangeBox={rangeBox}
+            search={search}
             showAnnotations={showAnnotations}
             showMarkers={showMarkers}
             syncImage={syncImage}
@@ -86,6 +88,12 @@ Map.propTypes = {
     left: PropTypes.string,
     top: PropTypes.string,
     width: PropTypes.string,
+  }).isRequired,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    rows: PropTypes.shape({}),
+    term: PropTypes.string,
   }).isRequired,
   showAnnotations: PropTypes.bool,
   showMarkers: PropTypes.bool,

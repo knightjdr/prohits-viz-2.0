@@ -68,7 +68,8 @@ a.basic-link:visited {
   text-align: center;
   top: -6px;
   transform: translateX(-50%) translateY(-100%);
-  transition: opacity 0.5s ease; }
+  transition: opacity 0.5s ease;
+  z-index: 100; }
 
 [tooltip-position='left']::before {
   left: 0%;

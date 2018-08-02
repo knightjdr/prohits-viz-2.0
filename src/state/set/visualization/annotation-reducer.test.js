@@ -2,7 +2,6 @@ import DeepCopy from '../../../helpers/deep-copy';
 import AnnotationReducer from './annotation-reducer';
 import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
-import { TOGGLE_RECORD_MARKER } from './marker-actions';
 
 const DefaultState = {
   color: '#f44336',
@@ -122,17 +121,6 @@ describe('Annotation set reducer', () => {
   it('should handle TOGGLE_ANNOTATIONS action', () => {
     const action = {
       type: actions.TOGGLE_ANNOTATIONS,
-    };
-    const expectedState = {
-      ...DefaultState,
-      show: false,
-    };
-    expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
-  });
-
-  it('should handle TOGGLE_RECORD_MARKER action', () => {
-    const action = {
-      type: TOGGLE_RECORD_MARKER,
     };
     const expectedState = {
       ...DefaultState,
