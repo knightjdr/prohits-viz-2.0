@@ -241,27 +241,10 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles SET_SELECTIONS action', () => {
+    it('handles UPDATE_SELECTIONS action', () => {
       const action = {
-        columnMap: {},
-        columns: [],
-        rowMap: {},
-        rows: [],
-        type: 'SET_SELECTIONS',
-      };
-      store.dispatch(action);
-      expect(store.getState().genes).toEqual(Genes(undefined, action));
-    });
-
-    it('handles STORE_SELECTIONS action', () => {
-      const action = {
-        selections: {
-          columns: [],
-          columnsSelected: [],
-          rows: [],
-          rowsSelected: [],
-        },
-        type: 'STORE_SELECTIONS',
+        selections: [],
+        type: 'UPDATE_SELECTIONS',
       };
       store.dispatch(action);
       expect(store.getState().genes).toEqual(Genes(undefined, action));
@@ -606,6 +589,10 @@ describe('Store', () => {
         direction: null,
         id: 1,
         list: [],
+        rows: {
+          list: [],
+          mapped: {},
+        },
         sortBy: null,
         type: 'RESTORE_ROWS',
       };
@@ -614,6 +601,10 @@ describe('Store', () => {
       beforeAll(async (done) => {
         store.dispatch(action);
         done();
+      });
+
+      it('to genes reducer', () => {
+        expect(store.getState().genes).toEqual(Genes(undefined, action));
       });
 
       it('to map reducer', () => {
@@ -630,6 +621,10 @@ describe('Store', () => {
         direction: 'desc',
         id: 1,
         list: [],
+        rows: {
+          list: [],
+          mapped: {},
+        },
         sortBy: 1,
         type: 'RESTORE_ROWS',
       };
@@ -638,6 +633,10 @@ describe('Store', () => {
       beforeAll(async (done) => {
         store.dispatch(action);
         done();
+      });
+
+      it('to genes reducer', () => {
+        expect(store.getState().genes).toEqual(Genes(undefined, action));
       });
 
       it('to map reducer', () => {

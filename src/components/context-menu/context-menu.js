@@ -14,7 +14,7 @@ const ContextMenu = ({
   show,
   top,
 }) => (
-  <ClickOutside callback={closeMenu}>
+  <ClickOutside callback={show ? closeMenu : null}>
     <div
       className="context-menu"
       ref={setRef}

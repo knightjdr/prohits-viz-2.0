@@ -10,6 +10,7 @@ import SettingSelector from '../../../state/selectors/visualization/settings-sel
 import Svg from './heatmap-svg';
 import { setDimensions } from '../../../state/set/visualization/dimension-actions';
 import { setReference } from '../../../state/set/visualization/columns-actions';
+import { setSelections } from '../../../state/set/visualization/genes-actions';
 import { sortRows } from '../../../state/set/visualization/rows-actions';
 
 import './heatmap-svg.css';
@@ -24,7 +25,7 @@ export class SvgContainer extends Component {
     super(props);
     this.wrapperRef = React.createRef();
     this.state = {
-      contextColumnTarget: '',
+      contextTarget: '',
       contextEvent: null,
       height: {
         arrowsY: false, // Should the vertical navigation arrows be shown?
@@ -33,7 +34,7 @@ export class SvgContainer extends Component {
         wrapper: 0, // The height of the entire svg.
       },
       showSvg: false,
-      showColumnContext: false,
+      showContext: '',
       tooltip: {
         display: false,
         left: 0,
@@ -137,33 +138,40 @@ export class SvgContainer extends Component {
   closeContextMenu = () => {
     this.setState({
       contextEvent: null,
-      showColumnContext: false,
+      showContext: '',
     });
   }
-  openColumnContextMenu = (e, column) => {
+  handleClick = (e, target, type) => {
+    if (e.shiftKey && type === 'column') {
+      this.sortRows(target);
+    } else if (e.altKey && type === 'column') {
+      this.props.setSelections([target], 'columns', 'columnsSelected');
+    } else if (e.altKey && type === 'row') {
+      this.props.setSelections([target], 'rows', 'rowsSelected');
+    }
+  }
+  openContextMenu = (e, target, type) => {
     e.preventDefault();
     const rect = this.wrapperRef.current.getBoundingClientRect();
     const left = e.clientX - rect.left;
     const top = e.clientY - rect.top;
     this.setState({
-      contextColumnTarget: column,
+      contextTarget: target,
       contextEvent: {
         clientX: left,
         clientY: top,
       },
-      showColumnContext: true,
+      showContext: type,
     });
   }
   resizeEnd = () => {
     const { cellSize, columns, rows } = this.props;
     this.setDimensions(cellSize, columns, rows);
   }
-  sortRows = (shiftKey, column, direction) => {
-    if (shiftKey) {
-      const columnIndex = this.props.columns.names.indexOf(column);
-      const refIndex = this.props.columns.names.indexOf(this.props.columns.ref);
-      this.props.sortRows(columnIndex, direction, refIndex >= 0 ? refIndex : null);
-    }
+  sortRows = (column, direction) => {
+    const columnIndex = this.props.columns.names.indexOf(column);
+    const refIndex = this.props.columns.names.indexOf(this.props.columns.ref);
+    this.props.sortRows(columnIndex, direction, refIndex >= 0 ? refIndex : null);
   }
   toggleTooltip = (needsTooltip, display, text, left = 0, top = 0) => {
     if (needsTooltip) {
@@ -204,14 +212,16 @@ export class SvgContainer extends Component {
       >
         <Svg
           closeContextMenu={this.closeContextMenu}
-          contextColumnTarget={this.state.contextColumnTarget}
+          contextTarget={this.state.contextTarget}
           contextEvent={this.state.contextEvent}
+          handleClick={this.handleClick}
           height={this.state.height}
-          openColumnContextMenu={this.openColumnContextMenu}
+          openContextMenu={this.openContextMenu}
           reference={this.props.columns.ref}
+          setSelections={this.props.setSelections}
           setReference={this.props.setReference}
           show={this.state.showSvg}
-          showColumnContext={this.state.showColumnContext}
+          showContext={this.state.showContext}
           sortRows={this.sortRows}
           tooltip={this.state.tooltip}
           toggleTooltip={this.toggleTooltip}
@@ -232,6 +242,7 @@ SvgContainer.propTypes = {
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   setDimensions: PropTypes.func.isRequired,
   setReference: PropTypes.func.isRequired,
+  setSelections: PropTypes.func.isRequired,
   sortRows: PropTypes.func.isRequired,
 };
 
@@ -247,6 +258,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setDimensions: (rows, columns, pageY, pageX, height, width) => {
     dispatch(setDimensions(rows, columns, pageY, pageX, height, width));
+  },
+  setSelections: (arr, source, target) => {
+    dispatch(setSelections(arr, source, target));
   },
   setReference: (ref) => {
     dispatch(setReference(ref));

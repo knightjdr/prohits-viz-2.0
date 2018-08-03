@@ -4,11 +4,11 @@ import React from 'react';
 const Columns = ({
   cellSize,
   fontSize,
+  handleClick,
   names,
   openContextMenu,
   reference,
   search,
-  sortRows,
   toggleTooltip,
 }) => {
   const textOffset = (cellSize / 2) - (fontSize / 3);
@@ -52,7 +52,7 @@ const Columns = ({
             <text
               fontSize={fontSize}
               key={name.original}
-              onClick={(e) => { sortRows(e.shiftKey, name.original); }}
+              onClick={(e) => { handleClick(e, name.original, 'column'); }}
               onContextMenu={(e) => { openContextMenu(e, name.original); }}
               onMouseEnter={(e) => {
                 toggleTooltip(name.trimmed, true, name.original, e.clientX, 0);
@@ -80,6 +80,7 @@ Columns.defaultProps = {
 Columns.propTypes = {
   cellSize: PropTypes.number.isRequired,
   fontSize: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
   names: PropTypes.arrayOf(
     PropTypes.shape({
       original: PropTypes.string,
@@ -94,7 +95,6 @@ Columns.propTypes = {
     match: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
-  sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };
 

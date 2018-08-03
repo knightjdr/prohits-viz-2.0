@@ -3,14 +3,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnnotationsSelector from '../../../../state/selectors/visualization/annotation-selector';
+import ColumnSelector from '../../../../state/selectors/visualization/columns-selector';
 import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import Overlay from './heatmap-svg__overlay';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import Round from '../../../../helpers/round';
 import RoundNearest from '../../../../helpers/round-nearest';
+import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
 import SettingsSelector from '../../../../state/selectors/visualization/settings-selector';
 import { addMarker } from '../../../../state/set/visualization/marker-actions';
+import { setSelections } from '../../../../state/set/visualization/genes-actions';
 import { updateList } from '../../../../state/set/visualization/annotation-actions';
 
 export class OverlayContainer extends Component {
@@ -46,6 +49,7 @@ export class OverlayContainer extends Component {
     } = this.props;
     this.updateAnnotations(nextProps, annotations, dimensions, position);
     this.updateMarkers(nextProps, markers, dimensions, position);
+    this.updateOverlay(nextProps, dimensions, position);
   }
   getBoundary = () => {
     const rect = this.gElementRef.current.getBoundingClientRect();
@@ -55,11 +59,7 @@ export class OverlayContainer extends Component {
     };
   }
   addMarker = (cellSize, height, position, record, width) => {
-    if (
-      record &&
-      height > 0 &&
-      width > 0
-    ) {
+    if (record) {
       const markerHeight = height / cellSize;
       const markerWidth = width / cellSize;
       const markerX = (this.startPosition.x / cellSize) + position.x;
@@ -179,25 +179,53 @@ export class OverlayContainer extends Component {
     });
   }
   overlayMouseUp = (e) => {
-    const { cellSize, markers, position } = this.props;
+    const {
+      cellSize,
+      columns,
+      markers,
+      position,
+      rows,
+    } = this.props;
     const currentPos = {
       x: RoundNearest(e.clientX - this.boundary.x, cellSize),
       y: RoundNearest(e.clientY - this.boundary.y, cellSize),
     };
     const height = Math.abs(currentPos.y - this.startPosition.y);
     const width = Math.abs(currentPos.x - this.startPosition.x);
-    const x = currentPos.x < this.startPosition.x ? currentPos.x : this.startPosition.x;
-    const y = currentPos.y < this.startPosition.y ? currentPos.y : this.startPosition.y;
-    this.setState({
-      marker: {
-        height,
-        show: true,
+    if (
+      height > 0 &&
+      width > 0
+    ) {
+      const x = currentPos.x < this.startPosition.x ? currentPos.x : this.startPosition.x;
+      const y = currentPos.y < this.startPosition.y ? currentPos.y : this.startPosition.y;
+      this.setState({
+        marker: {
+          height,
+          show: true,
+          x,
+          y,
+          width,
+        },
+      });
+      this.addMarker(cellSize, height, position, markers.record, width);
+      this.selectMarkerGenes(
+        'columns',
+        'columnsSelected',
+        cellSize,
+        columns.names,
         x,
-        y,
+        position.x,
         width,
-      },
-    });
-    this.addMarker(cellSize, height, position, markers.record, width);
+        'columnMap',
+      );
+      this.selectMarkerGenes('rows', 'rowsSelected', cellSize, rows, y, position.y, height, 'rowMap');
+    }
+  }
+  selectMarkerGenes = (source, target, cellSize, list, start, viewStart, width, sortBy) => {
+    const arrayStart = viewStart + Math.round(start / cellSize);
+    const markerSpan = Math.round(width / cellSize);
+    const selected = list.slice(arrayStart, arrayStart + markerSpan);
+    this.props.setSelections(selected, source, target, true, sortBy);
   }
   subsetAnnotations = (annotations, dimensions, position) => {
     // Multiplier for positioning annotations correctly on current view.
@@ -293,6 +321,24 @@ export class OverlayContainer extends Component {
       });
     }
   }
+  updateOverlay = ({ dimensions, position }, prevDimensions, prevPosition) => {
+    if (
+      position.x !== prevPosition.x ||
+      position.y !== prevPosition.y ||
+      dimensions.pageX !== prevDimensions.pageX ||
+      dimensions.pageY !== prevDimensions.pageY
+    ) {
+      this.setState({
+        marker: {
+          height: 0,
+          show: false,
+          x: 0,
+          y: 0,
+          width: 0,
+        },
+      });
+    }
+  }
   render() {
     return (
       <Overlay
@@ -330,6 +376,9 @@ OverlayContainer.propTypes = {
     show: PropTypes.bool,
   }).isRequired,
   cellSize: PropTypes.number.isRequired,
+  columns: PropTypes.shape({
+    names: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     height: PropTypes.number,
@@ -349,6 +398,8 @@ OverlayContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelections: PropTypes.func.isRequired,
   updateList: PropTypes.func.isRequired,
 };
 
@@ -356,15 +407,20 @@ OverlayContainer.propTypes = {
 const mapStateToProps = state => ({
   annotations: AnnotationsSelector(state),
   cellSize: SettingsSelector(state, 'cellSize'),
+  columns: ColumnSelector(state),
   dimensions: DimensionSelector(state),
   markers: MarkerSelector(state),
   position: PositionSelector(state),
+  rows: RowNameSelector(state),
 });
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   addMarker: (height, width, x, y) => {
     dispatch(addMarker(height, width, x, y));
+  },
+  setSelections: (list, source, target, replace, sortBy) => {
+    dispatch(setSelections(list, source, target, replace, sortBy));
   },
   updateList: (index, x, y) => {
     dispatch(updateList(index, x, y));

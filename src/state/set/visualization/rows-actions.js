@@ -21,10 +21,16 @@ export const updateRows = (direction, list, sortBy, id, rows) => ({
   type: UPDATE_ROWS,
 });
 
-/* Creates a list of row names and a map to the index */
-export const rowMapping = (list) => {
+/* Creates a list of row names and a map to the index. It will filter the list
+** based on the currently available rows. */
+export const rowMapping = (currRows, list) => {
   // Get list of rows names for selection box map.
-  const rows = list.map(item => item.name);
+  const rows = list.reduce((filteredList, item) => {
+    if (currRows.includes(item.name)) {
+      return [...filteredList, item.name];
+    }
+    return filteredList;
+  }, []);
   const rowMap = rows.reduce((mappedItems, item, index) => {
     const newItem = {};
     newItem[item] = index;
@@ -35,14 +41,15 @@ export const rowMapping = (list) => {
   }, {});
   return {
     list: rows,
-    map: rowMap,
+    mapped: rowMap,
   };
 };
 
 /* Sorts rows based on the default (input) order */
 export const sortDefault = () => (
   (dispatch, getState) => {
-    const { id, list, order } = getState().rows;
+    const { genes, rows } = getState();
+    const { id, list, order } = rows;
     const currentMap = list.reduce((listMap, item, index) => {
       const newProp = {};
       newProp[item.name] = index;
@@ -54,11 +61,11 @@ export const sortDefault = () => (
     const sortedList = order.map(item => list[currentMap[item]]);
 
     // Create row list.
-    const rows = rowMapping(sortedList);
+    const updatedRows = rowMapping(genes.rows, sortedList);
 
     // Create or update ID.
     const newId = id ? id + 1 : 1;
-    dispatch(restoreRows(null, sortedList, null, newId, rows));
+    dispatch(restoreRows(null, sortedList, null, newId, updatedRows));
   }
 );
 
@@ -103,12 +110,13 @@ export const sortMethod = (sortBy, direction, ref) => {
 ** by requestedSortBy, and with reference to another column if ref is a number. */
 export const sortRows = (requestedSortBy, requestedDirection, ref) => (
   (dispatch, getState) => {
+    const { genes, rows } = getState();
     const {
       direction,
       id,
       list,
       sortBy,
-    } = getState().rows;
+    } = rows;
     let sortDirection;
     if (requestedDirection) {
       // If a sort direction is requested, use that.
@@ -128,10 +136,10 @@ export const sortRows = (requestedSortBy, requestedDirection, ref) => (
     sortedList.sort(sortMethod(requestedSortBy, sortDirection, ref));
 
     // Create row list.
-    const rows = rowMapping(sortedList);
+    const updatedRows = rowMapping(genes.rows, sortedList);
 
     // Create or update ID.
     const newId = id ? id + 1 : 1;
-    dispatch(updateRows(sortDirection, sortedList, requestedSortBy, newId, rows));
+    dispatch(updateRows(sortDirection, sortedList, requestedSortBy, newId, updatedRows));
   }
 );

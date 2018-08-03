@@ -1,3 +1,4 @@
+import DeepCopy from '../../../helpers/deep-copy';
 import * as actions from './genes-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
@@ -32,28 +33,19 @@ const Genes = (state = {
     case rowActions.RESTORE_ROWS:
       return {
         ...state,
-        rowMap: { ...action.rows.map },
+        rowMap: { ...action.rows.mapped },
         rows: [...action.rows.list],
-      };
-    case actions.SET_SELECTIONS:
-      return {
-        ...state,
-        columns: action.columns,
-        rows: action.rows,
-      };
-    case actions.STORE_SELECTIONS:
-      return {
-        ...state,
-        columns: [...action.selections.columns],
-        columnsSelected: [...action.selections.columnsSelected],
-        rows: [...action.selections.rows],
-        rowsSelected: [...action.selections.rowsSelected],
       };
     case rowActions.UPDATE_ROWS:
       return {
         ...state,
-        rowMap: { ...action.rows.map },
+        rowMap: { ...action.rows.mapped },
         rows: [...action.rows.list],
+      };
+    case actions.UPDATE_SELECTIONS:
+      return {
+        ...state,
+        ...DeepCopy(action.selections),
       };
     default:
       return state;

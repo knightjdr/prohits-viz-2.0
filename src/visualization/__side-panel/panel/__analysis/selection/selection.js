@@ -11,6 +11,7 @@ const Selection = ({
   arrangeSelected,
   canPasteContext,
   closeContextMenu,
+  columnRef,
   columns,
   columnsSelected,
   contextEvent,
@@ -21,6 +22,7 @@ const Selection = ({
   openContextMenu,
   paste,
   pasteText,
+  rowRef,
   rows,
   rowsSelected,
   showContext,
@@ -43,11 +45,13 @@ const Selection = ({
     </div>
     <GeneSelection
       arrangeSelected={arrangeSelected}
+      columnRef={columnRef}
       columns={columns}
       columnsSelected={columnsSelected}
       listSelect={listSelect}
       listSwap={listSwap}
       openContextMenu={openContextMenu}
+      rowRef={rowRef}
       rows={rows}
       rowsSelected={rowsSelected}
     />
@@ -69,6 +73,7 @@ Selection.propTypes = {
   arrangeSelected: PropTypes.func.isRequired,
   canPasteContext: PropTypes.bool.isRequired,
   closeContextMenu: PropTypes.func.isRequired,
+  columnRef: PropTypes.shape({}).isRequired,
   columns: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
@@ -83,6 +88,7 @@ Selection.propTypes = {
   openContextMenu: PropTypes.func.isRequired,
   paste: PropTypes.func.isRequired,
   pasteText: PropTypes.string.isRequired,
+  rowRef: PropTypes.shape({}).isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,

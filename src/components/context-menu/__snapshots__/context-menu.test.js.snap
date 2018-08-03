@@ -2,7 +2,7 @@
 
 exports[`Context menu view when rendered hidden should match snapshot 1`] = `
 <OnClickOutside(ClickOutsideWrapper)
-  callback={[Function]}
+  callback={null}
   eventTypes={
     Array [
       "mousedown",

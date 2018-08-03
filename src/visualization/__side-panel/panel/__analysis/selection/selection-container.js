@@ -2,54 +2,66 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import ColumnSelector from '../../../../../state/selectors/visualization/columns-selector';
 import CopyToClipboard from '../../../../../helpers/copy-to-clipboard';
+import FindClosest from '../../../../../helpers/find-closest';
 import GeneSelector from '../../../../../state/selectors/visualization/genes-selector';
+import PositionSelector from '../../../../../state/selectors/visualization/position-selector';
+import RowNameSelector from '../../../../../state/selectors/visualization/row-name-selector';
 import Selection from './selection';
-import { storeSelections } from '../../../../../state/set/visualization/genes-actions';
+import SortSelector from '../../../../../state/selectors/visualization/sort-selector';
+import { setSelections, updateGeneList } from '../../../../../state/set/visualization/genes-actions';
 
 export class SelectionContainer extends Component {
   constructor(props) {
     super(props);
+    this.columnRef = React.createRef();
     this.elementRef = React.createRef();
+    this.rowRef = React.createRef();
     this.state = {
       canPasteContext: true,
-      columns: [...this.props.genes.columns],
       columnsHighlighted: [],
-      columnsSelected: [...this.props.genes.columnsSelected],
       columnsSelectedHighlighted: [],
       contextEvent: null,
       contextTarget: null,
       pasteText: '',
       pasteType: null,
-      rows: [...this.props.genes.rows],
       rowsHighlighted: [],
-      rowsSelected: [...this.props.genes.rowsSelected],
       rowsSelectedHighlighted: [],
       showContext: false,
       showModal: false,
     };
   }
-  componentWillUnmount = () => {
-    this.props.storeSelections({
-      columns: this.state.columns,
-      columnsSelected: this.state.columnsSelected,
-      rows: this.state.rows,
-      rowsSelected: this.state.rowsSelected,
-    });
+  componentDidMount = () => {
+    const {
+      columns,
+      genes,
+      position,
+      rows,
+    } = this.props;
+    // Run this on a delay to wait for panel to open.
+    setTimeout(() => { this.scrollToPosition(columns.names, rows, genes, position); }, 500);
   }
+  componentWillReceiveProps = (nextProps) => {
+    this.updatePosition(nextProps, this.props.position, this.props.sortInfo);
+  }
+  setHighlighted = (arr, index) => arr[index]
   arrangeSelected = (target, by) => {
+    // Reverse order of highlighted items if we are moving things down the list.
     const selected = by > 0 ?
       [...this.state[`${target}Highlighted`]].reverse()
       :
       [...this.state[`${target}Highlighted`]];
-    const source = [...this.state[target]];
+
+    // Update position of highlighted items in source list.
+    const source = [...this.props.genes[target]];
     selected.forEach((value) => {
       const currIndex = source.indexOf(value);
       source.splice(currIndex + by < 0 ? 0 : currIndex + by, 0, source.splice(currIndex, 1)[0]);
     });
-    const newState = {};
-    newState[target] = source;
-    this.setState(newState);
+    const selections = {};
+    selections[target] = source;
+    this.props.updateGeneList(selections);
   }
   closeContextMenu = () => {
     this.setState({
@@ -58,7 +70,7 @@ export class SelectionContainer extends Component {
     });
   }
   copyAll = () => {
-    const copyList = this.state[this.state.contextTarget].join('\r\n');
+    const copyList = this.props.genes[this.state.contextTarget].join('\r\n');
     if (copyList.length > 0) {
       CopyToClipboard(copyList);
     }
@@ -79,23 +91,10 @@ export class SelectionContainer extends Component {
     newState[`${target}Highlighted`] = highlighted;
     this.setState(newState);
   }
-  listSwap = (source, target, sort, sortBy) => {
-    const newState = {};
-    // Add highlighted genes in source to target list and sort if requested.
-    newState[target] = [
-      ...this.state[target],
-      ...this.state[`${source}Highlighted`],
-    ];
-    newState[target] = sort ?
-      newState[target].sort((a, b) => (
-        this.props.genes[sortBy][a] - this.props.genes[sortBy][b]
-      ))
-      : newState[target];
-    // Remove highlighted genes from source list.
-    newState[source] = this.state[source].filter(gene => (
-      !this.state[`${source}Highlighted`].includes(gene)
-    ));
+  listSwap = (source, target, sortBy) => {
+    this.props.setSelections(this.state[`${source}Highlighted`], source, target, false, sortBy);
     // Clear highlighted genes.
+    const newState = {};
     newState[`${source}Highlighted`] = [];
     this.setState(newState);
   }
@@ -131,50 +130,42 @@ export class SelectionContainer extends Component {
   pasteAppend = () => {
     // Source list name.
     const source = this.state.contextTarget.replace('Selected', '');
-    /* Convert paste text to array, remove duplicates and remove any genes not
-    ** in corresponding source list. */
-    const list = [...new Set(this.state.pasteText.split(/[\s+,+]+/))]
-      .filter(item => (this.state[source].includes(item)));
-    // Remove new genes from source list.
-    const newState = {};
-    newState[source] = this.state[source].filter(item => (!list.includes(item)));
-    // Append to list.
-    newState[`${source}Selected`] = [
-      ...this.state[`${source}Selected`],
-      ...list,
-    ];
+
+    // Convert paste text to array.
+    const list = [...new Set(this.state.pasteText.split(/[\s+,+]+/))];
+
+    this.props.setSelections(list, source, `${source}Selected`, false);
     this.setState({
-      ...newState,
       pasteText: '',
       pasteType: null,
       showModal: false,
     });
   }
   pasteReplace = () => {
-    // Get name of map and full list of genes.
-    const mapName = `${this.state.contextTarget.replace('sSelected', '')}Map`;
-    const genes = Object.keys(this.props.genes[mapName]);
-    /* Convert paste text to array, remove duplicates and remove any genes not
-    ** in full gene list. */
-    const list = [...new Set(this.state.pasteText.split(/[\s,]+/))]
-      .filter(item => (genes.includes(item)));
     // Source list name.
     const source = this.state.contextTarget.replace('Selected', '');
-    // Add items that will be replaced back to source list and sort it.
-    const newState = {};
-    newState[source] = [
-      ...this.state[source].filter(item => (!list.includes(item))),
-      ...this.state[`${source}Selected`].filter(item => (!list.includes(item))),
-    ].sort((a, b) => (
-      this.props.genes[mapName][a] - this.props.genes[mapName][b]
-    ));
-    newState[`${source}Selected`] = list;
+
+    // Get name of map.
+    const mapName = `${this.state.contextTarget.replace('sSelected', '')}Map`;
+
+    // Convert paste text to array.
+    const list = [...new Set(this.state.pasteText.split(/[\s,]+/))];
+
+    this.props.setSelections(list, source, `${source}Selected`, true, mapName);
     this.setState({
-      ...newState,
       pasteText: '',
       pasteType: null,
       showModal: false,
     });
+  }
+  scrollToPosition = (columns, rows, genes, position) => {
+    // Find closest item to current viewport position.
+    const columnIndex = FindClosest(columns, position.x, columns.length, genes.columns);
+    const rowIndex = FindClosest(rows, position.y, rows.length, genes.rows);
+
+    // Get option from closest index and add one to account for placeholder.
+    [...this.columnRef.current.options][columnIndex + 1].scrollIntoView();
+    [...this.rowRef.current.options][rowIndex + 1].scrollIntoView();
   }
   toggleModal = (pasteType) => {
     this.setState(({ showModal }) => ({
@@ -189,6 +180,21 @@ export class SelectionContainer extends Component {
       pasteText: e.target.value,
     });
   }
+  updatePosition = ({
+    columns,
+    genes,
+    position,
+    rows,
+    sortInfo,
+  }, prevPosition, prevSortInfo) => {
+    if (
+      position.x !== prevPosition.x ||
+      position.y !== prevPosition.y ||
+      sortInfo.id !== prevSortInfo.id
+    ) {
+      this.scrollToPosition(columns.names, rows, genes, position);
+    }
+  }
   render() {
     return (
       <div ref={this.elementRef}>
@@ -196,8 +202,9 @@ export class SelectionContainer extends Component {
           arrangeSelected={this.arrangeSelected}
           canPasteContext={this.state.canPasteContext}
           closeContextMenu={this.closeContextMenu}
-          columns={this.state.columns}
-          columnsSelected={this.state.columnsSelected}
+          columnRef={this.columnRef}
+          columns={this.props.genes.columns}
+          columnsSelected={this.props.genes.columnsSelected}
           contextEvent={this.state.contextEvent}
           copyAll={this.copyAll}
           copyList={this.state.copyList}
@@ -207,8 +214,9 @@ export class SelectionContainer extends Component {
           openContextMenu={this.openContextMenu}
           paste={this.paste}
           pasteText={this.state.pasteText}
-          rows={this.state.rows}
-          rowsSelected={this.state.rowsSelected}
+          rowRef={this.rowRef}
+          rows={this.props.genes.rows}
+          rowsSelected={this.props.genes.rowsSelected}
           showContext={this.state.showContext}
           showModal={this.state.showModal}
           toggleModal={this.toggleModal}
@@ -220,6 +228,9 @@ export class SelectionContainer extends Component {
 }
 
 SelectionContainer.propTypes = {
+  columns: PropTypes.shape({
+    names: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
   genes: PropTypes.shape({
     columnMap: PropTypes.shape({}),
     columns: PropTypes.arrayOf(PropTypes.string),
@@ -228,19 +239,35 @@ SelectionContainer.propTypes = {
     rows: PropTypes.arrayOf(PropTypes.string),
     rowsSelected: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  storeSelections: PropTypes.func.isRequired,
+  position: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelections: PropTypes.func.isRequired,
+  sortInfo: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+  updateGeneList: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
+  columns: ColumnSelector(state),
   genes: GeneSelector(state),
+  position: PositionSelector(state),
+  rows: RowNameSelector(state),
+  sortInfo: SortSelector(state),
 });
 
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  storeSelections: (selections) => {
-    dispatch(storeSelections(selections));
+  setSelections: (list, source, target, replace, sort, sortBy) => {
+    dispatch(setSelections(list, source, target, replace, sort, sortBy));
+  },
+  updateGeneList: (selections) => {
+    dispatch(updateGeneList(selections));
   },
 });
 

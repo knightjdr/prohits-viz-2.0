@@ -3,7 +3,8 @@ import React, { Fragment } from 'react';
 
 import Arrows from './__arrows/heatmap-svg__arrows-container';
 import Columns from './__columns/heatmap-svg__columns-container';
-import ContextMenuColumns from './context-menu/context-menu';
+import ContextMenuColumns from './context-menu/context-menu-columns';
+import ContextMenuRows from './context-menu/context-menu-rows';
 import Overlay from './__overlay/heatmap-svg__overlay-container';
 import Plot from './plot/heatmap-svg__plot-container';
 import Rows from './__rows/heatmap-svg__rows-container';
@@ -13,14 +14,16 @@ import './heatmap-svg.css';
 
 const Svg = ({
   closeContextMenu,
-  contextColumnTarget,
+  contextTarget,
   contextEvent,
+  handleClick,
   height,
-  openColumnContextMenu,
+  openContextMenu,
   reference,
+  setSelections,
   setReference,
   show,
-  showColumnContext,
+  showContext,
   sortRows,
   tooltip,
   toggleTooltip,
@@ -32,12 +35,13 @@ const Svg = ({
       <Plot />
       <Overlay />
       <Columns
-        openContextMenu={openColumnContextMenu}
-        sortRows={sortRows}
+        handleClick={handleClick}
+        openContextMenu={(e, target) => { openContextMenu(e, target, 'column'); }}
         toggleTooltip={toggleTooltip}
       />
       <Rows
-        openContextMenu={() => {}}
+        handleClick={handleClick}
+        openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
         toggleTooltip={toggleTooltip}
       />
     </svg>
@@ -61,10 +65,18 @@ const Svg = ({
       closeMenu={closeContextMenu}
       event={contextEvent}
       reference={reference}
+      setSelections={setSelections}
       setReference={setReference}
-      show={showColumnContext}
+      show={showContext === 'column'}
       sortRows={sortRows}
-      target={contextColumnTarget}
+      target={contextTarget}
+    />
+    <ContextMenuRows
+      closeMenu={closeContextMenu}
+      event={contextEvent}
+      setSelections={setSelections}
+      show={showContext === 'row'}
+      target={contextTarget}
     />
     <Tooltip {...tooltip} />
   </Fragment>
@@ -77,19 +89,21 @@ Svg.defaultProps = {
 
 Svg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
-  contextColumnTarget: PropTypes.string.isRequired,
+  contextTarget: PropTypes.string.isRequired,
   contextEvent: PropTypes.shape({}),
+  handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({
     arrowsY: PropTypes.bool,
     heatmap: PropTypes.number,
     pageY: PropTypes.number,
     wrapper: PropTypes.number,
   }).isRequired,
-  openColumnContextMenu: PropTypes.func.isRequired,
+  openContextMenu: PropTypes.func.isRequired,
   reference: PropTypes.string,
   setReference: PropTypes.func.isRequired,
+  setSelections: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  showColumnContext: PropTypes.bool.isRequired,
+  showContext: PropTypes.string.isRequired,
   sortRows: PropTypes.func.isRequired,
   tooltip: PropTypes.shape({
     display: PropTypes.bool,

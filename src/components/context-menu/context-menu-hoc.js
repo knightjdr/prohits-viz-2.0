@@ -43,7 +43,7 @@ const ContextMenu = (WrappedComponent) => {
       }
     }
     render() {
-      const { children, closeMenu, ...otherProps } = this.props;
+      const { closeMenu, ...otherProps } = this.props;
       return (
         <ContextMenuWrapper
           closeMenu={closeMenu}
@@ -56,9 +56,7 @@ const ContextMenu = (WrappedComponent) => {
           <WrappedComponent
             closeMenu={closeMenu}
             {...otherProps}
-          >
-            {children}
-          </WrappedComponent>
+          />
         </ContextMenuWrapper>
       );
     }
@@ -66,11 +64,9 @@ const ContextMenu = (WrappedComponent) => {
 
   _ContextMenu.defaultProps = {
     event: null,
-    children: null,
   };
 
   _ContextMenu.propTypes = {
-    children: PropTypes.shape({}),
     closeMenu: PropTypes.func.isRequired,
     event: PropTypes.shape({}),
     show: PropTypes.bool.isRequired,

@@ -58,7 +58,7 @@ describe('Gene selection set reducer', () => {
     const action = {
       rows: {
         list: ['d', 'e', 'f'],
-        map: { d: 0, e: 1, f: 2 },
+        mapped: { d: 0, e: 1, f: 2 },
       },
       type: rowActions.RESTORE_ROWS,
     };
@@ -70,56 +70,33 @@ describe('Gene selection set reducer', () => {
     expect(GeneReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle SET_SELECTIONS action', () => {
-    const action = {
-      columns: ['a', 'b', 'c'],
-      rows: ['d', 'e', 'f'],
-      type: actions.SET_SELECTIONS,
-    };
-    const expectedState = {
-      ...DefaultState,
-      columns: ['a', 'b', 'c'],
-      rows: ['d', 'e', 'f'],
-    };
-    expect(GeneReducer(undefined, action)).toEqual(expectedState);
-  });
-
-  it('should handle STORE_SELECTIONS action', () => {
-    const action = {
-      selections: {
-        columns: ['b'],
-        columnsSelected: ['a', 'c'],
-        rows: ['d', 'f'],
-        rowsSelected: ['e'],
-      },
-      type: actions.STORE_SELECTIONS,
-    };
-    const initialState = {
-      columnMap: { a: 0, b: 1, c: 2 },
-      rowMap: { d: 0, e: 1, f: 2 },
-    };
-    const expectedState = {
-      columnMap: { a: 0, b: 1, c: 2 },
-      columns: ['b'],
-      columnsSelected: ['a', 'c'],
-      rowMap: { d: 0, e: 1, f: 2 },
-      rows: ['d', 'f'],
-      rowsSelected: ['e'],
-    };
-    expect(GeneReducer(initialState, action)).toEqual(expectedState);
-  });
-
   it('should handle UPDATE_ROWS action', () => {
     const action = {
       rows: {
         list: ['d', 'e', 'f'],
-        map: { d: 0, e: 1, f: 2 },
+        mapped: { d: 0, e: 1, f: 2 },
       },
       type: rowActions.UPDATE_ROWS,
     };
     const expectedState = {
       ...DefaultState,
       rowMap: { d: 0, e: 1, f: 2 },
+      rows: ['d', 'e', 'f'],
+    };
+    expect(GeneReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle UPDATE_SELECTIONS action', () => {
+    const action = {
+      selections: {
+        columns: ['a', 'b', 'c'],
+        rows: ['d', 'e', 'f'],
+      },
+      type: actions.UPDATE_SELECTIONS,
+    };
+    const expectedState = {
+      ...DefaultState,
+      columns: ['a', 'b', 'c'],
       rows: ['d', 'e', 'f'],
     };
     expect(GeneReducer(undefined, action)).toEqual(expectedState);

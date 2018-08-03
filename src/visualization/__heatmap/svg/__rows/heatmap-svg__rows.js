@@ -26,6 +26,7 @@ const Rows = ({
                 fill="#4caf50"
                 height={cellSize}
                 key={`${name.original}-match`}
+                onContextMenu={(e) => { openContextMenu(e, name.original); }}
                 width="100"
                 x="0"
                 y={i * cellSize}

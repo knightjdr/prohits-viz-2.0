@@ -4,15 +4,22 @@ import { Component } from 'react';
 
 export class ClickOutsideWrapper extends Component {
   handleClickOutside = () => {
-    this.props.callback();
+    const { callback } = this.props;
+    if (callback) {
+      callback();
+    }
   };
   render() {
     return this.props.children;
   }
 }
 
+ClickOutsideWrapper.defaultProps = {
+  callback: null,
+};
+
 ClickOutsideWrapper.propTypes = {
-  callback: PropTypes.func.isRequired,
+  callback: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.shape({}),

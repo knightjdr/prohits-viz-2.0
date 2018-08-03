@@ -9,11 +9,13 @@ import './selection.css';
 
 const GeneSelection = ({
   arrangeSelected,
+  columnRef,
   columns,
   columnsSelected,
   openContextMenu,
   listSelect,
   listSwap,
+  rowRef,
   rows,
   rowsSelected,
 }) => (
@@ -31,19 +33,20 @@ const GeneSelection = ({
         listSelect={listSelect}
         openContextMenu={openContextMenu}
         options={columns}
+        setRef={columnRef}
         target="columns"
       />
       <div className="selection__button-group">
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('columns', 'columnsSelected', false); }}
+          onClick={() => { listSwap('columns', 'columnsSelected'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('columnsSelected', 'columns', true, 'columnMap'); }}
+          onClick={() => { listSwap('columnsSelected', 'columns', 'columnMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />
@@ -86,19 +89,20 @@ const GeneSelection = ({
         listSelect={listSelect}
         openContextMenu={openContextMenu}
         options={rows}
+        setRef={rowRef}
         target="rows"
       />
       <div className="selection__button-group">
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('rows', 'rowsSelected', false); }}
+          onClick={() => { listSwap('rows', 'rowsSelected'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={90} />
         </button>
         <button
           className="selection__select-arrow"
-          onClick={() => { listSwap('rowsSelected', 'rows', true, 'rowMap'); }}
+          onClick={() => { listSwap('rowsSelected', 'rows', 'rowMap'); }}
           type="button"
         >
           <FontAwesomeIcon icon={faArrowUp} rotation={270} />
@@ -133,6 +137,7 @@ const GeneSelection = ({
 
 GeneSelection.propTypes = {
   arrangeSelected: PropTypes.func.isRequired,
+  columnRef: PropTypes.shape({}).isRequired,
   columns: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
@@ -142,6 +147,7 @@ GeneSelection.propTypes = {
   listSelect: PropTypes.func.isRequired,
   listSwap: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
+  rowRef: PropTypes.shape({}).isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,

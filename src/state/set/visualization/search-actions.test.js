@@ -53,6 +53,15 @@ describe('Query array', () => {
     };
     expect(actions.queryArray(arr, 'a')).toEqual(expectedObj);
   });
+
+  it('should return null if no match', () => {
+    const arr = ['a', 'b', 'ba', 'A'];
+    const expectedObj = {
+      first: null,
+      matches: {},
+    };
+    expect(actions.queryArray(arr, 'c')).toEqual(expectedObj);
+  });
 });
 
 describe('New position calculation', () => {

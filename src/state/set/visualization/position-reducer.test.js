@@ -1,8 +1,8 @@
 import PositionReducer from './position-reducer';
 import * as actions from './position-actions';
 import * as fileActions from '../interactive-file-actions';
-
-import { SET_SEARCH_RESULTS } from './search-actions';
+import * as rowActions from './rows-actions';
+import * as searchActions from './search-actions';
 
 const DefaultState = {
   x: 0,
@@ -45,7 +45,7 @@ describe('Position set reducer', () => {
 
   it('should handle SET_SEARCH_RESULTS action', () => {
     const action = {
-      type: SET_SEARCH_RESULTS,
+      type: searchActions.SET_SEARCH_RESULTS,
       position: {
         x: 2,
         y: 3,
@@ -65,8 +65,8 @@ describe('Position set reducer', () => {
 
   it('should handle UPDATE_ROWS action', () => {
     const action = {
-      type: actions.UPDATE_ROWS,
+      type: rowActions.UPDATE_ROWS,
     };
-    expect(PositionReducer(undefined, action)).toEqual({ x: 0, y: 0 });
+    expect(PositionReducer({ x: 5, y: 4 }, action)).toEqual({ x: 5, y: 0 });
   });
 });

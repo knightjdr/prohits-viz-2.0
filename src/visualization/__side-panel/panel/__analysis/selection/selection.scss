@@ -25,7 +25,9 @@
 }
 .selection__select {
   border-radius: 4px 0 0 4px;
+  font-size: 0.8em;
   height: 170px;
+  user-select: none;
   width: 120px;
 }
 .selection__select_option-hidden {

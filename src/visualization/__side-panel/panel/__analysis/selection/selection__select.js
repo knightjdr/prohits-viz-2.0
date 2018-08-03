@@ -8,6 +8,7 @@ const Select = ({
   listSelect,
   openContextMenu,
   options,
+  setRef,
   target,
 }) => (
   <select
@@ -15,21 +16,25 @@ const Select = ({
     multiple
     onChange={(e) => { listSelect(e, target); }}
     onContextMenu={(e) => { openContextMenu(e, canPaste, target); }}
+    ref={setRef}
   >
     [<option className="selection__select_option-hidden" value="">Placeholder</option>,
-    ...{options.map(item => (
-      <option
-        key={item}
-        value={item}
-      >
-        {item}
-      </option>
-    ))}]
+    ...{
+      options.map(item => (
+        <option
+          key={item}
+          value={item}
+        >
+          {item}
+        </option>
+      ))
+    }]
   </select>
 );
 
 Select.defaultProps = {
   canPaste: false,
+  setRef: null,
 };
 
 Select.propTypes = {
@@ -39,6 +44,7 @@ Select.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  setRef: PropTypes.shape({}),
   target: PropTypes.string.isRequired,
 };
 

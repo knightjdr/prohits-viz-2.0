@@ -95,7 +95,7 @@ export class ColumnsContainer extends Component {
         names={this.state.names}
         openContextMenu={this.props.openContextMenu}
         search={this.props.search}
-        sortRows={this.props.sortRows}
+        handleClick={this.props.handleClick}
         reference={this.props.columns.ref}
         toggleTooltip={this.props.toggleTooltip}
       />
@@ -112,6 +112,7 @@ ColumnsContainer.propTypes = {
   dimensions: PropTypes.shape({
     pageX: PropTypes.number,
   }).isRequired,
+  handleClick: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
@@ -121,7 +122,6 @@ ColumnsContainer.propTypes = {
     match: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
-  sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
 };
 

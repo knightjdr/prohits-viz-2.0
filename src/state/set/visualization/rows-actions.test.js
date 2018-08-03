@@ -54,16 +54,17 @@ describe('Row actions', () => {
 describe('Row mapping', () => {
   let rows;
   beforeAll(() => {
+    const currRows = ['a', 'c'];
     const sortedList = [{ name: 'a' }, { name: 'b' }, { name: 'c' }];
-    rows = actions.rowMapping(sortedList);
+    rows = actions.rowMapping(currRows, sortedList);
   });
 
-  it('should create an array of row names', () => {
-    expect(rows.list).toEqual(['a', 'b', 'c']);
+  it('should create an array of row names filtered by curr row list', () => {
+    expect(rows.list).toEqual(['a', 'c']);
   });
 
   it('should create a map of rowNames to indices', () => {
-    expect(rows.map).toEqual({ a: 0, b: 1, c: 2 });
+    expect(rows.mapped).toEqual({ a: 0, c: 1 });
   });
 });
 
@@ -88,6 +89,9 @@ describe('Default row sort', () => {
 
   describe('with no existing index', () => {
     beforeAll(() => {
+      const genes = {
+        rows: ['a', 'b', 'c'],
+      };
       const rows = {
         direction: null,
         id: null,
@@ -95,7 +99,7 @@ describe('Default row sort', () => {
         order: ['c', 'a', 'b'],
         sortBy: null,
       };
-      const store = mockStore({ rows });
+      const store = mockStore({ genes, rows });
       store.dispatch(actions.sortDefault());
       expectedActions = store.getActions();
     });
@@ -107,7 +111,7 @@ describe('Default row sort', () => {
     it('should sort rows based on order in store', () => {
       const rows = {
         list: ['c', 'a', 'b'],
-        map: { c: 0, a: 1, b: 2 },
+        mapped: { c: 0, a: 1, b: 2 },
       };
       const sortedRows = [
         { data: [{ value: 2 }, { value: 3 }], name: 'c' },
@@ -127,6 +131,9 @@ describe('Default row sort', () => {
 
   describe('with existing index', () => {
     beforeAll(() => {
+      const genes = {
+        rows: ['a', 'b', 'c'],
+      };
       const rows = {
         direction: null,
         id: 1,
@@ -134,7 +141,7 @@ describe('Default row sort', () => {
         order: ['c', 'a', 'b'],
         sortBy: null,
       };
-      const store = mockStore({ rows });
+      const store = mockStore({ genes, rows });
       store.dispatch(actions.sortDefault());
       expectedActions = store.getActions();
     });
@@ -146,7 +153,7 @@ describe('Default row sort', () => {
     it('should increment index', () => {
       const rows = {
         list: ['c', 'a', 'b'],
-        map: { c: 0, a: 1, b: 2 },
+        mapped: { c: 0, a: 1, b: 2 },
       };
       const sortedRows = [
         { data: [{ value: 2 }, { value: 3 }], name: 'c' },
@@ -212,6 +219,10 @@ describe('Row sort method', () => {
 });
 
 describe('Row update', () => {
+  const genes = {
+    rows: ['a', 'b', 'c'],
+  };
+
   it('should sort rows in descending order by default', () => {
     const rows = {
       direction: null,
@@ -221,14 +232,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['a', 'c', 'b'],
-      map: { a: 0, c: 1, b: 2 },
+      mapped: { a: 0, c: 1, b: 2 },
     };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -250,14 +261,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['b', 'c', 'a'],
-      map: { b: 0, c: 1, a: 2 },
+      mapped: { b: 0, c: 1, a: 2 },
     };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1, 'asc'));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -280,14 +291,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['b', 'c', 'a'],
-      map: { b: 0, c: 1, a: 2 },
+      mapped: { b: 0, c: 1, a: 2 },
     };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -310,14 +321,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['a', 'c', 'b'],
-      map: { a: 0, c: 1, b: 2 },
+      mapped: { a: 0, c: 1, b: 2 },
     };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -340,14 +351,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['b', 'c', 'a'],
-      map: { b: 0, c: 1, a: 2 },
+      mapped: { b: 0, c: 1, a: 2 },
     };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -369,14 +380,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['a', 'c', 'b'],
-      map: { a: 0, c: 1, b: 2 },
+      mapped: { a: 0, c: 1, b: 2 },
     };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1, 'desc', 0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -398,14 +409,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['b', 'c', 'a'],
-      map: { b: 0, c: 1, a: 2 },
+      mapped: { b: 0, c: 1, a: 2 },
     };
     const sortedRows = [
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1, 'asc', 0));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
@@ -427,14 +438,14 @@ describe('Row update', () => {
     };
     const rowlist = {
       list: ['a', 'c', 'b'],
-      map: { a: 0, c: 1, b: 2 },
+      mapped: { a: 0, c: 1, b: 2 },
     };
     const sortedRows = [
       { data: [{ value: 1 }, { value: 4 }], name: 'a' },
       { data: [{ value: 2 }, { value: 3 }], name: 'c' },
       { data: [{ value: 5 }, { value: 2 }], name: 'b' },
     ];
-    const store = mockStore({ rows });
+    const store = mockStore({ genes, rows });
     store.dispatch(actions.sortRows(1));
     const expectedActions = store.getActions();
     expect(expectedActions).toContainEqual({
