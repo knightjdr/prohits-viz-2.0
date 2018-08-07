@@ -27,6 +27,7 @@ export class SvgContainer extends Component {
     this.state = {
       contextTarget: '',
       contextEvent: null,
+      fixLeft: false,
       height: {
         arrowsY: false, // Should the vertical navigation arrows be shown?
         heatmap: 0, // Height of heat map in the svg.
@@ -41,6 +42,7 @@ export class SvgContainer extends Component {
         text: '',
         top: 0,
       },
+      translate: 'translate(0)',
       width: {
         arrowsX: false, // Should the horizontal navigation arrows be shown?
         canTranslate: false, // Should the image translate when the side panel opens?
@@ -52,12 +54,18 @@ export class SvgContainer extends Component {
     };
   }
   componentDidMount = () => {
-    const { cellSize, columns, rows } = this.props;
-    this.setDimensions(cellSize, columns, rows);
+    const {
+      cellSize,
+      columns,
+      panel,
+      rows,
+    } = this.props;
+    this.setDimensions(cellSize, columns, panel, rows);
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
     this.updateDimensions(nextProps, this.props.cellSize);
+    this.updateTranslate(nextProps, this.props.panel);
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.onResize);
@@ -65,9 +73,10 @@ export class SvgContainer extends Component {
   onResize = () => {
     OnResize(this, this.resizeEnd, 800);
   }
-  setDimensions = (cellSize, columns, rows) => {
+  setDimensions = (cellSize, columns, panel, rows) => {
     const height = this.calculateHeight(cellSize, rows);
     const width = this.calculateWidth(cellSize, columns);
+    const translate = this.wrapperPosition(panel, width);
     this.props.setDimensions(
       height.rows,
       width.columns,
@@ -79,6 +88,7 @@ export class SvgContainer extends Component {
     this.setState({
       height,
       showSvg: true,
+      translate,
       width,
     });
   }
@@ -124,7 +134,6 @@ export class SvgContainer extends Component {
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
       width.wrapper = width.heatmap + ROW_MARGIN + EXTRA_PADDING;
-      width.translate = this.translateAmount(width.wrapper, window.innerWidth);
     } else {
       width.arrowsX = true;
       width.columns = columnNum;
@@ -186,34 +195,56 @@ export class SvgContainer extends Component {
       }));
     }
   }
-  translateAmount = (width, window) => {
-    const freeWidth = window - width;
-    if (freeWidth > SIDE_PANEL) {
-      return SIDE_PANEL / 2;
-    }
-    // Subtract 20 pixels to ensure image does overflow into padding.
-    return (freeWidth / 2) - 20;
+  translateLeft = () => {
+    const { panel } = this.props;
+    this.setState(({ fixLeft, width }) => {
+      const translateBy = ((window.innerWidth - width.wrapper) / 2) - 20;
+      return {
+        fixLeft: !fixLeft,
+        translate: fixLeft ? this.wrapperPosition(panel, width) : `translate(-${translateBy}px)`,
+      };
+    });
   }
   updateDimensions = ({ cellSize, columns, rows }, prevCellSize) => {
     if (cellSize !== prevCellSize) {
       this.setDimensions(cellSize, columns, rows);
     }
   }
+  updateTranslate = ({ panel }, prevPanel) => {
+    if (
+      panel !== prevPanel &&
+      !this.state.fixLeft
+    ) {
+      this.setState(({ width }) => ({
+        fixLeft: false,
+        translate: this.wrapperPosition(panel, width),
+      }));
+    }
+  }
+  wrapperPosition = (panel, width) => {
+    if (width.canTranslate && panel) {
+      const freeWidth = window.innerWidth - width.wrapper;
+      const translateBy = freeWidth > SIDE_PANEL ?
+        SIDE_PANEL / 2
+        : (freeWidth / 2) - 20; // Subtract 20 to ensure image does overflow into padding.
+      return `translate(-${translateBy}px)`;
+    }
+    return 'translate(0)';
+  }
   render() {
-    const { panel } = this.props;
-    const { width } = this.state;
     return (
       <div
         className="heatmap-svg__wrapper"
         ref={this.wrapperRef}
         style={{
-          transform: width.canTranslate && panel ? `translate(-${width.translate}px)` : 'translate(0)',
+          transform: this.state.translate,
         }}
       >
         <Svg
           closeContextMenu={this.closeContextMenu}
           contextTarget={this.state.contextTarget}
           contextEvent={this.state.contextEvent}
+          fixLeft={this.state.fixLeft}
           handleClick={this.handleClick}
           height={this.state.height}
           openContextMenu={this.openContextMenu}
@@ -225,6 +256,7 @@ export class SvgContainer extends Component {
           sortRows={this.sortRows}
           tooltip={this.state.tooltip}
           toggleTooltip={this.toggleTooltip}
+          translateLeft={this.translateLeft}
           width={this.state.width}
         />
       </div>

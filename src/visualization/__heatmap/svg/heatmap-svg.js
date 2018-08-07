@@ -8,6 +8,7 @@ import ContextMenuRows from './context-menu/context-menu-rows';
 import Overlay from './__overlay/heatmap-svg__overlay-container';
 import Plot from './plot/heatmap-svg__plot-container';
 import Rows from './__rows/heatmap-svg__rows-container';
+import StatusBar from './__status/heatmap-svg__status-container';
 import Tooltip from './__tooltip/svg__tooltip';
 
 import './heatmap-svg.css';
@@ -16,6 +17,7 @@ const Svg = ({
   closeContextMenu,
   contextTarget,
   contextEvent,
+  fixLeft,
   handleClick,
   height,
   openContextMenu,
@@ -27,6 +29,7 @@ const Svg = ({
   sortRows,
   tooltip,
   toggleTooltip,
+  translateLeft,
   width,
 }) => (
   show &&
@@ -45,6 +48,14 @@ const Svg = ({
         toggleTooltip={toggleTooltip}
       />
     </svg>
+    {
+      width.canTranslate &&
+      <StatusBar
+        fixLeft={fixLeft}
+        translate={translateLeft}
+        width={width.wrapper}
+      />
+    }
     {
       height.arrowsY &&
       <Arrows
@@ -91,6 +102,7 @@ Svg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
   contextTarget: PropTypes.string.isRequired,
   contextEvent: PropTypes.shape({}),
+  fixLeft: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({
     arrowsY: PropTypes.bool,
@@ -112,8 +124,10 @@ Svg.propTypes = {
     top: PropTypes.number,
   }).isRequired,
   toggleTooltip: PropTypes.func.isRequired,
+  translateLeft: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,
+    canTranslate: PropTypes.bool,
     heatmap: PropTypes.number,
     pageX: PropTypes.number,
     wrapper: PropTypes.number,

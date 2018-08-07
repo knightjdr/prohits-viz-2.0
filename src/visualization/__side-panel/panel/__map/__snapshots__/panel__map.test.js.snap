@@ -1,90 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map panel should render when in sync and match snapshot 1`] = `
+exports[`Map panel should render when attached to sidepanel and match snapshot 1`] = `
 <div
   className="panel"
 >
   <div
     className="panel__title"
   >
+    <button
+      onClick={[Function]}
+      tooltip="Detach map"
+      tooltip-position="right"
+      type="button"
+    >
+      <FontAwesomeIcon$1
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon={
+          Object {
+            "icon": Array [
+              576,
+              512,
+              Array [],
+              "f3e5",
+              "M14.062 257.94L190.06 433.88c30.21 30.21 81.94 8.7 81.94-33.94v-78.28c146.59 8.54 158.53 50.199 134.18 127.879-13.65 43.56 35.07 78.89 72.19 54.46C537.98 464.768 576 403.8 576 330.05c0-170.37-166.04-197.15-304-201.3V48.047c0-42.72-51.79-64.09-81.94-33.94L14.062 190.06c-18.75 18.74-18.75 49.14 0 67.88zM48 224L224 48v128.03c143.181.63 304 11.778 304 154.02 0 66.96-40 109.95-76.02 133.65C501.44 305.911 388.521 273.88 224 272.09V400L48 224z",
+            ],
+            "iconName": "reply",
+            "prefix": "far",
+          }
+        }
+        listItem={false}
+        mask={null}
+        name=""
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        transform={null}
+      />
+    </button>
     Mini map
   </div>
-  <div
-    className="panel__map"
-  >
-    <Image
-      annotations={Object {}}
-      markers={Object {}}
-      minimap="image"
-      navigatePosition={[Function]}
-      rangeBox={Object {}}
-      search={Object {}}
-      showAnnotations={false}
-      showMarkers={false}
-      syncImage={null}
-    />
-  </div>
-  <div
-    className="panel__map-switch"
-  >
-    <div>
-      Annotations:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-    <div>
-      Markers:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-  </div>
+  <MapContent
+    annotations={Object {}}
+    isSyncing={false}
+    markers={Object {}}
+    minimap="image"
+    navigatePosition={[Function]}
+    rangeBox={Object {}}
+    search={Object {}}
+    showAnnotations={false}
+    showMarkers={false}
+    syncError={false}
+    syncImage={null}
+    syncMap={[Function]}
+    synced={true}
+    toggleAnnotations={[Function]}
+    toggleMarkers={[Function]}
+  />
 </div>
 `;
 
-exports[`Map panel should render when not in sync and match snapshot 1`] = `
+exports[`Map panel should render when detached from sidepanel and match snapshot 1`] = `
 <div
   className="panel"
 >
   <div
     className="panel__title"
   >
+    <button
+      onClick={[Function]}
+      tooltip="Attach map"
+      tooltip-position="right"
+      type="button"
+    >
+      <FontAwesomeIcon$1
+        border={false}
+        className=""
+        fixedWidth={false}
+        flip={null}
+        icon={
+          Object {
+            "icon": Array [
+              512,
+              512,
+              Array [],
+              "f0c6",
+              "M67.508 468.467c-58.005-58.013-58.016-151.92 0-209.943l225.011-225.04c44.643-44.645 117.279-44.645 161.92 0 44.743 44.749 44.753 117.186 0 161.944l-189.465 189.49c-31.41 31.413-82.518 31.412-113.926.001-31.479-31.482-31.49-82.453 0-113.944L311.51 110.491c4.687-4.687 12.286-4.687 16.972 0l16.967 16.971c4.685 4.686 4.685 12.283 0 16.969L184.983 304.917c-12.724 12.724-12.73 33.328 0 46.058 12.696 12.697 33.356 12.699 46.054-.001l189.465-189.489c25.987-25.989 25.994-68.06.001-94.056-25.931-25.934-68.119-25.932-94.049 0l-225.01 225.039c-39.249 39.252-39.258 102.795-.001 142.057 39.285 39.29 102.885 39.287 142.162-.028A739446.174 739446.174 0 0 1 439.497 238.49c4.686-4.687 12.282-4.684 16.969.004l16.967 16.971c4.685 4.686 4.689 12.279.004 16.965a755654.128 755654.128 0 0 0-195.881 195.996c-58.034 58.092-152.004 58.093-210.048.041z",
+            ],
+            "iconName": "paperclip",
+            "prefix": "far",
+          }
+        }
+        listItem={false}
+        mask={null}
+        name=""
+        pull={null}
+        pulse={false}
+        rotation={null}
+        size={null}
+        spin={false}
+        symbol={false}
+        transform={null}
+      />
+    </button>
     Mini map
   </div>
   <div
-    className="panel__map"
-  >
-    <Synced
-      isSyncing={false}
-      minimap="image"
-      syncError={false}
-      syncMap={[Function]}
-    />
-  </div>
-  <div
-    className="panel__map-switch"
+    className="panel__map-detached"
   >
     <div>
-      Annotations:
+      Map detached from panel
     </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-    <div>
-      Markers:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
+    <Button
+      ghost={false}
+      loading={false}
+      onClick={[Function]}
+      prefixCls="ant-btn"
+      type="button"
+    >
+      Reattach
+    </Button>
   </div>
 </div>
 `;

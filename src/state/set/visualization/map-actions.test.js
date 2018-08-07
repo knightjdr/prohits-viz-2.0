@@ -30,6 +30,13 @@ describe('Map set actions', () => {
     expect(actions.synchError()).toEqual(expectedAction);
   });
 
+  it('should dispatch an action to toggle map attachment to side panel', () => {
+    const expectedAction = {
+      type: actions.TOGGLE_MAP_ATTACH,
+    };
+    expect(actions.toggleMapAttach()).toEqual(expectedAction);
+  });
+
   describe('synchronize the map', () => {
     let expectedActions;
 

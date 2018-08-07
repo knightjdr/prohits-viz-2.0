@@ -3,22 +3,21 @@ import { shallow } from 'enzyme';
 
 import MapPanel from './panel__map';
 
-const navigatePosition = jest.fn();
-const toggleAnnotations = jest.fn();
-const toggleMarkers = jest.fn();
+const toggleMapAttach = jest.fn();
 
 describe('Map panel', () => {
-  describe('should render when in sync', () => {
+  describe('should render when attached to sidepanel', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = shallow(
         <MapPanel
           annotations={{}}
+          isAttached
           isSyncing={false}
           markers={{}}
           minimap="image"
-          navigatePosition={navigatePosition}
+          navigatePosition={jest.fn()}
           rangeBox={{}}
           search={{}}
           showAnnotations={false}
@@ -26,8 +25,9 @@ describe('Map panel', () => {
           synced
           syncError={false}
           syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
+          toggleAnnotations={jest.fn()}
+          toggleMapAttach={toggleMapAttach}
+          toggleMarkers={jest.fn()}
         />,
       );
     });
@@ -36,79 +36,42 @@ describe('Map panel', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('and render image', () => {
-      expect(wrapper.find('Image').length).toBe(1);
+    it('and render contents', () => {
+      expect(wrapper.find('MapContent').length).toBe(1);
     });
 
-    it('and not render sync component', () => {
-      expect(wrapper.find('Sync').length).toBe(0);
+    it('and not render detached element', () => {
+      expect(wrapper.find('.panel__map-detached').length).toBe(0);
     });
 
-    it('on clicking switch should trigger toggle annotations function', () => {
-      wrapper.find('Switch').first().simulate('change');
-      expect(toggleAnnotations).toHaveBeenCalledTimes(1);
-    });
-
-    it('on clicking switch should trigger toggle markers function', () => {
-      wrapper.find('Switch').last().simulate('change');
-      expect(toggleMarkers).toHaveBeenCalledTimes(1);
+    it('on clicking attach should trigger toggle map attach function', () => {
+      wrapper.find('button').first().simulate('click');
+      expect(toggleMapAttach).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('should render when in sync with a sync image', () => {
+  describe('should render when detached from sidepanel', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = shallow(
         <MapPanel
           annotations={{}}
+          isAttached={false}
           isSyncing={false}
           markers={{}}
-          minimap={null}
-          navigatePosition={navigatePosition}
+          minimap="image"
+          navigatePosition={jest.fn()}
           rangeBox={{}}
           search={{}}
           showAnnotations={false}
           showMarkers={false}
           synced
           syncError={false}
-          syncImage="synced"
           syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
-        />,
-      );
-    });
-
-    it('and render image', () => {
-      expect(wrapper.find('Image').length).toBe(1);
-    });
-
-    it('and not render sync component', () => {
-      expect(wrapper.find('Synced').length).toBe(0);
-    });
-  });
-
-  describe('should render when not in sync', () => {
-    let wrapper;
-
-    beforeAll(() => {
-      wrapper = shallow(
-        <MapPanel
-          annotations={{}}
-          isSyncing={false}
-          markers={{}}
-          minimap="image"
-          navigatePosition={navigatePosition}
-          rangeBox={{}}
-          search={{}}
-          showAnnotations={false}
-          showMarkers={false}
-          synced={false}
-          syncError={false}
-          syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
+          toggleAnnotations={jest.fn()}
+          toggleMapAttach={toggleMapAttach}
+          toggleMarkers={jest.fn()}
         />,
       );
     });
@@ -117,12 +80,12 @@ describe('Map panel', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('and not render image', () => {
-      expect(wrapper.find('Image').length).toBe(0);
+    it('and not render map contents', () => {
+      expect(wrapper.find('MapContent').length).toBe(0);
     });
 
-    it('and render sync component', () => {
-      expect(wrapper.find('Synced').length).toBe(1);
+    it('and render detached element', () => {
+      expect(wrapper.find('.panel__map-detached').length).toBe(1);
     });
   });
 });

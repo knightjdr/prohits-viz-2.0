@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map panel content should render when in sync and match snapshot 1`] = `
+<React.Fragment>
+  <div
+    className="panel__map"
+  >
+    <Image
+      annotations={Object {}}
+      markers={Object {}}
+      minimap="image"
+      navigatePosition={[Function]}
+      rangeBox={Object {}}
+      search={Object {}}
+      showAnnotations={false}
+      showMarkers={false}
+      syncImage={null}
+    />
+  </div>
+  <div
+    className="panel__map-switch"
+  >
+    <div>
+      Annotations:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <div>
+      Markers:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+  </div>
+</React.Fragment>
+`;
+
+exports[`Map panel content should render when not in sync and match snapshot 1`] = `
+<React.Fragment>
+  <div
+    className="panel__map"
+  >
+    <Synced
+      isSyncing={false}
+      minimap="image"
+      syncError={false}
+      syncMap={[Function]}
+    />
+  </div>
+  <div
+    className="panel__map-switch"
+  >
+    <div>
+      Annotations:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <div>
+      Markers:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+  </div>
+</React.Fragment>
+`;

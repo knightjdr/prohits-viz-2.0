@@ -1,3 +1,4 @@
+@import 'style/reset';
 @import 'style/button';
 @import 'style/theme';
 
@@ -20,6 +21,20 @@
   position: absolute;
   top: 0;
   width: 100%;
+}
+.panel__map-detached {
+  align-items: center;
+  background-color: #eaeaea;
+  border: 1px solid $primary-light;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 170px);
+  justify-content: center;
+  width: 100%;
+}
+.panel__map-detached > :not(:last-child) {
+  margin-bottom: 20px;
 }
 .panel__map-inner {
   display: inline-block;
@@ -75,4 +90,13 @@
 .panel__map-sync_error > :first-child {
   color: $warning;
   margin-right: 10px;
+}
+.panel__title > button {
+  @extend .button-reset;
+  @extend .default-button;
+  border-radius: 50%;
+  padding: 8px;
+  position: absolute;
+  left: 0;
+  top: -5px;
 }

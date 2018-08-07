@@ -3,9 +3,14 @@
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import React from 'react';
+import configure from '@commercetools/enzyme-extensions';
+import ShallowWrapper from 'enzyme/ShallowWrapper';
 
 // React 16 Enzyme adapter.
 Enzyme.configure({ adapter: new Adapter() });
+
+// Extends the prototype of the passed in `ShallowWrapper`. Adding renderProps().
+configure(ShallowWrapper);
 
 // Always mock NavLink from react-router.
 import * as moduleToMock from 'react-router-dom';

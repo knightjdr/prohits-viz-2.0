@@ -4,6 +4,7 @@ import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
 
 const DefaultState = {
+  attached: true,
   image: null,
   isSyncing: false,
   synced: true,
@@ -39,6 +40,17 @@ describe('Map set reducer', () => {
       synced: true,
       syncError: false,
       syncImage: 'image',
+    };
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle TOGGLE_MAP_ATTACH action', () => {
+    const action = {
+      type: actions.TOGGLE_MAP_ATTACH,
+    };
+    const expectedState = {
+      ...DefaultState,
+      attached: false,
     };
     expect(MapReducer(undefined, action)).toEqual(expectedState);
   });

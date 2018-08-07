@@ -3,6 +3,7 @@ import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
 
 const defaultState = {
+  attached: true,
   image: null,
   isSyncing: false,
   synced: true,
@@ -48,6 +49,11 @@ const Map = (state = { ...defaultState }, action) => {
         isSyncing: false,
         synced: false,
         syncError: true,
+      };
+    case actions.TOGGLE_MAP_ATTACH:
+      return {
+        ...state,
+        attached: !state.attached,
       };
     case rowActions.UPDATE_ROWS:
       return {

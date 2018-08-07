@@ -1,0 +1,52 @@
+@import 'style/reset';
+@import 'style/button';
+@import 'style/style';
+@import 'style/theme';
+
+.float-map {
+  @extend .boxshadow;
+  background-color: $backdrop-light;
+  border-radius: 3px;
+  max-width: 350px;
+  padding: 10px 15px;
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 90vw;
+  z-index: 201;
+}
+.float-map__backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  width: 100vw;
+  top: 0;
+  z-index: 200;
+}
+.float__title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+.float__title > button:first-child {
+  @extend .button-reset;
+  @extend .default-button;
+  border-radius: 50%;
+  padding: 8px;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+.float__title > button:last-child {
+  @extend .button-reset;
+  border-radius: 50%;
+  opacity: 0.8;
+  padding: 8px;
+  position: absolute;
+  right: -5px;
+  top: -8px;
+}

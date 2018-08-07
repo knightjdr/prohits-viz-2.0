@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
 import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
-import Map from './panel__map';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import SearchSelector from '../../../../state/selectors/visualization/search-selector';
-import { syncMap } from '../../../../state/set/visualization/map-actions';
+import { syncMap, toggleMapAttach } from '../../../../state/set/visualization/map-actions';
 import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
 import { toggleMarkers } from '../../../../state/set/visualization/marker-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
@@ -98,33 +97,43 @@ export class MapContainer extends Component {
     }
   }
   render() {
+    const childProps = {
+      annotations: this.props.annotations,
+      dimensions: this.props.dimensions,
+      isAttached: this.props.reverseAttached ?
+        !this.props.minimap.attached
+        : this.props.minimap.attached,
+      isSyncing: this.props.minimap.isSyncing,
+      markers: this.state.markers,
+      minimap: this.props.minimap.image,
+      navigatePosition: this.navigatePosition,
+      rangeBox: this.state.rangeBox,
+      search: this.props.search,
+      showAnnotations: this.props.annotations.show,
+      showMarkers: this.props.markers.show,
+      synced: this.props.minimap.synced,
+      syncError: this.props.minimap.synced,
+      syncImage: this.props.minimap.syncImage,
+      syncMap: this.props.syncMap,
+      toggleAnnotations: this.props.toggleAnnotations,
+      toggleMapAttach: this.props.toggleMapAttach,
+      toggleMarkers: this.props.toggleMarkers,
+    };
     return (
-      <Map
-        annotations={this.props.annotations}
-        dimensions={this.props.dimensions}
-        isSyncing={this.props.minimap.isSyncing}
-        markers={this.state.markers}
-        minimap={this.props.minimap.image}
-        navigatePosition={this.navigatePosition}
-        rangeBox={this.state.rangeBox}
-        search={this.props.search}
-        showAnnotations={this.props.annotations.show}
-        showMarkers={this.props.markers.show}
-        synced={this.props.minimap.synced}
-        syncError={this.props.minimap.synced}
-        syncImage={this.props.minimap.syncImage}
-        syncMap={this.props.syncMap}
-        toggleAnnotations={this.props.toggleAnnotations}
-        toggleMarkers={this.props.toggleMarkers}
-      />
+      this.props.render(childProps)
     );
   }
 }
+
+MapContainer.defaultProps = {
+  reverseAttached: false,
+};
 
 MapContainer.propTypes = {
   annotations: PropTypes.shape({
     show: PropTypes.bool,
   }).isRequired,
+  reverseAttached: PropTypes.bool,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     pageX: PropTypes.number,
@@ -135,6 +144,7 @@ MapContainer.propTypes = {
     show: PropTypes.bool,
   }).isRequired,
   minimap: PropTypes.shape({
+    attached: PropTypes.bool,
     image: PropTypes.string,
     isSyncing: PropTypes.bool,
     synced: PropTypes.bool,
@@ -145,6 +155,7 @@ MapContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  render: PropTypes.func.isRequired,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,
@@ -153,6 +164,7 @@ MapContainer.propTypes = {
   }).isRequired,
   syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
+  toggleMapAttach: PropTypes.func.isRequired,
   toggleMarkers: PropTypes.func.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
@@ -177,6 +189,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleMarkers: () => {
     dispatch(toggleMarkers());
+  },
+  toggleMapAttach: () => {
+    dispatch(toggleMapAttach());
   },
   updatePosition: (x, y) => {
     dispatch(updatePosition(x, y));

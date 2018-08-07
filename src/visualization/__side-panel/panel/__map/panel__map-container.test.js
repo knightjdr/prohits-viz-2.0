@@ -27,6 +27,7 @@ describe('Map panel container', () => {
           list: [],
         }}
         minimap={{
+          attached: true,
           image: 'image',
           isSyncing: false,
           synced: true,
@@ -34,9 +35,11 @@ describe('Map panel container', () => {
           syncImage: null,
         }}
         position={position}
+        render={props => <div {...props} />}
         search={{}}
         syncMap={jest.fn()}
         toggleAnnotations={jest.fn()}
+        toggleMapAttach={jest.fn()}
         toggleMarkers={jest.fn()}
         updatePosition={updatePosition}
       />,
@@ -280,5 +283,47 @@ describe('Map panel container', () => {
       expect(spy).toHaveBeenCalled();
       spy.mockRestore();
     });
+  });
+
+  it('render prop should be passed attached state', () => {
+    expect(wrapper.find('div').props().isAttached).toBeTruthy();
+  });
+});
+
+describe('Map panel container when not in panel', () => {
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
+      <MapContainer
+        annotations={{ show: false }}
+        dimensions={dimensions}
+        markers={{
+          color: '#000',
+          list: [],
+        }}
+        minimap={{
+          attached: true,
+          image: 'image',
+          isSyncing: false,
+          synced: true,
+          syncError: false,
+          syncImage: null,
+        }}
+        position={position}
+        render={props => <div {...props} />}
+        reverseAttached
+        search={{}}
+        syncMap={jest.fn()}
+        toggleAnnotations={jest.fn()}
+        toggleMapAttach={jest.fn()}
+        toggleMarkers={jest.fn()}
+        updatePosition={updatePosition}
+      />,
+    );
+  });
+
+  it('render prop should be passed opposite of attached state', () => {
+    expect(wrapper.find('div').props().isAttached).toBeFalsy();
   });
 });

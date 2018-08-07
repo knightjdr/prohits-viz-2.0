@@ -1,14 +1,16 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Switch } from 'antd';
+import { Button } from 'antd';
+import { faPaperclip, faReply } from '@fortawesome/pro-regular-svg-icons';
 
-import Image from './panel__map-image';
-import Synced from './panel__map-sync';
+import MapContents from './panel__map-contents';
 
 import './panel__map.css';
 
 const Map = ({
   annotations,
+  isAttached,
   isSyncing,
   markers,
   minimap,
@@ -22,51 +24,51 @@ const Map = ({
   syncImage,
   syncMap,
   toggleAnnotations,
+  toggleMapAttach,
   toggleMarkers,
 }) => (
   <div className="panel">
     <div className="panel__title">
+      <button
+        onClick={toggleMapAttach}
+        tooltip={isAttached ? 'Detach map' : 'Attach map'}
+        tooltip-position="right"
+        type="button"
+      >
+        <FontAwesomeIcon icon={isAttached ? faReply : faPaperclip} />
+      </button>
       Mini map
     </div>
-    <div className="panel__map">
-      {
-        synced && (minimap || syncImage) ?
-          <Image
-            annotations={annotations}
-            minimap={minimap}
-            navigatePosition={navigatePosition}
-            rangeBox={rangeBox}
-            search={search}
-            showAnnotations={showAnnotations}
-            showMarkers={showMarkers}
-            syncImage={syncImage}
-            markers={markers}
-          />
-          :
-          <Synced
-            minimap={minimap}
-            isSyncing={isSyncing}
-            syncError={syncError}
-            syncMap={syncMap}
-          />
-      }
-    </div>
-    <div className="panel__map-switch">
-      <div>
-        Annotations:
-      </div>
-      <Switch
-        onChange={toggleAnnotations}
-        checked={showAnnotations}
-      />
-      <div>
-        Markers:
-      </div>
-      <Switch
-        onChange={toggleMarkers}
-        checked={showMarkers}
-      />
-    </div>
+    {
+      isAttached ?
+        <MapContents
+          annotations={annotations}
+          isSyncing={isSyncing}
+          markers={markers}
+          minimap={minimap}
+          navigatePosition={navigatePosition}
+          rangeBox={rangeBox}
+          search={search}
+          showAnnotations={showAnnotations}
+          showMarkers={showMarkers}
+          synced={synced}
+          syncError={syncError}
+          syncImage={syncImage}
+          syncMap={syncMap}
+          toggleAnnotations={toggleAnnotations}
+          toggleMarkers={toggleMarkers}
+        />
+        :
+        <div className="panel__map-detached">
+          <div>Map detached from panel</div>
+          <Button
+            onClick={toggleMapAttach}
+            type="button"
+          >
+            Reattach
+          </Button>
+        </div>
+    }
   </div>
 );
 
@@ -79,6 +81,7 @@ Map.defaultProps = {
 
 Map.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
+  isAttached: PropTypes.bool.isRequired,
   isSyncing: PropTypes.bool.isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
@@ -102,6 +105,7 @@ Map.propTypes = {
   syncImage: PropTypes.string,
   syncMap: PropTypes.func.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
+  toggleMapAttach: PropTypes.func.isRequired,
   toggleMarkers: PropTypes.func.isRequired,
 };
 

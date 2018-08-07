@@ -58,6 +58,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
+    "@commercetools/enzyme-extensions": "^3.0.1",
     "babel-jest": "^21.0.0",
     "babel-plugin-import": "^1.8.0",
     "deep-freeze": "0.0.1",
