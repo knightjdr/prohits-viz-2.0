@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import Annotations from './set/visualization/annotation-reducer';
 import Columns from './set/visualization/columns-reducer';
 import Dimensions from './set/visualization/dimension-reducer';
+import Display from './set/visualization/display-reducer';
 import FormStep from './set/form-step-reducer';
 import Genes from './set/visualization/genes-reducer';
 import Header from './set/header-reducer';
@@ -76,6 +77,10 @@ describe('Store', () => {
 
     it('what dimensions reducer returns with an empty action', () => {
       expect(store.getState().dimensions).toEqual(Dimensions(undefined, {}));
+    });
+
+    it('what display reducer returns with an empty action', () => {
+      expect(store.getState().display).toEqual(Display(undefined, {}));
     });
 
     it('what formStep reducer returns with an empty action', () => {
@@ -214,6 +219,66 @@ describe('Store', () => {
     };
     store.dispatch(action);
     expect(store.getState().dimensions).toEqual(Dimensions(undefined, action));
+  });
+
+  describe('with display visualization reducer', () => {
+    let store;
+    beforeEach(() => {
+      store = createStore(Reducers);
+    });
+
+    it('handles CHANGE_PANEL_TAB action', () => {
+      const action = {
+        tab: 'map',
+        type: 'CHANGE_PANEL_TAB',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
+
+    it('handles RESET_MAP_POSITION action', () => {
+      const action = {
+        type: 'RESET_MAP_POSITION',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
+
+    it('handles TOGGLE_SELECTION_BOX action', () => {
+      const action = {
+        type: 'TOGGLE_SELECTION_BOX',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
+
+    it('handles TOGGLE_TOOLTIPS action', () => {
+      const action = {
+        type: 'TOGGLE_TOOLTIPS',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
+
+    it('handles UPDATE_MAP_POSITION action', () => {
+      const action = {
+        right: 100,
+        top: 200,
+        type: 'UPDATE_MAP_POSITION',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
+
+    it('handles UPDATE_PLOT_POSITION action', () => {
+      const action = {
+        fixed: true,
+        translate: 300,
+        type: 'UPDATE_PLOT_POSITION',
+      };
+      store.dispatch(action);
+      expect(store.getState().display).toEqual(Display(undefined, action));
+    });
   });
 
   describe('with form step reducer', () => {

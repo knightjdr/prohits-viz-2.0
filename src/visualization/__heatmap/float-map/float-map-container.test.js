@@ -3,6 +3,13 @@ import { shallow } from 'enzyme';
 
 import { FloatMapContainer } from './float-map-container';
 
+const resetMapPosition = jest.fn();
+const updateMapPosition = jest.fn();
+
+beforeEach(() => {
+  resetMapPosition.mockClear();
+  updateMapPosition.mockClear();
+});
 
 describe('Floating minimap container', () => {
   let wrapper;
@@ -11,25 +18,21 @@ describe('Floating minimap container', () => {
     wrapper = shallow(
       <FloatMapContainer
         attachMap={jest.fn()}
+        display={{
+          floatMapRight: 20,
+          floatMapTop: 100,
+        }}
         minimap={{
           attached: false,
         }}
+        resetMapPosition={resetMapPosition}
+        updateMapPosition={updateMapPosition}
       />,
     );
   });
 
-  describe('with initial state', () => {
-    it('should have initial state with right position', () => {
-      expect(wrapper.state('right')).toBe(20);
-    });
-
-    it('should have initial state with top position', () => {
-      expect(wrapper.state('top')).toBe(100);
-    });
-
-    it('should have mouse down as false', () => {
-      expect(wrapper.state('mouseDown')).toBeFalsy();
-    });
+  it('should have mouse down as false', () => {
+    expect(wrapper.state('mouseDown')).toBeFalsy();
   });
 
   it('handle mouse down should set mouse down state to true', () => {
@@ -38,24 +41,16 @@ describe('Floating minimap container', () => {
   });
 
   describe('handle mouse down', () => {
-    it('should not set state when mouseDown is false', () => {
-      wrapper.setState({
-        mouseDown: false,
-        right: 0,
-        top: 0,
-      });
+    it('should not call update map position prop method', () => {
+      wrapper.setState({ mouseDown: false });
       wrapper.instance().handleMouseMove({ clientX: 100, clientY: 100 });
-      expect(wrapper.state('right')).toBe(0);
+      expect(updateMapPosition).not.toHaveBeenCalled();
     });
 
-    it('should set state when mouseDown is true', () => {
-      wrapper.setState({
-        mouseDown: true,
-        right: 0,
-        top: 0,
-      });
+    it('should call update map position prop method', () => {
+      wrapper.setState({ mouseDown: true });
       wrapper.instance().handleMouseMove({ clientX: 100, clientY: 100 });
-      expect(wrapper.state('right')).toBe(892);
+      expect(updateMapPosition).toHaveBeenCalledWith(892, 80);
     });
   });
 
@@ -63,5 +58,25 @@ describe('Floating minimap container', () => {
     wrapper.setState({ mouseDown: true });
     wrapper.instance().handleMouseUp();
     expect(wrapper.state('mouseDown')).toBeFalsy();
+  });
+
+  describe('and position', () => {
+    it('should reset when attach state changes to true', () => {
+      const nextProps = { minimap: { attached: true } };
+      wrapper.instance().resetPosition(nextProps, false);
+      expect(resetMapPosition).toHaveBeenCalled();
+    });
+
+    it('should not reset when attach state changes to false', () => {
+      const nextProps = { minimap: { attached: false } };
+      wrapper.instance().resetPosition(nextProps, true);
+      expect(resetMapPosition).not.toHaveBeenCalled();
+    });
+
+    it('should not reset when attach state does not change', () => {
+      const nextProps = { minimap: { attached: true } };
+      wrapper.instance().resetPosition(nextProps, true);
+      expect(resetMapPosition).not.toHaveBeenCalled();
+    });
   });
 });

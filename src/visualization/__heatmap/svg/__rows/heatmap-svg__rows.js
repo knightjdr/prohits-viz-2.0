@@ -4,6 +4,7 @@ import React from 'react';
 const Rows = ({
   cellSize,
   fontSize,
+  handleClick,
   names,
   openContextMenu,
   search,
@@ -37,6 +38,7 @@ const Rows = ({
             <text
               fontSize={fontSize}
               key={name.original}
+              onClick={(e) => { handleClick(e, name.original, 'row'); }}
               onContextMenu={(e) => { openContextMenu(e, name.original); }}
               onMouseEnter={(e) => {
                 toggleTooltip(name.trimmed, true, name.original, e.clientX, e.clientY - 80);
@@ -59,6 +61,7 @@ const Rows = ({
 Rows.propTypes = {
   cellSize: PropTypes.number.isRequired,
   fontSize: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
   names: PropTypes.arrayOf(
     PropTypes.shape({
       original: PropTypes.string,

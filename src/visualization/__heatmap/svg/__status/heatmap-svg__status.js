@@ -9,7 +9,11 @@ import './heatmap-svg__status.css';
 const Status = ({
   elPosition,
   fixLeft,
+  selectionBoxActive,
   show,
+  toggleSelectionBox,
+  toggleTooltips,
+  tooltipsActive,
   translate,
 }) => (
   <div
@@ -36,19 +40,39 @@ const Status = ({
     </button>
     <button
       className="heatmap-svg__status-button"
+      onClick={toggleSelectionBox}
       tooltip="Toggle selection box"
       tooltip-position="right"
       type="button"
     >
-      <FontAwesomeIcon icon={faSquare} />
+      <FontAwesomeIcon
+        icon={faSquare}
+        style={{
+          color: selectionBoxActive ? 'inherit' : '#999',
+        }}
+      />
+      {
+        !selectionBoxActive &&
+        <span className="heatmap-svg__state-slash">/</span>
+      }
     </button>
     <button
       className="heatmap-svg__status-button"
+      onClick={toggleTooltips}
       tooltip="Toggle tooltips"
       tooltip-position="right"
       type="button"
     >
-      <FontAwesomeIcon icon={faComment} />
+      <FontAwesomeIcon
+        icon={faComment}
+        style={{
+          color: tooltipsActive ? 'inherit' : '#999',
+        }}
+      />
+      {
+        !tooltipsActive &&
+        <span className="heatmap-svg__state-slash">/</span>
+      }
     </button>
   </div>
 );
@@ -60,7 +84,11 @@ Status.propTypes = {
     transform: PropTypes.string,
   }).isRequired,
   fixLeft: PropTypes.bool.isRequired,
+  selectionBoxActive: PropTypes.bool.isRequired,
   show: PropTypes.bool.isRequired,
+  tooltipsActive: PropTypes.bool.isRequired,
+  toggleSelectionBox: PropTypes.func.isRequired,
+  toggleTooltips: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
 };
 

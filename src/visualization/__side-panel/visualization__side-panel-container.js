@@ -1,48 +1,46 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import PanelSelector from '../../state/selectors/visualization/panel-selector';
 import SidePanel from './visualization__side-panel';
+import { changePanelTab } from '../../state/set/visualization/display-actions';
+import { DisplayPropSelector } from '../../state/selectors/visualization/display-selector';
 import { togglePanel } from '../../state/set/visualization/panel-actions';
 
-class SidePanelContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tab: 'info',
-    };
-  }
-  selectTab = (tab) => {
-    this.setState({
-      tab,
-    });
-  }
-  render() {
-    return (
-      <SidePanel
-        isVisible={this.props.panel}
-        selectTab={this.selectTab}
-        tab={this.state.tab}
-        togglePanel={this.props.togglePanel}
-      />
-    );
-  }
-}
+const SidePanelContainer = ({
+  changeTab,
+  panel,
+  tab,
+  toggleSidePanel,
+}) => (
+  <SidePanel
+    isVisible={panel}
+    selectTab={changeTab}
+    tab={tab}
+    togglePanel={toggleSidePanel}
+  />
+);
 
 SidePanelContainer.propTypes = {
+  changeTab: PropTypes.func.isRequired,
   panel: PropTypes.bool.isRequired,
-  togglePanel: PropTypes.func.isRequired,
+  tab: PropTypes.string.isRequired,
+  toggleSidePanel: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   panel: PanelSelector(state),
+  tab: DisplayPropSelector(state, 'tab'),
 });
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  togglePanel: () => {
+  changeTab: (tab) => {
+    dispatch(changePanelTab(tab));
+  },
+  toggleSidePanel: () => {
     dispatch(togglePanel());
   },
 });

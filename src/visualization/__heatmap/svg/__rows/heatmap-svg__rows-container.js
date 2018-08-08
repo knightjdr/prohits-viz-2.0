@@ -100,6 +100,7 @@ export class RowsContainer extends Component {
       <Rows
         cellSize={this.props.cellSize}
         fontSize={this.state.fontSize}
+        handleClick={this.props.handleClick}
         names={this.state.names}
         openContextMenu={this.props.openContextMenu}
         search={this.props.search}
@@ -114,6 +115,7 @@ RowsContainer.propTypes = {
   dimensions: PropTypes.shape({
     pageY: PropTypes.number,
   }).isRequired,
+  handleClick: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
   position: PropTypes.shape({
     y: PropTypes.number,

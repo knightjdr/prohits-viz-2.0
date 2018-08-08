@@ -15,195 +15,245 @@ const genes = {
   rowsSelected: [],
 };
 
-const storeSelections = jest.fn();
+const setSelections = jest.fn();
+const updateGeneList = jest.fn();
 
 describe('Gene select', () => {
-  beforeEach(() => {
-    /* Clear call count */
-    storeSelections.mockClear();
-  });
+  let wrapper;
 
-  it('should set state from props on mount', () => {
-    const wrapper = shallow(
+  beforeAll(() => {
+    wrapper = shallow(
       <SelectionContainer
+        columns={{ names: ['a', 'b', 'c'] }}
         genes={genes}
-        storeSelections={storeSelections}
+        position={{ x: 0, y: 0 }}
+        rows={['d', 'e', 'f']}
+        setSelections={setSelections}
+        sortInfo={{ id: 0 }}
+        updateGeneList={updateGeneList}
       />,
     );
-    expect(wrapper.state('columns')).toEqual(genes.columns);
-    expect(wrapper.state('columnsSelected')).toEqual(genes.columnsSelected);
-    expect(wrapper.state('rows')).toEqual(genes.rows);
-    expect(wrapper.state('rowsSelected')).toEqual(genes.rowsSelected);
   });
 
-  it('should store column and row state on unmount via prop method', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    const unMountSpy = jest.spyOn(wrapper.instance(), 'componentWillUnmount');
-    wrapper.update();
-    wrapper.unmount();
-    expect(storeSelections).toHaveBeenCalledTimes(1);
-    expect(storeSelections).toHaveBeenCalledWith({
-      columns: genes.columns,
-      columnsSelected: genes.columnsSelected,
-      rows: genes.rows,
-      rowsSelected: genes.rowsSelected,
-    });
-    unMountSpy.mockRestore();
+  it('setHighlighted method should select the indexed item from the arr arg', () =>{
+    expect(wrapper.instance().setHighlighted(['a', 'b', 'c'], 2)).toBe('c');
   });
 
-  it('should move columns up selected list, i.e. lower index, when arrange method is passed -1', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-
-    // Test moving first item.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['a'],
+  describe('arrangeSelected', () => {
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: [],
+          columnsSelected: ['a', 'b', 'c'],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
     });
-    wrapper.instance().arrangeSelected('columnsSelected', -1);
-    expect(wrapper.state('columnsSelected')).toEqual(['a', 'b', 'c']);
 
-    // Test moving one item.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['b'],
-    });
-    wrapper.instance().arrangeSelected('columnsSelected', -1);
-    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
+    describe('should move up selected list when index is -1', () => {
+      it('and move one item', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['b'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', -1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['b', 'a', 'c'] });
+      });
 
-    // Test moving two items.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['b', 'c'],
+      it('but not when first item is highlighted', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['a'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', -1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['a', 'b', 'c'] });
+      });
+
+      it('and move two items', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['b', 'c'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', -1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['b', 'c', 'a'] });
+      });
     });
-    wrapper.instance().arrangeSelected('columnsSelected', -1);
-    expect(wrapper.state('columnsSelected')).toEqual(['b', 'c', 'a']);
+
+    describe('should move down selected list when index is 1', () => {
+      it('and move one item', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['b'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', 1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['a', 'c', 'b'] });
+      });
+
+      it('but not when last item is highlighted', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['c'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', 1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['a', 'b', 'c'] });
+      });
+
+      it('and move two items', () => {
+        wrapper.setState({
+          columnsSelectedHighlighted: ['a', 'b'],
+        });
+        wrapper.instance().arrangeSelected('columnsSelected', 1);
+        expect(updateGeneList).toHaveBeenCalledWith({ columnsSelected: ['c', 'a', 'b'] });
+      });
+    });
   });
 
-  it('should move columns down selected list, i.e. higher index, when arrange method is passed 1', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-
-    // Test moving last item.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['c'],
+  describe('should close context menu', () => {
+    beforeAll(() => {
+      wrapper.setState({ showContext: true });
+      wrapper.instance().closeContextMenu();
     });
-    wrapper.instance().arrangeSelected('columnsSelected', 1);
-    expect(wrapper.state('columnsSelected')).toEqual(['a', 'b', 'c']);
 
-    // Test moving one item.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['b'],
+    it('and nullify context event', () => {
+      expect(wrapper.state('contextEvent')).toBeNull();
     });
-    wrapper.instance().arrangeSelected('columnsSelected', 1);
-    expect(wrapper.state('columnsSelected')).toEqual(['a', 'c', 'b']);
 
-    // Test moving two items.
-    wrapper.setState({
-      columnsSelected: ['a', 'b', 'c'],
-      columnsSelectedHighlighted: ['a', 'b'],
+    it('and set show context to false', () => {
+      expect(wrapper.state('showContext')).toBeFalsy();
     });
-    wrapper.instance().arrangeSelected('columnsSelected', 1);
-    expect(wrapper.state('columnsSelected')).toEqual(['c', 'a', 'b']);
   });
 
-  it('should close context menu', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({ showContext: true });
-    expect(wrapper.state('showContext')).toBeTruthy();
-    wrapper.instance().closeContextMenu();
-    expect(wrapper.state('showContext')).toBeFalsy();
+  describe('copy all items to clipboard', () => {
+    let spy;
+
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: ['a', 'b', 'c'],
+          columnsSelected: [],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
+      spy = jest.spyOn(wrapper.instance(), 'closeContextMenu');
+      wrapper.update();
+    });
+
+    afterAll(() => {
+      spy.mockRestore();
+    });
+
+    describe('when list has items', () => {
+      beforeAll(() => {
+        wrapper.setState({ contextTarget: 'columns' });
+      });
+
+      afterAll(() => {
+        CopyToClipboard.mockClear();
+        spy.mockClear();
+      });
+
+      it('and copies items', () => {
+        wrapper.instance().copyAll();
+        expect(CopyToClipboard).toHaveBeenCalledWith('a\r\nb\r\nc');
+      });
+
+      it('and context menu is closed', () => {
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('when list has no items', () => {
+      beforeAll(() => {
+        wrapper.setState({ contextTarget: 'columnsSelected' });
+        wrapper.instance().copyAll();
+      });
+
+      afterAll(() => {
+        CopyToClipboard.mockClear();
+        spy.mockClear();
+      });
+
+      it('and copy items', () => {
+        expect(CopyToClipboard).not.toHaveBeenCalled();
+      });
+
+      it('and context menu is closed', () => {
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
   });
 
-  it('should copy all list items to clipboard', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    const closeContextSpy = jest.spyOn(wrapper.instance(), 'closeContextMenu');
-    wrapper.update();
+  describe('copy selected items to clipboard', () => {
+    let spy;
 
-    // Test when list has values for copying.
-    wrapper.setState({
-      contextTarget: 'columns',
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: ['a', 'b', 'c'],
+          columnsSelected: [],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
+      spy = jest.spyOn(wrapper.instance(), 'closeContextMenu');
+      wrapper.update();
     });
-    wrapper.instance().copyAll();
-    expect(CopyToClipboard).toHaveBeenCalledWith('a\r\nb\r\nc');
-    expect(closeContextSpy).toHaveBeenCalledTimes(1);
 
-    // Test when list has no values for copying.
-    CopyToClipboard.mockClear();
-    closeContextSpy.mockClear();
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
+    afterAll(() => {
+      spy.mockRestore();
     });
-    wrapper.instance().copyAll();
-    expect(CopyToClipboard).not.toHaveBeenCalled();
-    expect(closeContextSpy).toHaveBeenCalledTimes(1);
-    closeContextSpy.mockRestore();
+
+    describe('when list has items', () => {
+      beforeAll(() => {
+        wrapper.setState({
+          contextTarget: 'columns',
+          columnsHighlighted: ['b', 'c'],
+        });
+      });
+
+      afterAll(() => {
+        CopyToClipboard.mockClear();
+        spy.mockClear();
+      });
+
+      it('and copies items', () => {
+        wrapper.instance().copySelected();
+        expect(CopyToClipboard).toHaveBeenCalledWith('b\r\nc');
+      });
+
+      it('and context menu is closed', () => {
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('when list has no items', () => {
+      beforeAll(() => {
+        wrapper.setState({
+          contextTarget: 'columns',
+          columnsHighlighted: [],
+        });
+        wrapper.instance().copySelected();
+      });
+
+      afterAll(() => {
+        CopyToClipboard.mockClear();
+        spy.mockClear();
+      });
+
+      it('and copy items', () => {
+        expect(CopyToClipboard).not.toHaveBeenCalled();
+      });
+
+      it('and context menu is closed', () => {
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
   });
 
-  it('should copy selected list items to clipboard', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    const closeContextSpy = jest.spyOn(wrapper.instance(), 'closeContextMenu');
-    wrapper.update();
-
-    // Test when list has values for copying.
-    wrapper.setState({
-      contextTarget: 'columns',
-      columnsHighlighted: ['b', 'c'],
-    });
-    wrapper.instance().copySelected();
-    expect(CopyToClipboard).toHaveBeenCalledWith('b\r\nc');
-    expect(closeContextSpy).toHaveBeenCalledTimes(1);
-
-    // Test when list has no values for copying.
-    CopyToClipboard.mockClear();
-    closeContextSpy.mockClear();
-    wrapper.setState({
-      contextTarget: 'columns',
-      columnsHighlighted: [],
-    });
-    wrapper.instance().copySelected();
-    expect(CopyToClipboard).not.toHaveBeenCalled();
-    expect(closeContextSpy).toHaveBeenCalledTimes(1);
-    closeContextSpy.mockRestore();
-  });
-
-  it('should put selected options into highlighed list', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
+  it('listSelect should put selected options into highlighed list', () => {
     const fakeEvent = {
       target: {
         options: [
@@ -217,230 +267,215 @@ describe('Gene select', () => {
     expect(wrapper.state('columnsHighlighted')).toEqual(['a', 'c']);
   });
 
-  it('should swap highlighted items between lists without sorting', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      columns: ['a', 'c'],
-      columnsHighlighted: ['a', 'c'],
-      columnsSelected: ['b'],
+  describe('listSwap', () => {
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: ['a', 'c'],
+          columnsSelected: ['b'],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
+      wrapper.setState({
+        columnsHighlighted: ['a', 'c'],
+      });
+      wrapper.instance().listSwap('columns', 'columnsSelected', false);
     });
-    wrapper.instance().listSwap('columns', 'columnsSelected', false);
-    expect(wrapper.state('columns')).toEqual([]);
-    expect(wrapper.state('columnsHighlighted')).toEqual([]);
-    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
+
+    it('should call setSelections prop method', () => {
+      expect(setSelections).toHaveBeenCalledWith(['a', 'c'], 'columns', 'columnsSelected', false, false);
+    });
+
+    it('should clear highlighted list', () => {
+      expect(wrapper.state('columnsHighlighted')).toEqual([]);
+    });
   });
 
-  it('should swap highlighted items between lists with sorting', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      columns: ['a', 'c'],
-      columnsSelectedHighlighted: ['b'],
-      columnsSelected: ['b'],
+  describe('openContextMenu should open context menu at cursor position without paste options', () => {
+    beforeAll(() => {
+      wrapper.instance().elementRef = {
+        current: {
+          getBoundingClientRect: () => ({
+            left: 500,
+            top: 500,
+          }),
+        },
+      };
+      wrapper.update();
     });
-    wrapper.instance().listSwap('columnsSelected', 'columns', true, 'columnMap');
-    expect(wrapper.state('columns')).toEqual(['a', 'b', 'c']);
-    expect(wrapper.state('columnsSelectedHighlighted')).toEqual([]);
-    expect(wrapper.state('columnsSelected')).toEqual([]);
+
+    describe('when click event is far enough away from right side of panel', () => {
+      beforeAll(() => {
+        const fakeEvent = {
+          clientX: 600,
+          clientY: 600,
+          preventDefault: () => {},
+        };
+        wrapper.instance().openContextMenu(fakeEvent, false, 'columns');
+      });
+
+      it('should not have paste option', () => {
+        expect(wrapper.state('canPasteContext')).toBeFalsy();
+      });
+
+      it('should set position', () => {
+        expect(wrapper.state('contextEvent')).toEqual({ clientX: 100, clientY: 100 });
+      });
+
+      it('should set target', () => {
+        expect(wrapper.state('contextTarget')).toBe('columns');
+      });
+
+      it('should toggle show state', () => {
+        expect(wrapper.state('showContext')).toBeTruthy();
+      });
+    });
+
+    describe('when click event is too close right side of panel', () => {
+      beforeAll(() => {
+        const fakeEvent = {
+          clientX: 750,
+          clientY: 600,
+          preventDefault: () => {},
+        };
+        wrapper.instance().openContextMenu(fakeEvent, false, 'columns');
+      });
+
+      it('should set position', () => {
+        expect(wrapper.state('contextEvent')).toEqual({ clientX: 250, clientY: 100 });
+      });
+    });
   });
 
-  it('should open context menu at cursor position', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.instance().elementRef = {
-      current: {
-        getBoundingClientRect: () => ({
-          left: 500,
-          top: 500,
-        }),
-      },
-    };
-    wrapper.update();
+  describe('should append paste items to end of list and remove duplicates', () => {
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: ['a', 'c'],
+          columnsSelected: ['b'],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
+      wrapper.setState({
+        contextTarget: 'columnsSelected',
+        pasteText: 'a,c,b,a,d',
+        pasteType: 'pasteAppend',
+        showModal: true,
+      });
+      wrapper.instance().pasteAppend();
+    });
 
-    // When click event is far enough away from right side of panel.
-    let fakeEvent = {
-      clientX: 600,
-      clientY: 600,
-      preventDefault: () => {},
-    };
-    wrapper.instance().openContextMenu(fakeEvent, false, 'columns');
-    expect(wrapper.state('canPasteContext')).toBeFalsy();
-    expect(wrapper.state('contextPos')).toEqual({ left: 100, top: 100 });
-    expect(wrapper.state('contextTarget')).toBe('columns');
-    expect(wrapper.state('showContext')).toBeTruthy();
+    it('should call set selections prop method', () => {
+      expect(setSelections).toHaveBeenCalledWith(
+        ['a', 'c', 'b', 'd'],
+        'columns',
+        'columnsSelected',
+        false,
+      );
+    });
 
-    // When click event is too close right side of panel.
-    fakeEvent = {
-      clientX: 750,
-      clientY: 600,
-      preventDefault: () => {},
-    };
-    wrapper.instance().openContextMenu(fakeEvent, false, 'columns');
-    expect(wrapper.state('canPasteContext')).toBeFalsy();
-    expect(wrapper.state('contextPos')).toEqual({ left: 210, top: 100 });
-    expect(wrapper.state('contextTarget')).toBe('columns');
-    expect(wrapper.state('showContext')).toBeTruthy();
+    it('should clear paste text', () => {
+      expect(wrapper.state('pasteText')).toBe('');
+    });
+
+    it('should nullify pasteType', () => {
+      expect(wrapper.state('pasteType')).toBeNull();
+    });
+
+    it('should close showModal', () => {
+      expect(wrapper.state('showModal')).toBeFalsy();
+    });
   });
 
-  it('should append paste items to end of list, removing duplicates and missing values', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
-      columns: ['a', 'c'],
-      columnsSelected: ['b'],
-      pasteText: 'a,c,b,a,d',
-      showModal: true,
+  describe('should paste and replace items', () => {
+    beforeAll(() => {
+      wrapper.setProps({
+        genes: {
+          columnMap: { a: 0, b: 1, c: 2 },
+          columns: ['a', 'c'],
+          columnsSelected: ['b'],
+          rowMap: { d: 0, e: 1, f: 1 },
+          rows: ['d', 'e', 'f'],
+          rowsSelected: [],
+        },
+      });
+      wrapper.setState({
+        contextTarget: 'columnsSelected',
+        pasteText: 'a,c',
+        pasteType: 'pasteReplace',
+        showModal: true,
+      });
+      wrapper.instance().pasteReplace();
     });
-    wrapper.instance().pasteAppend();
-    expect(wrapper.state('columns')).toEqual([]);
-    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
-    expect(wrapper.state('pasteText')).toBe('');
-    expect(wrapper.state('pasteType')).toBeNull();
-    expect(wrapper.state('showModal')).toBeFalsy();
+
+    it('should call set selections prop method', () => {
+      expect(setSelections).toHaveBeenCalledWith(
+        ['a', 'c'],
+        'columns',
+        'columnsSelected',
+        true,
+        'columnMap',
+      );
+    });
+
+    it('should clear paste text', () => {
+      expect(wrapper.state('pasteText')).toBe('');
+    });
+
+    it('should nullify pasteType', () => {
+      expect(wrapper.state('pasteType')).toBeNull();
+    });
+
+    it('should close showModal', () => {
+      expect(wrapper.state('showModal')).toBeFalsy();
+    });
   });
 
-  it('should append paste items and replace list, removing duplicates and missing values', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
-      columns: ['a', 'c'],
-      columnsSelected: ['b'],
-      pasteText: 'a,c,a,d',
-      showModal: true,
-    });
-    wrapper.instance().pasteReplace();
-    expect(wrapper.state('columns')).toEqual(['b']);
-    expect(wrapper.state('columnsSelected')).toEqual(['a', 'c']);
-    expect(wrapper.state('pasteText')).toBe('');
-    expect(wrapper.state('pasteType')).toBeNull();
-    expect(wrapper.state('showModal')).toBeFalsy();
+  describe('should not add/paste items when there is no text to paste', () => {
+    let spyAppend;
+    let spyReplace;
 
-    // Ensure replaced items return to list in sorted order
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
-      columns: ['a'],
-      columnsSelected: ['c', 'b'],
-      pasteText: 'a,a,d',
-      showModal: true,
+    beforeAll(() => {
+      wrapper.setState({
+        pasteText: '',
+        pasteType: 'pasteAppend',
+        showModal: true,
+      });
+      spyAppend = jest.spyOn(wrapper.instance(), 'pasteAppend');
+      spyReplace = jest.spyOn(wrapper.instance(), 'pasteReplace');
+      wrapper.update();
+      wrapper.instance().paste();
     });
-    wrapper.instance().pasteReplace();
-    expect(wrapper.state('columns')).toEqual(['b', 'c']);
-    expect(wrapper.state('columnsSelected')).toEqual(['a']);
-  });
 
-  it('should not add/paste items when there is no text to paste', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      pasteText: '',
-      pasteType: 'pasteAppend',
-      showModal: true,
+    afterAll(() => {
+      spyAppend.mockRestore();
+      spyReplace.mockRestore();
     });
-    wrapper.instance().paste();
-    expect(wrapper.state('pasteType')).toBeNull();
-    expect(wrapper.state('showModal')).toBeFalsy();
-  });
 
-  it('should add/paste items to end of list', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
-      columns: ['a', 'c'],
-      columnsSelected: ['b'],
-      pasteText: 'a,c',
-      pasteType: 'pasteAppend',
-      showModal: true,
+    it('should not call paste append method', () => {
+      expect(spyAppend).not.toHaveBeenCalled();
     });
-    wrapper.instance().paste();
-    expect(wrapper.state('columns')).toEqual([]);
-    expect(wrapper.state('columnsSelected')).toEqual(['b', 'a', 'c']);
-    expect(wrapper.state('pasteText')).toBe('');
-    expect(wrapper.state('pasteType')).toBeNull();
-    expect(wrapper.state('showModal')).toBeFalsy();
-  });
 
-  it('should add/paste items and replace list', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      contextTarget: 'columnsSelected',
-      columns: ['a', 'c'],
-      columnsSelected: ['b'],
-      pasteText: 'a,c',
-      pasteType: 'pasteReplace',
-      showModal: true,
+    it('should not call paste replace method', () => {
+      expect(spyReplace).not.toHaveBeenCalled();
     });
-    wrapper.instance().paste();
-    expect(wrapper.state('columns')).toEqual(['b']);
-    expect(wrapper.state('columnsSelected')).toEqual(['a', 'c']);
-    expect(wrapper.state('pasteText')).toBe('');
-    expect(wrapper.state('pasteType')).toBeNull();
-    expect(wrapper.state('showModal')).toBeFalsy();
-  });
 
-  it('should toggle modal', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
-    wrapper.setState({
-      pasteText: 'abc',
-      pasteType: null,
-      showContext: true,
-      showModal: false,
+    it('should nullify pasteType', () => {
+      expect(wrapper.state('pasteType')).toBeNull();
     });
-    wrapper.instance().toggleModal('pasteAppend');
-    expect(wrapper.state('pasteText')).toBe('');
-    expect(wrapper.state('pasteType')).toBe('pasteAppend');
-    expect(wrapper.state('showContext')).toBeFalsy();
-    expect(wrapper.state('showModal')).toBeTruthy();
+
+    it('should close modal', () => {
+      expect(wrapper.state('showModal')).toBeFalsy();
+    });
   });
 
   it('should update paste list', () => {
-    const wrapper = shallow(
-      <SelectionContainer
-        genes={genes}
-        storeSelections={storeSelections}
-      />,
-    );
     const fakeEvent = {
       target: {
         value: 'a, b\t c',
@@ -448,5 +483,33 @@ describe('Gene select', () => {
     };
     wrapper.instance().updatePasteList(fakeEvent);
     expect(wrapper.state('pasteText')).toBe('a, b\t c');
+  });
+
+  describe('should toggle modal', () => {
+    beforeAll(() => {
+      wrapper.setState({
+        pasteText: 'abc',
+        pasteType: null,
+        showContext: true,
+        showModal: false,
+      });
+      wrapper.instance().toggleModal('pasteAppend');
+    });
+
+    it('and clear paste text', () => {
+      expect(wrapper.state('pasteText')).toBe('');
+    });
+
+    it('and set paste type', () => {
+      expect(wrapper.state('pasteType')).toBe('pasteAppend');
+    });
+
+    it('and hide context', () => {
+      expect(wrapper.state('showContext')).toBeFalsy();
+    });
+
+    it('and show modal', () => {
+      expect(wrapper.state('showModal')).toBeTruthy();
+    });
   });
 });

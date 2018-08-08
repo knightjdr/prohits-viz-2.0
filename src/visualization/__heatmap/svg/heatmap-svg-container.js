@@ -8,10 +8,12 @@ import PanelSelector from '../../../state/selectors/visualization/panel-selector
 import RowNameSelector from '../../../state/selectors/visualization/row-name-selector';
 import SettingSelector from '../../../state/selectors/visualization/settings-selector';
 import Svg from './heatmap-svg';
+import { DisplaySelector } from '../../../state/selectors/visualization/display-selector';
 import { setDimensions } from '../../../state/set/visualization/dimension-actions';
 import { setReference } from '../../../state/set/visualization/columns-actions';
 import { setSelections } from '../../../state/set/visualization/genes-actions';
 import { sortRows } from '../../../state/set/visualization/rows-actions';
+import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
 
 import './heatmap-svg.css';
 
@@ -27,7 +29,6 @@ export class SvgContainer extends Component {
     this.state = {
       contextTarget: '',
       contextEvent: null,
-      fixLeft: false,
       height: {
         arrowsY: false, // Should the vertical navigation arrows be shown?
         heatmap: 0, // Height of heat map in the svg.
@@ -42,13 +43,11 @@ export class SvgContainer extends Component {
         text: '',
         top: 0,
       },
-      translate: 'translate(0)',
       width: {
         arrowsX: false, // Should the horizontal navigation arrows be shown?
         canTranslate: false, // Should the image translate when the side panel opens?
         heatmap: 0, // Width of heat map in the svg.
         pageX: 0, // The number of heat map cells along the x axis.
-        translate: 0, // The amount to translate the wrapper by if canTranslate = true.
         wrapper: 0, // The width of the entire svg.
       },
     };
@@ -57,10 +56,11 @@ export class SvgContainer extends Component {
     const {
       cellSize,
       columns,
+      display,
       panel,
       rows,
     } = this.props;
-    this.setDimensions(cellSize, columns, panel, rows);
+    this.setDimensions(cellSize, columns, panel, rows, display);
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
@@ -73,10 +73,10 @@ export class SvgContainer extends Component {
   onResize = () => {
     OnResize(this, this.resizeEnd, 800);
   }
-  setDimensions = (cellSize, columns, panel, rows) => {
+  setDimensions = (cellSize, columns, panel, rows, display) => {
     const height = this.calculateHeight(cellSize, rows);
     const width = this.calculateWidth(cellSize, columns);
-    const translate = this.wrapperPosition(panel, width);
+    const translate = this.setTranslate(display, panel, width);
     this.props.setDimensions(
       height.rows,
       width.columns,
@@ -88,9 +88,21 @@ export class SvgContainer extends Component {
     this.setState({
       height,
       showSvg: true,
-      translate,
       width,
     });
+    this.props.updatePlotPosition(display.plotFixed, translate);
+  }
+  setTranslate = (display, panel, width) => {
+    if (display.plotFixed) {
+      return -(((window.innerWidth - width.wrapper) / 2) - 20);
+    } else if (width.canTranslate && panel) {
+      const freeWidth = window.innerWidth - width.wrapper;
+      const translateBy = freeWidth > SIDE_PANEL ?
+        SIDE_PANEL / 2
+        : (freeWidth / 2) - 20; // Subtract 20 to ensure image does overflow into padding.
+      return -translateBy;
+    }
+    return 0;
   }
   calculateHeight = (cellSize, rows) => {
     // Maximum sizes.
@@ -174,62 +186,63 @@ export class SvgContainer extends Component {
     });
   }
   resizeEnd = () => {
-    const { cellSize, columns, rows } = this.props;
-    this.setDimensions(cellSize, columns, rows);
+    const {
+      cellSize,
+      columns,
+      display,
+      panel,
+      rows,
+    } = this.props;
+    this.setDimensions(cellSize, columns, panel, rows, display);
   }
   sortRows = (column, direction) => {
     const columnIndex = this.props.columns.names.indexOf(column);
     const refIndex = this.props.columns.names.indexOf(this.props.columns.ref);
     this.props.sortRows(columnIndex, direction, refIndex >= 0 ? refIndex : null);
   }
-  toggleTooltip = (needsTooltip, display, text, left = 0, top = 0) => {
+  toggleTooltip = (needsTooltip, shouldDisplay, text, left = 0, top = 0) => {
     if (needsTooltip) {
-      const { panel } = this.props;
-      this.setState(({ width }) => ({
+      const { display, panel } = this.props;
+      this.setState({
         tooltip: {
-          display,
-          left: panel ? left + width.translate : left,
+          display: shouldDisplay,
+          left: panel ? left + display.plotTranslate : left,
           text,
           top,
         },
-      }));
+      });
     }
   }
   translateLeft = () => {
-    const { panel } = this.props;
-    this.setState(({ fixLeft, width }) => {
-      const translateBy = ((window.innerWidth - width.wrapper) / 2) - 20;
-      return {
-        fixLeft: !fixLeft,
-        translate: fixLeft ? this.wrapperPosition(panel, width) : `translate(-${translateBy}px)`,
-      };
-    });
+    const { display, panel } = this.props;
+    const { width } = this.state;
+    this.props.updatePlotPosition(
+      !display.plotFixed,
+      this.setTranslate({ plotFixed: !display.plotFixed }, panel, width),
+    );
   }
-  updateDimensions = ({ cellSize, columns, rows }, prevCellSize) => {
+  updateDimensions = ({
+    cellSize,
+    columns,
+    display,
+    panel,
+    rows,
+  }, prevCellSize) => {
     if (cellSize !== prevCellSize) {
-      this.setDimensions(cellSize, columns, rows);
+      this.setDimensions(cellSize, columns, panel, rows, display);
     }
   }
-  updateTranslate = ({ panel }, prevPanel) => {
+  updateTranslate = ({ display, panel }, prevPanel) => {
     if (
       panel !== prevPanel &&
-      !this.state.fixLeft
+      !display.plotFixed
     ) {
-      this.setState(({ width }) => ({
-        fixLeft: false,
-        translate: this.wrapperPosition(panel, width),
-      }));
+      const { width } = this.state;
+      this.props.updatePlotPosition(
+        false,
+        this.setTranslate(display, panel, width),
+      );
     }
-  }
-  wrapperPosition = (panel, width) => {
-    if (width.canTranslate && panel) {
-      const freeWidth = window.innerWidth - width.wrapper;
-      const translateBy = freeWidth > SIDE_PANEL ?
-        SIDE_PANEL / 2
-        : (freeWidth / 2) - 20; // Subtract 20 to ensure image does overflow into padding.
-      return `translate(-${translateBy}px)`;
-    }
-    return 'translate(0)';
   }
   render() {
     return (
@@ -237,14 +250,14 @@ export class SvgContainer extends Component {
         className="heatmap-svg__wrapper"
         ref={this.wrapperRef}
         style={{
-          transform: this.state.translate,
+          transform: `translate(${this.props.display.plotTranslate}px)`,
         }}
       >
         <Svg
           closeContextMenu={this.closeContextMenu}
           contextTarget={this.state.contextTarget}
           contextEvent={this.state.contextEvent}
-          fixLeft={this.state.fixLeft}
+          fixLeft={this.props.display.plotFixed}
           handleClick={this.handleClick}
           height={this.state.height}
           openContextMenu={this.openContextMenu}
@@ -270,18 +283,24 @@ SvgContainer.propTypes = {
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
   }).isRequired,
+  display: PropTypes.shape({
+    plotFixed: PropTypes.bool,
+    plotTranslate: PropTypes.number,
+  }).isRequired,
   panel: PropTypes.bool.isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   setDimensions: PropTypes.func.isRequired,
   setReference: PropTypes.func.isRequired,
   setSelections: PropTypes.func.isRequired,
   sortRows: PropTypes.func.isRequired,
+  updatePlotPosition: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   cellSize: SettingSelector(state, 'cellSize'),
   columns: ColumnsSelector(state),
+  display: DisplaySelector(state),
   panel: PanelSelector(state),
   rows: RowNameSelector(state),
 });
@@ -299,6 +318,9 @@ const mapDispatchToProps = dispatch => ({
   },
   sortRows: (index, direction, ref) => {
     dispatch(sortRows(index, direction, ref));
+  },
+  updatePlotPosition: (fixed, translate) => {
+    dispatch(updatePlotPosition(fixed, translate));
   },
 });
 

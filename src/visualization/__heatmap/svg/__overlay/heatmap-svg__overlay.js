@@ -77,6 +77,7 @@ const Overlay = ({
       {
         marker.show &&
         <rect
+          cursor="crosshair"
           fill="rgba(0, 0, 0, 0.4)"
           height={marker.height}
           onMouseMove={(e) => { handleMouseMove(e); }}

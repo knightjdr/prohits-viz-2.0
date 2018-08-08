@@ -4,24 +4,19 @@ import { connect } from 'react-redux';
 
 import FloatMap from './float-map';
 import MapSelector from '../../../state/selectors/visualization/map-selector';
+import { DisplaySelector } from '../../../state/selectors/visualization/display-selector';
 import { toggleMapAttach } from '../../../state/set/visualization/map-actions';
+import { resetMapPosition, updateMapPosition } from '../../../state/set/visualization/display-actions';
 
 export class FloatMapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mouseDown: false,
-      right: 20,
-      top: 100,
     };
   }
   componentWillReceiveProps = (nextProps) => {
     this.resetPosition(nextProps, this.props.minimap.attached);
-  }
-  componentWillUnmount = () => {
-    if (this.props.minimap.attached) {
-      this.props.attachMap();
-    }
   }
   handleMouseDown = () => {
     this.setState({ mouseDown: true });
@@ -29,10 +24,8 @@ export class FloatMapContainer extends Component {
   handleMouseMove = (e) => {
     if (this.state.mouseDown) {
       const { clientX, clientY } = e;
-      this.setState({
-        right: window.innerWidth - clientX - 32,
-        top: clientY - 20,
-      });
+      // 32 and 20 are the right and top position of the arrow icon.
+      this.props.updateMapPosition(window.innerWidth - clientX - 32, clientY - 20);
     }
   }
   handleMouseUp = () => {
@@ -43,10 +36,7 @@ export class FloatMapContainer extends Component {
       minimap.attached !== prevAttached &&
       minimap.attached
     ) {
-      this.setState({
-        right: 20,
-        top: 100,
-      });
+      this.props.resetMapPosition();
     }
   };
   render() {
@@ -58,8 +48,8 @@ export class FloatMapContainer extends Component {
         handleMouseMove={this.handleMouseMove}
         handleMouseUp={this.handleMouseUp}
         mouseDown={this.state.mouseDown}
-        right={this.state.right}
-        top={this.state.top}
+        right={this.props.display.floatMapRight}
+        top={this.props.display.floatMapTop}
       />
     );
   }
@@ -67,13 +57,20 @@ export class FloatMapContainer extends Component {
 
 FloatMapContainer.propTypes = {
   attachMap: PropTypes.func.isRequired,
+  display: PropTypes.shape({
+    floatMapRight: PropTypes.number,
+    floatMapTop: PropTypes.number,
+  }).isRequired,
   minimap: PropTypes.shape({
     attached: PropTypes.bool,
   }).isRequired,
+  resetMapPosition: PropTypes.func.isRequired,
+  updateMapPosition: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
+  display: DisplaySelector(state),
   minimap: MapSelector(state),
 });
 
@@ -81,6 +78,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   attachMap: () => {
     dispatch(toggleMapAttach());
+  },
+  resetMapPosition: () => {
+    dispatch(resetMapPosition());
+  },
+  updateMapPosition: (right, top) => {
+    dispatch(updateMapPosition(right, top));
   },
 });
 
