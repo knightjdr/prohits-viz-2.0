@@ -2,15 +2,14 @@
 
 exports[`Analysis selection panel component should render 1`] = `
 <div>
-  <ContextMenu
+  <_ContextMenu
     canPaste={false}
     closeMenu={[Function]}
     copyAll={[Function]}
     copySelected={[Function]}
-    left={0}
+    event={null}
     show={false}
     toggleModal={[Function]}
-    top={0}
   />
   <div
     className="panel__title"
@@ -19,11 +18,13 @@ exports[`Analysis selection panel component should render 1`] = `
   </div>
   <GeneSelection
     arrangeSelected={[Function]}
+    columnRef={Object {}}
     columns={Array []}
     columnsSelected={Array []}
     listSelect={[Function]}
     listSwap={[Function]}
     openContextMenu={[Function]}
+    rowRef={Object {}}
     rows={Array []}
     rowsSelected={Array []}
   />

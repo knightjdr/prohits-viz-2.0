@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 
 import FloatMap from './float-map';
 
+jest.mock('../../__side-panel/panel/__map/panel__map-container');
+jest.mock('../../__side-panel/panel/__map/panel__map-contents');
+
 const attachMap = jest.fn();
 const handleMouseDown = jest.fn();
 const handleMouseMove = jest.fn();

@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Download from '../../../download/download';
 import OnResize from '../../../../helpers/on-resize';
 import Status from './heatmap-svg__status';
 import { DisplaySelector } from '../../../../state/selectors/visualization/display-selector';
+import { ParametersSelectorProp } from '../../../../state/selectors/visualization/params-selector';
 import { toggleSelectionBox, toggleTooltips } from '../../../../state/set/visualization/display-actions';
 
 export class StatusContainer extends Component {
@@ -33,6 +35,11 @@ export class StatusContainer extends Component {
     right: (((window.innerWidth - 50) - width) / 2) - 35,
     top: 105,
   })
+  download = () => {
+    const fileName = `${this.props.name}currentView.svg`;
+    const svg = document.getElementById('svg-main').outerHTML;
+    Download(svg, fileName, 'image/svg+xml');
+  }
   resizeEnd = () => {
     const { width } = this.props;
     this.setState({
@@ -50,6 +57,7 @@ export class StatusContainer extends Component {
   render() {
     return (
       <Status
+        download={this.download}
         elPosition={this.state.elPosition}
         fixLeft={this.props.fixLeft}
         selectionBoxActive={this.props.display.selectionBox}
@@ -63,11 +71,16 @@ export class StatusContainer extends Component {
   }
 }
 
+StatusContainer.defaultProps = {
+  name: null,
+};
+
 StatusContainer.propTypes = {
   display: PropTypes.shape({
     selectionBox: PropTypes.bool,
     tooltips: PropTypes.bool,
   }).isRequired,
+  name: PropTypes.string,
   fixLeft: PropTypes.bool.isRequired,
   toggleSelectionBox: PropTypes.func.isRequired,
   toggleTooltips: PropTypes.func.isRequired,
@@ -78,6 +91,7 @@ StatusContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   display: DisplaySelector(state),
+  name: ParametersSelectorProp(state, 'name'),
 });
 
 /* istanbul ignore next */

@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import FillJson from './fill/fill';
-import ParamSelector from '../../state/selectors/visualization/params-selector';
 import SelectType from './visualization__select-type';
 import ValidateJson from './visualization__select-validate';
+import { ParametersSelectorProp } from '../../state/selectors/visualization/params-selector';
 import { parseFile } from '../../state/set/interactive-file-actions';
 
 /* SelectContainer handles user uploads for interactive images, including
@@ -16,13 +16,13 @@ export class SelectContainer extends Component {
     this.state = {
       err: null,
       loading: false,
-      vizType: this.props.params.imageType,
+      vizType: this.props.imageType,
     };
   }
   componentWillReceiveProps = (nextProps) => {
-    const { params } = nextProps;
-    if (params.imageType !== this.props.params.imageType) {
-      this.changeVizType(params.imageType, this.props.params.imageType);
+    const { imageType } = nextProps;
+    if (imageType !== this.props.imageType) {
+      this.changeVizType(imageType, this.props.imageType);
     }
   }
   onFileLoad = (name, string) => {
@@ -84,10 +84,12 @@ export class SelectContainer extends Component {
   }
 }
 
+SelectContainer.defaultProps = {
+  imageType: null,
+};
+
 SelectContainer.propTypes = {
-  params: PropTypes.shape({
-    imageType: PropTypes.string,
-  }).isRequired,
+  imageType: PropTypes.string,
   parseFile: PropTypes.func.isRequired,
 };
 
@@ -100,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  params: ParamSelector(state),
+  imageType: ParametersSelectorProp(state, 'imageType'),
 });
 
 const ConnectedContainer = connect(

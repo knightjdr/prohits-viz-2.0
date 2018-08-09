@@ -6,4 +6,5 @@ const Download = (string, filename, mimetype) => {
   element.click();
   URL.revokeObjectURL(file);
 };
+
 export default Download;

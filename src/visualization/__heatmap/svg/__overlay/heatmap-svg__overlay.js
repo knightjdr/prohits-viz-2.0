@@ -32,11 +32,12 @@ const Overlay = ({
     >
       <rect
         cursor={cursor}
-        fill="rgba(0, 0, 0, 0)"
+        fill="black"
         height={height}
         onMouseDown={handleOverlayMouseDown}
         onMouseMove={(e) => { handleMouseMove(e); }}
         onMouseUp={handleMouseUp}
+        opacity="0"
         x="0"
         y="0"
         width={width}
@@ -78,11 +79,13 @@ const Overlay = ({
         marker.show &&
         <rect
           cursor="crosshair"
-          fill="rgba(0, 0, 0, 0.4)"
+          fill="black"
+          fillOpacity="0.4"
           height={marker.height}
           onMouseMove={(e) => { handleMouseMove(e); }}
           onMouseUp={handleMouseUp}
           stroke="#000"
+          strokeOpacity="0.8"
           strokeWidth="1"
           x={marker.x}
           y={marker.y}

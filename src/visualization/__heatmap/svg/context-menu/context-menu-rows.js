@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import ContextMenuHoc from '../../../../components/context-menu/context-menu-hoc';
 
-const ContextMenuRows = ({
+export const ContextMenuRows = ({
   closeMenu,
   setSelections,
   target,

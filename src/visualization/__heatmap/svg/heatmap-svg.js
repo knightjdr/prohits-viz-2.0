@@ -34,7 +34,12 @@ const Svg = ({
 }) => (
   show &&
   <Fragment>
-    <svg xmlns="http://www.w3.org/2000/svg" height={height.wrapper} width={width.wrapper}>
+    <svg
+      id="svg-main"
+      height={height.wrapper}
+      width={width.wrapper}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <Plot />
       <Overlay />
       <Columns

@@ -1,11 +1,18 @@
 import { createSelector } from 'reselect';
 
 const getParameters = state => state.parameters;
+const getParametersProp = (state, prop) => state.parameters[prop];
 
-const GetParameters = createSelector(
+export const ParametersSelector = createSelector(
   [getParameters],
   parameters => (
     parameters
   ),
 );
-export default GetParameters;
+
+export const ParametersSelectorProp = createSelector(
+  [getParametersProp],
+  prop => (
+    prop
+  ),
+);

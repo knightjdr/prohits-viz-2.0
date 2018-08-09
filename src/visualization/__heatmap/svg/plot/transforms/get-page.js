@@ -3,6 +3,14 @@
 ** after mapping the value to the gradient color range, while for dotplots
 ** it will add the edge color and radius as well. */
 
+export const setRadius = (ratio, radius) => (
+  typeof ratio === 'number' ? radius * ratio : radius
+);
+
+export const setScore = score => (
+  typeof score === 'number' ? score : 0
+);
+
 const GetPage = imageType => (
   rows,
   position,
@@ -22,9 +30,9 @@ const GetPage = imageType => (
     return rows.slice(position.y, pageEnd.y).map(row => ({
       data: row.data.slice(position.x, pageEnd.x).map(item => ({
         ...item,
-        edgeColor: edgeGradient[edgeRange(item.score)],
+        edgeColor: edgeGradient[edgeRange(setScore(item.score))],
         fillColor: fillGradient[fillRange(item.value)],
-        radius: typeof item.ratio === 'number' ? circleRadius * item.ratio : circleRadius,
+        radius: setRadius(item.ratio, circleRadius),
       })),
       name: row.name,
     }));

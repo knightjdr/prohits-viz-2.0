@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import ColorGradient from '../../../color/color-gradient';
 import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
 import GetPage from './transforms/get-page';
-import ParamsSelector from '../../../../state/selectors/visualization/params-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import Plot from './heatmap-svg__plot';
 import Round from '../../../../helpers/round';
@@ -14,6 +13,7 @@ import SetRange from './transforms/set-range';
 import SetEdgeRange from './transforms/set-edge-range';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import SortSeletor from '../../../../state/selectors/visualization/sort-selector';
+import { ParametersSelectorProp } from '../../../../state/selectors/visualization/params-selector';
 
 const NUM_COLORS = 101;
 
@@ -325,7 +325,7 @@ const mapStateToProps = state => ({
   position: PositionSelector(state),
   primaryFilter: SettingSelector(state, 'primaryFilter'),
   rows: RowsSelector(state),
-  scoreType: ParamsSelector(state).scoreType,
+  scoreType: ParametersSelectorProp(state, 'scoreType'),
   secondaryFilter: SettingSelector(state, 'secondaryFilter'),
   sortInfo: SortSeletor(state),
 });

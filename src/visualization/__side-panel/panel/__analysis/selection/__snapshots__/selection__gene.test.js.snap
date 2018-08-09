@@ -29,6 +29,7 @@ exports[`Gene select should render 1`] = `
           "b",
         ]
       }
+      setRef={Object {}}
       target="columns"
     />
     <div
@@ -114,6 +115,7 @@ exports[`Gene select should render 1`] = `
           "c",
         ]
       }
+      setRef={null}
       target="columnsSelected"
     />
     <div
@@ -215,6 +217,7 @@ exports[`Gene select should render 1`] = `
           "e",
         ]
       }
+      setRef={Object {}}
       target="rows"
     />
     <div
@@ -301,6 +304,7 @@ exports[`Gene select should render 1`] = `
           "f",
         ]
       }
+      setRef={null}
       target="rowsSelected"
     />
     <div

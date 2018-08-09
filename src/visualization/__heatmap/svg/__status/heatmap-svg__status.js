@@ -1,13 +1,18 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
+  faFileDownload,
+} from '@fortawesome/pro-solid-svg-icons';
 import { faComment, faSquare } from '@fortawesome/pro-regular-svg-icons';
 
 import './heatmap-svg__status.css';
 
 const Status = ({
   elPosition,
+  download,
   fixLeft,
   selectionBoxActive,
   show,
@@ -37,6 +42,15 @@ const Status = ({
           :
           <FontAwesomeIcon icon={faArrowAltCircleLeft} />
       }
+    </button>
+    <button
+      className="heatmap-svg__status-button"
+      onClick={download}
+      tooltip="Export current view"
+      tooltip-position="right"
+      type="button"
+    >
+      <FontAwesomeIcon icon={faFileDownload} />
     </button>
     <button
       className="heatmap-svg__status-button"
@@ -78,6 +92,7 @@ const Status = ({
 );
 
 Status.propTypes = {
+  download: PropTypes.func.isRequired,
   elPosition: PropTypes.shape({
     bottom: PropTypes.number,
     right: PropTypes.number,

@@ -101,7 +101,7 @@ exports[`Floating minimap when hidden should render 1`] = `
         />
       </button>
     </div>
-    <Connect(MapContainer)
+    <MapContainer
       render={[Function]}
     />
   </div>
@@ -209,7 +209,7 @@ exports[`Floating minimap when visible should render 1`] = `
         />
       </button>
     </div>
-    <Connect(MapContainer)
+    <MapContainer
       render={[Function]}
     />
   </div>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ContextMenu from './context-menu/context-menu';
+import Context from './context-menu/context-menu';
 import GeneSelection from './selection__gene';
 import PasteModal from './paste-modal/paste-modal';
 
@@ -31,7 +31,7 @@ const Selection = ({
   updatePasteList,
 }) => (
   <div>
-    <ContextMenu
+    <Context
       canPaste={canPasteContext}
       closeMenu={closeContextMenu}
       copyAll={copyAll}

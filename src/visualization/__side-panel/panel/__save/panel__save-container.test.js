@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import Download from '../../download/download';
+import Download from '../../../download/download';
 import IndexedDBDelete from './browser-storage/indexeddb-delete';
 import IndexedDBGet from './browser-storage/indexeddb-get';
 import IndexedDBGetall from './browser-storage/indexeddb-getall';
@@ -26,7 +26,7 @@ const sessions = [
   { id: 7, name: 'g', date: 'July 19, 2018' },
 ];
 
-jest.mock('../../download/download');
+jest.mock('../../../download/download');
 jest.mock('./browser-storage/indexeddb-delete');
 jest.mock('./browser-storage/indexeddb-get');
 jest.mock('./browser-storage/indexeddb-getall');

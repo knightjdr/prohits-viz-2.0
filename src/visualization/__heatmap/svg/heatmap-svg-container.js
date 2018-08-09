@@ -202,11 +202,11 @@ export class SvgContainer extends Component {
   }
   toggleTooltip = (needsTooltip, shouldDisplay, text, left = 0, top = 0) => {
     if (needsTooltip) {
-      const { display, panel } = this.props;
+      const { display } = this.props;
       this.setState({
         tooltip: {
           display: shouldDisplay,
-          left: panel ? left + display.plotTranslate : left,
+          left: left - display.plotTranslate,
           text,
           top,
         },

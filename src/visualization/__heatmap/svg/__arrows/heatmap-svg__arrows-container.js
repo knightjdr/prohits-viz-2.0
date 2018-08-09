@@ -70,7 +70,7 @@ export class ArrowsContainer extends Component {
       y: this.props.position.y,
     };
     const { length, page, vertex } = this.state;
-    newPosition[vertex] = this.props.position[vertex] + change;
+    newPosition[vertex] += change;
     if (newPosition[vertex] <= 0) {
       newPosition[vertex] = 0;
     } else if (newPosition[vertex] >= length - page) {

@@ -2,11 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ColorGradient from '../../../color/color-gradient';
-import Download from '../../download/download';
+import Download from '../../../download/download';
 import { InfoContainer } from './panel__info-container';
 
 jest.mock('../../../color/color-gradient');
-jest.mock('../../download/download');
+jest.mock('../../../download/download');
 
 const params = {
   abundanceCap: 50,

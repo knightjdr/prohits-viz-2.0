@@ -14,139 +14,137 @@ const testFile = { fileList: [{ originFileObj: new File([''], 'samplefile.txt', 
 const parseFile = jest.fn();
 
 describe('Interactive file select container', () => {
-  beforeEach(() => {
-    /* Clear call count */
-    parseFile.mockClear();
-  });
+  let wrapper;
 
-  test('should have empty initial state', () => {
-    const wrapper = shallow(
+  beforeAll(() => {
+    wrapper = shallow(
       <SelectContainer
-        params={{ imageType: null }}
+        imageType={null}
         parseFile={parseFile}
       />,
     );
+  });
+
+  it('should have empty initial state', () => {
     expect(wrapper.state().err).toBeNull();
     expect(wrapper.state().loading).toBeFalsy();
     expect(wrapper.state().vizType).toBeNull();
   });
 
-  test('should load state via redux params', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        params={{ imageType: 'heatmap' }}
-        parseFile={parseFile}
-      />,
-    );
-    expect(wrapper.state('err')).toBeNull();
-    expect(wrapper.state('loading')).toBeFalsy();
-    expect(wrapper.state('vizType')).toBe('heatmap');
-  });
-
-  test('should change viz type via prop', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        params={{ imageType: null }}
-        parseFile={parseFile}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.setProps({ params: { imageType: 'scatter' } });
-    expect(wrapper.state('vizType')).toBe('scatter');
-  });
-
-  test('should not change viz type via prop', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        params={{ imageType: 'heatmap' }}
-        parseFile={parseFile}
-      />,
-    );
-    jest.clearAllMocks();
-
-    const spy = jest.spyOn(wrapper.instance(), 'changeVizType');
-    wrapper.setProps({ params: { imageType: 'heatmap' } });
-    expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
-  });
-
-  test('should change viz type via changeVizType', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        params={{ imageType: null }}
-        parseFile={parseFile}
-      />,
-    );
-    jest.clearAllMocks();
+  it('should change viz type via changeVizType', () => {
+    wrapper.setState({ vizType: null });
     wrapper.instance().changeVizType('scatter');
     expect(wrapper.state('vizType')).toBe('scatter');
   });
 
-  test('should validate and load file via onFileLoad', () => {
-    const wrapper = shallow(
+  it('should change viz type via prop', () => {
+    const testWrapper = shallow(
       <SelectContainer
-        params={{ imageType: null }}
+        imageType={null}
         parseFile={parseFile}
       />,
     );
-    jest.clearAllMocks();
-    const { onFileLoad } = wrapper.instance();
-
-    // Error with file validation.
-    ValidateJson.mockReturnValue({ err: true, message: 'Test error' });
-    onFileLoad('test');
-    expect(FillJson).toHaveBeenCalledTimes(0);
-    expect(parseFile).toHaveBeenCalledTimes(0);
-    expect(wrapper.state('err')).toBe('Test error');
-    expect(wrapper.state('loading')).toBeFalsy();
-
-    // Succesful file reading and validation.
-    ValidateJson.mockReturnValue({ err: null, json: {} });
-    onFileLoad('test');
-    expect(FillJson).toHaveBeenCalledTimes(1);
-    expect(parseFile).toHaveBeenCalledTimes(1);
-    expect(wrapper.state('err')).toBeNull();
-    expect(wrapper.state('loading')).toBeFalsy();
-
-    // Restore mock.
-    ValidateJson.mockRestore();
+    testWrapper.setProps({ imageType: 'scatter' });
+    expect(testWrapper.state('vizType')).toBe('scatter');
   });
 
-  test('should handle null input file', () => {
-    const wrapper = shallow(
+  it('should not change viz type via prop', () => {
+    const testWrapper = shallow(
       <SelectContainer
-        params={{ imageType: null }}
+        imageType="heatmap"
         parseFile={parseFile}
       />,
     );
-    jest.clearAllMocks();
-    const loadSpy = jest.spyOn(wrapper.instance(), 'onFileLoad');
+    const spy = jest.spyOn(testWrapper.instance(), 'changeVizType');
+    testWrapper.update();
+    testWrapper.setProps({ imageType: 'heatmap' });
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
+  });
 
-    // Set err state to test for clearing err.
-    wrapper.setState({ err: 'Test error' });
-    const { handleFile } = wrapper.instance();
-    return handleFile().then(() => {
-      expect(loadSpy).toHaveBeenCalledTimes(0);
-      expect(wrapper.state('err')).toBeNull();
-      expect(wrapper.state('loading')).toBeFalsy();
+  describe('when loading a file', () => {
+    describe('should validate and load file via onFileLoad', () => {
+      describe('with an error', () => {
+        beforeAll(() => {
+          ValidateJson.mockReturnValue({ err: true, message: 'Test error' });
+          wrapper.instance().onFileLoad('test');
+        });
+
+        afterAll(() => {
+          ValidateJson.mockRestore();
+        });
+
+        it('should not call fill json', () => {
+          expect(FillJson).toHaveBeenCalledTimes(0);
+        });
+
+        it('should not call parse file', () => {
+          expect(parseFile).toHaveBeenCalledTimes(0);
+        });
+
+        it('should report error', () => {
+          expect(wrapper.state('err')).toBe('Test error');
+        });
+
+        it('should set loading state to false', () => {
+          expect(wrapper.state('loading')).toBeFalsy();
+        });
+      });
+
+      describe('on success', () => {
+        beforeAll(() => {
+          ValidateJson.mockReturnValue({ err: null, json: {} });
+          wrapper.instance().onFileLoad('test');
+        });
+
+        afterAll(() => {
+          ValidateJson.mockRestore();
+        });
+
+        it('should call fill json', () => {
+          expect(FillJson).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call parse file', () => {
+          expect(parseFile).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not report error', () => {
+          expect(wrapper.state('err')).toBeNull();
+        });
+
+        it('should set loading state to false', () => {
+          expect(wrapper.state('loading')).toBeFalsy();
+        });
+      });
     });
-  });
 
-  test('should handle input file', () => {
-    const wrapper = shallow(
-      <SelectContainer
-        params={{ imageType: null }}
-        parseFile={parseFile}
-      />,
-    );
-    jest.clearAllMocks();
-    const loadSpy = jest.spyOn(wrapper.instance(), 'onFileLoad');
+    it('should handle null input file', () => {
+      const loadSpy = jest.spyOn(wrapper.instance(), 'onFileLoad');
+      wrapper.update();
 
-    // Set err state to test for clearing err.
-    wrapper.setState({ err: 'Test error' });
-    const { handleFile } = wrapper.instance();
-    return handleFile(testFile).then(() => {
-      expect(loadSpy).toHaveBeenCalledTimes(1);
+      // Set err state to test for clearing err.
+      wrapper.setState({ err: 'Test error' });
+      const { handleFile } = wrapper.instance();
+      return handleFile().then(() => {
+        expect(loadSpy).not.toHaveBeenCalled();
+        expect(wrapper.state('err')).toBeNull();
+        expect(wrapper.state('loading')).toBeFalsy();
+        loadSpy.mockRestore();
+      });
+    });
+
+    test('should handle input file', () => {
+      const loadSpy = jest.spyOn(wrapper.instance(), 'onFileLoad');
+      wrapper.update();
+
+      // Set err state to test for clearing err.
+      wrapper.setState({ err: 'Test error' });
+      const { handleFile } = wrapper.instance();
+      return handleFile(testFile).then(() => {
+        expect(loadSpy).toHaveBeenCalledTimes(1);
+        loadSpy.mockRestore();
+      });
     });
   });
 });

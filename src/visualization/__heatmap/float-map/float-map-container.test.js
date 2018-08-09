@@ -7,7 +7,6 @@ const resetMapPosition = jest.fn();
 const updateMapPosition = jest.fn();
 
 beforeEach(() => {
-  resetMapPosition.mockClear();
   updateMapPosition.mockClear();
 });
 
@@ -62,20 +61,29 @@ describe('Floating minimap container', () => {
 
   describe('and position', () => {
     it('should reset when attach state changes to true', () => {
+      const currentProps = { minimap: { attached: false } };
+      wrapper.setProps(currentProps);
+      resetMapPosition.mockClear();
       const nextProps = { minimap: { attached: true } };
-      wrapper.instance().resetPosition(nextProps, false);
+      wrapper.setProps(nextProps);
       expect(resetMapPosition).toHaveBeenCalled();
     });
 
     it('should not reset when attach state changes to false', () => {
+      const currentProps = { minimap: { attached: true } };
+      wrapper.setProps(currentProps);
+      resetMapPosition.mockClear();
       const nextProps = { minimap: { attached: false } };
-      wrapper.instance().resetPosition(nextProps, true);
+      wrapper.setProps(nextProps);
       expect(resetMapPosition).not.toHaveBeenCalled();
     });
 
     it('should not reset when attach state does not change', () => {
+      const currentProps = { minimap: { attached: true } };
+      wrapper.setProps(currentProps);
+      resetMapPosition.mockClear();
       const nextProps = { minimap: { attached: true } };
-      wrapper.instance().resetPosition(nextProps, true);
+      wrapper.setProps(nextProps);
       expect(resetMapPosition).not.toHaveBeenCalled();
     });
   });

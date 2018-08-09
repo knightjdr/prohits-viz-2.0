@@ -2,9 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import CopyToClipboard from '../../../../../helpers/copy-to-clipboard';
+import FindClosest from '../../../../../helpers/find-closest';
 import { SelectionContainer } from './selection-container';
 
 jest.mock('../../../../../helpers/copy-to-clipboard');
+jest.mock('../../../../../helpers/find-closest', );
+FindClosest.mockReturnValue(1);
 
 const genes = {
   columnMap: { a: 0, b: 1, c: 2 },
@@ -510,6 +513,60 @@ describe('Gene select', () => {
 
     it('and show modal', () => {
       expect(wrapper.state('showModal')).toBeTruthy();
+    });
+  });
+
+  describe('scrolling to new position', () => {
+    beforeAll(() => {
+      wrapper.instance().scrollToPosition = jest.fn();
+      wrapper.update();
+    });
+
+    beforeEach(() => {
+      wrapper.instance().scrollToPosition.mockClear();
+    });
+
+    afterAll(() => {
+      wrapper.instance().scrollToPosition.mockRestore();
+    });
+
+    it('should happen when x position changes', () => {
+      const nextProps = {
+        columns: { names: [] },
+        position: {
+          x: 20,
+          y: 0,
+        },
+      };
+      wrapper.instance().updatePosition(nextProps, { x: 0, y: 0 }, { id: 0 });
+      expect(wrapper.instance().scrollToPosition).toHaveBeenCalled();
+    });
+
+    it('should happen when y position changes', () => {
+      const nextProps = {
+        columns: { names: [] },
+        position: {
+          x: 0,
+          y: 20,
+        },
+      };
+      wrapper.instance().updatePosition(nextProps, { x: 0, y: 0 }, { id: 0 });
+      expect(wrapper.instance().scrollToPosition).toHaveBeenCalled();
+    });
+
+    it('should happen when sort occurs', () => {
+      const nextProps = {
+        columns: { names: [] },
+        position: {
+          x: 0,
+          y: 20,
+        },
+        sortInfo: {
+          id: 1,
+        },
+      };
+      wrapper.instance().updatePosition(nextProps, { x: 0, y: 0 }, { id: 0 });
+      expect(wrapper.instance().scrollToPosition).toHaveBeenCalled();
     });
   });
 });

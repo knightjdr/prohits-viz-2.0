@@ -8,7 +8,7 @@ import { changePanelTab } from '../../state/set/visualization/display-actions';
 import { DisplayPropSelector } from '../../state/selectors/visualization/display-selector';
 import { togglePanel } from '../../state/set/visualization/panel-actions';
 
-const SidePanelContainer = ({
+export const SidePanelContainer = ({
   changeTab,
   panel,
   tab,
