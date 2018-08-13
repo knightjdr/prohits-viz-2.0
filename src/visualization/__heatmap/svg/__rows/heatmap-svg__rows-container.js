@@ -60,8 +60,8 @@ export class RowsContainer extends Component {
       cellSize !== this.props.cellSize ||
       dimensions.pageY !== this.props.dimensions.pageY ||
       position.y !== this.props.position.y ||
-      search.match ||
-      sortInfo.id !== this.props.sortInfo.id
+      sortInfo.id !== this.props.sortInfo.id ||
+      search.match !== this.props.search.match
     );
   }
   getPage = (rows, y, pageY) => {

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heatmap rows with search term should render and match snapshot 1`] = `
+<g
+  transform="translate(0 100)"
+>
+  <text
+    fontSize={12}
+    key="a"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    x="98"
+    y={12}
+  >
+    a
+  </text>
+  <text
+    fontSize={12}
+    key="b"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    x="98"
+    y={27}
+  >
+    b
+  </text>
+  <rect
+    fill="#4caf50"
+    height={15}
+    key="c-match"
+    onContextMenu={[Function]}
+    width="100"
+    x="0"
+    y={30}
+  />
+  <text
+    fontSize={12}
+    key="c"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    x="98"
+    y={42}
+  >
+    c
+  </text>
+</g>
+`;

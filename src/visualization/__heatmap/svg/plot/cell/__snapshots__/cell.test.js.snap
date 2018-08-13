@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plot cell dotplot should match snapshot 1`] = `
+<div>
+  <circle
+    cx={2}
+    cy={2}
+    fill="#fff"
+    key="1"
+    r="1"
+    stroke="#fff"
+    strokeWidth={2}
+  />
+  <circle
+    cx={17}
+    cy={2}
+    fill="#aaa"
+    key="1"
+    r="0.5"
+    stroke="#aaa"
+    strokeWidth={2}
+  />
+  <circle
+    cx={32}
+    cy={2}
+    fill="#555"
+    key="1"
+    r="0.2"
+    stroke="#555"
+    strokeWidth={2}
+  />
+</div>
+`;
+
+exports[`Plot cell heatmap should match snapshot 1`] = `
+<div>
+  <rect
+    fill="#fff"
+    height={15}
+    key="1"
+    width={15}
+    x={0}
+    y={0}
+  />
+  <rect
+    fill="#aaa"
+    height={15}
+    key="1"
+    width={15}
+    x={15}
+    y={0}
+  />
+  <rect
+    fill="#555"
+    height={15}
+    key="1"
+    width={15}
+    x={30}
+    y={0}
+  />
+</div>
+`;

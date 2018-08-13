@@ -15,8 +15,6 @@ import { setSelections } from '../../../state/set/visualization/genes-actions';
 import { sortRows } from '../../../state/set/visualization/rows-actions';
 import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
 
-import './heatmap-svg.css';
-
 const COL_MARGIN = 100;
 const EXTRA_PADDING = 2;
 const ROW_MARGIN = 100;
@@ -246,33 +244,27 @@ export class SvgContainer extends Component {
   }
   render() {
     return (
-      <div
-        className="heatmap-svg__wrapper"
-        ref={this.wrapperRef}
-        style={{
-          transform: `translate(${this.props.display.plotTranslate}px)`,
-        }}
-      >
-        <Svg
-          closeContextMenu={this.closeContextMenu}
-          contextTarget={this.state.contextTarget}
-          contextEvent={this.state.contextEvent}
-          fixLeft={this.props.display.plotFixed}
-          handleClick={this.handleClick}
-          height={this.state.height}
-          openContextMenu={this.openContextMenu}
-          reference={this.props.columns.ref}
-          setSelections={this.props.setSelections}
-          setReference={this.props.setReference}
-          show={this.state.showSvg}
-          showContext={this.state.showContext}
-          sortRows={this.sortRows}
-          tooltip={this.state.tooltip}
-          toggleTooltip={this.toggleTooltip}
-          translateLeft={this.translateLeft}
-          width={this.state.width}
-        />
-      </div>
+      <Svg
+        closeContextMenu={this.closeContextMenu}
+        contextTarget={this.state.contextTarget}
+        contextEvent={this.state.contextEvent}
+        fixLeft={this.props.display.plotFixed}
+        handleClick={this.handleClick}
+        height={this.state.height}
+        openContextMenu={this.openContextMenu}
+        plotTranslate={this.props.display.plotTranslate}
+        reference={this.props.columns.ref}
+        setSelections={this.props.setSelections}
+        setContainerRef={this.wrapperRef}
+        setReference={this.props.setReference}
+        show={this.state.showSvg}
+        showContext={this.state.showContext}
+        sortRows={this.sortRows}
+        tooltip={this.state.tooltip}
+        toggleTooltip={this.toggleTooltip}
+        translateLeft={this.translateLeft}
+        width={this.state.width}
+      />
     );
   }
 }

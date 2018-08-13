@@ -3,61 +3,87 @@ import { shallow } from 'enzyme';
 
 import SelectType from './visualization__select-type';
 
-const handleFile = jest.fn();
-
 describe('Visualization control', () => {
-  test('should render with upload option when vizType is null', () => {
-    const wrapper = shallow(
-      <SelectType
-        handleFile={handleFile}
-        loading={false}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('HeatmapContainer').length).toBe(0);
-    expect(wrapper.find('ScatterContainer').length).toBe(0);
-    expect(wrapper.find('Selection').length).toBe(1);
+  describe('when vizType is null', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = shallow(
+        <SelectType
+          handleFile={jest.fn()}
+          loading={false}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should display selection component', () => {
+      expect(wrapper.find('Selection').length).toBe(1);
+    });
   });
 
-  test('should render for dotplots', () => {
-    const wrapper = shallow(
-      <SelectType
-        handleFile={handleFile}
-        loading={false}
-        vizType="dotplot"
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('HeatmapContainer').length).toBe(1);
-    expect(wrapper.find('ScatterContainer').length).toBe(0);
-    expect(wrapper.find('Selection').length).toBe(0);
+  describe('when vizType is dotplot', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = shallow(
+        <SelectType
+          handleFile={jest.fn()}
+          loading={false}
+          vizType="dotplot"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should display heatmap component', () => {
+      expect(wrapper.find('Heatmap').length).toBe(1);
+    });
   });
 
-  test('should render for heatmaps', () => {
-    const wrapper = shallow(
-      <SelectType
-        handleFile={handleFile}
-        loading={false}
-        vizType="heatmap"
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('HeatmapContainer').length).toBe(1);
-    expect(wrapper.find('ScatterContainer').length).toBe(0);
-    expect(wrapper.find('Selection').length).toBe(0);
+  describe('when vizType is heatmap', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = shallow(
+        <SelectType
+          handleFile={jest.fn()}
+          loading={false}
+          vizType="heatmap"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should display heatmap component', () => {
+      expect(wrapper.find('Heatmap').length).toBe(1);
+    });
   });
 
-  test('should render for scatter plots', () => {
-    const wrapper = shallow(
-      <SelectType
-        handleFile={handleFile}
-        loading={false}
-        vizType="scatter"
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('HeatmapContainer').length).toBe(0);
-    expect(wrapper.find('ScatterContainer').length).toBe(1);
-    expect(wrapper.find('Selection').length).toBe(0);
+  describe('when vizType is scatter', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = shallow(
+        <SelectType
+          handleFile={jest.fn()}
+          loading={false}
+          vizType="scatter"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should display scatter plot component', () => {
+      expect(wrapper.find('ScatterContainer').length).toBe(1);
+    });
   });
 });

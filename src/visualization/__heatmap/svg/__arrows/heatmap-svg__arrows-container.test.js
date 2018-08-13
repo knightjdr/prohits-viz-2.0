@@ -30,6 +30,7 @@ describe('Heatmap arrows container', () => {
             x: 0,
             y: 0,
           }}
+          show
           updatePosition={updatePosition}
           width={{
             wrapper: 500,
@@ -342,6 +343,7 @@ describe('Heatmap arrows container', () => {
             x: 0,
             y: 0,
           }}
+          show
           updatePosition={updatePosition}
           width={{
             wrapper: 500,
@@ -406,6 +408,7 @@ describe('Heatmap arrows container', () => {
             x: 0,
             y: 0,
           }}
+          show
           updatePosition={updatePosition}
           width={{
             wrapper: 500,

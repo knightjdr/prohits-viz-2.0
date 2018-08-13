@@ -1,5 +1,7 @@
 /* Return a function that will map a range of numbers to one of three integers.
-** Checks to make sure the input number is within the input range. */
+** Checks to make sure the input number is within the input range. i.e
+** if the the range is from 0 - 100, input numbers will get mapped to
+** either 25, 50 or 100. */
 
 const SetEdgeRange = (primaryFilter, secondaryFilter, scoreType, outMin, outMax) => {
   const outputRange = outMax - outMin;

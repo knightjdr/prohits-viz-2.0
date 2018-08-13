@@ -57,7 +57,7 @@ export class ColumnsContainer extends Component {
       columns.ref !== this.props.columns.ref ||
       dimensions.pageX !== this.props.dimensions.pageX ||
       position.x !== this.props.position.x ||
-      search.match
+      search.match !== this.props.search.match
     );
   }
   getPage = (names, x, pageX) => {
@@ -78,7 +78,10 @@ export class ColumnsContainer extends Component {
     }
   }
   updatePage = (x, prevX, pageX, prevPageX, names) => {
-    if (x !== prevX || pageX !== prevPageX) {
+    if (
+      x !== prevX ||
+      pageX !== prevPageX
+    ) {
       this.setState(({ fontSize }) => ({
         names: this.checkColumnSize(
           this.getPage(names, x, pageX),

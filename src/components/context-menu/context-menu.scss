@@ -1,11 +1,10 @@
 @import 'style/reset';
 @import 'style/style';
-@import 'style/theme';
 
 .context-menu {
-  @extend .boxshadow-medium;
-  background-color: $backdrop-light;
-  border: 1px solid $primary-medium;
+  @extend .boxshadow-faint;
+  background-color: #fbfbfb;
+  border: 1px solid #abc3d3;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -27,7 +26,7 @@
 }
 .context-menu > * {
   @extend .button-reset;
-  background-color: $backdrop-light;
+  background-color: #fbfbfb;
   cursor: pointer;
   padding: 8px 10px;
   transition: background-color 0.5s ease;

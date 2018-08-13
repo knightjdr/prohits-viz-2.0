@@ -78,7 +78,10 @@ export class MapContainer extends Component {
     this.props.updatePosition(x, y);
   }
   updateMarkers = ({ dimensions, markers }, prevMarkers) => {
-    if (markers.list.length !== prevMarkers.list.length) {
+    if (
+      markers.color !== prevMarkers.color ||
+      markers.list.length !== prevMarkers.list.length
+    ) {
       this.setState({
         markers: this.convertMarkers(dimensions, markers),
       });
@@ -141,6 +144,8 @@ MapContainer.propTypes = {
     rows: PropTypes.number,
   }).isRequired,
   markers: PropTypes.shape({
+    color: PropTypes.string,
+    list: PropTypes.arrayOf(PropTypes.shape({})),
     show: PropTypes.bool,
   }).isRequired,
   minimap: PropTypes.shape({

@@ -57,6 +57,7 @@ export class StatusContainer extends Component {
   render() {
     return (
       <Status
+        canTranslate={this.props.canTranslate}
         download={this.download}
         elPosition={this.state.elPosition}
         fixLeft={this.props.fixLeft}
@@ -76,6 +77,7 @@ StatusContainer.defaultProps = {
 };
 
 StatusContainer.propTypes = {
+  canTranslate: PropTypes.bool.isRequired,
   display: PropTypes.shape({
     selectionBox: PropTypes.bool,
     tooltips: PropTypes.bool,

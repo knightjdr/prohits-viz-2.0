@@ -11,8 +11,9 @@ import { faComment, faSquare } from '@fortawesome/pro-regular-svg-icons';
 import './heatmap-svg__status.css';
 
 const Status = ({
-  elPosition,
+  canTranslate,
   download,
+  elPosition,
   fixLeft,
   selectionBoxActive,
   show,
@@ -29,20 +30,23 @@ const Status = ({
       visibility: show ? 'visible' : 'hidden',
     }}
   >
-    <button
-      className="heatmap-svg__status-button"
-      onClick={translate}
-      tooltip={fixLeft ? 'Center plot' : 'Fix plot to left'}
-      tooltip-position="right"
-      type="button"
-    >
-      {
-        fixLeft ?
-          <FontAwesomeIcon icon={faArrowAltCircleRight} />
-          :
-          <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-      }
-    </button>
+    {
+      canTranslate &&
+      <button
+        className="heatmap-svg__status-button"
+        onClick={translate}
+        tooltip={fixLeft ? 'Center plot' : 'Fix plot to left'}
+        tooltip-position="right"
+        type="button"
+      >
+        {
+          fixLeft ?
+            <FontAwesomeIcon icon={faArrowAltCircleRight} />
+            :
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        }
+      </button>
+    }
     <button
       className="heatmap-svg__status-button"
       onClick={download}
@@ -92,6 +96,7 @@ const Status = ({
 );
 
 Status.propTypes = {
+  canTranslate: PropTypes.bool.isRequired,
   download: PropTypes.func.isRequired,
   elPosition: PropTypes.shape({
     bottom: PropTypes.number,

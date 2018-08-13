@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heatmap columns with reference and search term should render and match snapshot 1`] = `
+<g
+  transform="translate(100 0)"
+>
+  <text
+    fontSize={12}
+    key="a"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 4, 98)"
+    x={4}
+    y="98"
+  >
+    a
+  </text>
+  <rect
+    fill="#90afc5"
+    height="100"
+    key="b-reference"
+    onContextMenu={[Function]}
+    width={15}
+    x={15}
+    y="0"
+  />
+  <text
+    fontSize={12}
+    key="b"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 19, 98)"
+    x={19}
+    y="98"
+  >
+    b
+  </text>
+  <rect
+    fill="#4caf50"
+    height="100"
+    key="c-match"
+    onContextMenu={[Function]}
+    width={15}
+    x={30}
+    y="0"
+  />
+  <text
+    fontSize={12}
+    key="c"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 34, 98)"
+    x={34}
+    y="98"
+  >
+    c
+  </text>
+</g>
+`;
+
+exports[`Heatmap columns without reference should render and match snapshot 1`] = `
+<g
+  transform="translate(100 0)"
+>
+  <text
+    fontSize={12}
+    key="a"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 4, 98)"
+    x={4}
+    y="98"
+  >
+    a
+  </text>
+  <text
+    fontSize={12}
+    key="b"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 19, 98)"
+    x={19}
+    y="98"
+  >
+    b
+  </text>
+  <text
+    fontSize={12}
+    key="c"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    textAnchor="end"
+    transform="rotate(90, 34, 98)"
+    x={34}
+    y="98"
+  >
+    c
+  </text>
+</g>
+`;

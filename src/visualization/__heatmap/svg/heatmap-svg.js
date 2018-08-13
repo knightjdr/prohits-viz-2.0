@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 
 import Arrows from './__arrows/heatmap-svg__arrows-container';
 import Columns from './__columns/heatmap-svg__columns-container';
-import ContextMenuColumns from './context-menu/context-menu-columns';
-import ContextMenuRows from './context-menu/context-menu-rows';
+import ContextColumns from './context-menu/context-menu-columns';
+import ContextRows from './context-menu/context-menu-rows';
 import Overlay from './__overlay/heatmap-svg__overlay-container';
 import Plot from './plot/heatmap-svg__plot-container';
 import Rows from './__rows/heatmap-svg__rows-container';
@@ -21,7 +21,9 @@ const Svg = ({
   handleClick,
   height,
   openContextMenu,
+  plotTranslate,
   reference,
+  setContainerRef,
   setSelections,
   setReference,
   show,
@@ -32,70 +34,74 @@ const Svg = ({
   translateLeft,
   width,
 }) => (
-  show &&
-  <Fragment>
-    <svg
-      id="svg-main"
-      height={height.wrapper}
-      width={width.wrapper}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <Plot />
-      <Overlay />
-      <Columns
-        handleClick={handleClick}
-        openContextMenu={(e, target) => { openContextMenu(e, target, 'column'); }}
-        toggleTooltip={toggleTooltip}
-      />
-      <Rows
-        handleClick={handleClick}
-        openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
-        toggleTooltip={toggleTooltip}
-      />
-    </svg>
+  <div
+    className="heatmap-svg__wrapper"
+    ref={setContainerRef}
+    style={{
+      transform: `translate(${plotTranslate}px)`,
+    }}
+  >
     {
-      width.canTranslate &&
-      <StatusBar
-        fixLeft={fixLeft}
-        translate={translateLeft}
-        width={width.wrapper}
-      />
+      show &&
+      <Fragment>
+        <svg
+          id="svg-main"
+          height={height.wrapper}
+          width={width.wrapper}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <Plot />
+          <Overlay />
+          <Columns
+            handleClick={handleClick}
+            openContextMenu={(e, target) => { openContextMenu(e, target, 'column'); }}
+            toggleTooltip={toggleTooltip}
+          />
+          <Rows
+            handleClick={handleClick}
+            openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
+            toggleTooltip={toggleTooltip}
+          />
+        </svg>
+        <StatusBar
+          canTranslate={width.canTranslate}
+          fixLeft={fixLeft}
+          translate={translateLeft}
+          width={width.wrapper}
+        />
+        <Arrows
+          direction="vertical"
+          height={height}
+          show={height.arrowsY}
+          width={width}
+        />
+        <Arrows
+          direction="horizontal"
+          height={height}
+          show={width.arrowsX}
+          width={width}
+        />
+        <ContextColumns
+          closeMenu={closeContextMenu}
+          event={contextEvent}
+          reference={reference}
+          setSelections={setSelections}
+          setReference={setReference}
+          show={showContext === 'column'}
+          sortRows={sortRows}
+          target={contextTarget}
+        />
+        <ContextRows
+          closeMenu={closeContextMenu}
+          event={contextEvent}
+          setSelections={setSelections}
+          show={showContext === 'row'}
+          target={contextTarget}
+        />
+        <Tooltip {...tooltip} />
+      </Fragment>
     }
-    {
-      height.arrowsY &&
-      <Arrows
-        direction="vertical"
-        height={height}
-        width={width}
-      />
-    }
-    {
-      width.arrowsX &&
-      <Arrows
-        direction="horizontal"
-        height={height}
-        width={width}
-      />
-    }
-    <ContextMenuColumns
-      closeMenu={closeContextMenu}
-      event={contextEvent}
-      reference={reference}
-      setSelections={setSelections}
-      setReference={setReference}
-      show={showContext === 'column'}
-      sortRows={sortRows}
-      target={contextTarget}
-    />
-    <ContextMenuRows
-      closeMenu={closeContextMenu}
-      event={contextEvent}
-      setSelections={setSelections}
-      show={showContext === 'row'}
-      target={contextTarget}
-    />
-    <Tooltip {...tooltip} />
-  </Fragment>
+  </div>
 );
 
 Svg.defaultProps = {
@@ -116,7 +122,9 @@ Svg.propTypes = {
     wrapper: PropTypes.number,
   }).isRequired,
   openContextMenu: PropTypes.func.isRequired,
+  plotTranslate: PropTypes.number.isRequired,
   reference: PropTypes.string,
+  setContainerRef: PropTypes.shape({}).isRequired,
   setReference: PropTypes.func.isRequired,
   setSelections: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,

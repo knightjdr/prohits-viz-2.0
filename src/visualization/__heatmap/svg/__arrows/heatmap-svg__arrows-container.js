@@ -121,6 +121,7 @@ export class ArrowsContainer extends Component {
   }
   render() {
     return (
+      this.props.show &&
       <Arrows
         arrowOpacity={this.state.arrowOpacity}
         changePosition={this.changePosition}
@@ -153,6 +154,7 @@ ArrowsContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  show: PropTypes.bool.isRequired,
   updatePosition: PropTypes.func.isRequired,
   width: PropTypes.shape({
     wrapper: PropTypes.number,

@@ -188,6 +188,18 @@ describe('Map panel container', () => {
       wrapper.instance().updateMarkers(nextProps, markers);
       expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('when the color changes', () => {
+      const nextProps = {
+        dimensions,
+        markers: {
+          color: '#f00',
+          list: ['a'],
+        },
+      };
+      wrapper.instance().updateMarkers(nextProps, markers);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('updateRange should update the rangeBox', () => {

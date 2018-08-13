@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Visualization control should render for dotplots 1`] = `<Heatmap />`;
+exports[`Visualization control when vizType is dotplot should match snapshot 1`] = `<Heatmap />`;
 
-exports[`Visualization control should render for heatmaps 1`] = `<Heatmap />`;
+exports[`Visualization control when vizType is heatmap should match snapshot 1`] = `<Heatmap />`;
 
-exports[`Visualization control should render for scatter plots 1`] = `<ScatterContainer />`;
-
-exports[`Visualization control should render with upload option when vizType is null 1`] = `
+exports[`Visualization control when vizType is null should match snapshot 1`] = `
 <Selection
   err={null}
   handleFile={[Function]}
   loading={false}
 />
 `;
+
+exports[`Visualization control when vizType is scatter should match snapshot 1`] = `<ScatterContainer />`;
