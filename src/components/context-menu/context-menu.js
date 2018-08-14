@@ -17,7 +17,6 @@ const ContextMenu = ({
   <ClickOutside callback={show ? closeMenu : null}>
     <div
       className="context-menu"
-      ref={setRef}
       style={{
         height,
         left,
@@ -27,7 +26,12 @@ const ContextMenu = ({
         visibility: show ? 'visible' : 'hidden',
       }}
     >
-      { children }
+      <div
+        className="context-menu__inner"
+        ref={setRef}
+      >
+        { children }
+      </div>
     </div>
   </ClickOutside>
 );

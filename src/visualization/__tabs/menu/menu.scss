@@ -1,0 +1,69 @@
+@import 'style/reset';
+@import 'style/theme';
+
+$border-color: #ddd;
+
+.tab-menu {
+  display: flex;
+  flex-direction: column;
+  left: 18px;
+  position: fixed;
+  transform-origin: top left;
+  transition: all 0.3s cubic-bezier(.17, .67, .16, .99);
+  top: 65px;
+  z-index: 6;
+}
+.tab-menu__inner {
+  display: grid;
+}
+.tab-menu__inner > :first-child {
+  border-top: 1px solid $border-color;
+}
+.tab-menu__inner > :nth-child(even) {
+  height: 36px;
+}
+.tab-menu__inner > :nth-child(odd) {
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+}
+.tab-menu__inner > :nth-last-child(2) {
+  border-bottom: 1px solid $border-color;
+}
+.tab-menu__inner > :last-child,
+.tab-menu__inner > :nth-child(2) {
+  height: 38px
+}
+.tab-menu__button {
+  @extend .button-reset;
+  background-color: $backdrop-light;
+  cursor: pointer;
+  padding: 10px 12px;
+  text-align: left;
+  transition: all 0.5s;
+  width: 100%;
+}
+.tab-menu__button:hover {
+  background-color: #93b7f1;
+  border-color: #93b7f1;
+}
+.tab-menu__button:hover + .tab-menu__remove:not(.tab-menu__remove_hidden),
+.tab-menu__remove:hover {
+  background-color: rgba(244, 67, 54, 0.9);
+  opacity: 1;
+  width: 30px;
+}
+.tab-menu__button > span > :first-child {
+  font-size: 1.1em;
+  margin-right: 10px;
+}
+.tab-menu__remove {
+  @extend .button-reset;
+  align-items: center;
+  background-color: transparent;
+  color: $backdrop-light;
+  display: flex;
+  justify-content: center;
+  justify-self: end;
+  opacity: 0;
+  width: 0;
+}

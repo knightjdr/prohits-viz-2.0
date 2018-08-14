@@ -19,7 +19,6 @@ const fetchHome = () => (
     /* Fetch and handle response. Since this is just loading optional
     ** home page info, do nothing on error. */
     return fetch(url, {
-      cache: 'no-store',
       headers,
     })
       .then((response) => {

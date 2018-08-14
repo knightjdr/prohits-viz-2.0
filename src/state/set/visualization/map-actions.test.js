@@ -36,22 +36,4 @@ describe('Map set actions', () => {
     };
     expect(actions.toggleMapAttach()).toEqual(expectedAction);
   });
-
-  describe('synchronize the map', () => {
-    let expectedActions;
-
-    beforeAll(() => {
-      const store = mockStore({});
-      store.dispatch(actions.syncMap());
-      expectedActions = store.getActions();
-    });
-
-    it('should dispatch a single action', () => {
-      expect(expectedActions.length).toBe(1);
-    });
-
-    it('should dispatch an action to synchronize map', () => {
-      expect(expectedActions).toContainEqual({ type: actions.MAP_SYNCHRONIZING });
-    });
-  });
 });

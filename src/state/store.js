@@ -1,3 +1,5 @@
+import createSocketIoMiddleware from 'redux-socket.io';
+import SocketIo from 'socket.io-client';
 import React from 'react';
 import Thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -6,6 +8,8 @@ import { Provider } from 'react-redux';
 import Reducers from './reducers';
 import Router from '../router/router';
 import TestState from './test-state/test-state';
+
+const socket = SocketIo(process.env.REACT_APP_API_HOST);
 
 export const addDevTools = () => (
   process.env.NODE_ENV === 'development' &&
@@ -19,7 +23,10 @@ export const store = createStore(
   Reducers,
   TestState,
   compose(
-    applyMiddleware(Thunk),
+    applyMiddleware(
+      Thunk,
+      createSocketIoMiddleware(socket, ['post/']),
+    ),
     addDevTools(),
   ),
 );

@@ -22,6 +22,7 @@ import Save from './set/visualization/save-reducer';
 import Search from './set/visualization/search-reducer';
 import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
+import Tabs from './set/visualization/tab-reducer';
 
 const file = {
   annotations: {
@@ -141,6 +142,10 @@ describe('Store', () => {
 
     it('what settings reducer returns with an empty action', () => {
       expect(store.getState().settings).toEqual(Settings(undefined, {}));
+    });
+
+    it('what tab reducer returns with an empty action', () => {
+      expect(store.getState().tabs).toEqual(Tabs(undefined, {}));
     });
   });
 
@@ -553,6 +558,25 @@ describe('Store', () => {
       const action = { type: 'RESET_SETTINGS' };
       store.dispatch(action);
       expect(store.getState().settings).toEqual(Settings(undefined, action));
+    });
+  });
+
+  describe('tab visualization reducer', () => {
+    let store;
+    beforeEach(() => {
+      store = createStore(Reducers);
+    });
+
+    it('handles REMOVE_TAB action', () => {
+      const action = { tab: 'test', type: 'REMOVE_TAB' };
+      store.dispatch(action);
+      expect(store.getState().tabs).toEqual(Tabs(undefined, action));
+    });
+
+    it('handles SET_TAB action', () => {
+      const action = { tab: 'test', type: 'REMOVE_TAB' };
+      store.dispatch(action);
+      expect(store.getState().tabs).toEqual(Tabs(undefined, action));
     });
   });
 

@@ -19,9 +19,3 @@ export const synchError = () => ({
 export const toggleMapAttach = () => ({
   type: TOGGLE_MAP_ATTACH,
 });
-
-export const syncMap = () => (
-  (dispatch) => {
-    dispatch(synchronizeMap());
-  }
-);

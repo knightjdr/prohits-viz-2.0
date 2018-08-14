@@ -12,7 +12,7 @@ describe('Parameters selector', () => {
     expect(ParametersSelector(state)).toEqual(state.parameters);
   });
 
-  it('should return a specific prop from display state', () => {
+  it('should return a specific prop from params state', () => {
     expect(ParametersSelectorProp(state, 'someParam')).toBe('test');
   });
 });

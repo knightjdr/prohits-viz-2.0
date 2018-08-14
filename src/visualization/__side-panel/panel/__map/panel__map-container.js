@@ -8,8 +8,9 @@ import MapSelector from '../../../../state/selectors/visualization/map-selector'
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import SearchSelector from '../../../../state/selectors/visualization/search-selector';
-import { syncMap, toggleMapAttach } from '../../../../state/set/visualization/map-actions';
+import { syncMap } from '../../../../state/post/map-thunk';
 import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
+import { toggleMapAttach } from '../../../../state/set/visualization/map-actions';
 import { toggleMarkers } from '../../../../state/set/visualization/marker-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 

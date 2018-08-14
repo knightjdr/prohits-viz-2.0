@@ -31,7 +31,6 @@ const fetchNews = () => (
 
     // f=Fetch and handle response.
     return fetch(url, {
-      cache: 'no-store',
       headers,
     })
       .then((response) => {

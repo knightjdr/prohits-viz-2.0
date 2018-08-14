@@ -22,6 +22,7 @@ import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
 import settings from './set/visualization/settings-reducer';
+import tabs from './set/visualization/tab-reducer';
 
 const Reducers = combineReducers({
   annotations,
@@ -45,5 +46,6 @@ const Reducers = combineReducers({
   save,
   search,
   settings,
+  tabs,
 });
 export default Reducers;
