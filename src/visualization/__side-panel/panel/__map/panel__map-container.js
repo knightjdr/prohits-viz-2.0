@@ -116,7 +116,7 @@ export class MapContainer extends Component {
       showAnnotations: this.props.annotations.show,
       showMarkers: this.props.markers.show,
       synced: this.props.minimap.synced,
-      syncError: this.props.minimap.synced,
+      syncError: this.props.minimap.syncError,
       syncImage: this.props.minimap.syncImage,
       syncMap: this.props.syncMap,
       toggleAnnotations: this.props.toggleAnnotations,
