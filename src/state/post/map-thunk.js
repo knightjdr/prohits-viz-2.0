@@ -3,23 +3,23 @@ import * as mapActions from '../set/visualization/map-actions';
 export const syncMap = () => (
   (dispatch, getState) => {
     dispatch(mapActions.synchronizeMap());
-    const { rows, settings } = getState();
+    const { rows, settings, parameters } = getState();
     const {
       abundanceCap,
       edgeColor,
       fillColor,
       imageType,
-      invert,
-      minAbundance,
+      invertColor,
       primaryFilter,
       secondaryFilter,
     } = settings.current;
+    const { scoreType } = parameters;
     const body = {
       abundanceCap,
       fillColor,
-      invert,
-      minAbundance,
+      invertColor,
       rows: rows.list.map(row => row.data),
+      scoreType,
     };
     if (imageType === 'dotplot') {
       body.imageType = 'dotplot';

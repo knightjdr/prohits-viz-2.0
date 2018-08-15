@@ -10,7 +10,7 @@ describe('Info panel settings', () => {
     const params = {
       // Omitted params.
       a: '',
-      colorSpace: 'blueBlack',
+      fillColor: 'blueBlack',
       // Score type has special handler.
       scoreType: 'lte',
       // String handlers,
@@ -23,7 +23,7 @@ describe('Info panel settings', () => {
     expect(wrapper).toMatchSnapshot();
     // Omitted params not rendered.
     expect(wrapper.findWhere(node => node.key() === 'a-name').length).toBe(0);
-    expect(wrapper.findWhere(node => node.key() === 'colorSpace-name').length).toBe(0);
+    expect(wrapper.findWhere(node => node.key() === 'fillColor-name').length).toBe(0);
     // Score type returns expected text.
     expect(wrapper.findWhere(node => node.key() === 'scoreType-value').props().children).toBe('smaller scores better');
     // String params rendered.

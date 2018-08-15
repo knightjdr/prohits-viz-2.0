@@ -4,7 +4,7 @@ import ConvertCamel from '../../../../helpers/convert-camel';
 
 const InfoSettings = (params) => {
   // Do not show parameter keys for things in this array.
-  const omitKeys = ['colorSpace', 'imageType', 'name'];
+  const omitKeys = ['fillColor', 'imageType', 'name'];
   // Convert score type value as indicated in this object.
   const scoreType = {
     gte: 'larger scores better',
