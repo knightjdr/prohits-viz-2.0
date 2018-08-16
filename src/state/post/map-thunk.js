@@ -3,7 +3,12 @@ import * as mapActions from '../set/visualization/map-actions';
 export const syncMap = () => (
   (dispatch, getState) => {
     dispatch(mapActions.synchronizeMap());
-    const { rows, settings, parameters } = getState();
+    const {
+      rows,
+      session,
+      settings,
+      parameters,
+    } = getState();
     const {
       abundanceCap,
       edgeColor,
@@ -33,6 +38,7 @@ export const syncMap = () => (
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
+    headers.append('Session', session);
     const url = `${process.env.REACT_APP_API_ROOT}/sync/`;
     return fetch(url, {
       cache: 'no-store',

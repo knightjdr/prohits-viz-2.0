@@ -20,6 +20,7 @@ import Position from './set/visualization/position-reducer';
 import Rows from './set/visualization/rows-reducer';
 import Save from './set/visualization/save-reducer';
 import Search from './set/visualization/search-reducer';
+import Session from './set/session-reducer';
 import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
 import Tabs from './set/visualization/tab-reducer';
@@ -138,6 +139,10 @@ describe('Store', () => {
 
     it('what search reducer returns with an empty action', () => {
       expect(store.getState().search).toEqual(Search(undefined, {}));
+    });
+
+    it('what sessions reducer returns with an empty action', () => {
+      expect(store.getState().session).toEqual(Session(undefined, {}));
     });
 
     it('what settings reducer returns with an empty action', () => {
@@ -540,6 +545,13 @@ describe('Store', () => {
       store.dispatch(action);
       expect(store.getState().search).toEqual(Search(undefined, action));
     });
+  });
+
+  it('with session reducer handles its action', () => {
+    const store = createStore(Reducers);
+    const action = { id: 'abc', type: 'SET_SESSION_ID' };
+    store.dispatch(action);
+    expect(store.getState().session).toEqual(Session(undefined, action));
   });
 
   describe('settings visualization reducer', () => {

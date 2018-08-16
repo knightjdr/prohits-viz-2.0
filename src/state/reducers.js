@@ -21,6 +21,7 @@ import position from './set/visualization/position-reducer';
 import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
+import session from './set/session-reducer';
 import settings from './set/visualization/settings-reducer';
 import tabs from './set/visualization/tab-reducer';
 
@@ -45,6 +46,7 @@ const Reducers = combineReducers({
   rows,
   save,
   search,
+  session,
   settings,
   tabs,
 });
