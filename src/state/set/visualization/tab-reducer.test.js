@@ -14,6 +14,39 @@ describe('Tab set reducer', () => {
     expect(TabReducer(undefined, action)).toEqual(expectedState);
   });
 
+  describe('ADD_TAB action', () => {
+    it('should add tab that is not currently present', () => {
+      const action = {
+        tab: 'customize',
+        type: actions.ADD_TAB,
+      };
+      const expectedState = {
+        available: ['main', 'customize'],
+        selected: 'customize',
+        show: true,
+      };
+      expect(TabReducer(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should not add tab that is already present', () => {
+      const action = {
+        tab: 'customize',
+        type: actions.ADD_TAB,
+      };
+      const expectedState = {
+        available: ['main', 'customize'],
+        selected: 'customize',
+        show: true,
+      };
+      const initialState = {
+        available: ['main', 'customize'],
+        selected: 'main',
+        show: true,
+      };
+      expect(TabReducer(initialState, action)).toEqual(expectedState);
+    });
+  });
+
   describe('REMOVE_TAB action', () => {
     it('should remove tab that is not currently selected', () => {
       const action = {

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import ContextMenu from './context-menu';
 
-const testRef = { ref: 'testRef' };
+const testRef = React.createRef();
 
 describe('Context menu view', () => {
   describe('when rendered visible', () => {
@@ -26,10 +26,6 @@ describe('Context menu view', () => {
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should have input ref', () => {
-      expect(wrapper.props().children.ref).toEqual(testRef);
     });
 
     it('should render children within context menu', () => {

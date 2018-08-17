@@ -38,9 +38,7 @@ describe('Map panel container', () => {
         render={props => <div {...props} />}
         search={{}}
         syncMap={jest.fn()}
-        toggleAnnotations={jest.fn()}
         toggleMapAttach={jest.fn()}
-        toggleMarkers={jest.fn()}
         updatePosition={updatePosition}
       />,
     );
@@ -327,9 +325,7 @@ describe('Map panel container when not in panel', () => {
         reverseAttached
         search={{}}
         syncMap={jest.fn()}
-        toggleAnnotations={jest.fn()}
         toggleMapAttach={jest.fn()}
-        toggleMarkers={jest.fn()}
         updatePosition={updatePosition}
       />,
     );

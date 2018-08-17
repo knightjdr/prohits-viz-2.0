@@ -8,10 +8,8 @@ import MapSelector from '../../../../state/selectors/visualization/map-selector'
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import SearchSelector from '../../../../state/selectors/visualization/search-selector';
-import { syncMap } from '../../../../state/post/map-thunk';
-import { toggleAnnotations } from '../../../../state/set/visualization/annotation-actions';
+import syncMap from '../../../../state/post/map-thunk';
 import { toggleMapAttach } from '../../../../state/set/visualization/map-actions';
-import { toggleMarkers } from '../../../../state/set/visualization/marker-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class MapContainer extends Component {
@@ -119,9 +117,7 @@ export class MapContainer extends Component {
       syncError: this.props.minimap.syncError,
       syncImage: this.props.minimap.syncImage,
       syncMap: this.props.syncMap,
-      toggleAnnotations: this.props.toggleAnnotations,
       toggleMapAttach: this.props.toggleMapAttach,
-      toggleMarkers: this.props.toggleMarkers,
     };
     return (
       this.props.render(childProps)
@@ -169,9 +165,7 @@ MapContainer.propTypes = {
     term: PropTypes.string,
   }).isRequired,
   syncMap: PropTypes.func.isRequired,
-  toggleAnnotations: PropTypes.func.isRequired,
   toggleMapAttach: PropTypes.func.isRequired,
-  toggleMarkers: PropTypes.func.isRequired,
   updatePosition: PropTypes.func.isRequired,
 };
 
@@ -187,14 +181,8 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  syncMap: () => {
-    dispatch(syncMap());
-  },
-  toggleAnnotations: () => {
-    dispatch(toggleAnnotations());
-  },
-  toggleMarkers: () => {
-    dispatch(toggleMarkers());
+  syncMap: (updateOriginal) => {
+    dispatch(syncMap(updateOriginal));
   },
   toggleMapAttach: () => {
     dispatch(toggleMapAttach());

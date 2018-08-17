@@ -10,6 +10,7 @@ const DefaultState = {
   synced: true,
   syncError: false,
   syncImage: null,
+  updateOriginal: false,
 };
 
 describe('Map set reducer', () => {
@@ -40,30 +41,42 @@ describe('Map set reducer', () => {
       synced: true,
       syncError: false,
       syncImage: 'image',
+      updateOriginal: false,
     };
     expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle TOGGLE_MAP_ATTACH action', () => {
+  it('should handle MAP_SYNCHED action when update original is true', () => {
     const action = {
-      type: actions.TOGGLE_MAP_ATTACH,
+      syncImage: 'image',
+      type: actions.MAP_SYNCHED,
+    };
+    const currentState = {
+      ...DefaultState,
+      updateOriginal: true,
     };
     const expectedState = {
       ...DefaultState,
-      attached: false,
+      image: 'image',
+      isSyncing: false,
+      synced: true,
+      syncError: false,
+      updateOriginal: false,
     };
-    expect(MapReducer(undefined, action)).toEqual(expectedState);
+    expect(MapReducer(currentState, action)).toEqual(expectedState);
   });
 
   it('should handle MAP_SYNCHRONIZING action', () => {
     const action = {
       type: actions.MAP_SYNCHRONIZING,
+      updateOriginal: true,
     };
     const expectedState = {
       ...DefaultState,
       isSyncing: true,
       synced: false,
       syncError: false,
+      updateOriginal: true,
     };
     expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
@@ -98,6 +111,31 @@ describe('Map set reducer', () => {
     expect(MapReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it('should handle SYNC_ERROR action', () => {
+    const action = {
+      type: actions.SYNC_ERROR,
+    };
+    const expectedState = {
+      ...DefaultState,
+      isSyncing: false,
+      synced: false,
+      syncError: true,
+      updateOriginal: false,
+    };
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle TOGGLE_MAP_ATTACH action', () => {
+    const action = {
+      type: actions.TOGGLE_MAP_ATTACH,
+    };
+    const expectedState = {
+      ...DefaultState,
+      attached: false,
+    };
+    expect(MapReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it('should handle UPDATE_ROWS action', () => {
     const action = {
       type: rowActions.UPDATE_ROWS,
@@ -106,6 +144,7 @@ describe('Map set reducer', () => {
       ...DefaultState,
       synced: false,
       syncImage: null,
+      updateOriginal: false,
     };
     expect(MapReducer(undefined, action)).toEqual(expectedState);
   });

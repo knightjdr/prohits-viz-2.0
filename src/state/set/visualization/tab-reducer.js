@@ -7,6 +7,14 @@ const Tabs = (state = {
 }, action) => {
   let newTabs;
   switch (action.type) {
+    case actions.ADD_TAB:
+      newTabs = !state.available.includes(action.tab) ?
+        [...state.available, action.tab] : state.available;
+      return {
+        available: newTabs,
+        selected: newTabs[newTabs.indexOf(action.tab)],
+        show: true,
+      };
     case actions.REMOVE_TAB:
       newTabs = state.available.filter(item => item !== action.tab);
       return {

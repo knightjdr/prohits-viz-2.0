@@ -8,8 +8,9 @@ export const mapSynced = syncImage => ({
   type: MAP_SYNCHED,
 });
 
-export const synchronizeMap = () => ({
+export const synchronizeMap = updateOriginal => ({
   type: MAP_SYNCHRONIZING,
+  updateOriginal,
 });
 
 export const synchError = () => ({

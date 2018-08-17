@@ -6,7 +6,6 @@ import Settings from './panel__settings';
 import SettingResetSelector from '../../../../state/selectors/visualization/settings-reset-selector';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import { resetSettings, updateSetting } from '../../../../state/set/visualization/settings-actions';
-import { sortDefault } from '../../../../state/set/visualization/rows-actions';
 
 export class SettingsContainer extends Component {
   constructor(props) {
@@ -116,7 +115,6 @@ export class SettingsContainer extends Component {
       <Settings
         changeSetting={this.changeSetting}
         settings={this.state.settings}
-        resetImage={this.props.sortDefault}
         resetSettings={this.props.resetSettings}
         storeSettings={this.state.storeSettings}
         updateSetting={this.updateSetting}
@@ -137,7 +135,6 @@ SettingsContainer.propTypes = {
   reset: PropTypes.bool.isRequired,
   resetSettings: PropTypes.func.isRequired,
   secondaryFilter: PropTypes.number.isRequired,
-  sortDefault: PropTypes.func.isRequired,
   updateSetting: PropTypes.func.isRequired,
 };
 
@@ -159,9 +156,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   resetSettings: () => {
     dispatch(resetSettings());
-  },
-  sortDefault: () => {
-    dispatch(sortDefault());
   },
   updateSetting: (setting, value) => {
     dispatch(updateSetting(setting, value));

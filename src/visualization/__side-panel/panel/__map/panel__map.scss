@@ -6,7 +6,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  height: calc(100vh - 195px);
+  height: calc(100vh - 165px);
 }
 .panel__map-annotation {
   background-color: #4caf50;
@@ -42,7 +42,7 @@
 }
 .panel__map-inner img {
   height: auto;
-  max-height: calc(100vh - 195px);
+  max-height: calc(100vh - 165px);
   max-width: 320px;
   width: auto;
 }
@@ -91,12 +91,21 @@
   color: $warning;
   margin-right: 10px;
 }
-.panel__title > button {
+.panel__title > :first-child {
   @extend .button-reset;
   @extend .default-button;
   border-radius: 50%;
   padding: 8px;
   position: absolute;
   left: 0;
+  top: -5px;
+}
+.panel__title > :nth-child(2) {
+  @extend .button-reset;
+  @extend .default-button;
+  border-radius: 50%;
+  padding: 8px;
+  position: absolute;
+  right: 0;
   top: -5px;
 }

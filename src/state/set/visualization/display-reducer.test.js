@@ -2,7 +2,7 @@ import DisplayReducer from './display-reducer';
 import * as actions from './display-actions';
 
 const defaultState = {
-  floatMapRight: 20,
+  floatMapRight: 50,
   floatMapTop: 100,
   plotFixed: false,
   plotTranslate: 0,

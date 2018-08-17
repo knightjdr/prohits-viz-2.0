@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import MapPanel from './panel__map';
 
+const syncMap = jest.fn();
 const toggleMapAttach = jest.fn();
 
 describe('Map panel', () => {
@@ -24,29 +25,32 @@ describe('Map panel', () => {
           showMarkers={false}
           synced
           syncError={false}
-          syncMap={jest.fn()}
-          toggleAnnotations={jest.fn()}
+          syncMap={syncMap}
           toggleMapAttach={toggleMapAttach}
-          toggleMarkers={jest.fn()}
         />,
       );
     });
 
-    it('and match snapshot', () => {
+    it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('and render contents', () => {
+    it('should render contents', () => {
       expect(wrapper.find('MapContent').length).toBe(1);
     });
 
-    it('and not render detached element', () => {
+    it('should not render detached element', () => {
       expect(wrapper.find('.panel__map-detached').length).toBe(0);
     });
 
-    it('on clicking attach should trigger toggle map attach function', () => {
+    it('should trigger toggle map attach function on click', () => {
       wrapper.find('button').first().simulate('click');
       expect(toggleMapAttach).toHaveBeenCalledTimes(1);
+    });
+
+    it('should trigger sync map function on click', () => {
+      wrapper.find('button').at(1).simulate('click');
+      expect(syncMap).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -69,9 +73,7 @@ describe('Map panel', () => {
           synced
           syncError={false}
           syncMap={jest.fn()}
-          toggleAnnotations={jest.fn()}
           toggleMapAttach={toggleMapAttach}
-          toggleMarkers={jest.fn()}
         />,
       );
     });

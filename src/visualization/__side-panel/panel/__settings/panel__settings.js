@@ -11,7 +11,6 @@ import './panel__settings.css';
 const Settings = ({
   changeSetting,
   settings,
-  resetImage,
   resetSettings,
   storeSettings,
   updateSetting,
@@ -47,11 +46,7 @@ const Settings = ({
       updateSetting={updateSetting}
     />
     <div className="panel__border" />
-    <div className="panel__title">
-      Reset
-    </div>
     <Reset
-      resetImage={resetImage}
       resetSettings={resetSettings}
     />
   </div>
@@ -59,7 +54,6 @@ const Settings = ({
 
 Settings.propTypes = {
   changeSetting: PropTypes.func.isRequired,
-  resetImage: PropTypes.func.isRequired,
   resetSettings: PropTypes.func.isRequired,
   settings: PropTypes.shape({}).isRequired,
   storeSettings: PropTypes.shape({}).isRequired,

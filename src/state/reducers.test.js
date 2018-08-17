@@ -24,6 +24,8 @@ import Session from './set/session-reducer';
 import Settings from './set/visualization/settings-reducer';
 import Reducers from './reducers';
 import Tabs from './set/visualization/tab-reducer';
+import VizAnalysis from './set/analysis/viz-analysis-reducer';
+import VizAnalysisForm from './set/analysis/viz-analysis-form-reducer';
 
 const file = {
   annotations: {
@@ -63,94 +65,102 @@ const file = {
 };
 
 describe('Store', () => {
-  describe('initial state of root reducer matches', () => {
+  describe('initial state of root reducers', () => {
     let store;
     beforeEach(() => {
       store = createStore(Reducers);
     });
 
-    it('what annotation reducer returns with an empty action', () => {
+    it('should match what annotation reducer returns with an empty action', () => {
       expect(store.getState().annotations).toEqual(Annotations(undefined, {}));
     });
 
-    it('what columns reducer returns with an empty action', () => {
+    it('should match what columns reducer returns with an empty action', () => {
       expect(store.getState().columns).toEqual(Columns(undefined, {}));
     });
 
-    it('what dimensions reducer returns with an empty action', () => {
+    it('should match what dimensions reducer returns with an empty action', () => {
       expect(store.getState().dimensions).toEqual(Dimensions(undefined, {}));
     });
 
-    it('what display reducer returns with an empty action', () => {
+    it('should match what display reducer returns with an empty action', () => {
       expect(store.getState().display).toEqual(Display(undefined, {}));
     });
 
-    it('what formStep reducer returns with an empty action', () => {
+    it('should match what formStep reducer returns with an empty action', () => {
       expect(store.getState().formStep).toEqual(FormStep(undefined, {}));
     });
 
-    it('what genes reducer returns with an empty action', () => {
+    it('should match what genes reducer returns with an empty action', () => {
       expect(store.getState().genes).toEqual(Genes(undefined, {}));
     });
 
-    it('what header reducer returns with an empty action', () => {
+    it('should match what header reducer returns with an empty action', () => {
       expect(store.getState().header).toEqual(Header(undefined, {}));
     });
 
-    it('what home reducer returns with an empty action', () => {
+    it('should match what home reducer returns with an empty action', () => {
       expect(store.getState().home).toEqual(Home(undefined, {}));
     });
 
-    it('what markers reducer returns with an empty action', () => {
+    it('should match what markers reducer returns with an empty action', () => {
       expect(store.getState().markers).toEqual(Marker(undefined, {}));
     });
 
-    it('what minimap reducer returns with an empty action', () => {
+    it('should match what minimap reducer returns with an empty action', () => {
       expect(store.getState().minimap).toEqual(Map(undefined, {}));
     });
 
-    it('what news reducer returns with an empty action', () => {
+    it('should match what news reducer returns with an empty action', () => {
       expect(store.getState().news).toEqual(News(undefined, {}));
     });
 
-    it('what newsItem reducer returns with an empty action', () => {
+    it('should match what newsItem reducer returns with an empty action', () => {
       expect(store.getState().newsItem).toEqual(NewsItem(undefined, {}));
     });
 
-    it('what newsPage reducer returns with an empty action', () => {
+    it('should match what newsPage reducer returns with an empty action', () => {
       expect(store.getState().newsPage).toEqual(NewsPage(undefined, {}));
     });
 
-    it('what parameters reducer returns with an empty action', () => {
+    it('should match what parameters reducer returns with an empty action', () => {
       expect(store.getState().parameters).toEqual(Parameters(undefined, {}));
     });
 
-    it('what position reducer returns with an empty action', () => {
+    it('should match what position reducer returns with an empty action', () => {
       expect(store.getState().position).toEqual(Position(undefined, {}));
     });
 
-    it('what rows reducer returns with an empty action', () => {
+    it('should match what rows reducer returns with an empty action', () => {
       expect(store.getState().rows).toEqual(Rows(undefined, {}));
     });
 
-    it('what save reducer returns with an empty action', () => {
+    it('should match what save reducer returns with an empty action', () => {
       expect(store.getState().save).toEqual(Save(undefined, {}));
     });
 
-    it('what search reducer returns with an empty action', () => {
+    it('should match what search reducer returns with an empty action', () => {
       expect(store.getState().search).toEqual(Search(undefined, {}));
     });
 
-    it('what sessions reducer returns with an empty action', () => {
+    it('should match what sessions reducer returns with an empty action', () => {
       expect(store.getState().session).toEqual(Session(undefined, {}));
     });
 
-    it('what settings reducer returns with an empty action', () => {
+    it('should match what settings reducer returns with an empty action', () => {
       expect(store.getState().settings).toEqual(Settings(undefined, {}));
     });
 
-    it('what tab reducer returns with an empty action', () => {
+    it('should match what tab reducer returns with an empty action', () => {
       expect(store.getState().tabs).toEqual(Tabs(undefined, {}));
+    });
+
+    it('should match what analysis reducer returns with an empty action', () => {
+      expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, {}));
+    });
+
+    it('should match what analysis form reducer returns with an empty action', () => {
+      expect(store.getState().vizanalysisform).toEqual(VizAnalysisForm(undefined, {}));
     });
   });
 
@@ -160,7 +170,7 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles ADD_ANNOTATION action', () => {
+    it('should handle ADD_ANNOTATION action', () => {
       const action = {
         text: 'test',
         type: 'ADD_ANNOTATION',
@@ -171,44 +181,44 @@ describe('Store', () => {
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles CLEAR_ALL_ANNOTATIONS action', () => {
+    it('should handle CLEAR_ALL_ANNOTATIONS action', () => {
       const action = { type: 'CLEAR_ALL_ANNOTATIONS' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles CLEAR_LAST_ANNOTATION action', () => {
+    it('should handle CLEAR_LAST_ANNOTATION action', () => {
       const action = { type: 'CLEAR_LAST_ANNOTATION' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles SET_ANNOTATION_COLOR action', () => {
+    it('should handle SET_ANNOTATION_COLOR action', () => {
       const action = { color: '#000000', type: 'SET_ANNOTATION_COLOR' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles SET_ANNOTATION_SIZE action', () => {
+    it('should handle SET_ANNOTATION_SIZE action', () => {
       const action = { fontSize: 14, type: 'SET_ANNOTATION_SIZE' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles TOGGLE_ANNOTATIONS action', () => {
+    it('should handle TOGGLE_ANNOTATIONS action', () => {
       const action = { type: 'TOGGLE_ANNOTATIONS' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
 
-    it('handles UPDATE_ANNOTATION action', () => {
+    it('should handle UPDATE_ANNOTATION action', () => {
       const action = { list: [], type: 'UPDATE_ANNOTATION' };
       store.dispatch(action);
       expect(store.getState().annotations).toEqual(Annotations(undefined, action));
     });
   });
 
-  it('with columns visualiation reducer handles its action', () => {
+  it('should handle columns visualization actions', () => {
     const store = createStore(Reducers);
     const action = {
       ref: 'a',
@@ -218,7 +228,7 @@ describe('Store', () => {
     expect(store.getState().columns).toEqual(Columns(undefined, action));
   });
 
-  it('with dimension visualization reducer handles its action', () => {
+  it('should handle dimension visualization actions', () => {
     const store = createStore(Reducers);
     const action = {
       height: 0.5,
@@ -237,7 +247,7 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles CHANGE_PANEL_TAB action', () => {
+    it('should handle CHANGE_PANEL_TAB action', () => {
       const action = {
         tab: 'map',
         type: 'CHANGE_PANEL_TAB',
@@ -246,7 +256,7 @@ describe('Store', () => {
       expect(store.getState().display).toEqual(Display(undefined, action));
     });
 
-    it('handles RESET_MAP_POSITION action', () => {
+    it('should handle RESET_MAP_POSITION action', () => {
       const action = {
         type: 'RESET_MAP_POSITION',
       };
@@ -254,7 +264,7 @@ describe('Store', () => {
       expect(store.getState().display).toEqual(Display(undefined, action));
     });
 
-    it('handles TOGGLE_SELECTION_BOX action', () => {
+    it('should handle TOGGLE_SELECTION_BOX action', () => {
       const action = {
         type: 'TOGGLE_SELECTION_BOX',
       };
@@ -262,7 +272,7 @@ describe('Store', () => {
       expect(store.getState().display).toEqual(Display(undefined, action));
     });
 
-    it('handles TOGGLE_TOOLTIPS action', () => {
+    it('should handle TOGGLE_TOOLTIPS action', () => {
       const action = {
         type: 'TOGGLE_TOOLTIPS',
       };
@@ -270,7 +280,7 @@ describe('Store', () => {
       expect(store.getState().display).toEqual(Display(undefined, action));
     });
 
-    it('handles UPDATE_MAP_POSITION action', () => {
+    it('should handle UPDATE_MAP_POSITION action', () => {
       const action = {
         right: 100,
         top: 200,
@@ -280,7 +290,7 @@ describe('Store', () => {
       expect(store.getState().display).toEqual(Display(undefined, action));
     });
 
-    it('handles UPDATE_PLOT_POSITION action', () => {
+    it('should handle UPDATE_PLOT_POSITION action', () => {
       const action = {
         fixed: true,
         translate: 300,
@@ -297,13 +307,13 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles INCREMENT_FORM_STEP action', () => {
+    it('should handle INCREMENT_FORM_STEP action', () => {
       const action = { step: 1, type: 'INCREMENT_FORM_STEP' };
       store.dispatch(action);
       expect(store.getState().formStep).toEqual(FormStep(undefined, action));
     });
 
-    it('handles CLEAR_FORM_STEP action', () => {
+    it('should handle CLEAR_FORM_STEP action', () => {
       const action = { type: 'CLEAR_FORM_STEP' };
       store.dispatch(action);
       expect(store.getState().formStep).toEqual(FormStep(undefined, action));
@@ -316,7 +326,7 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles UPDATE_SELECTIONS action', () => {
+    it('should handle UPDATE_SELECTIONS action', () => {
       const action = {
         selections: [],
         type: 'UPDATE_SELECTIONS',
@@ -332,13 +342,13 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles SET_FILE_HEADER action', () => {
+    it('should handle SET_FILE_HEADER action', () => {
       const action = { header: ['column1', 'column2'], type: 'SET_FILE_HEADER' };
       store.dispatch(action);
       expect(store.getState().header).toEqual(Header(undefined, action));
     });
 
-    it('handles CLEAR_FILE_HEADER action', () => {
+    it('should handle CLEAR_FILE_HEADER action', () => {
       const action = { type: 'CLEAR_FILE_HEADER' };
       store.dispatch(action);
       expect(store.getState().header).toEqual(Header(undefined, action));
@@ -358,19 +368,19 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles MAP_SYNCHED action', () => {
+    it('should handle MAP_SYNCHED action', () => {
       const action = { type: 'MAP_SYNCHED' };
       store.dispatch(action);
       expect(store.getState().header).toEqual(Header(undefined, action));
     });
 
-    it('handles MAP_SYNCHRONIZING action', () => {
+    it('should handle MAP_SYNCHRONIZING action', () => {
       const action = { type: 'MAP_SYNCHRONIZING' };
       store.dispatch(action);
       expect(store.getState().header).toEqual(Header(undefined, action));
     });
 
-    it('handles SYNC_ERROR action', () => {
+    it('should handle SYNC_ERROR action', () => {
       const action = { type: 'SYNC_ERROR' };
       store.dispatch(action);
       expect(store.getState().header).toEqual(Header(undefined, action));
@@ -383,7 +393,7 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles ADD_MARKER action', () => {
+    it('should handle ADD_MARKER action', () => {
       const action = {
         height: 0.5,
         type: 'ADD_MARKER',
@@ -395,31 +405,31 @@ describe('Store', () => {
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
-    it('handles CLEAR_ALL_MARKERS action', () => {
+    it('should handle CLEAR_ALL_MARKERS action', () => {
       const action = { type: 'CLEAR_ALL_MARKERS' };
       store.dispatch(action);
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
-    it('handles CLEAR_LAST_MARKER action', () => {
+    it('should handle CLEAR_LAST_MARKER action', () => {
       const action = { type: 'CLEAR_LAST_MARKER' };
       store.dispatch(action);
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
-    it('handles SET_MARKER_COLOR action', () => {
+    it('should handle SET_MARKER_COLOR action', () => {
       const action = { color: '#0000ff', type: 'SET_MARKER_COLOR' };
       store.dispatch(action);
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
-    it('handles TOGGLE_MARKERS action', () => {
+    it('should handle TOGGLE_MARKERS action', () => {
       const action = { type: 'TOGGLE_MARKERS' };
       store.dispatch(action);
       expect(store.getState().markers).toEqual(Marker(undefined, action));
     });
 
-    it('handles TOGGLE_RECORD_MARKER action', () => {
+    it('should handle TOGGLE_RECORD_MARKER action', () => {
       const action = { type: 'TOGGLE_RECORD_MARKER' };
       store.dispatch(action);
       expect(store.getState().markers).toEqual(Marker(undefined, action));
@@ -432,19 +442,19 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles GET_NEWS action', () => {
+    it('should handle GET_NEWS action', () => {
       const action = { type: 'GET_NEWS' };
       store.dispatch(action);
       expect(store.getState().news).toEqual(News(undefined, action));
     });
 
-    it('handles FILL_NEWS action', () => {
+    it('should handle FILL_NEWS action', () => {
       const action = { list: ['a'], type: 'FILL_NEWS' };
       store.dispatch(action);
       expect(store.getState().news).toEqual(News(undefined, action));
     });
 
-    it('handles NEWS_ERROR action', () => {
+    it('should handle NEWS_ERROR action', () => {
       const action = { type: 'NEWS_ERROR' };
       store.dispatch(action);
       expect(store.getState().news).toEqual(News(undefined, action));
@@ -457,19 +467,19 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles GET_NEWS_ITEM action', () => {
+    it('should handle GET_NEWS_ITEM action', () => {
       const action = { id: 'id', type: 'GET_NEWS_ITEM' };
       store.dispatch(action);
       expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
     });
 
-    it('handles FILL_NEWS_ITEM action', () => {
+    it('should handle FILL_NEWS_ITEM action', () => {
       const action = { id: 'id', item: 'a', type: 'FILL_NEWS_ITEM' };
       store.dispatch(action);
       expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
     });
 
-    it('handles NEWS_ITEM_ERROR action', () => {
+    it('should handle NEWS_ITEM_ERROR action', () => {
       const action = { id: 'id', type: 'NEWS_ITEM_ERROR' };
       store.dispatch(action);
       expect(store.getState().newsItem).toEqual(NewsItem(undefined, action));
@@ -503,13 +513,13 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles SAVE_IMAGE_TYPE action', () => {
+    it('should handle SAVE_IMAGE_TYPE action', () => {
       const action = { imageType: 'png', type: 'SAVE_IMAGE_TYPE' };
       store.dispatch(action);
       expect(store.getState().save).toEqual(Save(undefined, action));
     });
 
-    it('handles SAVE_SESSION_NAME action', () => {
+    it('should handle SAVE_SESSION_NAME action', () => {
       const action = { name: 'test name', type: 'SAVE_SESSION_NAME' };
       store.dispatch(action);
       expect(store.getState().save).toEqual(Save(undefined, action));
@@ -522,19 +532,19 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles CLEAR_SEARCH action', () => {
+    it('should handle CLEAR_SEARCH action', () => {
       const action = { type: 'CLEAR_SEARCH' };
       store.dispatch(action);
       expect(store.getState().search).toEqual(Search(undefined, action));
     });
 
-    it('handles SET_SEARCH_TERM action', () => {
+    it('should handle SET_SEARCH_TERM action', () => {
       const action = { term: 'test', type: 'SET_SEARCH_TERM' };
       store.dispatch(action);
       expect(store.getState().search).toEqual(Search(undefined, action));
     });
 
-    it('handles SET_SEARCH_RESULTS action', () => {
+    it('should handle SET_SEARCH_RESULTS action', () => {
       const action = {
         columns: {},
         match: false,
@@ -560,13 +570,13 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles UPDATE_SETTING action', () => {
+    it('should handle UPDATE_SETTING action', () => {
       const action = { setting: 'a', type: 'UPDATE_SETTING', value: 'b' };
       store.dispatch(action);
       expect(store.getState().settings).toEqual(Settings(undefined, action));
     });
 
-    it('handles RESET_SETTINGS action', () => {
+    it('should handle RESET_SETTINGS action', () => {
       const action = { type: 'RESET_SETTINGS' };
       store.dispatch(action);
       expect(store.getState().settings).toEqual(Settings(undefined, action));
@@ -579,17 +589,53 @@ describe('Store', () => {
       store = createStore(Reducers);
     });
 
-    it('handles REMOVE_TAB action', () => {
+    it('should handle ADD_TAB action', () => {
+      const action = { tab: 'test', type: 'ADD_TAB' };
+      store.dispatch(action);
+      expect(store.getState().tabs).toEqual(Tabs(undefined, action));
+    });
+    
+    it('should handle REMOVE_TAB action', () => {
       const action = { tab: 'test', type: 'REMOVE_TAB' };
       store.dispatch(action);
       expect(store.getState().tabs).toEqual(Tabs(undefined, action));
     });
 
-    it('handles SET_TAB action', () => {
+    it('should handle SET_TAB action', () => {
       const action = { tab: 'test', type: 'REMOVE_TAB' };
       store.dispatch(action);
       expect(store.getState().tabs).toEqual(Tabs(undefined, action));
     });
+  });
+
+  describe('viz analysis actions', () => {
+    it('should handle RUN_VIZ_ANALYSIS action', () => {
+      const store = createStore(Reducers);
+      const action = { anlaysisType: 'go', type: 'RUN_VIZ_ANALYSIS' };
+      store.dispatch(action);
+      expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, action));
+    });
+
+    it('should handle SET_VIZ_ANALYSIS_TYPE action', () => {
+      const store = createStore(Reducers);
+      const action = { anlaysisType: 'go', type: 'SET_VIZ_ANALYSIS_TYPE' };
+      store.dispatch(action);
+      expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, action));
+    });
+
+    it('should handle VIZ_ANALYSIS_ERROR action', () => {
+      const store = createStore(Reducers);
+      const action = { anlaysisType: 'go', type: 'VIZ_ANALYSIS_ERROR' };
+      store.dispatch(action);
+      expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, action));
+    });
+  });
+
+  it('should handle viz analysis form actions', () => {
+    const store = createStore(Reducers);
+    const action = { setting: { param: 'a' }, type: 'SET_GO_PARAMETER' };
+    store.dispatch(action);
+    expect(store.getState().vizanalysisform).toEqual(VizAnalysisForm(undefined, action));
   });
 
   describe('dispatching interactive file action', () => {

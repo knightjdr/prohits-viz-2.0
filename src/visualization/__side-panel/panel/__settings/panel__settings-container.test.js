@@ -30,7 +30,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,
@@ -44,7 +43,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,
@@ -60,7 +58,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,
@@ -81,7 +78,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,
@@ -110,7 +106,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,
@@ -126,7 +121,6 @@ describe('Settings container', () => {
       <SettingsContainer
         reset={false}
         resetSettings={resetSettings}
-        sortDefault={jest.fn()}
         updateSetting={updateSetting}
         {...settings}
       />,

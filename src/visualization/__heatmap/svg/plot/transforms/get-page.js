@@ -28,19 +28,21 @@ const GetPage = imageType => (
   const circleRadius = Math.floor((cellSize / 2) - 1);
   if (imageType === 'dotplot') {
     return rows.slice(position.y, pageEnd.y).map(row => ({
-      data: row.data.slice(position.x, pageEnd.x).map(item => ({
+      data: row.data.slice(position.x, pageEnd.x).map((item, i) => ({
         ...item,
         edgeColor: edgeGradient[edgeRange(setScore(item.score))],
         fillColor: fillGradient[fillRange(item.value)],
+        key: `${row.name}-${i}`,
         radius: setRadius(item.ratio, circleRadius),
       })),
       name: row.name,
     }));
   }
   return rows.slice(position.y, pageEnd.y).map(row => ({
-    data: row.data.slice(position.x, pageEnd.x).map(item => ({
+    data: row.data.slice(position.x, pageEnd.x).map((item, i) => ({
       ...item,
       fillColor: fillGradient[fillRange(item.value)],
+      key: `${row.name}-${i}`,
     })),
     name: row.name,
   }));

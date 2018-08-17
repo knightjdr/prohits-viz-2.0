@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import { Switch } from 'antd';
 
 import Image from './panel__map-image';
 import Synced from './panel__map-sync';
@@ -21,8 +20,6 @@ const MapContent = ({
   syncError,
   syncImage,
   syncMap,
-  toggleAnnotations,
-  toggleMarkers,
 }) => (
   <Fragment>
     <div className="panel__map">
@@ -47,22 +44,6 @@ const MapContent = ({
             syncMap={syncMap}
           />
       }
-    </div>
-    <div className="panel__map-switch">
-      <div>
-        Annotations:
-      </div>
-      <Switch
-        onChange={toggleAnnotations}
-        checked={showAnnotations}
-      />
-      <div>
-        Markers:
-      </div>
-      <Switch
-        onChange={toggleMarkers}
-        checked={showMarkers}
-      />
     </div>
   </Fragment>
 );
@@ -98,8 +79,6 @@ MapContent.propTypes = {
   syncError: PropTypes.bool.isRequired,
   syncImage: PropTypes.string,
   syncMap: PropTypes.func.isRequired,
-  toggleAnnotations: PropTypes.func.isRequired,
-  toggleMarkers: PropTypes.func.isRequired,
 };
 
 export default MapContent;

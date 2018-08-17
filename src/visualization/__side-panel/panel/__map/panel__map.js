@@ -2,7 +2,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'antd';
-import { faPaperclip, faReply } from '@fortawesome/pro-regular-svg-icons';
+import { faPaperclip, faReply, faSync } from '@fortawesome/pro-regular-svg-icons';
 
 import MapContents from './panel__map-contents';
 
@@ -23,9 +23,7 @@ const Map = ({
   syncError,
   syncImage,
   syncMap,
-  toggleAnnotations,
   toggleMapAttach,
-  toggleMarkers,
 }) => (
   <div className="panel">
     <div className="panel__title">
@@ -37,6 +35,18 @@ const Map = ({
       >
         <FontAwesomeIcon icon={isAttached ? faReply : faPaperclip} />
       </button>
+      {
+        synced &&
+        !syncImage &&
+        <button
+          onClick={() => { syncMap(true); }}
+          tooltip="Resync minimap"
+          tooltip-position="left"
+          type="button"
+        >
+          <FontAwesomeIcon icon={faSync} />
+        </button>
+      }
       Mini map
     </div>
     {
@@ -55,8 +65,6 @@ const Map = ({
           syncError={syncError}
           syncImage={syncImage}
           syncMap={syncMap}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
         />
         :
         <div className="panel__map-detached">
@@ -104,9 +112,7 @@ Map.propTypes = {
   syncError: PropTypes.bool.isRequired,
   syncImage: PropTypes.string,
   syncMap: PropTypes.func.isRequired,
-  toggleAnnotations: PropTypes.func.isRequired,
   toggleMapAttach: PropTypes.func.isRequired,
-  toggleMarkers: PropTypes.func.isRequired,
 };
 
 export default Map;

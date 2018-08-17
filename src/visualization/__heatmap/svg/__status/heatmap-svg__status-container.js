@@ -7,6 +7,7 @@ import OnResize from '../../../../helpers/on-resize';
 import Status from './heatmap-svg__status';
 import { DisplaySelector } from '../../../../state/selectors/visualization/display-selector';
 import { ParametersSelectorProp } from '../../../../state/selectors/visualization/params-selector';
+import { sortDefault } from '../../../../state/set/visualization/rows-actions';
 import { toggleSelectionBox, toggleTooltips } from '../../../../state/set/visualization/display-actions';
 
 export class StatusContainer extends Component {
@@ -61,6 +62,7 @@ export class StatusContainer extends Component {
         download={this.download}
         elPosition={this.state.elPosition}
         fixLeft={this.props.fixLeft}
+        reset={this.props.reset}
         selectionBoxActive={this.props.display.selectionBox}
         show={this.state.show}
         toggleSelectionBox={this.props.toggleSelectionBox}
@@ -84,6 +86,7 @@ StatusContainer.propTypes = {
   }).isRequired,
   name: PropTypes.string,
   fixLeft: PropTypes.bool.isRequired,
+  reset: PropTypes.func.isRequired,
   toggleSelectionBox: PropTypes.func.isRequired,
   toggleTooltips: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
@@ -98,6 +101,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  reset: () => {
+    dispatch(sortDefault());
+  },
   toggleSelectionBox: () => {
     dispatch(toggleSelectionBox());
   },

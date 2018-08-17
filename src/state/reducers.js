@@ -24,6 +24,8 @@ import search from './set/visualization/search-reducer';
 import session from './set/session-reducer';
 import settings from './set/visualization/settings-reducer';
 import tabs from './set/visualization/tab-reducer';
+import vizanalysis from './set/analysis/viz-analysis-reducer';
+import vizanalysisform from './set/analysis/viz-analysis-form-reducer';
 
 const Reducers = combineReducers({
   annotations,
@@ -49,5 +51,7 @@ const Reducers = combineReducers({
   session,
   settings,
   tabs,
+  vizanalysis,
+  vizanalysisform,
 });
 export default Reducers;

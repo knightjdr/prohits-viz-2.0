@@ -47,11 +47,17 @@ describe('Get page', () => {
   it('should subset an array of data rows for heatmap', () => {
     const expected = [
       {
-        data: [{ fillColor: '#fff', value: 0 }, { fillColor: '#fff', value: 1 }],
+        data: [
+          { fillColor: '#fff', key: 'a-0', value: 0 },
+          { fillColor: '#fff', key: 'a-1', value: 1 },
+        ],
         name: 'a',
       },
       {
-        data: [{ fillColor: '#fff', value: 3 }, { fillColor: '#fff', value: 4 }],
+        data: [
+          { fillColor: '#fff', key: 'b-0', value: 3 },
+          { fillColor: '#fff', key: 'b-1', value: 4 },
+        ],
         name: 'b',
       },
     ];
@@ -89,15 +95,47 @@ describe('Get page', () => {
       const expected = [
         {
           data: [
-            { edgeColor: '#fff', fillColor: '#fff', radius: 9, ratio: 1, score: 0.1, value: 0 },
-            { edgeColor: '#fff', fillColor: '#fff', radius: 4.5, ratio: 0.5, score: 0.1, value: 1 },
+            {
+              edgeColor: '#fff',
+              fillColor: '#fff',
+              key: 'a-0',
+              radius: 9,
+              ratio: 1,
+              score: 0.1,
+              value: 0,
+            },
+            {
+              edgeColor: '#fff',
+              fillColor: '#fff',
+              key: 'a-1',
+              radius: 4.5,
+              ratio: 0.5,
+              score: 0.1,
+              value: 1,
+            },
           ],
           name: 'a',
         },
         {
           data: [
-            { edgeColor: '#fff', fillColor: '#fff', radius: 9, ratio: 1, score: 0.1, value: 3 },
-            { edgeColor: '#fff', fillColor: '#fff', radius: 4.5, ratio: 0.5, score: 0.1, value: 4 },
+            {
+              edgeColor: '#fff',
+              fillColor: '#fff',
+              radius: 9,
+              key: 'b-0',
+              ratio: 1,
+              score: 0.1,
+              value: 3,
+            },
+            {
+              edgeColor: '#fff',
+              fillColor: '#fff',
+              key: 'b-1',
+              radius: 4.5,
+              ratio: 0.5,
+              score: 0.1,
+              value: 4,
+            },
           ],
           name: 'b',
         },

@@ -1,6 +1,14 @@
 import * as actions from './tab-actions';
 
 describe('Visualization tab set actions', () => {
+  it('should add a tab', () => {
+    const expectedAction = {
+      tab: 'go',
+      type: actions.ADD_TAB,
+    };
+    expect(actions.addTab('go')).toEqual(expectedAction);
+  });
+
   it('should remove a tab', () => {
     const expectedAction = {
       tab: 'customize',

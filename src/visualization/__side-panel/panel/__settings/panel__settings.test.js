@@ -8,7 +8,6 @@ describe('Settings panel', () => {
     const wrapper = shallow(
       <Settings
         changeSetting={jest.fn()}
-        resetImage={jest.fn()}
         resetSettings={jest.fn()}
         settings={{}}
         storeSettings={{}}

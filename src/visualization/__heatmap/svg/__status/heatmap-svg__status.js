@@ -5,6 +5,7 @@ import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
   faFileDownload,
+  faUndo,
 } from '@fortawesome/pro-solid-svg-icons';
 import { faComment, faSquare } from '@fortawesome/pro-regular-svg-icons';
 
@@ -15,6 +16,7 @@ const Status = ({
   download,
   elPosition,
   fixLeft,
+  reset,
   selectionBoxActive,
   show,
   toggleSelectionBox,
@@ -47,6 +49,15 @@ const Status = ({
         }
       </button>
     }
+    <button
+      className="heatmap-svg__status-button heatmap-svg__status-button_small-font"
+      onClick={reset}
+      tooltip="Reset image"
+      tooltip-position="right"
+      type="button"
+    >
+      <FontAwesomeIcon icon={faUndo} />
+    </button>
     <button
       className="heatmap-svg__status-button"
       onClick={download}
@@ -104,6 +115,7 @@ Status.propTypes = {
     transform: PropTypes.string,
   }).isRequired,
   fixLeft: PropTypes.bool.isRequired,
+  reset: PropTypes.func.isRequired,
   selectionBoxActive: PropTypes.bool.isRequired,
   show: PropTypes.bool.isRequired,
   tooltipsActive: PropTypes.bool.isRequired,

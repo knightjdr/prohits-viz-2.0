@@ -1,11 +1,4 @@
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-
 import * as actions from './map-actions';
-
-// configure mock store
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 describe('Map set actions', () => {
   it('should dispatch an action that the map is synched', () => {
@@ -19,8 +12,9 @@ describe('Map set actions', () => {
   it('should dispatch an action that the map is synchronizing', () => {
     const expectedAction = {
       type: actions.MAP_SYNCHRONIZING,
+      updateOriginal: false,
     };
-    expect(actions.synchronizeMap()).toEqual(expectedAction);
+    expect(actions.synchronizeMap(false)).toEqual(expectedAction);
   });
 
   it('should dispatch an action that the synchronizing gave an error', () => {

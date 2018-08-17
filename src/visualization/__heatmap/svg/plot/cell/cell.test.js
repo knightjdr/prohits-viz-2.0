@@ -3,12 +3,25 @@ import { shallow } from 'enzyme';
 
 import Cell from './cell';
 
-jest.mock('shortid');
-
 const rows = [
-  { edgeColor: '#fff', fillColor: '#fff', radius: '1' },
-  { edgeColor: '#aaa', fillColor: '#aaa', radius: '0.5' },
-  { edgeColor: '#555', fillColor: '#555', radius: '0.2' },
+  {
+    edgeColor: '#fff',
+    fillColor: '#fff',
+    key: 'a',
+    radius: '1',
+  },
+  {
+    edgeColor: '#aaa',
+    fillColor: '#aaa',
+    key: 'b',
+    radius: '0.5',
+  },
+  {
+    edgeColor: '#555',
+    fillColor: '#555',
+    key: 'b',
+    radius: '0.2',
+  },
 ];
 
 describe('Plot cell', () => {

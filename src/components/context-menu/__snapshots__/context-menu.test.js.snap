@@ -28,8 +28,12 @@ exports[`Context menu view when rendered hidden should match snapshot 1`] = `
     }
   >
     <div
-      className="child"
-    />
+      className="context-menu__inner"
+    >
+      <div
+        className="child"
+      />
+    </div>
   </div>
 </OnClickOutside(ClickOutsideWrapper)>
 `;
@@ -62,8 +66,12 @@ exports[`Context menu view when rendered visible should match snapshot 1`] = `
     }
   >
     <div
-      className="child"
-    />
+      className="context-menu__inner"
+    >
+      <div
+        className="child"
+      />
+    </div>
   </div>
 </OnClickOutside(ClickOutsideWrapper)>
 `;

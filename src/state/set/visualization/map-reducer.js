@@ -9,6 +9,7 @@ const defaultState = {
   synced: true,
   syncError: false,
   syncImage: null,
+  updateOriginal: false,
 };
 
 const Map = (state = { ...defaultState }, action) => {
@@ -18,10 +19,12 @@ const Map = (state = { ...defaultState }, action) => {
     case actions.MAP_SYNCHED:
       return {
         ...state,
+        image: state.updateOriginal ? action.syncImage : state.image,
         isSyncing: false,
         synced: true,
         syncError: false,
-        syncImage: action.syncImage,
+        syncImage: !state.updateOriginal ? action.syncImage : null,
+        updateOriginal: false,
       };
     case actions.MAP_SYNCHRONIZING:
       return {
@@ -29,6 +32,7 @@ const Map = (state = { ...defaultState }, action) => {
         isSyncing: true,
         synced: false,
         syncError: false,
+        updateOriginal: action.updateOriginal,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
       return {
@@ -42,6 +46,7 @@ const Map = (state = { ...defaultState }, action) => {
         ...state,
         synced: true,
         syncImage: null,
+        updateOriginal: false,
       };
     case actions.SYNC_ERROR:
       return {
@@ -49,6 +54,7 @@ const Map = (state = { ...defaultState }, action) => {
         isSyncing: false,
         synced: false,
         syncError: true,
+        updateOriginal: false,
       };
     case actions.TOGGLE_MAP_ATTACH:
       return {
@@ -60,6 +66,7 @@ const Map = (state = { ...defaultState }, action) => {
         ...state,
         synced: false,
         syncImage: null,
+        updateOriginal: false,
       };
     default:
       return state;

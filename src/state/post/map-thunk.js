@@ -1,13 +1,13 @@
 import * as mapActions from '../set/visualization/map-actions';
 
-export const syncMap = () => (
+const syncMap = (updateOriginal = false) => (
   (dispatch, getState) => {
-    dispatch(mapActions.synchronizeMap());
+    dispatch(mapActions.synchronizeMap(updateOriginal));
     const {
+      parameters,
       rows,
       session,
       settings,
-      parameters,
     } = getState();
     const {
       abundanceCap,
@@ -36,9 +36,9 @@ export const syncMap = () => (
     }
     // Set headers.
     const headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-    headers.append('Session', session);
+    headers.append('accept', 'application/json');
+    headers.append('content-type', 'application/json');
+    headers.append('session', session);
     const url = `${process.env.REACT_APP_API_ROOT}/sync/`;
     return fetch(url, {
       cache: 'no-store',

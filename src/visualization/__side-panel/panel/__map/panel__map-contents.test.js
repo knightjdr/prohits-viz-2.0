@@ -4,8 +4,6 @@ import { shallow } from 'enzyme';
 import MapContent from './panel__map-contents';
 
 const navigatePosition = jest.fn();
-const toggleAnnotations = jest.fn();
-const toggleMarkers = jest.fn();
 
 describe('Map panel content', () => {
   describe('should render when in sync', () => {
@@ -26,8 +24,6 @@ describe('Map panel content', () => {
           synced
           syncError={false}
           syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
         />,
       );
     });
@@ -42,16 +38,6 @@ describe('Map panel content', () => {
 
     it('and not render sync component', () => {
       expect(wrapper.find('Sync').length).toBe(0);
-    });
-
-    it('on clicking switch should trigger toggle annotations function', () => {
-      wrapper.find('Switch').first().simulate('change');
-      expect(toggleAnnotations).toHaveBeenCalledTimes(1);
-    });
-
-    it('on clicking switch should trigger toggle markers function', () => {
-      wrapper.find('Switch').last().simulate('change');
-      expect(toggleMarkers).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -74,8 +60,6 @@ describe('Map panel content', () => {
           syncError={false}
           syncImage="synced"
           syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
         />,
       );
     });
@@ -107,8 +91,6 @@ describe('Map panel content', () => {
           synced={false}
           syncError={false}
           syncMap={jest.fn()}
-          toggleAnnotations={toggleAnnotations}
-          toggleMarkers={toggleMarkers}
         />,
       );
     });

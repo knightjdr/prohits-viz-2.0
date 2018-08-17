@@ -37,7 +37,7 @@ const Synced = ({
             { text[Boolean(minimap)].warning }
           </div>
           <Button
-            onClick={syncMap}
+            onClick={() => { syncMap(); }}
           >
             { text[Boolean(minimap)].button }
           </Button>

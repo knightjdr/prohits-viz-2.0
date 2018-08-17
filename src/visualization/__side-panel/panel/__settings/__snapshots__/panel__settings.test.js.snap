@@ -46,13 +46,7 @@ exports[`Settings panel should render 1`] = `
   <div
     className="panel__border"
   />
-  <div
-    className="panel__title"
-  >
-    Reset
-  </div>
   <Reset
-    resetImage={[Function]}
     resetSettings={[Function]}
   />
 </div>

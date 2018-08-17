@@ -1,7 +1,7 @@
 import * as actions from './display-actions';
 
 const Display = (state = {
-  floatMapRight: 20,
+  floatMapRight: 50,
   floatMapTop: 100,
   plotFixed: false,
   plotTranslate: 0,

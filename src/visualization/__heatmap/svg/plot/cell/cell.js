@@ -1,5 +1,4 @@
 import React from 'react';
-import Shortid from 'shortid';
 
 const Cell = (imageType) => {
   switch (imageType) {
@@ -10,7 +9,7 @@ const Cell = (imageType) => {
             cx={(i * cellSize) + offset}
             cy={y + offset}
             fill={cell.fillColor}
-            key={Shortid.generate()}
+            key={cell.key}
             r={cell.radius}
             stroke={cell.edgeColor}
             strokeWidth={edgeSize}
@@ -23,7 +22,7 @@ const Cell = (imageType) => {
           <rect
             fill={cell.fillColor}
             height={cellSize}
-            key={Shortid.generate()}
+            key={cell.key}
             width={cellSize}
             x={i * cellSize}
             y={y}

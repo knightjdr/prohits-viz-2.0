@@ -17,26 +17,6 @@ exports[`Map panel content should render when in sync and match snapshot 1`] = `
       syncImage={null}
     />
   </div>
-  <div
-    className="panel__map-switch"
-  >
-    <div>
-      Annotations:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-    <div>
-      Markers:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-  </div>
 </React.Fragment>
 `;
 
@@ -50,26 +30,6 @@ exports[`Map panel content should render when not in sync and match snapshot 1`]
       minimap="image"
       syncError={false}
       syncMap={[Function]}
-    />
-  </div>
-  <div
-    className="panel__map-switch"
-  >
-    <div>
-      Annotations:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
-    />
-    <div>
-      Markers:
-    </div>
-    <Switch
-      checked={false}
-      onChange={[Function]}
-      prefixCls="ant-switch"
     />
   </div>
 </React.Fragment>

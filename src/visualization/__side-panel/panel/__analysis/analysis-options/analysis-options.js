@@ -10,6 +10,7 @@ const { Option } = Select;
 
 const AnalysisOptions = ({
   handleType,
+  performAnalysis,
   type,
 }) => (
   <div className="analysis-options">
@@ -31,6 +32,7 @@ const AnalysisOptions = ({
       </Select>
       <button
         className="analysis-options__button"
+        onClick={performAnalysis}
         type="button"
       >
         Submit
@@ -46,6 +48,7 @@ AnalysisOptions.defaultProps = {
 
 AnalysisOptions.propTypes = {
   handleType: PropTypes.func.isRequired,
+  performAnalysis: PropTypes.func.isRequired,
   type: PropTypes.string,
 };
 
