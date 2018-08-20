@@ -30,13 +30,16 @@ const AnalysisOptions = ({
         <Option value="go">GO enrichment</Option>
         <Option value="network">network</Option>
       </Select>
-      <button
-        className="analysis-options__button"
-        onClick={performAnalysis}
-        type="button"
-      >
-        Submit
-      </button>
+      {
+        type &&
+        <button
+          className="analysis-options__button"
+          onClick={performAnalysis}
+          type="button"
+        >
+          Submit
+        </button>
+      }
     </div>
     {Options[type]}
   </div>

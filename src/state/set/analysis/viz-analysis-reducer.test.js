@@ -21,7 +21,7 @@ describe('Analysis set reducer', () => {
       go: {
         didFail: false,
         isRunning: true,
-        results: [],
+        results: {},
       },
       type: 'go',
     };
@@ -34,7 +34,28 @@ describe('Analysis set reducer', () => {
       type: actions.SET_VIZ_ANALYSIS_TYPE,
     };
     const expectedState = {
+      go: {
+        didFail: false,
+        isRunning: false,
+        results: {},
+      },
       type: 'go',
+    };
+    expect(AnalysisReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle SET_VIZ_ANALYSIS_RESULTS action', () => {
+    const action = {
+      analysisType: 'go',
+      results: { source: [] },
+      type: actions.SET_VIZ_ANALYSIS_RESULTS,
+    };
+    const expectedState = {
+      go: {
+        didFail: false,
+        isRunning: false,
+        results: { source: [] },
+      },
     };
     expect(AnalysisReducer(undefined, action)).toEqual(expectedState);
   });
@@ -51,7 +72,7 @@ describe('Analysis set reducer', () => {
       go: {
         didFail: true,
         isRunning: false,
-        results: [],
+        results: {},
       },
       type: 'go',
     };

@@ -594,7 +594,7 @@ describe('Store', () => {
       store.dispatch(action);
       expect(store.getState().tabs).toEqual(Tabs(undefined, action));
     });
-    
+
     it('should handle REMOVE_TAB action', () => {
       const action = { tab: 'test', type: 'REMOVE_TAB' };
       store.dispatch(action);
@@ -619,6 +619,13 @@ describe('Store', () => {
     it('should handle SET_VIZ_ANALYSIS_TYPE action', () => {
       const store = createStore(Reducers);
       const action = { anlaysisType: 'go', type: 'SET_VIZ_ANALYSIS_TYPE' };
+      store.dispatch(action);
+      expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, action));
+    });
+
+    it('should handle SET_VIZ_ANALYSIS_RESULTS action', () => {
+      const store = createStore(Reducers);
+      const action = { anlaysisType: 'go', results: {}, type: 'SET_VIZ_ANALYSIS_TYPE' };
       store.dispatch(action);
       expect(store.getState().vizanalysis).toEqual(VizAnalysis(undefined, action));
     });

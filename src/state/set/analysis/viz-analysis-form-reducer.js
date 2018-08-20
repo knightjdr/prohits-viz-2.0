@@ -2,7 +2,6 @@ import * as actions from './viz-analysis-form-actions';
 
 export const initState = {
   go: {
-    advanced_options_on: true,
     domain_size_type: 'annotated',
     hierfiltering: '',
     max_set_size: undefined,
@@ -11,7 +10,6 @@ export const initState = {
     no_iea: false,
     ordered_query: false,
     organism: 'hsapiens',
-    output: 'mini',
     region_query: false,
     sf_CORUM: true,
     sf_GO: true,

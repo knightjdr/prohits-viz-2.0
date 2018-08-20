@@ -24,4 +24,13 @@ describe('Viz analysis set actions', () => {
     };
     expect(actions.analysisError('go')).toEqual(expectedAction);
   });
+
+  it('should dispatch an action to set results', () => {
+    const expectedAction = {
+      analysisType: 'go',
+      results: {},
+      type: actions.SET_VIZ_ANALYSIS_RESULTS,
+    };
+    expect(actions.setResults('go', {})).toEqual(expectedAction);
+  });
 });

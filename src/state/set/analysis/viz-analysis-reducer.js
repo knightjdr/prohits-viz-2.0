@@ -4,7 +4,7 @@ export const initState = {
   go: {
     didFail: false,
     isRunning: false,
-    results: [],
+    results: {},
   },
   type: undefined,
 };
@@ -16,7 +16,7 @@ const Analysis = (state = initState, action) => {
       newState[action.analysisType] = {
         didFail: false,
         isRunning: true,
-        results: [],
+        results: {},
       };
       return {
         ...state,
@@ -24,13 +24,24 @@ const Analysis = (state = initState, action) => {
       };
     case actions.SET_VIZ_ANALYSIS_TYPE:
       return {
+        ...state,
         type: action.analysisType,
+      };
+    case actions.SET_VIZ_ANALYSIS_RESULTS:
+      newState[action.analysisType] = {
+        didFail: false,
+        isRunning: false,
+        results: action.results,
+      };
+      return {
+        ...state,
+        ...newState,
       };
     case actions.VIZ_ANALYSIS_ERROR:
       newState[action.analysisType] = {
         didFail: true,
         isRunning: false,
-        results: [],
+        results: {},
       };
       return {
         ...state,

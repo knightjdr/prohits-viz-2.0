@@ -15,10 +15,12 @@ const performVizAnalysis = () => (
     } = getState();
     const { type } = vizanalysis;
 
-    // Get selected genes.
-    const query = getSelected(genes.columnsSelected, genes.rowsSelected);
+    if (!type) {
+      return null;
+    }
 
-    // If there are no selected genes, do nothing.
+    // Get columns to query and remove duplicates.
+    const query = [...new Set(getSelected(genes.columnsSelected, genes.rowsSelected))];
     if (query.length === 0) {
       return null;
     }
@@ -27,13 +29,11 @@ const performVizAnalysis = () => (
     dispatch(analysisActions.runAnalysis(type));
     dispatch(tabActions.addTab(type));
 
-    // Set body.
     const body = {
       ...vizanalysisform[type],
-      query,
+      query: query.join(' '),
     };
 
-    // Set headers.
     const headers = new Headers();
     headers.append('accept', 'application/json');
     headers.append('content-type', 'application/json');
