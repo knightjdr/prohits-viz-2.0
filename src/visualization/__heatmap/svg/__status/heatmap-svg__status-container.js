@@ -33,7 +33,7 @@ export class StatusContainer extends Component {
     OnResize(this, this.resizeEnd, 800);
   }
   setPosition = width => ({
-    right: (((window.innerWidth - 50) - width) / 2) - 35,
+    right: ((window.innerWidth - width) / 2) - 20,
     top: 105,
   })
   download = () => {

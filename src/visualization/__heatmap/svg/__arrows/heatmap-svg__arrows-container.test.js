@@ -46,8 +46,8 @@ describe('Heatmap arrows container', () => {
 
       it('and sets arrow container position', () => {
         const elPosition = {
-          bottom: 0,
-          right: 202,
+          bottom: 40,
+          right: 242,
           transform: null,
         };
         expect(wrapper.state('elPosition')).toEqual(elPosition);
@@ -126,7 +126,7 @@ describe('Heatmap arrows container', () => {
           wrapper: 500,
         };
         const position = wrapper.instance().setPosition('horizontal', height, width);
-        expect(position).toEqual({ bottom: -5, right: 237, transform: 'rotate(-90deg)' });
+        expect(position).toEqual({ bottom: 40, right: 282, transform: 'rotate(-90deg)' });
       });
 
       it('when vertical', () => {
@@ -138,7 +138,7 @@ describe('Heatmap arrows container', () => {
           wrapper: 500,
         };
         const position = wrapper.instance().setPosition('vertical', height, width);
-        expect(position).toEqual({ bottom: 0, right: 202, transform: null });
+        expect(position).toEqual({ bottom: 40, right: 242, transform: null });
       });
     });
 
@@ -200,8 +200,8 @@ describe('Heatmap arrows container', () => {
 
       it('and sets arrow container position', () => {
         const elPosition = {
-          bottom: 0,
-          right: 52,
+          bottom: 40,
+          right: 92,
           transform: null,
         };
         expect(wrapper.state('elPosition')).toEqual(elPosition);
@@ -359,8 +359,8 @@ describe('Heatmap arrows container', () => {
 
       it('and sets arrow container position', () => {
         const elPosition = {
-          bottom: -5,
-          right: 237,
+          bottom: 40,
+          right: 282,
           transform: 'rotate(-90deg)',
         };
         expect(wrapper.state('elPosition')).toEqual(elPosition);

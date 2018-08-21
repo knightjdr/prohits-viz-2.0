@@ -1,0 +1,14 @@
+@import 'style/theme';
+
+.visualization__warning {
+  align-items: center;
+  display: flex;
+  font-size: 1.2em;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+.visualization__warning > :first-child {
+  color: $warning;
+  margin-right: 5px;
+}

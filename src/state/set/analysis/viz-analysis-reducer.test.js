@@ -21,7 +21,7 @@ describe('Analysis set reducer', () => {
       go: {
         didFail: false,
         isRunning: true,
-        results: {},
+        results: [],
       },
       type: 'go',
     };
@@ -37,7 +37,7 @@ describe('Analysis set reducer', () => {
       go: {
         didFail: false,
         isRunning: false,
-        results: {},
+        results: [],
       },
       type: 'go',
     };
@@ -72,7 +72,7 @@ describe('Analysis set reducer', () => {
       go: {
         didFail: true,
         isRunning: false,
-        results: {},
+        results: [],
       },
       type: 'go',
     };

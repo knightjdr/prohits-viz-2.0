@@ -63,14 +63,14 @@
   margin-top: 5px;
 }
 .Spotlight-link {
-  color: $accent-light;
+  color: $accent-dark;
   margin: 0px 10px;
 }
 .Spotlight-link:visited {
-  color: $accent-dark;
+  color: $primary-medium;
 }
 .Spotlight-link:hover {
-  color: $primary-light;
+  color: $primary-medium;
 }
 .ant-carousel {
   display: flex !important;

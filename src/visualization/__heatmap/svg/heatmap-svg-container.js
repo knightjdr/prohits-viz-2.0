@@ -17,8 +17,10 @@ import { updatePlotPosition } from '../../../state/set/visualization/display-act
 
 const COL_MARGIN = 100;
 const EXTRA_PADDING = 2;
+const HORZ_PADDING = 50;
 const ROW_MARGIN = 100;
 const SIDE_PANEL = 400;
+const VERT_PADDING = 50;
 
 export class SvgContainer extends Component {
   constructor(props) {
@@ -104,7 +106,7 @@ export class SvgContainer extends Component {
   }
   calculateHeight = (cellSize, rows) => {
     // Maximum sizes.
-    const wrapper = this.wrapperRef.current.getBoundingClientRect().height;
+    const wrapper = this.wrapperRef.current.getBoundingClientRect().height - VERT_PADDING;
     const heatmap = wrapper - COL_MARGIN;
     const pageY = Math.floor(heatmap / cellSize);
 
@@ -129,7 +131,7 @@ export class SvgContainer extends Component {
   }
   calculateWidth = (cellSize, columns) => {
     // Maximum sizes.
-    const wrapper = this.wrapperRef.current.getBoundingClientRect().width;
+    const wrapper = this.wrapperRef.current.getBoundingClientRect().width - HORZ_PADDING;
     const heatmap = wrapper - ROW_MARGIN;
     const pageX = Math.floor(heatmap / cellSize);
 

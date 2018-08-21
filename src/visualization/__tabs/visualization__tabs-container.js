@@ -23,7 +23,7 @@ export class TabsContainer extends Component {
         activeTab={this.props.tabs.selected}
         handleClick={this.handleClick}
         showButton={this.props.tabs.show}
-        showMenu={this.state.showMenu} 
+        showMenu={this.state.showMenu}
       />
     );
   }

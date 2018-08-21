@@ -8,6 +8,8 @@ import {
   faTrashAlt,
 } from '@fortawesome/pro-solid-svg-icons';
 
+import './panel__annotation.css';
+
 const warningStyle = {
   false: {
     height: 0,

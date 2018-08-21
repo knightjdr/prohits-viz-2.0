@@ -22,19 +22,18 @@
   background-color: $primary-light;
   height: calc(100vh - 40px);
   padding: 5px 10px;
-  transition: all 0.5s ease-out;
+  transition: width 0.3s ease-out;
+  transition-timing-function: cubic-bezier(.17, .67, .16, .99);
   width: 180px;
 }
 @media screen and (max-width: 680px) {
   .HelpBar-breadcrumb {
     opacity: 1;
-    transition-duration: 0.8s;
-    transition-timing-function: ease-out;
+    transition-duration: 0.4s;
   }
   .HelpBar-button {
     opacity: 1;
-    transition-duration: 0.8s;
-    transition-timing-function: ease-in;
+    transition-duration: 0.2s;
   }
   .HelpBar-panel {
     padding: 5px 0px;
@@ -44,38 +43,36 @@
 @media screen and (min-width: 681px) {
   .HelpBar-breadcrumb {
     opacity: 1;
-    transition-duration: 1s;
-    transition-timing-function: ease-in;
+    transition-duration: 0.4s;
   }
   .HelpBar-button {
     opacity: 0;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-out;
+    transition-duration: 0.1s;
   }
 }
 .HelpBar-breadcrumb-transition-in {
   opacity: 1;
-  transition: opacity 0.8s ease-in;
+  transition: opacity 0.4s;
 }
 .HelpBar-breadcrumb-transition-out {
   opacity: 0;
-  transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s;
 }
 .HelpBar-button-transition-in {
   left: 140px;
-  transition: left 0.5s ease-out;
+  transition: left 0.3s;
 }
 .HelpBar-button-transition-out {
   left: 5px;
-  transition: left 0.5s ease-out;
+  transition: left 0.3s;
 }
 .HelpBar-panel-transition-in {
   padding: 5px 10px;
-  transition: all 0.5s ease-out;
+  transition: all 0.3s;
   width: 180px;
 }
 .HelpBar-panel-transition-out {
   padding: 5px 0px;
-  transition: all 0.5s ease-out;
+  transition: all 0.3s;
   width: 0px;
 }

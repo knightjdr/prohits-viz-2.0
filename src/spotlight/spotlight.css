@@ -68,14 +68,14 @@
   margin-top: 5px; }
 
 .Spotlight-link {
-  color: #AC867C;
+  color: #763626;
   margin: 0px 10px; }
 
 .Spotlight-link:visited {
-  color: #763626; }
+  color: #336B87; }
 
 .Spotlight-link:hover {
-  color: #90AFC5; }
+  color: #336B87; }
 
 .ant-carousel {
   display: flex !important;

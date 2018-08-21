@@ -1,0 +1,35 @@
+@import 'style/reset';
+
+.table {
+  height: 100%;
+  width: 100%;
+}
+.table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+.table thead {
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  height: 48px;
+  box-sizing: border-box;
+}
+.table th {
+  height: 27px;
+  line-height: 27px;
+  padding: 10px 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.table th button {
+  @extend .button-reset;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 10px;
+  position: relative;
+  top: -2px;
+}
+.table th button > :not(:first-child) {
+  margin-top: -5px;
+}

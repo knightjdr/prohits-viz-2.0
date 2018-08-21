@@ -4,7 +4,7 @@ export const initState = {
   go: {
     didFail: false,
     isRunning: false,
-    results: {},
+    results: [],
   },
   type: undefined,
 };
@@ -16,7 +16,7 @@ const Analysis = (state = initState, action) => {
       newState[action.analysisType] = {
         didFail: false,
         isRunning: true,
-        results: {},
+        results: [],
       };
       return {
         ...state,
@@ -41,7 +41,7 @@ const Analysis = (state = initState, action) => {
       newState[action.analysisType] = {
         didFail: true,
         isRunning: false,
-        results: {},
+        results: [],
       };
       return {
         ...state,
