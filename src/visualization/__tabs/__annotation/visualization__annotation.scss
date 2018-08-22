@@ -1,0 +1,15 @@
+.visualization__annotation {
+  align-items: center;
+  display: flex;
+}
+.visualization__annotation > :first-child {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  max-width: 500px;
+  min-width: 200px;
+  width: 25%;
+}
+.visualization__annotation > button:first-of-type {
+  border-radius: 0 4px 4px 0;
+  height: 32px;
+}

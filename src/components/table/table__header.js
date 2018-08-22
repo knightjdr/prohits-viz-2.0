@@ -1,29 +1,29 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { faCaretDown, faCaretUp } from '@fortawesome/pro-solid-svg-icons';
+
+import HeaderCell from './table__header-cell';
+
+import './table.css';
 
 const Header = ({
   columns,
+  columnTemplate,
 }) => (
-  <thead>
-    <tr>
-      {
-        columns.map(column => (
-          <th key={column.name}>
-            { column.name }
-            {
-              column.sortable &&
-              <button>
-                { (!column.sortDir || column.sortDir === 'up') && <FontAwesomeIcon icon={faCaretUp} /> }
-                { (!column.sortDir || column.sortDir === 'down') && <FontAwesomeIcon icon={faCaretDown} /> }
-              </button>
-            }
-          </th>
-        ))
-      }
-    </tr>
-  </thead>
+  <div
+    className="table__header"
+    style={{
+      gridTemplateColumns: columnTemplate,
+    }}
+  >
+    {
+      columns.map(column => (
+        <HeaderCell
+          cell={column}
+          key={column.name}
+        />
+      ))
+    }
+  </div>
 );
 
 Header.propTypes = {
@@ -35,6 +35,7 @@ Header.propTypes = {
       sortKey: PropTypes.string,
     }),
   ).isRequired,
+  columnTemplate: PropTypes.string.isRequired,
 };
 
 export default Header;

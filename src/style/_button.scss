@@ -11,13 +11,13 @@
 }
 
 // button types
-.button {
+.basic-button {
   background-position: center;
   transition: background 0.5s;
 }
 .default-button,
 .default-button:focus {
-  @extend .button;
+  @extend .basic-button;
   background-color: $primary-medium;
   border-color: $primary-medium;
   color: $text-light;
@@ -34,7 +34,7 @@
 }
 .success-button,
 .success-button:focus {
-  @extend .button;
+  @extend .basic-button;
   background-color: #43a047;
   border-color: #43a047;
   color: $text-light;
@@ -51,7 +51,7 @@
 }
 .warning-button,
 .warning-button:focus {
-  @extend .button;
+  @extend .basic-button;
   background-color: #f44336;
   border-color: #f44336;
   color: $text-light;

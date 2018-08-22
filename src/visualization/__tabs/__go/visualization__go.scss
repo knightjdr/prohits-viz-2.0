@@ -1,5 +1,19 @@
+@import 'style/theme';
+
 .visualization__go {
   height: 100%;
-  padding: 40px 10px 10px 10px;
+  padding: 12px 15px 15px 15px;
   width: 100%; 
+}
+.visualization__go-annotation {
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+}
+.visualization__go-annotation-button {
+  height: 32px;
+  margin-left: 10px;
+}
+.visualization__go-annotation-button > :first-child {
+  margin-right: 5px;
 }

@@ -1,0 +1,26 @@
+@import 'style/reset';
+@import 'style/button';
+
+.button {
+  @extend .button-reset;
+  align-items: center;
+  background-position: center;
+  border-radius: 4px;
+  display: flex;
+  font-size: 1em;
+  justify-content: center;
+  padding: 5px 10px;
+  width: auto;
+}
+.button_default {
+  @extend .button;
+  @extend .default-button;
+}
+.button_success {
+  @extend .button;
+  @extend .success-button;
+}
+.button_warning {
+  @extend .button;
+  @extend .warning-button;
+}

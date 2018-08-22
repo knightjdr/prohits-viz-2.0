@@ -1,6 +1,10 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
+import { faFileExport } from '@fortawesome/pro-solid-svg-icons';
 
+import Annotation from '../__annotation/visualization__annotation';
+import Button from '../../../components/button/button';
 import Running from '../__running/visualization__running';
 import Table from '../../../components/table/table-container';
 import Warning from '../__warning/visualization__warning';
@@ -8,12 +12,6 @@ import Warning from '../__warning/visualization__warning';
 import './visualization__go.css';
 
 const columns = [
-  {
-    name: 'Source',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'source',
-  },
   {
     name: 'Term',
     sortable: true,
@@ -25,13 +23,19 @@ const columns = [
     sortable: false,
   },
   {
-    name: 'Term genes (T)',
+    name: 'Source',
+    sortable: true,
+    sortDir: null,
+    sortKey: 'source',
+  },
+  {
+    name: 'T',
     sortable: true,
     sortDir: null,
     sortKey: 't',
   },
   {
-    name: 'Query genes (Q)',
+    name: 'Q',
     sortable: true,
     sortDir: null,
     sortKey: 'q',
@@ -53,7 +57,7 @@ const columns = [
     sortable: false,
   },
 ];
-const columnOrder = ['source', 'term', 'termID', 't', 'q', 'qt', 'pValue', 'genes'];
+const columnOrder = ['termID', 'source', 't', 'q', 'qt', 'pValue', 'genes'];
 
 const Go = ({
   didFail,
@@ -75,12 +79,31 @@ const Go = ({
     );
   } else if (!isRunning && !results.noResults) {
     content = (
-      <Table
-        bottom={10}
-        columns={columns}
-        columnOrder={columnOrder}
-        rows={results.terms}
-      />
+      <Fragment>
+        <Table
+          bottom={50}
+          columns={columns}
+          columnOrder={columnOrder}
+          columnTemplate="minmax(82px, 15%) minmax(73px, 10%) minmax(60px, 10%) minmax(60px, 10%) minmax(63px, 10%) minmax(76px, 15%) minmax(186px, 1fr)"
+          firstColumn={{
+            minWidth: 200,
+            name: 'term',
+            width: '20%',
+          }}
+          rows={results.terms}
+        />
+        <div className="visualization__go-annotation">
+          <Annotation />
+          <Button
+            className="visualization__go-annotation-button"
+            handleClick={() => {}}
+            type="success"
+          >
+            <FontAwesomeIcon icon={faFileExport} />
+            <span>Export</span>
+          </Button>
+        </div>
+      </Fragment>
     );
   } else {
     content = <Running />;

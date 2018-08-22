@@ -6,7 +6,7 @@
 .nobutton:focus, .toolbox__button:focus {
   outline: 0; }
 
-.button, .default-button,
+.basic-button, .default-button,
 .default-button:focus, .success-button,
 .success-button:focus, .warning-button,
 .warning-button:focus {

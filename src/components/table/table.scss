@@ -1,28 +1,45 @@
 @import 'style/reset';
 
 .table {
-  height: 100%;
+  display: flex;
   width: 100%;
 }
-.table tbody {
-  display: block;
-  overflow: auto;
-  width: 100%;
+.table__body {
+  border-bottom: 1px solid #ccc;
+  display: grid;
+  grid-row-gap: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px 0 15px 0;
 }
-.table thead {
+.table__body div {
+  padding: 0 5px;
+  text-align: center;
+}
+.table__first-column > :last-child {
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  padding: 10px 0 5px 0;
+}
+.table__first-column > :last-child > div {
+  margin: 10px 0;
+}
+.table__header {
   background-color: #eee;
   border-bottom: 1px solid #ccc;
-  height: 48px;
   box-sizing: border-box;
+  display: grid;
+  font-weight: bold;
+  height: 48px;
 }
-.table th {
+.table__header-cell {
   height: 27px;
   line-height: 27px;
   padding: 10px 5px;
   text-align: center;
   vertical-align: middle;
 }
-.table th button {
+.table__header-cell button {
   @extend .button-reset;
   display: inline-flex;
   flex-direction: column;
@@ -30,6 +47,18 @@
   position: relative;
   top: -2px;
 }
-.table th button > :not(:first-child) {
+.table__header-cell button > :not(:first-child) {
   margin-top: -5px;
+}
+.table__inner {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.table__inner-overflow {
+  min-width: 600px;
+}
+.table_cell-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

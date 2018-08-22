@@ -2,20 +2,23 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import formatRows from './format-rows';
 import Go from './visualization__go';
 import { VizAnalysisPropSelector } from '../../../state/selectors/analysis/viz-analysis-selector';
 
 class GoContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      results: formatRows(this.props.go.results),
+    };
   }
   render() {
     return (
       <Go
         didFail={this.props.go.didFail}
         isRunning={this.props.go.isRunning}
-        results={this.props.go.results}
+        results={this.state.results}
       />
     );
   }
