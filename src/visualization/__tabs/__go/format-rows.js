@@ -1,4 +1,5 @@
 import formatTerm from './format-term';
+import genes from './format-genes';
 import link from './go_link';
 
 const FormatRows = results => ({
@@ -7,11 +8,7 @@ const FormatRows = results => ({
     const termFormat = formatTerm(term.depth, term.term);
     return ({
       genes: {
-        className: 'table_cell-overflow',
-        content: term.genes,
-        style: {
-          textAlign: 'left',
-        },
+        content: genes(term.genes),
       },
       q: {
         content: term.q,
@@ -29,12 +26,11 @@ const FormatRows = results => ({
         content: term.t,
       },
       term: {
-        className: 'table_cell-overflow',
         content: termFormat.content,
         style: termFormat.style,
       },
       termID: {
-        className: 'table_cell-overflow',
+        className: 'table__cell-overflow',
         content: link(term.termID, term.source),
       },
     });

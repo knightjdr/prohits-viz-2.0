@@ -164,8 +164,12 @@ export class SelectionContainer extends Component {
     const rowIndex = FindClosest(rows, position.y, rows.length, genes.rows);
 
     // Get option from closest index and add one to account for placeholder.
-    [...this.columnRef.current.options][columnIndex + 1].scrollIntoView();
-    [...this.rowRef.current.options][rowIndex + 1].scrollIntoView();
+    const colSelectTop = this.columnRef.current.offsetTop;
+    const colOptionTop = [...this.columnRef.current.options][columnIndex + 1].offsetTop;
+    this.columnRef.current.scrollTop = colOptionTop - colSelectTop;
+    const rowSelectTop = this.rowRef.current.offsetTop;
+    const rowOptionTop = [...this.rowRef.current.options][rowIndex + 1].offsetTop;
+    this.rowRef.current.scrollTop = rowOptionTop - rowSelectTop;
   }
   toggleModal = (pasteType) => {
     this.setState(({ showModal }) => ({

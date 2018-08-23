@@ -26,6 +26,7 @@ const FirstColumn = ({
       <HeaderCell cell={head} />
     </div>
     <div
+      className="table__first-column-body"
       ref={firstColumnRef}
       style={{ maxHeight: height }}
     >

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import Download from '../../../download/download';
+import Download from '../../../../helpers/download';
 import IndexedDBDelete from './browser-storage/indexeddb-delete';
 import IndexedDBGet from './browser-storage/indexeddb-get';
 import IndexedDBGetall from './browser-storage/indexeddb-getall';

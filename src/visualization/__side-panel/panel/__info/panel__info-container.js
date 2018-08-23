@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ColorGradient from '../../../color/color-gradient';
-import Download from '../../../download/download';
+import Download from '../../../../helpers/download';
 import Info from './panel__info';
 import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import { clearFile } from '../../../../state/set/interactive-file-actions';

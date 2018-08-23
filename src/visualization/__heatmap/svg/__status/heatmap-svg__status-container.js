@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Download from '../../../download/download';
+import Download from '../../../../helpers/download';
 import OnResize from '../../../../helpers/on-resize';
 import Status from './heatmap-svg__status';
 import { DisplaySelector } from '../../../../state/selectors/visualization/display-selector';

@@ -6,7 +6,7 @@ import FindClosest from '../../../../../helpers/find-closest';
 import { SelectionContainer } from './selection-container';
 
 jest.mock('../../../../../helpers/copy-to-clipboard');
-jest.mock('../../../../../helpers/find-closest', );
+jest.mock('../../../../../helpers/find-closest');
 FindClosest.mockReturnValue(1);
 
 const genes = {
@@ -38,7 +38,7 @@ describe('Gene select', () => {
     );
   });
 
-  it('setHighlighted method should select the indexed item from the arr arg', () =>{
+  it('setHighlighted method should select the indexed item from the arr arg', () => {
     expect(wrapper.instance().setHighlighted(['a', 'b', 'c'], 2)).toBe('c');
   });
 

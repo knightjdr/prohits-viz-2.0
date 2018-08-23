@@ -5,62 +5,18 @@ import { faFileExport } from '@fortawesome/pro-solid-svg-icons';
 
 import Annotation from '../__annotation/visualization__annotation';
 import Button from '../../../components/button/button';
+import Columns from './columns';
 import Running from '../__running/visualization__running';
 import Table from '../../../components/table/table-container';
 import Warning from '../__warning/visualization__warning';
 
 import './visualization__go.css';
 
-const columns = [
-  {
-    name: 'Term',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'order',
-  },
-  {
-    name: 'ID',
-    sortable: false,
-  },
-  {
-    name: 'Source',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'source',
-  },
-  {
-    name: 'T',
-    sortable: true,
-    sortDir: null,
-    sortKey: 't',
-  },
-  {
-    name: 'Q',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'q',
-  },
-  {
-    name: 'Q ∩ T',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'qt',
-  },
-  {
-    name: 'p-value',
-    sortable: true,
-    sortDir: null,
-    sortKey: 'pValue',
-  },
-  {
-    name: 'Genes',
-    sortable: false,
-  },
-];
-const columnOrder = ['termID', 'source', 't', 'q', 'qt', 'pValue', 'genes'];
+const columnDims = 'minmax(82px, 15%) minmax(73px, 10%) minmax(60px, 10%) minmax(60px, 10%) minmax(63px, 10%) minmax(76px, 15%) minmax(186px, 1fr)';
 
 const Go = ({
   didFail,
+  handleExport,
   isRunning,
   results,
 }) => {
@@ -81,12 +37,12 @@ const Go = ({
     content = (
       <Fragment>
         <Table
-          bottom={50}
-          columns={columns}
-          columnOrder={columnOrder}
-          columnTemplate="minmax(82px, 15%) minmax(73px, 10%) minmax(60px, 10%) minmax(60px, 10%) minmax(63px, 10%) minmax(76px, 15%) minmax(186px, 1fr)"
+          bottom={65}
+          columns={Columns.header}
+          columnOrder={Columns.order.slice(1)}
+          columnTemplate={columnDims}
           firstColumn={{
-            minWidth: 200,
+            minWidth: 175,
             name: 'term',
             width: '20%',
           }}
@@ -96,7 +52,7 @@ const Go = ({
           <Annotation />
           <Button
             className="visualization__go-annotation-button"
-            handleClick={() => {}}
+            handleClick={handleExport}
             type="success"
           >
             <FontAwesomeIcon icon={faFileExport} />
@@ -117,6 +73,7 @@ const Go = ({
 
 Go.propTypes = {
   didFail: PropTypes.bool.isRequired,
+  handleExport: PropTypes.func.isRequired,
   isRunning: PropTypes.bool.isRequired,
   results: PropTypes.shape({
     noResults: PropTypes.bool,

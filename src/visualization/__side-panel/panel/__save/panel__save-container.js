@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Download from '../../../download/download';
+import Download from '../../../../helpers/download';
 import IndexedDBDelete from './browser-storage/indexeddb-delete';
 import IndexedDBGet from './browser-storage/indexeddb-get';
 import IndexedDBGetall from './browser-storage/indexeddb-getall';

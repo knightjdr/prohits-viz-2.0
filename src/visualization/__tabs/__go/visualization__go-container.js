@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Columns from './columns';
+import convertToCsv from '../../../helpers/convert-to-csv';
+import download from '../../../helpers/download';
 import formatRows from './format-rows';
 import Go from './visualization__go';
 import { VizAnalysisPropSelector } from '../../../state/selectors/analysis/viz-analysis-selector';
@@ -13,10 +16,16 @@ class GoContainer extends Component {
       results: formatRows(this.props.go.results),
     };
   }
+  handleExport = () => {
+    const header = Columns.header.map(item => item.name);
+    const csv = convertToCsv(header, Columns.order, this.props.go.results.terms, '\t');
+    download(csv, 'go-results.txt', 'text/tab-separated-values');
+  }
   render() {
     return (
       <Go
         didFail={this.props.go.didFail}
+        handleExport={this.handleExport}
         isRunning={this.props.go.isRunning}
         results={this.state.results}
       />

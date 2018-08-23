@@ -1,19 +1,40 @@
+import React from 'react';
+
 const formatTerm = (depth, term) => {
   let content;
+  let margin;
   let style;
   switch (depth) {
     case 1:
-      content = `• ${term}`;
-      style = {
-        textAlign: 'left',
-      };
+      content = (
+        <div className="table__cell">
+          <div className="table__cell-overflow">
+            • {term}
+          </div>
+          <div className="table__cell-raw">
+            • {term}
+          </div>
+        </div>
+      );
       break;
     default:
-      content = term;
-      style = {
-        marginLeft: 5 + (depth * 8),
-        textAlign: 'left',
-      };
+      margin = 5 + (depth * 8);
+      content = (
+        <div className="table__cell">
+          <div
+            className="table__cell-overflow"
+            style={{ marginLeft: margin }}
+          >
+            {term}
+          </div>
+          <div
+            className="table__cell-raw"
+            style={{ marginLeft: margin }}
+          >
+            {term}
+          </div>
+        </div>
+      );
       break;
   }
   return {

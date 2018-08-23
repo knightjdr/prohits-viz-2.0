@@ -26,6 +26,7 @@ const Table = ({
     <FirstColumn
       firstColumn={firstColumn}
       firstColumnRef={firstColumnRef}
+      handleScroll={handleScroll}
       head={columns[0]}
       height={height}
       rows={rows}

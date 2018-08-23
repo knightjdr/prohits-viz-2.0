@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+import OnResize from '../../helpers/on-resize';
 import Table from './table';
 
 class TableContainer extends Component {
@@ -15,16 +16,26 @@ class TableContainer extends Component {
     };
   }
   componentDidMount = () => {
-    this.setState({
-      height: this.calculateHeight(),
-    });
+    this.setState({ height: this.calculateHeight() });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.onResize);
+  }
+  onResize = () => {
+    OnResize(this, this.resizeEnd, 800);
   }
   calculateHeight = () => {
     const { top } = this.tableRef.current.getBoundingClientRect();
+    // 48 is the pixel height of the table header.
     return window.innerHeight - top - this.props.bottom - 48;
   };
-  handleScroll = () => {
-    this.firstColumnRef.current.scrollTop = this.bodyRef.current.scrollTop;
+  handleScroll = (e, target) => {
+    const { scrollTop } = e.target;
+    this[`${target}Ref`].current.scrollTop = scrollTop;
+  }
+  resizeEnd = () => {
+    this.setState({ height: this.calculateHeight() });
   }
   render() {
     return (

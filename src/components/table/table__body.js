@@ -12,7 +12,7 @@ const Body = ({
 }) => (
   <div
     className="table__body"
-    onScroll={handleScroll}
+    onScroll={(e) => { handleScroll(e, 'firstColumn'); }}
     ref={bodyRef}
     style={{
       gridTemplateColumns: columnTemplate,

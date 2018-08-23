@@ -1,22 +1,22 @@
 import React from 'react';
 
 const link = (id, source) => {
-  let href;
+  let href
   switch (source) {
-    case 'CORUM':
-      href = `http://mips.helmholtz-muenchen.de/genre/proj/corum/complexdetails.html?id=${id.substring(6)}`;
+    case 'cor':
+      href = `https://mips.helmholtz-muenchen.de/genre/proj/corum/complexdetails.html?id=${id.substring(6)}`;
       break;
-    case 'HP':
-      href = `http://compbio.charite.de/hpoweb/showterm?id=${id}`;
+    case 'hp':
+      href = `https://compbio.charite.de/hpoweb/showterm?id=${id}`;
       break;
-    case 'KEGG':
-      href = `http://www.genome.jp/dbget-bin/www_bget?map${id.substring(5)}`;
+    case 'keg':
+      href = `https://www.genome.jp/dbget-bin/www_bget?map${id.substring(5)}`;
       break;
-    case 'MI':
+    case 'mi':
       href = `http://www.mirbase.org/cgi-bin/query.pl?terms=${id.substring(3)}`;
       break;
-    case 'REAC':
-      href = `http://www.reactome.org/content/detail/${id.substring(5)}`;
+    case 'rea':
+      href = `https://www.reactome.org/content/detail/${id.substring(5)}`;
       break;
     default:
       href = `http://amigo.geneontology.org/amigo/term/${id}`;
