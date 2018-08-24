@@ -1,9 +1,9 @@
 import React from 'react';
 
 const formatGenes = genes => (
-  <div className="table__cell">
+  <div className="table__cell-overflow">
     <div
-      className="table__cell-overflow"
+      className="table__cell-clipped"
       style={{
         paddingRight: 5,
       }}

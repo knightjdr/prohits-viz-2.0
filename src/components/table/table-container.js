@@ -8,48 +8,99 @@ class TableContainer extends Component {
   constructor(props) {
     super(props);
     this.bodyRef = React.createRef();
-    this.firstColumnRef = React.createRef();
+    this.tableHeaderRef = React.createRef();
     this.tableRef = React.createRef();
     this.state = {
       height: 0,
-      scrollTop: 0,
+      scrollLeftOffset: 0,
+      scrollLeftPosition: 0,
+      scrollLeftWidth: 0,
     };
   }
   componentDidMount = () => {
-    this.setState({ height: this.calculateHeight() });
+    this.setDimensions();
     window.addEventListener('resize', this.onResize);
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.onResize);
   }
   onResize = () => {
-    OnResize(this, this.resizeEnd, 800);
+    this.setState({
+      bodyInnerWidth: 'auto',
+      bodyWidth: 'auto',
+    });
+    OnResize(this, this.setDimensions);
   }
+  setDimensions = () => {
+    const leftOffset = this.tableRef.current.clientWidth -
+      this.tableHeaderRef.current.clientWidth - 1;
+    const scrollBarWidth = this.tableRef.current.clientWidth - this.bodyRef.current.clientWidth;
+    this.setState({
+      bodyInnerWidth: this.tableHeaderRef.current.clientWidth,
+      bodyWidth: this.tableRef.current.clientWidth + scrollBarWidth,
+      height: this.calculateHeight(),
+      scrollLeftOffset: leftOffset,
+      scrollLeftWidth: (this.tableRef.current.clientWidth - leftOffset) + 1,
+    });
+  };
   calculateHeight = () => {
     const { top } = this.tableRef.current.getBoundingClientRect();
     // 48 is the pixel height of the table header.
     return window.innerHeight - top - this.props.bottom - 48;
-  };
-  handleScroll = (e, target) => {
-    const { scrollTop } = e.target;
-    this[`${target}Ref`].current.scrollTop = scrollTop;
   }
-  resizeEnd = () => {
-    this.setState({ height: this.calculateHeight() });
+  handleScroll = (e) => {
+    const { scrollLeft } = e.target;
+    this.setState({
+      scrollLeftPosition: -scrollLeft,
+    });
+  }
+  handleTouchEnd = () => {
+    this.touched = false;
+  }
+  handleTouchMove = (e) => {
+    if (this.touched) {
+      const scrollLeft = this.touchStart - e.touches[0].clientX;
+      this.touchStart = e.touches[0].clientX;
+      this.setState(({ scrollLeftPosition, scrollLeftWidth }) => {
+        const minLeft = this.props.maxBodyWidth - scrollLeftWidth;
+        let newPosition = scrollLeftPosition - scrollLeft;
+        if (newPosition > 0) {
+          newPosition = 0;
+        } else if (newPosition < -minLeft) {
+          newPosition = -minLeft;
+        }
+        return {
+          scrollLeftPosition: newPosition,
+        };
+      });
+    }
+  }
+  handleTouchStart = (e) => {
+    this.touched = true;
+    this.touchStart = e.touches[0].clientX;
   }
   render() {
     return (
       <Table
         bodyRef={this.bodyRef}
+        bodyInnerWidth={this.state.bodyInnerWidth}
+        bodyWidth={this.state.bodyWidth}
         columns={this.props.columns}
         columnOrder={this.props.columnOrder}
         columnTemplate={this.props.columnTemplate}
         firstColumn={this.props.firstColumn}
-        firstColumnRef={this.firstColumnRef}
         handleScroll={this.handleScroll}
+        handleTouchEnd={this.handleTouchEnd}
+        handleTouchMove={this.handleTouchMove}
+        handleTouchStart={this.handleTouchStart}
         height={this.state.height}
+        maxBodyWidth={this.props.maxBodyWidth}
         rows={this.props.rows}
+        scrollLeftOffset={this.state.scrollLeftOffset}
+        scrollLeftPosition={this.state.scrollLeftPosition}
+        scrollLeftWidth={this.state.scrollLeftWidth}
         scrollTop={this.state.scrollTop}
+        tableHeaderRef={this.tableHeaderRef}
         tableRef={this.tableRef}
       />
     );
@@ -58,6 +109,7 @@ class TableContainer extends Component {
 
 TableContainer.defaultProps = {
   bottom: 0,
+  maxBodyWidth: 500,
 };
 
 TableContainer.propTypes = {
@@ -80,6 +132,7 @@ TableContainer.propTypes = {
     name: PropTypes.string,
     width: PropTypes.string,
   }).isRequired,
+  maxBodyWidth: PropTypes.number,
   rows: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,

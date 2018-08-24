@@ -4,59 +4,99 @@ import React from 'react';
 import Body from './table__body';
 import FirstColumn from './table__first-column';
 import Header from './table__header';
+import HeaderCell from './table__header-cell';
+import HorizontalScroll from './table__horizontal-scroll';
 
 import './table.css';
 
 const Table = ({
+  bodyInnerWidth,
   bodyRef,
+  bodyWidth,
   columns,
   columnOrder,
   columnTemplate,
   firstColumn,
-  firstColumnRef,
   handleScroll,
+  handleTouchEnd,
+  handleTouchMove,
+  handleTouchStart,
   height,
+  maxBodyWidth,
   rows,
+  scrollLeftOffset,
+  scrollLeftPosition,
+  scrollLeftWidth,
+  tableHeaderRef,
   tableRef,
 }) => (
   <div
     className="table"
     ref={tableRef}
   >
-    <FirstColumn
-      firstColumn={firstColumn}
-      firstColumnRef={firstColumnRef}
-      handleScroll={handleScroll}
-      head={columns[0]}
-      height={height}
-      rows={rows}
-    />
+    <div className="table__header">
+      <div
+        style={{
+          minWidth: firstColumn.minWidth,
+          width: firstColumn.width,
+        }}
+      >
+        <HeaderCell cell={columns[0]} />
+      </div>
+      <Header
+        columns={columns.slice(1)}
+        columnTemplate={columnTemplate}
+        scrollLeftPosition={scrollLeftPosition}
+        tableHeaderRef={tableHeaderRef}
+      />
+    </div>
     <div
-      className="table__inner"
+      className="table__body"
+      ref={bodyRef}
       style={{
-        maxHeight: height + 48,
+        maxHeight: height,
+        width: bodyWidth,
       }}
     >
-      <div className="table__inner-overflow">
-        <Header
-          columns={columns.slice(1)}
-          columnTemplate={columnTemplate}
-        />
-        <Body
-          bodyRef={bodyRef}
-          columnOrder={columnOrder}
-          columnTemplate={columnTemplate}
-          handleScroll={handleScroll}
-          height={height}
-          rows={rows}
-        />
-      </div>
+      <FirstColumn
+        firstColumn={firstColumn}
+        rows={rows}
+      />
+      <Body
+        columnOrder={columnOrder}
+        columnTemplate={columnTemplate}
+        handleTouchEnd={handleTouchEnd}
+        handleTouchMove={handleTouchMove}
+        handleTouchStart={handleTouchStart}
+        rows={rows}
+        scrollLeftPosition={scrollLeftPosition}
+        width={bodyInnerWidth}
+      />
     </div>
+    <HorizontalScroll
+      handleScroll={handleScroll}
+      left={scrollLeftOffset}
+      maxBodyWidth={maxBodyWidth}
+      width={scrollLeftWidth}
+    />
   </div>
 );
 
+Table.defaultProps = {
+  bodyInnerWidth: 'auto',
+  bodyWidth: 'auto',
+};
+
 Table.propTypes = {
+  bodyInnerWidth: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   bodyRef: PropTypes.shape({}).isRequired,
+  bodyWidth: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       contentAlign: PropTypes.string,
@@ -75,12 +115,19 @@ Table.propTypes = {
     name: PropTypes.string,
     width: PropTypes.string,
   }).isRequired,
-  firstColumnRef: PropTypes.shape({}).isRequired,
   handleScroll: PropTypes.func.isRequired,
+  handleTouchEnd: PropTypes.func.isRequired,
+  handleTouchMove: PropTypes.func.isRequired,
+  handleTouchStart: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,
+  maxBodyWidth: PropTypes.number.isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,
+  scrollLeftOffset: PropTypes.number.isRequired,
+  scrollLeftPosition: PropTypes.number.isRequired,
+  scrollLeftWidth: PropTypes.number.isRequired,
+  tableHeaderRef: PropTypes.shape({}).isRequired,
   tableRef: PropTypes.shape({}).isRequired,
 };
 

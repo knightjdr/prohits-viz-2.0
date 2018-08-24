@@ -1,37 +1,63 @@
 @import 'style/reset';
 
 .table {
-  display: flex;
   width: 100%;
 }
 .table__body {
   border-bottom: 1px solid #ccc;
-  display: grid;
-  grid-row-gap: 10px;
+  border-top: 1px solid #ccc;
+  display: flex;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 10px 0 15px 0;
 }
-.table__body > div {
-  padding: 0 5px;
+.table__body-right {
+  z-index: 1;
+}
+.table__body-right-inner {
+  display: grid;
+  grid-row-gap: 10px;
+}
+.table__cell {
+  padding: 0 2px;
   text-align: center;
 }
-.table__first-column-body {
-  border-bottom: 1px solid #ccc;
+.table__cell-overflow {
+  position: relative;
+  text-align: left;
+}
+.table__cell-overflow:hover .table__cell-raw {
+  display: block;
+}
+.table__cell-clipped {
   overflow: hidden;
-  padding: 10px 0 5px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.table__first-column-body > div {
-  margin: 10px 0;
+.table__cell-raw {
+  background-color: #ffffff;
+  display: none;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 5;
 }
-.table__first-column-body > :last-child {
-  margin-bottom: 15px;
+.table__first-column {
+  z-index: 2;
+}
+.table__first-column > div {
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  padding-right: 5px;
+  padding-top: 10px;
+}
+.table__first-column > div:last-child {
+  padding-bottom: 10px;
 }
 .table__header {
   background-color: #eee;
-  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
-  display: grid;
+  display: flex;
   font-weight: bold;
   height: 48px;
 }
@@ -53,36 +79,20 @@
 .table__header-cell button > :not(:first-child) {
   margin-top: -5px;
 }
-.table__inner {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.table__inner-overflow {
-  min-width: 600px;
-}
-.table__cell {
-  position: relative;
-  text-align: left;
-}
-.table__cell:hover .table__cell-raw {
-  display: block;
-}
-.table__cell-overflow {
+.table__header-right {
+  flex-grow: 1;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
-.table__cell-raw {
-  background-color: #ffffff;
-  display: none;
-  font-weight: bold;
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: 2;
+.table__header-right-inner {
+  display: grid;
 }
-@media (max-width: 804px) {
-  .table__first-column-body {
-    border-right: 1px solid #ccc;
-  }
+.table__horizontal-scroll {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  margin-top: -1px;
+  overflow-x: auto;
+  padding: 0 1px;
+}
+.table__horizontal-scroll > div {
+  height: 1px;
 }

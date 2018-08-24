@@ -46,6 +46,7 @@ const Go = ({
             name: 'term',
             width: '20%',
           }}
+          maxBodyWidth={600}
           rows={results.terms}
         />
         <div className="visualization__go-annotation">

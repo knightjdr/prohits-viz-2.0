@@ -8,21 +8,29 @@ import './table.css';
 const Header = ({
   columns,
   columnTemplate,
+  scrollLeftPosition,
+  tableHeaderRef,
 }) => (
   <div
-    className="table__header"
-    style={{
-      gridTemplateColumns: columnTemplate,
-    }}
+    className="table__header-right"
+    ref={tableHeaderRef}
   >
-    {
-      columns.map(column => (
-        <HeaderCell
-          cell={column}
-          key={column.name}
-        />
-      ))
-    }
+    <div
+      className="table__header-right-inner"
+      style={{
+        gridTemplateColumns: columnTemplate,
+        transform: `translate(${scrollLeftPosition}px)`,
+      }}
+    >
+      {
+        columns.map(column => (
+          <HeaderCell
+            cell={column}
+            key={column.name}
+          />
+        ))
+      }
+    </div>
   </div>
 );
 
@@ -36,6 +44,8 @@ Header.propTypes = {
     }),
   ).isRequired,
   columnTemplate: PropTypes.string.isRequired,
+  scrollLeftPosition: PropTypes.number.isRequired,
+  tableHeaderRef: PropTypes.shape({}).isRequired,
 };
 
 export default Header;

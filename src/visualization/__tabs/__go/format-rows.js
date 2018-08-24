@@ -30,7 +30,7 @@ const FormatRows = results => ({
         style: termFormat.style,
       },
       termID: {
-        className: 'table__cell-overflow',
+        className: 'table__cell-clipped',
         content: link(term.termID, term.source),
       },
     });

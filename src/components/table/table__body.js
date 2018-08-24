@@ -3,55 +3,70 @@ import React from 'react';
 import shortId from 'shortid';
 
 const Body = ({
-  bodyRef,
   columnOrder,
   columnTemplate,
-  handleScroll,
-  height,
+  handleTouchEnd,
+  handleTouchMove,
+  handleTouchStart,
   rows,
+  scrollLeftPosition,
+  width,
 }) => (
   <div
-    className="table__body"
-    onScroll={(e) => { handleScroll(e, 'firstColumn'); }}
-    ref={bodyRef}
+    className="table__body-right"
+    onTouchEnd={handleTouchEnd}
+    onTouchMove={handleTouchMove}
+    onTouchStart={handleTouchStart}
     style={{
-      gridTemplateColumns: columnTemplate,
-      maxHeight: height,
+      width,
     }}
   >
-    {
-      rows.map((row, rowNo) => (
-        columnOrder.map((name, columnNo) => (
-          <div
-            className={row[name].className}
-            key={shortId.generate()}
-            style={{
-              ...{
-                gridColumn: columnNo + 1,
-                gridRow: rowNo + 2,
-              },
-              ...row[name].style,
-            }}
-          >
-            { row[name].content }
-          </div>
+    <div
+      className="table__body-right-inner"
+      style={{
+        gridTemplateColumns: columnTemplate,
+        transform: `translate(${scrollLeftPosition}px)`,
+      }}
+    >
+      {
+        rows.map((row, rowNo) => (
+          columnOrder.map((name, columnNo) => (
+            <div
+              className={`table__cell ${row[name].className}`}
+              key={shortId.generate()}
+              style={{
+                ...{
+                  gridColumn: columnNo + 1,
+                  gridRow: rowNo + 2,
+                },
+                ...row[name].style,
+              }}
+            >
+              { row[name].content }
+            </div>
+          ))
         ))
-      ))
-    }
+      }
+    </div>
   </div>
 );
 
 Body.propTypes = {
-  bodyRef: PropTypes.shape({}).isRequired,
   columnOrder: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
   columnTemplate: PropTypes.string.isRequired,
-  handleScroll: PropTypes.func.isRequired,
-  height: PropTypes.number.isRequired,
+  handleTouchEnd: PropTypes.func.isRequired,
+  handleTouchMove: PropTypes.func.isRequired,
+  handleTouchStart: PropTypes.func.isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,
+  scrollLeftPosition: PropTypes.number.isRequired,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 export default Body;
