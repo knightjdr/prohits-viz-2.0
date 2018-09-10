@@ -3,13 +3,13 @@ import { shallow } from 'enzyme';
 
 import { AnnotationContainer } from './panel__annotation-container';
 
-const addAnnotation = jest.fn();
+const placeAnnotation = jest.fn();
 const setAnnotationColor = jest.fn();
 const setMarkerColor = jest.fn();
 
 beforeEach(() => {
   /* Clear call count */
-  addAnnotation.mockClear();
+  placeAnnotation.mockClear();
   setAnnotationColor.mockClear();
   setMarkerColor.mockClear();
 });
@@ -20,7 +20,6 @@ describe('Annotation container', () => {
   beforeAll(() => {
     wrapper = shallow(
       <AnnotationContainer
-        addAnnotation={addAnnotation}
         annotations={{
           color: '#ff0000',
           fontSize: 12,
@@ -42,6 +41,7 @@ describe('Annotation container', () => {
           record: false,
           show: true,
         }}
+        placeAnnotation={placeAnnotation}
         position={{
           x: 10,
           y: 10,
@@ -72,7 +72,7 @@ describe('Annotation container', () => {
   it('should call add annotation prop method via component method', () => {
     wrapper.setState({ annotation: 'test annotation' });
     wrapper.instance().addAnnotation();
-    expect(addAnnotation).toHaveBeenCalledWith('test annotation', 0.45, 0.45);
+    expect(placeAnnotation).toHaveBeenCalledWith('test annotation');
   });
 
   it('should close annotation color picker', () => {

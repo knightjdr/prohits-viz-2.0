@@ -1,5 +1,7 @@
 import DeepCopy from '../../../helpers/deep-copy';
 
+import Round from '../../../helpers/round';
+
 export const ADD_ANNOTATION = 'ADD_ANNOTATION';
 export const CLEAR_ALL_ANNOTATIONS = 'CLEAR_ALL_ANNOTATIONS';
 export const CLEAR_LAST_ANNOTATION = 'CLEAR_LAST_ANNOTATION';
@@ -41,6 +43,15 @@ export const updateAnnotation = list => ({
   list,
   type: UPDATE_ANNOTATION,
 });
+
+export const placeAnnotation = text => (
+  (dispatch, getState) => {
+    const { dimensions, position } = getState();
+    const x = Round((position.x + (dimensions.pageX / 2)) / dimensions.columns, 2);
+    const y = Round((position.y + (dimensions.pageY / 2)) / dimensions.rows, 2);
+    dispatch(addAnnotation(text, x, y));
+  }
+);
 
 export const updateList = (index, x, y) => (
   (dispatch, getState) => {

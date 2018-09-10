@@ -8,6 +8,6 @@ exports[`Analysis panel should render 1`] = `
   <div
     className="panel__border"
   />
-  <AnalysisOptionsContainer />
+  <Connect(AnalysisOptionsContainer) />
 </div>
 `;

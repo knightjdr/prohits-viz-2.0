@@ -1,0 +1,1300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analysis GO options advanced sub panel should match snapshot 1`] = `
+<div>
+  <div
+    className="analysis-option__label"
+  >
+    Organism
+  </div>
+  <Select
+    choiceTransitionName="zoom"
+    filterOption={[Function]}
+    onChange={[Function]}
+    placeholder="Organism..."
+    prefixCls="ant-select"
+    showSearch={true}
+    transitionName="slide-up"
+    value="hsapiens"
+  >
+    <Option
+      key="apisum"
+      value="apisum"
+    >
+      Acyrthosiphon pisum
+    </Option>
+    <Option
+      key="aaegypti"
+      value="aaegypti"
+    >
+      Aedes aegypti
+    </Option>
+    <Option
+      key="atauschii"
+      value="atauschii"
+    >
+      Aegilops tauschii
+    </Option>
+    <Option
+      key="amelanoleuca"
+      value="amelanoleuca"
+    >
+      Ailuropoda melanoleuca
+    </Option>
+    <Option
+      key="atrichopoda"
+      value="atrichopoda"
+    >
+      Amborella trichopoda
+    </Option>
+    <Option
+      key="aqueenslandica"
+      value="aqueenslandica"
+    >
+      Amphimedon queenslandica
+    </Option>
+    <Option
+      key="aplatyrhynchos"
+      value="aplatyrhynchos"
+    >
+      Anas platyrhynchos
+    </Option>
+    <Option
+      key="acarolinensis"
+      value="acarolinensis"
+    >
+      Anolis carolinensis
+    </Option>
+    <Option
+      key="adarlingi"
+      value="adarlingi"
+    >
+      Anopheles darlingi
+    </Option>
+    <Option
+      key="agambiae"
+      value="agambiae"
+    >
+      Anopheles gambiae
+    </Option>
+    <Option
+      key="amellifera"
+      value="amellifera"
+    >
+      Apis mellifera
+    </Option>
+    <Option
+      key="alyrata"
+      value="alyrata"
+    >
+      Arabidopsis lyrata
+    </Option>
+    <Option
+      key="athaliana"
+      value="athaliana"
+    >
+      Arabidopsis thaliana
+    </Option>
+    <Option
+      key="agossypii"
+      value="agossypii"
+    >
+      Ashbya gossypii
+    </Option>
+    <Option
+      key="aclavatus"
+      value="aclavatus"
+    >
+      Aspergillus clavatus
+    </Option>
+    <Option
+      key="aflavus"
+      value="aflavus"
+    >
+      Aspergillus flavus
+    </Option>
+    <Option
+      key="afumigatus"
+      value="afumigatus"
+    >
+      Aspergillus fumigatus
+    </Option>
+    <Option
+      key="afumigatusa1163"
+      value="afumigatusa1163"
+    >
+      Aspergillus fumigatusa1163
+    </Option>
+    <Option
+      key="anidulans"
+      value="anidulans"
+    >
+      Aspergillus nidulans
+    </Option>
+    <Option
+      key="aniger"
+      value="aniger"
+    >
+      Aspergillus niger
+    </Option>
+    <Option
+      key="aoryzae"
+      value="aoryzae"
+    >
+      Aspergillus oryzae
+    </Option>
+    <Option
+      key="aterreus"
+      value="aterreus"
+    >
+      Aspergillus terreus
+    </Option>
+    <Option
+      key="amexicanus"
+      value="amexicanus"
+    >
+      Astyanax mexicanus
+    </Option>
+    <Option
+      key="acephalotes"
+      value="acephalotes"
+    >
+      Atta cephalotes
+    </Option>
+    <Option
+      key="bgraminis"
+      value="bgraminis"
+    >
+      Blumeria graminis f. sp. hordei DH14
+    </Option>
+    <Option
+      key="bmori"
+      value="bmori"
+    >
+      Bombyx mori
+    </Option>
+    <Option
+      key="btaurus"
+      value="btaurus"
+    >
+      Bos taurus
+    </Option>
+    <Option
+      key="bcinerea"
+      value="bcinerea"
+    >
+      Botrytis cinerea
+    </Option>
+    <Option
+      key="bdistachyon"
+      value="bdistachyon"
+    >
+      Brachypodium distachyon
+    </Option>
+    <Option
+      key="boleracea"
+      value="boleracea"
+    >
+      Brassica oleracea
+    </Option>
+    <Option
+      key="brapa"
+      value="brapa"
+    >
+      Brassica rapa
+    </Option>
+    <Option
+      key="bmalayi"
+      value="bmalayi"
+    >
+      Brugia malayi
+    </Option>
+    <Option
+      key="cbrenneri"
+      value="cbrenneri"
+    >
+      Caenorhabditis brenneri
+    </Option>
+    <Option
+      key="cbriggsae"
+      value="cbriggsae"
+    >
+      Caenorhabditis briggsae
+    </Option>
+    <Option
+      key="celegans"
+      value="celegans"
+    >
+      Caenorhabditis elegans
+    </Option>
+    <Option
+      key="cjaponica"
+      value="cjaponica"
+    >
+      Caenorhabditis japonica
+    </Option>
+    <Option
+      key="cremanei"
+      value="cremanei"
+    >
+      Caenorhabditis remanei
+    </Option>
+    <Option
+      key="cjacchus"
+      value="cjacchus"
+    >
+      Callithrix jacchus
+    </Option>
+    <Option
+      key="cfamiliaris"
+      value="cfamiliaris"
+    >
+      Canis familiaris
+    </Option>
+    <Option
+      key="cteleta"
+      value="cteleta"
+    >
+      Capitella teleta
+    </Option>
+    <Option
+      key="cporcellus"
+      value="cporcellus"
+    >
+      Cavia porcellus
+    </Option>
+    <Option
+      key="creinhardtii"
+      value="creinhardtii"
+    >
+      Chlamydomonas reinhardtii
+    </Option>
+    <Option
+      key="csabaeus"
+      value="csabaeus"
+    >
+      Chlorocebus sabaeus
+    </Option>
+    <Option
+      key="choffmanni"
+      value="choffmanni"
+    >
+      Choloepus hoffmanni
+    </Option>
+    <Option
+      key="cintestinalis"
+      value="cintestinalis"
+    >
+      Ciona intestinalis
+    </Option>
+    <Option
+      key="csavignyi"
+      value="csavignyi"
+    >
+      Ciona savignyi
+    </Option>
+    <Option
+      key="cgloeosporioides"
+      value="cgloeosporioides"
+    >
+      Colletotrichum gloeosporioides
+    </Option>
+    <Option
+      key="cgraminicola"
+      value="cgraminicola"
+    >
+      Colletotrichum graminicola
+    </Option>
+    <Option
+      key="chigginsianum"
+      value="chigginsianum"
+    >
+      Colletotrichum higginsianum
+    </Option>
+    <Option
+      key="corbiculare"
+      value="corbiculare"
+    >
+      Colletotrichum orbiculare
+    </Option>
+    <Option
+      key="cgigas"
+      value="cgigas"
+    >
+      Crassostrea gigas
+    </Option>
+    <Option
+      key="cneoformans"
+      value="cneoformans"
+    >
+      Cryptococcus neoformans
+    </Option>
+    <Option
+      key="cquinquefasciatus"
+      value="cquinquefasciatus"
+    >
+      Culex quinquefasciatus
+    </Option>
+    <Option
+      key="cmerolae"
+      value="cmerolae"
+    >
+      Cyanidioschyzon merolae
+    </Option>
+    <Option
+      key="dplexippus"
+      value="dplexippus"
+    >
+      Danaus plexippus
+    </Option>
+    <Option
+      key="drerio"
+      value="drerio"
+    >
+      Danio rerio
+    </Option>
+    <Option
+      key="dpulex"
+      value="dpulex"
+    >
+      Daphnia pulex
+    </Option>
+    <Option
+      key="dnovemcinctus"
+      value="dnovemcinctus"
+    >
+      Dasypus novemcinctus
+    </Option>
+    <Option
+      key="dponderosae"
+      value="dponderosae"
+    >
+      Dendroctonus ponderosae
+    </Option>
+    <Option
+      key="dordii"
+      value="dordii"
+    >
+      Dipodomys ordii
+    </Option>
+    <Option
+      key="dseptosporum"
+      value="dseptosporum"
+    >
+      Dothistroma septosporum
+    </Option>
+    <Option
+      key="dananassae"
+      value="dananassae"
+    >
+      Drosophila ananassae
+    </Option>
+    <Option
+      key="derecta"
+      value="derecta"
+    >
+      Drosophila erecta
+    </Option>
+    <Option
+      key="dgrimshawi"
+      value="dgrimshawi"
+    >
+      Drosophila grimshawi
+    </Option>
+    <Option
+      key="dmelanogaster"
+      value="dmelanogaster"
+    >
+      Drosophila melanogaster
+    </Option>
+    <Option
+      key="dmojavensis"
+      value="dmojavensis"
+    >
+      Drosophila mojavensis
+    </Option>
+    <Option
+      key="dpersimilis"
+      value="dpersimilis"
+    >
+      Drosophila persimilis
+    </Option>
+    <Option
+      key="dpseudoobscura"
+      value="dpseudoobscura"
+    >
+      Drosophila pseudoobscura
+    </Option>
+    <Option
+      key="dsechellia"
+      value="dsechellia"
+    >
+      Drosophila sechellia
+    </Option>
+    <Option
+      key="dsimulans"
+      value="dsimulans"
+    >
+      Drosophila simulans
+    </Option>
+    <Option
+      key="dvirilis"
+      value="dvirilis"
+    >
+      Drosophila virilis
+    </Option>
+    <Option
+      key="dwillistoni"
+      value="dwillistoni"
+    >
+      Drosophila willistoni
+    </Option>
+    <Option
+      key="dyakuba"
+      value="dyakuba"
+    >
+      Drosophila yakuba
+    </Option>
+    <Option
+      key="etelfairi"
+      value="etelfairi"
+    >
+      Echinops telfairi
+    </Option>
+    <Option
+      key="ecaballus"
+      value="ecaballus"
+    >
+      Equus caballus
+    </Option>
+    <Option
+      key="eeuropaeus"
+      value="eeuropaeus"
+    >
+      Erinaceus europaeus
+    </Option>
+    <Option
+      key="fcatus"
+      value="fcatus"
+    >
+      Felis catus
+    </Option>
+    <Option
+      key="falbicollis"
+      value="falbicollis"
+    >
+      Ficedula albicollis
+    </Option>
+    <Option
+      key="ffujikuroi"
+      value="ffujikuroi"
+    >
+      Fusarium fujikuroi
+    </Option>
+    <Option
+      key="fgraminearum"
+      value="fgraminearum"
+    >
+      Fusarium graminearum
+    </Option>
+    <Option
+      key="foxysporum"
+      value="foxysporum"
+    >
+      Fusarium oxysporum
+    </Option>
+    <Option
+      key="fpseudograminearum"
+      value="fpseudograminearum"
+    >
+      Fusarium pseudograminearum
+    </Option>
+    <Option
+      key="fsolani"
+      value="fsolani"
+    >
+      Fusarium solani
+    </Option>
+    <Option
+      key="fverticillioides"
+      value="fverticillioides"
+    >
+      Fusarium verticillioides
+    </Option>
+    <Option
+      key="gmorhua"
+      value="gmorhua"
+    >
+      Gadus morhua
+    </Option>
+    <Option
+      key="ggraminis"
+      value="ggraminis"
+    >
+      Gaeumannomyces graminis
+    </Option>
+    <Option
+      key="ggallus"
+      value="ggallus"
+    >
+      Gallus gallus
+    </Option>
+    <Option
+      key="gaculeatus"
+      value="gaculeatus"
+    >
+      Gasterosteus aculeatus
+    </Option>
+    <Option
+      key="gmax"
+      value="gmax"
+    >
+      Glycine max
+    </Option>
+    <Option
+      key="ggorilla"
+      value="ggorilla"
+    >
+      Gorilla gorilla
+    </Option>
+    <Option
+      key="hmelpomene"
+      value="hmelpomene"
+    >
+      Heliconius melpomene
+    </Option>
+    <Option
+      key="hrobusta"
+      value="hrobusta"
+    >
+      Helobdella robusta
+    </Option>
+    <Option
+      key="hsapiens"
+      value="hsapiens"
+    >
+      Homo sapiens
+    </Option>
+    <Option
+      key="hvulgare"
+      value="hvulgare"
+    >
+      Hordeum vulgare
+    </Option>
+    <Option
+      key="itridecemlineatus"
+      value="itridecemlineatus"
+    >
+      Ictidomys tridecemlineatus
+    </Option>
+    <Option
+      key="iscapularis"
+      value="iscapularis"
+    >
+      Ixodes scapularis
+    </Option>
+    <Option
+      key="kpastoris"
+      value="kpastoris"
+    >
+      Komagataella pastoris
+    </Option>
+    <Option
+      key="lchalumnae"
+      value="lchalumnae"
+    >
+      Latimeria chalumnae
+    </Option>
+    <Option
+      key="lperrieri"
+      value="lperrieri"
+    >
+      Leersia perrieri
+    </Option>
+    <Option
+      key="loculatus"
+      value="loculatus"
+    >
+      Lepisosteus oculatus
+    </Option>
+    <Option
+      key="lmaculans"
+      value="lmaculans"
+    >
+      Leptosphaeria maculans
+    </Option>
+    <Option
+      key="lloa"
+      value="lloa"
+    >
+      Loa loa
+    </Option>
+    <Option
+      key="lgigantea"
+      value="lgigantea"
+    >
+      Lottia gigantea
+    </Option>
+    <Option
+      key="lafricana"
+      value="lafricana"
+    >
+      Loxodonta africana
+    </Option>
+    <Option
+      key="mmulatta"
+      value="mmulatta"
+    >
+      Macaca mulatta
+    </Option>
+    <Option
+      key="meugenii"
+      value="meugenii"
+    >
+      Macropus eugenii
+    </Option>
+    <Option
+      key="moryzae"
+      value="moryzae"
+    >
+      Magnaporthe oryzae
+    </Option>
+    <Option
+      key="mpoae"
+      value="mpoae"
+    >
+      Magnaporthe poae
+    </Option>
+    <Option
+      key="mtruncatula"
+      value="mtruncatula"
+    >
+      Medicago truncatula
+    </Option>
+    <Option
+      key="mscalaris"
+      value="mscalaris"
+    >
+      Megaselia scalaris
+    </Option>
+    <Option
+      key="mlaricipopulina"
+      value="mlaricipopulina"
+    >
+      Melampsora larici-populina 98AG31
+    </Option>
+    <Option
+      key="mgallopavo"
+      value="mgallopavo"
+    >
+      Meleagris gallopavo
+    </Option>
+    <Option
+      key="mcinxia"
+      value="mcinxia"
+    >
+      Melitaea cinxia
+    </Option>
+    <Option
+      key="mviolaceum"
+      value="mviolaceum"
+    >
+      Microbotryum violaceum p1A1 Lamole
+    </Option>
+    <Option
+      key="mmurinus"
+      value="mmurinus"
+    >
+      Microcebus murinus
+    </Option>
+    <Option
+      key="mleidyi"
+      value="mleidyi"
+    >
+      Mnemiopsis leidyi
+    </Option>
+    <Option
+      key="mdomestica"
+      value="mdomestica"
+    >
+      Monodelphis domestica
+    </Option>
+    <Option
+      key="mmusculus"
+      value="mmusculus"
+    >
+      Mus musculus
+    </Option>
+    <Option
+      key="macuminata"
+      value="macuminata"
+    >
+      Musa acuminata
+    </Option>
+    <Option
+      key="mfuro"
+      value="mfuro"
+    >
+      Mustela putorius furo
+    </Option>
+    <Option
+      key="mlucifugus"
+      value="mlucifugus"
+    >
+      Myotis lucifugus
+    </Option>
+    <Option
+      key="nvitripennis"
+      value="nvitripennis"
+    >
+      Nasonia vitripennis
+    </Option>
+    <Option
+      key="nvectensis"
+      value="nvectensis"
+    >
+      Nematostella vectensis
+    </Option>
+    <Option
+      key="nfischeri"
+      value="nfischeri"
+    >
+      Neosartorya fischeri
+    </Option>
+    <Option
+      key="ncrassa"
+      value="ncrassa"
+    >
+      Neurospora crassa
+    </Option>
+    <Option
+      key="nleucogenys"
+      value="nleucogenys"
+    >
+      Nomascus leucogenys
+    </Option>
+    <Option
+      key="oprinceps"
+      value="oprinceps"
+    >
+      Ochotona princeps
+    </Option>
+    <Option
+      key="ovolvulus"
+      value="ovolvulus"
+    >
+      Onchocerca volvulus
+    </Option>
+    <Option
+      key="oniloticus"
+      value="oniloticus"
+    >
+      Oreochromis niloticus
+    </Option>
+    <Option
+      key="oanatinus"
+      value="oanatinus"
+    >
+      Ornithorhynchus anatinus
+    </Option>
+    <Option
+      key="ocuniculus"
+      value="ocuniculus"
+    >
+      Oryctolagus cuniculus
+    </Option>
+    <Option
+      key="obarthii"
+      value="obarthii"
+    >
+      Oryza barthii
+    </Option>
+    <Option
+      key="obrachyantha"
+      value="obrachyantha"
+    >
+      Oryza brachyantha
+    </Option>
+    <Option
+      key="oglaberrima"
+      value="oglaberrima"
+    >
+      Oryza glaberrima
+    </Option>
+    <Option
+      key="oglumaepatula"
+      value="oglumaepatula"
+    >
+      Oryza glumaepatula
+    </Option>
+    <Option
+      key="olongistaminata"
+      value="olongistaminata"
+    >
+      Oryza longistaminata
+    </Option>
+    <Option
+      key="omeridionalis"
+      value="omeridionalis"
+    >
+      Oryza meridionalis
+    </Option>
+    <Option
+      key="onivara"
+      value="onivara"
+    >
+      Oryza nivara
+    </Option>
+    <Option
+      key="opunctata"
+      value="opunctata"
+    >
+      Oryza punctata
+    </Option>
+    <Option
+      key="orufipogon"
+      value="orufipogon"
+    >
+      Oryza rufipogon
+    </Option>
+    <Option
+      key="osativa"
+      value="osativa"
+    >
+      Oryza sativa Japonica
+    </Option>
+    <Option
+      key="oindica"
+      value="oindica"
+    >
+      Oryza sativa indica
+    </Option>
+    <Option
+      key="olatipes"
+      value="olatipes"
+    >
+      Oryzias latipes
+    </Option>
+    <Option
+      key="olucimarinus"
+      value="olucimarinus"
+    >
+      Ostreococcus lucimarinus
+    </Option>
+    <Option
+      key="ogarnettii"
+      value="ogarnettii"
+    >
+      Otolemur garnettii
+    </Option>
+    <Option
+      key="oaries"
+      value="oaries"
+    >
+      Ovis aries
+    </Option>
+    <Option
+      key="ptroglodytes"
+      value="ptroglodytes"
+    >
+      Pan troglodytes
+    </Option>
+    <Option
+      key="panubis"
+      value="panubis"
+    >
+      Papio anubis
+    </Option>
+    <Option
+      key="phumanus"
+      value="phumanus"
+    >
+      Pediculus humanus
+    </Option>
+    <Option
+      key="psinensis"
+      value="psinensis"
+    >
+      Pelodiscus sinensis
+    </Option>
+    <Option
+      key="pmarinus"
+      value="pmarinus"
+    >
+      Petromyzon marinus
+    </Option>
+    <Option
+      key="pnodorum"
+      value="pnodorum"
+    >
+      Phaeosphaeria nodorum
+    </Option>
+    <Option
+      key="ppatens"
+      value="ppatens"
+    >
+      Physcomitrella patens
+    </Option>
+    <Option
+      key="pformosa"
+      value="pformosa"
+    >
+      Poecilia formosa
+    </Option>
+    <Option
+      key="pabelii"
+      value="pabelii"
+    >
+      Pongo abelii
+    </Option>
+    <Option
+      key="ptrichocarpa"
+      value="ptrichocarpa"
+    >
+      Populus trichocarpa
+    </Option>
+    <Option
+      key="ppacificus"
+      value="ppacificus"
+    >
+      Pristionchus pacificus
+    </Option>
+    <Option
+      key="pcapensis"
+      value="pcapensis"
+    >
+      Procavia capensis
+    </Option>
+    <Option
+      key="ppersica"
+      value="ppersica"
+    >
+      Prunus persica
+    </Option>
+    <Option
+      key="pvampyrus"
+      value="pvampyrus"
+    >
+      Pteropus vampyrus
+    </Option>
+    <Option
+      key="pgraminisug99"
+      value="pgraminisug99"
+    >
+      Puccinia graminis Ug99
+    </Option>
+    <Option
+      key="pgraminis"
+      value="pgraminis"
+    >
+      Puccinia graminis
+    </Option>
+    <Option
+      key="ptriticina"
+      value="ptriticina"
+    >
+      Puccinia triticina
+    </Option>
+    <Option
+      key="pteres"
+      value="pteres"
+    >
+      Pyrenophora teres f. teres 0-1
+    </Option>
+    <Option
+      key="ptriticirepentis"
+      value="ptriticirepentis"
+    >
+      Pyrenophora tritici-repentis Pt-1C-BFP
+    </Option>
+    <Option
+      key="rnorvegicus"
+      value="rnorvegicus"
+    >
+      Rattus norvegicus
+    </Option>
+    <Option
+      key="rprolixus"
+      value="rprolixus"
+    >
+      Rhodnius prolixus
+    </Option>
+    <Option
+      key="scerevisiae"
+      value="scerevisiae"
+    >
+      Saccharomyces cerevisiae
+    </Option>
+    <Option
+      key="sharrisii"
+      value="sharrisii"
+    >
+      Sarcophilus harrisii
+    </Option>
+    <Option
+      key="smansoni"
+      value="smansoni"
+    >
+      Schistosoma mansoni
+    </Option>
+    <Option
+      key="scryophilus"
+      value="scryophilus"
+    >
+      Schizosaccharomyces cryophilus
+    </Option>
+    <Option
+      key="sjaponicus"
+      value="sjaponicus"
+    >
+      Schizosaccharomyces japonicus
+    </Option>
+    <Option
+      key="soctosporus"
+      value="soctosporus"
+    >
+      Schizosaccharomyces octosporus
+    </Option>
+    <Option
+      key="spombe"
+      value="spombe"
+    >
+      Schizosaccharomyces pombe
+    </Option>
+    <Option
+      key="ssclerotiorum"
+      value="ssclerotiorum"
+    >
+      Sclerotinia sclerotiorum
+    </Option>
+    <Option
+      key="smoellendorffii"
+      value="smoellendorffii"
+    >
+      Selaginella moellendorffii
+    </Option>
+    <Option
+      key="sitalica"
+      value="sitalica"
+    >
+      Setaria italica
+    </Option>
+    <Option
+      key="slycopersicum"
+      value="slycopersicum"
+    >
+      Solanum lycopersicum
+    </Option>
+    <Option
+      key="stuberosum"
+      value="stuberosum"
+    >
+      Solanum tuberosum
+    </Option>
+    <Option
+      key="sinvicta"
+      value="sinvicta"
+    >
+      Solenopsis invicta
+    </Option>
+    <Option
+      key="saraneus"
+      value="saraneus"
+    >
+      Sorex araneus
+    </Option>
+    <Option
+      key="sbicolor"
+      value="sbicolor"
+    >
+      Sorghum bicolor
+    </Option>
+    <Option
+      key="sreilianum"
+      value="sreilianum"
+    >
+      Sporisorium reilianum SRZ2
+    </Option>
+    <Option
+      key="smaritima"
+      value="smaritima"
+    >
+      Strigamia maritima
+    </Option>
+    <Option
+      key="spurpuratus"
+      value="spurpuratus"
+    >
+      Strongylocentrotus purpuratus
+    </Option>
+    <Option
+      key="sscrofa"
+      value="sscrofa"
+    >
+      Sus scrofa
+    </Option>
+    <Option
+      key="tguttata"
+      value="tguttata"
+    >
+      Taeniopygia guttata
+    </Option>
+    <Option
+      key="trubripes"
+      value="trubripes"
+    >
+      Takifugu rubripes
+    </Option>
+    <Option
+      key="tsyrichta"
+      value="tsyrichta"
+    >
+      Tarsius syrichta
+    </Option>
+    <Option
+      key="turticae"
+      value="turticae"
+    >
+      Tetranychus urticae
+    </Option>
+    <Option
+      key="tnigroviridis"
+      value="tnigroviridis"
+    >
+      Tetraodon nigroviridis
+    </Option>
+    <Option
+      key="tcacao"
+      value="tcacao"
+    >
+      Theobroma cacao
+    </Option>
+    <Option
+      key="tcastaneum"
+      value="tcastaneum"
+    >
+      Tribolium castaneum
+    </Option>
+    <Option
+      key="tspiralis"
+      value="tspiralis"
+    >
+      Trichinella spiralis
+    </Option>
+    <Option
+      key="treesei"
+      value="treesei"
+    >
+      Trichoderma reesei
+    </Option>
+    <Option
+      key="tvirens"
+      value="tvirens"
+    >
+      Trichoderma virens
+    </Option>
+    <Option
+      key="tadhaerens"
+      value="tadhaerens"
+    >
+      Trichoplax adhaerens
+    </Option>
+    <Option
+      key="taestivum"
+      value="taestivum"
+    >
+      Triticum aestivum
+    </Option>
+    <Option
+      key="turartu"
+      value="turartu"
+    >
+      Triticum urartu
+    </Option>
+    <Option
+      key="tmelanosporum"
+      value="tmelanosporum"
+    >
+      Tuber melanosporum
+    </Option>
+    <Option
+      key="tbelangeri"
+      value="tbelangeri"
+    >
+      Tupaia belangeri
+    </Option>
+    <Option
+      key="ttruncatus"
+      value="ttruncatus"
+    >
+      Tursiops truncatus
+    </Option>
+    <Option
+      key="umaydis"
+      value="umaydis"
+    >
+      Ustilago maydis
+    </Option>
+    <Option
+      key="vdahliaejr2"
+      value="vdahliaejr2"
+    >
+      Verticillium dahliae JR2
+    </Option>
+    <Option
+      key="vdahliae"
+      value="vdahliae"
+    >
+      Verticillium dahliae
+    </Option>
+    <Option
+      key="vpacos"
+      value="vpacos"
+    >
+      Vicugna pacos
+    </Option>
+    <Option
+      key="vvinifera"
+      value="vvinifera"
+    >
+      Vitis vinifera
+    </Option>
+    <Option
+      key="xtropicalis"
+      value="xtropicalis"
+    >
+      Xenopus tropicalis
+    </Option>
+    <Option
+      key="xmaculatus"
+      value="xmaculatus"
+    >
+      Xiphophorus maculatus
+    </Option>
+    <Option
+      key="ylipolytica"
+      value="ylipolytica"
+    >
+      Yarrowia lipolytica
+    </Option>
+    <Option
+      key="zmays"
+      value="zmays"
+    >
+      Zea mays
+    </Option>
+    <Option
+      key="znevadensis"
+      value="znevadensis"
+    >
+      Zootermopsis nevadensis
+    </Option>
+    <Option
+      key="ztritici"
+      value="ztritici"
+    >
+      Zymoseptoria tritici
+    </Option>
+  </Select>
+</div>
+`;

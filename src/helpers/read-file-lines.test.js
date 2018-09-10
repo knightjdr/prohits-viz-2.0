@@ -1,4 +1,4 @@
-import TextEnconding from 'text-encoding';
+import TextEnconding from '../components/text-encoding/encoding';
 import ReadFileLines from './read-file-lines';
 
 const err = {
@@ -23,10 +23,6 @@ afterAll(() => {
 });
 
 describe('ReadFileLines', () => {
-  beforeEach(() => {
-    jest.unmock('text-encoding');
-  });
-
   test('No input types rejects', () => (
     ReadFileLines()
       .catch((error) => {

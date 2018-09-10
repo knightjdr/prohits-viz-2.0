@@ -44,8 +44,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "shortid": "^2.2.11",
-    "socket.io-client": "^2.1.1",
-    "text-encoding": "^0.6.4"
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
     "build-js": "react-app-rewired build",
@@ -88,6 +87,7 @@
       "!src/registerServiceWorker.js",
       "!src/setupTests.js",
       "!src/state/test-state/*",
+      "!src/components/text-encoding/*",
       "!src/visualization/test-files/*"
     ],
     "moduleNameMapper": {

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Round button component with default props should match snapshot 1`] = `
+<button
+  className="round-button"
+  onClick={[Function]}
+  type="button"
+>
+  <FontAwesomeIcon$1
+    border={false}
+    className=""
+    fixedWidth={false}
+    flip={null}
+    icon={Object {}}
+    listItem={false}
+    mask={null}
+    name=""
+    pull={null}
+    pulse={false}
+    rotation={null}
+    size="lg"
+    spin={false}
+    symbol={false}
+    transform={null}
+  />
+</button>
+`;

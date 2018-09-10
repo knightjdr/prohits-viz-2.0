@@ -4,15 +4,12 @@ import { connect } from 'react-redux';
 
 import Annotation from './panel__annotation';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
-import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import Round from '../../../../helpers/round';
 import SearchSelector from '../../../../state/selectors/visualization/search-selector';
 import {
-  addAnnotation,
   clearAllAnnotations,
   clearLastAnnotation,
+  placeAnnotation,
   setAnnotationColor,
   setAnnotationSize,
   toggleAnnotations,
@@ -40,11 +37,7 @@ export class AnnotationContainer extends Component {
     };
   }
   addAnnotation = () => {
-    const { dimensions, position } = this.props;
-    // Center annotation in current view.
-    const x = Round((position.x + (dimensions.pageX / 2)) / dimensions.columns, 2);
-    const y = Round((position.y + (dimensions.pageY / 2)) / dimensions.rows, 2);
-    this.props.addAnnotation(this.state.annotation, x, y);
+    this.props.placeAnnotation(this.state.annotation);
   }
   closeAnnotationColorPicker = () => {
     this.setState({
@@ -120,13 +113,6 @@ AnnotationContainer.propTypes = {
     fontSize: PropTypes.number,
     show: PropTypes.bool,
   }).isRequired,
-  dimensions: PropTypes.shape({
-    columns: PropTypes.number,
-    pageX: PropTypes.number,
-    pageY: PropTypes.number,
-    rows: PropTypes.number,
-  }).isRequired,
-  addAnnotation: PropTypes.func.isRequired,
   clearAllAnnotations: PropTypes.func.isRequired,
   clearAllMarkers: PropTypes.func.isRequired,
   clearLastAnnotation: PropTypes.func.isRequired,
@@ -137,10 +123,7 @@ AnnotationContainer.propTypes = {
     record: PropTypes.bool,
     show: PropTypes.bool,
   }).isRequired,
-  position: PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number,
-  }).isRequired,
+  placeAnnotation: PropTypes.func.isRequired,
   search: PropTypes.shape({
     match: PropTypes.bool,
     search: PropTypes.bool,
@@ -159,17 +142,12 @@ AnnotationContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
-  dimensions: DimensionSelector(state),
   markers: MarkerSelector(state),
-  position: PositionSelector(state),
   search: SearchSelector(state),
 });
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  addAnnotation: (text, x, y) => {
-    dispatch(addAnnotation(text, x, y));
-  },
   clearAllAnnotations: () => {
     dispatch(clearAllAnnotations());
   },
@@ -184,6 +162,9 @@ const mapDispatchToProps = dispatch => ({
   },
   clearSearch: () => {
     dispatch(clearSearch());
+  },
+  placeAnnotation: (text) => {
+    dispatch(placeAnnotation(text));
   },
   searchGenes: (term) => {
     dispatch(searchGenes(term));

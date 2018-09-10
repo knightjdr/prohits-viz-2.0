@@ -6,7 +6,7 @@ import { faInfoCircle } from '@fortawesome/pro-solid-svg-icons';
 
 import Advanced from './options-go__advanced';
 import Database from './options-go__db';
-import Orgnaism from './options-go__organism';
+import Organism from './options-go__organism';
 
 const Go = ({
   form,
@@ -31,7 +31,7 @@ const Go = ({
         </a>. Please see their help for descriptions of the options below.
       </span>
     </div>
-    <Orgnaism
+    <Organism
       handleSelect={handleSelect}
       organism={form.organism}
     />

@@ -6,7 +6,7 @@ import Species from './species';
 
 const { Option } = Select;
 
-const filterSpecies = (input, option) => (
+export const filterSpecies = (input, option) => (
   option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 );
 

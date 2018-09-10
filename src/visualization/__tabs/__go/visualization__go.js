@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { faFileExport } from '@fortawesome/pro-solid-svg-icons';
 
-import Annotation from '../__annotation/visualization__annotation';
+import Annotation from '../__annotation/visualization__annotation-container';
 import Button from '../../../components/button/button';
 import Columns from './columns';
 import Running from '../__running/visualization__running';
@@ -53,7 +53,7 @@ const Go = ({
           <Annotation />
           <Button
             className="visualization__go-annotation-button"
-            handleClick={handleExport}
+            onClick={handleExport}
             type="success"
           >
             <FontAwesomeIcon icon={faFileExport} />

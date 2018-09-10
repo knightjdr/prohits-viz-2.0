@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Select } from 'antd';
 
+import Button from '../../../../../components/button/button';
 import Options from './options/options';
 
 import './analysis-options.css';
@@ -32,13 +33,13 @@ const AnalysisOptions = ({
       </Select>
       {
         type &&
-        <button
+        <Button
           className="analysis-options__button"
           onClick={performAnalysis}
-          type="button"
+          type="success"
         >
           Submit
-        </button>
+        </Button>
       }
     </div>
     {Options[type]}

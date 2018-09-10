@@ -6,8 +6,7 @@ import syncMap from './map-thunk';
 import * as mapActions from '../set/visualization/map-actions';
 
 // configure mock store
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const mockStore = configureMockStore([thunk]);
 
 afterAll(() => {
   fetchMock.restore();

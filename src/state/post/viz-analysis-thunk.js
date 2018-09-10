@@ -16,13 +16,13 @@ const performVizAnalysis = () => (
     const { type } = vizanalysis;
 
     if (!type) {
-      return null;
+      return Promise.resolve();
     }
 
     // Get columns to query and remove duplicates.
     const query = [...new Set(getSelected(genes.columnsSelected, genes.rowsSelected))];
     if (query.length === 0) {
-      return null;
+      return Promise.resolve();
     }
 
     // Run and add tab.

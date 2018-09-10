@@ -14,9 +14,9 @@ ParseHeader.mockReturnValue(Promise.resolve(SampleHeader));
 jest.mock('../../../state/set/header-actions');
 const change = jest.fn();
 
-const newFile = new File([SampleHeader], 'newfile.txt', { type: 'text/plain' });
+const newFile = { originFileObj: new File([SampleHeader], 'newfile.txt', { type: 'text/plain' }) };
 newFile.uid = 'rc-upload-newFile';
-const sampleFile = new File([SampleHeader], 'samplefile.txt', { type: 'text/plain' });
+const sampleFile = { originFileObj: new File([SampleHeader], 'samplefile.txt', { type: 'text/plain' }) };
 sampleFile.uid = 'rc-upload-sampleFile';
 
 describe('FileInputContainer', () => {
@@ -94,7 +94,7 @@ describe('FileInputContainer', () => {
       { value: [] },
     );
     // update header
-    expect(ParseHeader).toHaveBeenCalledWith(newFile);
+    expect(ParseHeader).toHaveBeenCalledWith(newFile.originFileObj);
     // update store with new file
     expect(change).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledWith('file', [newFile]);
@@ -136,7 +136,7 @@ describe('FileInputContainer', () => {
       { value: [sampleFile] },
     );
     // update header
-    expect(ParseHeader).toHaveBeenCalledWith(newFile);
+    expect(ParseHeader).toHaveBeenCalledWith(newFile.originFileObj);
     // set the sample file checkbox field to false
     expect(change).toHaveBeenCalledTimes(2);
     expect(change).toHaveBeenCalledWith('sampleFile', false);

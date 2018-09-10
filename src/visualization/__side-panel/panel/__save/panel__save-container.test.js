@@ -26,7 +26,7 @@ const sessions = [
   { id: 7, name: 'g', date: 'July 19, 2018' },
 ];
 
-jest.mock('../../../download/download');
+jest.mock('../../../../helpers/download');
 jest.mock('./browser-storage/indexeddb-delete');
 jest.mock('./browser-storage/indexeddb-get');
 jest.mock('./browser-storage/indexeddb-getall');

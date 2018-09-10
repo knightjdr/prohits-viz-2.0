@@ -1,17 +1,16 @@
 /* global FileReader */
-import { TextDecoder } from 'text-encoding';
+import { TextDecoder } from '../components/text-encoding/encoding';
 
 // reads the first x lines of a file
 const ReadFileLines = (inputFile, maxLines = 1) => (
   new Promise((resolve, reject) => {
-    // ensure inputFile is of type File and maxLines is a number
+    // Ensure inputFile is of type File and maxLines is a number.
     if (
       !(inputFile instanceof File) ||
       Number.isNaN(maxLines) ||
       maxLines < 1
     ) {
       reject(new Error('Invalid function args'));
-      return;
     }
     const CHUNK_SIZE = 50000;
     const decoder = new TextDecoder();

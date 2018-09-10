@@ -6,7 +6,7 @@ import './button.css';
 const Button = ({
   children,
   className,
-  handleClick,
+  onClick,
   type,
   ...otherProps
 }) => {
@@ -17,7 +17,7 @@ const Button = ({
   return (
     <button
       className={classes.join(' ')}
-      onClick={handleClick}
+      onClick={onClick}
       type="button"
       {...otherProps}
     >
@@ -27,6 +27,7 @@ const Button = ({
 };
 
 Button.defaultProps = {
+  children: 'button',
   className: null,
   type: 'default',
 };
@@ -36,10 +37,14 @@ Button.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.string,
-  ]).isRequired,
+  ]),
   className: PropTypes.string,
-  handleClick: PropTypes.func.isRequired,
-  type: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  type: PropTypes.oneOf([
+    'default',
+    'success',
+    'warning',
+  ]),
 };
 
 export default Button;

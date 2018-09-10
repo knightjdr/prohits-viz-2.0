@@ -8,6 +8,46 @@ import * as actions from './annotation-actions';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+describe('Annotation placement', () => {
+  let expectedActions;
+
+  beforeAll(() => {
+    const state = {
+      dimensions: {
+        columns: 20,
+        pageX: 10,
+        pageY: 10,
+        rows: 20,
+      },
+      position: {
+        x: 0,
+        y: 0,
+      },
+    };
+    const store = mockStore(state);
+    deepFreeze(store);
+    store.dispatch(actions.placeAnnotation('text'));
+    expectedActions = store.getActions();
+  });
+
+  afterAll(() => {
+    actions.placeAnnotation.mockRestore();
+  });
+
+  it('should dispatch a single action', () => {
+    expect(expectedActions.length).toBe(1);
+  });
+
+  it('should update the annotation at the given index', () => {
+    expect(expectedActions).toContainEqual({
+      text: 'text',
+      type: actions.ADD_ANNOTATION,
+      x: 0.25,
+      y: 0.25,
+    });
+  });
+});
+
 describe('Annotation update', () => {
   let expectedActions;
 

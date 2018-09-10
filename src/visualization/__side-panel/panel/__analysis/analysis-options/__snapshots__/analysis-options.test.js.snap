@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analysis options panel with type specified should match snapshot 1`] = `
+<div
+  className="analysis-options"
+>
+  <div
+    className="panel__title"
+  >
+    Analysis
+  </div>
+  <div>
+    <Select
+      allowClear={true}
+      choiceTransitionName="zoom"
+      className="analysis-options__type-select"
+      onChange={[Function]}
+      placeholder="Analysis type..."
+      prefixCls="ant-select"
+      showSearch={false}
+      transitionName="slide-up"
+      value="go"
+    >
+      <Option
+        value="customize"
+      >
+        customize image
+      </Option>
+      <Option
+        value="domain"
+      >
+        domain
+      </Option>
+      <Option
+        value="go"
+      >
+        GO enrichment
+      </Option>
+      <Option
+        value="network"
+      >
+        network
+      </Option>
+    </Select>
+    <Button
+      className="analysis-options__button"
+      onClick={[Function]}
+      type="success"
+    >
+      Submit
+    </Button>
+  </div>
+  <Connect(GoContainer) />
+</div>
+`;
+
+exports[`Analysis options panel without type specified should match snapshot 1`] = `
+<div
+  className="analysis-options"
+>
+  <div
+    className="panel__title"
+  >
+    Analysis
+  </div>
+  <div>
+    <Select
+      allowClear={true}
+      choiceTransitionName="zoom"
+      className="analysis-options__type-select"
+      onChange={[Function]}
+      placeholder="Analysis type..."
+      prefixCls="ant-select"
+      showSearch={false}
+      transitionName="slide-up"
+      value=""
+    >
+      <Option
+        value="customize"
+      >
+        customize image
+      </Option>
+      <Option
+        value="domain"
+      >
+        domain
+      </Option>
+      <Option
+        value="go"
+      >
+        GO enrichment
+      </Option>
+      <Option
+        value="network"
+      >
+        network
+      </Option>
+    </Select>
+  </div>
+</div>
+`;

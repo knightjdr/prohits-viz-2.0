@@ -11,6 +11,10 @@
   
 }
 .visualization__annotation > button:first-of-type {
+  border-radius: 0;
+  height: 32px;
+}
+.visualization__annotation > button:last-of-type {
   border-radius: 0 4px 4px 0;
   height: 32px;
 }

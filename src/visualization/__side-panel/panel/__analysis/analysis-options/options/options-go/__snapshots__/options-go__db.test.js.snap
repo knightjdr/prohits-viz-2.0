@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analysis GO options database sub panel should match snapshot 1`] = `
+<div>
+  <div
+    className="analysis-option__label"
+  >
+    Query databases
+  </div>
+  <div
+    className="analysis-option__database"
+  >
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      Corum
+    </Checkbox>
+    <div>
+      <Checkbox
+        checked={true}
+        indeterminate={false}
+        onChange={[Function]}
+        prefixCls="ant-checkbox"
+      >
+        Gene ontology
+      </Checkbox>
+    </div>
+    <ul>
+      <li>
+        <Checkbox
+          checked={true}
+          indeterminate={false}
+          onChange={[Function]}
+          prefixCls="ant-checkbox"
+        >
+          Biological process
+        </Checkbox>
+      </li>
+      <li>
+        <Checkbox
+          checked={true}
+          indeterminate={false}
+          onChange={[Function]}
+          prefixCls="ant-checkbox"
+        >
+          Cellular component
+        </Checkbox>
+      </li>
+      <li>
+        <Checkbox
+          checked={true}
+          indeterminate={false}
+          onChange={[Function]}
+          prefixCls="ant-checkbox"
+        >
+          Molecular function
+        </Checkbox>
+      </li>
+    </ul>
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      Human Phenotype Ontology
+    </Checkbox>
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      KEGG
+    </Checkbox>
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      miRBase
+    </Checkbox>
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      Reactome
+    </Checkbox>
+    <Checkbox
+      checked={true}
+      indeterminate={false}
+      onChange={[Function]}
+      prefixCls="ant-checkbox"
+    >
+      TRANSFAC TFBS
+    </Checkbox>
+  </div>
+</div>
+`;

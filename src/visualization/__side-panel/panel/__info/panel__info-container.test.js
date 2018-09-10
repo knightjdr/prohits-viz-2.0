@@ -6,7 +6,7 @@ import Download from '../../../../helpers/download';
 import { InfoContainer } from './panel__info-container';
 
 jest.mock('../../../color/color-gradient');
-jest.mock('../../../download/download');
+jest.mock('../../../../helpers/download');
 
 const params = {
   abundanceCap: 50,

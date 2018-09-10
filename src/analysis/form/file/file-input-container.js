@@ -11,7 +11,7 @@ export const SampleHeader = 'Bait\tPrey\tPreyGene\tSpec\tSpecSum\tAvgSpec\tNumRe
 
 export class FileInputContainer extends Component {
   onFileChange = (value, input) => {
-    // if there are no files, clear header field in store and ensure sampleFile = false
+    // If there are no files, clear header field in store and ensure sampleFile = false.
     if (
       !value.fileList ||
       value.fileList.length === 0
@@ -21,7 +21,7 @@ export class FileInputContainer extends Component {
     } else if ( // if first file has changed, update header in store
       !deepEqual(input.value[0], value.fileList[0])
     ) {
-      ParseHeader(value.fileList[0])
+      ParseHeader(value.fileList[0].originFileObj)
         .then((header) => {
           this.props.setFileHeader(header);
         });

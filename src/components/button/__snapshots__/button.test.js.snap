@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component with default props should match snapshot 1`] = `
+<button
+  className="button_default"
+  onClick={[Function]}
+  type="button"
+>
+  button
+</button>
+`;

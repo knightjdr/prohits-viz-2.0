@@ -7,7 +7,7 @@ import { VizAnalysisPropSelector } from '../../../../../state/selectors/analysis
 import performVizAnalysis from '../../../../../state/post/viz-analysis-thunk';
 import { setAnalysisType } from '../../../../../state/set/analysis/viz-analysis-actions';
 
-class AnalysisOptionsContainer extends Component {
+export class AnalysisOptionsContainer extends Component {
   handleType = (type) => {
     this.props.setAnalysisType(type);
   }
