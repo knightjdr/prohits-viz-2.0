@@ -6,11 +6,12 @@ import './button.css';
 const Button = ({
   children,
   className,
+  disabled,
   onClick,
   type,
   ...otherProps
 }) => {
-  const classes = [`button_${type}`];
+  const classes = disabled ? ['button_disabled'] : [`button_${type}`];
   if (className) {
     classes.push(className);
   }
@@ -29,6 +30,7 @@ const Button = ({
 Button.defaultProps = {
   children: 'button',
   className: null,
+  disabled: false,
   type: 'default',
 };
 
@@ -39,6 +41,7 @@ Button.propTypes = {
     PropTypes.string,
   ]),
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   type: PropTypes.oneOf([
     'default',

@@ -19,12 +19,10 @@
 .default-button:focus {
   @extend .basic-button;
   background-color: $primary-medium;
-  border-color: $primary-medium;
   color: $text-light;
 }
 .default-button:hover {
   background: #1b4459 radial-gradient(circle, transparent 1%, #1b4459 1%) center/15000%;
-  border-color: #1b4459;
   color: $text-light;
 }
 .default-button:active {
@@ -32,16 +30,24 @@
   background-size: 100%;
   transition: background 0s;
 }
+.disabled-button,
+.disabled-button:focus,
+.disabled-button:hover,
+.disabled-button:active {
+  @extend .basic-button;
+  background-color: backdrop-light;
+  border: 1px solid #616161;
+  color: $text-dark;
+  cursor: not-allowed;
+}
 .success-button,
 .success-button:focus {
   @extend .basic-button;
   background-color: #43a047;
-  border-color: #43a047;
   color: $text-light;
 }
 .success-button:hover {
   background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
-  border-color: #1b5e20;
   color: $text-light;
 }
 .success-button:active {
@@ -53,12 +59,10 @@
 .warning-button:focus {
   @extend .basic-button;
   background-color: #f44336;
-  border-color: #f44336;
   color: $text-light;
 }
 .warning-button:hover {
   background: #b71c1c radial-gradient(circle, transparent 1%, #b71c1c 1%) center/15000%;
-  border-color: #b71c1c;
   color: $text-light;
 }
 .warning-button:active {

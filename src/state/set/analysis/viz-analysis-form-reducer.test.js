@@ -8,6 +8,21 @@ describe('Analysis GO form set reducer', () => {
     expect(VizAnalysisForms(undefined, action)).toEqual(expectedState);
   });
 
+  it('should handle SET_CUSTOMIZE_PARAMETER action', () => {
+    const action = {
+      setting: { orderBy: 'column' },
+      type: actions.SET_CUSTOMIZE_PARAMETER,
+    };
+    const expectedState = {
+      ...initState,
+      customize: {
+        ...initState.customize,
+        orderBy: 'column',
+      },
+    };
+    expect(VizAnalysisForms(undefined, action)).toEqual(expectedState);
+  });
+
   it('should handle SET_GO_PARAMETER action', () => {
     const action = {
       setting: { advanced_options_on: false },

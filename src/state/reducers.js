@@ -4,6 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 // reducers
 import annotations from './set/visualization/annotation-reducer';
 import columns from './set/visualization/columns-reducer';
+import customize from './set/analysis/customize-reducer';
 import dimensions from './set/visualization/dimension-reducer';
 import display from './set/visualization/display-reducer';
 import formStep from './set/form-step-reducer';
@@ -31,6 +32,7 @@ import vizanalysisform from './set/analysis/viz-analysis-form-reducer';
 const Reducers = combineReducers({
   annotations,
   columns,
+  customize,
   dimensions,
   display,
   form: formReducer,

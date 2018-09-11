@@ -16,6 +16,11 @@
   @extend .button;
   @extend .default-button;
 }
+.button_disabled {
+  @extend .button;
+  @extend .disabled-button;
+  opacity: 0.8;
+}
 .button_success {
   @extend .button;
   @extend .success-button;

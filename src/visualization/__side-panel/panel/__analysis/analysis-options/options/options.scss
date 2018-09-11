@@ -40,16 +40,37 @@
   font-weight: bold;
   text-align: center;
 }
+.analysis-option__group {
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+}
+.analysis-option__group > :first-child {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 75px;
+}
 .analysis-option__label {
   font-weight: bold;
   margin-bottom: 3px;
   margin-top: 20px;
   text-align: center;
 }
-.analysis-option__database {
+.analysis-option__details {
   display: flex;
   flex-direction: column;
 }
-.analysis-option__database > * {
+.analysis-option__details > * {
   margin-left: 0 !important;
+}
+.analysis-options__action-button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.analysis-options__action-button-inner {
+  height: 30px;
+}
+.analysis-options__action-button-inner > :first-child {
+  margin-right: 5px;
 }

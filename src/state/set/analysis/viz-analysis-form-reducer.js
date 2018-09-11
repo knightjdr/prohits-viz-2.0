@@ -1,6 +1,12 @@
 import * as actions from './viz-analysis-form-actions';
 
 export const initState = {
+  customize: {
+    deleteBy: undefined,
+    orderBy: undefined,
+    removeEmpty: false,
+    resetMaximums: false,
+  },
   go: {
     domain_size_type: 'annotated',
     hierfiltering: '',
@@ -31,6 +37,15 @@ export const initState = {
 
 const VizAnalysisForms = (state = initState, action) => {
   switch (action.type) {
+    case actions.SET_CUSTOMIZE_PARAMETER: {
+      return {
+        ...state,
+        customize: {
+          ...state.customize,
+          ...action.setting,
+        },
+      };
+    }
     case actions.SET_GO_PARAMETER: {
       return {
         ...state,

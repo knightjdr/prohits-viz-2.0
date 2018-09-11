@@ -57,4 +57,25 @@ describe('Button component', () => {
       expect(wrapper.hasClass('button_warning')).toBeTruthy();
     });
   });
+
+  describe('with disabled prop', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Button
+          disabled
+          onClick={handleClick}
+        />,
+      );
+    });
+
+    it('should have disabled class', () => {
+      expect(wrapper.hasClass('button_disabled')).toBeTruthy();
+    });
+
+    it('should not have button type as class', () => {
+      expect(wrapper.hasClass('button_default')).toBeFalsy();
+    });
+  });
 });
