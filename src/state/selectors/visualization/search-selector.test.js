@@ -1,4 +1,4 @@
-import SearchSelector from './search-selector';
+import searchSelector from './search-selector';
 
 describe('Search selector', () => {
   it('should return an object with the search term', () => {
@@ -7,6 +7,6 @@ describe('Search selector', () => {
         term: '',
       },
     };
-    expect(SearchSelector(state)).toEqual(state.search);
+    expect(searchSelector(state)).toEqual(state.search);
   });
 });

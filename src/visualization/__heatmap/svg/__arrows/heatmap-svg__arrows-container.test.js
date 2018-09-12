@@ -15,7 +15,7 @@ describe('Heatmap arrows container', () => {
     beforeAll(() => {
       wrapper = shallow(
         <ArrowsContainer
-          dimension={{
+          dimensions={{
             columns: 10,
             pageX: 5,
             pageY: 10,
@@ -31,7 +31,7 @@ describe('Heatmap arrows container', () => {
             y: 0,
           }}
           show
-          updatePosition={updatePosition}
+          updateXY={updatePosition}
           width={{
             wrapper: 500,
           }}
@@ -186,7 +186,7 @@ describe('Heatmap arrows container', () => {
           vertex: 'y',
         });
         wrapper.instance().updateAll({
-          dimension: { pageY: 20 },
+          dimensions: { pageY: 20 },
           direction: 'vertical',
           height: { heatmap: 600, wrapper: 700 },
           position: { x: 50, y: 50 },
@@ -226,7 +226,7 @@ describe('Heatmap arrows container', () => {
 
       beforeAll(() => {
         wrapper.setProps({
-          dimension: {
+          dimensions: {
             pageY: 10,
           },
           height: {
@@ -303,7 +303,7 @@ describe('Heatmap arrows container', () => {
       describe('check page size', () => {
         it('and does not change page size when dimension stays the same', () => {
           wrapper.setProps({
-            dimension: {
+            dimensions: {
               pageY: 10,
             },
           });
@@ -312,7 +312,7 @@ describe('Heatmap arrows container', () => {
 
         it('and does change page size when dimension changes', () => {
           wrapper.setProps({
-            dimension: {
+            dimensions: {
               pageY: 20,
             },
           });
@@ -328,7 +328,7 @@ describe('Heatmap arrows container', () => {
     beforeAll(() => {
       wrapper = shallow(
         <ArrowsContainer
-          dimension={{
+          dimensions={{
             columns: 10,
             pageX: 5,
             pageY: 10,
@@ -344,7 +344,7 @@ describe('Heatmap arrows container', () => {
             y: 0,
           }}
           show
-          updatePosition={updatePosition}
+          updateXY={updatePosition}
           width={{
             wrapper: 500,
           }}
@@ -393,7 +393,7 @@ describe('Heatmap arrows container', () => {
     beforeAll(() => {
       wrapper = mount(
         <ArrowsContainer
-          dimension={{
+          dimensions={{
             columns: 10,
             pageX: 5,
             pageY: 10,
@@ -409,7 +409,7 @@ describe('Heatmap arrows container', () => {
             y: 0,
           }}
           show
-          updatePosition={updatePosition}
+          updateXY={updatePosition}
           width={{
             wrapper: 500,
           }}

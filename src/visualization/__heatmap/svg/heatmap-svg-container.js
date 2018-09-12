@@ -1,19 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import ColumnsSelector from '../../../state/selectors/visualization/columns-selector';
 import OnResize from '../../../helpers/on-resize';
-import PanelSelector from '../../../state/selectors/visualization/panel-selector';
-import RowNameSelector from '../../../state/selectors/visualization/row-name-selector';
-import SettingSelector from '../../../state/selectors/visualization/settings-selector';
-import Svg from './heatmap-svg';
-import { DisplaySelector } from '../../../state/selectors/visualization/display-selector';
-import { setDimensions } from '../../../state/set/visualization/dimension-actions';
-import { setReference } from '../../../state/set/visualization/columns-actions';
-import { setSelections } from '../../../state/set/visualization/genes-actions';
-import { sortRows } from '../../../state/set/visualization/rows-actions';
-import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
 
 const COL_MARGIN = 100;
 const EXTRA_PADDING = 2;
@@ -77,7 +65,7 @@ export class SvgContainer extends Component {
     const height = this.calculateHeight(cellSize, rows);
     const width = this.calculateWidth(cellSize, columns);
     const translate = this.setTranslate(display, panel, width);
-    this.props.setDimensions(
+    this.props.setDims(
       height.rows,
       width.columns,
       width.pageX,
@@ -90,7 +78,7 @@ export class SvgContainer extends Component {
       showSvg: true,
       width,
     });
-    this.props.updatePlotPosition(display.plotFixed, translate);
+    this.props.updatePlotXY(display.plotFixed, translate);
   }
   setTranslate = (display, panel, width) => {
     if (display.plotFixed) {
@@ -166,9 +154,9 @@ export class SvgContainer extends Component {
     if (e.shiftKey && type === 'column') {
       this.sortRows(target);
     } else if (e.altKey && type === 'column') {
-      this.props.setSelections([target], 'columns', 'columnsSelected');
+      this.props.setSelectedGenes([target], 'columns', 'columnsSelected');
     } else if (e.altKey && type === 'row') {
-      this.props.setSelections([target], 'rows', 'rowsSelected');
+      this.props.setSelectedGenes([target], 'rows', 'rowsSelected');
     }
   }
   openContextMenu = (e, target, type) => {
@@ -198,7 +186,7 @@ export class SvgContainer extends Component {
   sortRows = (column, direction) => {
     const columnIndex = this.props.columns.names.indexOf(column);
     const refIndex = this.props.columns.names.indexOf(this.props.columns.ref);
-    this.props.sortRows(columnIndex, direction, refIndex >= 0 ? refIndex : null);
+    this.props.sort(columnIndex, direction, refIndex >= 0 ? refIndex : null);
   }
   toggleTooltip = (needsTooltip, shouldDisplay, text, left = 0, top = 0) => {
     if (needsTooltip) {
@@ -216,7 +204,7 @@ export class SvgContainer extends Component {
   translateLeft = () => {
     const { display, panel } = this.props;
     const { width } = this.state;
-    this.props.updatePlotPosition(
+    this.props.updatePlotXY(
       !display.plotFixed,
       this.setTranslate({ plotFixed: !display.plotFixed }, panel, width),
     );
@@ -238,7 +226,7 @@ export class SvgContainer extends Component {
       !display.plotFixed
     ) {
       const { width } = this.state;
-      this.props.updatePlotPosition(
+      this.props.updatePlotXY(
         false,
         this.setTranslate(display, panel, width),
       );
@@ -246,27 +234,27 @@ export class SvgContainer extends Component {
   }
   render() {
     return (
-      <Svg
-        closeContextMenu={this.closeContextMenu}
-        contextTarget={this.state.contextTarget}
-        contextEvent={this.state.contextEvent}
-        fixLeft={this.props.display.plotFixed}
-        handleClick={this.handleClick}
-        height={this.state.height}
-        openContextMenu={this.openContextMenu}
-        plotTranslate={this.props.display.plotTranslate}
-        reference={this.props.columns.ref}
-        setSelections={this.props.setSelections}
-        setContainerRef={this.wrapperRef}
-        setReference={this.props.setReference}
-        show={this.state.showSvg}
-        showContext={this.state.showContext}
-        sortRows={this.sortRows}
-        tooltip={this.state.tooltip}
-        toggleTooltip={this.toggleTooltip}
-        translateLeft={this.translateLeft}
-        width={this.state.width}
-      />
+      this.props.renderProp({
+        closeContextMenu: this.closeContextMenu,
+        contextTarget: this.state.contextTarget,
+        contextEvent: this.state.contextEvent,
+        fixLeft: this.props.display.plotFixed,
+        handleClick: this.handleClick,
+        height: this.state.height,
+        openContextMenu: this.openContextMenu,
+        plotTranslate: this.props.display.plotTranslate,
+        reference: this.props.columns.ref,
+        setSelections: this.props.setSelectedGenes,
+        setContainerRef: this.wrapperRef,
+        setReference: this.props.setRef,
+        show: this.state.showSvg,
+        showContext: this.state.showContext,
+        sortRows: this.sortRows,
+        tooltip: this.state.tooltip,
+        toggleTooltip: this.toggleTooltip,
+        translateLeft: this.translateLeft,
+        width: this.state.width,
+      })
     );
   }
 }
@@ -282,45 +270,13 @@ SvgContainer.propTypes = {
     plotTranslate: PropTypes.number,
   }).isRequired,
   panel: PropTypes.bool.isRequired,
+  renderProp: PropTypes.func.isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setDimensions: PropTypes.func.isRequired,
-  setReference: PropTypes.func.isRequired,
-  setSelections: PropTypes.func.isRequired,
-  sortRows: PropTypes.func.isRequired,
-  updatePlotPosition: PropTypes.func.isRequired,
+  setDims: PropTypes.func.isRequired,
+  setRef: PropTypes.func.isRequired,
+  setSelectedGenes: PropTypes.func.isRequired,
+  sort: PropTypes.func.isRequired,
+  updatePlotXY: PropTypes.func.isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  cellSize: SettingSelector(state, 'cellSize'),
-  columns: ColumnsSelector(state),
-  display: DisplaySelector(state),
-  panel: PanelSelector(state),
-  rows: RowNameSelector(state),
-});
-
-/* istanbul ignore next */
-const mapDispatchToProps = dispatch => ({
-  setDimensions: (rows, columns, pageY, pageX, height, width) => {
-    dispatch(setDimensions(rows, columns, pageY, pageX, height, width));
-  },
-  setSelections: (arr, source, target) => {
-    dispatch(setSelections(arr, source, target));
-  },
-  setReference: (ref) => {
-    dispatch(setReference(ref));
-  },
-  sortRows: (index, direction, ref) => {
-    dispatch(sortRows(index, direction, ref));
-  },
-  updatePlotPosition: (fixed, translate) => {
-    dispatch(updatePlotPosition(fixed, translate));
-  },
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SvgContainer);
-
-export default ConnectedContainer;
+export default SvgContainer;

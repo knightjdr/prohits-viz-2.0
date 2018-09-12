@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 
 const getAnnotations = state => state.annotations;
 
-const GetAnnotations = createSelector(
+const annotationsSelector = createSelector(
   [getAnnotations],
   annotations => (
     annotations
   ),
 );
-export default GetAnnotations;
+export default annotationsSelector;

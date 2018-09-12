@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 
 const getDimensions = state => state.dimensions;
 
-const GetDimensions = createSelector(
+const dimensionSelector = createSelector(
   [getDimensions],
   dimensions => (
     dimensions
   ),
 );
-export default GetDimensions;
+export default dimensionSelector;

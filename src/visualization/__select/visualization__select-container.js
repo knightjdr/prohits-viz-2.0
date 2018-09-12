@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import FillJson from './fill/fill';
 import SelectType from './visualization__select-type';
 import ValidateJson from './visualization__select-validate';
-import { ParametersSelectorProp } from '../../state/selectors/visualization/params-selector';
+import { parameterSelectorProp } from '../../state/selectors/visualization/params-selector';
 import { parseFile } from '../../state/set/interactive-file-actions';
 
 /* SelectContainer handles user uploads for interactive images, including
@@ -102,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  imageType: ParametersSelectorProp(state, 'imageType'),
+  imageType: parameterSelectorProp(state, 'imageType'),
 });
 
 const ConnectedContainer = connect(

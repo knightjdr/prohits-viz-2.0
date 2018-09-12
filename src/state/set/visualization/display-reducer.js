@@ -6,7 +6,7 @@ const Display = (state = {
   plotFixed: false,
   plotTranslate: 0,
   selectionBox: true,
-  tab: 'analysis',
+  tab: 'info',
   tooltips: false,
 }, action) => {
   switch (action.type) {

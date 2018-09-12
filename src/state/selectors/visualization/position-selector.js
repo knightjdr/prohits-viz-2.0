@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 
 const getPosition = state => state.position;
 
-const GetPosition = createSelector(
+const positionSelector = createSelector(
   [getPosition],
   position => (
     position
   ),
 );
-export default GetPosition;
+export default positionSelector;

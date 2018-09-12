@@ -1,4 +1,4 @@
-import MarkerSelector from './marker-selector';
+import markerSelector from './marker-selector';
 
 describe('Marker selector', () => {
   it('should return an array of markers', () => {
@@ -21,6 +21,6 @@ describe('Marker selector', () => {
         ],
       },
     };
-    expect(MarkerSelector(state)).toEqual(state.markers);
+    expect(markerSelector(state)).toEqual(state.markers);
   });
 });

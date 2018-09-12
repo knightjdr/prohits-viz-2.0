@@ -1,19 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import ColorGradient from '../../../color/color-gradient';
-import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
 import GetPage from './transforms/get-page';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import Plot from './heatmap-svg__plot';
 import Round from '../../../../helpers/round';
-import RowsSelector from '../../../../state/selectors/visualization/rows-selector';
 import SetRange from './transforms/set-range';
 import SetEdgeRange from './transforms/set-edge-range';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
-import SortSeletor from '../../../../state/selectors/visualization/sort-selector';
-import { ParametersSelectorProp } from '../../../../state/selectors/visualization/params-selector';
 
 const NUM_COLORS = 101;
 
@@ -65,7 +58,7 @@ export class PlotContainer extends Component {
       nextProps,
       this.props.position,
       this.props.dimensions,
-      this.props.sortInfo.id,
+      this.props.sortID,
     );
   }
   shouldComponentUpdate(nextProps) {
@@ -81,7 +74,7 @@ export class PlotContainer extends Component {
       position,
       primaryFilter,
       secondaryFilter,
-      sortInfo,
+      sortID,
     } = nextProps;
     return (
       abundanceCap !== this.props.abundanceCap ||
@@ -97,7 +90,7 @@ export class PlotContainer extends Component {
       position.y !== this.props.position.y ||
       primaryFilter !== this.props.primaryFilter ||
       secondaryFilter !== this.props.secondaryFilter ||
-      sortInfo.id !== this.props.sortInfo.id
+      sortID !== this.props.sortID
     );
   }
   setEdgeSize = cellSize => (
@@ -243,14 +236,14 @@ export class PlotContainer extends Component {
     dimensions,
     position,
     rows,
-    sortInfo,
+    sortID,
   }, prevPosition, prevDimensions, prevSortId) => {
     if (
       position.x !== prevPosition.x ||
       position.y !== prevPosition.y ||
       dimensions.pageX !== prevDimensions.pageX ||
       dimensions.pageY !== prevDimensions.pageY ||
-      sortInfo.id !== prevSortId
+      sortID !== prevSortId
     ) {
       this.setState({
         page: this.getPage(
@@ -277,6 +270,10 @@ export class PlotContainer extends Component {
     );
   }
 }
+
+PlotContainer.defaultProps = {
+  sortID: null,
+};
 
 PlotContainer.propTypes = {
   abundanceCap: PropTypes.number.isRequired,
@@ -307,31 +304,7 @@ PlotContainer.propTypes = {
   ).isRequired,
   scoreType: PropTypes.string.isRequired,
   secondaryFilter: PropTypes.number.isRequired,
-  sortInfo: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
+  sortID: PropTypes.number,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  abundanceCap: SettingSelector(state, 'abundanceCap'),
-  cellSize: SettingSelector(state, 'cellSize'),
-  dimensions: DimensionsSelector(state),
-  edgeColor: SettingSelector(state, 'edgeColor'),
-  fillColor: SettingSelector(state, 'fillColor'),
-  imageType: SettingSelector(state, 'imageType'),
-  invertColor: SettingSelector(state, 'invertColor'),
-  minAbundance: SettingSelector(state, 'minAbundance'),
-  position: PositionSelector(state),
-  primaryFilter: SettingSelector(state, 'primaryFilter'),
-  rows: RowsSelector(state),
-  scoreType: ParametersSelectorProp(state, 'scoreType'),
-  secondaryFilter: SettingSelector(state, 'secondaryFilter'),
-  sortInfo: SortSeletor(state),
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-)(PlotContainer);
-
-export default ConnectedContainer;
+export default PlotContainer;

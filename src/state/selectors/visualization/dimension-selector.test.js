@@ -1,4 +1,4 @@
-import DimensionSelector from './dimension-selector';
+import dimensionSelector from './dimension-selector';
 
 describe('Dimension selector', () => {
   it('should return an object with dimensions', () => {
@@ -12,6 +12,6 @@ describe('Dimension selector', () => {
         width: 0.5,
       },
     };
-    expect(DimensionSelector(state)).toEqual(state.dimensions);
+    expect(dimensionSelector(state)).toEqual(state.dimensions);
   });
 });

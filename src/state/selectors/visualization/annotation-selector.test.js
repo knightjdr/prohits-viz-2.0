@@ -1,4 +1,4 @@
-import AnnotationSelector from './annotation-selector';
+import annotationSelector from './annotation-selector';
 
 describe('Annotation selector', () => {
   it('should return an array of annotations', () => {
@@ -20,6 +20,6 @@ describe('Annotation selector', () => {
         show: false,
       },
     };
-    expect(AnnotationSelector(state)).toEqual(state.annotations);
+    expect(annotationSelector(state)).toEqual(state.annotations);
   });
 });

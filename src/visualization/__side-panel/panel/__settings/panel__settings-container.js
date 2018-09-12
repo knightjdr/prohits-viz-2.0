@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Settings from './panel__settings';
 import SettingResetSelector from '../../../../state/selectors/visualization/settings-reset-selector';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
+import { settingSelectorProp } from '../../../../state/selectors/visualization/settings-selector';
 import { resetSettings, updateSetting } from '../../../../state/set/visualization/settings-actions';
 
 export class SettingsContainer extends Component {
@@ -140,16 +140,16 @@ SettingsContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  abundanceCap: SettingSelector(state, 'abundanceCap'),
-  cellSize: SettingSelector(state, 'cellSize'),
-  edgeColor: SettingSelector(state, 'edgeColor'),
-  fillColor: SettingSelector(state, 'fillColor'),
-  imageType: SettingSelector(state, 'imageType'),
-  invertColor: SettingSelector(state, 'invertColor'),
-  minAbundance: SettingSelector(state, 'minAbundance'),
-  primaryFilter: SettingSelector(state, 'primaryFilter'),
+  abundanceCap: settingSelectorProp(state, 'abundanceCap'),
+  cellSize: settingSelectorProp(state, 'cellSize'),
+  edgeColor: settingSelectorProp(state, 'edgeColor'),
+  fillColor: settingSelectorProp(state, 'fillColor'),
+  imageType: settingSelectorProp(state, 'imageType'),
+  invertColor: settingSelectorProp(state, 'invertColor'),
+  minAbundance: settingSelectorProp(state, 'minAbundance'),
+  primaryFilter: settingSelectorProp(state, 'primaryFilter'),
   reset: SettingResetSelector(state),
-  secondaryFilter: SettingSelector(state, 'secondaryFilter'),
+  secondaryFilter: settingSelectorProp(state, 'secondaryFilter'),
 });
 
 /* istanbul ignore next */

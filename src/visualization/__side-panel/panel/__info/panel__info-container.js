@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import ColorGradient from '../../../color/color-gradient';
 import Download from '../../../../helpers/download';
 import Info from './panel__info';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
+import { settingSelectorProp } from '../../../../state/selectors/visualization/settings-selector';
 import { clearFile } from '../../../../state/set/interactive-file-actions';
-import { ParametersSelector } from '../../../../state/selectors/visualization/params-selector';
+import { parameterSelector } from '../../../../state/selectors/visualization/params-selector';
 
 export class InfoContainer extends Component {
   constructor(props) {
@@ -65,15 +65,15 @@ InfoContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  abundanceCap: SettingSelector(state, 'abundanceCap'),
-  edgeColor: SettingSelector(state, 'edgeColor'),
-  fillColor: SettingSelector(state, 'fillColor'),
-  imageType: SettingSelector(state, 'imageType'),
-  invertColor: SettingSelector(state, 'invertColor'),
-  minAbundance: SettingSelector(state, 'minAbundance'),
-  params: ParametersSelector(state),
-  primaryFilter: SettingSelector(state, 'primaryFilter'),
-  secondaryFilter: SettingSelector(state, 'secondaryFilter'),
+  abundanceCap: settingSelectorProp(state, 'abundanceCap'),
+  edgeColor: settingSelectorProp(state, 'edgeColor'),
+  fillColor: settingSelectorProp(state, 'fillColor'),
+  imageType: settingSelectorProp(state, 'imageType'),
+  invertColor: settingSelectorProp(state, 'invertColor'),
+  minAbundance: settingSelectorProp(state, 'minAbundance'),
+  params: parameterSelector(state),
+  primaryFilter: settingSelectorProp(state, 'primaryFilter'),
+  secondaryFilter: settingSelectorProp(state, 'secondaryFilter'),
 });
 
 /* istanbul ignore next */

@@ -18,10 +18,10 @@ describe('Heatmap column container', () => {
           names: ['a', 'b', 'c'],
           ref: null,
         }}
-        dimensions={{ pageX: 3 }}
         handleClick={jest.fn()}
         openContextMenu={jest.fn()}
-        position={{ x: 0 }}
+        pageWidth={3}
+        position={0}
         search={{
           columns: {},
           match: false,
@@ -55,8 +55,8 @@ describe('Heatmap column container', () => {
           names: ['a', 'b', 'c'],
           ref: null,
         },
-        dimensions: { pageX: 3 },
-        position: { x: 0 },
+        pageWidth: 3,
+        position: 0,
         search: {
           columns: {},
           match: false,
@@ -70,8 +70,8 @@ describe('Heatmap column container', () => {
           names: ['a', 'b', 'c'],
           ref: 'a',
         },
-        dimensions: { pageX: 2 },
-        position: { x: 1 },
+        pageWidth: 2,
+        position: 1,
         search: {
           columns: { b: true },
           match: true,
@@ -101,8 +101,8 @@ describe('Heatmap column container', () => {
         names: ['a', 'b', 'c'],
         ref: null,
       },
-      dimensions: { pageX: 3 },
-      position: { x: 0 },
+      pageWidth: 3,
+      position: 0,
       search: {
         columns: {},
         match: false,
@@ -146,28 +146,28 @@ describe('Heatmap column container', () => {
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
 
-    it('should return true when pageX changes', () => {
+    it('should return true when pageWidth changes', () => {
       let newProps = {
         ...originalProps,
-        dimensions: { pageX: 3 },
+        pageWidth: 3,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
       newProps = {
         ...originalProps,
-        dimensions: { pageX: 2 },
+        pageWidth: 2,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
 
-    it('should return true when x position changes', () => {
+    it('should return true when position changes', () => {
       let newProps = {
         ...originalProps,
-        position: { x: 0 },
+        position: 0,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
       newProps = {
         ...originalProps,
-        position: { x: 1 },
+        position: 1,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });

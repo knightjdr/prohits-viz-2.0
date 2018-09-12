@@ -1,20 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import AnnotationsSelector from '../../../../state/selectors/visualization/annotation-selector';
-import ColumnSelector from '../../../../state/selectors/visualization/columns-selector';
-import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
-import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
 import Overlay from './heatmap-svg__overlay';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
 import Round from '../../../../helpers/round';
 import RoundNearest from '../../../../helpers/round-nearest';
-import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
-import SettingsSelector from '../../../../state/selectors/visualization/settings-selector';
-import { addMarker } from '../../../../state/set/visualization/marker-actions';
-import { setSelections } from '../../../../state/set/visualization/genes-actions';
-import { updateList } from '../../../../state/set/visualization/annotation-actions';
 
 export class OverlayContainer extends Component {
   constructor(props) {
@@ -64,7 +53,7 @@ export class OverlayContainer extends Component {
       const markerWidth = width / cellSize;
       const markerX = (this.startPosition.x / cellSize) + position.x;
       const markerY = (this.startPosition.y / cellSize) + position.y;
-      this.props.addMarker(markerHeight, markerWidth, markerX, markerY);
+      this.props.addMarkerBox(markerHeight, markerWidth, markerX, markerY);
     }
   }
   annotationInRange = (annotation, xRange, yRange) => (
@@ -93,7 +82,7 @@ export class OverlayContainer extends Component {
     // Get new annotation position relative to entire image.
     newX = Round(((newX * dimensions.pageX) + position.x) / dimensions.columns, 2);
     newY = Round(((newY * dimensions.pageY) + position.y) / dimensions.rows, 2);
-    this.props.updateList(index, newX, newY);
+    this.props.updateAnnotation(index, newX, newY);
   }
   handleAnimationMouseDown = (index) => {
     this.boundary = this.getBoundary();
@@ -225,7 +214,7 @@ export class OverlayContainer extends Component {
     const arrayStart = viewStart + Math.round(start / cellSize);
     const markerSpan = Math.round(width / cellSize);
     const selected = list.slice(arrayStart, arrayStart + markerSpan);
-    this.props.setSelections(selected, source, target, true, sortBy);
+    this.props.setSelectedGenes(selected, source, target, true, sortBy);
   }
   subsetAnnotations = (annotations, dimensions, position) => {
     // Multiplier for positioning annotations correctly on current view.
@@ -363,7 +352,7 @@ export class OverlayContainer extends Component {
 }
 
 OverlayContainer.propTypes = {
-  addMarker: PropTypes.func.isRequired,
+  addMarkerBox: PropTypes.func.isRequired,
   annotations: PropTypes.shape({
     fontSize: PropTypes.number,
     list: PropTypes.arrayOf(
@@ -399,37 +388,8 @@ OverlayContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setSelections: PropTypes.func.isRequired,
-  updateList: PropTypes.func.isRequired,
+  setSelectedGenes: PropTypes.func.isRequired,
+  updateAnnotation: PropTypes.func.isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  annotations: AnnotationsSelector(state),
-  cellSize: SettingsSelector(state, 'cellSize'),
-  columns: ColumnSelector(state),
-  dimensions: DimensionSelector(state),
-  markers: MarkerSelector(state),
-  position: PositionSelector(state),
-  rows: RowNameSelector(state),
-});
-
-/* istanbul ignore next */
-const mapDispatchToProps = dispatch => ({
-  addMarker: (height, width, x, y) => {
-    dispatch(addMarker(height, width, x, y));
-  },
-  setSelections: (list, source, target, replace, sortBy) => {
-    dispatch(setSelections(list, source, target, replace, sortBy));
-  },
-  updateList: (index, x, y) => {
-    dispatch(updateList(index, x, y));
-  },
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(OverlayContainer);
-
-export default ConnectedContainer;
+export default OverlayContainer;

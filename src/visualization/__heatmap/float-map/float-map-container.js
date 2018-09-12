@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import FloatMap from './float-map';
 import MapSelector from '../../../state/selectors/visualization/map-selector';
-import { DisplaySelector } from '../../../state/selectors/visualization/display-selector';
+import { displaySelector } from '../../../state/selectors/visualization/display-selector';
 import { toggleMapAttach } from '../../../state/set/visualization/map-actions';
 import { resetMapPosition, updateMapPosition } from '../../../state/set/visualization/display-actions';
 
@@ -70,7 +70,7 @@ FloatMapContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  display: DisplaySelector(state),
+  display: displaySelector(state),
   minimap: MapSelector(state),
 });
 

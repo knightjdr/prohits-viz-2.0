@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Download from '../../../../helpers/download';
 import OnResize from '../../../../helpers/on-resize';
 import Status from './heatmap-svg__status';
-import { DisplaySelector } from '../../../../state/selectors/visualization/display-selector';
-import { ParametersSelectorProp } from '../../../../state/selectors/visualization/params-selector';
-import { sortDefault } from '../../../../state/set/visualization/rows-actions';
-import { toggleSelectionBox, toggleTooltips } from '../../../../state/set/visualization/display-actions';
 
 export class StatusContainer extends Component {
   constructor(props) {
@@ -65,8 +60,8 @@ export class StatusContainer extends Component {
         reset={this.props.reset}
         selectionBoxActive={this.props.display.selectionBox}
         show={this.state.show}
-        toggleSelectionBox={this.props.toggleSelectionBox}
-        toggleTooltips={this.props.toggleTooltips}
+        toggleSelectionBox={this.props.toggleSelection}
+        toggleTooltips={this.props.toggleTips}
         tooltipsActive={this.props.display.tooltips}
         translate={this.props.translate}
       />
@@ -87,34 +82,10 @@ StatusContainer.propTypes = {
   name: PropTypes.string,
   fixLeft: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
-  toggleSelectionBox: PropTypes.func.isRequired,
-  toggleTooltips: PropTypes.func.isRequired,
+  toggleSelection: PropTypes.func.isRequired,
+  toggleTips: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  display: DisplaySelector(state),
-  name: ParametersSelectorProp(state, 'name'),
-});
-
-/* istanbul ignore next */
-const mapDispatchToProps = dispatch => ({
-  reset: () => {
-    dispatch(sortDefault());
-  },
-  toggleSelectionBox: () => {
-    dispatch(toggleSelectionBox());
-  },
-  toggleTooltips: () => {
-    dispatch(toggleTooltips());
-  },
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(StatusContainer);
-
-export default ConnectedContainer;
+export default StatusContainer;

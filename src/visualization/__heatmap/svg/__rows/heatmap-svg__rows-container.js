@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import RowNameSelector from '../../../../state/selectors/visualization/row-name-selector';
 import Rows from './heatmap-svg__rows';
-import SearchSelector from '../../../../state/selectors/visualization/search-selector';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
-import SortSeletor from '../../../../state/selectors/visualization/sort-selector';
 import TrimText from '../helpers/trim-text';
 
 export class RowsContainer extends Component {
@@ -16,7 +9,7 @@ export class RowsContainer extends Component {
     super(props);
     const {
       cellSize,
-      dimensions,
+      pageHeight,
       rows,
       position,
     } = this.props;
@@ -24,7 +17,7 @@ export class RowsContainer extends Component {
     this.state = {
       fontSize,
       names: this.checkRowSize(
-        this.getPage(rows, position.y, dimensions.pageY),
+        this.getPage(rows, position, pageHeight),
         fontSize,
       ),
     };
@@ -32,40 +25,40 @@ export class RowsContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     const {
       cellSize,
-      dimensions,
+      pageHeight,
       position,
       rows,
-      sortInfo,
+      sortID,
     } = nextProps;
     this.updateFontSize(cellSize, this.props.cellSize, rows);
     this.updatePage(
-      position.y,
-      this.props.position.y,
-      dimensions.pageY,
-      this.props.dimensions.pageY,
-      sortInfo.id,
-      this.props.sortInfo.id,
+      position,
+      this.props.position,
+      pageHeight,
+      this.props.pageHeight,
+      sortID,
+      this.props.sortID,
       rows,
     );
   }
   shouldComponentUpdate = (nextProps) => {
     const {
       cellSize,
-      dimensions,
+      pageHeight,
       position,
       search,
-      sortInfo,
+      sortID,
     } = nextProps;
     return (
       cellSize !== this.props.cellSize ||
-      dimensions.pageY !== this.props.dimensions.pageY ||
-      position.y !== this.props.position.y ||
-      sortInfo.id !== this.props.sortInfo.id ||
+      pageHeight !== this.props.pageHeight ||
+      position !== this.props.position ||
+      sortID !== this.props.sortID ||
       search.match !== this.props.search.match
     );
   }
-  getPage = (rows, y, pageY) => {
-    const pageEnd = y + pageY;
+  getPage = (rows, y, pageHeight) => {
+    const pageEnd = y + pageHeight;
     return rows.slice(y, pageEnd);
   }
   checkRowSize = (names, fontSize) => (
@@ -81,15 +74,15 @@ export class RowsContainer extends Component {
       });
     }
   }
-  updatePage = (y, prevY, pageY, prevPageY, sortId, prevSortId, rows) => {
+  updatePage = (y, prevY, pageHeight, prevPageHeight, sortId, prevSortId, rows) => {
     if (
       y !== prevY ||
-      pageY !== prevPageY ||
+      pageHeight !== prevPageHeight ||
       sortId !== prevSortId
     ) {
       this.setState(({ fontSize }) => ({
         names: this.checkRowSize(
-          this.getPage(rows, y, pageY),
+          this.getPage(rows, y, pageHeight),
           fontSize,
         ),
       }));
@@ -110,40 +103,24 @@ export class RowsContainer extends Component {
   }
 }
 
+RowsContainer.defaultProps = {
+  sortID: null,
+};
+
 RowsContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
-  dimensions: PropTypes.shape({
-    pageY: PropTypes.number,
-  }).isRequired,
   handleClick: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
-  position: PropTypes.shape({
-    y: PropTypes.number,
-  }).isRequired,
+  pageHeight: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   search: PropTypes.shape({
     match: PropTypes.bool,
     rows: PropTypes.shape({}),
     term: PropTypes.string,
   }).isRequired,
-  sortInfo: PropTypes.shape({
-    id: PropTypes.number,
-  }).isRequired,
+  sortID: PropTypes.number,
   toggleTooltip: PropTypes.func.isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  cellSize: SettingSelector(state, 'cellSize'),
-  dimensions: DimensionsSelector(state),
-  position: PositionSelector(state),
-  rows: RowNameSelector(state),
-  search: SearchSelector(state),
-  sortInfo: SortSeletor(state),
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-)(RowsContainer);
-
-export default ConnectedContainer;
+export default RowsContainer;

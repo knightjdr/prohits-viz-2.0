@@ -1,4 +1,4 @@
-import PositionSelector from './position-selector';
+import positionSelector from './position-selector';
 
 describe('PositionSelector selector', () => {
   it('should return curent viewport center position', () => {
@@ -8,6 +8,6 @@ describe('PositionSelector selector', () => {
         y: 0.3,
       },
     };
-    expect(PositionSelector(state)).toEqual(state.position);
+    expect(positionSelector(state)).toEqual(state.position);
   });
 });

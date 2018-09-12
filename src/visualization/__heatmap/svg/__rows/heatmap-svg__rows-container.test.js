@@ -14,17 +14,17 @@ describe('Heatmap row container', () => {
     wrapper = shallow(
       <RowsContainer
         cellSize={15}
-        dimensions={{ pageY: 3 }}
         handleClick={jest.fn()}
         openContextMenu={jest.fn()}
-        position={{ y: 0 }}
+        pageHeight={3}
+        position={0}
         rows={['a', 'b', 'c']}
         search={{
           match: false,
           rows: {},
           text: null,
         }}
-        sortInfo={{ id: 0 }}
+        sortID={0}
         toggleTooltip={jest.fn()}
       />,
     );
@@ -49,28 +49,28 @@ describe('Heatmap row container', () => {
     beforeAll(() => {
       const originalProps = {
         cellSize: 15,
-        dimensions: { pageY: 3 },
-        position: { y: 0 },
+        pageHeight: 3,
+        position: 0,
         rows: ['a', 'b', 'c'],
         search: {
           columns: {},
           match: false,
           term: null,
         },
-        sortInfo: { id: 0 },
+        sortID: 0,
       };
       wrapper.setProps(originalProps);
       const newProps = {
         cellSize: 20,
-        dimensions: { pageY: 2 },
-        position: { y: 1 },
+        pageHeight: 2,
+        position: 1,
         rows: ['a', 'b', 'c'],
         search: {
           columns: { b: true },
           match: true,
           term: 'b',
         },
-        sortInfo: { id: 1 },
+        sortID: 1,
       };
       wrapper.setProps(newProps);
     });
@@ -91,14 +91,14 @@ describe('Heatmap row container', () => {
   describe('shouldComponentUpdate', () => {
     const originalProps = {
       cellSize: 15,
-      dimensions: { pageY: 3 },
-      position: { y: 0 },
+      pageHeight: 3,
+      position: 0,
       search: {
         columns: {},
         match: false,
         term: null,
       },
-      sortInfo: { id: 0 },
+      sortID: 0,
     };
 
     beforeAll(() => {
@@ -118,15 +118,15 @@ describe('Heatmap row container', () => {
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
 
-    it('should return true when pageY changes', () => {
+    it('should return true when pageHeight changes', () => {
       let newProps = {
         ...originalProps,
-        dimensions: { pageY: 3 },
+        pageHeight: 3,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
       newProps = {
         ...originalProps,
-        dimensions: { pageY: 2 },
+        pageHeight: 2,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
@@ -134,12 +134,12 @@ describe('Heatmap row container', () => {
     it('should return true when y position changes', () => {
       let newProps = {
         ...originalProps,
-        position: { y: 0 },
+        position: 0,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
       newProps = {
         ...originalProps,
-        position: { y: 1 },
+        position: 1,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
@@ -168,12 +168,12 @@ describe('Heatmap row container', () => {
     it('should return true when there is a new sort order', () => {
       let newProps = {
         ...originalProps,
-        sortInfo: { id: 0 },
+        sortID: 0,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
       newProps = {
         ...originalProps,
-        sortInfo: { id: 1 },
+        sortID: 1,
       };
       expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });

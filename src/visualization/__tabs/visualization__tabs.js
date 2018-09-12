@@ -3,9 +3,9 @@ import React from 'react';
 import { faWindow } from '@fortawesome/pro-solid-svg-icons';
 
 import Go from './__go/visualization__go-container';
+import Main from './__main/visuazliation__tabs-main';
 import Menu from './menu/menu-container';
 import RoundButton from '../../components/round-button/round-button';
-import Svg from '../__heatmap/svg/heatmap-svg-container';
 
 import './visualization__tabs.css';
 
@@ -24,7 +24,7 @@ const Tabs = ({
         icon={faWindow}
       />
     }
-    { activeTab === 'main' && <Svg /> }
+    { activeTab === 'main' && <Main /> }
     { activeTab === 'go' && <Go /> }
     <Menu
       closeMenu={handleClick}

@@ -1,4 +1,4 @@
-import RowNameSelector from './row-name-selector';
+import rowNameSelector from './row-name-selector';
 
 describe('Row name selector', () => {
   it('should return an array of row names', () => {
@@ -14,6 +14,6 @@ describe('Row name selector', () => {
       },
     };
     const expectedValue = ['a', 'b', 'c'];
-    expect(RowNameSelector(currentState)).toEqual(expectedValue);
+    expect(rowNameSelector(currentState)).toEqual(expectedValue);
   });
 });

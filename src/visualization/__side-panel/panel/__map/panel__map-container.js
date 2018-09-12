@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
 import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import MapSelector from '../../../../state/selectors/visualization/map-selector';
-import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
+import markerSelector from '../../../../state/selectors/visualization/marker-selector';
 import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import SearchSelector from '../../../../state/selectors/visualization/search-selector';
+import searchSelector from '../../../../state/selectors/visualization/search-selector';
 import syncMap from '../../../../state/post/map-thunk';
 import { toggleMapAttach } from '../../../../state/set/visualization/map-actions';
 import { updatePosition } from '../../../../state/set/visualization/position-actions';
@@ -173,10 +173,10 @@ MapContainer.propTypes = {
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
   dimensions: DimensionSelector(state),
-  markers: MarkerSelector(state),
+  markers: markerSelector(state),
   minimap: MapSelector(state),
   position: PositionSelector(state),
-  search: SearchSelector(state),
+  search: searchSelector(state),
 });
 
 /* istanbul ignore next */

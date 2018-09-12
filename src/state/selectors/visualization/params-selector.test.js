@@ -1,4 +1,4 @@
-import { ParametersSelector, ParametersSelectorProp } from './params-selector';
+import { parameterSelector, parameterSelectorProp } from './params-selector';
 
 const state = {
   parameters: {
@@ -9,10 +9,10 @@ const state = {
 
 describe('Parameters selector', () => {
   it('should return all analysis parameters', () => {
-    expect(ParametersSelector(state)).toEqual(state.parameters);
+    expect(parameterSelector(state)).toEqual(state.parameters);
   });
 
   it('should return a specific prop from params state', () => {
-    expect(ParametersSelectorProp(state, 'someParam')).toBe('test');
+    expect(parameterSelectorProp(state, 'someParam')).toBe('test');
   });
 });

@@ -131,7 +131,7 @@ describe('Customize selection actions', () => {
           name: 'z',
         },
       ];
-      expect(actions.recalculateRatios(true, rows)).toEqual(expected);
+      expect(actions.recalculateRatios(true, rows.list)).toEqual(expected);
     });
   });
 });

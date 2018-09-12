@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PanelSelector from '../../state/selectors/visualization/panel-selector';
+import panelSelector from '../../state/selectors/visualization/panel-selector';
 import SidePanel from './visualization__side-panel';
 import { changePanelTab } from '../../state/set/visualization/display-actions';
-import { DisplayPropSelector } from '../../state/selectors/visualization/display-selector';
+import { displayPropSelector } from '../../state/selectors/visualization/display-selector';
 import { togglePanel } from '../../state/set/visualization/panel-actions';
 
 export const SidePanelContainer = ({
@@ -31,8 +31,8 @@ SidePanelContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  panel: PanelSelector(state),
-  tab: DisplayPropSelector(state, 'tab'),
+  panel: panelSelector(state),
+  tab: displayPropSelector(state, 'tab'),
 });
 
 /* istanbul ignore next */

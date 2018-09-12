@@ -8,7 +8,7 @@ exports[`Analysis GO options database sub panel should match snapshot 1`] = `
     Query databases
   </div>
   <div
-    className="analysis-option__database"
+    className="analysis-option__details"
   >
     <Checkbox
       checked={true}

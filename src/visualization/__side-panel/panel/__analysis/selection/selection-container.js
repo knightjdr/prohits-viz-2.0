@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ColumnSelector from '../../../../../state/selectors/visualization/columns-selector';
+import columnSelector from '../../../../../state/selectors/visualization/columns-selector';
 import CopyToClipboard from '../../../../../helpers/copy-to-clipboard';
 import FindClosest from '../../../../../helpers/find-closest';
 import GeneSelector from '../../../../../state/selectors/visualization/genes-selector';
 import PositionSelector from '../../../../../state/selectors/visualization/position-selector';
-import RowNameSelector from '../../../../../state/selectors/visualization/row-name-selector';
+import rowNameSelector from '../../../../../state/selectors/visualization/row-name-selector';
 import Selection from './selection';
 import SortSelector from '../../../../../state/selectors/visualization/sort-selector';
 import { setSelections, updateGeneList } from '../../../../../state/set/visualization/genes-actions';
@@ -257,10 +257,10 @@ SelectionContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  columns: ColumnSelector(state),
+  columns: columnSelector(state),
   genes: GeneSelector(state),
   position: PositionSelector(state),
-  rows: RowNameSelector(state),
+  rows: rowNameSelector(state),
   sortInfo: SortSelector(state),
 });
 

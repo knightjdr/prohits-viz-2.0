@@ -1,31 +1,27 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Arrows from './heatmap-svg__arrows';
-import DimensionSelector from '../../../../state/selectors/visualization/dimension-selector';
 import OnResize from '../../../../helpers/on-resize';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import { updatePosition } from '../../../../state/set/visualization/position-actions';
 
 export class ArrowsContainer extends Component {
   constructor(props) {
     super(props);
     const {
-      dimension,
+      dimensions,
       direction,
       position,
       height,
       width,
     } = this.props;
-    const length = direction === 'horizontal' ? dimension.columns : dimension.rows;
+    const length = direction === 'horizontal' ? dimensions.columns : dimensions.rows;
     const pageType = direction === 'horizontal' ? 'pageX' : 'pageY';
     const vertex = direction === 'horizontal' ? 'x' : 'y';
     this.state = {
-      arrowOpacity: this.setOpacity(position, vertex, length, dimension[pageType]),
+      arrowOpacity: this.setOpacity(position, vertex, length, dimensions[pageType]),
       elPosition: this.setPosition(direction, height, width),
       length,
-      page: dimension[pageType],
+      page: dimensions[pageType],
       pageType,
       show: true,
       vertex,
@@ -37,7 +33,7 @@ export class ArrowsContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     this.updateOpacity(nextProps, this.props.position, this.state.vertex);
     this.updateElPosition(nextProps, this.props.height, this.props.width);
-    this.updatePage(nextProps, this.props.dimension, this.state.pageType);
+    this.updatePage(nextProps, this.props.dimensions, this.state.pageType);
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.onResize);
@@ -76,22 +72,22 @@ export class ArrowsContainer extends Component {
     } else if (newPosition[vertex] >= length - page) {
       newPosition[vertex] = length - page;
     }
-    this.props.updatePosition(newPosition.x, newPosition.y);
+    this.props.updateXY(newPosition.x, newPosition.y);
   }
   resizeEnd = () => {
     this.updateAll(this.props);
   }
   updateAll = ({
-    dimension,
+    dimensions,
     direction,
     height,
     position,
     width,
   }) => {
     this.setState(({ length, pageType, vertex }) => ({
-      arrowOpacity: this.setOpacity(position, vertex, length, dimension[pageType]),
+      arrowOpacity: this.setOpacity(position, vertex, length, dimensions[pageType]),
       elPosition: this.setPosition(direction, height, width),
-      page: dimension[pageType],
+      page: dimensions[pageType],
       show: true,
     }));
   }
@@ -112,10 +108,10 @@ export class ArrowsContainer extends Component {
       }));
     }
   }
-  updatePage = ({ dimension }, prevDimension, pageType) => {
-    if (dimension[pageType] !== prevDimension[pageType]) {
+  updatePage = ({ dimensions }, prevDimensions, pageType) => {
+    if (dimensions[pageType] !== prevDimensions[pageType]) {
       this.setState({
-        page: dimension[pageType],
+        page: dimensions[pageType],
       });
     }
   }
@@ -139,7 +135,7 @@ ArrowsContainer.defaultProps = {
 };
 
 ArrowsContainer.propTypes = {
-  dimension: PropTypes.shape({
+  dimensions: PropTypes.shape({
     columns: PropTypes.number,
     pageX: PropTypes.number,
     pageY: PropTypes.number,
@@ -155,28 +151,10 @@ ArrowsContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   show: PropTypes.bool.isRequired,
-  updatePosition: PropTypes.func.isRequired,
+  updateXY: PropTypes.func.isRequired,
   width: PropTypes.shape({
     wrapper: PropTypes.number,
   }).isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  dimension: DimensionSelector(state),
-  position: PositionSelector(state),
-});
-
-/* istanbul ignore next */
-const mapDispatchToProps = dispatch => ({
-  updatePosition: (x, y) => {
-    dispatch(updatePosition(x, y));
-  },
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ArrowsContainer);
-
-export default ConnectedContainer;
+export default ArrowsContainer;

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import Annotation from './panel__annotation';
 import AnnotationSelector from '../../../../state/selectors/visualization/annotation-selector';
-import MarkerSelector from '../../../../state/selectors/visualization/marker-selector';
-import SearchSelector from '../../../../state/selectors/visualization/search-selector';
+import markerSelector from '../../../../state/selectors/visualization/marker-selector';
+import searchSelector from '../../../../state/selectors/visualization/search-selector';
 import {
   clearAllAnnotations,
   clearLastAnnotation,
@@ -142,8 +142,8 @@ AnnotationContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
-  markers: MarkerSelector(state),
-  search: SearchSelector(state),
+  markers: markerSelector(state),
+  search: searchSelector(state),
 });
 
 /* istanbul ignore next */

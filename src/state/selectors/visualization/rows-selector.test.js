@@ -1,4 +1,4 @@
-import RowsSelector from './rows-selector';
+import rowSelector from './rows-selector';
 
 describe('Rows selector', () => {
   it('should return a list with row data', () => {
@@ -18,6 +18,6 @@ describe('Rows selector', () => {
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
-    expect(RowsSelector(currentState)).toEqual(expectedValue);
+    expect(rowSelector(currentState)).toEqual(expectedValue);
   });
 });

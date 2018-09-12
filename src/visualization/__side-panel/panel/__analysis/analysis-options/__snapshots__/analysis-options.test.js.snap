@@ -44,6 +44,7 @@ exports[`Analysis options panel with type specified should match snapshot 1`] = 
     </Select>
     <Button
       className="analysis-options__button"
+      disabled={false}
       onClick={[Function]}
       type="success"
     >

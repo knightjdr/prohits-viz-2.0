@@ -1,11 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Svg from './heatmap-svg';
+import Svg from './visualization__tabs-main-svg';
+
+jest.mock('./visualization__tabs-main-connected');
 
 const openContextMenu = jest.fn();
 
-describe('Heatmap svg', () => {
+describe('Main heatmap svg', () => {
   let wrapper;
 
   beforeAll(() => {
@@ -15,7 +17,9 @@ describe('Heatmap svg', () => {
         contextTarget=""
         fixLeft={false}
         handleClick={jest.fn()}
-        height={{}}
+        height={{
+          arrowsY: true,
+        }}
         openContextMenu={openContextMenu}
         plotTranslate={0}
         setContainerRef={{}}
@@ -27,7 +31,11 @@ describe('Heatmap svg', () => {
         tooltip={{}}
         toggleTooltip={jest.fn()}
         translateLeft={jest.fn()}
-        width={{}}
+        width={{
+          arrowsX: false,
+          canTranslate: false,
+          wrapper: 500,
+        }}
       />,
     );
   });
@@ -36,15 +44,7 @@ describe('Heatmap svg', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call open context menu with column arg', () => {
-    openContextMenu.mockClear();
-    wrapper.find('Connect(ColumnsContainer)').props().openContextMenu({}, 'test');
-    expect(openContextMenu).toHaveBeenCalledWith({}, 'test', 'column');
-  });
-
-  it('should call open context menu with row arg', () => {
-    openContextMenu.mockClear();
-    wrapper.find('Connect(RowsContainer)').props().openContextMenu({}, 'test');
-    expect(openContextMenu).toHaveBeenCalledWith({}, 'test', 'row');
+  it('should show connected component', () => {
+    expect(wrapper.find('SvgConnected').length).toBe(1);
   });
 });

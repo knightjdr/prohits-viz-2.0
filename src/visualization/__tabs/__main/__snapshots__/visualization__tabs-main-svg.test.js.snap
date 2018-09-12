@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main heatmap svg should match snapshot 1`] = `
+<div
+  className="heatmap-svg__wrapper"
+  style={
+    Object {
+      "transform": "translate(0px)",
+    }
+  }
+>
+  <SvgConnected
+    renderProp={[Function]}
+  />
+</div>
+`;

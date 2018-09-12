@@ -1,15 +1,20 @@
-import SettingsSelector from './settings-selector';
+import { settingSelector, settingSelectorProp } from './settings-selector';
+
+const state = {
+  settings: {
+    current: {
+      imageType: 'test',
+    },
+  },
+};
 
 describe('Settings selector', () => {
+  it('should return settings', () => {
+    expect(settingSelector(state, 'imageType')).toBe(state.settings.current);
+  });
+
   it('should return a specified setting', () => {
-    const state = {
-      settings: {
-        current: {
-          imageType: 'test',
-        },
-      },
-    };
     const expectedValue = 'test';
-    expect(SettingsSelector(state, 'imageType')).toBe(expectedValue);
+    expect(settingSelectorProp(state, 'imageType')).toBe(expectedValue);
   });
 });

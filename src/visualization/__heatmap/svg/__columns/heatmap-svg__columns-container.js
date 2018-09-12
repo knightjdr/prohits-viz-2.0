@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import ColumnsSelector from '../../../../state/selectors/visualization/columns-selector';
 import Columns from './heatmap-svg__columns';
-import DimensionsSelector from '../../../../state/selectors/visualization/dimension-selector';
-import PositionSelector from '../../../../state/selectors/visualization/position-selector';
-import SearchSelector from '../../../../state/selectors/visualization/search-selector';
-import SettingSelector from '../../../../state/selectors/visualization/settings-selector';
 import TrimText from '../helpers/trim-text';
 
 export class ColumnsContainer extends Component {
@@ -16,14 +10,14 @@ export class ColumnsContainer extends Component {
     const {
       cellSize,
       columns,
-      dimensions,
+      pageWidth,
       position,
     } = this.props;
     const fontSize = this.fontSize(cellSize);
     this.state = {
       fontSize,
       names: this.checkColumnSize(
-        this.getPage(columns.names, position.x, dimensions.pageX),
+        this.getPage(columns.names, position, pageWidth),
         fontSize,
       ),
     };
@@ -32,15 +26,15 @@ export class ColumnsContainer extends Component {
     const {
       cellSize,
       columns,
-      dimensions,
+      pageWidth,
       position,
     } = nextProps;
     this.updateFontSize(cellSize, this.props.cellSize, columns);
     this.updatePage(
-      position.x,
-      this.props.position.x,
-      dimensions.pageX,
-      this.props.dimensions.pageX,
+      position,
+      this.props.position,
+      pageWidth,
+      this.props.pageWidth,
       columns.names,
     );
   }
@@ -48,20 +42,20 @@ export class ColumnsContainer extends Component {
     const {
       cellSize,
       columns,
-      dimensions,
+      pageWidth,
       position,
       search,
     } = nextProps;
     return (
       cellSize !== this.props.cellSize ||
       columns.ref !== this.props.columns.ref ||
-      dimensions.pageX !== this.props.dimensions.pageX ||
-      position.x !== this.props.position.x ||
+      pageWidth !== this.props.pageWidth ||
+      position !== this.props.position ||
       search.match !== this.props.search.match
     );
   }
-  getPage = (names, x, pageX) => {
-    const pageEnd = x + pageX;
+  getPage = (names, x, pageWidth) => {
+    const pageEnd = x + pageWidth;
     return names.slice(x, pageEnd);
   }
   checkColumnSize = (names, fontSize) => (
@@ -77,14 +71,14 @@ export class ColumnsContainer extends Component {
       });
     }
   }
-  updatePage = (x, prevX, pageX, prevPageX, names) => {
+  updatePage = (x, prevX, pageWidth, prevPageWidth, names) => {
     if (
       x !== prevX ||
-      pageX !== prevPageX
+      pageWidth !== prevPageWidth
     ) {
       this.setState(({ fontSize }) => ({
         names: this.checkColumnSize(
-          this.getPage(names, x, pageX),
+          this.getPage(names, x, pageWidth),
           fontSize,
         ),
       }));
@@ -112,14 +106,10 @@ ColumnsContainer.propTypes = {
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
   }).isRequired,
-  dimensions: PropTypes.shape({
-    pageX: PropTypes.number,
-  }).isRequired,
   handleClick: PropTypes.func.isRequired,
   openContextMenu: PropTypes.func.isRequired,
-  position: PropTypes.shape({
-    x: PropTypes.number,
-  }).isRequired,
+  pageWidth: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,
@@ -128,17 +118,4 @@ ColumnsContainer.propTypes = {
   toggleTooltip: PropTypes.func.isRequired,
 };
 
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  cellSize: SettingSelector(state, 'cellSize'),
-  columns: ColumnsSelector(state),
-  dimensions: DimensionsSelector(state),
-  position: PositionSelector(state),
-  search: SearchSelector(state),
-});
-
-const ConnectedContainer = connect(
-  mapStateToProps,
-)(ColumnsContainer);
-
-export default ConnectedContainer;
+export default ColumnsContainer;
