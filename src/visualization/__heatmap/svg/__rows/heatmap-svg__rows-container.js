@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Rows from './heatmap-svg__rows';
-import TrimText from '../helpers/trim-text';
+import trimText from '../helpers/trim-text';
 
 export class RowsContainer extends Component {
   constructor(props) {
@@ -29,6 +29,7 @@ export class RowsContainer extends Component {
       position,
       rows,
       sortID,
+      updateID,
     } = nextProps;
     this.updateFontSize(cellSize, this.props.cellSize, rows);
     this.updatePage(
@@ -38,6 +39,8 @@ export class RowsContainer extends Component {
       this.props.pageHeight,
       sortID,
       this.props.sortID,
+      updateID,
+      this.props.updateID,
       rows,
     );
   }
@@ -48,8 +51,10 @@ export class RowsContainer extends Component {
       position,
       search,
       sortID,
+      updateID,
     } = nextProps;
     return (
+      updateID !== this.props.updateID ||
       cellSize !== this.props.cellSize ||
       pageHeight !== this.props.pageHeight ||
       position !== this.props.position ||
@@ -62,7 +67,7 @@ export class RowsContainer extends Component {
     return rows.slice(y, pageEnd);
   }
   checkRowSize = (names, fontSize) => (
-    names.map(name => TrimText(name, 'BodyText', `${fontSize}px`, 98))
+    names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
   )
   fontSize = cellSize => cellSize * 0.6
   updateFontSize = (cellSize, prevCellSize, rows) => {
@@ -74,8 +79,19 @@ export class RowsContainer extends Component {
       });
     }
   }
-  updatePage = (y, prevY, pageHeight, prevPageHeight, sortId, prevSortId, rows) => {
+  updatePage = (
+    y,
+    prevY,
+    pageHeight,
+    prevPageHeight,
+    sortId,
+    prevSortId,
+    updateID,
+    prevUpdateID,
+    rows,
+  ) => {
     if (
+      updateID !== prevUpdateID ||
       y !== prevY ||
       pageHeight !== prevPageHeight ||
       sortId !== prevSortId
@@ -105,6 +121,7 @@ export class RowsContainer extends Component {
 
 RowsContainer.defaultProps = {
   sortID: null,
+  updateID: null,
 };
 
 RowsContainer.propTypes = {
@@ -121,6 +138,7 @@ RowsContainer.propTypes = {
   }).isRequired,
   sortID: PropTypes.number,
   toggleTooltip: PropTypes.func.isRequired,
+  updateID: PropTypes.number,
 };
 
 export default RowsContainer;

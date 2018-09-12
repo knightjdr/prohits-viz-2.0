@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ArrayShallowEqual from '../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 import DefineColumns from './define-columns';
 import { HeaderSelectionContainer } from './header-selection-container';
 
@@ -129,7 +129,7 @@ describe('NewsListContainer', () => {
   });
 
   test('Header change via props triggers state change', () => {
-    ArrayShallowEqual.mockReturnValueOnce(false);
+    arrayShallowEqual.mockReturnValueOnce(false);
     const headerNew = ['column1', 'column3'];
     const wrapper = shallow(
       <HeaderSelectionContainer
@@ -176,7 +176,7 @@ describe('NewsListContainer', () => {
   });
 
   test('Header and AnalysisType do not change via then nothing happens', () => {
-    ArrayShallowEqual.mockReturnValueOnce(true);
+    arrayShallowEqual.mockReturnValueOnce(true);
     const wrapper = shallow(
       <HeaderSelectionContainer
         change={change}

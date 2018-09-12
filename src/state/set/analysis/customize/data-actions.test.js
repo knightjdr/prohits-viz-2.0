@@ -1,4 +1,4 @@
-import * as actions from './customize-actions';
+import * as actions from './data-actions';
 
 const columns = ['a', 'b', 'c', 'd'];
 const rows = {

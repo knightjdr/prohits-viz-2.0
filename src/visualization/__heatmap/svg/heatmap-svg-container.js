@@ -259,6 +259,10 @@ export class SvgContainer extends Component {
   }
 }
 
+SvgContainer.defaultProps = {
+  setSelectedGenes: null,
+};
+
 SvgContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
   columns: PropTypes.shape({
@@ -274,7 +278,7 @@ SvgContainer.propTypes = {
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   setDims: PropTypes.func.isRequired,
   setRef: PropTypes.func.isRequired,
-  setSelectedGenes: PropTypes.func.isRequired,
+  setSelectedGenes: PropTypes.func,
   sort: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
 };

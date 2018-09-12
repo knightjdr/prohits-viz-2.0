@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Customize from './options-customize';
-import { customizeSelector } from '../../../../../../../state/selectors/analysis/customize-selector';
+import { customizeDataSelector } from '../../../../../../../state/selectors/analysis/customize/data-selector';
 import { setCustomizeParameters } from '../../../../../../../state/set/analysis/viz-analysis-form-actions';
 import { VizFormPropSelector } from '../../../../../../../state/selectors/analysis/viz-analysis-form-selector';
-import { undoCustomizeState, updateImage } from '../../../../../../../state/set/analysis/customize-actions';
+import { undoCustomizeState, updateImage } from '../../../../../../../state/set/analysis/customize/data-actions';
 
 export class CustomizeContainer extends Component {
   constructor(props) {
@@ -87,7 +87,7 @@ CustomizeContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  customize: customizeSelector(state),
+  customize: customizeDataSelector(state),
   form: VizFormPropSelector(state, 'customize'),
 });
 

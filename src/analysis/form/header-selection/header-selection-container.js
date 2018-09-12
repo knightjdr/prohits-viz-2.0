@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
-import ArrayShallowEqual from '../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 import DefineColumns from './define-columns';
 import HeaderSelection from './header-selection';
 import HeaderSelector from '../../../state/selectors/header-selector';
@@ -25,7 +25,7 @@ export class HeaderSelectionContainer extends Component {
     const { analysisType, fileType } = form;
     if (
       analysisType !== this.props.form.analysisType ||
-      !ArrayShallowEqual(header, this.props.header)
+      !arrayShallowEqual(header, this.props.header)
     ) {
       const columns = DefineColumns(analysisType, fileType, header);
       this.setReduxFormState(change, columns);

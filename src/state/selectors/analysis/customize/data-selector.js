@@ -3,14 +3,14 @@ import { createSelector } from 'reselect';
 const getCustomize = state => state.customize;
 const getCustomizeProp = (state, prop) => state.customize[prop];
 
-export const customizeSelector = createSelector(
+export const customizeDataSelector = createSelector(
   [getCustomize],
   customize => (
     customize
   ),
 );
 
-export const customizePropSelector = createSelector(
+export const customizeDataPropSelector = createSelector(
   [getCustomizeProp],
   prop => (
     prop

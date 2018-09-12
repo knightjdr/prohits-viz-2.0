@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import ArrayShallowEqual from '../../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../../helpers/array-shallow-equal';
 import PreyLengthNormalization from './prey-length-normalization';
 import FilterHeader from '../../header-selection/filter-header';
 
@@ -36,7 +36,7 @@ class PreyLengthNormalizationContainer extends Component {
   setReduxFormState = (change, header) => {
     /* if header changes, update options and change preyLength and preyLengthNorm if
     ** there is a default option */
-    if (!ArrayShallowEqual(header, this.props.header)) {
+    if (!arrayShallowEqual(header, this.props.header)) {
       const preyLengthCol = FilterHeader(recommendedColumns, header);
       if (preyLengthCol.initialValue) {
         change('preyLength', preyLengthCol.initialValue);

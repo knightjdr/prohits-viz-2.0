@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { faWindow } from '@fortawesome/pro-solid-svg-icons';
 
+import Customize from './__customize/visualization__tabs-customize';
 import Go from './__go/visualization__go-container';
 import Main from './__main/visuazliation__tabs-main';
 import Menu from './menu/menu-container';
@@ -25,6 +26,7 @@ const Tabs = ({
       />
     }
     { activeTab === 'main' && <Main /> }
+    { activeTab === 'customize' && <Customize /> }
     { activeTab === 'go' && <Go /> }
     <Menu
       closeMenu={handleClick}

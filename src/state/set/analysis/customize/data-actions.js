@@ -1,7 +1,7 @@
-import * as tabActions from '../visualization/tab-actions';
+import * as tabActions from '../../visualization/tab-actions';
 
-import deepCopy from '../../../helpers/deep-copy';
-import round from '../../../helpers/round';
+import deepCopy from '../../../../helpers/deep-copy';
+import round from '../../../../helpers/round';
 
 export const ADD_CUSTOMIZE_STATE = 'UPDATE_CUSTOMIZE_STATE';
 export const REPLACE_CUSTOMIZE_STATE = 'REPLACE_CUSTOMIZE_STATE';

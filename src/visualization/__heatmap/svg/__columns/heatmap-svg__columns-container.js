@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Columns from './heatmap-svg__columns';
-import TrimText from '../helpers/trim-text';
+import trimText from '../helpers/trim-text';
 
 export class ColumnsContainer extends Component {
   constructor(props) {
@@ -28,6 +28,7 @@ export class ColumnsContainer extends Component {
       columns,
       pageWidth,
       position,
+      updateID,
     } = nextProps;
     this.updateFontSize(cellSize, this.props.cellSize, columns);
     this.updatePage(
@@ -35,6 +36,8 @@ export class ColumnsContainer extends Component {
       this.props.position,
       pageWidth,
       this.props.pageWidth,
+      updateID,
+      this.props.updateID,
       columns.names,
     );
   }
@@ -45,8 +48,10 @@ export class ColumnsContainer extends Component {
       pageWidth,
       position,
       search,
+      updateID,
     } = nextProps;
     return (
+      updateID !== this.props.updateID ||
       cellSize !== this.props.cellSize ||
       columns.ref !== this.props.columns.ref ||
       pageWidth !== this.props.pageWidth ||
@@ -59,7 +64,7 @@ export class ColumnsContainer extends Component {
     return names.slice(x, pageEnd);
   }
   checkColumnSize = (names, fontSize) => (
-    names.map(name => TrimText(name, 'BodyText', `${fontSize}px`, 98))
+    names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
   )
   fontSize = cellSize => cellSize * 0.6
   updateFontSize = (cellSize, prevCellSize, columns) => {
@@ -71,8 +76,9 @@ export class ColumnsContainer extends Component {
       });
     }
   }
-  updatePage = (x, prevX, pageWidth, prevPageWidth, names) => {
+  updatePage = (x, prevX, pageWidth, prevPageWidth, updateID, prevUpdateID, names) => {
     if (
+      updateID !== prevUpdateID ||
       x !== prevX ||
       pageWidth !== prevPageWidth
     ) {
@@ -100,6 +106,10 @@ export class ColumnsContainer extends Component {
   }
 }
 
+ColumnsContainer.defaultProps = {
+  updateID: null,
+};
+
 ColumnsContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
   columns: PropTypes.shape({
@@ -116,6 +126,7 @@ ColumnsContainer.propTypes = {
     term: PropTypes.string,
   }).isRequired,
   toggleTooltip: PropTypes.func.isRequired,
+  updateID: PropTypes.number,
 };
 
 export default ColumnsContainer;

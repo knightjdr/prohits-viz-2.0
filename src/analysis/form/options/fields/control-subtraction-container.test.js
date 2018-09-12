@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ArrayShallowEqual from '../../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../../helpers/array-shallow-equal';
 import ControlSubtractionContainer from './control-subtraction-container';
 import FilterHeader from '../../header-selection/filter-header';
 
@@ -194,7 +194,7 @@ describe('ControlSubtractionContainer', () => {
       { text: 'column2', value: 'column2' },
       { text: 'column3', value: 'column3' },
     ];
-    ArrayShallowEqual.mockReturnValue(false);
+    arrayShallowEqual.mockReturnValue(false);
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options: optionsNew,
@@ -218,7 +218,7 @@ describe('ControlSubtractionContainer', () => {
     expect(change).toHaveBeenCalledWith('ctrlSub', true);
     expect(change).toHaveBeenCalledWith('control', 'column1');
     expect(wrapper.state().options).toEqual(optionsNew);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 
@@ -229,7 +229,7 @@ describe('ControlSubtractionContainer', () => {
       { text: 'column2', value: 'column2' },
       { text: 'column3', value: 'column3' },
     ];
-    ArrayShallowEqual.mockReturnValue(false);
+    arrayShallowEqual.mockReturnValue(false);
     FilterHeader.mockReturnValue({
       initialValue: null,
       options: optionsNew,
@@ -253,12 +253,12 @@ describe('ControlSubtractionContainer', () => {
     expect(change).toHaveBeenCalledWith('ctrlSub', false);
     expect(change).toHaveBeenCalledWith('control', undefined);
     expect(wrapper.state().options).toEqual(optionsNew);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 
   test('Store not updated when header is the same', () => {
-    ArrayShallowEqual.mockReturnValue(true);
+    arrayShallowEqual.mockReturnValue(true);
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options,
@@ -279,7 +279,7 @@ describe('ControlSubtractionContainer', () => {
     wrapper.instance().setReduxFormState(change, header);
     expect(FilterHeader).not.toHaveBeenCalled();
     expect(wrapper.state().options).toEqual(options);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 });

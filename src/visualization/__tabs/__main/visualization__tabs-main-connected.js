@@ -10,7 +10,6 @@ import positionSelector from '../../../state/selectors/visualization/position-se
 import rowNameSelector from '../../../state/selectors/visualization/row-name-selector';
 import rowSelector from '../../../state/selectors/visualization/rows-selector';
 import searchSelector from '../../../state/selectors/visualization/search-selector';
-import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import sortSeletor from '../../../state/selectors/visualization/sort-selector';
 import { addMarker } from '../../../state/set/visualization/marker-actions';
 import { displaySelector } from '../../../state/selectors/visualization/display-selector';
@@ -18,6 +17,7 @@ import { parameterSelectorProp } from '../../../state/selectors/visualization/pa
 import { setDimensions } from '../../../state/set/visualization/dimension-actions';
 import { setReference } from '../../../state/set/visualization/columns-actions';
 import { setSelections } from '../../../state/set/visualization/genes-actions';
+import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { sortDefault, sortRows } from '../../../state/set/visualization/rows-actions';
 import {
   toggleSelectionBox,
@@ -143,6 +143,7 @@ MainWithState.propTypes = {
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,
+    rows: PropTypes.shape({}),
     term: PropTypes.string,
   }).isRequired,
   setRef: PropTypes.func.isRequired,

@@ -1,4 +1,4 @@
-import ArrayShallowEqual from '../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 
 const Rows = (userRows) => {
   const rows = {};
@@ -21,7 +21,7 @@ const Rows = (userRows) => {
 
   // Ensure row list contains order arr.
   const listOrder = list.map(item => item.name);
-  rows.order = ArrayShallowEqual(listOrder, order) ? order : listOrder;
+  rows.order = arrayShallowEqual(listOrder, order) ? order : listOrder;
 
   return rows;
 };

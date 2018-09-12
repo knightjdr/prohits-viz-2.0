@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import ArrayShallowEqual from '../../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../../helpers/array-shallow-equal';
 import ControlSubtraction from './control-subtraction';
 import FilterHeader from '../../header-selection/filter-header';
 
@@ -41,7 +41,7 @@ class ControlSubtractionContainer extends Component {
   setReduxFormState = (change, header) => {
     /* if header changes, update options and change control and ctrlSub if
     ** there is a default option */
-    if (!ArrayShallowEqual(header, this.props.header)) {
+    if (!arrayShallowEqual(header, this.props.header)) {
       const controlCol = FilterHeader(recommendedColumns, header);
       if (controlCol.initialValue) {
         change('control', controlCol.initialValue);

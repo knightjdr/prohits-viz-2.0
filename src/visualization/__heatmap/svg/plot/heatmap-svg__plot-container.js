@@ -59,6 +59,7 @@ export class PlotContainer extends Component {
       this.props.position,
       this.props.dimensions,
       this.props.sortID,
+      this.props.updateID,
     );
   }
   shouldComponentUpdate(nextProps) {
@@ -75,8 +76,10 @@ export class PlotContainer extends Component {
       primaryFilter,
       secondaryFilter,
       sortID,
+      updateID,
     } = nextProps;
     return (
+      updateID !== this.props.updateID ||
       abundanceCap !== this.props.abundanceCap ||
       cellSize !== this.props.cellSize ||
       dimensions.pageX !== this.props.dimensions.pageX ||
@@ -237,8 +240,10 @@ export class PlotContainer extends Component {
     position,
     rows,
     sortID,
-  }, prevPosition, prevDimensions, prevSortId) => {
+    updateID,
+  }, prevPosition, prevDimensions, prevSortId, prevUpdateID) => {
     if (
+      updateID !== prevUpdateID ||
       position.x !== prevPosition.x ||
       position.y !== prevPosition.y ||
       dimensions.pageX !== prevDimensions.pageX ||
@@ -273,6 +278,7 @@ export class PlotContainer extends Component {
 
 PlotContainer.defaultProps = {
   sortID: null,
+  updateID: null,
 };
 
 PlotContainer.propTypes = {
@@ -305,6 +311,7 @@ PlotContainer.propTypes = {
   scoreType: PropTypes.string.isRequired,
   secondaryFilter: PropTypes.number.isRequired,
   sortID: PropTypes.number,
+  updateID: PropTypes.number,
 };
 
 export default PlotContainer;

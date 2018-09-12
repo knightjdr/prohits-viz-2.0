@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ArrayShallowEqual from '../../../../helpers/array-shallow-equal';
+import { arrayShallowEqual } from '../../../../helpers/array-shallow-equal';
 import PreyLengthNormalizationContainer from './prey-length-normalization-container';
 import FilterHeader from '../../header-selection/filter-header';
 
@@ -172,7 +172,7 @@ describe('PreyLengthNormalizationContainer', () => {
       { text: 'column2', value: 'column2' },
       { text: 'column3', value: 'column3' },
     ];
-    ArrayShallowEqual.mockReturnValue(false);
+    arrayShallowEqual.mockReturnValue(false);
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options: optionsNew,
@@ -195,7 +195,7 @@ describe('PreyLengthNormalizationContainer', () => {
     expect(change).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledWith('preyLength', 'column1');
     expect(wrapper.state().options).toEqual(optionsNew);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 
@@ -206,7 +206,7 @@ describe('PreyLengthNormalizationContainer', () => {
       { text: 'column2', value: 'column2' },
       { text: 'column3', value: 'column3' },
     ];
-    ArrayShallowEqual.mockReturnValue(false);
+    arrayShallowEqual.mockReturnValue(false);
     FilterHeader.mockReturnValue({
       initialValue: null,
       options: optionsNew,
@@ -230,12 +230,12 @@ describe('PreyLengthNormalizationContainer', () => {
     expect(change).toHaveBeenCalledWith('preyLengthNorm', false);
     expect(change).toHaveBeenCalledWith('preyLength', undefined);
     expect(wrapper.state().options).toEqual(optionsNew);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 
   test('Store not updated when header is the same', () => {
-    ArrayShallowEqual.mockReturnValue(true);
+    arrayShallowEqual.mockReturnValue(true);
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options,
@@ -256,7 +256,7 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setReduxFormState(change, header);
     expect(FilterHeader).not.toHaveBeenCalled();
     expect(wrapper.state().options).toEqual(options);
-    ArrayShallowEqual.mockRestore();
+    arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
   });
 });

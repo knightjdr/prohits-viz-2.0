@@ -4,9 +4,11 @@ import { reducer as formReducer } from 'redux-form';
 // reducers
 import annotations from './set/visualization/annotation-reducer';
 import columns from './set/visualization/columns-reducer';
-import customize from './set/analysis/customize-reducer';
+import customize from './set/analysis/customize/data-reducer';
 import dimensions from './set/visualization/dimension-reducer';
+import dimensionsCustomize from './set/analysis/customize/dimension-reducer';
 import display from './set/visualization/display-reducer';
+import displayCustomize from './set/analysis/customize/display-reducer';
 import formStep from './set/form-step-reducer';
 import genes from './set/visualization/genes-reducer';
 import go from './set/analysis/go-reducer';
@@ -20,6 +22,7 @@ import newsPage from './set/news-page-reducer';
 import panel from './set/visualization/panel-reducer';
 import parameters from './set/visualization/params-reducer';
 import position from './set/visualization/position-reducer';
+import positionCustomize from './set/analysis/customize/position-reducer';
 import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
@@ -34,7 +37,9 @@ const Reducers = combineReducers({
   columns,
   customize,
   dimensions,
+  dimensionsCustomize,
   display,
+  displayCustomize,
   form: formReducer,
   formStep,
   genes,
@@ -49,6 +54,7 @@ const Reducers = combineReducers({
   panel,
   parameters,
   position,
+  positionCustomize,
   rows,
   save,
   search,

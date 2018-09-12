@@ -1,5 +1,5 @@
-import ArrayContains from '../../../helpers/array-contains';
-import ArrayEqual from '../../../helpers/array-shallow-equal';
+import arrayContains from '../../../helpers/array-contains';
+import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 
 export const MapList = list => (
   list.reduce(((obj, gene, index) => {
@@ -27,7 +27,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     if (
       columnMap &&
       typeof columnMap === 'object' &&
-      ArrayEqual(Object.keys(columnMap), columns)
+      arrayShallowEqual(Object.keys(columnMap), columns)
     ) {
       genes.columnMap = columnMap;
     } else {
@@ -36,7 +36,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     if (
       columnsSelected &&
       Array.isArray(columnsSelected) &&
-      ArrayContains(columns, columnsSelected)
+      arrayContains(columns, columnsSelected)
     ) {
       genes.columnsSelected = columnsSelected;
     } else {
@@ -54,7 +54,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     if (
       rowMap &&
       typeof rowMap === 'object' &&
-      ArrayEqual(Object.keys(rowMap), rows)
+      arrayShallowEqual(Object.keys(rowMap), rows)
     ) {
       genes.rowMap = rowMap;
     } else {
@@ -63,7 +63,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     if (
       rowsSelected &&
       Array.isArray(rowsSelected) &&
-      ArrayContains(rows, rowsSelected)
+      arrayContains(rows, rowsSelected)
     ) {
       genes.rowsSelected = rowsSelected;
     } else {

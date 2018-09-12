@@ -1,4 +1,4 @@
-import { customizeSelector, customizePropSelector } from './customize-selector';
+import { customizeDataSelector, customizeDataPropSelector } from './data-selector';
 
 const state = {
   customize: {
@@ -8,10 +8,10 @@ const state = {
 
 describe('Customize analysis selector', () => {
   it('should return an object of values', () => {
-    expect(customizeSelector(state)).toEqual(state.customize);
+    expect(customizeDataSelector(state)).toEqual(state.customize);
   });
 
   it('should return a specific prop from state', () => {
-    expect(customizePropSelector(state, 'columns')).toBe(state.customize.columns);
+    expect(customizeDataPropSelector(state, 'columns')).toBe(state.customize.columns);
   });
 });

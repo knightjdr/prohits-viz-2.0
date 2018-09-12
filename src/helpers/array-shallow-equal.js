@@ -1,14 +1,17 @@
-// checks if two arrays have the same elements, regardless of order
-const ArrayShallowEqual = (arr1, arr2) => {
+// Checks if two arrays have the same elements, regardless of order.
+export const arrayShallowEqual = (arr1, arr2) => {
   const len = arr1.length;
   if (arr2.length !== len) {
     return false;
   }
-  for (let i = 0; i < len; i += 1) {
-    if (!arr2.includes(arr1[i])) {
-      return false;
-    }
-  }
-  return true;
+  return arr1.every(item => arr2.includes(item));
 };
-export default ArrayShallowEqual;
+
+// Checks if two arrays have the same elements in the same order.
+export const arrayShallowEqualExact = (arr1, arr2) => {
+  const len = arr1.length;
+  if (arr2.length !== len) {
+    return false;
+  }
+  return arr1.every((value, index) => value === arr2[index]);
+};

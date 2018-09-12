@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnalysisOptions from './analysis-options';
-import { customizeImage } from '../../../../../state/set/analysis/customize-actions';
+import { customizeImage } from '../../../../../state/set/analysis/customize/data-actions';
 import performVizAnalysis from '../../../../../state/post/viz-analysis-thunk';
 import { setAnalysisType } from '../../../../../state/set/analysis/viz-analysis-actions';
 import { VizAnalysisPropSelector } from '../../../../../state/selectors/analysis/viz-analysis-selector';
