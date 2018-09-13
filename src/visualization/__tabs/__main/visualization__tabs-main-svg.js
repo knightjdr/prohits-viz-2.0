@@ -119,6 +119,7 @@ const MainSvg = ({
               dimensions={connectedProps.dimensions}
               direction="vertical"
               height={height}
+              offset={width.arrowsX}
               position={connectedProps.position}
               show={height.arrowsY}
               updateXY={connectedProps.updateXY}

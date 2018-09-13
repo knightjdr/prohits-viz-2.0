@@ -1,4 +1,5 @@
 import * as actions from './viz-analysis-form-actions';
+import * as fileActions from '../interactive-file-actions';
 
 export const initState = {
   customize: {
@@ -37,6 +38,8 @@ export const initState = {
 
 const VizAnalysisForms = (state = initState, action) => {
   switch (action.type) {
+    case fileActions.PARSE_INTERACTIVE_FILE:
+      return { ...action.file.vizanalysisform };
     case actions.SET_CUSTOMIZE_PARAMETER: {
       return {
         ...state,

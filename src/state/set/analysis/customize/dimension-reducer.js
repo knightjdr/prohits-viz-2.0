@@ -1,15 +1,26 @@
-import { SET_CUSTOMIZE_DIMENSIONS } from './dimension-actions';
+import * as actions from './dimension-actions';
+import * as fileActions from '../../interactive-file-actions';
+import * as tabActions from '../../visualization/tab-actions';
 
-const Dimension = (state = {
+const initState = {
   columns: 0,
   height: 0,
   pageX: 0,
   pageY: 0,
   rows: 0,
   width: 0,
-}, action) => {
+};
+
+const dimension = (state = { ...initState }, action) => {
   switch (action.type) {
-    case SET_CUSTOMIZE_DIMENSIONS:
+    case fileActions.CLEAR_INTERACTIVE_FILE:
+      return { ...initState };
+    case tabActions.REMOVE_TAB:
+      if (action.tab === 'customize') {
+        return { ...initState };
+      }
+      return state;
+    case actions.SET_CUSTOMIZE_DIMENSIONS:
       return {
         columns: action.columns,
         height: action.height,
@@ -22,4 +33,4 @@ const Dimension = (state = {
       return state;
   }
 };
-export default Dimension;
+export default dimension;

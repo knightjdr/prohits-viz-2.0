@@ -12,9 +12,9 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
-  right: 10px;
+  right: 0;
   top: 10px;
-  transform: translateX(350);
+  transform: translateX(350px);
   transition: all 0.5s cubic-bezier(.17, .67, .16, .99);
   width: 90vw;
   z-index: 102;

@@ -1,13 +1,10 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  faArrowAltCircleLeft,
-  faArrowAltCircleRight,
-  faFileDownload,
-  faUndo,
-} from '@fortawesome/pro-solid-svg-icons';
-import { faComment, faSquare } from '@fortawesome/pro-regular-svg-icons';
+import { faEllipsisV } from '@fortawesome/pro-solid-svg-icons';
+
+import Button from '../../../../components/button/button';
+import Options from './heatmap-svg__status-options';
 
 import './heatmap-svg__status.css';
 
@@ -15,10 +12,13 @@ const Status = ({
   canTranslate,
   download,
   elPosition,
+  expand,
   fixLeft,
   reset,
   selectionBoxActive,
   show,
+  showToggles,
+  toggleMenu,
   toggleSelectionBox,
   toggleTooltips,
   tooltipsActive,
@@ -32,79 +32,31 @@ const Status = ({
       visibility: show ? 'visible' : 'hidden',
     }}
   >
-    {
-      canTranslate &&
-      <button
-        className="heatmap-svg__status-button"
-        onClick={translate}
-        tooltip={fixLeft ? 'Center plot' : 'Fix plot to left'}
-        tooltip-position="right"
-        type="button"
-      >
-        {
-          fixLeft ?
-            <FontAwesomeIcon icon={faArrowAltCircleRight} />
-            :
-            <FontAwesomeIcon icon={faArrowAltCircleLeft} />
-        }
-      </button>
-    }
-    <button
-      className="heatmap-svg__status-button heatmap-svg__status-button_small-font"
-      onClick={reset}
-      tooltip="Reset image"
-      tooltip-position="right"
-      type="button"
-    >
-      <FontAwesomeIcon icon={faUndo} />
-    </button>
-    <button
-      className="heatmap-svg__status-button"
-      onClick={download}
-      tooltip="Export current view"
-      tooltip-position="right"
-      type="button"
-    >
-      <FontAwesomeIcon icon={faFileDownload} />
-    </button>
-    <button
-      className="heatmap-svg__status-button"
-      onClick={toggleSelectionBox}
-      tooltip="Toggle selection box"
-      tooltip-position="right"
-      type="button"
-    >
-      <FontAwesomeIcon
-        icon={faSquare}
-        style={{
-          color: selectionBoxActive ? 'inherit' : '#999',
-        }}
-      />
-      {
-        !selectionBoxActive &&
-        <span className="heatmap-svg__state-slash">/</span>
-      }
-    </button>
-    <button
-      className="heatmap-svg__status-button"
-      onClick={toggleTooltips}
-      tooltip="Toggle tooltips"
-      tooltip-position="right"
-      type="button"
-    >
-      <FontAwesomeIcon
-        icon={faComment}
-        style={{
-          color: tooltipsActive ? 'inherit' : '#999',
-        }}
-      />
-      {
-        !tooltipsActive &&
-        <span className="heatmap-svg__state-slash">/</span>
-      }
-    </button>
+    <Button onClick={toggleMenu}>
+      <FontAwesomeIcon icon={faEllipsisV} />
+    </Button>
+    <Options
+      canTranslate={canTranslate}
+      download={download}
+      expand={expand}
+      fixLeft={fixLeft}
+      reset={reset}
+      selectionBoxActive={selectionBoxActive}
+      showToggles={showToggles}
+      toggleSelectionBox={toggleSelectionBox}
+      toggleTooltips={toggleTooltips}
+      tooltipsActive={tooltipsActive}
+      translate={translate}
+    />
   </div>
 );
+
+Status.defaultProps = {
+  selectionBoxActive: false,
+  toggleSelectionBox: null,
+  toggleTooltips: null,
+  tooltipsActive: false,
+};
 
 Status.propTypes = {
   canTranslate: PropTypes.bool.isRequired,
@@ -114,13 +66,16 @@ Status.propTypes = {
     right: PropTypes.number,
     transform: PropTypes.string,
   }).isRequired,
+  expand: PropTypes.bool.isRequired,
   fixLeft: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
-  selectionBoxActive: PropTypes.bool.isRequired,
+  selectionBoxActive: PropTypes.bool,
   show: PropTypes.bool.isRequired,
-  tooltipsActive: PropTypes.bool.isRequired,
-  toggleSelectionBox: PropTypes.func.isRequired,
-  toggleTooltips: PropTypes.func.isRequired,
+  showToggles: PropTypes.bool.isRequired,
+  tooltipsActive: PropTypes.bool,
+  toggleMenu: PropTypes.func.isRequired,
+  toggleSelectionBox: PropTypes.func,
+  toggleTooltips: PropTypes.func,
   translate: PropTypes.func.isRequired,
 };
 

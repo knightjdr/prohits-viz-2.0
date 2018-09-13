@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 import OnResize from '../../../helpers/on-resize';
 
 const COL_MARGIN = 100;
+const EXTRA_ARROW_PADDING = 30;
 const EXTRA_PADDING = 2;
 const HORZ_PADDING = 50;
 const ROW_MARGIN = 100;
 const SIDE_PANEL = 400;
-const VERT_PADDING = 50;
+const VERT_PADDING = 20;
 
 export class SvgContainer extends Component {
   constructor(props) {
@@ -62,8 +63,8 @@ export class SvgContainer extends Component {
     OnResize(this, this.resizeEnd, 800);
   }
   setDimensions = (cellSize, columns, panel, rows, display) => {
-    const height = this.calculateHeight(cellSize, rows);
     const width = this.calculateWidth(cellSize, columns);
+    const height = this.calculateHeight(cellSize, rows, width.arrowsX);
     const translate = this.setTranslate(display, panel, width);
     this.props.setDims(
       height.rows,
@@ -92,9 +93,16 @@ export class SvgContainer extends Component {
     }
     return 0;
   }
-  calculateHeight = (cellSize, rows) => {
-    // Maximum sizes.
-    const wrapper = this.wrapperRef.current.getBoundingClientRect().height - VERT_PADDING;
+  calculateHeight = (cellSize, rows, removePadding) => {
+    // Available height for image wrapper.
+    let wrapper = this.wrapperRef.current.getBoundingClientRect().height - VERT_PADDING;
+
+    // If horizontal scroll arrows are being shown, remove some more height from wrapper.
+    if (removePadding) {
+      wrapper -= EXTRA_ARROW_PADDING;
+    }
+
+    // Available height for plot and maximum number of rows.
     const heatmap = wrapper - COL_MARGIN;
     const pageY = Math.floor(heatmap / cellSize);
 

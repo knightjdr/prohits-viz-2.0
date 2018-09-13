@@ -5,6 +5,7 @@ import round from '../../../../helpers/round';
 
 export const ADD_CUSTOMIZE_STATE = 'UPDATE_CUSTOMIZE_STATE';
 export const REPLACE_CUSTOMIZE_STATE = 'REPLACE_CUSTOMIZE_STATE';
+export const RESET_CUSTOMIZE_STATE = 'RESET_CUSTOMIZE_STATE';
 export const SET_CUSTOMIZE_STATE = 'SET_CUSTOMIZE_STATE';
 export const UNDO_CUSTOMIZE_STATE = 'UNDO_CUSTOMIZE_STATE';
 
@@ -22,6 +23,10 @@ export const replaceCustomizeState = (columns, rows, removeEmpty, resetMaximums)
   resetMaximums,
   rows,
   type: REPLACE_CUSTOMIZE_STATE,
+});
+
+export const resetCustomizeState = () => ({
+  type: RESET_CUSTOMIZE_STATE,
 });
 
 export const setCustomizeState = (columns, rows, removeEmpty, resetMaximums) => ({

@@ -12,6 +12,7 @@ export class ArrowsContainer extends Component {
       direction,
       position,
       height,
+      offset,
       width,
     } = this.props;
     const length = direction === 'horizontal' ? dimensions.columns : dimensions.rows;
@@ -19,7 +20,7 @@ export class ArrowsContainer extends Component {
     const vertex = direction === 'horizontal' ? 'x' : 'y';
     this.state = {
       arrowOpacity: this.setOpacity(position, vertex, length, dimensions[pageType]),
-      elPosition: this.setPosition(direction, height, width),
+      elPosition: this.setPosition(direction, height, width, offset),
       length,
       page: dimensions[pageType],
       pageType,
@@ -47,7 +48,7 @@ export class ArrowsContainer extends Component {
     down: position[vertex] >= length - page,
     up: position[vertex] === 0,
   })
-  setPosition = (direction, height, width) => (
+  setPosition = (direction, height, width, offset) => (
     direction === 'horizontal' ?
       {
         bottom: 40,
@@ -56,7 +57,7 @@ export class ArrowsContainer extends Component {
       }
       :
       {
-        bottom: height.wrapper - height.heatmap - 60,
+        bottom: (height.wrapper - height.heatmap - 90) + (offset ? 30 : 0),
         right: ((window.innerWidth - width.wrapper) / 2) - 20,
         transform: null,
       }
@@ -82,13 +83,14 @@ export class ArrowsContainer extends Component {
     dimensions,
     direction,
     height,
+    offset,
     position,
     width,
   }) => {
     const length = direction === 'horizontal' ? dimensions.columns : dimensions.rows;
     this.setState(({ pageType, vertex }) => ({
       arrowOpacity: this.setOpacity(position, vertex, length, dimensions[pageType]),
-      elPosition: this.setPosition(direction, height, width),
+      elPosition: this.setPosition(direction, height, width, offset),
       length,
       page: dimensions[pageType],
       show: true,
@@ -102,6 +104,7 @@ export class ArrowsContainer extends Component {
   updateElPosition = ({
     direction,
     height,
+    offset,
     width,
   }, prevHeight, prevWidth) => {
     if (
@@ -109,7 +112,7 @@ export class ArrowsContainer extends Component {
       width.wrapper !== prevWidth.wrapper
     ) {
       this.setState({
-        elPosition: this.setPosition(direction, height, width),
+        elPosition: this.setPosition(direction, height, width, offset),
       });
     }
   }
@@ -144,6 +147,7 @@ export class ArrowsContainer extends Component {
 
 ArrowsContainer.defaultProps = {
   direction: 'vertical',
+  offset: false,
   updateID: null,
 };
 
@@ -155,6 +159,7 @@ ArrowsContainer.propTypes = {
     rows: PropTypes.number,
   }).isRequired,
   direction: PropTypes.string,
+  offset: PropTypes.bool,
   height: PropTypes.shape({
     heatmap: PropTypes.number,
     wrapper: PropTypes.number,

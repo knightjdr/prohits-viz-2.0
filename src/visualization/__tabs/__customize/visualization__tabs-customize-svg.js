@@ -4,9 +4,10 @@ import React, { Fragment } from 'react';
 import Arrows from '../../__heatmap/svg/__arrows/heatmap-svg__arrows-container';
 import Columns from '../../__heatmap/svg/__columns/heatmap-svg__columns-container';
 import ContextColumns from './context-menu/context-menu-columns';
+import CustomizeConnected from './visualization__tabs-customize-connected';
 import Plot from '../../__heatmap/svg/plot/heatmap-svg__plot-container';
 import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
-import CustomizeConnected from './visualization__tabs-customize-connected';
+import StatusBar from '../../__heatmap/svg/__status/heatmap-svg__status-container';
 
 import '../__main/visualization__tabs-main.css';
 
@@ -14,6 +15,7 @@ const CustomizeSvg = ({
   closeContextMenu,
   contextEvent,
   contextTarget,
+  fixLeft,
   handleClick,
   height,
   openContextMenu,
@@ -25,6 +27,7 @@ const CustomizeSvg = ({
   showContext,
   sortRows,
   toggleTooltip,
+  translateLeft,
   width,
 }) => (
   <div
@@ -86,6 +89,16 @@ const CustomizeSvg = ({
                 updateID={connectedProps.customizeID}
               />
             </svg>
+            <StatusBar
+              canTranslate={width.canTranslate}
+              display={connectedProps.display}
+              fixLeft={fixLeft}
+              name={connectedProps.name}
+              reset={connectedProps.reset}
+              showToggles={false}
+              translate={translateLeft}
+              width={width.wrapper}
+            />
             <Arrows
               dimensions={connectedProps.dimensions}
               direction="vertical"
@@ -131,6 +144,7 @@ CustomizeSvg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
   contextEvent: PropTypes.shape({}),
   contextTarget: PropTypes.string.isRequired,
+  fixLeft: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({
     arrowsY: PropTypes.bool,
@@ -147,6 +161,7 @@ CustomizeSvg.propTypes = {
   showContext: PropTypes.string.isRequired,
   sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
+  translateLeft: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,
     canTranslate: PropTypes.bool,

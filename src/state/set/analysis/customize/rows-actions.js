@@ -1,7 +1,8 @@
 import Deepcopy from '../../../../helpers/deep-copy';
 
-import * as dataActions from './data-actions';
 import * as sortMethods from '../../visualization/rows-actions';
+
+export const SORT_CUSTOMIZE_STATE = 'SORT_CUSTOMIZE_STATE';
 
 export const updateRows = (
   columns,
@@ -24,7 +25,7 @@ export const updateRows = (
     order,
   },
   sortBy,
-  type: dataActions.ADD_CUSTOMIZE_STATE,
+  type: SORT_CUSTOMIZE_STATE,
 });
 
 /* Sort the rows array based on a specific column as specified

@@ -1,7 +1,19 @@
 import * as actions from './viz-analysis-actions';
+import * as fileActions from '../interactive-file-actions';
+import * as tabActions from '../visualization/tab-actions';
 
 export const initState = {
+  domain: {
+    didFail: false,
+    isRunning: false,
+    results: [],
+  },
   go: {
+    didFail: false,
+    isRunning: false,
+    results: [],
+  },
+  network: {
     didFail: false,
     isRunning: false,
     results: [],
@@ -10,8 +22,19 @@ export const initState = {
 };
 
 const Analysis = (state = initState, action) => {
-  const newState = {};
+  let newState = {};
   switch (action.type) {
+    case fileActions.CLEAR_INTERACTIVE_FILE:
+      return initState;
+    case fileActions.PARSE_INTERACTIVE_FILE:
+      return { ...action.file.vizanalysis };
+    case tabActions.REMOVE_TAB:
+      if (action.tab !== 'customize') {
+        newState = state;
+        newState[action.tab] = { ...initState[action.tab] };
+        return newState;
+      }
+      return state;
     case actions.RUN_VIZ_ANALYSIS:
       newState[action.analysisType] = {
         didFail: false,

@@ -15,7 +15,12 @@ import './menu.css';
 
 const tabText = {
   customize: <span><FontAwesomeIcon icon={faHandScissors} /><span>Customization</span></span>,
-  domain: <span><FontAwesomeIcon icon={faRectangleWide} style={{ marginTop: 5 }} /><span>Domain analysis</span></span>,
+  domain: (
+    <span>
+      <FontAwesomeIcon icon={faRectangleWide} style={{ marginTop: 5 }} />
+      <span>Domain analysis</span>
+    </span>
+  ),
   go: <span><FontAwesomeIcon icon={faHighlighter} /><span>GO enrichment</span></span>,
   main: <span><FontAwesomeIcon icon={faImage} /><span>Image</span></span>,
 };

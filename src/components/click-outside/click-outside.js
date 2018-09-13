@@ -20,10 +20,7 @@ ClickOutsideWrapper.defaultProps = {
 
 ClickOutsideWrapper.propTypes = {
   callback: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.shape({}),
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ClickOutside(ClickOutsideWrapper);

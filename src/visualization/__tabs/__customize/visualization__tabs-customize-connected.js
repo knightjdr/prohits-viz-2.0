@@ -10,6 +10,7 @@ import searchSelector from '../../../state/selectors/visualization/search-select
 import { customizeDataSelector } from '../../../state/selectors/analysis/customize/data-selector';
 import { displayCustomizeSelector } from '../../../state/selectors/analysis/customize/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
+import { resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
 import { setDimensions } from '../../../state/set/analysis/customize/dimension-actions';
 import { setReference } from '../../../state/set/analysis/customize/columns-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
@@ -21,9 +22,11 @@ export const CustomizeWithState = ({
   customize,
   dimensions,
   display,
+  name,
   panel,
   position,
   renderProp,
+  reset,
   scoreType,
   search,
   setDims,
@@ -49,8 +52,10 @@ export const CustomizeWithState = ({
     customizeID,
     dimensions,
     display,
+    name,
     panel,
     position,
+    reset,
     rowNames,
     rows,
     scoreType,
@@ -101,12 +106,14 @@ CustomizeWithState.propTypes = {
     plotTranslate: PropTypes.number,
     tooltips: PropTypes.bool,
   }).isRequired,
+  name: PropTypes.string,
   panel: PropTypes.bool.isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
   renderProp: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
   scoreType: PropTypes.string.isRequired,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
@@ -146,6 +153,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  reset: () => {
+    dispatch(resetCustomizeState());
+  },
   setDims: (rows, columns, pageY, pageX, height, width) => {
     dispatch(setDimensions(rows, columns, pageY, pageX, height, width));
   },
