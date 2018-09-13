@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
+import Arrows from '../../__heatmap/svg/__arrows/heatmap-svg__arrows-container';
 import Columns from '../../__heatmap/svg/__columns/heatmap-svg__columns-container';
+import ContextColumns from './context-menu/context-menu-columns';
 import Plot from '../../__heatmap/svg/plot/heatmap-svg__plot-container';
 import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
 import CustomizeConnected from './visualization__tabs-customize-connected';
@@ -9,12 +11,19 @@ import CustomizeConnected from './visualization__tabs-customize-connected';
 import '../__main/visualization__tabs-main.css';
 
 const CustomizeSvg = ({
+  closeContextMenu,
+  contextEvent,
+  contextTarget,
   handleClick,
   height,
   openContextMenu,
   plotTranslate,
+  reference,
   setContainerRef,
+  setReference,
   show,
+  showContext,
+  sortRows,
   toggleTooltip,
   width,
 }) => (
@@ -69,7 +78,7 @@ const CustomizeSvg = ({
                 handleClick={handleClick}
                 openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
                 pageHeight={connectedProps.dimensions.pageY}
-                position={connectedProps.position.x}
+                position={connectedProps.position.y}
                 rows={connectedProps.rowNames}
                 search={connectedProps.search}
                 sortID={connectedProps.sortInfo.id}
@@ -77,6 +86,35 @@ const CustomizeSvg = ({
                 updateID={connectedProps.customizeID}
               />
             </svg>
+            <Arrows
+              dimensions={connectedProps.dimensions}
+              direction="vertical"
+              height={height}
+              position={connectedProps.position}
+              show={height.arrowsY}
+              updateXY={connectedProps.updateXY}
+              updateID={connectedProps.customizeID}
+              width={width}
+            />
+            <Arrows
+              dimensions={connectedProps.dimensions}
+              direction="horizontal"
+              height={height}
+              position={connectedProps.position}
+              show={width.arrowsX}
+              updateXY={connectedProps.updateXY}
+              updateID={connectedProps.customizeID}
+              width={width}
+            />
+            <ContextColumns
+              closeMenu={closeContextMenu}
+              event={contextEvent}
+              reference={reference}
+              setReference={setReference}
+              show={showContext === 'column'}
+              sortRows={sortRows}
+              target={contextTarget}
+            />
           </Fragment>
         )}
       />
@@ -84,7 +122,15 @@ const CustomizeSvg = ({
   </div>
 );
 
+CustomizeSvg.defaultProps = {
+  contextEvent: null,
+  reference: null,
+};
+
 CustomizeSvg.propTypes = {
+  closeContextMenu: PropTypes.func.isRequired,
+  contextEvent: PropTypes.shape({}),
+  contextTarget: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({
     arrowsY: PropTypes.bool,
@@ -94,8 +140,12 @@ CustomizeSvg.propTypes = {
   }).isRequired,
   openContextMenu: PropTypes.func.isRequired,
   plotTranslate: PropTypes.number.isRequired,
+  reference: PropTypes.string,
   setContainerRef: PropTypes.shape({}).isRequired,
+  setReference: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
+  showContext: PropTypes.string.isRequired,
+  sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,

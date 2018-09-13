@@ -31,8 +31,9 @@ export class ArrowsContainer extends Component {
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
-    this.updateOpacity(nextProps, this.props.position, this.state.vertex);
+    this.updateCustomize(nextProps, this.props.updateID);
     this.updateElPosition(nextProps, this.props.height, this.props.width);
+    this.updateOpacity(nextProps, this.props.position, this.state.vertex);
     this.updatePage(nextProps, this.props.dimensions, this.state.pageType);
   }
   componentWillUnmount = () => {
@@ -84,14 +85,25 @@ export class ArrowsContainer extends Component {
     position,
     width,
   }) => {
-    this.setState(({ length, pageType, vertex }) => ({
+    const length = direction === 'horizontal' ? dimensions.columns : dimensions.rows;
+    this.setState(({ pageType, vertex }) => ({
       arrowOpacity: this.setOpacity(position, vertex, length, dimensions[pageType]),
       elPosition: this.setPosition(direction, height, width),
+      length,
       page: dimensions[pageType],
       show: true,
     }));
   }
-  updateElPosition = ({ direction, height, width }, prevHeight, prevWidth) => {
+  updateCustomize = (nextProps, prevUpdateID) => {
+    if (nextProps.updateID !== prevUpdateID) {
+      this.updateAll(nextProps);
+    }
+  }
+  updateElPosition = ({
+    direction,
+    height,
+    width,
+  }, prevHeight, prevWidth) => {
     if (
       height.wrapper !== prevHeight.wrapper ||
       width.wrapper !== prevWidth.wrapper
@@ -132,6 +144,7 @@ export class ArrowsContainer extends Component {
 
 ArrowsContainer.defaultProps = {
   direction: 'vertical',
+  updateID: null,
 };
 
 ArrowsContainer.propTypes = {
@@ -152,6 +165,7 @@ ArrowsContainer.propTypes = {
   }).isRequired,
   show: PropTypes.bool.isRequired,
   updateXY: PropTypes.func.isRequired,
+  updateID: PropTypes.number,
   width: PropTypes.shape({
     wrapper: PropTypes.number,
   }).isRequired,

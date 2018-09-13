@@ -20,6 +20,7 @@ const Main = () => (
         setRef={connectedProps.setRef}
         sort={connectedProps.sort}
         updatePlotXY={connectedProps.updatePlotXY}
+        updateID={connectedProps.customizeID}
       />
     )}
   />

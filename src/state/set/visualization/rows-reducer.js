@@ -1,5 +1,5 @@
 import DeepCopy from '../../../helpers/deep-copy';
-import { RESTORE_ROWS, UPDATE_ROWS } from './rows-actions';
+import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
 
 const Rows = (state = {
@@ -26,7 +26,7 @@ const Rows = (state = {
         order: [...action.file.rows.order],
         sortBy: action.file.rows.sortBy,
       };
-    case RESTORE_ROWS:
+    case actions.RESTORE_ROWS:
       return {
         ...state,
         direction: action.direction,
@@ -34,7 +34,7 @@ const Rows = (state = {
         list: DeepCopy(action.list),
         sortBy: action.sortBy,
       };
-    case UPDATE_ROWS:
+    case actions.UPDATE_ROWS:
       return {
         ...state,
         direction: action.direction,

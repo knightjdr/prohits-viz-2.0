@@ -97,7 +97,7 @@ const MainSvg = ({
                 handleClick={handleClick}
                 openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
                 pageHeight={connectedProps.dimensions.pageY}
-                position={connectedProps.position.x}
+                position={connectedProps.position.y}
                 rows={connectedProps.rowNames}
                 search={connectedProps.search}
                 sortID={connectedProps.sortInfo.id}
@@ -137,8 +137,8 @@ const MainSvg = ({
               closeMenu={closeContextMenu}
               event={contextEvent}
               reference={reference}
-              setSelections={setSelections}
               setReference={setReference}
+              setSelections={setSelections}
               show={showContext === 'column'}
               sortRows={sortRows}
               target={contextTarget}
@@ -165,8 +165,8 @@ MainSvg.defaultProps = {
 
 MainSvg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
-  contextTarget: PropTypes.string.isRequired,
   contextEvent: PropTypes.shape({}),
+  contextTarget: PropTypes.string.isRequired,
   fixLeft: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({

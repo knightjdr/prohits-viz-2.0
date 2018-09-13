@@ -52,7 +52,7 @@ export class SvgContainer extends Component {
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
-    this.updateDimensions(nextProps, this.props.cellSize);
+    this.updateDimensions(nextProps, this.props.cellSize, this.props.updateID);
     this.updateTranslate(nextProps, this.props.panel);
   }
   componentWillUnmount = () => {
@@ -215,8 +215,12 @@ export class SvgContainer extends Component {
     display,
     panel,
     rows,
-  }, prevCellSize) => {
-    if (cellSize !== prevCellSize) {
+    updateID,
+  }, prevCellSize, prevUpdateID) => {
+    if (
+      updateID !== prevUpdateID ||
+      cellSize !== prevCellSize
+    ) {
       this.setDimensions(cellSize, columns, panel, rows, display);
     }
   }
@@ -261,6 +265,7 @@ export class SvgContainer extends Component {
 
 SvgContainer.defaultProps = {
   setSelectedGenes: null,
+  updateID: null,
 };
 
 SvgContainer.propTypes = {
@@ -281,6 +286,7 @@ SvgContainer.propTypes = {
   setSelectedGenes: PropTypes.func,
   sort: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
+  updateID: PropTypes.number,
 };
 
 export default SvgContainer;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Column context menu with reference should render and match snapshot 1`] = `
+<React.Fragment>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Sort ascending
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Sort descending
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Unset as reference
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Select column
+  </button>
+</React.Fragment>
+`;
+
+exports[`Column context menu without reference should render and match snapshot 1`] = `
+<React.Fragment>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Sort ascending
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Sort descending
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Set as reference
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Select column
+  </button>
+</React.Fragment>
+`;

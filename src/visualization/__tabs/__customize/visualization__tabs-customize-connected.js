@@ -11,8 +11,11 @@ import { customizeDataSelector } from '../../../state/selectors/analysis/customi
 import { displayCustomizeSelector } from '../../../state/selectors/analysis/customize/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
 import { setDimensions } from '../../../state/set/analysis/customize/dimension-actions';
+import { setReference } from '../../../state/set/analysis/customize/columns-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
+import { sortRows } from '../../../state/set/analysis/customize/rows-actions';
 import { updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
+import { updatePosition } from '../../../state/set/analysis/customize/position-actions';
 
 export const CustomizeWithState = ({
   customize,
@@ -24,8 +27,11 @@ export const CustomizeWithState = ({
   scoreType,
   search,
   setDims,
+  setRef,
   settings,
+  sort,
   updatePlotXY,
+  updateXY,
 }) => {
   let columns = [];
   let customizeID = null;
@@ -49,12 +55,13 @@ export const CustomizeWithState = ({
     rows,
     scoreType,
     search,
-    setRef: () => {},
+    setRef,
     setDims,
     settings,
-    sort: () => {},
+    sort,
     sortInfo: { id: 0 },
     updatePlotXY,
+    updateXY,
   });
 };
 
@@ -107,6 +114,7 @@ CustomizeWithState.propTypes = {
     rows: PropTypes.shape({}),
     term: PropTypes.string,
   }).isRequired,
+  setRef: PropTypes.func.isRequired,
   settings: PropTypes.shape({
     abundanceCap: PropTypes.number,
     cellSize: PropTypes.number,
@@ -118,7 +126,9 @@ CustomizeWithState.propTypes = {
     primaryFilter: PropTypes.number,
     secondaryFilter: PropTypes.number,
   }).isRequired,
+  sort: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
+  updateXY: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
@@ -139,8 +149,17 @@ const mapDispatchToProps = dispatch => ({
   setDims: (rows, columns, pageY, pageX, height, width) => {
     dispatch(setDimensions(rows, columns, pageY, pageX, height, width));
   },
+  setRef: (ref) => {
+    dispatch(setReference(ref));
+  },
+  sort: (index, direction, ref) => {
+    dispatch(sortRows(index, direction, ref));
+  },
   updatePlotXY: (fixed, translate) => {
     dispatch(updatePlotPosition(fixed, translate));
+  },
+  updateXY: (x, y) => {
+    dispatch(updatePosition(x, y));
   },
 });
 
