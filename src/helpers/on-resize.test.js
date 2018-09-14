@@ -1,4 +1,4 @@
-import OnResize from './on-resize';
+import onResize from './on-resize';
 
 const callback = jest.fn();
 
@@ -14,7 +14,7 @@ describe('On resize', () => {
     const component = {
       resizeTimeout: null,
     };
-    OnResize(component, callback);
+    onResize(component, callback);
     jest.runAllTimers();
     expect(clearTimeout).not.toHaveBeenCalled();
     expect(callback).toHaveBeenCalled();
@@ -24,7 +24,7 @@ describe('On resize', () => {
     const component = {
       resizeTimeout: true,
     };
-    OnResize(component, callback);
+    onResize(component, callback);
     jest.runAllTimers();
     expect(clearTimeout).toHaveBeenCalled();
   });
@@ -33,7 +33,7 @@ describe('On resize', () => {
     const component = {
       resizeTimeout: null,
     };
-    OnResize(component, callback, 1000);
+    onResize(component, callback, 1000);
     jest.runTimersToTime(600);
     expect(callback).not.toHaveBeenCalled();
     jest.runTimersToTime(1000);

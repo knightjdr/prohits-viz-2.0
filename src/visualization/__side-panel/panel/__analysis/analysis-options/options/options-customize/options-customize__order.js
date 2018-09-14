@@ -11,51 +11,47 @@ const Order = ({
 }) => (
   <div>
     <div className="analysis-option__label">Customization</div>
-    <div className="analysis-option__details">
-      <div className="analysis-option__group">
-        <div>
-          Delete:
-        </div>
-        <Select
-          allowClear
-          onChange={(value) => { handleSelect('deleteBy', value); }}
-          placeholder="Delete by..."
-          value={deleteBy}
-        >
-          <Option
-            value="column"
-          >
-            by column
-          </Option>
-          <Option
-            value="row"
-          >
-            by row
-          </Option>
-        </Select>
+    <div className="analysis-option__details analysis-option__details-order">
+      <div>
+        Delete:
       </div>
-      <div className="analysis-option__group">
-        <div>
-          Order:
-        </div>
-        <Select
-          allowClear
-          onChange={(value) => { handleSelect('orderBy', value); }}
-          placeholder="Order by..."
-          value={orderBy}
+      <Select
+        allowClear
+        onChange={(value) => { handleSelect('deleteBy', value); }}
+        placeholder="Delete by..."
+        value={deleteBy}
+      >
+        <Option
+          value="column"
         >
-          <Option
-            value="column"
-          >
-            by column
-          </Option>
-          <Option
-            value="row"
-          >
-            by row
-          </Option>
-        </Select>
+          by column
+        </Option>
+        <Option
+          value="row"
+        >
+          by row
+        </Option>
+      </Select>
+      <div>
+        Order:
       </div>
+      <Select
+        allowClear
+        onChange={(value) => { handleSelect('orderBy', value); }}
+        placeholder="Order by..."
+        value={orderBy}
+      >
+        <Option
+          value="column"
+        >
+          by column
+        </Option>
+        <Option
+          value="row"
+        >
+          by row
+        </Option>
+      </Select>
     </div>
   </div>
 );

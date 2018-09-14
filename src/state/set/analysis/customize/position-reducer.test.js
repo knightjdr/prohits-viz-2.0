@@ -1,17 +1,16 @@
-import PositionReducer from './position-reducer';
 import * as actions from './position-actions';
+import * as dataActions from './data-actions';
 import * as fileActions from '../../interactive-file-actions';
+import * as rowActions from './rows-actions';
+import * as tabActions from '../../visualization/tab-actions';
 
-const DefaultState = {
-  x: 0,
-  y: 0,
-};
+import position, { initState } from './position-reducer';
 
 describe('Position set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = DefaultState;
-    expect(PositionReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = initState;
+    expect(position(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle CLEAR_INTERACTIVE_FILE action', () => {
@@ -19,15 +18,15 @@ describe('Position set reducer', () => {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
     const expectedState = {
-      ...DefaultState,
+      ...initState,
     };
-    expect(PositionReducer(undefined, action)).toEqual(expectedState);
+    expect(position(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle PARSE_INTERACTIVE_FILE action', () => {
     const action = {
       file: {
-        position: {
+        positionCustomize: {
           x: 5,
           y: 10,
         },
@@ -38,15 +37,68 @@ describe('Position set reducer', () => {
       x: 5,
       y: 10,
     };
-    expect(PositionReducer(undefined, action)).toEqual(expectedState);
+    expect(position(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle UPDATE_POSITION action', () => {
+  describe('when removing tab', () => {
+    const currentState = {
+      x: 5,
+      y: 5,
+    };
+
+    it('should reset state when removed tab is "customize"', () => {
+      const action = {
+        tab: 'customize',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = initState;
+      expect(position(currentState, action)).toEqual(expectedState);
+    });
+
+    it('should not reset state when removed tab is not "customize"', () => {
+      const action = {
+        tab: 'other',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = currentState;
+      expect(position(currentState, action)).toEqual(expectedState);
+    });
+  });
+
+  it('should handle RESET_CUSTOMIZE_STATE action', () => {
     const action = {
-      type: actions.UPDATE_POSITION,
+      type: dataActions.RESET_CUSTOMIZE_STATE,
+    };
+    const currentState = {
+      x: 5,
+      y: 5,
+    };
+    const expectedState = initState;
+    expect(position(currentState, action)).toEqual(expectedState);
+  });
+
+  it('should handle SORT_CUSTOMIZE_STATE action', () => {
+    const action = {
+      type: rowActions.SORT_CUSTOMIZE_STATE,
+    };
+    const currentState = {
+      x: 5,
+      y: 5,
+    };
+    const expectedState = {
+      x: 5,
+      y: 0,
+    };
+    expect(position(currentState, action)).toEqual(expectedState);
+  });
+
+  it('should handle UPDATE_CUSTOMIZE_POSITION action', () => {
+    const action = {
+      type: actions.UPDATE_CUSTOMIZE_POSITION,
       x: 1,
       y: 4,
     };
-    expect(PositionReducer(undefined, action)).toEqual({ x: 1, y: 4 });
+    const expectedState = { x: 1, y: 4 };
+    expect(position(undefined, action)).toEqual(expectedState);
   });
 });

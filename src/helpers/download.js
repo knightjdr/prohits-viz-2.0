@@ -1,4 +1,4 @@
-const Download = (string, filename, mimetype) => {
+const download = (string, filename, mimetype) => {
   const element = document.createElement('a');
   const file = new Blob([string], { type: mimetype });
   element.href = URL.createObjectURL(file);
@@ -7,4 +7,4 @@ const Download = (string, filename, mimetype) => {
   URL.revokeObjectURL(file);
 };
 
-export default Download;
+export default download;

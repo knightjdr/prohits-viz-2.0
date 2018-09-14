@@ -1,10 +1,10 @@
-import Download from './download';
+import download from './download';
 
 beforeAll(() => {
   jest.clearAllMocks();
 });
 
-describe('Download', () => {
+describe('download', () => {
   let createEl;
   let createSpy;
   let clickSpy;
@@ -27,7 +27,7 @@ describe('Download', () => {
     revokeSpy = jest.spyOn(window.URL, 'revokeObjectURL');
 
     // Call method and define expected result.
-    Download('test', 'test.txt', 'text/plain');
+    download('test', 'test.txt', 'text/plain');
   });
 
   afterAll(() => {

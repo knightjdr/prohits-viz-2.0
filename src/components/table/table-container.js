@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import OnResize from '../../helpers/on-resize';
+import onResize from '../../helpers/on-resize';
 import Table from './table';
 
 class TableContainer extends Component {
@@ -29,7 +29,7 @@ class TableContainer extends Component {
       bodyInnerWidth: 'auto',
       bodyWidth: 'auto',
     });
-    OnResize(this, this.setDimensions);
+    onResize(this, this.setDimensions);
   }
   setDimensions = () => {
     const leftOffset = this.tableRef.current.clientWidth -

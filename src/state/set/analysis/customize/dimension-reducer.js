@@ -2,7 +2,7 @@ import * as actions from './dimension-actions';
 import * as fileActions from '../../interactive-file-actions';
 import * as tabActions from '../../visualization/tab-actions';
 
-const initState = {
+export const initState = {
   columns: 0,
   height: 0,
   pageX: 0,

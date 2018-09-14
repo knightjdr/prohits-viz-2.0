@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Arrows from './heatmap-svg__arrows';
-import OnResize from '../../../../helpers/on-resize';
+import onResize from '../../../../helpers/on-resize';
 
 export class ArrowsContainer extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ export class ArrowsContainer extends Component {
   }
   onResize = () => {
     this.setState({ show: false });
-    OnResize(this, this.resizeEnd, 800);
+    onResize(this, this.resizeEnd, 800);
   }
   setOpacity = (position, vertex, length, page) => ({
     down: position[vertex] >= length - page,

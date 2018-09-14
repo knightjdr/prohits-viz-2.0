@@ -15,7 +15,7 @@ import { setDimensions } from '../../../state/set/analysis/customize/dimension-a
 import { setReference } from '../../../state/set/analysis/customize/columns-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { sortRows } from '../../../state/set/analysis/customize/rows-actions';
-import { updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
+import { toggleTooltips, updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
 import { updatePosition } from '../../../state/set/analysis/customize/position-actions';
 
 export const CustomizeWithState = ({
@@ -33,6 +33,7 @@ export const CustomizeWithState = ({
   setRef,
   settings,
   sort,
+  toggleTips,
   updatePlotXY,
   updateXY,
 }) => {
@@ -65,6 +66,7 @@ export const CustomizeWithState = ({
     settings,
     sort,
     sortInfo: { id: 0 },
+    toggleTips,
     updatePlotXY,
     updateXY,
   });
@@ -134,6 +136,7 @@ CustomizeWithState.propTypes = {
     secondaryFilter: PropTypes.number,
   }).isRequired,
   sort: PropTypes.func.isRequired,
+  toggleTips: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
   updateXY: PropTypes.func.isRequired,
 };
@@ -164,6 +167,9 @@ const mapDispatchToProps = dispatch => ({
   },
   sort: (index, direction, ref) => {
     dispatch(sortRows(index, direction, ref));
+  },
+  toggleTips: () => {
+    dispatch(toggleTooltips());
   },
   updatePlotXY: (fixed, translate) => {
     dispatch(updatePlotPosition(fixed, translate));

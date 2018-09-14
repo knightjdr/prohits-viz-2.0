@@ -4,7 +4,7 @@ import * as fileActions from '../../interactive-file-actions';
 import * as rowActions from './rows-actions';
 import * as tabActions from '../../visualization/tab-actions';
 
-const initState = {
+export const initState = {
   x: 0,
   y: 0,
 };

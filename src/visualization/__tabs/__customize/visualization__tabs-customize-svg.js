@@ -95,7 +95,8 @@ const CustomizeSvg = ({
               fixLeft={fixLeft}
               name={connectedProps.name}
               reset={connectedProps.reset}
-              showToggles={false}
+              showSelectionToggle={false}
+              toggleTips={connectedProps.toggleTips}
               translate={translateLeft}
               width={width.wrapper}
             />

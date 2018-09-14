@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ColorGradient from '../../../color/color-gradient';
-import Download from '../../../../helpers/download';
+import download from '../../../../helpers/download';
 import { InfoContainer } from './panel__info-container';
 
 jest.mock('../../../color/color-gradient');
@@ -72,7 +72,7 @@ describe('Info panel container', () => {
 
     // Test click.
     wrapper.instance().downloadLegend();
-    expect(Download).toHaveBeenCalledWith(<svg />, 'legend.svg', 'image/svg+xml');
+    expect(download).toHaveBeenCalledWith(<svg />, 'legend.svg', 'image/svg+xml');
 
     // Restore document method;
     Object.defineProperty(document, 'getElementById', {

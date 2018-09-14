@@ -57,11 +57,29 @@
   text-align: center;
 }
 .analysis-option__details {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
-.analysis-option__details > * {
-  margin-left: 0 !important;
+.analysis-option__details > :nth-child(odd) {
+  justify-self: end;
+  text-align: right;
+}
+.analysis-option__details-display > :nth-child(even) {
+  width: 30px;
+}
+.analysis-option__details-display > :nth-child(odd) {
+  width: 200px;
+}
+.analysis-option__details-order > :nth-child(even) {
+  width: 200px;
+}
+.analysis-option__details-order > :nth-child(odd) {
+  width: 50px;
 }
 .analysis-options__action-button {
   margin-top: 10px;

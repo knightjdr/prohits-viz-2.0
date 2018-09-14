@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import OnResize from '../../../../helpers/on-resize';
+import onResizeHelper from '../../../../helpers/on-resize';
 import { ArrowsContainer } from './heatmap-svg__arrows-container';
 
 jest.mock('../../../../helpers/on-resize');
@@ -40,32 +40,32 @@ describe('Heatmap arrows container', () => {
     });
 
     describe('sets initial state', () => {
-      it('and sets arrow opacity', () => {
+      it('should set arrow opacity', () => {
         expect(wrapper.state('arrowOpacity')).toEqual({ down: false, up: true });
       });
 
-      it('and sets arrow container position', () => {
+      it('should set arrow container position', () => {
         const elPosition = {
-          bottom: 40,
+          bottom: 10,
           right: 242,
           transform: null,
         };
         expect(wrapper.state('elPosition')).toEqual(elPosition);
       });
 
-      it('and sets heatmap length', () => {
+      it('should set heatmap length', () => {
         expect(wrapper.state('length')).toBe(20);
       });
 
-      it('and sets page length', () => {
+      it('should set page length', () => {
         expect(wrapper.state('page')).toBe(10);
       });
 
-      it('and sets page type', () => {
+      it('should set page type', () => {
         expect(wrapper.state('pageType')).toBe('pageY');
       });
 
-      it('and sets vertex', () => {
+      it('should set vertex', () => {
         expect(wrapper.state('vertex')).toBe('y');
       });
     });
@@ -89,7 +89,7 @@ describe('Heatmap arrows container', () => {
       });
 
       it('should call onResize method', () => {
-        expect(OnResize).toHaveBeenCalled();
+        expect(onResizeHelper).toHaveBeenCalled();
       });
     });
 
@@ -120,7 +120,7 @@ describe('Heatmap arrows container', () => {
     });
 
     describe('set position', () => {
-      it('when horizontal', () => {
+      it('should have correction position when horizontal', () => {
         const height = {};
         const width = {
           wrapper: 500,
@@ -129,16 +129,30 @@ describe('Heatmap arrows container', () => {
         expect(position).toEqual({ bottom: 40, right: 282, transform: 'rotate(-90deg)' });
       });
 
-      it('when vertical', () => {
-        const height = {
-          heatmap: 400,
-          wrapper: 500,
-        };
-        const width = {
-          wrapper: 500,
-        };
-        const position = wrapper.instance().setPosition('vertical', height, width);
-        expect(position).toEqual({ bottom: 40, right: 242, transform: null });
+      describe('when vertical', () => {
+        it('should have correction position when vertical without offset', () => {
+          const height = {
+            heatmap: 400,
+            wrapper: 500,
+          };
+          const width = {
+            wrapper: 500,
+          };
+          const position = wrapper.instance().setPosition('vertical', height, width);
+          expect(position).toEqual({ bottom: 10, right: 242, transform: null });
+        });
+
+        it('should have correction position when vertical with offset', () => {
+          const height = {
+            heatmap: 400,
+            wrapper: 500,
+          };
+          const width = {
+            wrapper: 500,
+          };
+          const position = wrapper.instance().setPosition('vertical', height, width, true);
+          expect(position).toEqual({ bottom: 40, right: 242, transform: null });
+        });
       });
     });
 
@@ -178,7 +192,7 @@ describe('Heatmap arrows container', () => {
       spy.mockRestore();
     });
 
-    describe('update arrow container', () => {
+    describe('update arrow container for vertical arrows', () => {
       beforeAll(() => {
         wrapper.setState({
           length: 100,
@@ -186,7 +200,7 @@ describe('Heatmap arrows container', () => {
           vertex: 'y',
         });
         wrapper.instance().updateAll({
-          dimensions: { pageY: 20 },
+          dimensions: { pageY: 20, rows: 50 },
           direction: 'vertical',
           height: { heatmap: 600, wrapper: 700 },
           position: { x: 50, y: 50 },
@@ -194,24 +208,28 @@ describe('Heatmap arrows container', () => {
         });
       });
 
-      it('and sets arrow opacity', () => {
-        expect(wrapper.state('arrowOpacity')).toEqual({ down: false, up: false });
+      it('should set arrow opacity', () => {
+        expect(wrapper.state('arrowOpacity')).toEqual({ down: true, up: false });
       });
 
-      it('and sets arrow container position', () => {
+      it('should set arrow container position', () => {
         const elPosition = {
-          bottom: 40,
+          bottom: 10,
           right: 92,
           transform: null,
         };
         expect(wrapper.state('elPosition')).toEqual(elPosition);
       });
 
-      it('and sets page length', () => {
+      it('should set length', () => {
+        expect(wrapper.state('length')).toBe(50);
+      });
+
+      it('should set page length', () => {
         expect(wrapper.state('page')).toBe(20);
       });
 
-      it('and sets show state', () => {
+      it('should set show state', () => {
         expect(wrapper.state('show')).toBeTruthy();
       });
     });
@@ -223,11 +241,13 @@ describe('Heatmap arrows container', () => {
         right: 202,
         transform: null,
       };
+      let spy;
 
       beforeAll(() => {
         wrapper.setProps({
           dimensions: {
-            pageY: 10,
+            pageY: 20,
+            rows: 20,
           },
           height: {
             heatmap: 400,
@@ -237,6 +257,7 @@ describe('Heatmap arrows container', () => {
             x: 1,
             y: 1,
           },
+          updateID: 0,
           width: { wrapper: 500 },
         });
         wrapper.setState({
@@ -245,10 +266,16 @@ describe('Heatmap arrows container', () => {
           page: 10,
           pageType: 'pageY',
         });
+        spy = jest.spyOn(wrapper.instance(), 'updateAll');
+        wrapper.update();
+      });
+
+      afterAll(() => {
+        spy.mockRestore();
       });
 
       describe('check height and width', () => {
-        it('and does not change container position when height and width are the same', () => {
+        it('should not change container position when height and width are the same', () => {
           wrapper.setProps({
             height: {
               heatmap: 400,
@@ -258,7 +285,7 @@ describe('Heatmap arrows container', () => {
           expect(wrapper.state('elPosition')).toEqual(elPosition);
         });
 
-        it('and does change container position when height changes', () => {
+        it('should change container position when height changes', () => {
           wrapper.setProps({
             height: {
               heatmap: 350,
@@ -268,7 +295,7 @@ describe('Heatmap arrows container', () => {
           expect(wrapper.state('elPosition')).not.toEqual(elPosition);
         });
 
-        it('and does change container position when width changes', () => {
+        it('should change container position when width changes', () => {
           wrapper.setProps({
             width: {
               wrapper: 400,
@@ -279,7 +306,7 @@ describe('Heatmap arrows container', () => {
       });
 
       describe('check opacity', () => {
-        it('and does not change container position stays the same', () => {
+        it('should not change container position stays the same', () => {
           wrapper.setProps({
             position: {
               x: 1,
@@ -289,7 +316,7 @@ describe('Heatmap arrows container', () => {
           expect(wrapper.state('arrowOpacity')).toEqual({ down: false, up: false });
         });
 
-        it('and does change container position change', () => {
+        it('should change container position change', () => {
           wrapper.setProps({
             position: {
               x: 0,
@@ -301,22 +328,40 @@ describe('Heatmap arrows container', () => {
       });
 
       describe('check page size', () => {
-        it('and does not change page size when dimension stays the same', () => {
+        it('should not change page size when dimension stays the same', () => {
           wrapper.setProps({
             dimensions: {
               pageY: 10,
+              rows: 20,
             },
           });
           expect(wrapper.state('page')).toBe(10);
         });
 
-        it('and does change page size when dimension changes', () => {
+        it('should change page size when dimension changes', () => {
           wrapper.setProps({
             dimensions: {
               pageY: 20,
+              rows: 20,
             },
           });
           expect(wrapper.state('page')).toBe(20);
+        });
+      });
+
+      describe('check updateID', () => {
+        it('should not trigger update all when ID is the same', () => {
+          wrapper.setProps({
+            updateID: 0,
+          });
+          expect(spy).not.toHaveBeenCalled();
+        });
+
+        it('should trigger update all when ID changes', () => {
+          wrapper.setProps({
+            updateID: 1,
+          });
+          expect(spy).toHaveBeenCalled();
         });
       });
     });
@@ -353,11 +398,11 @@ describe('Heatmap arrows container', () => {
     });
 
     describe('sets initial state', () => {
-      it('and sets arrow opacity', () => {
+      it('should set arrow opacity', () => {
         expect(wrapper.state('arrowOpacity')).toEqual({ down: false, up: true });
       });
 
-      it('and sets arrow container position', () => {
+      it('should set arrow container position', () => {
         const elPosition = {
           bottom: 40,
           right: 282,
@@ -366,20 +411,41 @@ describe('Heatmap arrows container', () => {
         expect(wrapper.state('elPosition')).toEqual(elPosition);
       });
 
-      it('and sets heatmap width', () => {
+      it('should set heatmap width', () => {
         expect(wrapper.state('length')).toBe(10);
       });
 
-      it('and sets page width', () => {
+      it('should set page width', () => {
         expect(wrapper.state('page')).toBe(5);
       });
 
-      it('and sets page type', () => {
+      it('should set page type', () => {
         expect(wrapper.state('pageType')).toBe('pageX');
       });
 
-      it('and sets vertex', () => {
+      it('should set vertex', () => {
         expect(wrapper.state('vertex')).toBe('x');
+      });
+    });
+
+    describe('update arrow container for horizontal arrows', () => {
+      beforeAll(() => {
+        wrapper.setState({
+          length: 100,
+          page: 10,
+          vertex: 'x',
+        });
+        wrapper.instance().updateAll({
+          dimensions: { columns: 50, pageX: 20 },
+          direction: 'horizontal',
+          height: { heatmap: 600, wrapper: 700 },
+          position: { x: 50, y: 50 },
+          width: { wrapper: 800 },
+        });
+      });
+
+      it('should set length', () => {
+        expect(wrapper.state('length')).toBe(50);
       });
     });
   });

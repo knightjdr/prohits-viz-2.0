@@ -1,14 +1,16 @@
 import * as actions from './display-actions';
 
-const Display = (state = {
+export const initState = {
   floatMapRight: 50,
   floatMapTop: 100,
   plotFixed: false,
   plotTranslate: 0,
   selectionBox: true,
-  tab: 'info',
+  tab: 'analysis',
   tooltips: false,
-}, action) => {
+};
+
+const display = (state = { ...initState }, action) => {
   switch (action.type) {
     case actions.CHANGE_PANEL_TAB:
       return {
@@ -50,4 +52,4 @@ const Display = (state = {
   }
 };
 
-export default Display;
+export default display;

@@ -1,12 +1,60 @@
 import * as actions from './viz-analysis-actions';
+import * as fileActions from '../interactive-file-actions';
+import * as tabActions from '../visualization/tab-actions';
 
-import AnalysisReducer, { initState } from './viz-analysis-reducer';
+import analysisReducer, { initState } from './viz-analysis-reducer';
 
 describe('Analysis set reducer', () => {
   it('should return the initial state', () => {
     const action = {};
     const expectedState = initState;
-    expect(AnalysisReducer(undefined, action)).toEqual(expectedState);
+    expect(analysisReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
+    const expectedState = initState;
+    expect(analysisReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
+      file: { vizanalysis: { field: 'aaa' } },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
+    };
+    const expectedState = { field: 'aaa' };
+    expect(analysisReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  describe('when removing a tab', () => {
+    const currentState = {
+      ...initState,
+      go: {
+        didFail: true,
+        isRunning: false,
+        results: [],
+      },
+    };
+
+    it('should reset the state for the tab when the tab is not "customize"', () => {
+      const action = {
+        tab: 'go',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = initState;
+      expect(analysisReducer(currentState, action)).toEqual(expectedState);
+    });
+
+    it('should not reset any state when the tab is "customize"', () => {
+      const action = {
+        tab: 'customize',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = currentState;
+      expect(analysisReducer(currentState, action)).toEqual(expectedState);
+    });
   });
 
   it('should handle RUN_VIZ_ANALYSIS action', () => {
@@ -25,7 +73,7 @@ describe('Analysis set reducer', () => {
       },
       type: 'go',
     };
-    expect(AnalysisReducer(currentState, action)).toEqual(expectedState);
+    expect(analysisReducer(currentState, action)).toEqual(expectedState);
   });
 
   it('should handle SET_VIZ_ANALYSIS_TYPE action', () => {
@@ -34,14 +82,10 @@ describe('Analysis set reducer', () => {
       type: actions.SET_VIZ_ANALYSIS_TYPE,
     };
     const expectedState = {
-      go: {
-        didFail: false,
-        isRunning: false,
-        results: [],
-      },
+      ...initState,
       type: 'go',
     };
-    expect(AnalysisReducer(undefined, action)).toEqual(expectedState);
+    expect(analysisReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle SET_VIZ_ANALYSIS_RESULTS action', () => {
@@ -51,13 +95,14 @@ describe('Analysis set reducer', () => {
       type: actions.SET_VIZ_ANALYSIS_RESULTS,
     };
     const expectedState = {
+      ...initState,
       go: {
         didFail: false,
         isRunning: false,
         results: { source: [] },
       },
     };
-    expect(AnalysisReducer(undefined, action)).toEqual(expectedState);
+    expect(analysisReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle VIZ_ANALYSIS_ERROR action', () => {
@@ -76,6 +121,6 @@ describe('Analysis set reducer', () => {
       },
       type: 'go',
     };
-    expect(AnalysisReducer(currentState, action)).toEqual(expectedState);
+    expect(analysisReducer(currentState, action)).toEqual(expectedState);
   });
 });

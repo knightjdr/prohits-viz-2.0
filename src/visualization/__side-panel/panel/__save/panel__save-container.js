@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Download from '../../../../helpers/download';
+import download from '../../../../helpers/download';
 import IndexedDBDelete from './browser-storage/indexeddb-delete';
 import IndexedDBGet from './browser-storage/indexeddb-get';
 import IndexedDBGetall from './browser-storage/indexeddb-getall';
@@ -99,7 +99,7 @@ export class SaveContainer extends Component {
   }
   saveSessionFile = () => {
     const name = this.props.save.name ? `${this.props.save.name}.json` : 'prohits-viz-session.json';
-    Download(JSON.stringify({}), name, 'application/json');
+    download(JSON.stringify({}), name, 'application/json');
   }
   updatePage = (sessions, sessionsPage) => {
     const page = sessions.length > (sessionsPage - 1) * PAGELENGTH ?

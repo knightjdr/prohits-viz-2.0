@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import Download from '../../../../helpers/download';
-import OnResize from '../../../../helpers/on-resize';
+import download from '../../../../helpers/download';
+import onResize from '../../../../helpers/on-resize';
 import Status from './heatmap-svg__status';
 
 export class StatusContainer extends Component {
@@ -26,16 +26,16 @@ export class StatusContainer extends Component {
   }
   onResize = () => {
     this.setState({ show: false });
-    OnResize(this, this.resizeEnd, 800);
+    onResize(this, this.resizeEnd, 800);
   }
   setPosition = width => ({
     right: ((window.innerWidth - width) / 2) - 19,
     top: 115,
   })
   download = () => {
-    const fileName = `${this.props.name}currentView.svg`;
+    const fileName = `${this.props.name}-currentView.svg`;
     const svg = document.getElementById('svg-main').outerHTML;
-    Download(svg, fileName, 'image/svg+xml');
+    download(svg, fileName, 'image/svg+xml');
   }
   resizeEnd = () => {
     const { width } = this.props;
@@ -67,7 +67,7 @@ export class StatusContainer extends Component {
         reset={this.props.reset}
         selectionBoxActive={this.props.display.selectionBox}
         show={this.state.show}
-        showToggles={this.props.showToggles}
+        showSelectionToggle={this.props.showSelectionToggle}
         toggleMenu={this.toggleMenu}
         toggleSelectionBox={this.props.toggleSelection}
         toggleTooltips={this.props.toggleTips}
@@ -80,7 +80,7 @@ export class StatusContainer extends Component {
 
 StatusContainer.defaultProps = {
   name: null,
-  showToggles: true,
+  showSelectionToggle: true,
   toggleSelection: null,
   toggleTips: null,
 };
@@ -94,7 +94,7 @@ StatusContainer.propTypes = {
   name: PropTypes.string,
   fixLeft: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
-  showToggles: PropTypes.bool,
+  showSelectionToggle: PropTypes.bool,
   toggleSelection: PropTypes.func,
   toggleTips: PropTypes.func,
   translate: PropTypes.func.isRequired,

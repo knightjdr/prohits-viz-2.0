@@ -1,10 +1,7 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  Select,
-  Switch,
-} from 'antd';
+import { Select, Switch } from 'antd';
 import { faSync } from '@fortawesome/pro-regular-svg-icons';
 
 import './panel__settings.css';

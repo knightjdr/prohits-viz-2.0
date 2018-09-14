@@ -1,21 +1,11 @@
-import DisplayReducer from './display-reducer';
+import display, { initState } from './display-reducer';
 import * as actions from './display-actions';
-
-const defaultState = {
-  floatMapRight: 50,
-  floatMapTop: 100,
-  plotFixed: false,
-  plotTranslate: 0,
-  selectionBox: true,
-  tab: 'info',
-  tooltips: false,
-};
 
 describe('Display set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = defaultState;
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = initState;
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle CHANGE_PANEL_TAB action', () => {
@@ -24,10 +14,10 @@ describe('Display set reducer', () => {
       type: actions.CHANGE_PANEL_TAB,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       tab: 'map',
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle RESET_MAP_POSITION action', () => {
@@ -35,11 +25,11 @@ describe('Display set reducer', () => {
       type: actions.RESET_MAP_POSITION,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       floatMapRight: 20,
       floatMapTop: 100,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle TOGGLE_SELECTION_BOX action', () => {
@@ -47,11 +37,11 @@ describe('Display set reducer', () => {
       type: actions.TOGGLE_SELECTION_BOX,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       selectionBox: false,
       tooltips: true,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle TOGGLE_TOOLTIPS action', () => {
@@ -59,11 +49,11 @@ describe('Display set reducer', () => {
       type: actions.TOGGLE_TOOLTIPS,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       selectionBox: false,
       tooltips: true,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle UPDATE_MAP_POSITION action', () => {
@@ -73,11 +63,11 @@ describe('Display set reducer', () => {
       type: actions.UPDATE_MAP_POSITION,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       floatMapRight: 100,
       floatMapTop: 200,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle UPDATE_PLOT_POSITION action', () => {
@@ -87,10 +77,10 @@ describe('Display set reducer', () => {
       type: actions.UPDATE_PLOT_POSITION,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       plotFixed: true,
       plotTranslate: -200,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 });

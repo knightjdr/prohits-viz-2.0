@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import OnResize from '../../../helpers/on-resize';
+import onResize from '../../../helpers/on-resize';
 
 const COL_MARGIN = 100;
 const EXTRA_ARROW_PADDING = 30;
@@ -60,7 +60,7 @@ export class SvgContainer extends Component {
     window.removeEventListener('resize', this.onResize);
   }
   onResize = () => {
-    OnResize(this, this.resizeEnd, 800);
+    onResize(this, this.resizeEnd, 800);
   }
   setDimensions = (cellSize, columns, panel, rows, display) => {
     const width = this.calculateWidth(cellSize, columns);

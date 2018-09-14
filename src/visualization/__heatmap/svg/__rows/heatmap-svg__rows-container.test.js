@@ -99,10 +99,24 @@ describe('Heatmap row container', () => {
         term: null,
       },
       sortID: 0,
+      updateID: 0,
     };
 
     beforeAll(() => {
       wrapper.setProps(originalProps);
+    });
+
+    it('should return true when updateID changes', () => {
+      let newProps = {
+        ...originalProps,
+        updateID: 0,
+      };
+      expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
+      newProps = {
+        ...originalProps,
+        updateID: 1,
+      };
+      expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
 
     it('should return true when cellSize changes', () => {
@@ -248,27 +262,33 @@ describe('Heatmap row container', () => {
     });
 
     describe('updatePage', () => {
-      it('should not update when position, page and sort id remain the same', () => {
+      it('should not update when position, page, sort id and update id remain the same', () => {
         wrapper.instance().checkRowSize.mockClear();
-        wrapper.instance().updatePage(0, 0, 3, 3, 0, 0, []);
+        wrapper.instance().updatePage(0, 0, 3, 3, 0, 0, 0, 0, []);
         expect(wrapper.instance().checkRowSize).not.toHaveBeenCalled();
       });
 
       it('should update when y position changes', () => {
         wrapper.instance().checkRowSize.mockClear();
-        wrapper.instance().updatePage(0, 1, 3, 3, 0, 0, []);
+        wrapper.instance().updatePage(0, 1, 3, 3, 0, 0, 0, 0, []);
         expect(wrapper.instance().checkRowSize).toHaveBeenCalled();
       });
 
       it('should update when page size changes', () => {
         wrapper.instance().checkRowSize.mockClear();
-        wrapper.instance().updatePage(0, 0, 3, 2, 0, 0, []);
+        wrapper.instance().updatePage(0, 0, 3, 2, 0, 0, 0, 0, []);
         expect(wrapper.instance().checkRowSize).toHaveBeenCalled();
       });
 
       it('should update when sort id changes', () => {
         wrapper.instance().checkRowSize.mockClear();
-        wrapper.instance().updatePage(0, 0, 3, 3, 0, 1, []);
+        wrapper.instance().updatePage(0, 0, 3, 3, 0, 1, 0, 0, []);
+        expect(wrapper.instance().checkRowSize).toHaveBeenCalled();
+      });
+
+      it('should update when update id changes', () => {
+        wrapper.instance().checkRowSize.mockClear();
+        wrapper.instance().updatePage(0, 0, 3, 3, 0, 0, 0, 1, []);
         expect(wrapper.instance().checkRowSize).toHaveBeenCalled();
       });
     });

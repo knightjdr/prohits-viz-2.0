@@ -1,6 +1,6 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
@@ -18,7 +18,7 @@ const Options = ({
   fixLeft,
   reset,
   selectionBoxActive,
-  showToggles,
+  showSelectionToggle,
   toggleSelectionBox,
   toggleTooltips,
   tooltipsActive,
@@ -59,40 +59,38 @@ const Options = ({
       <FontAwesomeIcon icon={faFileDownload} />
     </OptionButton>
     {
-      showToggles &&
-      <Fragment>
-        <OptionButton
-          onClick={toggleSelectionBox}
-          tooltip="Toggle selection box"
-        >
-          <FontAwesomeIcon
-            icon={faSquare}
-            style={{
-              color: selectionBoxActive ? 'inherit' : '#999',
-            }}
-          />
-          {
-            !selectionBoxActive &&
-            <span className="heatmap-svg__state-slash">/</span>
-          }
-        </OptionButton>
-        <OptionButton
-          onClick={toggleTooltips}
-          tooltip="Toggle tooltips"
-        >
-          <FontAwesomeIcon
-            icon={faComment}
-            style={{
-              color: tooltipsActive ? 'inherit' : '#999',
-            }}
-          />
-          {
-            !tooltipsActive &&
-            <span className="heatmap-svg__state-slash">/</span>
-          }
-        </OptionButton>
-      </Fragment>
+      showSelectionToggle &&
+      <OptionButton
+        onClick={toggleSelectionBox}
+        tooltip="Toggle selection box"
+      >
+        <FontAwesomeIcon
+          icon={faSquare}
+          style={{
+            color: selectionBoxActive ? 'inherit' : '#999',
+          }}
+        />
+        {
+          !selectionBoxActive &&
+          <span className="heatmap-svg__state-slash">/</span>
+        }
+      </OptionButton>
     }
+    <OptionButton
+      onClick={toggleTooltips}
+      tooltip="Toggle tooltips"
+    >
+      <FontAwesomeIcon
+        icon={faComment}
+        style={{
+          color: tooltipsActive ? 'inherit' : '#999',
+        }}
+      />
+      {
+        !tooltipsActive &&
+        <span className="heatmap-svg__state-slash">/</span>
+      }
+    </OptionButton>
   </div>
 );
 
@@ -108,10 +106,10 @@ Options.propTypes = {
   fixLeft: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
   selectionBoxActive: PropTypes.bool.isRequired,
-  showToggles: PropTypes.bool.isRequired,
-  tooltipsActive: PropTypes.bool.isRequired,
+  showSelectionToggle: PropTypes.bool.isRequired,
   toggleSelectionBox: PropTypes.func,
   toggleTooltips: PropTypes.func,
+  tooltipsActive: PropTypes.bool.isRequired,
   translate: PropTypes.func.isRequired,
 };
 

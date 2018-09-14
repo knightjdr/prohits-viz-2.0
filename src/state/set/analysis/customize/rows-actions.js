@@ -1,4 +1,4 @@
-import Deepcopy from '../../../../helpers/deep-copy';
+import deepCopy from '../../../../helpers/deep-copy';
 
 import * as sortMethods from '../../visualization/rows-actions';
 
@@ -9,15 +9,16 @@ export const updateRows = (
   direction,
   list,
   sortBy,
+  ref,
   id,
   order,
   removeEmpty,
   resetMaximums,
 ) => ({
-  columns: columns.names,
+  columns,
   direction,
   id,
-  ref: columns.ref,
+  ref,
   removeEmpty,
   resetMaximums,
   rows: {
@@ -59,17 +60,18 @@ export const sortRows = (requestedSortBy, requestedDirection, ref) => (
       // Otherwise, sort descending.
       sortDirection = 'desc';
     }
-    const sortedList = Deepcopy(rows.list);
+    const sortedList = deepCopy(rows.list);
     sortedList.sort(sortMethods.sortMethod(requestedSortBy, sortDirection, ref));
     const rowOrder = sortedList.map(row => row.name);
 
     // Create or update ID.
-    const newId = id ? id + 1 : 1;
+    const newId = id + 1;
     dispatch(updateRows(
-      columns,
+      columns.names,
       sortDirection,
       sortedList,
       requestedSortBy,
+      ref,
       newId,
       rowOrder,
       removeEmpty,

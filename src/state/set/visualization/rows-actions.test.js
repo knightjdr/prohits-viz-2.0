@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import Deepcopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './rows-actions';
 
 // configure mock store
@@ -15,7 +15,7 @@ const list = [
 ];
 
 jest.mock('../../../helpers/deep-copy');
-Deepcopy.mockReturnValue(list);
+deepCopy.mockReturnValue(list);
 
 describe('Row actions', () => {
   it('should dispatch an action to restore the rows', () => {

@@ -21,7 +21,7 @@ export const initState = {
   type: undefined,
 };
 
-const Analysis = (state = initState, action) => {
+const analysis = (state = initState, action) => {
   let newState = {};
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
@@ -75,4 +75,4 @@ const Analysis = (state = initState, action) => {
   }
 };
 
-export default Analysis;
+export default analysis;

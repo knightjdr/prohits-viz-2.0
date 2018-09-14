@@ -6,7 +6,7 @@ import * as tabActions from '../../visualization/tab-actions';
 
 import deepCopy from '../../../../helpers/deep-copy';
 
-const Customize = (
+const data = (
   state = [],
   action,
 ) => {
@@ -17,8 +17,8 @@ const Customize = (
         ...state,
         {
           columns: {
-            names: Object.assign([], action.columns),
-            ref: action.ref || null,
+            names: [...action.columns],
+            ref: action.ref,
           },
           direction: action.direction,
           id,
@@ -26,7 +26,7 @@ const Customize = (
           resetMaximums: action.resetMaximums,
           rows: {
             list: deepCopy(action.rows.list),
-            order: Object.assign([], action.rows.order),
+            order: [...action.rows.order],
           },
           sortBy: action.sortBy,
         },
@@ -45,16 +45,18 @@ const Customize = (
         ...state.slice(0, -1),
         {
           columns: {
-            names: Object.assign([], action.columns),
-            ref: null,
+            names: [...action.columns],
+            ref: action.ref,
           },
+          direction: action.direction,
           id,
           removeEmpty: action.removeEmpty,
           resetMaximums: action.resetMaximums,
           rows: {
             list: deepCopy(action.rows.list),
-            order: Object.assign([], action.rows.order),
+            order: [...action.rows.order],
           },
+          sortBy: action.sortBy,
         },
       ];
     case actions.RESET_CUSTOMIZE_STATE:
@@ -67,7 +69,7 @@ const Customize = (
         {
           ...state[state.length - 1],
           columns: {
-            names: Object.assign([], state[state.length - 1].columns.names),
+            names: [...state[state.length - 1].columns.names],
             ref: action.ref,
           },
         },
@@ -75,7 +77,7 @@ const Customize = (
     case actions.SET_CUSTOMIZE_STATE:
       return [{
         columns: {
-          names: Object.assign([], action.columns),
+          names: [...action.columns],
           ref: null,
         },
         id,
@@ -83,7 +85,7 @@ const Customize = (
         resetMaximums: action.resetMaximums,
         rows: {
           list: deepCopy(action.rows.list),
-          order: Object.assign([], action.rows.order),
+          order: [...action.rows.order],
         },
       }];
     case rowActions.SORT_CUSTOMIZE_STATE:
@@ -93,8 +95,8 @@ const Customize = (
         ...state,
         {
           columns: {
-            names: Object.assign([], action.columns),
-            ref: action.ref || null,
+            names: [...action.columns],
+            ref: action.ref,
           },
           direction: action.direction,
           id,
@@ -102,7 +104,7 @@ const Customize = (
           resetMaximums: action.resetMaximums,
           rows: {
             list: deepCopy(action.rows.list),
-            order: Object.assign([], action.rows.order),
+            order: [...action.rows.order],
           },
           sortBy: action.sortBy,
         },
@@ -114,4 +116,4 @@ const Customize = (
   }
 };
 
-export default Customize;
+export default data;

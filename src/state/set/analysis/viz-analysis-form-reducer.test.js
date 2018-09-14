@@ -1,11 +1,21 @@
-import VizAnalysisForms, { initState } from './viz-analysis-form-reducer';
+import vizAnalysisForms, { initState } from './viz-analysis-form-reducer';
 import * as actions from './viz-analysis-form-actions';
+import * as fileActions from '../interactive-file-actions';
 
 describe('Analysis GO form set reducer', () => {
   it('should return initial state', () => {
     const action = {};
     const expectedState = initState;
-    expect(VizAnalysisForms(undefined, action)).toEqual(expectedState);
+    expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
+      file: { vizanalysisform: { field: 'aaa' } },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
+    };
+    const expectedState = { field: 'aaa' };
+    expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle SET_CUSTOMIZE_PARAMETER action', () => {
@@ -20,7 +30,7 @@ describe('Analysis GO form set reducer', () => {
         orderBy: 'column',
       },
     };
-    expect(VizAnalysisForms(undefined, action)).toEqual(expectedState);
+    expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle SET_GO_PARAMETER action', () => {
@@ -35,6 +45,6 @@ describe('Analysis GO form set reducer', () => {
         advanced_options_on: false,
       },
     };
-    expect(VizAnalysisForms(undefined, action)).toEqual(expectedState);
+    expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);
   });
 });

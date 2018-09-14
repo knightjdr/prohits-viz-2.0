@@ -1,4 +1,4 @@
-import Deepcopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 
 export const RESTORE_ROWS = 'RESTORE_ROWS';
 export const UPDATE_ROWS = 'UPDATE_ROWS';
@@ -132,7 +132,7 @@ export const sortRows = (requestedSortBy, requestedDirection, ref) => (
       // Otherwise, sort descending.
       sortDirection = 'desc';
     }
-    const sortedList = Deepcopy(list);
+    const sortedList = deepCopy(list);
     sortedList.sort(sortMethod(requestedSortBy, sortDirection, ref));
 
     // Create row list.

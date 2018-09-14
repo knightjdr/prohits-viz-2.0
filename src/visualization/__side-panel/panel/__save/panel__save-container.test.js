@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import Download from '../../../../helpers/download';
+import download from '../../../../helpers/download';
 import IndexedDBDelete from './browser-storage/indexeddb-delete';
 import IndexedDBGet from './browser-storage/indexeddb-get';
 import IndexedDBGetall from './browser-storage/indexeddb-getall';
@@ -46,7 +46,7 @@ const sleep = ms => (
 describe('Panel save container', () => {
   beforeEach(() => {
     /* Clear call count */
-    Download.mockClear();
+    download.mockClear();
     Notification.mockClear();
     saveImageType.mockClear();
     saveSessionName.mockClear();
@@ -221,7 +221,7 @@ describe('Panel save container', () => {
       />,
     );
     wrapper.instance().saveSessionFile();
-    expect(Download).toHaveBeenCalledWith('{}', 'prohits-viz-session.json', 'application/json');
+    expect(download).toHaveBeenCalledWith('{}', 'prohits-viz-session.json', 'application/json');
   });
 
   it('should save named session to file', () => {
@@ -236,7 +236,7 @@ describe('Panel save container', () => {
       />,
     );
     wrapper.instance().saveSessionFile();
-    expect(Download).toHaveBeenCalledWith('{}', 'named session.json', 'application/json');
+    expect(download).toHaveBeenCalledWith('{}', 'named session.json', 'application/json');
   });
 
   it('should update page items when session array has length to support current page selection', () => {

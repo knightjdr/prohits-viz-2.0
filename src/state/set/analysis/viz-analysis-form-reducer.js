@@ -36,7 +36,7 @@ export const initState = {
   },
 };
 
-const VizAnalysisForms = (state = initState, action) => {
+const vizAnalysisForms = (state = initState, action) => {
   switch (action.type) {
     case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.vizanalysisform };
@@ -63,4 +63,4 @@ const VizAnalysisForms = (state = initState, action) => {
   }
 };
 
-export default VizAnalysisForms;
+export default vizAnalysisForms;

@@ -1,5 +1,4 @@
 import * as tabActions from '../../visualization/tab-actions';
-
 import deepCopy from '../../../../helpers/deep-copy';
 import round from '../../../../helpers/round';
 
@@ -116,12 +115,15 @@ export const recalculateRatios = (reset, rows) => {
 };
 
 export const restoreRatios = rows => (
-  rows.map((row) => {
-    const newRow = { ...row };
-    newRow.ratio = newRow.defaultRatio || newRow.ratio;
-    delete newRow.defaultRatio;
-    return row;
-  })
+  rows.map(row => ({
+    data: row.data.map((column) => {
+      const newColumn = { ...column };
+      newColumn.ratio = newColumn.defaultRatio || newColumn.ratio;
+      delete newColumn.defaultRatio;
+      return newColumn;
+    }),
+    name: row.name,
+  }))
 );
 
 /* Create initial state for customized image view. */
@@ -133,36 +135,38 @@ export const customizeImage = () => (
       rows,
       vizanalysisform,
     } = getState();
-    const { removeEmpty, resetMaximums } = vizanalysisform.customize;
-
     // Skip if selected genes are not present for rows and columns.
     if (
-      genes.columnsSelected.length === 0 ||
-      genes.rowsSelected.length === 0
+      genes.columnsSelected.length !== 0 &&
+      genes.rowsSelected.length !== 0
     ) {
-      return Promise.resolve();
+      dispatch(tabActions.addTab('customize'));
+
+      // Subset global image based on selected row and column items.
+      const { removeEmpty, resetMaximums } = vizanalysisform.customize;
+      const customState = {
+        columns: genes.columnsSelected,
+        rows: {
+          list: filterRows(columns.names, rows, genes.columnsSelected, genes.rowsSelected),
+          order: genes.rowsSelected,
+        },
+        removeEmpty,
+        resetMaximums,
+      };
+
+      // Remove empty rows or columns and reset circle ratios, if requested.
+      const blanked = removeBlanks(removeEmpty, customState.columns, customState.rows);
+      customState.columns = blanked.columns;
+      customState.rows = blanked.rows;
+      customState.rows.list = recalculateRatios(resetMaximums, customState.rows.list);
+
+      dispatch(setCustomizeState(
+        customState.columns,
+        customState.rows,
+        removeEmpty,
+        resetMaximums,
+      ));
     }
-    dispatch(tabActions.addTab('customize'));
-
-    // Subset global image based on selected row and column items.
-    const customState = {
-      columns: genes.columnsSelected,
-      rows: {
-        list: filterRows(columns.names, rows, genes.columnsSelected, genes.rowsSelected),
-        order: genes.rowsSelected,
-      },
-      removeEmpty,
-      resetMaximums,
-    };
-
-    // Remove empty rows or columns and reset circle ratios, if requested.
-    const blanked = removeBlanks(removeEmpty, customState.columns, customState.rows);
-    customState.columns = blanked.columns;
-    customState.rows = blanked.rows;
-    customState.rows.list = recalculateRatios(resetMaximums, customState.rows.list);
-
-    dispatch(setCustomizeState(customState.columns, customState.rows, removeEmpty, resetMaximums));
-    return Promise.resolve();
   }
 );
 

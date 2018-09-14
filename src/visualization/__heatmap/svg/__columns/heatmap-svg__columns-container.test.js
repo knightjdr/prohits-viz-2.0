@@ -108,10 +108,24 @@ describe('Heatmap column container', () => {
         match: false,
         term: null,
       },
+      updateID: 0,
     };
 
     beforeAll(() => {
       wrapper.setProps(originalProps);
+    });
+
+    it('should return true when updateID changes', () => {
+      let newProps = {
+        ...originalProps,
+        updateID: 0,
+      };
+      expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeFalsy();
+      newProps = {
+        ...originalProps,
+        updateID: 1,
+      };
+      expect(wrapper.instance().shouldComponentUpdate(newProps)).toBeTruthy();
     });
 
     it('should return true when cellSize changes', () => {
@@ -263,21 +277,27 @@ describe('Heatmap column container', () => {
     });
 
     describe('updatePage', () => {
-      it('should not update when position and page remain the same', () => {
+      it('should not update when position, page and updateID remain the same', () => {
         wrapper.instance().checkColumnSize.mockClear();
-        wrapper.instance().updatePage(0, 0, 3, 3, []);
+        wrapper.instance().updatePage(0, 0, 3, 3, 0, 0, []);
         expect(wrapper.instance().checkColumnSize).not.toHaveBeenCalled();
       });
 
       it('should update when x position changes', () => {
         wrapper.instance().checkColumnSize.mockClear();
-        wrapper.instance().updatePage(0, 1, 3, 3, []);
+        wrapper.instance().updatePage(0, 1, 3, 3, 0, 0, []);
         expect(wrapper.instance().checkColumnSize).toHaveBeenCalled();
       });
 
       it('should update when page size changes', () => {
         wrapper.instance().checkColumnSize.mockClear();
-        wrapper.instance().updatePage(0, 0, 3, 2, []);
+        wrapper.instance().updatePage(0, 0, 3, 2, 0, 0, []);
+        expect(wrapper.instance().checkColumnSize).toHaveBeenCalled();
+      });
+
+      it('should update when udpateID changes', () => {
+        wrapper.instance().checkColumnSize.mockClear();
+        wrapper.instance().updatePage(0, 0, 3, 3, 0, 1, []);
         expect(wrapper.instance().checkColumnSize).toHaveBeenCalled();
       });
     });

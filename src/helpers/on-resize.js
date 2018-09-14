@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-const OnResize = (component, func, timeout = 500) => {
+const onResize = (component, func, timeout = 500) => {
   if (component.resizeTimeout) {
     clearTimeout(component.resizeTimeout);
   }
@@ -9,4 +9,4 @@ const OnResize = (component, func, timeout = 500) => {
   }, timeout);
 };
 
-export default OnResize;
+export default onResize;

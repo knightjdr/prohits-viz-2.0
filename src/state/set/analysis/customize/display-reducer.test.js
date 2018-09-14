@@ -1,18 +1,61 @@
-import DisplayReducer from './display-reducer';
 import * as actions from './display-actions';
+import * as fileActions from '../../interactive-file-actions';
+import * as tabActions from '../../visualization/tab-actions';
 
-const defaultState = {
-  floatMapRight: 50,
-  floatMapTop: 100,
-  plotFixed: false,
-  plotTranslate: 0,
-};
+import display, { initState } from './display-reducer';
 
 describe('Display set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = defaultState;
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = initState;
+    expect(display(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
+    const expectedState = initState;
+    expect(display(undefined, action)).toEqual(expectedState);
+  });
+
+  describe('when removing tab', () => {
+    const currentState = {
+      floatMapRight: 500,
+      floatMapTop: 1000,
+      plotFixed: true,
+      plotTranslate: 0,
+      tooltips: false,
+    };
+
+    it('should reset state when removed tab is "customize"', () => {
+      const action = {
+        tab: 'customize',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = initState;
+      expect(display(currentState, action)).toEqual(expectedState);
+    });
+
+    it('should not reset state when removed tab is not "customize"', () => {
+      const action = {
+        tab: 'other',
+        type: tabActions.REMOVE_TAB,
+      };
+      const expectedState = currentState;
+      expect(display(currentState, action)).toEqual(expectedState);
+    });
+  });
+
+  it('should handle TOGGLE_CUSTOMIZE_TOOLTIPS action', () => {
+    const action = {
+      type: actions.TOGGLE_CUSTOMIZE_TOOLTIPS,
+    };
+    const expectedState = {
+      ...initState,
+      tooltips: true,
+    };
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle UPDATE_CUSTOMIZE_PLOT_POSITION action', () => {
@@ -22,10 +65,10 @@ describe('Display set reducer', () => {
       type: actions.UPDATE_CUSTOMIZE_PLOT_POSITION,
     };
     const expectedState = {
-      ...defaultState,
+      ...initState,
       plotFixed: true,
       plotTranslate: -200,
     };
-    expect(DisplayReducer(undefined, action)).toEqual(expectedState);
+    expect(display(undefined, action)).toEqual(expectedState);
   });
 });

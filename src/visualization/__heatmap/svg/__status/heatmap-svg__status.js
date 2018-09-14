@@ -17,7 +17,7 @@ const Status = ({
   reset,
   selectionBoxActive,
   show,
-  showToggles,
+  showSelectionToggle,
   toggleMenu,
   toggleSelectionBox,
   toggleTooltips,
@@ -42,7 +42,7 @@ const Status = ({
       fixLeft={fixLeft}
       reset={reset}
       selectionBoxActive={selectionBoxActive}
-      showToggles={showToggles}
+      showSelectionToggle={showSelectionToggle}
       toggleSelectionBox={toggleSelectionBox}
       toggleTooltips={toggleTooltips}
       tooltipsActive={tooltipsActive}
@@ -64,18 +64,17 @@ Status.propTypes = {
   elPosition: PropTypes.shape({
     bottom: PropTypes.number,
     right: PropTypes.number,
-    transform: PropTypes.string,
   }).isRequired,
   expand: PropTypes.bool.isRequired,
   fixLeft: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
   selectionBoxActive: PropTypes.bool,
   show: PropTypes.bool.isRequired,
-  showToggles: PropTypes.bool.isRequired,
-  tooltipsActive: PropTypes.bool,
+  showSelectionToggle: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
   toggleSelectionBox: PropTypes.func,
   toggleTooltips: PropTypes.func,
+  tooltipsActive: PropTypes.bool,
   translate: PropTypes.func.isRequired,
 };
 
