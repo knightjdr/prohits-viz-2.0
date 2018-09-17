@@ -2,22 +2,14 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Overlay from './heatmap-svg__overlay';
-import Round from '../../../../helpers/round';
 import RoundNearest from '../../../../helpers/round-nearest';
 
 export class OverlayContainer extends Component {
   constructor(props) {
     super(props);
     this.gElementRef = React.createRef();
-    const {
-      annotations,
-      cellSize,
-      dimensions,
-      markers,
-      position,
-    } = this.props;
+    this.moveType = null;
     this.state = {
-      annotations: this.subsetAnnotations(annotations.list, dimensions, position),
       cursor: 'default',
       marker: {
         height: 0,
@@ -26,18 +18,13 @@ export class OverlayContainer extends Component {
         x: 0,
         y: 0,
       },
-      markers: this.subsetMarkers(markers.list, cellSize, dimensions, position),
     };
   }
   componentWillReceiveProps = (nextProps) => {
     const {
-      annotations,
       dimensions,
-      markers,
       position,
     } = this.props;
-    this.updateAnnotations(nextProps, annotations, dimensions, position);
-    this.updateMarkers(nextProps, markers, dimensions, position);
     this.updateOverlay(nextProps, dimensions, position);
   }
   getBoundary = () => {
@@ -56,71 +43,21 @@ export class OverlayContainer extends Component {
       this.props.addMarkerBox(markerHeight, markerWidth, markerX, markerY);
     }
   }
-  annotationInRange = (annotation, xRange, yRange) => (
-    annotation.x >= xRange.start &&
-    annotation.x <= xRange.end &&
-    annotation.y >= yRange.start &&
-    annotation.y <= yRange.end
-  );
-  annotationMouseMove = (e) => {
-    const newAnnotations = [...this.state.annotations];
-    newAnnotations[this.moveIndex] = {
-      ...newAnnotations[this.moveIndex],
-      x: e.clientX - this.boundary.x,
-      y: e.clientY - this.boundary.y,
-    };
-    this.setState({
-      annotations: newAnnotations,
-    });
-  }
-  annotationMouseUp = (annotation, dimensions, position) => {
-    // Calculate element position relative to heatmap.
-    const { index, x, y } = annotation;
-    let newX = x / dimensions.width;
-    let newY = y / dimensions.height;
-
-    // Get new annotation position relative to entire image.
-    newX = Round(((newX * dimensions.pageX) + position.x) / dimensions.columns, 2);
-    newY = Round(((newY * dimensions.pageY) + position.y) / dimensions.rows, 2);
-    this.props.updateAnnotation(index, newX, newY);
-  }
-  handleAnimationMouseDown = (index) => {
-    this.boundary = this.getBoundary();
-    this.dragging = true;
-    this.moveIndex = index;
-    this.moveType = 'annotation';
-    this.setState({
-      cursor: 'pointer',
-    });
-  }
   handleMouseMove = (e) => {
     if (this.dragging) {
-      if (this.moveType === 'annotation') {
-        this.annotationMouseMove(e);
-      } else {
-        this.overlayMouseMove(e);
-      }
+      this.overlayMouseMove(e);
     }
   }
   handleMouseUp = (e) => {
-    this.dragging = false;
-
-    const { dimensions, position } = this.props;
-    if (this.moveType === 'annotation') {
-      this.annotationMouseUp(this.state.annotations[this.moveIndex], dimensions, position);
-    } else {
+    if (this.dragging) {
+      this.dragging = false;
       this.overlayMouseUp(e);
     }
-
-    // Clear.
-    this.moveIndex = null;
-    this.moveType = null;
   }
-  handleOverlayMouseDown = (e) => {
+  handleMouseDown = (e) => {
     const { cellSize } = this.props;
     this.boundary = this.getBoundary();
     this.dragging = true;
-    this.moveType = 'marker';
     this.startPosition = {
       x: RoundNearest(e.clientX - this.boundary.x, cellSize),
       y: RoundNearest(e.clientY - this.boundary.y, cellSize),
@@ -130,26 +67,32 @@ export class OverlayContainer extends Component {
       marker: {
         height: 0,
         left: 0,
-        show: false,
+        show: true,
         top: 0,
         width: 0,
       },
     });
   }
-  markerInRange = (marker, xRange, yRange) => (
-    (
-      marker.x >= xRange.start &&
-      marker.x <= xRange.end &&
-      marker.y >= yRange.start &&
-      marker.y <= yRange.end
-    ) ||
-    (
-      marker.x + marker.width > xRange.start &&
-      marker.x + marker.width <= xRange.end &&
-      marker.y + marker.height > yRange.start &&
-      marker.y + marker.height <= yRange.end
-    )
-  )
+  limitPos = (pos, cellSize, dimension) => {
+    if (pos < 0) {
+      return 0;
+    } else if (pos > cellSize * dimension) {
+      return cellSize * dimension;
+    }
+    return pos;
+  }
+  nearestCell = (x, y, cellSize, dimensions) => ({
+    x: this.limitPos(
+      RoundNearest(x - this.boundary.x, cellSize),
+      cellSize,
+      dimensions.pageX,
+    ),
+    y: this.limitPos(
+      RoundNearest(y - this.boundary.y, cellSize),
+      cellSize,
+      dimensions.pageY,
+    ),
+  })
   overlayMouseMove = (e) => {
     const currentPos = {
       x: e.clientX - this.boundary.x,
@@ -171,14 +114,12 @@ export class OverlayContainer extends Component {
     const {
       cellSize,
       columns,
+      dimensions,
       markers,
       position,
       rows,
     } = this.props;
-    const currentPos = {
-      x: RoundNearest(e.clientX - this.boundary.x, cellSize),
-      y: RoundNearest(e.clientY - this.boundary.y, cellSize),
-    };
+    const currentPos = this.nearestCell(e.clientX, e.clientY, cellSize, dimensions);
     const height = Math.abs(currentPos.y - this.startPosition.y);
     const width = Math.abs(currentPos.x - this.startPosition.x);
     if (
@@ -191,9 +132,9 @@ export class OverlayContainer extends Component {
         marker: {
           height,
           show: true,
+          width,
           x,
           y,
-          width,
         },
       });
       this.addMarker(cellSize, height, position, markers.record, width);
@@ -208,6 +149,16 @@ export class OverlayContainer extends Component {
         'columnMap',
       );
       this.selectMarkerGenes('rows', 'rowsSelected', cellSize, rows, y, position.y, height, 'rowMap');
+    } else {
+      this.setState({
+        marker: {
+          height: 0,
+          show: false,
+          width: 0,
+          x: 0,
+          y: 0,
+        },
+      });
     }
   }
   selectMarkerGenes = (source, target, cellSize, list, start, viewStart, width, sortBy) => {
@@ -215,100 +166,6 @@ export class OverlayContainer extends Component {
     const markerSpan = Math.round(width / cellSize);
     const selected = list.slice(arrayStart, arrayStart + markerSpan);
     this.props.setSelectedGenes(selected, source, target, true, sortBy);
-  }
-  subsetAnnotations = (annotations, dimensions, position) => {
-    // Multiplier for positioning annotations correctly on current view.
-    const multiplier = {
-      x: (dimensions.width * dimensions.columns) / dimensions.pageX,
-      y: (dimensions.height * dimensions.rows) / dimensions.pageY,
-    };
-    const xRange = {
-      end: (position.x + dimensions.pageX) / dimensions.columns,
-      start: position.x / dimensions.columns,
-    };
-    const yRange = {
-      end: (position.y + dimensions.pageY) / dimensions.rows,
-      start: position.y / dimensions.rows,
-    };
-    return annotations.reduce((filtered, annotation, index) => {
-      if (this.annotationInRange(annotation, xRange, yRange)) {
-        return [
-          ...filtered,
-          {
-            index,
-            text: annotation.text,
-            x: Math.round((annotation.x - xRange.start) * multiplier.x),
-            y: Math.round((annotation.y - yRange.start) * multiplier.y),
-          },
-        ];
-      }
-      return filtered;
-    }, []);
-  }
-  subsetMarkers= (markers, cellSize, dimensions, position) => {
-    const xRange = {
-      end: position.x + dimensions.pageX,
-      start: position.x,
-    };
-    const yRange = {
-      end: position.y + dimensions.pageY,
-      start: position.y,
-    };
-    return markers.reduce((filtered, marker) => {
-      if (this.markerInRange(marker, xRange, yRange)) {
-        return [
-          ...filtered,
-          {
-            height: marker.height * cellSize,
-            width: marker.width * cellSize,
-            x: (marker.x - xRange.start) * cellSize,
-            y: (marker.y - yRange.start) * cellSize,
-          },
-        ];
-      }
-      return filtered;
-    }, []);
-  }
-  updateAnnotations = (
-    { annotations, dimensions, position },
-    prevAnnotations,
-    prevDimensions,
-    prevPosition,
-  ) => {
-    if (
-      annotations.list.length !== prevAnnotations.list.length ||
-      position.x !== prevPosition.x ||
-      position.y !== prevPosition.y ||
-      dimensions.pageX !== prevDimensions.pageX ||
-      dimensions.pageY !== prevDimensions.pageY
-    ) {
-      this.setState({
-        annotations: this.subsetAnnotations(annotations.list, dimensions, position),
-      });
-    }
-  }
-  updateMarkers = (
-    {
-      cellSize,
-      markers,
-      dimensions,
-      position,
-    },
-    prevMarkers,
-    prevDimensions,
-    prevPosition,
-  ) => {
-    if (
-      markers.list.length !== prevMarkers.list.length ||
-      position.x !== prevPosition.x ||
-      position.y !== prevPosition.y ||
-      dimensions.pageX !== prevDimensions.pageX ||
-      dimensions.pageY !== prevDimensions.pageY
-    ) {
-      this.setState({
-        markers: this.subsetMarkers(markers.list, cellSize, dimensions, position),
-      });
-    }
   }
   updateOverlay = ({ dimensions, position }, prevDimensions, prevPosition) => {
     if (
@@ -330,21 +187,16 @@ export class OverlayContainer extends Component {
   }
   render() {
     return (
+      this.props.showSelectionbox &&
       <Overlay
-        annotations={this.state.annotations}
         cursor={this.state.cursor}
-        fontSize={this.props.annotations.fontSize}
-        handleAnimationMouseDown={this.handleAnimationMouseDown}
         handleMouseMove={this.handleMouseMove}
         handleMouseUp={this.handleMouseUp}
-        handleOverlayMouseDown={this.handleOverlayMouseDown}
+        handleMouseDown={this.handleMouseDown}
         height={this.props.dimensions.height}
         marker={this.state.marker}
-        markerColor={this.props.markers.color}
-        markers={this.state.markers}
         setRef={this.gElementRef}
-        showAnnotations={this.props.annotations.show}
-        showMarkers={this.props.markers.show}
+        showSelectionbox={this.props.showSelectionbox}
         width={this.props.dimensions.width}
       />
     );
@@ -353,35 +205,18 @@ export class OverlayContainer extends Component {
 
 OverlayContainer.propTypes = {
   addMarkerBox: PropTypes.func.isRequired,
-  annotations: PropTypes.shape({
-    fontSize: PropTypes.number,
-    list: PropTypes.arrayOf(
-      PropTypes.shape({
-        text: PropTypes.string,
-        x: PropTypes.number,
-        y: PropTypes.number,
-      }),
-    ),
-    show: PropTypes.bool,
-  }).isRequired,
   cellSize: PropTypes.number.isRequired,
   columns: PropTypes.shape({
     names: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   dimensions: PropTypes.shape({
-    columns: PropTypes.number,
     height: PropTypes.number,
     pageX: PropTypes.number,
     pageY: PropTypes.number,
-    rows: PropTypes.number,
     width: PropTypes.number,
   }).isRequired,
   markers: PropTypes.shape({
-    color: PropTypes.string,
-    list: PropTypes.arrayOf(
-      PropTypes.shape({}),
-    ),
-    show: PropTypes.bool,
+    record: PropTypes.bool,
   }).isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
@@ -389,7 +224,7 @@ OverlayContainer.propTypes = {
   }).isRequired,
   rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedGenes: PropTypes.func.isRequired,
-  updateAnnotation: PropTypes.func.isRequired,
+  showSelectionbox: PropTypes.bool.isRequired,
 };
 
 export default OverlayContainer;

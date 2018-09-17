@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './genes-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
@@ -45,7 +45,7 @@ const Genes = (state = {
     case actions.UPDATE_SELECTIONS:
       return {
         ...state,
-        ...DeepCopy(action.selections),
+        ...deepCopy(action.selections),
       };
     default:
       return state;

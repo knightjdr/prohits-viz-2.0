@@ -33,7 +33,7 @@ Tooltip.defaultProps = {
 Tooltip.propTypes = {
   display: PropTypes.bool,
   left: PropTypes.number,
-  text: PropTypes.string,
+  text: PropTypes.node,
   top: PropTypes.number,
 };
 

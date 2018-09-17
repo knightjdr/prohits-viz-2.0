@@ -18,7 +18,7 @@ const NewsListItem = ({
   );
   return (
     <List.Item
-      actions={[<NavLink to={`/news/${item._id}`}>more</NavLink>]}
+      actions={[<NavLink to={`/news/${encodeURI(item.headline)}`}>more</NavLink>]}
     >
       <List.Item.Meta
         title={item.headline}

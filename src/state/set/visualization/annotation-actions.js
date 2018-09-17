@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 
 import Round from '../../../helpers/round';
 
@@ -55,7 +55,7 @@ export const placeAnnotation = text => (
 
 export const updateList = (index, x, y) => (
   (dispatch, getState) => {
-    const newList = DeepCopy(getState().annotations.list);
+    const newList = deepCopy(getState().annotations.list);
     newList[index] = {
       text: newList[index].text,
       x,

@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
 
@@ -22,7 +22,7 @@ const Rows = (state = {
       return {
         direction: action.file.rows.direction,
         id: null,
-        list: DeepCopy(action.file.rows.list),
+        list: deepCopy(action.file.rows.list),
         order: [...action.file.rows.order],
         sortBy: action.file.rows.sortBy,
       };
@@ -31,7 +31,7 @@ const Rows = (state = {
         ...state,
         direction: action.direction,
         id: action.id,
-        list: DeepCopy(action.list),
+        list: deepCopy(action.list),
         sortBy: action.sortBy,
       };
     case actions.UPDATE_ROWS:
@@ -39,7 +39,7 @@ const Rows = (state = {
         ...state,
         direction: action.direction,
         id: action.id,
-        list: DeepCopy(action.list),
+        list: deepCopy(action.list),
         sortBy: action.sortBy,
       };
     default:

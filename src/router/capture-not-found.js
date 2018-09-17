@@ -17,7 +17,7 @@ CaptureRouteNotFoundComponent.defaultProps = {
 };
 
 CaptureRouteNotFoundComponent.propTypes = {
-  children: PropTypes.shape({}),
+  children: PropTypes.node,
   location: PropTypes.shape({}),
 };
 

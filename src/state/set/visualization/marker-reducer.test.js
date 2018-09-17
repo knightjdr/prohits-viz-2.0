@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import MarkerReducer from './marker-reducer';
 import * as actions from './marker-actions';
 import * as fileActions from '../interactive-file-actions';
@@ -11,7 +11,7 @@ const DefaultState = {
 };
 
 jest.mock('../../../helpers/deep-copy');
-DeepCopy.mockReturnValue(DefaultState.list);
+deepCopy.mockReturnValue(DefaultState.list);
 
 describe('Marker set reducer', () => {
   it('should return an empty initial state', () => {
@@ -84,7 +84,7 @@ describe('Marker set reducer', () => {
         y: 0.1,
       },
     ];
-    DeepCopy.mockReturnValueOnce(list);
+    deepCopy.mockReturnValueOnce(list);
     const action = {
       file: {
         markers: {

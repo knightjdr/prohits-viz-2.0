@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
+import Annotations from '../../__heatmap/svg/__annotations/heatmap-svg__annotation-container';
 import Arrows from '../../__heatmap/svg/__arrows/heatmap-svg__arrows-container';
 import Columns from '../../__heatmap/svg/__columns/heatmap-svg__columns-container';
 import ContextColumns from './context-menu/context-menu-columns';
@@ -11,6 +12,7 @@ import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
 import StatusBar from '../../__heatmap/svg/__status/heatmap-svg__status-container';
 import MainConnected from './visualization__tabs-main-connected';
 import Tooltip from '../../__heatmap/svg/__tooltip/svg__tooltip';
+import Tooltips from '../../__heatmap/svg/__tooltip/heatmap-svg__tooltips-container';
 
 import './visualization__tabs-main.css';
 
@@ -71,15 +73,30 @@ const MainSvg = ({
               />
               <Overlay
                 addMarkerBox={connectedProps.addMarkerBox}
-                annotations={connectedProps.annotations}
                 cellSize={connectedProps.settings.cellSize}
                 columns={connectedProps.columns}
                 dimensions={connectedProps.dimensions}
-                markerBox={connectedProps.markerBox}
                 markers={connectedProps.markers}
                 position={connectedProps.position}
                 rows={connectedProps.rowNames}
                 setSelectedGenes={connectedProps.setSelectedGenes}
+                showSelectionbox={connectedProps.display.selectionBox}
+              />
+              <Tooltips
+                cellSize={connectedProps.settings.cellSize}
+                dimensions={connectedProps.dimensions}
+                plotTranslate={connectedProps.display.plotTranslate}
+                position={connectedProps.position}
+                rows={connectedProps.rows}
+                showTooltips={connectedProps.display.tooltips}
+                toggleTooltip={toggleTooltip}
+              />
+              <Annotations
+                annotations={connectedProps.annotations}
+                cellSize={connectedProps.settings.cellSize}
+                dimensions={connectedProps.dimensions}
+                markers={connectedProps.markers}
+                position={connectedProps.position}
                 updateAnnotation={connectedProps.updateAnnotation}
               />
               <Columns
@@ -188,7 +205,7 @@ MainSvg.propTypes = {
   tooltip: PropTypes.shape({
     display: PropTypes.bool,
     left: PropTypes.number,
-    text: PropTypes.string,
+    text: PropTypes.node,
     top: PropTypes.number,
   }).isRequired,
   toggleTooltip: PropTypes.func.isRequired,

@@ -3,24 +3,7 @@
 exports[`Router Renders 1`] = `
 <BrowserRouter>
   <withRouter()>
-    <RouteWrapper
-      atActive={
-        Object {
-          "opacity": 1,
-        }
-      }
-      atEnter={
-        Object {
-          "opacity": 0,
-        }
-      }
-      atLeave={
-        Object {
-          "opacity": 0,
-        }
-      }
-      className="switch-wrapper"
-    >
+    <Switch>
       <Route
         component={[Function]}
         exact={true}
@@ -46,7 +29,7 @@ exports[`Router Renders 1`] = `
         component={[Function]}
         path="*"
       />
-    </RouteWrapper>
+    </Switch>
   </withRouter()>
 </BrowserRouter>
 `;

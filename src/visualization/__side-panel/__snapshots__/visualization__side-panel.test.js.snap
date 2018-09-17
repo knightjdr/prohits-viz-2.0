@@ -315,7 +315,7 @@ exports[`Visualization panel should render panel but not button 1`] = `
     style={
       Object {
         "opacity": 1,
-        "transform": "translateX(0)",
+        "transform": "translateX(-10px)",
       }
     }
   >

@@ -1,6 +1,6 @@
 // Deep copy an object.
-const DeepCopy = obj => (
+const deepCopy = obj => (
   obj ? JSON.parse(JSON.stringify(obj)) : null
 );
 
-export default DeepCopy;
+export default deepCopy;

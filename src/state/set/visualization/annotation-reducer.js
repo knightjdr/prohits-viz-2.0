@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
 
@@ -14,7 +14,7 @@ const Annotations = (state = {
       return {
         ...state,
         list: [
-          ...DeepCopy(state.list),
+          ...deepCopy(state.list),
           {
             text: action.text,
             x: action.x,
@@ -35,7 +35,7 @@ const Annotations = (state = {
         show: true,
       };
     case actions.CLEAR_LAST_ANNOTATION:
-      newList = DeepCopy(state.list);
+      newList = deepCopy(state.list);
       newList.pop();
       return {
         ...state,
@@ -45,7 +45,7 @@ const Annotations = (state = {
       return {
         color: action.file.annotations.color,
         fontSize: action.file.annotations.fontSize,
-        list: DeepCopy(action.file.annotations.list),
+        list: deepCopy(action.file.annotations.list),
         show: action.file.annotations.show,
       };
     case actions.SET_ANNOTATION_COLOR:

@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import RowsReducer from './rows-reducer';
 import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
@@ -36,7 +36,7 @@ describe('Rows set reducer', () => {
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
-    DeepCopy.mockReturnValue(list);
+    deepCopy.mockReturnValue(list);
     const action = {
       file: {
         rows: {
@@ -64,7 +64,7 @@ describe('Rows set reducer', () => {
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
-    DeepCopy.mockReturnValue(list);
+    deepCopy.mockReturnValue(list);
     const action = {
       direction: null,
       id: 1,
@@ -88,7 +88,7 @@ describe('Rows set reducer', () => {
       { data: {}, name: 'b' },
       { data: {}, name: 'c' },
     ];
-    DeepCopy.mockReturnValue(list);
+    deepCopy.mockReturnValue(list);
     const action = {
       direction: 'asc',
       id: 1,

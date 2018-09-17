@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import * as fileActions from '../interactive-file-actions';
 import * as actions from './marker-actions';
 
@@ -14,7 +14,7 @@ const Markers = (state = {
       return {
         ...state,
         list: [
-          ...DeepCopy(state.list),
+          ...deepCopy(state.list),
           {
             height: action.height,
             width: action.width,
@@ -36,7 +36,7 @@ const Markers = (state = {
         show: true,
       };
     case actions.CLEAR_LAST_MARKER:
-      newList = DeepCopy(state.list);
+      newList = deepCopy(state.list);
       newList.pop();
       return {
         ...state,
@@ -45,7 +45,7 @@ const Markers = (state = {
     case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         color: action.file.markers.color,
-        list: DeepCopy(action.file.markers.list),
+        list: deepCopy(action.file.markers.list),
         record: action.file.markers.record,
       };
     case actions.SET_MARKER_COLOR:

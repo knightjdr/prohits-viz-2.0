@@ -55,7 +55,7 @@ const Columns = ({
               onClick={(e) => { handleClick(e, name.original, 'column'); }}
               onContextMenu={(e) => { openContextMenu(e, name.original); }}
               onMouseEnter={(e) => {
-                toggleTooltip(name.trimmed, true, name.original, e.clientX, 0);
+                toggleTooltip(name.trimmed, true, name.original, e.clientX, 10);
               }}
               onMouseLeave={() => { toggleTooltip(name.trimmed, false, name.original); }}
               textAnchor="end"

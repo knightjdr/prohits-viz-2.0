@@ -8,6 +8,8 @@ import CustomizeConnected from './visualization__tabs-customize-connected';
 import Plot from '../../__heatmap/svg/plot/heatmap-svg__plot-container';
 import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
 import StatusBar from '../../__heatmap/svg/__status/heatmap-svg__status-container';
+import Tooltip from '../../__heatmap/svg/__tooltip/svg__tooltip';
+import Tooltips from '../../__heatmap/svg/__tooltip/heatmap-svg__tooltips-container';
 
 import '../__main/visualization__tabs-main.css';
 
@@ -27,6 +29,7 @@ const CustomizeSvg = ({
   showContext,
   sortRows,
   toggleTooltip,
+  tooltip,
   translateLeft,
   width,
 }) => (
@@ -64,6 +67,15 @@ const CustomizeSvg = ({
                 secondaryFilter={connectedProps.settings.secondaryFilter}
                 sortID={connectedProps.sortInfo.id}
                 updateID={connectedProps.customizeID}
+              />
+              <Tooltips
+                cellSize={connectedProps.settings.cellSize}
+                dimensions={connectedProps.dimensions}
+                plotTranslate={connectedProps.display.plotTranslate}
+                position={connectedProps.position}
+                rows={connectedProps.rows.list}
+                showTooltips={connectedProps.display.tooltips}
+                toggleTooltip={toggleTooltip}
               />
               <Columns
                 cellSize={connectedProps.settings.cellSize}
@@ -129,6 +141,7 @@ const CustomizeSvg = ({
               sortRows={sortRows}
               target={contextTarget}
             />
+            <Tooltip {...tooltip} />
           </Fragment>
         )}
       />
@@ -162,6 +175,12 @@ CustomizeSvg.propTypes = {
   showContext: PropTypes.string.isRequired,
   sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
+  tooltip: PropTypes.shape({
+    display: PropTypes.bool,
+    left: PropTypes.number,
+    text: PropTypes.node,
+    top: PropTypes.number,
+  }).isRequired,
   translateLeft: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,

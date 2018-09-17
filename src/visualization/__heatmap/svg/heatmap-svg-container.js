@@ -207,6 +207,15 @@ export class SvgContainer extends Component {
           top,
         },
       });
+    } else {
+      this.setState({
+        tooltip: {
+          display: false,
+          left: 0,
+          text: null,
+          top: 0,
+        },
+      });
     }
   }
   translateLeft = () => {

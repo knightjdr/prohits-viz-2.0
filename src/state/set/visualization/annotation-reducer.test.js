@@ -1,4 +1,4 @@
-import DeepCopy from '../../../helpers/deep-copy';
+import deepCopy from '../../../helpers/deep-copy';
 import AnnotationReducer from './annotation-reducer';
 import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
@@ -11,7 +11,7 @@ const DefaultState = {
 };
 
 jest.mock('../../../helpers/deep-copy');
-DeepCopy.mockReturnValue(DefaultState.list);
+deepCopy.mockReturnValue(DefaultState.list);
 
 describe('Annotation set reducer', () => {
   it('should return an empty initial state', () => {
@@ -75,7 +75,7 @@ describe('Annotation set reducer', () => {
 
   it('should handle PARSE_INTERACTIVE_FILE action', () => {
     const list = [{ text: 'test', x: 0.1, y: 0.1 }];
-    DeepCopy.mockReturnValueOnce(list);
+    deepCopy.mockReturnValueOnce(list);
     const action = {
       file: {
         annotations: {
@@ -131,7 +131,7 @@ describe('Annotation set reducer', () => {
 
   it('should handle UPDATE_ANNOTATION action', () => {
     const list = [{ text: 'test', x: 0.1, y: 0.1 }];
-    DeepCopy.mockReturnValueOnce(list);
+    deepCopy.mockReturnValueOnce(list);
     const action = {
       list,
       type: actions.UPDATE_ANNOTATION,

@@ -1,6 +1,6 @@
 import md5 from 'md5';
 
-import DeepCopy from './deep-copy';
+import deepCopy from './deep-copy';
 
 const testValues = {
   arr: [1, 'a', null],
@@ -17,9 +17,9 @@ const md5Expected = {
 };
 
 test('deep copy', () => {
-  expect(DeepCopy(null)).toBeNull();
-  expect(DeepCopy('')).toBeNull();
-  expect(md5(DeepCopy(testValues.arr))).toBe(md5Expected.arr);
-  expect(md5(DeepCopy(testValues.obj))).toBe(md5Expected.obj);
-  expect(md5(DeepCopy(testValues.arrObj))).toBe(md5Expected.arrObj);
+  expect(deepCopy(null)).toBeNull();
+  expect(deepCopy('')).toBeNull();
+  expect(md5(deepCopy(testValues.arr))).toBe(md5Expected.arr);
+  expect(md5(deepCopy(testValues.obj))).toBe(md5Expected.obj);
+  expect(md5(deepCopy(testValues.arrObj))).toBe(md5Expected.arrObj);
 });
