@@ -1,10 +1,10 @@
-import SaveSelector from './save-selector';
+import saveSelector from './save-selector';
 
 describe('Save selector', () => {
   it('should return save options', () => {
     const state = {
       imageType: 'svg',
     };
-    expect(SaveSelector(state)).toEqual(state.save);
+    expect(saveSelector(state)).toEqual(state.save);
   });
 });

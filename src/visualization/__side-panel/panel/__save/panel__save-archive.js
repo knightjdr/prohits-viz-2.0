@@ -4,6 +4,8 @@ import React from 'react';
 import { faArchive, faExclamationCircle } from '@fortawesome/pro-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
+import Button from '../../../../components/button/button';
+
 import './panel__save.css';
 
 const Archive = ({
@@ -14,13 +16,13 @@ const Archive = ({
       <div>
         Archive
       </div>
-      <button
+      <Button
         className="panel__save-button"
         onClick={archive}
-        type="button"
+        type="default"
       >
         <FontAwesomeIcon icon={faArchive} />
-      </button>
+      </Button>
     </div>
     <div>
       <FontAwesomeIcon icon={faExclamationCircle} />{' '}

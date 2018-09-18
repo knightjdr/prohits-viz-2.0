@@ -18,26 +18,48 @@ const saveSessionFile = jest.fn();
 const saveSessionName = jest.fn();
 
 describe('Save session component', () => {
-  beforeEach(() => {
-    /* Clear call count */
-    saveSessionBrowser.mockClear();
-    saveSessionFile.mockClear();
-    saveSessionName.mockClear();
-  });
+  describe('with indexeddb storage and sessions present', () => {
+    let wrapper;
 
-  it('should render with support for indexeddb storage and sessions present', () => {
-    const wrapper = shallow(
-      <Session
-        saveSessionBrowser={saveSessionBrowser}
-        saveSessionFile={saveSessionFile}
-        saveSessionName={saveSessionName}
-        storageSupport
-        {...props}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+    beforeAll(() => {
+      wrapper = shallow(
+        <Session
+          saveSessionBrowser={saveSessionBrowser}
+          saveSessionFile={saveSessionFile}
+          saveSessionName={saveSessionName}
+          storageSupport
+          {...props}
+        />,
+      );
+    });
 
+    beforeEach(() => {
+      /* Clear call count */
+      saveSessionBrowser.mockClear();
+      saveSessionFile.mockClear();
+      saveSessionName.mockClear();
+    });
+
+    it('should render', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should call save to browser prop method on button click', () => {
+      wrapper.find('Button').last().simulate('click');
+      expect(saveSessionBrowser).toHaveBeenCalled();
+    });
+
+    it('should call save to file prop method on button click', () => {
+      wrapper.find('Button').first().simulate('click');
+      expect(saveSessionFile).toHaveBeenCalled();
+    });
+
+    it('should call change name prop method on button click', () => {
+      wrapper.find('Input').simulate('change', { target: { value: 1 } });
+      expect(saveSessionName).toHaveBeenCalled();
+    });
+  });
+  
   it('should render with no support for indexeddb storage', () => {
     const wrapper = shallow(
       <Session
@@ -63,47 +85,5 @@ describe('Save session component', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should call save to browser prop method on button click', () => {
-    const wrapper = shallow(
-      <Session
-        saveSessionBrowser={saveSessionBrowser}
-        saveSessionFile={saveSessionFile}
-        saveSessionName={saveSessionName}
-        storageSupport
-        {...props}
-      />,
-    );
-    wrapper.find('button').last().simulate('click');
-    expect(saveSessionBrowser).toHaveBeenCalled();
-  });
-
-  it('should call save to file prop method on button click', () => {
-    const wrapper = shallow(
-      <Session
-        saveSessionBrowser={saveSessionBrowser}
-        saveSessionFile={saveSessionFile}
-        saveSessionName={saveSessionName}
-        storageSupport
-        {...props}
-      />,
-    );
-    wrapper.find('button').first().simulate('click');
-    expect(saveSessionFile).toHaveBeenCalled();
-  });
-
-  it('should call change name prop method on button click', () => {
-    const wrapper = shallow(
-      <Session
-        saveSessionBrowser={saveSessionBrowser}
-        saveSessionFile={saveSessionFile}
-        saveSessionName={saveSessionName}
-        storageSupport
-        {...props}
-      />,
-    );
-    wrapper.find('Input').simulate('change', { target: { value: 1 } });
-    expect(saveSessionName).toHaveBeenCalled();
   });
 });

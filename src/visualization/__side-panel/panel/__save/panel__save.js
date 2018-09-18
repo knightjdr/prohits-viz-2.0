@@ -13,7 +13,9 @@ const Save = ({
   deleteSession,
   handleImageType,
   imageType,
+  isSaving,
   openSession,
+  saveError,
   saveImage,
   saveSessionBrowser,
   saveSessionFile,
@@ -31,6 +33,8 @@ const Save = ({
     <SaveImage
       handleImageType={handleImageType}
       imageType={imageType}
+      isSaving={isSaving}
+      saveError={saveError}
       saveImage={saveImage}
     />
     <div className="panel__border" />
@@ -66,7 +70,9 @@ Save.propTypes = {
   deleteSession: PropTypes.func.isRequired,
   handleImageType: PropTypes.func.isRequired,
   imageType: PropTypes.string.isRequired,
+  isSaving: PropTypes.bool.isRequired,
   openSession: PropTypes.func.isRequired,
+  saveError: PropTypes.bool.isRequired,
   saveImage: PropTypes.func.isRequired,
   saveSessionBrowser: PropTypes.func.isRequired,
   saveSessionFile: PropTypes.func.isRequired,

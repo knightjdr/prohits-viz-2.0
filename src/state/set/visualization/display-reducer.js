@@ -6,7 +6,7 @@ export const initState = {
   plotFixed: false,
   plotTranslate: 0,
   selectionBox: true,
-  tab: 'analysis',
+  tab: 'save',
   tooltips: false,
 };
 

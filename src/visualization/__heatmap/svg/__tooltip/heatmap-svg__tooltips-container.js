@@ -12,6 +12,10 @@ export class TooltipsContainer extends Component {
     const { plotTranslate } = this.props;
     this.boundary = this.getBoundary(plotTranslate);
   }
+  componentDidUpdate = () => {
+    const { plotTranslate } = this.props;
+    this.boundary = this.getBoundary(plotTranslate);
+  }
   getBoundary = (translate) => {
     const rect = this.gElementRef.current.getBoundingClientRect();
     return {

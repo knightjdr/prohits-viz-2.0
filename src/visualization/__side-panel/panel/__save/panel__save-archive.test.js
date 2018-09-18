@@ -26,7 +26,7 @@ describe('Archive session component', () => {
         archive={archive}
       />,
     );
-    wrapper.find('button').simulate('click');
+    wrapper.find('Button').simulate('click');
     expect(archive).toHaveBeenCalled();
   });
 });

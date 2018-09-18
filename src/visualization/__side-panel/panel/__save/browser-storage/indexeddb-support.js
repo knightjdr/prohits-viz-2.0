@@ -1,7 +1,7 @@
-const IndexedDBSupport = () => (
+const indexedDBSupport = () => (
   'indexedDB' in window ||
   'mozIndexedDB' in window ||
   'webkitIndexedDB' in window ||
   'msIndexedDB' in window
 );
-export default IndexedDBSupport;
+export default indexedDBSupport;

@@ -1,6 +1,7 @@
 @import 'style/link';
 @import 'style/reset';
 @import 'style/button';
+@import 'style/theme';
 
 .panel__save-archive > :first-child {
   align-items: center;
@@ -19,21 +20,14 @@
   color: $warning;
 }
 .panel__save-button {
-  @extend .button-reset;
-  @extend .default-button;
-  align-items: center;
-  background-position: center;
-  border-radius: 4px;
-  display: flex;
-  font-size: 18px;
   height: 32px;
-  justify-content: center;
   width: 32px;
 }
 .panel__save-button-image {
-  @extend .panel__save-button;
   border-radius: 0 4px 4px 0;
   font-size: 20px;
+  height: 32px;
+  width: 32px;
 }
 .panel__save-image {
   display: flex;
@@ -48,4 +42,17 @@
 }
 .panel__save-link {
   @extend .decorate-link;
+}
+.panel__save-notification {
+  margin-top: 10px;
+  text-align: center;
+}
+.panel__save-warning {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.panel__save-warning > :first-child {
+  color: $warning;
+  margin-right: 5px;
 }

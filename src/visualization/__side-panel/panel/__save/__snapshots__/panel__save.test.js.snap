@@ -12,6 +12,8 @@ exports[`Save component should render 1`] = `
   <SaveImage
     handleImageType={[Function]}
     imageType="svg"
+    isSaving={false}
+    saveError={false}
     saveImage={[Function]}
   />
   <div

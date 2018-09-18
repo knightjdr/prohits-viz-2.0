@@ -7,44 +7,69 @@ const handleImageType = jest.fn();
 const saveImage = jest.fn();
 
 describe('Save image component', () => {
-  beforeEach(() => {
-    /* Clear call count */
-    handleImageType.mockClear();
-    saveImage.mockClear();
+  describe('with no save status', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Image
+          handleImageType={handleImageType}
+          imageType="svg"
+          isSaving={false}
+          saveError={false}
+          saveImage={saveImage}
+        />,
+      );
+    });
+
+    beforeEach(() => {
+      /* Clear call count */
+      handleImageType.mockClear();
+      saveImage.mockClear();
+    });
+
+    it('should render', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should call handle image prop method on select change', () => {
+      wrapper.find('Select').simulate('change');
+      expect(handleImageType).toHaveBeenCalled();
+    });
+
+    it('should call save image prop method on button click', () => {
+      wrapper.find('Button').simulate('click');
+      expect(saveImage).toHaveBeenCalled();
+    });
+
+    it('should not show notification containers', () => {
+      const notifications = wrapper.find('.panel__save-notification');
+      expect(notifications.length).toBe(0);
+    });
   });
 
-  it('should render', () => {
-    const wrapper = shallow(
-      <Image
-        handleImageType={handleImageType}
-        imageType="svg"
-        saveImage={saveImage}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+  describe('with save status', () => {
+    let wrapper;
 
-  it('should call handle image prop method on select change', () => {
-    const wrapper = shallow(
-      <Image
-        handleImageType={handleImageType}
-        imageType="svg"
-        saveImage={saveImage}
-      />,
-    );
-    wrapper.find('Select').simulate('change');
-    expect(handleImageType).toHaveBeenCalled();
-  });
+    beforeAll(() => {
+      wrapper = shallow(
+        <Image
+          handleImageType={handleImageType}
+          imageType="svg"
+          isSaving
+          saveError
+          saveImage={saveImage}
+        />,
+      );
+    });
 
-  it('should call save image prop method on button click', () => {
-    const wrapper = shallow(
-      <Image
-        handleImageType={handleImageType}
-        imageType="svg"
-        saveImage={saveImage}
-      />,
-    );
-    wrapper.find('button').simulate('click');
-    expect(saveImage).toHaveBeenCalled();
+    it('should render', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show notification containers', () => {
+      const notifications = wrapper.find('.panel__save-notification');
+      expect(notifications.length).toBe(2);
+    });
   });
 });

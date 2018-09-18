@@ -23,7 +23,7 @@ const syncMap = (updateOriginal = false) => (
       abundanceCap,
       fillColor,
       invertColor,
-      rows: rows.list.map(row => row.data),
+      rows: rows.list,
       scoreType,
     };
     if (imageType === 'dotplot') {

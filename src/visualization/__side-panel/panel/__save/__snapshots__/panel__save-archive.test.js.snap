@@ -8,10 +8,11 @@ exports[`Archive session component should render 1`] = `
     <div>
       Archive
     </div>
-    <button
+    <Button
       className="panel__save-button"
+      disabled={false}
       onClick={[Function]}
-      type="button"
+      type="default"
     >
       <FontAwesomeIcon$1
         border={false}
@@ -42,7 +43,7 @@ exports[`Archive session component should render 1`] = `
         symbol={false}
         transform={null}
       />
-    </button>
+    </Button>
   </div>
   <div>
     <FontAwesomeIcon$1

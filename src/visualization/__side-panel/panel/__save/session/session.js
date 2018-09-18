@@ -1,6 +1,6 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Input } from 'antd';
 import {
   faBrowser,
@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/pro-solid-svg-icons';
 
 import Browser from './session__browser';
+import Button from '../../../../../components/button/button';
 
 import './session.css';
 
@@ -34,28 +35,27 @@ const SaveSession = ({
       <div>
         Save to file
       </div>
-      <button
+      <Button
         className="panel__save-button"
         onClick={saveSessionFile}
-        type="button"
+        type="default"
       >
         <FontAwesomeIcon icon={faFileDownload} />
-      </button>
+      </Button>
       {
         storageSupport &&
-        [
-          <div key="browser-storage-label">
+        <Fragment>
+          <div>
             Save to browser
-          </div>,
-          <button
+          </div>
+          <Button
             className="panel__save-button"
-            key="browser-storage-button"
             onClick={saveSessionBrowser}
-            type="button"
+            type="default"
           >
             <FontAwesomeIcon icon={faBrowser} />
-          </button>,
-        ]
+          </Button>
+        </Fragment>
       }
     </div>
     {

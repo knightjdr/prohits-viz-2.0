@@ -54,7 +54,7 @@ describe('Map fetch thunk', () => {
           abundanceCap: 50,
           fillColor: 'blueBlack',
           invertColor: false,
-          rows: [[]],
+          rows: [{ data: [], name: 'name' }],
           scoreType: 'lte',
           imageType: 'heatmap',
         };
@@ -166,7 +166,7 @@ describe('Map fetch thunk', () => {
         abundanceCap: 50,
         fillColor: 'blueBlack',
         invertColor: false,
-        rows: [[]],
+        rows: [{ data: [], name: 'name' }],
         scoreType: 'lte',
         imageType: 'dotplot',
         edgeColor: 'blueBlack',
