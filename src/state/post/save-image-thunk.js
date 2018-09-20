@@ -33,12 +33,14 @@ export const heatmapData = (state) => {
   const { scoreType } = parameters;
   const data = {
     abundanceCap,
-    annotations,
+    annotationFontSize: annotations.fontSize,
+    annotations: annotations.list,
     edgeColor,
     fillColor,
     imageType,
     invertColor,
-    markers,
+    markerColor: markers.color,
+    markers: markers.list,
     primaryFilter,
     scoreType,
     secondaryFilter,

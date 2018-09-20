@@ -1,6 +1,6 @@
-const download = (string, filename, mimetype) => {
+const download = (content, filename) => {
   const element = document.createElement('a');
-  const file = new Blob([string], { type: mimetype });
+  const file = new Blob([content]);
   element.href = URL.createObjectURL(file);
   element.download = filename;
   element.click();

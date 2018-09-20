@@ -12,7 +12,7 @@ import indexedDBSupport from './browser-storage/indexeddb-support';
 import Notification from './browser-storage/notification';
 import Save from './panel__save';
 import saveSelector from '../../../../state/selectors/visualization/save-selector';
-import { saveImage } from '../../../../state/post/save-image-thunk';
+import { saveError, saveImage } from '../../../../state/post/save-image-thunk';
 import { saveImageType, saveSessionName } from '../../../../state/set/visualization/save-actions';
 
 const PAGELENGTH = 5;
@@ -74,7 +74,7 @@ export class SaveContainer extends PureComponent {
       save.didSave !== prevSave.didSave &&
       save.task
     ) {
-      getFile(save.task);
+      getFile(save, this.props.saveError);
     }
   }
   openSession = (id, name) => {
@@ -156,6 +156,7 @@ SaveContainer.propTypes = {
     name: PropTypes.string,
     task: PropTypes.string,
   }).isRequired,
+  saveError: PropTypes.func.isRequired,
   saveImage: PropTypes.func.isRequired,
   saveImageType: PropTypes.func.isRequired,
   saveSessionName: PropTypes.func.isRequired,
@@ -168,6 +169,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  saveError: () => {
+    dispatch(saveError());
+  },
   saveImage: () => {
     dispatch(saveImage());
   },
