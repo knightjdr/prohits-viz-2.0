@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 
 import Reducers from './reducers';
 import Router from '../router/router';
-import TestState from './test-state/test-state';
 
 const socket = SocketIo(process.env.REACT_APP_API_HOST);
 
@@ -21,7 +20,6 @@ export const addDevTools = () => (
 
 export const store = createStore(
   Reducers,
-  TestState,
   compose(
     applyMiddleware(
       Thunk,

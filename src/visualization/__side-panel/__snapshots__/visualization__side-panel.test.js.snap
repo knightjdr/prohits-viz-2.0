@@ -8,6 +8,7 @@ exports[`Visualization panel should render as button only when panel not visible
       Object {
         "opacity": 0,
         "transform": "translateX(350px)",
+        "transitionDuration": undefined,
       }
     }
   >
@@ -316,6 +317,7 @@ exports[`Visualization panel should render panel but not button 1`] = `
       Object {
         "opacity": 1,
         "transform": "translateX(-10px)",
+        "transitionDuration": undefined,
       }
     }
   >

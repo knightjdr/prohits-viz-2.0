@@ -9,6 +9,7 @@ jest.mock('./__map/panel__map-container');
 jest.mock('./__map/panel__map');
 jest.mock('./__save/panel__save-container');
 jest.mock('./__settings/panel__settings-container');
+jest.mock('../../browser-storage/indexeddb-container');
 
 describe('Panel', () => {
   it('with analysis option should match analysis component', () => {
@@ -33,7 +34,7 @@ describe('Panel', () => {
 
   it('with save option should match save component', () => {
     const wrapper = shallow(Panel.save);
-    expect(wrapper.find('.save').length).toBe(1);
+    expect(wrapper.find('.indexeddb-container').length).toBe(1);
   });
 
   it('with settings option should match settings component', () => {

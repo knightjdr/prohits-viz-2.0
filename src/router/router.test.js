@@ -1,4 +1,3 @@
-/* eslint import/newline-after-import: "off" */
 import React from 'react';
 import { shallow } from 'enzyme';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import * as moduleToMock from 'react-router-dom';
 import { shallow } from 'enzyme';
 
-import Image from '../test/test.png';
 import { SpotlightComponent } from './spotlight';
 
 // mock NavLink
@@ -15,7 +14,7 @@ const testArticles = [
   {
     authorLastName: 'Last name',
     description: 'test description',
-    image: Image,
+    image: 'test.png',
     pubmed: 111111,
     tool: 'test tool',
     url: 'test url',

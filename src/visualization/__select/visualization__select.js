@@ -5,6 +5,8 @@ import { Button, Upload } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { faCog, faFilePlus } from '@fortawesome/pro-solid-svg-icons';
 
+import BrowserSession from '../browser-session/browser-session';
+
 import './visualization__select.css';
 
 const config = {
@@ -57,6 +59,7 @@ const Selection = ({
       </NavLink>{' '}
       for information on the input format.
     </div>
+    <BrowserSession />
   </div>
 );
 

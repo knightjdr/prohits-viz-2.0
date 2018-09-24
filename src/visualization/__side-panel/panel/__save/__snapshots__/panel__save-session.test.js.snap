@@ -2,7 +2,7 @@
 
 exports[`Save session component should render with no support for indexeddb storage 1`] = `
 <div
-  className="session"
+  className="panel__save-session"
 >
   <Input
     disabled={false}
@@ -13,7 +13,7 @@ exports[`Save session component should render with no support for indexeddb stor
     value="test"
   />
   <div
-    className="session__grid"
+    className="panel__save-session__grid"
   >
     <div>
       Save to file
@@ -60,7 +60,7 @@ exports[`Save session component should render with no support for indexeddb stor
 
 exports[`Save session component should render with support for indexeddb storage but no sessions saved 1`] = `
 <div
-  className="session"
+  className="panel__save-session"
 >
   <Input
     disabled={false}
@@ -71,7 +71,7 @@ exports[`Save session component should render with support for indexeddb storage
     value="test"
   />
   <div
-    className="session__grid"
+    className="panel__save-session__grid"
   >
     <div>
       Save to file
@@ -118,7 +118,7 @@ exports[`Save session component should render with support for indexeddb storage
 
 exports[`Save session component with indexeddb storage and sessions present should render 1`] = `
 <div
-  className="session"
+  className="panel__save-session"
 >
   <Input
     disabled={false}
@@ -129,7 +129,7 @@ exports[`Save session component with indexeddb storage and sessions present shou
     value="test"
   />
   <div
-    className="session__grid"
+    className="panel__save-session__grid"
   >
     <div>
       Save to file
@@ -212,21 +212,5 @@ exports[`Save session component with indexeddb storage and sessions present shou
       </Button>
     </React.Fragment>
   </div>
-  <Browser
-    changePage={[Function]}
-    deleteSession={[Function]}
-    openSession={[Function]}
-    sessionItemsTotal={5}
-    sessions={
-      Array [
-        Object {
-          "date": "today",
-          "id": 1,
-          "name": "a",
-        },
-      ]
-    }
-    sessionsPage={1}
-  />
 </div>
 `;

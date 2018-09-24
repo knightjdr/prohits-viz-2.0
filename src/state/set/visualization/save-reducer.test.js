@@ -1,16 +1,12 @@
-import SaveReducer from './save-reducer';
+import SaveReducer, { defaultState } from './save-reducer';
 import * as actions from './save-actions';
+import * as asyncActions from '../../post/save-image/save-actions';
 import * as fileActions from '../interactive-file-actions';
-
-const DefaultState = {
-  imageType: 'svg',
-  name: '',
-};
 
 describe('Save set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = DefaultState;
+    const expectedState = defaultState;
     expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -18,9 +14,7 @@ describe('Save set reducer', () => {
     const action = {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
-    const expectedState = {
-      ...DefaultState,
-    };
+    const expectedState = defaultState;
     expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -35,8 +29,44 @@ describe('Save set reducer', () => {
       type: fileActions.PARSE_INTERACTIVE_FILE,
     };
     const expectedState = {
+      ...defaultState,
       imageType: 'png',
       name: 'test',
+    };
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle SAVED_IMAGE action', () => {
+    const action = {
+      task: 'test',
+      type: asyncActions.SAVED_IMAGE,
+    };
+    const expectedState = {
+      ...defaultState,
+      didSave: true,
+      task: 'test',
+    };
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle SAVE_ERROR action', () => {
+    const action = {
+      type: asyncActions.SAVE_ERROR,
+    };
+    const expectedState = {
+      ...defaultState,
+      error: true,
+    };
+    expect(SaveReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle SAVING_IMAGE action', () => {
+    const action = {
+      type: asyncActions.SAVING_IMAGE,
+    };
+    const expectedState = {
+      ...defaultState,
+      isSaving: true,
     };
     expect(SaveReducer(undefined, action)).toEqual(expectedState);
   });
@@ -47,6 +77,7 @@ describe('Save set reducer', () => {
       type: actions.SAVE_IMAGE_TYPE,
     };
     const expectedState = {
+      ...defaultState,
       imageType: 'png',
       name: '',
     };
@@ -59,6 +90,7 @@ describe('Save set reducer', () => {
       type: actions.SAVE_SESSION_NAME,
     };
     const expectedState = {
+      ...defaultState,
       imageType: 'svg',
       name: 'testname',
     };

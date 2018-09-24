@@ -100,7 +100,7 @@ exports[`Save image component with save status should render 1`] = `
     </Select>
     <Button
       className="panel__save-button-image"
-      disabled={false}
+      disabled={true}
       onClick={[Function]}
       type="default"
     >

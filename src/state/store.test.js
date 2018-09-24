@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 import Store, { addDevTools } from './store';
 
+jest.mock('../router/router');
+
 // mock createStore
 moduleToMock.createStore = () => ('');
 jest.setMock('redux', moduleToMock);

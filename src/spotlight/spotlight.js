@@ -1,3 +1,6 @@
+/* eslint global-require: 0 */
+/* eslint import/no-dynamic-require: 0 */
+
 import LazyLoad from 'react-lazyload';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -20,13 +23,13 @@ export const SpotlightComponent = ({
       >
         <div className="Spotlight-carousel-image-container">
           <LazyLoad
-            height={200}
+            height={250}
             offset={500}
           >
             <img
               alt={`${article.authorLastName} highlight`}
               className="Spotlight-carousel-image"
-              src={article.image}
+              src={require(`./images/${article.image}`)}
             />
           </LazyLoad>
         </div>

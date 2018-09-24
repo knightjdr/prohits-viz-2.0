@@ -47,6 +47,92 @@
   margin-top: 10px;
   text-align: center;
 }
+.panel__save-session {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.panel__save-session .ant-input {
+  width: 182px;
+}
+.panel__save-session__grid {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  margin-left: 0;
+  margin-top: 15px;
+}
+.panel__save-session__grid > div:nth-child(even) {
+  align-items: center;
+  display: flex;
+}
+.panel__save-session__grid > div:nth-child(odd) {
+  justify-self: right;
+}
+.panel__save-session__grid > div:nth-child(odd)::after {
+  content: ':';
+}
+.panel__save-session__browser {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  width: 100%;
+}
+.panel__save-session__browser > :first-child {
+  margin-left: 10px;
+}
+.panel__save-session__browser-grid,
+.panel__save-session__browser-header {
+  border-bottom: 1px solid #e8e8e8;
+  display: grid;
+  font-size: 0.9em;
+  grid-row-gap: 2px;
+  grid-template-columns: 30px 120px 90px 30px 30px;
+  width: 300px;
+}
+.panel__save-session__browser-grid > div,
+.panel__save-session__browser-header > div {
+  padding: 2px 5px;
+  text-align: center;
+}
+.panel__save-session_ellipsis > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.panel__save-session__browser-header {
+  font-weight: bold;
+  margin-top: 5px;
+}
+.panel__save-session__browser-grid > div:nth-child(5n+2) > div {
+  text-align: left;
+}
+.panel__save-session__browser .open-icon {
+  @extend .button-reset;
+  color: $primary-medium;
+}
+.panel__save-session__browser .close-icon {
+  @extend .button-reset;
+  color: $warning;
+}
+.panel__save-session__pageination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  width: 300px;
+}
+.panel__save-session__pageination li {
+  height: 26px;
+  line-height: 26px;
+  min-width: 26px;
+  width: 26px;
+}
+.panel__save-session__pageination a {
+  height: 26px;
+}
 .panel__save-warning {
   align-items: center;
   display: flex;
@@ -55,4 +141,17 @@
 .panel__save-warning > :first-child {
   color: $warning;
   margin-right: 5px;
+}
+@media (max-width: 374px) {
+  .panel__save-session__browser > :first-child {
+    margin-left: 0;
+  }
+  .panel__save-session__browser-grid,
+  .panel__save-session__browser-header {
+    grid-template-columns: 10% 40% 30% 10% 10%;
+    width: 100%;
+  }
+  .panel__save-session__pageination {
+    width: 100%;
+  }
 }

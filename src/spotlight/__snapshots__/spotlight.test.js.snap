@@ -26,7 +26,7 @@ exports[`Spotlight With articles 1`] = `
         className="Spotlight-carousel-image-container"
       >
         <LazyLoad
-          height={200}
+          height={250}
           offset={500}
           once={false}
           overflow={false}

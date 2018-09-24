@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Session from './session';
+import Session from './panel__save-session';
 
 const props = {
   changePage: jest.fn(),

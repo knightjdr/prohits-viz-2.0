@@ -1,19 +1,19 @@
 const Months = [
-  'January',
-  'February',
-  'March',
-  'April',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
   'May',
   'June',
   'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  'Aug',
+  'Sept',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
-const ConvertISODate = (isoDate) => {
+const convertISODate = (isoDate) => {
   const utcDate = new Date(isoDate);
   const localDate = new Date(utcDate.getTime() + (utcDate.getTimezoneOffset() * 60000));
   const day = localDate.getDate();
@@ -21,4 +21,4 @@ const ConvertISODate = (isoDate) => {
   const year = localDate.getFullYear();
   return `${month} ${day}, ${year}`;
 };
-export default ConvertISODate;
+export default convertISODate;

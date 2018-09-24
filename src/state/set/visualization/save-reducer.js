@@ -1,8 +1,8 @@
 import * as actions from './save-actions';
 import * as fileActions from '../interactive-file-actions';
-import * as asyncActions from '../../post/save-image-thunk';
+import * as asyncActions from '../../post/save-image/save-actions';
 
-const defaultState = {
+export const defaultState = {
   didSave: false,
   error: false,
   imageType: 'svg',
@@ -16,8 +16,11 @@ const save = (state = { ...defaultState }, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return { ...defaultState };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return { ...action.file.save };
-    case 'SAVED_IMAGE':
+      return {
+        ...defaultState,
+        ...action.file.save,
+      };
+    case asyncActions.SAVED_IMAGE:
       return {
         ...state,
         didSave: true,

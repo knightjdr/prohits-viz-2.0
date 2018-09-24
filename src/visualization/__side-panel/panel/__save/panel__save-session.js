@@ -7,31 +7,24 @@ import {
   faFileDownload,
 } from '@fortawesome/pro-solid-svg-icons';
 
-import Browser from './session__browser';
-import Button from '../../../../../components/button/button';
+import Button from '../../../../components/button/button';
 
-import './session.css';
+import './panel__save.css';
 
 const SaveSession = ({
-  changePage,
-  deleteSession,
-  openSession,
   saveSessionBrowser,
   saveSessionFile,
   saveSessionName,
-  sessionItemsTotal,
   sessionName,
-  sessions,
-  sessionsPage,
   storageSupport,
 }) => (
-  <div className="session">
+  <div className="panel__save-session">
     <Input
-      onChange={(e) => { saveSessionName(e.target.value); }}
+      onChange={saveSessionName}
       placeholder="Session name"
       value={sessionName}
     />
-    <div className="session__grid">
+    <div className="panel__save-session__grid">
       <div>
         Save to file
       </div>
@@ -58,38 +51,14 @@ const SaveSession = ({
         </Fragment>
       }
     </div>
-    {
-      storageSupport &&
-      sessions.length > 0 &&
-      <Browser
-        changePage={changePage}
-        deleteSession={deleteSession}
-        openSession={openSession}
-        sessionItemsTotal={sessionItemsTotal}
-        sessions={sessions}
-        sessionsPage={sessionsPage}
-      />
-    }
   </div>
 );
 
 SaveSession.propTypes = {
-  changePage: PropTypes.func.isRequired,
-  deleteSession: PropTypes.func.isRequired,
-  openSession: PropTypes.func.isRequired,
   saveSessionBrowser: PropTypes.func.isRequired,
   saveSessionFile: PropTypes.func.isRequired,
   saveSessionName: PropTypes.func.isRequired,
-  sessionItemsTotal: PropTypes.number.isRequired,
   sessionName: PropTypes.string.isRequired,
-  sessions: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string,
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-  ).isRequired,
-  sessionsPage: PropTypes.number.isRequired,
   storageSupport: PropTypes.bool.isRequired,
 };
 

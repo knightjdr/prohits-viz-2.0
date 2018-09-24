@@ -44,11 +44,15 @@ const SidePanel = ({
   selectTab,
   tab,
   togglePanel,
+  transitionDuration,
 }) => (
   <Fragment>
     <div
       className="visualization__side-panel"
-      style={showPanel.sidePanel[isVisible]}
+      style={{
+        ...showPanel.sidePanel[isVisible],
+        transitionDuration,
+      }}
     >
       <div className="visualization__side-panel-tabs">
         <button
@@ -120,6 +124,7 @@ SidePanel.propTypes = {
   selectTab: PropTypes.func.isRequired,
   tab: PropTypes.string.isRequired,
   togglePanel: PropTypes.func.isRequired,
+  transitionDuration: PropTypes.string.isRequired,
 };
 
 export default SidePanel;

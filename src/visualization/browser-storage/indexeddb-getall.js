@@ -1,5 +1,5 @@
-import ConvertISODate from '../../../../../helpers/convert-iso-date';
-import Open from './indexeddb-open';
+import convertISODate from '../../helpers/convert-iso-date';
+import openIndex from './indexeddb-open';
 
 const ResolveRequest = (db, store = 'session') => (
   new Promise((resolve) => {
@@ -11,17 +11,17 @@ const ResolveRequest = (db, store = 'session') => (
   })
 );
 
-const Getall = store => (
+const getall = store => (
   new Promise((resolve, reject) => {
-    Open()
+    openIndex()
       .then(db => (
         ResolveRequest(db, store)
       ))
       .then((sessions) => {
         const info = sessions.map(session => ({
-          date: ConvertISODate(session.date),
+          date: convertISODate(session.parameters.date),
           id: session.id,
-          name: session.name,
+          name: session.parameters.name,
         }));
         resolve(info);
       })
@@ -30,4 +30,4 @@ const Getall = store => (
       });
   })
 );
-export default Getall;
+export default getall;

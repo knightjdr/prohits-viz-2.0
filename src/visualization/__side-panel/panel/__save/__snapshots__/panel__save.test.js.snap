@@ -25,18 +25,13 @@ exports[`Save component should render 1`] = `
     Save session
   </div>
   <SaveSession
-    changePage={[Function]}
-    deleteSession={[Function]}
-    openSession={[Function]}
     saveSessionBrowser={[Function]}
     saveSessionFile={[Function]}
     saveSessionName={[Function]}
-    sessionItemsTotal={5}
     sessionName=""
-    sessions={Array []}
-    sessionsPage={1}
     storageSupport={true}
   />
+  <BrowserSession />
   <div
     className="panel__border"
   />

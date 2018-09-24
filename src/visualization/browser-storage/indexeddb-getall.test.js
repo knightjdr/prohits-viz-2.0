@@ -1,11 +1,11 @@
 import indexedDB from 'fake-indexeddb';
 
-import ConvertISODate from '../../../../../helpers/convert-iso-date';
-import GetAll from './indexeddb-getall';
-import Open from './indexeddb-open';
+import convertISODate from '../../helpers/convert-iso-date';
+import getAll from './indexeddb-getall';
+import openIndex from './indexeddb-open';
 
-jest.mock('../../../../../helpers/convert-iso-date');
-ConvertISODate.mockReturnValue('today');
+jest.mock('../../helpers/convert-iso-date');
+convertISODate.mockReturnValue('today');
 jest.mock('./indexeddb-open');
 
 // Setup up memory indexeddb and set as return value of open module.
@@ -16,12 +16,12 @@ beforeAll(() => (
       const db = memDB.result;
       const store = db.createObjectStore('session', { keyPath: 'id', autoIncrement: true });
       store.createIndex('id', 'id', { unique: true });
-      store.put({ id: 1, name: 'test 1', date: new Date() });
-      store.put({ id: 2, name: 'test 2', date: new Date() });
+      store.put({ id: 1, parameters: { name: 'test 1', date: new Date() } });
+      store.put({ id: 2, parameters: { name: 'test 2', date: new Date() } });
     };
     memDB.onsuccess = (e) => {
       const db = e.target.result;
-      Open.mockImplementation(() => (
+      openIndex.mockImplementation(() => (
         new Promise((resolveDB) => { resolveDB(db); })
       ));
       resolve();
@@ -31,7 +31,7 @@ beforeAll(() => (
 
 describe('Get all indexeddb', () => {
   it('should get all entries', () => (
-    GetAll().then((sessions) => {
+    getAll().then((sessions) => {
       expect(sessions).toEqual([
         { id: 1, name: 'test 1', date: 'today' },
         { id: 2, name: 'test 2', date: 'today' },
@@ -41,6 +41,6 @@ describe('Get all indexeddb', () => {
 
   it('should reject if transaction/request error', () => (
     // Using undefined store to trigger error.
-    expect(GetAll('missingStore')).rejects.toBeUndefined()
+    expect(getAll('missingStore')).rejects.toBeUndefined()
   ));
 });
