@@ -1,0 +1,608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Save session browser component with storage support and sessions should match snapshot 1`] = `
+<div
+  className="browser-session"
+>
+  <strong>
+    Saved browser sessions:
+  </strong>
+  <div
+    className="browser-session-header"
+  >
+    <div>
+      ID
+    </div>
+    <div>
+      Name
+    </div>
+    <div>
+      Date
+    </div>
+    <div />
+    <div />
+  </div>
+  <div
+    className="browser-session-grid"
+  >
+    <div
+      key="1-id"
+    >
+      1
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="1-name"
+      tooltip="test1"
+      tooltip-position="top"
+    >
+      <div>
+        test1
+      </div>
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="1-date"
+    >
+      <div>
+        July 18, 2018
+      </div>
+    </div>
+    <div
+      key="1-open"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session launch"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="open-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f07c",
+                "M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z",
+              ],
+              "iconName": "folder-open",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="1-close"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session deletion"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="close-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                352,
+                512,
+                Array [],
+                "f00d",
+                "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+              ],
+              "iconName": "times",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="2-id"
+    >
+      2
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="2-name"
+      tooltip="test2"
+      tooltip-position="top"
+    >
+      <div>
+        test2
+      </div>
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="2-date"
+    >
+      <div>
+        July 18, 2018
+      </div>
+    </div>
+    <div
+      key="2-open"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session launch"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="open-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f07c",
+                "M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z",
+              ],
+              "iconName": "folder-open",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="2-close"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session deletion"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="close-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                352,
+                512,
+                Array [],
+                "f00d",
+                "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+              ],
+              "iconName": "times",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="3-id"
+    >
+      3
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="3-name"
+      tooltip="test3"
+      tooltip-position="top"
+    >
+      <div>
+        test3
+      </div>
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="3-date"
+    >
+      <div>
+        July 18, 2018
+      </div>
+    </div>
+    <div
+      key="3-open"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session launch"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="open-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f07c",
+                "M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z",
+              ],
+              "iconName": "folder-open",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="3-close"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session deletion"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="close-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                352,
+                512,
+                Array [],
+                "f00d",
+                "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+              ],
+              "iconName": "times",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="4-id"
+    >
+      4
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="4-name"
+      tooltip="test4"
+      tooltip-position="top"
+    >
+      <div>
+        test4
+      </div>
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="4-date"
+    >
+      <div>
+        July 18, 2018
+      </div>
+    </div>
+    <div
+      key="4-open"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session launch"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="open-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f07c",
+                "M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z",
+              ],
+              "iconName": "folder-open",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="4-close"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session deletion"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="close-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                352,
+                512,
+                Array [],
+                "f00d",
+                "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+              ],
+              "iconName": "times",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="5-id"
+    >
+      5
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="5-name"
+      tooltip="test5"
+      tooltip-position="top"
+    >
+      <div>
+        test5
+      </div>
+    </div>
+    <div
+      className="browser-session_ellipsis"
+      key="5-date"
+    >
+      <div>
+        July 18, 2018
+      </div>
+    </div>
+    <div
+      key="5-open"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session launch"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="open-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f07c",
+                "M572.694 292.093L500.27 416.248A63.997 63.997 0 0 1 444.989 448H45.025c-18.523 0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 0 1 152 256h399.964c18.523 0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49 0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z",
+              ],
+              "iconName": "folder-open",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+    <div
+      key="5-close"
+    >
+      <Popconfirm
+        cancelText="No"
+        okText="Yes"
+        okType="primary"
+        onConfirm={[Function]}
+        placement="topRight"
+        prefixCls="ant-popover"
+        title="Confirm session deletion"
+        transitionName="zoom-big"
+        trigger="click"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="close-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                352,
+                512,
+                Array [],
+                "f00d",
+                "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+              ],
+              "iconName": "times",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      </Popconfirm>
+    </div>
+  </div>
+  <div
+    className="browser-session__pageination"
+  >
+    <Pagination
+      current={1}
+      hideOnSinglePage={true}
+      onChange={[Function]}
+      pageSize={5}
+      prefixCls="ant-pagination"
+      selectPrefixCls="ant-select"
+      total={5}
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab button when hidden should match snapshot 1`] = `
+<div
+  className="visualization__tabs"
+>
+  <Main />
+  <Connect(MenuContainer)
+    closeMenu={[Function]}
+    show={true}
+  />
+</div>
+`;
+
+exports[`Tab button when visible should match snapshot 1`] = `
+<div
+  className="visualization__tabs"
+>
+  <RoundButton
+    className="visualization__tabs-button"
+    handleClick={[Function]}
+    icon={
+      Object {
+        "icon": Array [
+          512,
+          512,
+          Array [],
+          "f40e",
+          "M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-336 96c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm96 0c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm96 0c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z",
+        ],
+        "iconName": "window",
+        "prefix": "fas",
+      }
+    }
+  />
+  <Main />
+  <Connect(MenuContainer)
+    closeMenu={[Function]}
+    show={true}
+  />
+</div>
+`;

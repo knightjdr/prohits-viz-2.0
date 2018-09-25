@@ -120,6 +120,7 @@ exports[`Selection should display an error 1`] = `
      
     for information on the input format.
   </div>
+  <BrowserSession />
 </div>
 `;
 
@@ -241,6 +242,7 @@ exports[`Selection should display default view 1`] = `
      
     for information on the input format.
   </div>
+  <BrowserSession />
 </div>
 `;
 
@@ -362,5 +364,6 @@ exports[`Selection should display loading message 1`] = `
      
     for information on the input format.
   </div>
+  <BrowserSession />
 </div>
 `;

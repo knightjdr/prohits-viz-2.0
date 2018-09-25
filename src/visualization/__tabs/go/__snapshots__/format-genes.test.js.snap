@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Format genes components should match snapshot 1`] = `
+<div
+  className="table__cell-overflow"
+>
+  <div
+    className="table__cell-clipped"
+    style={
+      Object {
+        "paddingRight": 5,
+      }
+    }
+  >
+    a
+    b
+    c
+  </div>
+  <div
+    className="table__cell-raw"
+  >
+    a
+    b
+    c
+  </div>
+</div>
+`;

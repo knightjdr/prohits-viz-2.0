@@ -34,7 +34,7 @@ exports[`Newsfeed Renders with news items 1`] = `
     >
       <Component
         className="Newsfeed-link"
-        to="/news/5aa6b120c63eb43ab21a072e"
+        to="/news/test headline"
       >
         test headline
       </Component>

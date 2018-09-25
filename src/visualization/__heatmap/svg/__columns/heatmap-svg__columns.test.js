@@ -101,7 +101,7 @@ describe('Heatmap columns', () => {
 
       it('should call tooltip toggle on mouseenter', () => {
         text.simulate('mouseenter', { clientX: 10 });
-        expect(toggleTooltip).toHaveBeenCalledWith(false, true, 'a', 10, 0);
+        expect(toggleTooltip).toHaveBeenCalledWith(false, true, 'a', 10, 10);
       });
 
       it('should call tooltip toggle on mouseleave', () => {

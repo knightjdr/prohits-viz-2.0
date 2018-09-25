@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Browser stored sessions should match snapshot 1`] = `
+<IndexedDBContainer
+  render={[Function]}
+/>
+`;

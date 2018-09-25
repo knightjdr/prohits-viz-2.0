@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Visualization running component should match snapshot 1`] = `
+<div
+  className="visualization__running"
+>
+  <Spin
+    prefixCls="ant-spin"
+    size="large"
+    spinning={true}
+    wrapperClassName=""
+  />
+</div>
+`;

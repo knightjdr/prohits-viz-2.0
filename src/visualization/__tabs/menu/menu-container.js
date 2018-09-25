@@ -7,10 +7,6 @@ import { removeTab, setTab } from '../../../state/set/visualization/tab-actions'
 import { TabSelector } from '../../../state/selectors/visualization/tab-selector';
 
 export class MenuContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   handleClick = (selected) => {
     this.props.closeMenu();
     this.props.setTab(selected);

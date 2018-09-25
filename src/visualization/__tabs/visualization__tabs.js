@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { faWindow } from '@fortawesome/pro-solid-svg-icons';
 
-import Customize from './__customize/visualization__tabs-customize';
-import Go from './__go/visualization__go-container';
-import Main from './__main/visuazliation__tabs-main';
+import Customize from './customize/visualization__tabs-customize';
+import Go from './go/go-container';
+import Main from './main/tab-main';
 import Menu from './menu/menu-container';
 import RoundButton from '../../components/round-button/round-button';
 

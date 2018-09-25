@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GO component on failure should match snapshot 1`] = `
+<div
+  className="visualization__go"
+>
+  <Warning>
+    There was an error performing the GO analysis.
+  </Warning>
+</div>
+`;
+
+exports[`GO component when complete with no results should match snapshot 1`] = `
+<div
+  className="visualization__go"
+>
+  <Warning>
+    There are no enriched terms
+  </Warning>
+</div>
+`;
+
+exports[`GO component when complete with results should match snapshot 1`] = `
+<div
+  className="visualization__go"
+>
+  <React.Fragment>
+    <TableContainer
+      bottom={65}
+      columnOrder={
+        Array [
+          "termID",
+          "source",
+          "t",
+          "q",
+          "qt",
+          "pValue",
+          "genes",
+        ]
+      }
+      columnTemplate="minmax(82px, 15%) minmax(73px, 10%) minmax(60px, 10%) minmax(60px, 10%) minmax(63px, 10%) minmax(76px, 15%) minmax(186px, 1fr)"
+      columns={
+        Array [
+          Object {
+            "name": "Term",
+            "sortDir": null,
+            "sortKey": "order",
+            "sortable": true,
+          },
+          Object {
+            "name": "ID",
+            "sortable": false,
+          },
+          Object {
+            "name": "Source",
+            "sortDir": null,
+            "sortKey": "source",
+            "sortable": true,
+          },
+          Object {
+            "name": "T",
+            "sortDir": null,
+            "sortKey": "t",
+            "sortable": true,
+          },
+          Object {
+            "name": "Q",
+            "sortDir": null,
+            "sortKey": "q",
+            "sortable": true,
+          },
+          Object {
+            "name": "Q ∩ T",
+            "sortDir": null,
+            "sortKey": "qt",
+            "sortable": true,
+          },
+          Object {
+            "name": "p-value",
+            "sortDir": null,
+            "sortKey": "pValue",
+            "sortable": true,
+          },
+          Object {
+            "name": "Genes",
+            "sortable": false,
+          },
+        ]
+      }
+      firstColumn={
+        Object {
+          "minWidth": 175,
+          "name": "term",
+          "width": "20%",
+        }
+      }
+      maxBodyWidth={600}
+      rows={
+        Array [
+          Object {
+            "depth": 1,
+            "genes": Array [
+              "x",
+              "y",
+              "z",
+            ],
+            "pValue": 0.01,
+            "q": 5,
+            "qt": 2,
+            "source": "BP",
+            "t": 10,
+            "term": "term1",
+          },
+          Object {
+            "depth": 2,
+            "genes": Array [
+              "xx",
+              "yy",
+              "zz",
+            ],
+            "pValue": 0.05,
+            "q": 10,
+            "qt": 4,
+            "source": "CC",
+            "t": 25,
+            "term": "term2",
+          },
+        ]
+      }
+    />
+    <div
+      className="visualization__go-annotation"
+    >
+      <Connect(AnnotationContainer) />
+      <Button
+        className="visualization__go-annotation-button"
+        disabled={false}
+        onClick={[Function]}
+        type="success"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f56e",
+                "M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z",
+              ],
+              "iconName": "file-export",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+        <span>
+          Export
+        </span>
+      </Button>
+    </div>
+  </React.Fragment>
+</div>
+`;
+
+exports[`GO component when running should match snapshot 1`] = `
+<div
+  className="visualization__go"
+>
+  <Running />
+</div>
+`;

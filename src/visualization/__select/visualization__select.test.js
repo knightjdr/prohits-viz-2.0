@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 
 import Selection from './visualization__select';
 
+jest.mock('../browser-session/browser-session');
+
 const handleFile = jest.fn();
 
 describe('Selection', () => {

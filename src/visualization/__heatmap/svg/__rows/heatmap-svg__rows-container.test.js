@@ -7,6 +7,8 @@ import { RowsContainer } from './heatmap-svg__rows-container';
 jest.mock('../helpers/trim-text');
 TrimText.mockImplementation(text => ({ original: text, text, trimmed: false }));
 
+const openContextMenu = jest.fn();
+
 describe('Heatmap row container', () => {
   let wrapper;
 
@@ -15,7 +17,7 @@ describe('Heatmap row container', () => {
       <RowsContainer
         cellSize={15}
         handleClick={jest.fn()}
-        openContextMenu={jest.fn()}
+        openContextMenu={openContextMenu}
         pageHeight={3}
         position={0}
         rows={['a', 'b', 'c']}
@@ -195,6 +197,12 @@ describe('Heatmap row container', () => {
 
   it('getPage method should splice an array of rows based on current page size', () => {
     expect(wrapper.instance().getPage(['a', 'b', 'c'], 1, 2)).toEqual(['b', 'c']);
+  });
+
+  it('should open menu', () => {
+    openContextMenu.mockClear();
+    wrapper.instance().openMenu({}, 'a');
+    expect(openContextMenu).toHaveBeenCalledWith({}, 'a', 'row');
   });
 
   describe('checkRowSize method', () => {

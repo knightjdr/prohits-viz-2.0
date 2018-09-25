@@ -11,7 +11,7 @@ const ROW_MARGIN = 100;
 const SIDE_PANEL = 400;
 const VERT_PADDING = 20;
 
-export class SvgContainer extends Component {
+export class SvgDimensions extends Component {
   constructor(props) {
     super(props);
     this.wrapperRef = React.createRef();
@@ -43,17 +43,17 @@ export class SvgContainer extends Component {
   }
   componentDidMount = () => {
     const {
-      cellSize,
       columns,
       display,
       panel,
-      rows,
+      rowNames,
+      settings,
     } = this.props;
-    this.setDimensions(cellSize, columns, panel, rows, display);
+    this.setDimensions(settings.cellSize, columns, panel, rowNames, display);
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
-    this.updateDimensions(nextProps, this.props.cellSize, this.props.updateID);
+    this.updateDimensions(nextProps, this.props.settings, this.props.updateID);
     this.updateTranslate(nextProps, this.props.panel);
   }
   componentWillUnmount = () => {
@@ -183,13 +183,13 @@ export class SvgContainer extends Component {
   }
   resizeEnd = () => {
     const {
-      cellSize,
       columns,
       display,
       panel,
-      rows,
+      rowNames,
+      settings,
     } = this.props;
-    this.setDimensions(cellSize, columns, panel, rows, display);
+    this.setDimensions(settings.cellSize, columns, panel, rowNames, display);
   }
   sortRows = (column, direction) => {
     const columnIndex = this.props.columns.names.indexOf(column);
@@ -227,18 +227,18 @@ export class SvgContainer extends Component {
     );
   }
   updateDimensions = ({
-    cellSize,
     columns,
     display,
     panel,
-    rows,
+    rowNames,
+    settings,
     updateID,
-  }, prevCellSize, prevUpdateID) => {
+  }, prevSettings, prevUpdateID) => {
     if (
       updateID !== prevUpdateID ||
-      cellSize !== prevCellSize
+      settings.cellSize !== prevSettings.cellSize
     ) {
-      this.setDimensions(cellSize, columns, panel, rows, display);
+      this.setDimensions(settings.cellSize, columns, panel, rowNames, display);
     }
   }
   updateTranslate = ({ display, panel }, prevPanel) => {
@@ -280,13 +280,12 @@ export class SvgContainer extends Component {
   }
 }
 
-SvgContainer.defaultProps = {
+SvgDimensions.defaultProps = {
   setSelectedGenes: null,
   updateID: null,
 };
 
-SvgContainer.propTypes = {
-  cellSize: PropTypes.number.isRequired,
+SvgDimensions.propTypes = {
   columns: PropTypes.shape({
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
@@ -297,13 +296,18 @@ SvgContainer.propTypes = {
   }).isRequired,
   panel: PropTypes.bool.isRequired,
   renderProp: PropTypes.func.isRequired,
-  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rowNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   setDims: PropTypes.func.isRequired,
   setRef: PropTypes.func.isRequired,
   setSelectedGenes: PropTypes.func,
+  settings: PropTypes.shape({
+    cellSize: PropTypes.number,
+  }).isRequired,
   sort: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
   updateID: PropTypes.number,
 };
 
-export default SvgContainer;
+const renderDims = props => <SvgDimensions {...props} />;
+
+export default renderDims;

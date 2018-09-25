@@ -36,7 +36,7 @@ export const NewsfeedComponent = ({
             >
               <NavLink
                 className="Newsfeed-link"
-                to={`/news/${item._id}`}
+                to={`/news/${item.headline}`}
               >
                 { item.headline }
               </NavLink>

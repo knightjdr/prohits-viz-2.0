@@ -108,4 +108,6 @@ BrowserSessionTable.propTypes = {
   storageSupport: PropTypes.bool.isRequired,
 };
 
-export default BrowserSessionTable;
+const renderTable = props => <BrowserSessionTable {...props} />;
+
+export default renderTable;

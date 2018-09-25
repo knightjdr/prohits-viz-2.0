@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Visualization panel should render as button only when panel not visible 1`] = `
+exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
 <React.Fragment>
   <div
     className="visualization__side-panel"
@@ -8,7 +8,6 @@ exports[`Visualization panel should render as button only when panel not visible
       Object {
         "opacity": 0,
         "transform": "translateX(350px)",
-        "transitionDuration": undefined,
       }
     }
   >
@@ -309,7 +308,7 @@ exports[`Visualization panel should render as button only when panel not visible
 </React.Fragment>
 `;
 
-exports[`Visualization panel should render panel but not button 1`] = `
+exports[`Visualization panel when panel visible should match snapshot 1`] = `
 <React.Fragment>
   <div
     className="visualization__side-panel"
@@ -317,7 +316,6 @@ exports[`Visualization panel should render panel but not button 1`] = `
       Object {
         "opacity": 1,
         "transform": "translateX(-10px)",
-        "transitionDuration": undefined,
       }
     }
   >

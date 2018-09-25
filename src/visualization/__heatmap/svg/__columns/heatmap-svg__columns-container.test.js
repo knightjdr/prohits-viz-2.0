@@ -7,6 +7,8 @@ import { ColumnsContainer } from './heatmap-svg__columns-container';
 jest.mock('../helpers/trim-text');
 TrimText.mockImplementation(text => ({ original: text, text, trimmed: false }));
 
+const openContextMenu = jest.fn();
+
 describe('Heatmap column container', () => {
   let wrapper;
 
@@ -19,7 +21,7 @@ describe('Heatmap column container', () => {
           ref: null,
         }}
         handleClick={jest.fn()}
-        openContextMenu={jest.fn()}
+        openContextMenu={openContextMenu}
         pageWidth={3}
         position={0}
         search={{
@@ -236,6 +238,12 @@ describe('Heatmap column container', () => {
 
   it('fontSize method should set the fontsize based on the current cell size', () => {
     expect(wrapper.instance().fontSize(20)).toEqual(12);
+  });
+
+  it('should open menu', () => {
+    openContextMenu.mockClear();
+    wrapper.instance().openMenu({}, 'a');
+    expect(openContextMenu).toHaveBeenCalledWith({}, 'a', 'column');
   });
 
   describe('update methods', () => {

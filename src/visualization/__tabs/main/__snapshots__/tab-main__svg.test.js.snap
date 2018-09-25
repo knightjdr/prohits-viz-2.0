@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main heatmap svg should match snapshot 1`] = `
+<React.Fragment>
+  <svg
+    id="svg-main"
+    width={500}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <PlotContainer
+      abundanceCap={50}
+      cellSize={20}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      edgeColor="blueBlack"
+      fillColor="blueBlack"
+      imageType="dotplot"
+      invertColor={false}
+      minAbundance={0}
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      primaryFilter={0.01}
+      rows={Array []}
+      scoreType="lte"
+      secondaryFilter={0.5}
+      sortID={null}
+      updateID={null}
+    />
+    <OverlayContainer
+      addMarkerBox={[Function]}
+      cellSize={20}
+      columns={Object {}}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      markers={Object {}}
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      rows={Array []}
+      setSelectedGenes={[Function]}
+      showSelectionbox={false}
+    />
+    <TooltipsContainer
+      cellSize={20}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      plotTranslate={0}
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      rows={Array []}
+      showTooltips={false}
+      toggleTooltip={[Function]}
+    />
+    <AnnotationOverlayContainer
+      annotations={Object {}}
+      cellSize={20}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      markers={Object {}}
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      updateAnnotation={[Function]}
+    />
+    <ColumnsContainer
+      cellSize={20}
+      columns={Object {}}
+      handleClick={[Function]}
+      openContextMenu={[Function]}
+      pageWidth={10}
+      position={0}
+      search={Object {}}
+      toggleTooltip={[Function]}
+      updateID={null}
+    />
+    <RowsContainer
+      cellSize={20}
+      handleClick={[Function]}
+      openContextMenu={[Function]}
+      pageHeight={20}
+      position={0}
+      rows={Array []}
+      search={Object {}}
+      sortID={null}
+      toggleTooltip={[Function]}
+      updateID={null}
+    />
+  </svg>
+  <StatusContainer
+    canTranslate={false}
+    display={
+      Object {
+        "plotTranslate": 0,
+        "selectionBox": false,
+        "tooltips": false,
+      }
+    }
+    fixLeft={false}
+    name=""
+    reset={[Function]}
+    showSelectionToggle={true}
+    toggleSelection={[Function]}
+    toggleTips={[Function]}
+    translate={[Function]}
+    width={500}
+  />
+  <ArrowsContainer
+    dimensions={
+      Object {
+        "pageX": 10,
+        "pageY": 20,
+      }
+    }
+    direction="vertical"
+    height={
+      Object {
+        "arrowsY": true,
+      }
+    }
+    offset={false}
+    position={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    show={true}
+    updateID={null}
+    updateXY={[Function]}
+    width={
+      Object {
+        "arrowsX": false,
+        "canTranslate": false,
+        "wrapper": 500,
+      }
+    }
+  />
+  <ArrowsContainer
+    dimensions={
+      Object {
+        "pageX": 10,
+        "pageY": 20,
+      }
+    }
+    direction="horizontal"
+    height={
+      Object {
+        "arrowsY": true,
+      }
+    }
+    offset={false}
+    position={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    show={false}
+    updateID={null}
+    updateXY={[Function]}
+    width={
+      Object {
+        "arrowsX": false,
+        "canTranslate": false,
+        "wrapper": 500,
+      }
+    }
+  />
+  <_ContextMenu
+    closeMenu={[Function]}
+    event={null}
+    reference={null}
+    setReference={[Function]}
+    setSelections={[Function]}
+    show={false}
+    sortRows={[Function]}
+    target=""
+  />
+  <_ContextMenu
+    closeMenu={[Function]}
+    event={null}
+    setSelections={[Function]}
+    show={false}
+    target=""
+  />
+  <Tooltip
+    display={false}
+    left={0}
+    text=""
+    top={0}
+  />
+</React.Fragment>
+`;

@@ -67,6 +67,9 @@ export class ColumnsContainer extends Component {
     names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
   )
   fontSize = cellSize => cellSize * 0.6
+  openMenu = (e, target) => {
+    this.props.openContextMenu(e, target, 'column');
+  }
   updateFontSize = (cellSize, prevCellSize, columns) => {
     if (cellSize !== prevCellSize) {
       const fontSize = this.fontSize(cellSize);
@@ -96,7 +99,7 @@ export class ColumnsContainer extends Component {
         cellSize={this.props.cellSize}
         fontSize={this.state.fontSize}
         names={this.state.names}
-        openContextMenu={this.props.openContextMenu}
+        openContextMenu={this.openMenu}
         search={this.props.search}
         handleClick={this.props.handleClick}
         reference={this.props.columns.ref}

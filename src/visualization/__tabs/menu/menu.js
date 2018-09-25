@@ -25,7 +25,7 @@ const tabText = {
   main: <span><FontAwesomeIcon icon={faImage} /><span>Image</span></span>,
 };
 
-const textTransform = (name, selected) => ({
+export const textTransform = (name, selected) => ({
   fontWeight: name === selected ? 600 : 400,
   textTransform: name === selected ? 'uppercase' : 'none',
 });
