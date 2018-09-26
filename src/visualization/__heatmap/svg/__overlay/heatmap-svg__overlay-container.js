@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Overlay from './heatmap-svg__overlay';
-import RoundNearest from '../../../../helpers/round-nearest';
+import roundNearest from '../../../../helpers/round-nearest';
 
 export class OverlayContainer extends Component {
   constructor(props) {
@@ -59,8 +59,8 @@ export class OverlayContainer extends Component {
     this.boundary = this.getBoundary();
     this.dragging = true;
     this.startPosition = {
-      x: RoundNearest(e.clientX - this.boundary.x, cellSize),
-      y: RoundNearest(e.clientY - this.boundary.y, cellSize),
+      x: roundNearest(e.clientX - this.boundary.x, cellSize),
+      y: roundNearest(e.clientY - this.boundary.y, cellSize),
     };
     this.setState({
       cursor: 'crosshair',
@@ -83,12 +83,12 @@ export class OverlayContainer extends Component {
   }
   nearestCell = (x, y, cellSize, dimensions) => ({
     x: this.limitPos(
-      RoundNearest(x - this.boundary.x, cellSize),
+      roundNearest(x - this.boundary.x, cellSize),
       cellSize,
       dimensions.pageX,
     ),
     y: this.limitPos(
-      RoundNearest(y - this.boundary.y, cellSize),
+      roundNearest(y - this.boundary.y, cellSize),
       cellSize,
       dimensions.pageY,
     ),
@@ -162,6 +162,8 @@ export class OverlayContainer extends Component {
     }
   }
   selectMarkerGenes = (source, target, cellSize, list, start, viewStart, width, sortBy) => {
+    // start = current pixel position of the selection box start point.
+    // viewStart = current position of the plot starting point as array index.
     const arrayStart = viewStart + Math.round(start / cellSize);
     const markerSpan = Math.round(width / cellSize);
     const selected = list.slice(arrayStart, arrayStart + markerSpan);
