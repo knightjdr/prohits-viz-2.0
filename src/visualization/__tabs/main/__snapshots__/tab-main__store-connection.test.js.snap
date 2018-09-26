@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store connection should match snapshot 1`] = `
+<div
+  addMarkerBox={[Function]}
+  annotations={Object {}}
+  columns={Object {}}
+  dimensions={Object {}}
+  display={Object {}}
+  markers={Object {}}
+  name="name"
+  other="test"
+  panel={false}
+  position={Object {}}
+  renderProp={[Function]}
+  reset={[Function]}
+  rowNames={Array []}
+  rows={Array []}
+  scoreType="lte"
+  search={Object {}}
+  setDims={[Function]}
+  setRef={[Function]}
+  setSelectedGenes={[Function]}
+  settings={Object {}}
+  sort={[Function]}
+  sortInfo={Object {}}
+  toggleSelection={[Function]}
+  toggleTips={[Function]}
+  updateAnnotation={[Function]}
+  updatePlotXY={[Function]}
+  updateXY={[Function]}
+/>
+`;

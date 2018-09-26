@@ -18,7 +18,7 @@ import { sortRows } from '../../../state/set/analysis/customize/rows-actions';
 import { toggleTooltips, updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
 import { updatePosition } from '../../../state/set/analysis/customize/position-actions';
 
-export const CustomizeWithState = ({
+export const StoreConnection = ({
   customize,
   dimensions,
   display,
@@ -37,11 +37,12 @@ export const CustomizeWithState = ({
   toggleTips,
   updatePlotXY,
   updateXY,
+  ...otherProps
 }) => {
-  let columns = [];
+  let columns = {};
   let customizeID = null;
   let rowNames = [];
-  let rows = [];
+  let rows = {};
   if (customize.length > 0) {
     const index = customize.length - 1;
     columns = customize[index].columns;
@@ -50,6 +51,7 @@ export const CustomizeWithState = ({
     rows = customize[index].rows;
   }
   return renderProp({
+    ...otherProps,
     columns,
     customizeID,
     dimensions,
@@ -74,11 +76,11 @@ export const CustomizeWithState = ({
   });
 };
 
-CustomizeWithState.defaultProps = {
+StoreConnection.defaultProps = {
   renderSvg: null,
 };
 
-CustomizeWithState.propTypes = {
+StoreConnection.propTypes = {
   customize: PropTypes.arrayOf(
     PropTypes.shape({
       columns: PropTypes.shape({
@@ -189,6 +191,6 @@ const mapDispatchToProps = dispatch => ({
 const ConnectedContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CustomizeWithState);
+)(StoreConnection);
 
 export default ConnectedContainer;

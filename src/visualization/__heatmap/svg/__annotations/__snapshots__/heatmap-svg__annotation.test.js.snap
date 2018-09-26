@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Annotation with annotations or markers should match snapshot 1`] = `
+<React.Fragment>
+  <defs>
+    <clipPath
+      id="overlayClip"
+    >
+      <rect
+        height={102}
+        width={202}
+        x="-1"
+        y="-1"
+      />
+    </clipPath>
+  </defs>
+  <g
+    clipPath="url(#overlayClip)"
+    style={
+      Object {
+        "cursor": "default",
+      }
+    }
+    transform="translate(100 100)"
+  >
+    <rect
+      cursor="default"
+      fill="black"
+      height={100}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      opacity="0"
+      pointerEvents="none"
+      width={200}
+      x="0"
+      y="0"
+    />
+    <rect
+      fill="none"
+      height={5}
+      key="1"
+      stroke="#000"
+      strokeWidth="1"
+      width={6}
+      x={0}
+      y={5}
+    />
+    <text
+      cursor="pointer"
+      fontSize={12}
+      key="1"
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      textAnchor="middle"
+      x={0}
+      y={0.2}
+    >
+      a
+    </text>
+  </g>
+</React.Fragment>
+`;
+
+exports[`Annotation without annotations or markers and dragging should match snapshot 1`] = `
+<React.Fragment>
+  <defs>
+    <clipPath
+      id="overlayClip"
+    >
+      <rect
+        height={102}
+        width={202}
+        x="-1"
+        y="-1"
+      />
+    </clipPath>
+  </defs>
+  <g
+    clipPath="url(#overlayClip)"
+    style={
+      Object {
+        "cursor": "default",
+      }
+    }
+    transform="translate(100 100)"
+  >
+    <rect
+      cursor="default"
+      fill="black"
+      height={100}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      opacity="0"
+      pointerEvents="auto"
+      width={200}
+      x="0"
+      y="0"
+    />
+  </g>
+</React.Fragment>
+`;
+
+exports[`Annotation without annotations or markers and not dragging should match snapshot 1`] = `
+<React.Fragment>
+  <defs>
+    <clipPath
+      id="overlayClip"
+    >
+      <rect
+        height={102}
+        width={202}
+        x="-1"
+        y="-1"
+      />
+    </clipPath>
+  </defs>
+  <g
+    clipPath="url(#overlayClip)"
+    style={
+      Object {
+        "cursor": "default",
+      }
+    }
+    transform="translate(100 100)"
+  >
+    <rect
+      cursor="default"
+      fill="black"
+      height={100}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      opacity="0"
+      pointerEvents="none"
+      width={200}
+      x="0"
+      y="0"
+    />
+  </g>
+</React.Fragment>
+`;

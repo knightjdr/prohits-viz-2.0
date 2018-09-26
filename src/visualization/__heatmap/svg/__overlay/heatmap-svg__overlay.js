@@ -23,7 +23,7 @@ const Overlay = ({
           fill="black"
           fillOpacity="0.4"
           height={marker.height}
-          onMouseMove={(e) => { handleMouseMove(e); }}
+          onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           stroke="#000"
           strokeOpacity="0.8"
@@ -39,7 +39,7 @@ const Overlay = ({
         height={height}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseUp}
-        onMouseMove={(e) => { handleMouseMove(e); }}
+        onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         opacity="0"
         x="0"

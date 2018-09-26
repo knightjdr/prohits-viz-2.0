@@ -7,7 +7,7 @@ const AnnotationOverlay = ({
   cursor,
   dragging,
   fontSize,
-  handleAnimationMouseDown,
+  handleMouseDown,
   handleMouseMove,
   handleMouseUp,
   height,
@@ -34,7 +34,7 @@ const AnnotationOverlay = ({
         cursor={cursor}
         fill="black"
         height={height}
-        onMouseMove={(e) => { handleMouseMove(e); }}
+        onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         opacity="0"
         pointerEvents={dragging ? 'auto' : 'none'}
@@ -64,8 +64,8 @@ const AnnotationOverlay = ({
             cursor="pointer"
             fontSize={fontSize}
             key={ShortID.generate()}
-            onMouseDown={() => { handleAnimationMouseDown(index); }}
-            onMouseMove={(e) => { handleMouseMove(e); }}
+            onMouseDown={() => { handleMouseDown(index); }}
+            onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             textAnchor="middle"
             x={annotation.x}
@@ -96,7 +96,7 @@ AnnotationOverlay.propTypes = {
   cursor: PropTypes.string.isRequired,
   dragging: PropTypes.bool.isRequired,
   fontSize: PropTypes.number.isRequired,
-  handleAnimationMouseDown: PropTypes.func.isRequired,
+  handleMouseDown: PropTypes.func.isRequired,
   handleMouseMove: PropTypes.func.isRequired,
   handleMouseUp: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,

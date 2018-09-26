@@ -232,7 +232,6 @@ Svg.propTypes = {
   }).isRequired,
   name: PropTypes.string,
   openContextMenu: PropTypes.func.isRequired,
-  panel: PropTypes.bool.isRequired,
   position: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number,

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overlay with marker selection box should match snapshot 1`] = `
+<React.Fragment>
+  <g
+    transform="translate(100 100)"
+  >
+    <rect
+      cursor="crosshair"
+      fill="black"
+      fillOpacity="0.4"
+      height={10}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      stroke="#000"
+      strokeOpacity="0.8"
+      strokeWidth="1"
+      width={20}
+      x={5}
+      y={10}
+    />
+    <rect
+      cursor="default"
+      fill="black"
+      height={100}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      opacity="0"
+      width={200}
+      x="0"
+      y="0"
+    />
+  </g>
+</React.Fragment>
+`;
+
+exports[`Overlay without marker selection box should match snapshot 1`] = `
+<React.Fragment>
+  <g
+    transform="translate(100 100)"
+  >
+    <rect
+      cursor="default"
+      fill="black"
+      height={100}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      opacity="0"
+      width={200}
+      x="0"
+      y="0"
+    />
+  </g>
+</React.Fragment>
+`;

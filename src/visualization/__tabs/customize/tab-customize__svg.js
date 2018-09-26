@@ -14,19 +14,34 @@ import '../../__heatmap/svg/heatmap-svg.css';
 
 const Svg = ({
   closeContextMenu,
+  columns,
   contextEvent,
   contextTarget,
+  customizeID,
+  dimensions,
+  display,
   fixLeft,
   handleClick,
   height,
+  name,
   openContextMenu,
+  position,
   reference,
+  reset,
+  rowNames,
+  rows,
+  scoreType,
+  search,
   setReference,
+  settings,
   showContext,
+  sortInfo,
   sortRows,
+  toggleTips,
   toggleTooltip,
   tooltip,
   translateLeft,
+  updateXY,
   width,
 }) => (
   <Fragment>
@@ -66,7 +81,7 @@ const Svg = ({
         cellSize={settings.cellSize}
         columns={columns}
         handleClick={handleClick}
-        openContextMenu={(e, target) => { openContextMenu(e, target, 'column'); }}
+        openContextMenu={openContextMenu}
         pageWidth={dimensions.pageX}
         position={position.x}
         search={search}
@@ -76,7 +91,7 @@ const Svg = ({
       <Rows
         cellSize={settings.cellSize}
         handleClick={handleClick}
-        openContextMenu={(e, target) => { openContextMenu(e, target, 'row'); }}
+        openContextMenu={openContextMenu}
         pageHeight={dimensions.pageY}
         position={position.y}
         rows={rowNames}
@@ -132,13 +147,33 @@ const Svg = ({
 
 Svg.defaultProps = {
   contextEvent: null,
+  customizeID: null,
+  name: '',
   reference: null,
 };
 
 Svg.propTypes = {
   closeContextMenu: PropTypes.func.isRequired,
+  columns: PropTypes.shape({
+    names: PropTypes.arrayOf(PropTypes.string),
+    ref: PropTypes.string,
+  }).isRequired,
   contextEvent: PropTypes.shape({}),
   contextTarget: PropTypes.string.isRequired,
+  customizeID: PropTypes.number,
+  dimensions: PropTypes.shape({
+    columns: PropTypes.number,
+    height: PropTypes.number,
+    pageX: PropTypes.number,
+    pageY: PropTypes.number,
+    rows: PropTypes.number,
+    width: PropTypes.number,
+  }).isRequired,
+  display: PropTypes.shape({
+    plotFixed: PropTypes.bool,
+    plotTranslate: PropTypes.number,
+    tooltips: PropTypes.bool,
+  }).isRequired,
   fixLeft: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   height: PropTypes.shape({
@@ -147,13 +182,51 @@ Svg.propTypes = {
     pageY: PropTypes.number,
     wrapper: PropTypes.number,
   }).isRequired,
+  name: PropTypes.string,
+  position: PropTypes.shape({
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }).isRequired,
   openContextMenu: PropTypes.func.isRequired,
-  plotTranslate: PropTypes.number.isRequired,
   reference: PropTypes.string,
-  setContainerRef: PropTypes.shape({}).isRequired,
+  reset: PropTypes.func.isRequired,
+  rowNames: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+  rows: PropTypes.shape({
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        data: PropTypes.arrayOf(
+          PropTypes.shape({
+            value: PropTypes.number,
+          }),
+        ),
+        name: PropTypes.string,
+      }),
+    ),
+  }).isRequired,
+  scoreType: PropTypes.string.isRequired,
+  search: PropTypes.shape({
+    columns: PropTypes.shape({}),
+    match: PropTypes.bool,
+    term: PropTypes.string,
+  }).isRequired,
   setReference: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
+  settings: PropTypes.shape({
+    abundanceCap: PropTypes.number,
+    cellSize: PropTypes.number,
+    edgeColor: PropTypes.string,
+    fillColor: PropTypes.string,
+    imageType: PropTypes.string,
+    invertColor: PropTypes.bool,
+    minAbundance: PropTypes.number,
+    primaryFilter: PropTypes.number,
+    secondaryFilter: PropTypes.number,
+  }).isRequired,
   showContext: PropTypes.string.isRequired,
+  sortInfo: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
   sortRows: PropTypes.func.isRequired,
   toggleTooltip: PropTypes.func.isRequired,
   tooltip: PropTypes.shape({
@@ -163,6 +236,8 @@ Svg.propTypes = {
     top: PropTypes.number,
   }).isRequired,
   translateLeft: PropTypes.func.isRequired,
+  toggleTips: PropTypes.func.isRequired,
+  updateXY: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,
     canTranslate: PropTypes.bool,

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { faWindow } from '@fortawesome/pro-solid-svg-icons';
 
-import Customize from './customize/visualization__tabs-customize';
+import Customize from './customize/tab-customize';
 import Go from './go/go-container';
 import Main from './main/tab-main';
 import Menu from './menu/menu-container';

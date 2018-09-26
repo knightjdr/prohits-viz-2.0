@@ -71,7 +71,7 @@ export const sortRows = (requestedSortBy, requestedDirection, ref) => (
       sortDirection,
       sortedList,
       requestedSortBy,
-      ref,
+      columns.names[ref],
       newId,
       rowOrder,
       removeEmpty,

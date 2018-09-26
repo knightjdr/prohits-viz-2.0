@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import AnnotationOverlay from './heatmap-svg__annotation';
-import Round from '../../../../helpers/round';
+import round from '../../../../helpers/round';
 
 export class AnnotationOverlayContainer extends Component {
   constructor(props) {
@@ -26,12 +26,13 @@ export class AnnotationOverlayContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     const {
       annotations,
+      cellSize,
       dimensions,
       markers,
       position,
     } = this.props;
     this.updateAnnotations(nextProps, annotations, dimensions, position);
-    this.updateMarkers(nextProps, markers, dimensions, position);
+    this.updateMarkers(nextProps, cellSize, markers, dimensions, position);
   }
   getBoundary = () => {
     const rect = this.gElementRef.current.getBoundingClientRect();
@@ -64,11 +65,11 @@ export class AnnotationOverlayContainer extends Component {
     let newY = y / dimensions.height;
 
     // Get new annotation position relative to entire image.
-    newX = Round(((newX * dimensions.pageX) + position.x) / dimensions.columns, 2);
-    newY = Round(((newY * dimensions.pageY) + position.y) / dimensions.rows, 2);
+    newX = round(((newX * dimensions.pageX) + position.x) / dimensions.columns, 2);
+    newY = round(((newY * dimensions.pageY) + position.y) / dimensions.rows, 2);
     this.props.updateAnnotation(index, newX, newY);
   }
-  handleAnimationMouseDown = (index) => {
+  handleMouseDown = (index) => {
     this.boundary = this.getBoundary();
     this.moveIndex = index;
     this.setState({
@@ -181,11 +182,13 @@ export class AnnotationOverlayContainer extends Component {
       dimensions,
       position,
     },
+    prevCellSize,
     prevMarkers,
     prevDimensions,
     prevPosition,
   ) => {
     if (
+      cellSize !== prevCellSize ||
       markers.list.length !== prevMarkers.list.length ||
       position.x !== prevPosition.x ||
       position.y !== prevPosition.y ||
@@ -204,7 +207,7 @@ export class AnnotationOverlayContainer extends Component {
         cursor={this.state.cursor}
         dragging={this.state.dragging}
         fontSize={this.props.annotations.fontSize}
-        handleAnimationMouseDown={this.handleAnimationMouseDown}
+        handleMouseDown={this.handleMouseDown}
         handleMouseMove={this.handleMouseMove}
         handleMouseUp={this.handleMouseUp}
         height={this.props.dimensions.height}

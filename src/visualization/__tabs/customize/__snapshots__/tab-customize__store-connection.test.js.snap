@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store connection when there is customized state should match snapshot 1`] = `
+<div
+  addMarkerBox={[Function]}
+  annotations={Object {}}
+  columns={
+    Object {
+      "names": Array [
+        "a",
+        "b",
+        "c",
+      ],
+    }
+  }
+  customizeID={1}
+  dimensions={Object {}}
+  display={Object {}}
+  markers={Object {}}
+  name="name"
+  other="test"
+  panel={false}
+  position={Object {}}
+  renderProp={[Function]}
+  reset={[Function]}
+  rowNames={
+    Array [
+      "x",
+    ]
+  }
+  rows={
+    Object {
+      "list": Array [
+        Object {
+          "data": Array [
+            Object {
+              "value": 1,
+            },
+            Object {
+              "value": 3,
+            },
+            Object {
+              "value": 2,
+            },
+          ],
+          "name": "x",
+        },
+      ],
+      "order": Array [
+        "x",
+      ],
+    }
+  }
+  scoreType="lte"
+  search={Object {}}
+  setDims={[Function]}
+  setRef={[Function]}
+  setSelectedGenes={[Function]}
+  settings={Object {}}
+  sort={[Function]}
+  sortInfo={
+    Object {
+      "id": 0,
+    }
+  }
+  toggleSelection={[Function]}
+  toggleTips={[Function]}
+  updateAnnotation={[Function]}
+  updatePlotXY={[Function]}
+  updateXY={[Function]}
+/>
+`;
+
+exports[`Store connection when there is no customized state should match snapshot 1`] = `
+<div
+  addMarkerBox={[Function]}
+  annotations={Object {}}
+  columns={Object {}}
+  customizeID={null}
+  dimensions={Object {}}
+  display={Object {}}
+  markers={Object {}}
+  name="name"
+  other="test"
+  panel={false}
+  position={Object {}}
+  renderProp={[Function]}
+  reset={[Function]}
+  rowNames={Array []}
+  rows={Object {}}
+  scoreType="lte"
+  search={Object {}}
+  setDims={[Function]}
+  setRef={[Function]}
+  setSelectedGenes={[Function]}
+  settings={Object {}}
+  sort={[Function]}
+  sortInfo={
+    Object {
+      "id": 0,
+    }
+  }
+  toggleSelection={[Function]}
+  toggleTips={[Function]}
+  updateAnnotation={[Function]}
+  updatePlotXY={[Function]}
+  updateXY={[Function]}
+/>
+`;

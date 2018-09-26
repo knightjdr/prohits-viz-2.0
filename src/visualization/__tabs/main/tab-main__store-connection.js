@@ -57,6 +57,7 @@ export const StoreConnection = ({
   updateXY,
   ...otherProps
 }) => renderProp({
+  ...otherProps,
   addMarkerBox,
   annotations,
   columns,
@@ -83,7 +84,6 @@ export const StoreConnection = ({
   updateAnnotation,
   updatePlotXY,
   updateXY,
-  ...otherProps,
 });
 
 StoreConnection.defaultProps = {

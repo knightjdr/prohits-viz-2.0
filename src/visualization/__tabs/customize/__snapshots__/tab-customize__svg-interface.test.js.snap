@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SVG customize interface when hidden should match snapshot 1`] = `
+<div
+  className="heatmap-svg__wrapper"
+  style={
+    Object {
+      "transform": "translate(100px)",
+    }
+  }
+/>
+`;
+
+exports[`SVG customize interface when visible should match snapshot 1`] = `
+<div
+  className="heatmap-svg__wrapper"
+  style={
+    Object {
+      "transform": "translate(100px)",
+    }
+  }
+>
+  <StoreConnection
+    other="otherProp"
+    renderProp={[Function]}
+  />
+</div>
+`;

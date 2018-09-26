@@ -256,7 +256,7 @@ describe('Customize row sort', () => {
       columns: currentCustomize[0].columns.names,
       direction: 'desc',
       id: 1,
-      ref: 0,
+      ref: 'a',
       removeEmpty: false,
       resetMaximums: false,
       rows: {
@@ -291,7 +291,7 @@ describe('Customize row sort', () => {
       columns: currentCustomize[0].columns.names,
       direction: 'asc',
       id: 1,
-      ref: 0,
+      ref: 'a',
       removeEmpty: false,
       resetMaximums: false,
       rows: {
