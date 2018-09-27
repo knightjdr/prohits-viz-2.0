@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Cell from './cell/cell';
+import cell from './cell/cell';
 
 const Plot = ({
   cellSize,
@@ -9,14 +9,14 @@ const Plot = ({
   imageType,
   page,
 }) => {
-  const CellType = Cell(imageType);
+  const cellType = cell(imageType);
   const offset = cellSize / 2;
   return (
     <g transform="translate(100 100)">
       {
         page.reduce((cells, row, i) => {
           const y = i * cellSize;
-          cells.push(...CellType(cellSize, row.data, y, edgeSize, offset));
+          cells.push(...cellType(cellSize, row.data, y, edgeSize, offset));
           return cells;
         }, [])
       }

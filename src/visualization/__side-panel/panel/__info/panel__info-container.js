@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ColorGradient from '../../../color/color-gradient';
+import colorGradient from '../../../color/color-gradient';
 import download from '../../../../helpers/download';
 import Info from './panel__info';
 import { settingSelectorProp } from '../../../../state/selectors/visualization/settings-selector';
@@ -15,8 +15,8 @@ export class InfoContainer extends Component {
     this.state = {
       legend: {
         abundanceName: this.props.params.abundanceColumn,
-        gradientEdge: ColorGradient(this.props.edgeColor, 101, this.props.invertColor),
-        gradientFill: ColorGradient(this.props.fillColor, 101, this.props.invertColor),
+        gradientEdge: colorGradient(this.props.edgeColor, 101, this.props.invertColor),
+        gradientFill: colorGradient(this.props.fillColor, 101, this.props.invertColor),
         abundanceCap: this.props.abundanceCap,
         minAbundance: this.props.minAbundance,
         primaryFilter: this.props.primaryFilter,

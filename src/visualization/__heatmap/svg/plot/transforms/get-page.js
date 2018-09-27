@@ -1,4 +1,4 @@
-/* GetPage takes an array of row/heatmap data, slices it in both
+/* getPage takes an array of row/heatmap data, slices it in both
 ** dimensions to fit the display. For heatmaps it adds in the fill color value
 ** after mapping the value to the gradient color range, while for dotplots
 ** it will add the edge color and radius as well. */
@@ -11,7 +11,7 @@ export const setScore = score => (
   typeof score === 'number' ? score : 0
 );
 
-const GetPage = imageType => (
+const getPage = imageType => (
   rows,
   position,
   dimensions,
@@ -48,4 +48,4 @@ const GetPage = imageType => (
   }));
 };
 
-export default GetPage;
+export default getPage;

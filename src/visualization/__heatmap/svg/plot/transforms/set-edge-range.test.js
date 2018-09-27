@@ -1,11 +1,11 @@
-import SetEdgeRange from './set-edge-range';
+import setEdgeRange from './set-edge-range';
 
 describe('Set edge range', () => {
   describe('for gte score type', () => {
     let func;
 
     beforeAll(() => {
-      func = SetEdgeRange(0.95, 0.90, 'gte', 0, 100);
+      func = setEdgeRange(0.95, 0.90, 'gte', 0, 100);
     });
 
     it('should map numbers greater than or equal to primary filter to 100', () => {
@@ -28,7 +28,7 @@ describe('Set edge range', () => {
     let func;
 
     beforeAll(() => {
-      func = SetEdgeRange(0.01, 0.05, 'lte', 0, 100);
+      func = setEdgeRange(0.01, 0.05, 'lte', 0, 100);
     });
 
     it('should map numbers less than or equal to primary filter to 100', () => {

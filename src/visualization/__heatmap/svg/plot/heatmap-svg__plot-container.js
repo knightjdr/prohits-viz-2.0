@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import ColorGradient from '../../../color/color-gradient';
-import GetPage from './transforms/get-page';
+import colorGradient from '../../../color/color-gradient';
+import getPage from './transforms/get-page';
 import Plot from './heatmap-svg__plot';
-import Round from '../../../../helpers/round';
-import SetRange from './transforms/set-range';
-import SetEdgeRange from './transforms/set-edge-range';
+import round from '../../../../helpers/round';
+import setRange from './transforms/set-range';
+import setEdgeRange from './transforms/set-edge-range';
 
 const NUM_COLORS = 101;
 
@@ -28,11 +28,11 @@ export class PlotContainer extends Component {
       scoreType,
       secondaryFilter,
     } = this.props;
-    this.edgeGradient = ColorGradient(edgeColor, NUM_COLORS, false);
-    this.edgeRange = SetEdgeRange(primaryFilter, secondaryFilter, scoreType, 0, NUM_COLORS - 1);
-    this.fillGradient = ColorGradient(fillColor, NUM_COLORS, invertColor);
-    this.fillRange = SetRange(minAbundance, abundanceCap, 0, NUM_COLORS - 1);
-    this.getPage = GetPage(imageType);
+    this.edgeGradient = colorGradient(edgeColor, NUM_COLORS, false);
+    this.edgeRange = setEdgeRange(primaryFilter, secondaryFilter, scoreType, 0, NUM_COLORS - 1);
+    this.fillGradient = colorGradient(fillColor, NUM_COLORS, invertColor);
+    this.fillRange = setRange(minAbundance, abundanceCap, 0, NUM_COLORS - 1);
+    this.getPage = getPage(imageType);
     this.state = {
       edgeSize: this.setEdgeSize(cellSize),
       page: this.getPage(
@@ -97,7 +97,7 @@ export class PlotContainer extends Component {
     );
   }
   setEdgeSize = cellSize => (
-    cellSize < 15 ? Round(cellSize / 10, 1) : 1.5
+    cellSize < 15 ? round(cellSize / 10, 1) : 1.5
   );
   updateEdgeGradient = ({
     cellSize,
@@ -107,7 +107,7 @@ export class PlotContainer extends Component {
     rows,
   }, prevEdgeColor) => {
     if (edgeColor !== prevEdgeColor) {
-      this.edgeGradient = ColorGradient(edgeColor, NUM_COLORS, false);
+      this.edgeGradient = colorGradient(edgeColor, NUM_COLORS, false);
       this.setState({
         page: this.getPage(
           rows,
@@ -135,7 +135,7 @@ export class PlotContainer extends Component {
       primaryFilter !== prevPrimaryFilter ||
       secondaryFilter !== prevSecondaryFilter
     ) {
-      this.edgeRange = SetEdgeRange(primaryFilter, secondaryFilter, scoreType, 0, NUM_COLORS - 1);
+      this.edgeRange = setEdgeRange(primaryFilter, secondaryFilter, scoreType, 0, NUM_COLORS - 1);
       this.setState({
         page: this.getPage(
           rows,
@@ -169,7 +169,7 @@ export class PlotContainer extends Component {
       fillColor !== prevFillColor ||
       invertColor !== prevInvertColor
     ) {
-      this.fillGradient = ColorGradient(fillColor, NUM_COLORS, invertColor);
+      this.fillGradient = colorGradient(fillColor, NUM_COLORS, invertColor);
       this.setState({
         page: this.getPage(
           rows,
@@ -196,7 +196,7 @@ export class PlotContainer extends Component {
       minAbundance !== prevMinAbundance ||
       abundanceCap !== prevAbundanceCap
     ) {
-      this.fillRange = SetRange(minAbundance, abundanceCap, 0, NUM_COLORS - 1);
+      this.fillRange = setRange(minAbundance, abundanceCap, 0, NUM_COLORS - 1);
       this.setState({
         page: this.getPage(
           rows,
@@ -219,7 +219,7 @@ export class PlotContainer extends Component {
     rows,
   }, prevImageType) => {
     if (imageType !== prevImageType) {
-      this.getPage = GetPage(imageType);
+      this.getPage = getPage(imageType);
       this.setState({
         page: this.getPage(
           rows,

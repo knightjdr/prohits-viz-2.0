@@ -1,9 +1,9 @@
-import SetRange from './set-range';
+import setRange from './set-range';
 
 let range;
 
 beforeAll(() => {
-  range = SetRange(0, 50, 0, 100);
+  range = setRange(0, 50, 0, 100);
 });
 
 describe('Set range', () => {

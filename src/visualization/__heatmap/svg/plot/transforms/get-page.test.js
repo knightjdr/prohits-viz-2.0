@@ -1,4 +1,4 @@
-import GetPage, { setRadius, setScore } from './get-page';
+import getPage, { setRadius, setScore } from './get-page';
 
 const gradient = ['#fff'];
 const range = jest.fn();
@@ -77,7 +77,7 @@ describe('Get page', () => {
         },
       ],
     };
-    const page = GetPage('heatmap')(
+    const page = getPage('heatmap')(
       rows.list,
       position,
       dimensions,
@@ -168,7 +168,7 @@ describe('Get page', () => {
           },
         ],
       };
-      const page = GetPage('dotplot')(
+      const page = getPage('dotplot')(
         rows.list,
         position,
         dimensions,

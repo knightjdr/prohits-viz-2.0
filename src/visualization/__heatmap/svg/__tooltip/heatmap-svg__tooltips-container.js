@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Tooltips from './heatmap-svg__tooltips';
 
@@ -23,23 +23,19 @@ export class TooltipsContainer extends Component {
       y: rect.top,
     };
   }
-  setBoundary = (show, prevShow) => {
-    if (
-      show &&
-      show !== prevShow
-    ) {
-      this.boundary = this.getBoundary();
-    }
-  }
   clearTooltip = () => {
     this.props.toggleTooltip(false);
   }
   formatText = obj => (
-    Object.entries(obj).map(([key, value]) => (
-      <div key={key}>
-        {key}: {value}
-      </div>
-    ))
+    <Fragment>
+      {
+        Object.entries(obj).map(([key, value]) => (
+          <div key={key}>
+            {key}: {value}
+          </div>
+        ))
+        }
+    </Fragment>
   )
   handleMouseMove = (e) => {
     const {
@@ -58,6 +54,7 @@ export class TooltipsContainer extends Component {
       dimensions,
     );
     const text = this.formatText(rows[cell.y].data[cell.x]);
+    // Should add method for setting x and y so they don't fall outside viewport.
     const x = e.clientX + 15;
     const y = e.clientY - 50;
     toggleTooltip(true, true, text, x, y);
@@ -104,7 +101,6 @@ TooltipsContainer.propTypes = {
     height: PropTypes.number,
     pageX: PropTypes.number,
     pageY: PropTypes.number,
-    plotTranslate: PropTypes.number,
     width: PropTypes.number,
   }).isRequired,
   plotTranslate: PropTypes.number.isRequired,

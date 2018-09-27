@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cell = (imageType) => {
+const cellType = (imageType) => {
   switch (imageType) {
     case 'dotplot':
       return (cellSize, row, y, edgeSize, offset) => (
@@ -32,4 +32,4 @@ const Cell = (imageType) => {
   }
 };
 
-export default Cell;
+export default cellType;

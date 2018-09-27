@@ -1,4 +1,4 @@
-import ColorGradient from './color-gradient';
+import colorGradient from './color-gradient';
 
 const gradients = {
   blueBlack: ['#ffffff', '#ccd9ff', '#99b3ff', '#668cff', '#3366ff', '#0040ff', '#0033cc', '#002699', '#001966', '#000d33', '#000000'],
@@ -8,20 +8,20 @@ const gradients = {
   yellowBlack: ['#ffffff', '#ffffcc', '#ffff99', '#ffff66', '#ffff33', '#ffff00', '#cccc00', '#999900', '#666600', '#333300', '#000000'],
 };
 
-describe('ColorGradient', () => {
+describe('colorGradient', () => {
   test('generates color gradients', () => {
-    expect(ColorGradient('blueBlack', 11, false)).toEqual(gradients.blueBlack);
-    expect(ColorGradient('greenBlack', 11, false)).toEqual(gradients.greenBlack);
-    expect(ColorGradient('greyscale', 11, false)).toEqual(gradients.greyscale);
-    expect(ColorGradient('redBlack', 11, false)).toEqual(gradients.redBlack);
-    expect(ColorGradient('yellowBlack', 11, false)).toEqual(gradients.yellowBlack);
+    expect(colorGradient('blueBlack', 11, false)).toEqual(gradients.blueBlack);
+    expect(colorGradient('greenBlack', 11, false)).toEqual(gradients.greenBlack);
+    expect(colorGradient('greyscale', 11, false)).toEqual(gradients.greyscale);
+    expect(colorGradient('redBlack', 11, false)).toEqual(gradients.redBlack);
+    expect(colorGradient('yellowBlack', 11, false)).toEqual(gradients.yellowBlack);
   });
 
   test('generates default blueBlack gradient', () => {
-    expect(ColorGradient('default', 11, false)).toEqual(gradients.blueBlack);
+    expect(colorGradient('default', 11, false)).toEqual(gradients.blueBlack);
   });
 
   test('generates inverted gradient', () => {
-    expect(ColorGradient('blueBlack', 11, true)).toEqual(gradients.blueBlack.reverse());
+    expect(colorGradient('blueBlack', 11, true)).toEqual(gradients.blueBlack.reverse());
   });
 });

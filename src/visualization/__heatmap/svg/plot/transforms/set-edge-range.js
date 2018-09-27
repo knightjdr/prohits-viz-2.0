@@ -3,7 +3,7 @@
 ** if the the range is from 0 - 100, input numbers will get mapped to
 ** either 25, 50 or 100. */
 
-const SetEdgeRange = (primaryFilter, secondaryFilter, scoreType, outMin, outMax) => {
+const setEdgeRange = (primaryFilter, secondaryFilter, scoreType, outMin, outMax) => {
   const outputRange = outMax - outMin;
   const first = outMax;
   const second = Math.round((outputRange / 2) + outMin);
@@ -34,4 +34,4 @@ const SetEdgeRange = (primaryFilter, secondaryFilter, scoreType, outMin, outMax)
   };
 };
 
-export default SetEdgeRange;
+export default setEdgeRange;

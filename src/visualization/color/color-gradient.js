@@ -1,10 +1,10 @@
 import HSLtoHex from './hsl-to-hex';
 import Round from '../../helpers/round';
 
-/* ColorGradient defines a color gradient to use for fill values. It defines
+/* colorGradient defines a color gradient to use for fill values. It defines
 ** the colors to use via HSL and then converts those to HEX. */
 
-const ColorGradient = (colorSpace, numColors, invert) => {
+const colorGradient = (colorSpace, numColors, invert) => {
   // Create hex gradient. The color scale is set using the hue and saturation
   // components of HSL. The gradient is then defined by changing the lightness
   // from 1 (light) to 0 (dark). HSL values are on a 0-1 scale.
@@ -46,4 +46,4 @@ const ColorGradient = (colorSpace, numColors, invert) => {
   }
   return gradient;
 };
-export default ColorGradient;
+export default colorGradient;

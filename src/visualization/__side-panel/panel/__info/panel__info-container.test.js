@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ColorGradient from '../../../color/color-gradient';
+import colorGradient from '../../../color/color-gradient';
 import download from '../../../../helpers/download';
 import { InfoContainer } from './panel__info-container';
 
@@ -36,9 +36,9 @@ describe('Info panel container', () => {
     );
 
     // Calls color gradient with edge and fill props.
-    expect(ColorGradient).toHaveBeenCalledTimes(2);
-    expect(ColorGradient).toHaveBeenCalledWith('redBlack', 101, false);
-    expect(ColorGradient).toHaveBeenCalledWith('blueBlack', 101, false);
+    expect(colorGradient).toHaveBeenCalledTimes(2);
+    expect(colorGradient).toHaveBeenCalledWith('redBlack', 101, false);
+    expect(colorGradient).toHaveBeenCalledWith('blueBlack', 101, false);
 
     // Legend state object
     expect(wrapper.state('legend')).toEqual({
