@@ -234,7 +234,7 @@ describe('Svg container', () => {
       expect(wrapper.instance().calculateHeight(10, props.rowNames, false)).toEqual(expected);
     });
 
-    it('should return height values when all rows do not fit within page', () => {
+    it('should return height values when rows do not fit within page', () => {
       const wrapperRef = {
         current: {
           getBoundingClientRect: () => ({
@@ -270,6 +270,298 @@ describe('Svg container', () => {
         wrapper: 120,
       };
       expect(wrapper.instance().calculateHeight(10, props.rowNames, true)).toEqual(expected);
+    });
+  });
+
+  describe('calculate width', () => {
+    it('should return width values when all columns fit within page', () => {
+      const wrapperRef = {
+        current: {
+          getBoundingClientRect: () => ({
+            width: 200,
+          }),
+        },
+      };
+      wrapper.instance().wrapperRef = wrapperRef;
+      const expected = {
+        arrowsX: false,
+        canTranslate: true,
+        columns: 3,
+        heatmap: 30,
+        pageX: 3,
+        wrapper: 132,
+      };
+      expect(wrapper.instance().calculateWidth(10, props.columns)).toEqual(expected);
+    });
+
+    it('should return width values when columns do not fit within page', () => {
+      const wrapperRef = {
+        current: {
+          getBoundingClientRect: () => ({
+            width: 170,
+          }),
+        },
+      };
+      wrapper.instance().wrapperRef = wrapperRef;
+      const expected = {
+        arrowsX: true,
+        canTranslate: false,
+        columns: 3,
+        heatmap: 20,
+        pageX: 2,
+        wrapper: 120,
+      };
+      expect(wrapper.instance().calculateWidth(10, props.columns)).toEqual(expected);
+    });
+  });
+
+  describe('close context menu', () => {
+    beforeAll(() => {
+      wrapper.instance().closeContextMenu();
+    });
+
+    it('should clear context event', () => {
+      expect(wrapper.state('contextEvent')).toBeNull();
+    });
+
+    it('should hide context menu', () => {
+      expect(wrapper.state('showContext')).toBeFalsy();
+    });
+  });
+
+  describe('handle click', () => {
+    let spy;
+
+    beforeAll(() => {
+      spy = jest.spyOn(wrapper.instance(), 'sortRows');
+      wrapper.update();
+    });
+
+    afterAll(() => {
+      spy.mockRestore();
+      wrapper.update();
+    });
+
+    it('should do nothing when no key is pressed', () => {
+      wrapper.instance().handleClick({}, null, 'column');
+      expect(spy).not.toHaveBeenCalled();
+      expect(props.setSelectedGenes).not.toHaveBeenCalled();
+    });
+
+    it('should call sort rows when shift is pressed', () => {
+      spy.mockClear();
+      wrapper.instance().handleClick({ shiftKey: true }, 'a', 'column');
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('should select column gene when alt is pressed', () => {
+      props.setSelectedGenes.mockClear();
+      wrapper.instance().handleClick({ altKey: true }, 'a', 'column');
+      expect(props.setSelectedGenes).toHaveBeenCalledWith(['a'], 'columns', 'columnsSelected');
+    });
+
+    it('should select row gene when alt is pressed', () => {
+      props.setSelectedGenes.mockClear();
+      wrapper.instance().handleClick({ altKey: true }, 'x', 'row');
+      expect(props.setSelectedGenes).toHaveBeenCalledWith(['x'], 'rows', 'rowsSelected');
+    });
+  });
+
+  describe('open context menu', () => {
+    const e = {
+      clientX: 20,
+      clientY: 30,
+      preventDefault: jest.fn(),
+    };
+
+    beforeAll(() => {
+      const wrapperRef = {
+        current: {
+          getBoundingClientRect: () => ({
+            left: 10,
+            top: 10,
+          }),
+        },
+      };
+      wrapper.instance().wrapperRef = wrapperRef;
+      wrapper.instance().openContextMenu(e, 'a', 'column');
+    });
+
+    it('should prevent default', () => {
+      expect(e.preventDefault).toHaveBeenCalled();
+    });
+
+    it('should set target state', () => {
+      expect(wrapper.state('contextTarget')).toBe('a');
+    });
+
+    it('should set context event', () => {
+      expect(wrapper.state('contextEvent')).toEqual({ clientX: 10, clientY: 20 });
+    });
+
+    it('should set context state', () => {
+      expect(wrapper.state('showContext')).toBe('column');
+    });
+  });
+
+  it('should set dimensions on resize end', () => {
+    wrapper.setProps(props);
+    const spy = jest.spyOn(wrapper.instance(), 'setDimensions');
+    wrapper.update();
+    wrapper.instance().resizeEnd();
+    expect(spy).toHaveBeenCalledWith(
+      props.settings.cellSize,
+      props.columns,
+      false,
+      props.rowNames,
+      props.display,
+    );
+    spy.mockRestore();
+    wrapper.update();
+  });
+
+  describe('sort rows', () => {
+    it('should call sort rows props method without reference', () => {
+      wrapper.instance().sortRows('b', 'desc');
+      expect(props.sort).toHaveBeenCalledWith(1, 'desc', null);
+    });
+
+    it('should call sort rows props method with reference', () => {
+      wrapper.setProps({
+        ...props,
+        columns: {
+          ...props.columns,
+          ref: 'a',
+        },
+      });
+      wrapper.instance().sortRows('b', 'desc');
+      expect(props.sort).toHaveBeenCalledWith(1, 'desc', 0);
+    });
+  });
+
+  describe('toggle tooltip', () => {
+    it('should reset state when tooltip not needed', () => {
+      wrapper.instance().toggleTooltip(false);
+      const expected = {
+        display: false,
+        left: 0,
+        text: null,
+        top: 0,
+      };
+      expect(wrapper.state('tooltip')).toEqual(expected);
+    });
+
+    it('should set state when tooltip ist needed', () => {
+      wrapper.instance().toggleTooltip(true, true, 'a', 10, 20);
+      const expected = {
+        display: true,
+        left: 10,
+        text: 'a',
+        top: 20,
+      };
+      expect(wrapper.state('tooltip')).toEqual(expected);
+    });
+  });
+
+  it('should translate plot left', () => {
+    props.updatePlotXY.mockClear();
+    wrapper.instance().translateLeft();
+    expect(props.updatePlotXY).toHaveBeenCalledWith(true, -517);
+  });
+
+  describe('update dimensions', () => {
+    let spy;
+
+    beforeAll(() => {
+      wrapper.setProps(props);
+      spy = jest.spyOn(wrapper.instance(), 'setDimensions');
+      wrapper.update();
+    });
+
+    afterAll(() => {
+      spy.mockRestore();
+      wrapper.update();
+    });
+
+    it('should do nothing when cell size and update ID do not change', () => {
+      const nextProps = props;
+      wrapper.instance().updateDimensions(nextProps, props.settings, props.updateID);
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('should update when update ID changes ', () => {
+      spy.mockClear();
+      const nextProps = {
+        ...props,
+        updateID: 1,
+      };
+      wrapper.instance().updateDimensions(nextProps, props.settings, props.updateID);
+      expect(spy).toHaveBeenCalledWith(
+        10,
+        props.columns,
+        false,
+        props.rowNames,
+        props.display,
+      );
+    });
+
+    it('should update when cell size changes ', () => {
+      spy.mockClear();
+      const nextProps = {
+        ...props,
+        settings: {
+          ...props.settings,
+          cellSize: 20,
+        },
+      };
+      wrapper.instance().updateDimensions(nextProps, props.settings, props.updateID);
+      expect(spy).toHaveBeenCalledWith(
+        20,
+        props.columns,
+        false,
+        props.rowNames,
+        props.display,
+      );
+    });
+  });
+
+  describe('update translation', () => {
+    it('should do nothing when panel visibility does not change', () => {
+      props.updatePlotXY.mockClear();
+      const nextProps = {
+        ...props,
+        panel: false,
+        display: {
+          ...props.display,
+          plotFixed: false,
+        }
+      };
+      wrapper.instance().updateTranslate(nextProps, false);
+      expect(props.updatePlotXY).not.toHaveBeenCalled();
+    });
+
+    it('should do nothing when plot is fixed', () => {
+      props.updatePlotXY.mockClear();
+      const nextProps = {
+        ...props,
+        panel: true,
+        display: {
+          ...props.display,
+          plotFixed: true,
+        },
+      };
+      wrapper.instance().updateTranslate(nextProps, false);
+      expect(props.updatePlotXY).not.toHaveBeenCalled();
+    });
+
+    it('should update when panel is visibile and plot is not fixed changes', () => {
+      props.updatePlotXY.mockClear();
+      const nextProps = {
+        ...props,
+        panel: true,
+      };
+      wrapper.instance().updateTranslate(nextProps, false);
+      expect(props.updatePlotXY).toHaveBeenCalledWith(false, 0);
     });
   });
 });
