@@ -1,10 +1,12 @@
 import { SET_REFERENCE } from './columns-actions';
 import * as fileActions from '../interactive-file-actions';
 
-const Columns = (state = {
+export const defaultState = {
   ref: null,
   names: [],
-}, action) => {
+};
+
+const Columns = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {

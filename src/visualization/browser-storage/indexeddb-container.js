@@ -10,6 +10,7 @@ import indexedDBSupport from './indexeddb-support';
 import Notification from './notification';
 import saveSelector from '../../state/selectors/visualization/save-selector';
 import sessionState from '../session/session-state';
+import { parseFile } from '../../state/set/interactive-file-actions';
 
 const PAGELENGTH = 5;
 
@@ -17,9 +18,10 @@ export class IndexedDBContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sessionItemsTotal: 0,
       sessions: [],
-      sessionsPage: 1,
-      sessionsPageArr: [],
+      sessionsPage: [],
+      sessionsPageNumber: 1,
       storageSupport: indexedDBSupport(),
     };
   }
@@ -27,16 +29,17 @@ export class IndexedDBContainer extends Component {
     // Check for saved sessions.
     indexedDBGetAll().then((sessions) => {
       this.setState({
+        sessionItemsTotal: sessions.length,
         sessions,
-        sessionsPageArr: sessions.slice(0, PAGELENGTH),
+        sessionsPage: sessions.slice(0, PAGELENGTH),
       });
     });
   }
   changePage = (page) => {
     const startIndex = (page - 1) * PAGELENGTH;
     this.setState(({ sessions }) => ({
-      sessionsPage: page,
-      sessionsPageArr: sessions.slice(startIndex, startIndex + PAGELENGTH),
+      sessionsPage: sessions.slice(startIndex, startIndex + PAGELENGTH),
+      sessionsPageNumber: page,
     }));
   }
   deleteSession = (id, name) => {
@@ -46,12 +49,13 @@ export class IndexedDBContainer extends Component {
         return indexedDBGetAll();
       })
       .then((sessions) => {
-        this.setState(({ sessionsPage }) => {
-          const updatedPage = this.updatePage(sessions, sessionsPage);
+        this.setState(({ sessionsPageNumber }) => {
+          const updatedPage = this.updatePage(sessions, sessionsPageNumber);
           return {
+            sessionItemsTotal: sessions.length,
             sessions,
             sessionsPage: updatedPage.sessionsPage,
-            sessionsPageArr: updatedPage.sessionsPageArr,
+            sessionsPageNumber: updatedPage.sessionsPageNumber,
           };
         });
       })
@@ -61,7 +65,8 @@ export class IndexedDBContainer extends Component {
   }
   openSession = (id, name) => {
     indexedDBGet(id)
-      .then(() => {
+      .then((session) => {
+        this.props.parseFile(session);
         Notification(`Session '${name}' was loaded.`, true);
       })
       .catch(() => {
@@ -77,12 +82,13 @@ export class IndexedDBContainer extends Component {
         return indexedDBGetAll();
       })
       .then((sessions) => {
-        this.setState(({ sessionsPage }) => {
-          const updatedPage = this.updatePage(sessions, sessionsPage);
+        this.setState(({ sessionsPageNumber }) => {
+          const updatedPage = this.updatePage(sessions, sessionsPageNumber);
           return {
+            sessionItemsTotal: sessions.length,
             sessions,
             sessionsPage: updatedPage.sessionsPage,
-            sessionsPageArr: updatedPage.sessionsPageArr,
+            sessionsPageNumber: updatedPage.sessionsPageNumber,
           };
         });
       })
@@ -90,15 +96,15 @@ export class IndexedDBContainer extends Component {
         Notification(`Session '${name}' could not be saved.`, false);
       });
   }
-  updatePage = (sessions, sessionsPage) => {
-    const page = sessions.length > (sessionsPage - 1) * PAGELENGTH ?
-      sessionsPage
+  updatePage = (sessions, sessionsPageNumber) => {
+    const page = sessions.length > (sessionsPageNumber - 1) * PAGELENGTH ?
+      sessionsPageNumber
       :
-      sessionsPage - 1;
+      sessionsPageNumber - 1;
     const startIndex = (page - 1) * PAGELENGTH;
     return {
-      sessionsPage: page,
-      sessionsPageArr: sessions.slice(startIndex, startIndex + PAGELENGTH),
+      sessionsPage: sessions.slice(startIndex, startIndex + PAGELENGTH),
+      sessionsPageNumber: page,
     };
   }
   render() {
@@ -107,15 +113,17 @@ export class IndexedDBContainer extends Component {
       deleteSession: this.deleteSession,
       openSession: this.openSession,
       saveSessionBrowser: this.saveSessionBrowser,
-      sessionItemsTotal: this.state.sessions.length,
-      sessions: this.state.sessionsPageArr,
+      sessionItemsTotal: this.state.sessionItemsTotal,
+      sessions: this.state.sessions,
       sessionsPage: this.state.sessionsPage,
+      sessionsPageNumber: this.state.sessionsPageNumber,
       storageSupport: this.state.storageSupport,
     });
   }
 }
 
 IndexedDBContainer.propTypes = {
+  parseFile: PropTypes.func.isRequired,
   render: PropTypes.func.isRequired,
   save: PropTypes.shape({
     name: PropTypes.string,
@@ -127,8 +135,16 @@ const mapStateToProps = state => ({
   save: saveSelector(state),
 });
 
+/* istanbul ignore next */
+const mapDispatchToProps = dispatch => ({
+  parseFile: (file) => {
+    dispatch(parseFile(file));
+  },
+});
+
 const ConnectedContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(IndexedDBContainer);
 
 export default ConnectedContainer;

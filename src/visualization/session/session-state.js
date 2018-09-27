@@ -11,6 +11,8 @@ const keep = {
     'minimap',
     'panel',
     'parameters',
+    'position',
+    'positionCustomize',
     'rows',
     'save',
     'search',

@@ -2,7 +2,7 @@ import * as actions from './viz-analysis-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as tabActions from '../visualization/tab-actions';
 
-export const initState = {
+export const defaultState = {
   domain: {
     didFail: false,
     isRunning: false,
@@ -21,17 +21,17 @@ export const initState = {
   type: undefined,
 };
 
-const analysis = (state = initState, action) => {
+const analysis = (state = defaultState, action) => {
   let newState = {};
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
-      return initState;
+      return defaultState;
     case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.vizanalysis };
     case tabActions.REMOVE_TAB:
       if (action.tab !== 'customize') {
         newState = state;
-        newState[action.tab] = { ...initState[action.tab] };
+        newState[action.tab] = { ...defaultState[action.tab] };
         return newState;
       }
       return state;

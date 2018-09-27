@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Save session browser component with storage support and sessions should match snapshot 1`] = `
+exports[`Save session browser component with storage support and sessionsPage should match snapshot 1`] = `
 <div
   className="browser-session"
 >

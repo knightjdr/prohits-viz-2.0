@@ -1,6 +1,7 @@
-import ValidHex from '../../../helpers/valid-hex';
+import validHex from '../../../helpers/valid-hex';
+import { defaultState } from '../../../state/set/visualization/annotation-reducer';
 
-const Annotations = (userAnnotations = {}) => {
+const fillAnnotations = (userAnnotations = {}) => {
   const annotations = {};
 
   const {
@@ -10,12 +11,12 @@ const Annotations = (userAnnotations = {}) => {
     show,
   } = userAnnotations;
 
-  annotations.color = ValidHex(color) ? color : '#f44336';
-  annotations.fontSize = Number.isNaN(fontSize) ? 12 : fontSize;
-  annotations.list = Array.isArray(list) ? list : [];
-  annotations.show = typeof show === 'boolean' ? show : true;
+  annotations.color = validHex(color) ? color : defaultState.color;
+  annotations.fontSize = !Number.isNaN(fontSize) ? fontSize : defaultState.fontSize;
+  annotations.list = Array.isArray(list) ? list : defaultState.list;
+  annotations.show = typeof show === 'boolean' ? show : defaultState.show;
 
   return annotations;
 };
 
-export default Annotations;
+export default fillAnnotations;

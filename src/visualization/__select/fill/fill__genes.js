@@ -1,7 +1,7 @@
 import arrayContains from '../../../helpers/array-contains';
 import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 
-export const MapList = list => (
+export const mapList = list => (
   list.reduce(((obj, gene, index) => {
     const newGene = {};
     newGene[gene] = index;
@@ -9,7 +9,7 @@ export const MapList = list => (
   }), {})
 );
 
-const Genes = (userColumns, userGenes = {}, userRows) => {
+const fillGenes = (userColumns, userGenes = {}, userRows) => {
   const genes = {};
 
   const {
@@ -22,7 +22,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
   } = userGenes;
 
   // Ensure columns are consistent.
-  if (columns && Array.isArray(columns)) {
+  if (Array.isArray(columns)) {
     genes.columns = columns;
     if (
       columnMap &&
@@ -31,7 +31,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     ) {
       genes.columnMap = columnMap;
     } else {
-      genes.columnMap = MapList(columns);
+      genes.columnMap = mapList(columns);
     }
     if (
       columnsSelected &&
@@ -43,13 +43,13 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
       genes.columnsSelected = [];
     }
   } else {
-    genes.columnMap = MapList(userColumns.names);
+    genes.columnMap = mapList(userColumns.names);
     genes.columns = userColumns.names;
     genes.columnsSelected = [];
   }
 
   // Ensure rows are consistent.
-  if (rows && Array.isArray(rows)) {
+  if (Array.isArray(rows)) {
     genes.rows = rows;
     if (
       rowMap &&
@@ -58,7 +58,7 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     ) {
       genes.rowMap = rowMap;
     } else {
-      genes.rowMap = MapList(rows);
+      genes.rowMap = mapList(rows);
     }
     if (
       rowsSelected &&
@@ -71,11 +71,11 @@ const Genes = (userColumns, userGenes = {}, userRows) => {
     }
   } else {
     const rowArr = userRows.list.map(row => row.name);
-    genes.rowMap = MapList(rowArr);
+    genes.rowMap = mapList(rowArr);
     genes.rows = rowArr;
     genes.rowsSelected = [];
   }
   return genes;
 };
 
-export default Genes;
+export default fillGenes;

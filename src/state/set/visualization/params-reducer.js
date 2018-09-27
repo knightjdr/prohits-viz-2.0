@@ -5,7 +5,7 @@ const Parameters = (state = {}, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {};
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return { ...action.file.params };
+      return { ...action.file.parameters };
     default:
       return state;
   }

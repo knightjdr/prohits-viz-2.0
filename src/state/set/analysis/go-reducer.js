@@ -2,12 +2,12 @@ import * as actions from './go-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as tabActions from '../visualization/tab-actions';
 
-export const initState = {
+export const defaultState = {
   annotation: '',
 };
 
 const go = (
-  state = initState,
+  state = defaultState,
   action,
 ) => {
   switch (action.type) {
@@ -17,12 +17,12 @@ const go = (
       };
     }
     case fileActions.CLEAR_INTERACTIVE_FILE:
-      return { ...initState };
+      return { ...defaultState };
     case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.go };
     case tabActions.REMOVE_TAB:
       if (action.tab === 'go') {
-        return { ...initState };
+        return { ...defaultState };
       }
       return state;
     case actions.SET_GO_ANNOTATION:

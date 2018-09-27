@@ -1,6 +1,7 @@
-import ValidHex from '../../../helpers/valid-hex';
+import validHex from '../../../helpers/valid-hex';
+import { defaultState } from '../../../state/set/visualization/marker-reducer';
 
-const Markers = (userMarkers = {}) => {
+const fillMarkers = (userMarkers = {}) => {
   const markers = {};
 
   const {
@@ -10,12 +11,12 @@ const Markers = (userMarkers = {}) => {
     record,
   } = userMarkers;
 
-  markers.color = ValidHex(color) ? color : '#000000';
-  markers.list = Array.isArray(list) ? list : [];
-  markers.record = typeof record === 'boolean' ? record : false;
-  markers.show = typeof show === 'boolean' ? show : true;
+  markers.color = validHex(color) ? color : defaultState.color;
+  markers.list = Array.isArray(list) ? list : defaultState.list;
+  markers.record = typeof record === 'boolean' ? record : defaultState.record;
+  markers.show = typeof show === 'boolean' ? show : defaultState.show;
 
   return markers;
 };
 
-export default Markers;
+export default fillMarkers;

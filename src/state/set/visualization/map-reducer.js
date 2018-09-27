@@ -2,7 +2,7 @@ import * as actions from './map-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
 
-const defaultState = {
+export const defaultState = {
   attached: true,
   image: null,
   isSyncing: false,

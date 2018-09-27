@@ -1,4 +1,4 @@
-import Go, { initState } from './go-reducer';
+import Go, { defaultState } from './go-reducer';
 import * as actions from './go-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as tabActions from '../visualization/tab-actions';
@@ -6,7 +6,7 @@ import * as tabActions from '../visualization/tab-actions';
 describe('Analysis GO table set reducer', () => {
   it('should return initial state', () => {
     const action = {};
-    const expectedState = initState;
+    const expectedState = defaultState;
     expect(Go(undefined, action)).toEqual(expectedState);
   });
 
@@ -15,7 +15,7 @@ describe('Analysis GO table set reducer', () => {
       type: actions.CLEAR_GO_ANNOTATION,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       annotation: '',
     };
     expect(Go(undefined, action)).toEqual(expectedState);
@@ -25,7 +25,7 @@ describe('Analysis GO table set reducer', () => {
     const action = {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
-    const expectedState = { ...initState };
+    const expectedState = { ...defaultState };
     expect(Go(undefined, action)).toEqual(expectedState);
   });
 
@@ -46,7 +46,7 @@ describe('Analysis GO table set reducer', () => {
         tab: 'go',
         type: tabActions.REMOVE_TAB,
       };
-      const expectedState = { ...initState };
+      const expectedState = { ...defaultState };
       expect(Go({ annotation: 'test' }, action)).toEqual(expectedState);
     });
 
@@ -66,7 +66,7 @@ describe('Analysis GO table set reducer', () => {
       type: actions.SET_GO_ANNOTATION,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       annotation: 'text',
     };
     expect(Go(undefined, action)).toEqual(expectedState);

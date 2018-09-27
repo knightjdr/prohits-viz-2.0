@@ -1,42 +1,49 @@
-import Annotations from './fill__annotations';
-import Columns from './fill__columns';
-import Genes from './fill__genes';
-import Map from './fill__map';
-import Markers from './fill__markers';
-import Position from './fill__position';
-import Rows from './fill__rows';
-import Save from './fill__save';
-import Settings from './fill__settings';
+import fillAnnotations from './fill__annotations';
+import fillColumns from './fill__columns';
+import fillGenes from './fill__genes';
+import fillGo from './fill__go';
+import fillMap from './fill__minimap';
+import fillMarkers from './fill__markers';
+import fillParameters from './fill__parameters';
+import fillPosition from './fill__position';
+import fillRows from './fill__rows';
+import fillSave from './fill__save';
+import fillSearch from './fill__search';
+import fillSettings from './fill__settings';
+import fillTabs from './fill__tabs';
 
 const Heatmap = (name, file) => {
   const {
     annotations,
     columns,
     genes,
+    go,
     markers,
     minimap,
-    params,
+    parameters,
     position,
+    positionCustomize,
     rows,
     save,
+    search,
     settings,
+    tabs,
   } = file;
   return {
-    annotations: Annotations(annotations),
-    columns: Columns(columns),
-    genes: Genes(columns, genes, rows),
-    markers: Markers(markers),
-    minimap: Map(minimap),
-    params: {
-      ...params,
-      /* Use the session name (file.name) by default or the name specified
-      ** in the params or lastly the file name. */
-      name: file.name || params.name || name,
-    },
-    position: Position(position),
-    rows: Rows(rows),
-    save: Save(save),
-    settings: Settings(params.imageType, settings),
+    annotations: fillAnnotations(annotations),
+    columns: fillColumns(columns),
+    genes: fillGenes(columns, genes, rows),
+    go: fillGo(go),
+    markers: fillMarkers(markers),
+    minimap: fillMap(minimap),
+    parameters: fillParameters(parameters),
+    position: fillPosition(position),
+    positionCustomize: fillPosition(positionCustomize),
+    rows: fillRows(rows),
+    save: fillSave(save),
+    search: fillSearch(search),
+    settings: fillSettings(settings),
+    tabs: fillTabs(tabs),
   };
 };
 export default Heatmap;

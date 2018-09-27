@@ -1,10 +1,13 @@
 import * as actions from './tab-actions';
+import * as fileActions from '../interactive-file-actions';
 
-const Tabs = (state = {
+export const defaultState = {
   available: ['main'],
   selected: 'main',
   show: false,
-}, action) => {
+};
+
+const Tabs = (state = defaultState, action) => {
   let newTabs;
   switch (action.type) {
     case actions.ADD_TAB:
@@ -14,6 +17,14 @@ const Tabs = (state = {
         available: newTabs,
         selected: newTabs[newTabs.indexOf(action.tab)],
         show: true,
+      };
+    case fileActions.CLEAR_INTERACTIVE_FILE:
+      return defaultState;
+    case fileActions.PARSE_INTERACTIVE_FILE:
+      return {
+        available: [...action.file.tabs.available],
+        selected: action.file.tabs.selected,
+        show: false,
       };
     case actions.REMOVE_TAB:
       newTabs = state.available.filter(item => item !== action.tab);

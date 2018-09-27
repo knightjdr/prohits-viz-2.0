@@ -2,12 +2,14 @@ import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
 
-const Annotations = (state = {
+export const defaultState = {
   color: '#f44336',
   fontSize: 12,
   list: [],
   show: true,
-}, action) => {
+};
+
+const Annotations = (state = defaultState, action) => {
   let newList;
   switch (action.type) {
     case actions.ADD_ANNOTATION:

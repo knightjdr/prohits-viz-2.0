@@ -19,7 +19,7 @@ describe('ParamsReducer set reducer', () => {
   it('should handle PARSE_INTERACTIVE_FILE action', () => {
     const action = {
       file: {
-        params: {
+        parameters: {
           a: 'test1',
           b: 'test2',
           c: 'test3',

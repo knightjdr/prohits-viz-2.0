@@ -2,12 +2,12 @@ import * as actions from './viz-analysis-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as tabActions from '../visualization/tab-actions';
 
-import analysisReducer, { initState } from './viz-analysis-reducer';
+import analysisReducer, { defaultState } from './viz-analysis-reducer';
 
 describe('Analysis set reducer', () => {
   it('should return the initial state', () => {
     const action = {};
-    const expectedState = initState;
+    const expectedState = defaultState;
     expect(analysisReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -15,7 +15,7 @@ describe('Analysis set reducer', () => {
     const action = {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
-    const expectedState = initState;
+    const expectedState = defaultState;
     expect(analysisReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -30,7 +30,7 @@ describe('Analysis set reducer', () => {
 
   describe('when removing a tab', () => {
     const currentState = {
-      ...initState,
+      ...defaultState,
       go: {
         didFail: true,
         isRunning: false,
@@ -43,7 +43,7 @@ describe('Analysis set reducer', () => {
         tab: 'go',
         type: tabActions.REMOVE_TAB,
       };
-      const expectedState = initState;
+      const expectedState = defaultState;
       expect(analysisReducer(currentState, action)).toEqual(expectedState);
     });
 
@@ -82,7 +82,7 @@ describe('Analysis set reducer', () => {
       type: actions.SET_VIZ_ANALYSIS_TYPE,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       type: 'go',
     };
     expect(analysisReducer(undefined, action)).toEqual(expectedState);
@@ -95,7 +95,7 @@ describe('Analysis set reducer', () => {
       type: actions.SET_VIZ_ANALYSIS_RESULTS,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       go: {
         didFail: false,
         isRunning: false,

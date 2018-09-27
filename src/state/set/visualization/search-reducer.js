@@ -1,30 +1,31 @@
 import * as actions from './search-actions';
-import { RESTORE_ROWS, UPDATE_ROWS } from './rows-actions';
+import * as fileActions from '../interactive-file-actions';
+import * as rowActions from './rows-actions';
 
-const Search = (state = {
+export const defaultState = {
   columns: {},
   match: false,
   rows: {},
   searched: false,
   term: '',
-}, action) => {
+};
+
+const Search = (state = defaultState, action) => {
   switch (action.type) {
+    case fileActions.CLEAR_INTERACTIVE_FILE:
+      return defaultState;
     case actions.CLEAR_SEARCH:
+      return defaultState;
+    case fileActions.PARSE_INTERACTIVE_FILE:
       return {
-        columns: {},
-        match: false,
-        rows: {},
-        searched: false,
-        term: '',
+        columns: { ...action.file.search.columns },
+        match: action.file.search.match,
+        rows: { ...action.file.search.rows },
+        searched: action.file.searchsearched,
+        term: action.file.searchterm,
       };
-    case RESTORE_ROWS:
-      return {
-        columns: {},
-        match: false,
-        rows: {},
-        searched: false,
-        term: '',
-      };
+    case rowActions.RESTORE_ROWS:
+      return defaultState;
     case actions.SET_SEARCH_RESULTS:
       return {
         columns: { ...action.columns },
@@ -40,14 +41,8 @@ const Search = (state = {
         searched: false,
         term: action.term,
       };
-    case UPDATE_ROWS:
-      return {
-        columns: {},
-        match: false,
-        rows: {},
-        searched: false,
-        term: '',
-      };
+    case rowActions.UPDATE_ROWS:
+      return defaultState;
     default:
       return state;
   }

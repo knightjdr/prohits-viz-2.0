@@ -1,13 +1,15 @@
 import deepCopy from '../../../helpers/deep-copy';
-import * as fileActions from '../interactive-file-actions';
 import * as actions from './marker-actions';
+import * as fileActions from '../interactive-file-actions';
 
-const Markers = (state = {
+export const defaultState = {
   color: '#000000',
   list: [],
   record: false,
   show: true,
-}, action) => {
+};
+
+const Markers = (state = defaultState, action) => {
   let newList;
   switch (action.type) {
     case actions.ADD_MARKER:
@@ -47,6 +49,7 @@ const Markers = (state = {
         color: action.file.markers.color,
         list: deepCopy(action.file.markers.list),
         record: action.file.markers.record,
+        show: action.file.markers.show,
       };
     case actions.SET_MARKER_COLOR:
       return {

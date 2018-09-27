@@ -1,10 +1,10 @@
-import SettingsReducer from './settings-reducer';
+import SettingsReducer, { defaultState } from './settings-reducer';
 import * as actions from './settings-actions';
 import * as fileActions from '../interactive-file-actions';
 
 const DefaultState = {
-  current: {},
-  default: {},
+  current: defaultState,
+  default: defaultState,
   reset: false,
 };
 
@@ -30,14 +30,13 @@ describe('SettingsReducer set reducer', () => {
       file: {
         settings: {
           current: { fillColor: 'greenBlack' },
-          default: { fillColor: 'blueBlack' },
         },
       },
       type: fileActions.PARSE_INTERACTIVE_FILE,
     };
     const expectedState = {
       current: { fillColor: 'greenBlack' },
-      default: { fillColor: 'blueBlack' },
+      default: defaultState,
       reset: false,
     };
     expect(SettingsReducer(undefined, action)).toEqual(expectedState);

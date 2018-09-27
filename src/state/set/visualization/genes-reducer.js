@@ -3,14 +3,16 @@ import * as actions from './genes-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as rowActions from './rows-actions';
 
-const Genes = (state = {
+export const defaultState = {
   columnMap: {},
   columns: [],
   columnsSelected: [],
   rowMap: {},
   rows: [],
   rowsSelected: [],
-}, action) => {
+};
+
+const Genes = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {

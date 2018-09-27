@@ -2,13 +2,15 @@ import deepCopy from '../../../helpers/deep-copy';
 import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
 
-const Rows = (state = {
+export const defaultState = {
   direction: null,
   id: null,
   list: [],
   order: [],
   sortBy: null,
-}, action) => {
+};
+
+const Rows = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {

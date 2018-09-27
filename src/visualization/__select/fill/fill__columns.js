@@ -1,4 +1,6 @@
-const Columns = (userColumns) => {
+import { defaultState } from '../../../state/set/visualization/columns-reducer';
+
+const fillColumns = (userColumns) => {
   const columns = {};
 
   const {
@@ -6,11 +8,11 @@ const Columns = (userColumns) => {
     names,
   } = userColumns;
 
+  columns.names = Array.isArray(names) ? names : defaultState.names;
   // Ensure ref is within names.
-  columns.ref = !Number.isNaN(ref) && ref < names.length ? ref : null;
-  columns.names = names;
+  columns.ref = typeof ref === 'string' && columns.names.includes(ref) ? ref : null;
 
   return columns;
 };
 
-export default Columns;
+export default fillColumns;

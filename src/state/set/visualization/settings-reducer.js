@@ -1,36 +1,44 @@
+import * as actions from './settings-actions';
 import * as fileActions from '../interactive-file-actions';
 
-import {
-  RESET_SETTINGS,
-  UPDATE_SETTING,
-} from './settings-actions';
+export const defaultState = {
+  abundanceCap: 50,
+  cellSize: 20,
+  edgeColor: 'blueBlack',
+  fillColor: 'blueBlack',
+  imageType: 'heatmap',
+  invertColor: false,
+  minAbundance: 0,
+  primaryFilter: 0.01,
+  secondaryFilter: 0.05,
+};
 
 const Settings = (state = {
-  current: {},
-  default: {},
+  current: defaultState,
+  default: defaultState,
   reset: false,
 }, action) => {
   const updateState = {};
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
-        current: {},
-        default: {},
+        current: defaultState,
+        default: defaultState,
         reset: false,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
       return {
         current: { ...action.file.settings.current },
-        default: { ...action.file.settings.default },
+        default: { ...defaultState },
         reset: false,
       };
-    case RESET_SETTINGS:
+    case actions.RESET_SETTINGS:
       return {
         ...state,
         current: { ...state.default },
         reset: true,
       };
-    case UPDATE_SETTING:
+    case actions.UPDATE_SETTING:
       updateState[action.setting] = action.value;
       return {
         ...state,

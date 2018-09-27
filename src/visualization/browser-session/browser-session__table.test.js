@@ -4,14 +4,14 @@ import renderTable from './browser-session__table';
 
 const props = {
   sessionItemsTotal: 5,
-  sessions: [
+  sessionsPage: [
     { id: 1, name: 'test1', date: 'July 18, 2018' },
     { id: 2, name: 'test2', date: 'July 18, 2018' },
     { id: 3, name: 'test3', date: 'July 18, 2018' },
     { id: 4, name: 'test4', date: 'July 18, 2018' },
     { id: 5, name: 'test5', date: 'July 18, 2018' },
   ],
-  sessionsPage: 1,
+  sessionsPageNumber: 1,
 };
 
 const changePage = jest.fn();
@@ -42,7 +42,8 @@ describe('Save session browser component', () => {
           changePage,
           deleteSession,
           openSession,
-          sessions: [],
+          sessionItemsTotal: 0,
+          sessionsPage: [],
           storageSupport: true,
         },
       ),
@@ -50,7 +51,7 @@ describe('Save session browser component', () => {
     expect(wrapper.find('.browser-session').length).toBe(0);
   });
 
-  describe('with storage support and sessions', () => {
+  describe('with storage support and sessionsPage', () => {
     let wrapper;
 
     beforeAll(() => {

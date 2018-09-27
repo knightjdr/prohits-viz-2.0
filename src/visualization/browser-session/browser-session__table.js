@@ -12,13 +12,13 @@ const BrowserSessionTable = ({
   deleteSession,
   openSession,
   sessionItemsTotal,
-  sessions,
   sessionsPage,
+  sessionsPageNumber,
   storageSupport,
 }) => {
   if (
     !storageSupport ||
-    sessions.length <= 0
+    sessionItemsTotal <= 0
   ) {
     return null;
   }
@@ -34,7 +34,7 @@ const BrowserSessionTable = ({
       </div>
       <div className="browser-session-grid">
         {
-          sessions.map(session => ([
+          sessionsPage.map(session => ([
             <div key={`${session.id}-id`}>{session.id}</div>,
             <div
               className="browser-session_ellipsis"
@@ -81,7 +81,7 @@ const BrowserSessionTable = ({
       </div>
       <div className="browser-session__pageination">
         <Pagination
-          current={sessionsPage}
+          current={sessionsPageNumber}
           hideOnSinglePage
           onChange={changePage}
           pageSize={5}
@@ -97,14 +97,14 @@ BrowserSessionTable.propTypes = {
   deleteSession: PropTypes.func.isRequired,
   openSession: PropTypes.func.isRequired,
   sessionItemsTotal: PropTypes.number.isRequired,
-  sessions: PropTypes.arrayOf(
+  sessionsPage: PropTypes.arrayOf(
     PropTypes.shape({
       date: PropTypes.string,
       id: PropTypes.number,
       name: PropTypes.string,
     }),
   ).isRequired,
-  sessionsPage: PropTypes.number.isRequired,
+  sessionsPageNumber: PropTypes.number.isRequired,
   storageSupport: PropTypes.bool.isRequired,
 };
 

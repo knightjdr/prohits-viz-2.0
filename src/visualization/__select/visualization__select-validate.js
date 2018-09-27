@@ -18,7 +18,7 @@ const SelectValidate = (jsonString) => {
   }
 
   const { columns, params, rows } = json;
-  
+
   // The file should have a "params" key that is an object.
   if (
     !Object.prototype.hasOwnProperty.call(json, 'params') ||

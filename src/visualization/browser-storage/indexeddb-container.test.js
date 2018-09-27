@@ -31,6 +31,8 @@ jest.mock('./notification');
 jest.mock('../session/session-state');
 sessionState.mockReturnValue({});
 
+const parseFile = jest.fn();
+
 const sleep = ms => (
   new Promise(resolve => setTimeout(resolve, ms))
 );
@@ -41,6 +43,7 @@ describe('Panel save container', () => {
   beforeAll(() => {
     wrapper = shallow(
       <IndexedDBContainer
+        parseFile={parseFile}
         render={jest.fn()}
         save={{
           name: '',
@@ -54,12 +57,12 @@ describe('Panel save container', () => {
       expect(wrapper.state('sessions')).toEqual(sessions);
     });
 
-    it('should set sessionsPage', () => {
-      expect(wrapper.state('sessionsPage')).toBe(1);
+    it('should set sessionsPageNumber', () => {
+      expect(wrapper.state('sessionsPageNumber')).toBe(1);
     });
 
-    it('should set sessionsPageArr', () => {
-      expect(wrapper.state('sessionsPageArr')).toEqual(sessions.slice(0, 5));
+    it('should set sessionsPage', () => {
+      expect(wrapper.state('sessionsPage')).toEqual(sessions.slice(0, 5));
     });
 
     it('should set storageSupport', () => {
@@ -73,17 +76,17 @@ describe('Panel save container', () => {
     });
 
     it('should change session page', () => {
-      expect(wrapper.state('sessionsPage')).toBe(2);
+      expect(wrapper.state('sessionsPageNumber')).toBe(2);
     });
 
     it('should change session page array', () => {
-      expect(wrapper.state('sessionsPageArr')).toEqual(sessions.slice(5, 7));
+      expect(wrapper.state('sessionsPage')).toEqual(sessions.slice(5, 7));
     });
   });
 
   describe('successfully deleting session', () => {
     beforeAll(async (done) => {
-      wrapper.setState({ sessionsPage: 1 });
+      wrapper.setState({ sessionsPageNumber: 1 });
       notification.mockClear();
       indexedDBDelete.mockImplementationOnce(() => Promise.resolve());
       indexedDBGetAll.mockImplementationOnce(() => Promise.resolve(sessions.slice(1, 7)));
@@ -101,11 +104,11 @@ describe('Panel save container', () => {
     });
 
     it('should update page', () => {
-      expect(wrapper.state('sessionsPage')).toBe(1);
+      expect(wrapper.state('sessionsPageNumber')).toBe(1);
     });
 
     it('should display notification on deleting session item and update page items', () => {
-      expect(wrapper.state('sessionsPageArr')).toEqual(sessions.slice(1, 6));
+      expect(wrapper.state('sessionsPage')).toEqual(sessions.slice(1, 6));
     });
   });
 
@@ -117,12 +120,22 @@ describe('Panel save container', () => {
     expect(notification).toHaveBeenCalledWith('Session \'a\' could not be deleted.', false);
   });
 
-  it('should display notification on opening a session', async () => {
-    notification.mockClear();
-    indexedDBGet.mockImplementationOnce(() => Promise.resolve());
-    wrapper.instance().openSession(1, 'a');
-    await sleep(200);
-    expect(notification).toHaveBeenCalledWith('Session \'a\' was loaded.', true);
+  describe('open a session', () => {
+    beforeAll(async (done) => {
+      notification.mockClear();
+      indexedDBGet.mockImplementationOnce(() => Promise.resolve({}));
+      wrapper.instance().openSession(1, 'a');
+      await sleep(200);
+      done();
+    });
+
+    it('should parse file', () => {
+      expect(parseFile).toHaveBeenCalledWith({});
+    });
+
+    it('should display notification on opening a session', () => {
+      expect(notification).toHaveBeenCalledWith('Session \'a\' was loaded.', true);
+    });
   });
 
   it('should display notification when a session could not be opened', async () => {
@@ -159,11 +172,11 @@ describe('Panel save container', () => {
     });
 
     it('should set page', () => {
-      expect(wrapper.state('sessionsPage')).toBe(1);
+      expect(wrapper.state('sessionsPageNumber')).toBe(1);
     });
 
     it('should set page arr', () => {
-      expect(wrapper.state('sessionsPageArr')).toEqual(sessions.slice(0, 5));
+      expect(wrapper.state('sessionsPage')).toEqual(sessions.slice(0, 5));
     });
   });
 
@@ -201,11 +214,11 @@ describe('Panel save container', () => {
     });
 
     it('should set page', () => {
-      expect(wrapper.state('sessionsPage')).toBe(1);
+      expect(wrapper.state('sessionsPageNumber')).toBe(1);
     });
 
     it('should set page arr', () => {
-      expect(wrapper.state('sessionsPageArr')).toEqual(sessions.slice(0, 5));
+      expect(wrapper.state('sessionsPage')).toEqual(sessions.slice(0, 5));
     });
   });
 
@@ -224,13 +237,13 @@ describe('Panel save container', () => {
 
   it('should update page items when session array has length to support current page selection', () => {
     const newPage = wrapper.instance().updatePage(sessions, 1);
-    expect(newPage.sessionsPage).toBe(1);
-    expect(newPage.sessionsPageArr).toEqual(sessions.slice(0, 5));
+    expect(newPage.sessionsPageNumber).toBe(1);
+    expect(newPage.sessionsPage).toEqual(sessions.slice(0, 5));
   });
 
   it('should update page items when session array does not have length to support current page selection', () => {
     const newPage = wrapper.instance().updatePage(sessions, 3);
-    expect(newPage.sessionsPage).toBe(2);
-    expect(newPage.sessionsPageArr).toEqual(sessions.slice(5, 7));
+    expect(newPage.sessionsPageNumber).toBe(2);
+    expect(newPage.sessionsPage).toEqual(sessions.slice(5, 7));
   });
 });
