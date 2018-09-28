@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FillJson from './fill/fill';
+import FillJson from '../fill/fill';
 import ValidateJson from './visualization__select-validate';
 import { SelectContainer } from './visualization__select-container';
 
 // Mock validation.
 jest.mock('./visualization__select-validate');
-jest.mock('./fill/fill');
+jest.mock('../fill/fill');
 
 const testFile = { fileList: [{ originFileObj: new File([''], 'samplefile.txt', { type: 'text/plain' }) }] };
 

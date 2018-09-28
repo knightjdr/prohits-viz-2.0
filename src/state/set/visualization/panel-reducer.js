@@ -1,7 +1,9 @@
 import * as actions from './panel-actions';
 import * as fileActions from '../interactive-file-actions';
 
-const Panel = (state = false, action) => {
+export const defaultState = false;
+
+const Panel = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return false;

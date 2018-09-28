@@ -1,16 +1,12 @@
-import TabReducer from './tab-reducer';
+import TabReducer, { defaultState } from './tab-reducer';
 import * as actions from './tab-actions';
+import * as fileActions from '../interactive-file-actions';
 
-const DefaultState = {
-  available: ['main'],
-  selected: 'main',
-  show: false,
-};
 
 describe('Tab set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = DefaultState;
+    const expectedState = defaultState;
     expect(TabReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -47,6 +43,38 @@ describe('Tab set reducer', () => {
     });
   });
 
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_INTERACTIVE_FILE,
+    };
+    const expectedState = defaultState;
+    const initialState = {
+      available: ['main', 'customize'],
+      selected: 'main',
+      show: true,
+    };
+    expect(TabReducer(initialState, action)).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
+      file: {
+        tabs: {
+          available: ['main', 'go'],
+          selected: 'main',
+          show: false,
+        },
+      },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
+    };
+    const expectedState = {
+      available: ['main', 'go'],
+      selected: 'main',
+      show: false,
+    };
+    expect(TabReducer(undefined, action)).toEqual(expectedState);
+  });
+
   describe('REMOVE_TAB action', () => {
     it('should remove tab that is not currently selected', () => {
       const action = {
@@ -54,7 +82,7 @@ describe('Tab set reducer', () => {
         type: actions.REMOVE_TAB,
       };
       const expectedState = {
-        ...DefaultState,
+        ...defaultState,
       };
       const initialState = {
         available: ['main', 'customize'],
@@ -70,7 +98,7 @@ describe('Tab set reducer', () => {
         type: actions.REMOVE_TAB,
       };
       const expectedState = {
-        ...DefaultState,
+        ...defaultState,
       };
       const initialState = {
         available: ['main', 'customize'],

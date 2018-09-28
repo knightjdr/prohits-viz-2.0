@@ -1,4 +1,4 @@
-import { defaultState } from '../../../state/set/visualization/columns-reducer';
+import { defaultState } from '../../state/set/visualization/columns-reducer';
 
 const fillColumns = (userColumns) => {
   const columns = {};

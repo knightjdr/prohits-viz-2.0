@@ -81,7 +81,7 @@ exports[`Map panel should render when attached to sidepanel should match snapsho
     </button>
     Mini map
   </div>
-  <MapContent
+  <Component
     annotations={Object {}}
     isSyncing={false}
     markers={Object {}}

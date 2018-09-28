@@ -1,9 +1,11 @@
 import * as fileActions from '../interactive-file-actions';
 
-const Parameters = (state = {}, action) => {
+export const defaultState = {};
+
+const Parameters = (state = { ...defaultState }, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
-      return {};
+      return { ...defaultState };
     case fileActions.PARSE_INTERACTIVE_FILE:
       return { ...action.file.parameters };
     default:

@@ -1,5 +1,5 @@
-import validHex from '../../../helpers/valid-hex';
-import { defaultState } from '../../../state/set/visualization/marker-reducer';
+import validHex from '../../helpers/valid-hex';
+import { defaultState } from '../../state/set/visualization/marker-reducer';
 
 const fillMarkers = (userMarkers = {}) => {
   const markers = {};

@@ -3,9 +3,9 @@ import * as fileActions from '../interactive-file-actions';
 
 export const defaultState = {
   abundanceCap: 50,
-  cellSize: 20,
+  cellSize: 15,
   edgeColor: 'blueBlack',
-  fillColor: 'blueBlack',
+  fillColor: 'redBlack',
   imageType: 'heatmap',
   invertColor: false,
   minAbundance: 0,

@@ -1,7 +1,7 @@
-import validateUri from '../../../helpers/validate-uri';
-import { defaultState } from '../../../state/set/visualization/map-reducer';
+import validateUri from '../../helpers/validate-uri';
+import { defaultState } from '../../state/set/visualization/map-reducer';
 
-const fillMinimap = (userMap) => {
+const fillMinimap = (userMap = {}) => {
   const minimap = {};
 
   const {

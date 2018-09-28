@@ -1,10 +1,10 @@
-import display, { initState } from './display-reducer';
+import display, { defaultState } from './display-reducer';
 import * as actions from './display-actions';
 
 describe('Display set reducer', () => {
   it('should return a default initial state', () => {
     const action = {};
-    const expectedState = initState;
+    const expectedState = defaultState;
     expect(display(undefined, action)).toEqual(expectedState);
   });
 
@@ -14,7 +14,7 @@ describe('Display set reducer', () => {
       type: actions.CHANGE_PANEL_TAB,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       tab: 'map',
     };
     expect(display(undefined, action)).toEqual(expectedState);
@@ -25,7 +25,7 @@ describe('Display set reducer', () => {
       type: actions.RESET_MAP_POSITION,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       floatMapRight: 20,
       floatMapTop: 100,
     };
@@ -37,7 +37,7 @@ describe('Display set reducer', () => {
       type: actions.TOGGLE_SELECTION_BOX,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       selectionBox: false,
       tooltips: true,
     };
@@ -49,7 +49,7 @@ describe('Display set reducer', () => {
       type: actions.TOGGLE_TOOLTIPS,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       selectionBox: false,
       tooltips: true,
     };
@@ -63,7 +63,7 @@ describe('Display set reducer', () => {
       type: actions.UPDATE_MAP_POSITION,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       floatMapRight: 100,
       floatMapTop: 200,
     };
@@ -77,7 +77,7 @@ describe('Display set reducer', () => {
       type: actions.UPDATE_PLOT_POSITION,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       plotFixed: true,
       plotTranslate: -200,
     };

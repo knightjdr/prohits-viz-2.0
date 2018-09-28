@@ -1,4 +1,6 @@
-import { defaultState } from '../../../state/set/visualization/save-reducer';
+import { defaultState } from '../../state/set/visualization/save-reducer';
+
+const acceptedTypes = ['pdf', 'png', 'svg'];
 
 const fillSave = (userSave = {}) => {
   const save = {};
@@ -9,7 +11,6 @@ const fillSave = (userSave = {}) => {
   } = userSave;
 
   // Ensure imageType is valid.
-  const acceptedTypes = ['pdf', 'png', 'svg'];
   save.imageType = imageType && acceptedTypes.includes(imageType) ?
     imageType
     : defaultState.imageType;

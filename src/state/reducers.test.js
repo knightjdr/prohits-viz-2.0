@@ -30,10 +30,11 @@ import VizAnalysisForm from './set/analysis/viz-analysis-form-reducer';
 const file = {
   annotations: {
     color: '#000000',
+    fontSize: 12,
     list: [],
-    move: true,
     show: false,
   },
+  customize: [],
   columns: { ref: 'a', names: ['a', 'b', 'c'] },
   genes: {
     columnMap: { a: 0, b: 1, c: 2 },
@@ -45,7 +46,8 @@ const file = {
   },
   markers: { color: '#ff0000', list: [], record: true },
   minimap: { image: 'testimage', synced: true, syncImage: null },
-  params: { fillColor: 'blueBlack' },
+  panel: true,
+  parameters: { fillColor: 'blueBlack' },
   position: { x: 0, y: 0 },
   rows: {
     direction: 'asc',
@@ -58,9 +60,21 @@ const file = {
     sortBy: 1,
   },
   save: { imageType: 'png', name: 'test' },
+  search: {
+    columns: {},
+    match: false,
+    rows: {},
+    searched: false,
+    term: '',
+  },
   settings: {
     current: { fillColor: 'greenBlack' },
     default: { fillColor: 'blueBlack' },
+  },
+  tabs: {
+    available: ['main', 'go'],
+    selected: 'main',
+    show: false,
   },
 };
 

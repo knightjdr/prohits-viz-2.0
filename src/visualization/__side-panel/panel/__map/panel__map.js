@@ -4,7 +4,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { faPaperclip, faReply, faSync } from '@fortawesome/pro-regular-svg-icons';
 
-import MapContents from './panel__map-contents';
+import { MapContent } from './panel__map-contents';
 
 import './panel__map.css';
 
@@ -51,7 +51,7 @@ const Map = ({
     </div>
     {
       isAttached ?
-        <MapContents
+        <MapContent
           annotations={annotations}
           isSyncing={isSyncing}
           markers={markers}

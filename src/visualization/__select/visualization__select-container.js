@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import FillJson from './fill/fill';
+import FillJson from '../fill/fill';
 import SelectType from './visualization__select-type';
 import ValidateJson from './visualization__select-validate';
 import { parameterSelectorProp } from '../../state/selectors/visualization/params-selector';

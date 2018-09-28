@@ -6,10 +6,9 @@ import * as tabActions from '../../visualization/tab-actions';
 
 import deepCopy from '../../../../helpers/deep-copy';
 
-const data = (
-  state = [],
-  action,
-) => {
+export const defaultState = [];
+
+const data = (state = defaultState, action) => {
   const id = state.length > 0 ? state[state.length - 1].id + 1 : 0;
   switch (action.type) {
     case actions.ADD_CUSTOMIZE_STATE:

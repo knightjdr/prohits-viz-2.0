@@ -44,20 +44,10 @@ export class IndexedDBContainer extends Component {
   }
   deleteSession = (id, name) => {
     indexedDBDelete(id)
-      .then(() => {
-        Notification(`Session '${name}' was deleted.`, true);
-        return indexedDBGetAll();
-      })
+      .then(() => indexedDBGetAll())
       .then((sessions) => {
-        this.setState(({ sessionsPageNumber }) => {
-          const updatedPage = this.updatePage(sessions, sessionsPageNumber);
-          return {
-            sessionItemsTotal: sessions.length,
-            sessions,
-            sessionsPage: updatedPage.sessionsPage,
-            sessionsPageNumber: updatedPage.sessionsPageNumber,
-          };
-        });
+        Notification(`Session '${name}' was deleted.`, true);
+        this.updateSession(sessions);
       })
       .catch(() => {
         Notification(`Session '${name}' could not be deleted.`, false);
@@ -77,20 +67,10 @@ export class IndexedDBContainer extends Component {
     const name = this.props.save.name || 'unnamed session';
     const saveState = sessionState(name);
     indexedDBSave(saveState)
-      .then(() => {
-        Notification(`Session '${name}' was saved.`, true);
-        return indexedDBGetAll();
-      })
+      .then(() => indexedDBGetAll())
       .then((sessions) => {
-        this.setState(({ sessionsPageNumber }) => {
-          const updatedPage = this.updatePage(sessions, sessionsPageNumber);
-          return {
-            sessionItemsTotal: sessions.length,
-            sessions,
-            sessionsPage: updatedPage.sessionsPage,
-            sessionsPageNumber: updatedPage.sessionsPageNumber,
-          };
-        });
+        Notification(`Session '${name}' was saved.`, true);
+        this.updateSession(sessions);
       })
       .catch(() => {
         Notification(`Session '${name}' could not be saved.`, false);
@@ -107,6 +87,17 @@ export class IndexedDBContainer extends Component {
       sessionsPageNumber: page,
     };
   }
+  updateSession = (sessions) => {
+    this.setState(({ sessionsPageNumber }) => {
+      const updatedPage = this.updatePage(sessions, sessionsPageNumber);
+      return {
+        sessionItemsTotal: sessions.length,
+        sessions,
+        sessionsPage: updatedPage.sessionsPage,
+        sessionsPageNumber: updatedPage.sessionsPageNumber,
+      };
+    });
+  };
   render() {
     return this.props.render({
       changePage: this.changePage,

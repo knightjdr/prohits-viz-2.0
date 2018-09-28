@@ -1,10 +1,10 @@
-import ParamsReducer from './params-reducer';
+import ParamsReducer, { defaultState } from './params-reducer';
 import * as fileActions from '../interactive-file-actions';
 
 describe('ParamsReducer set reducer', () => {
   it('should return an empty initial state', () => {
     const action = {};
-    const expectedState = {};
+    const expectedState = defaultState;
     expect(ParamsReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -12,7 +12,7 @@ describe('ParamsReducer set reducer', () => {
     const action = {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
-    const expectedState = {};
+    const expectedState = defaultState;
     expect(ParamsReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -32,6 +32,6 @@ describe('ParamsReducer set reducer', () => {
       b: 'test2',
       c: 'test3',
     };
-    expect(ParamsReducer(undefined,action )).toEqual(expectedState);
+    expect(ParamsReducer(undefined, action)).toEqual(expectedState);
   });
 });

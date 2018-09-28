@@ -19,13 +19,16 @@ const getall = store => (
       ))
       .then((sessions) => {
         const info = sessions.map(session => ({
-          date: convertISODate(session.parameters.date),
+          date: session.parameters && session.parameters.date ?
+            convertISODate(session.parameters.date) : '-',
           id: session.id,
-          name: session.parameters.name,
+          name: session.parameters && session.parameters.name ?
+            session.parameters.name : 'unnamed session',
         }));
         resolve(info);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         reject();
       });
   })

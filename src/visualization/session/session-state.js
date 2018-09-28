@@ -19,7 +19,7 @@ const keep = {
     'settings',
     'tabs',
     'vizanalysis',
-    'vizanaysisform',
+    'vizanalysisform',
   ],
 };
 keep.heatmap = keep.dotplot;

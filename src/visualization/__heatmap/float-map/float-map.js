@@ -4,7 +4,7 @@ import React from 'react';
 import { faArrows, faPaperclip } from '@fortawesome/pro-regular-svg-icons';
 
 import MapWrapper from '../../__side-panel/panel/__map/panel__map-container';
-import Map from '../../__side-panel/panel/__map/panel__map-contents';
+import renderMap from '../../__side-panel/panel/__map/panel__map-contents';
 
 import './float-map.css';
 
@@ -56,7 +56,7 @@ const FloatMap = ({
           <FontAwesomeIcon icon={faArrows} size="lg" />
         </button>
       </div>
-      <MapWrapper render={props => <Map {...props} />} />
+      <MapWrapper render={renderMap} />
     </div>
   </div>
 );

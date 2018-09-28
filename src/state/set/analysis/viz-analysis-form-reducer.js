@@ -1,13 +1,16 @@
+import deepCopy from '../../../helpers/deep-copy';
+
 import * as actions from './viz-analysis-form-actions';
 import * as fileActions from '../interactive-file-actions';
 
-export const initState = {
+export const defaultState = {
   customize: {
     deleteBy: undefined,
     orderBy: undefined,
     removeEmpty: false,
     resetMaximums: false,
   },
+  domain: {},
   go: {
     domain_size_type: 'annotated',
     hierfiltering: '',
@@ -34,12 +37,15 @@ export const initState = {
     underrep: false,
     user_thr: 1,
   },
+  network: {},
 };
 
-const vizAnalysisForms = (state = initState, action) => {
+const vizAnalysisForms = (state = defaultState, action) => {
   switch (action.type) {
+    case fileActions.CLEAR_INTERACTIVE_FILE:
+      return defaultState;
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return { ...action.file.vizanalysisform };
+      return deepCopy(action.file.vizanalysisform);
     case actions.SET_CUSTOMIZE_PARAMETER: {
       return {
         ...state,

@@ -1,3 +1,5 @@
+import deepCopy from '../../../helpers/deep-copy';
+
 import * as actions from './viz-analysis-actions';
 import * as fileActions from '../interactive-file-actions';
 import * as tabActions from '../visualization/tab-actions';
@@ -27,7 +29,7 @@ const analysis = (state = defaultState, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return defaultState;
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return { ...action.file.vizanalysis };
+      return deepCopy(action.file.vizanalysis);
     case tabActions.REMOVE_TAB:
       if (action.tab !== 'customize') {
         newState = state;

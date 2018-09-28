@@ -1,13 +1,6 @@
-import arrayContains from '../../../helpers/array-contains';
-import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
-
-export const mapList = list => (
-  list.reduce(((obj, gene, index) => {
-    const newGene = {};
-    newGene[gene] = index;
-    return { ...obj, ...newGene };
-  }), {})
-);
+import arrayContains from '../../helpers/array-contains';
+import mapArr from '../../helpers/map-array';
+import { arrayShallowEqual } from '../../helpers/array-shallow-equal';
 
 const fillGenes = (userColumns, userGenes = {}, userRows) => {
   const genes = {};
@@ -21,20 +14,18 @@ const fillGenes = (userColumns, userGenes = {}, userRows) => {
     rowsSelected,
   } = userGenes;
 
-  // Ensure columns are consistent.
+  // Ensure gene column elements are consistent with columns.
   if (Array.isArray(columns)) {
     genes.columns = columns;
     if (
-      columnMap &&
       typeof columnMap === 'object' &&
       arrayShallowEqual(Object.keys(columnMap), columns)
     ) {
       genes.columnMap = columnMap;
     } else {
-      genes.columnMap = mapList(columns);
+      genes.columnMap = mapArr(columns);
     }
     if (
-      columnsSelected &&
       Array.isArray(columnsSelected) &&
       arrayContains(columns, columnsSelected)
     ) {
@@ -43,25 +34,23 @@ const fillGenes = (userColumns, userGenes = {}, userRows) => {
       genes.columnsSelected = [];
     }
   } else {
-    genes.columnMap = mapList(userColumns.names);
+    genes.columnMap = mapArr(userColumns.names);
     genes.columns = userColumns.names;
     genes.columnsSelected = [];
   }
 
-  // Ensure rows are consistent.
+  // Ensure gene row elements are consistent with rows.
   if (Array.isArray(rows)) {
     genes.rows = rows;
     if (
-      rowMap &&
       typeof rowMap === 'object' &&
       arrayShallowEqual(Object.keys(rowMap), rows)
     ) {
       genes.rowMap = rowMap;
     } else {
-      genes.rowMap = mapList(rows);
+      genes.rowMap = mapArr(rows);
     }
     if (
-      rowsSelected &&
       Array.isArray(rowsSelected) &&
       arrayContains(rows, rowsSelected)
     ) {
@@ -71,7 +60,7 @@ const fillGenes = (userColumns, userGenes = {}, userRows) => {
     }
   } else {
     const rowArr = userRows.list.map(row => row.name);
-    genes.rowMap = mapList(rowArr);
+    genes.rowMap = mapArr(rowArr);
     genes.rows = rowArr;
     genes.rowsSelected = [];
   }

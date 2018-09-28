@@ -1,46 +1,60 @@
-import SearchReducer from './search-reducer';
+import searchReducer, { defaultState } from './search-reducer';
 import * as actions from './search-actions';
+import * as fileActions from '../interactive-file-actions';
 import { RESTORE_ROWS, UPDATE_ROWS } from './rows-actions';
 
 describe('Search reducer', () => {
   it('should return empty initial state', () => {
     const action = {};
-    const expectedState = {
-      columns: {},
-      match: false,
-      rows: {},
-      searched: false,
-      term: '',
+    const expectedState = defaultState;
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle CLEAR_INTERACTIVE_FILE action', () => {
+    const action = {
+      type: fileActions.CLEAR_SEARCH,
     };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = defaultState;
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle CLEAR_SEARCH action', () => {
     const action = {
       type: actions.CLEAR_SEARCH,
     };
-    const expectedState = {
-      columns: {},
-      match: false,
-      rows: {},
-      searched: false,
-      term: '',
+    const expectedState = defaultState;
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
+  });
+
+  it('should handle PARSE_INTERACTIVE_FILE action', () => {
+    const action = {
+      file: {
+        search: {
+          columns: { a: 1 },
+          match: true,
+          rows: { b: 1 },
+          searched: true,
+          term: 'testTerm',
+        },
+      },
+      type: fileActions.PARSE_INTERACTIVE_FILE,
     };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = {
+      columns: { a: 1 },
+      match: true,
+      rows: { b: 1 },
+      searched: true,
+      term: 'testTerm',
+    };
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle RESTORE_ROWS action', () => {
     const action = {
       type: RESTORE_ROWS,
     };
-    const expectedState = {
-      columns: {},
-      match: false,
-      rows: {},
-      searched: false,
-      term: '',
-    };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = defaultState;
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle SET_SEARCH_RESULTS action', () => {
@@ -58,7 +72,7 @@ describe('Search reducer', () => {
       searched: true,
       term: 'testTerm',
     };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle SET_SEARCH_TERM action', () => {
@@ -73,20 +87,14 @@ describe('Search reducer', () => {
       searched: false,
       term: 'testTerm',
     };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle UPDATE_ROWS action', () => {
     const action = {
       type: UPDATE_ROWS,
     };
-    const expectedState = {
-      columns: {},
-      match: false,
-      rows: {},
-      searched: false,
-      term: '',
-    };
-    expect(SearchReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = defaultState;
+    expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 });

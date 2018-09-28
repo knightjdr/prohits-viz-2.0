@@ -1,11 +1,11 @@
-import vizAnalysisForms, { initState } from './viz-analysis-form-reducer';
+import vizAnalysisForms, { defaultState } from './viz-analysis-form-reducer';
 import * as actions from './viz-analysis-form-actions';
 import * as fileActions from '../interactive-file-actions';
 
 describe('Analysis GO form set reducer', () => {
   it('should return initial state', () => {
     const action = {};
-    const expectedState = initState;
+    const expectedState = defaultState;
     expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);
   });
 
@@ -24,9 +24,9 @@ describe('Analysis GO form set reducer', () => {
       type: actions.SET_CUSTOMIZE_PARAMETER,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       customize: {
-        ...initState.customize,
+        ...defaultState.customize,
         orderBy: 'column',
       },
     };
@@ -39,9 +39,9 @@ describe('Analysis GO form set reducer', () => {
       type: actions.SET_GO_PARAMETER,
     };
     const expectedState = {
-      ...initState,
+      ...defaultState,
       go: {
-        ...initState.go,
+        ...defaultState.go,
         advanced_options_on: false,
       },
     };

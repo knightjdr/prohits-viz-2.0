@@ -24,7 +24,7 @@ const Tabs = (state = defaultState, action) => {
       return {
         available: [...action.file.tabs.available],
         selected: action.file.tabs.selected,
-        show: false,
+        show: action.file.tabs.show,
       };
     case actions.REMOVE_TAB:
       newTabs = state.available.filter(item => item !== action.tab);

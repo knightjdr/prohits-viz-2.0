@@ -1,6 +1,6 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Pagination, Popconfirm } from 'antd';
 import {
   faFolderOpen,
@@ -34,49 +34,48 @@ const BrowserSessionTable = ({
       </div>
       <div className="browser-session-grid">
         {
-          sessionsPage.map(session => ([
-            <div key={`${session.id}-id`}>{session.id}</div>,
-            <div
-              className="browser-session_ellipsis"
-              key={`${session.id}-name`}
-              tooltip={session.name}
-              tooltip-position="top"
-            >
-              <div>
-                {session.name}
-              </div>
-            </div>,
-            <div
-              className="browser-session_ellipsis"
-              key={`${session.id}-date`}
-            >
-              <div>
-                {session.date}
-              </div>
-            </div>,
-            <div key={`${session.id}-open`}>
-              <Popconfirm
-                cancelText="No"
-                onConfirm={() => { openSession(session.id, session.name); }}
-                okText="Yes"
-                placement="topRight"
-                title="Confirm session launch"
+          sessionsPage.map(session => (
+            <Fragment key={`${session.id}-id`}>
+              <div>{session.id}</div>
+              <div
+                className="browser-session_ellipsis"
+                key={`${session.id}-name`}
+                tooltip={session.name}
+                tooltip-position="top"
               >
-                <FontAwesomeIcon className="open-icon" icon={faFolderOpen} />
-              </Popconfirm>
-            </div>,
-            <div key={`${session.id}-close`}>
-              <Popconfirm
-                cancelText="No"
-                onConfirm={() => { deleteSession(session.id, session.name); }}
-                okText="Yes"
-                placement="topRight"
-                title="Confirm session deletion"
-              >
-                <FontAwesomeIcon className="close-icon" icon={faTimes} />
-              </Popconfirm>
-            </div>,
-          ]))
+                <div>
+                  {session.name}
+                </div>
+              </div>
+              <div className="browser-session_ellipsis">
+                <div>
+                  {session.date}
+                </div>
+              </div>
+              <div>
+                <Popconfirm
+                  cancelText="No"
+                  onConfirm={() => { openSession(session.id, session.name); }}
+                  okText="Yes"
+                  placement="topRight"
+                  title="Confirm session launch"
+                >
+                  <FontAwesomeIcon className="open-icon" icon={faFolderOpen} />
+                </Popconfirm>
+              </div>
+              <div>
+                <Popconfirm
+                  cancelText="No"
+                  onConfirm={() => { deleteSession(session.id, session.name); }}
+                  okText="Yes"
+                  placement="topRight"
+                  title="Confirm session deletion"
+                >
+                  <FontAwesomeIcon className="close-icon" icon={faTimes} />
+                </Popconfirm>
+              </div>
+            </Fragment>
+          ))
         }
       </div>
       <div className="browser-session__pageination">
@@ -108,6 +107,6 @@ BrowserSessionTable.propTypes = {
   storageSupport: PropTypes.bool.isRequired,
 };
 
-const renderTable = props => <BrowserSessionTable {...props} />;
+const renderTable = renderProps => <BrowserSessionTable {...renderProps} />;
 
 export default renderTable;

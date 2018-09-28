@@ -35,10 +35,6 @@ describe('Map panel', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render contents', () => {
-      expect(wrapper.find('MapContent').length).toBe(1);
-    });
-
     it('should not render detached element', () => {
       expect(wrapper.find('.panel__map-detached').length).toBe(0);
     });
@@ -80,10 +76,6 @@ describe('Map panel', () => {
 
     it('and match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
-    });
-
-    it('and not render map contents', () => {
-      expect(wrapper.find('MapContent').length).toBe(0);
     });
 
     it('and render detached element', () => {

@@ -1,6 +1,6 @@
-import { defaultState } from '../../../state/set/analysis/go-reducer';
+import { defaultState } from '../../state/set/analysis/go-reducer';
 
-const fillGo = (userGo) => {
+const fillGo = (userGo = {}) => {
   const go = {};
 
   const {

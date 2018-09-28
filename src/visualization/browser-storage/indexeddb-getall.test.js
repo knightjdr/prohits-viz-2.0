@@ -18,6 +18,7 @@ beforeAll(() => (
       store.createIndex('id', 'id', { unique: true });
       store.put({ id: 1, parameters: { name: 'test 1', date: new Date() } });
       store.put({ id: 2, parameters: { name: 'test 2', date: new Date() } });
+      store.put({ id: 3, parameters: {} });
     };
     memDB.onsuccess = (e) => {
       const db = e.target.result;
@@ -35,6 +36,7 @@ describe('Get all indexeddb', () => {
       expect(sessions).toEqual([
         { id: 1, name: 'test 1', date: 'today' },
         { id: 2, name: 'test 2', date: 'today' },
+        { id: 3, name: 'unnamed session', date: '-' },
       ]);
     })
   ));

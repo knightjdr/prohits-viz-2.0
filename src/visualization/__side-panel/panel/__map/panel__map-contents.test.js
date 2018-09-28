@@ -1,7 +1,6 @@
-import React from 'react';
 import { shallow } from 'enzyme';
 
-import MapContent from './panel__map-contents';
+import renderMap from './panel__map-contents';
 
 const navigatePosition = jest.fn();
 
@@ -11,20 +10,20 @@ describe('Map panel content', () => {
 
     beforeAll(() => {
       wrapper = shallow(
-        <MapContent
-          annotations={{}}
-          isSyncing={false}
-          markers={{}}
-          minimap="image"
-          navigatePosition={navigatePosition}
-          rangeBox={{}}
-          search={{}}
-          showAnnotations={false}
-          showMarkers={false}
-          synced
-          syncError={false}
-          syncMap={jest.fn()}
-        />,
+        renderMap({
+          annotations: {},
+          isSyncing: false,
+          markers: {},
+          minimap: 'image',
+          navigatePosition,
+          rangeBox: {},
+          search: {},
+          showAnnotations: false,
+          showMarkers: false,
+          synced: true,
+          syncError: false,
+          syncMap: jest.fn(),
+        }),
       );
     });
 
@@ -46,21 +45,21 @@ describe('Map panel content', () => {
 
     beforeAll(() => {
       wrapper = shallow(
-        <MapContent
-          annotations={{}}
-          isSyncing={false}
-          markers={{}}
-          minimap={null}
-          navigatePosition={navigatePosition}
-          rangeBox={{}}
-          search={{}}
-          showAnnotations={false}
-          showMarkers={false}
-          synced
-          syncError={false}
-          syncImage="synced"
-          syncMap={jest.fn()}
-        />,
+        renderMap({
+          annotations: {},
+          isSyncing: false,
+          markers: {},
+          minimap: null,
+          navigatePosition,
+          rangeBox: {},
+          search: {},
+          showAnnotations: false,
+          showMarkers: false,
+          synced: true,
+          syncError: false,
+          syncImage: 'synced',
+          syncMap: jest.fn(),
+        }),
       );
     });
 
@@ -78,20 +77,20 @@ describe('Map panel content', () => {
 
     beforeAll(() => {
       wrapper = shallow(
-        <MapContent
-          annotations={{}}
-          isSyncing={false}
-          markers={{}}
-          minimap="image"
-          navigatePosition={navigatePosition}
-          rangeBox={{}}
-          search={{}}
-          showAnnotations={false}
-          showMarkers={false}
-          synced={false}
-          syncError={false}
-          syncMap={jest.fn()}
-        />,
+        renderMap({
+          annotations: {},
+          isSyncing: false,
+          markers: {},
+          minimap: 'image',
+          navigatePosition,
+          rangeBox: {},
+          search: {},
+          showAnnotations: false,
+          showMarkers: false,
+          synced: false,
+          syncError: false,
+          syncMap: jest.fn(),
+        }),
       );
     });
 

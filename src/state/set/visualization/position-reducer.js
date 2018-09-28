@@ -4,7 +4,7 @@ import { SET_SEARCH_RESULTS } from './search-actions';
 import { UPDATE_POSITION } from './position-actions';
 import { UPDATE_ROWS } from './rows-actions';
 
-const defaultState = {
+export const defaultState = {
   x: 0,
   y: 0,
 };

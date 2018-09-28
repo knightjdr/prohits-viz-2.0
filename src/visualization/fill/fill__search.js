@@ -1,6 +1,6 @@
-import { defaultState } from '../../../state/set/visualization/search-reducer';
+import { defaultState } from '../../state/set/visualization/search-reducer';
 
-const fillSearch = (userSearch) => {
+const fillSearch = (userSearch = {}) => {
   const search = {};
 
   const {

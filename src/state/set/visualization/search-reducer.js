@@ -21,8 +21,8 @@ const Search = (state = defaultState, action) => {
         columns: { ...action.file.search.columns },
         match: action.file.search.match,
         rows: { ...action.file.search.rows },
-        searched: action.file.searchsearched,
-        term: action.file.searchterm,
+        searched: action.file.search.searched,
+        term: action.file.search.term,
       };
     case rowActions.RESTORE_ROWS:
       return defaultState;

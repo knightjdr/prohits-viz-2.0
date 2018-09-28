@@ -1,3 +1,5 @@
+import { defaultState } from '../../state/set/visualization/position-reducer';
+
 const Position = (userPosition = {}) => {
   const position = {};
 
@@ -16,8 +18,8 @@ const Position = (userPosition = {}) => {
     position.x = x;
     position.y = y;
   } else {
-    position.x = 0;
-    position.y = 0;
+    position.x = defaultState.x;
+    position.y = defaultState.y;
   }
 
   return position;

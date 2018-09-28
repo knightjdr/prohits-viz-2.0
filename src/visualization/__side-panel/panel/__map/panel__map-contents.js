@@ -6,7 +6,7 @@ import Synced from './panel__map-sync';
 
 import './panel__map.css';
 
-const MapContent = ({
+export const MapContent = ({
   annotations,
   isSyncing,
   markers,
@@ -81,4 +81,6 @@ MapContent.propTypes = {
   syncMap: PropTypes.func.isRequired,
 };
 
-export default MapContent;
+const renderMap = props => <MapContent {...props} />;
+
+export default renderMap;

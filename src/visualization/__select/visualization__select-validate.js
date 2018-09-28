@@ -17,34 +17,34 @@ const SelectValidate = (jsonString) => {
     };
   }
 
-  const { columns, params, rows } = json;
+  const { columns, parameters, rows } = json;
 
-  // The file should have a "params" key that is an object.
+  // The file should have a "parameters" key that is an object.
   if (
-    !Object.prototype.hasOwnProperty.call(json, 'params') ||
-    Object.prototype.toString.call(json.params) !== '[object Object]'
+    !Object.prototype.hasOwnProperty.call(json, 'parameters') ||
+    Object.prototype.toString.call(json.parameters) !== '[object Object]'
   ) {
     return {
       err: true,
-      message: 'The JSON object must have a "params" property with an object containing analysis parameters',
+      message: 'The JSON object must have a "parameters" property with an object containing analysis parameters',
     };
   }
 
   // The image type should be specified.
   if (
-    !params.imageType ||
-    !validTypes.includes(params.imageType)
+    !parameters.imageType ||
+    !validTypes.includes(parameters.imageType)
   ) {
     return {
       err: true,
-      message: 'The image type must be specified in the params object and be of a supported type',
+      message: 'The image type must be specified in the parameters object and be of a supported type',
     };
   }
 
   // Validate dotplot/heatmaps.
   if (
-    params.imageType === 'dotplot' ||
-    params.imageType === 'heatmap'
+    parameters.imageType === 'dotplot' ||
+    parameters.imageType === 'heatmap'
   ) {
     // The file should have a "column" key container a "names" array.
     if (
