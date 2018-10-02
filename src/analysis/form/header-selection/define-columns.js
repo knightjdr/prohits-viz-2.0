@@ -7,8 +7,8 @@ export const recommendedHeaders = {
   dotplot: {
     saint: {
       abundance: ['avgspec', 'specsum', 'avgintensity', 'intensitysum'],
-      bait: ['bait', 'baits'],
-      prey: ['preygene', 'prey', 'preygenes', 'preys'],
+      condition: ['bait', 'baits'],
+      readout: ['preygene', 'prey', 'preygenes', 'preys'],
       score: ['bfdr', 'fdr', 'saintscore', 'avgp', 'maxp'],
     },
   },
@@ -19,12 +19,12 @@ const DefineColumns = (analysisType, fileType, header) => ({
     recommendedHeaders[analysisType][fileType].abundance,
     header,
   ),
-  bait: FilterHeader(
-    recommendedHeaders[analysisType][fileType].bait,
+  condition: FilterHeader(
+    recommendedHeaders[analysisType][fileType].condition,
     header,
   ),
-  prey: FilterHeader(
-    recommendedHeaders[analysisType][fileType].prey,
+  readout: FilterHeader(
+    recommendedHeaders[analysisType][fileType].readout,
     header,
   ),
   score: FilterHeader(

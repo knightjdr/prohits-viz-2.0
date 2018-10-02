@@ -21,8 +21,8 @@ const Settings = (form) => {
         text: `Secondary filter: ${FalsyButNotZero(form.secondaryFilter) ? 'not set' : form.secondaryFilter}`,
       });
       tagArray.push({
-        key: 'minimumAbundance',
-        text: `Minimum abundance: ${FalsyButNotZero(form.minimumAbundance) ? 'not set' : form.minimumAbundance}`,
+        key: 'minAbundance',
+        text: `Minimum abundance: ${FalsyButNotZero(form.minAbundance) ? 'not set' : form.minAbundance}`,
       });
       if (form.ctrlSub) {
         tagArray.push({

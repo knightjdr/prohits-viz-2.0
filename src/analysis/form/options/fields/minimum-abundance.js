@@ -9,10 +9,10 @@ const MinimumAbundance = ({
   analysisType,
 }) => (
   <CustomField
-    helpMessage={Info[analysisType].minimumAbundance}
+    helpMessage={Info[analysisType].minAbundance}
     inputType="number"
     label="Minimum abundance"
-    name="minimumAbundance"
+    name="minAbundance"
     onChange={DefaultChange}
     placeHolder="Minimum abundance..."
     type="input"

@@ -10,8 +10,8 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'scoreType')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'primaryFilter')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'secondaryFilter')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'minimumAbundance')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'maximumAbundance')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'minAbundance')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'abundanceCap')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'fillColor')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'edgeColor')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clustering')).toBeTruthy();
@@ -24,8 +24,8 @@ describe('ValidationDotplot', () => {
       scoreType: 'lte',
       primaryFilter: 0.01,
       secondaryFilter: 0.05,
-      minimumAbundance: 0,
-      maximumAbundance: 50,
+      minAbundance: 0,
+      abundanceCap: 50,
       fillColor: 'blueBlack',
       edgeColor: 'blueBlack',
       clustering: 'hierarchical',
@@ -34,8 +34,8 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'scoreType')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'primaryFilter')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'secondaryFilter')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'minimumAbundance')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'maximumAbundance')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'minAbundance')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'abundanceCap')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'fillColor')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'edgeColor')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clustering')).toBeFalsy();
@@ -80,14 +80,14 @@ describe('ValidationDotplot', () => {
 
   test('Minimum abundance must be a number', () => {
     FalsyButNotZero.mockReturnValue(false);
-    const errors = ValidationDotplot({ minimumAbundance: 'test' });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'minimumAbundance')).toBeTruthy();
+    const errors = ValidationDotplot({ minAbundance: 'test' });
+    expect(Object.prototype.hasOwnProperty.call(errors, 'minAbundance')).toBeTruthy();
   });
 
   test('Maximum abundance must be a number', () => {
     FalsyButNotZero.mockReturnValue(false);
-    const errors = ValidationDotplot({ maximumAbundance: 'test' });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'maximumAbundance')).toBeTruthy();
+    const errors = ValidationDotplot({ abundanceCap: 'test' });
+    expect(Object.prototype.hasOwnProperty.call(errors, 'abundanceCap')).toBeTruthy();
   });
 
   test(`Control column must be selected when control subtraction is true

@@ -24,8 +24,8 @@ exports[`HeaderSelection Renders 1`] = `
     className="HeaderSelection-select-container"
   >
     <CustomField
-      label="Bait column"
-      name="bait"
+      label="Condition column"
+      name="condition"
       onChange={[Function]}
       options={
         Array [
@@ -46,8 +46,8 @@ exports[`HeaderSelection Renders 1`] = `
       type="select"
     />
     <CustomField
-      label="Prey column"
-      name="prey"
+      label="Readout column"
+      name="readout"
       onChange={[Function]}
       options={
         Array [

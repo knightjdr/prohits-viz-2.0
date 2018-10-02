@@ -14,7 +14,7 @@ describe('Settings', () => {
       analysisType: 'dotplot',
       primaryFilter: 0.01,
       secondaryFilter: 0.05,
-      minimumAbundance: 0,
+      minAbundance: 0,
       clustering: 'hierarchical',
     };
     const settings = Settings(form);
@@ -24,9 +24,9 @@ describe('Settings', () => {
     const secondaryFilterIndex = settings.findIndex(setting => (setting.key === 'secondaryFilter'));
     expect(secondaryFilterIndex).toBeGreaterThanOrEqual(0);
     expect(settings[secondaryFilterIndex].props.children).toBe('Secondary filter: 0.05');
-    const minimumAbundanceIndex = settings.findIndex(setting => (setting.key === 'minimumAbundance'));
-    expect(minimumAbundanceIndex).toBeGreaterThanOrEqual(0);
-    expect(settings[minimumAbundanceIndex].props.children).toBe('Minimum abundance: 0');
+    const minAbundanceIndex = settings.findIndex(setting => (setting.key === 'minAbundance'));
+    expect(minAbundanceIndex).toBeGreaterThanOrEqual(0);
+    expect(settings[minAbundanceIndex].props.children).toBe('Minimum abundance: 0');
     const clusteringIndex = settings.findIndex(setting => (setting.key === 'clustering'));
     expect(clusteringIndex).toBeGreaterThanOrEqual(0);
     expect(settings[clusteringIndex].props.children).toBe('Clustering type: hierarchical');
@@ -45,9 +45,9 @@ describe('Settings', () => {
     const secondaryFilterIndex = settings.findIndex(setting => (setting.key === 'secondaryFilter'));
     expect(secondaryFilterIndex).toBeGreaterThanOrEqual(0);
     expect(settings[secondaryFilterIndex].props.children).toBe('Secondary filter: not set');
-    const minimumAbundanceIndex = settings.findIndex(setting => (setting.key === 'minimumAbundance'));
-    expect(minimumAbundanceIndex).toBeGreaterThanOrEqual(0);
-    expect(settings[minimumAbundanceIndex].props.children).toBe('Minimum abundance: not set');
+    const minAbundanceIndex = settings.findIndex(setting => (setting.key === 'minAbundance'));
+    expect(minAbundanceIndex).toBeGreaterThanOrEqual(0);
+    expect(settings[minAbundanceIndex].props.children).toBe('Minimum abundance: not set');
     const clusteringIndex = settings.findIndex(setting => (setting.key === 'clustering'));
     expect(clusteringIndex).toBeGreaterThanOrEqual(0);
     expect(settings[clusteringIndex].props.children).toBe('Clustering type: not set');

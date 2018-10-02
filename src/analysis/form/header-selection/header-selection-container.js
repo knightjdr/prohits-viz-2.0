@@ -43,16 +43,16 @@ export class HeaderSelectionContainer extends Component {
       change('abundance', columns.abundance.initialValue);
     }
     if (
-      !form.bait &&
-      columns.bait.initialValue
+      !form.condition &&
+      columns.condition.initialValue
     ) {
-      change('bait', columns.bait.initialValue);
+      change('condition', columns.condition.initialValue);
     }
     if (
-      !form.prey &&
-      columns.prey.initialValue
+      !form.readout &&
+      columns.readout.initialValue
     ) {
-      change('prey', columns.prey.initialValue);
+      change('readout', columns.readout.initialValue);
     }
     if (
       !form.score &&
@@ -65,8 +65,8 @@ export class HeaderSelectionContainer extends Component {
     if (columns.abundance.initialValue) {
       change('abundance', columns.abundance.initialValue);
     }
-    if (columns.bait.initialValue) {
-      change('bait', columns.bait.initialValue);
+    if (columns.condition.initialValue) {
+      change('condition', columns.condition.initialValue);
     }
     if (columns.prey.initialValue) {
       change('prey', columns.prey.initialValue);

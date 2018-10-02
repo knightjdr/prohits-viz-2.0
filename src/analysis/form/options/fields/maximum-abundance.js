@@ -9,10 +9,10 @@ const MaximumAbundance = ({
   analysisType,
 }) => (
   <CustomField
-    helpMessage={Info[analysisType].maximumAbundance}
+    helpMessage={Info[analysisType].abundanceCap}
     inputType="number"
     label="Maximum abundance"
-    name="maximumAbundance"
+    name="abundanceCap"
     onChange={DefaultChange}
     placeHolder="Maximum abundance..."
     type="input"

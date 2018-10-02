@@ -8,7 +8,7 @@ exports[`MinimumAbundance Renders 1`] = `
       all the values for it are returned across all baits and used in the analysis."
   inputType="number"
   label="Minimum abundance"
-  name="minimumAbundance"
+  name="minAbundance"
   onChange={[Function]}
   placeHolder="Minimum abundance..."
   type="input"

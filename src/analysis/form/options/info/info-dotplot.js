@@ -39,12 +39,12 @@ const InfoDotplot = {
     and abundance filtering if these are also specified. If you are applying multiple
     transformations to your data, log transformation will always occur last (after
     control subtraction, prey length normalization and bait normalization).`,
-  maximumAbundance: `Any preys with an abundance value (e.g. spectral count) above this cutoff
+  abundanceCap: `Any preys with an abundance value (e.g. spectral count) above this cutoff
       will be capped at this maximum in the output images. This is to give greater
       visual dynamic range for lower values when outlier preys with very high
       abundance are present. This cutoff will be dependent on the instrument and
       interaction method used and should be selected based on the data set.`,
-  minimumAbundance: `In addition to the primary filter requirement, a prey must have an abundance
+  minAbundance: `In addition to the primary filter requirement, a prey must have an abundance
       value (e.g. spectral count) above this minimum to be included in the analysis.
       As with the primary filter, once a prey passes this threshold for one bait,
       all the values for it are returned across all baits and used in the analysis.`,

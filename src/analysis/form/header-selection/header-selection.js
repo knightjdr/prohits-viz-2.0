@@ -28,10 +28,10 @@ const HeaderSelection = ({
       </div>
       <div className="HeaderSelection-select-container">
         <CustomField
-          label="Bait column"
-          name="bait"
+          label="Condition column"
+          name="condition"
           onChange={DefaultChange}
-          options={columns.bait.options}
+          options={columns.condition.options}
           placeHolder="Bait column..."
           required
           style={{
@@ -41,10 +41,10 @@ const HeaderSelection = ({
           type="select"
         />
         <CustomField
-          label="Prey column"
-          name="prey"
+          label="Readout column"
+          name="readout"
           onChange={DefaultChange}
-          options={columns.prey.options}
+          options={columns.readout.options}
           placeHolder="Prey column..."
           required
           style={{
@@ -96,10 +96,10 @@ HeaderSelection.propTypes = {
     abundance: PropTypes.shape({
       options: PropTypes.arrayOf(PropTypes.shape({})),
     }),
-    bait: PropTypes.shape({
+    condition: PropTypes.shape({
       options: PropTypes.arrayOf(PropTypes.shape({})),
     }),
-    prey: PropTypes.shape({
+    readout: PropTypes.shape({
       options: PropTypes.arrayOf(PropTypes.shape({})),
     }),
     score: PropTypes.shape({

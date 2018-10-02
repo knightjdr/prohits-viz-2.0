@@ -5,8 +5,8 @@ import HeaderSelection from './header-selection';
 
 const columns = {
   abundance: { options: [{ text: 'test', value: 'test' }] },
-  bait: { options: [{ text: 'test', value: 'test' }] },
-  prey: { options: [{ text: 'test', value: 'test' }] },
+  condition: { options: [{ text: 'test', value: 'test' }] },
+  readout: { options: [{ text: 'test', value: 'test' }] },
   score: { options: [{ text: 'test', value: 'test' }] },
 };
 

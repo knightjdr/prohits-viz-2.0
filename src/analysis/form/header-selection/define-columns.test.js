@@ -7,8 +7,8 @@ FilterHeader.mockReturnValue('test');
 const header = ['column1', 'column2', 'column3', 'column4'];
 const expected = {
   abundance: 'test',
-  bait: 'test',
-  prey: 'test',
+  condition: 'test',
+  readout: 'test',
   score: 'test',
 };
 
@@ -18,8 +18,8 @@ describe('DefineColumns', () => {
     expect(columns).toEqual(expected);
     expect(FilterHeader).toHaveBeenCalledTimes(4);
     expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.abundance, header);
-    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.bait, header);
-    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.prey, header);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.condition, header);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.readout, header);
     expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.score, header);
   });
 });

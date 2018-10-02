@@ -44,7 +44,11 @@ export class FileInputContainer extends Component {
     sampleFile.uid = 'rc-upload-sampleFile';
     const sampleObj = {
       file: sampleFile,
-      fileList: [sampleFile],
+      fileList: [{
+        name: 'samplefile.txt',
+        originFileObj: sampleFile,
+        uid: sampleFile.uid,
+      }],
     };
     this.props.change('fileType', 'saint');
     this.props.change('sampleFile', true);

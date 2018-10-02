@@ -37,16 +37,16 @@ const ValidationDotplot = (values) => {
     errors.secondaryFilter = `Secondary filter must be ${entity} primary filter`;
   }
   // validate minimum abundance
-  if (FalsyButNotZero(values.minimumAbundance)) {
-    errors.minimumAbundance = 'Specify the minumum abundance';
-  } else if (typeof values.minimumAbundance !== 'number') {
-    errors.minimumAbundance = 'Minumum abundance must be a number';
+  if (FalsyButNotZero(values.minAbundance)) {
+    errors.minAbundance = 'Specify the minumum abundance';
+  } else if (typeof values.minAbundance !== 'number') {
+    errors.minAbundance = 'Minumum abundance must be a number';
   }
   // validate maximun abundance
-  if (FalsyButNotZero(values.maximumAbundance)) {
-    errors.maximumAbundance = 'Specify the maximum abundance';
-  } else if (typeof values.maximumAbundance !== 'number') {
-    errors.maximumAbundance = 'Minumum abundance must be a number';
+  if (FalsyButNotZero(values.abundanceCap)) {
+    errors.abundanceCap = 'Specify the maximum abundance';
+  } else if (typeof values.abundanceCap !== 'number') {
+    errors.abundanceCap = 'Minumum abundance must be a number';
   }
   // ensure column has been selected when control subtraction is true
   if (

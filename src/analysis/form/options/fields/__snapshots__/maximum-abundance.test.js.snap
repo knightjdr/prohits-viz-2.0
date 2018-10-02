@@ -9,7 +9,7 @@ exports[`Maximumbundance Renders 1`] = `
       interaction method used and should be selected based on the data set."
   inputType="number"
   label="Maximum abundance"
-  name="maximumAbundance"
+  name="abundanceCap"
   onChange={[Function]}
   placeHolder="Maximum abundance..."
   type="input"
