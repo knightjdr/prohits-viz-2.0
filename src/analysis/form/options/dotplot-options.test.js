@@ -5,14 +5,14 @@ import DotplotOptions from './dotplot-options';
 
 const form = {
   analysisType: 'test',
-  baitClustering: 'baits',
+  conditionClustering: 'conditions',
   clustering: 'test',
   control: 'test',
   ctrlSub: true,
   normalization: 'none',
-  preyClustering: 'preys',
-  preyLength: 'test',
-  preyLengthNorm: false,
+  readoutClustering: 'readouts',
+  readoutLength: 'test',
+  readoutLengthNorm: false,
   score: 'test',
   scoreType: 'lte',
 };

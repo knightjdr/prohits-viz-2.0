@@ -10,7 +10,7 @@ import MinimumAbundance from './fields/minimum-abundance';
 import Log from './fields/log';
 import Normalization from './fields/normalization';
 import Output from './fields/output';
-import PreyLengthNormalization from './fields/prey-length-normalization-container';
+import ReadoutLengthNormalization from './fields/readout-length-normalization-container';
 import PrimaryFilter from './fields/primary-filter-container';
 import ScoreType from './fields/score-type-container';
 import SecondaryFilter from './fields/secondary-filter-container';
@@ -22,14 +22,14 @@ const DotplotOptions = ({
 }) => {
   const {
     analysisType,
-    baitClustering,
+    conditionClustering,
     clustering,
     control,
     ctrlSub,
     normalization,
-    preyClustering,
-    preyLength,
-    preyLengthNorm,
+    readoutClustering,
+    readoutLength,
+    readoutLengthNorm,
     score,
     scoreType,
   } = form;
@@ -60,11 +60,11 @@ const DotplotOptions = ({
         control={control}
         header={header}
       />
-      <PreyLengthNormalization
+      <ReadoutLengthNormalization
         analysisType={analysisType}
         change={change}
-        preyLength={preyLength}
-        preyLengthNorm={preyLengthNorm}
+        readoutLength={readoutLength}
+        readoutLengthNorm={readoutLengthNorm}
         header={header}
       />
       <Normalization
@@ -76,9 +76,9 @@ const DotplotOptions = ({
       <EdgeColor analysisType={analysisType} />
       <Clustering
         analysisType={analysisType}
-        baitClustering={baitClustering}
+        conditionClustering={conditionClustering}
         clustering={clustering}
-        preyClustering={preyClustering}
+        readoutClustering={readoutClustering}
       />
       <Output analysisType={analysisType} />
     </div>

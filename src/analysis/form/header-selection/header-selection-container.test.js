@@ -11,17 +11,17 @@ jest.mock('./define-columns');
 const change = jest.fn();
 const columns = {
   abundance: { initialValue: 'test' },
-  bait: { initialValue: 'test' },
-  prey: { initialValue: 'test' },
+  condition: { initialValue: 'test' },
+  readout: { initialValue: 'test' },
   score: { initialValue: 'test' },
 };
 const form = {
   set: {
     abundance: 'abundance',
     analysisType: 'dotplot',
-    bait: 'bait',
+    condition: 'condition',
     fileType: 'saint',
-    prey: 'prey',
+    readout: 'readout',
     score: 'score',
   },
   unset: {
@@ -74,8 +74,8 @@ describe('NewsListContainer', () => {
     wrapper.instance().setInitialReduxFormState(change, form.unset, columns);
     expect(change).toHaveBeenCalledTimes(4);
     expect(change).toHaveBeenCalledWith('abundance', columns.abundance.initialValue);
-    expect(change).toHaveBeenCalledWith('bait', columns.bait.initialValue);
-    expect(change).toHaveBeenCalledWith('prey', columns.prey.initialValue);
+    expect(change).toHaveBeenCalledWith('condition', columns.condition.initialValue);
+    expect(change).toHaveBeenCalledWith('readout', columns.readout.initialValue);
     expect(change).toHaveBeenCalledWith('score', columns.score.initialValue);
   });
 
@@ -104,8 +104,8 @@ describe('NewsListContainer', () => {
     wrapper.instance().setReduxFormState(change, columns);
     expect(change).toHaveBeenCalledTimes(4);
     expect(change).toHaveBeenCalledWith('abundance', columns.abundance.initialValue);
-    expect(change).toHaveBeenCalledWith('bait', columns.bait.initialValue);
-    expect(change).toHaveBeenCalledWith('prey', columns.prey.initialValue);
+    expect(change).toHaveBeenCalledWith('condition', columns.condition.initialValue);
+    expect(change).toHaveBeenCalledWith('readout', columns.readout.initialValue);
     expect(change).toHaveBeenCalledWith('score', columns.score.initialValue);
   });
 
@@ -120,8 +120,8 @@ describe('NewsListContainer', () => {
     jest.clearAllMocks();
     const columnsEmpty = {
       abundance: {},
-      bait: {},
-      prey: {},
+      condition: {},
+      readout: {},
       score: {},
     };
     wrapper.instance().setReduxFormState(change, columnsEmpty);

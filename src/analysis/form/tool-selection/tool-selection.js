@@ -14,10 +14,10 @@ import './tool-selection.css';
 const infoMessages = {
   dotplot: (
     <span>
-      This tool takes quantitative information on bait-prey interactions
-      and visualizes the interactions as either a dot plot or heat map. This is
+      This tool takes quantitative information on condition-readout datasets
+      and visualizes the information as either a dot plot or heat map. This is
       an ideal way of visualizing small to moderately sized data sets (&#8804;
-      20 baits). See the{' '}
+      20 conditions). See the{' '}
       <NavLink
         className="tool-selection__link"
         onClick={ScrollTop}
@@ -53,7 +53,7 @@ export const ToolSelectionComponent = ({
             name="analysisType"
             onChange={DefaultChange}
             options={[
-              { disabled: true, text: 'Bait v bait', value: 'baitbait' },
+              { disabled: true, text: 'Condition v condition', value: 'conditioncondition' },
               { disabled: true, text: 'Correlation', value: 'correlation' },
               { text: 'Dot plot', value: 'dotplot' },
               { disabled: true, text: 'Specificity', value: 'specificity' },

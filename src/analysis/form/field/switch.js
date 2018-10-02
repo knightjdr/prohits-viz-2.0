@@ -1,6 +1,10 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Form, Switch } from 'antd';
+import { faQuestionSquare } from '@fortawesome/pro-solid-svg-icons';
+
+import InfoModal from './info-modal';
 
 const FormItem = Form.Item;
 
@@ -9,24 +13,37 @@ const FormItem = Form.Item;
 
 const CustomSwitch = ({
   formItemLayout,
+  helpMessage,
   input,
   label,
   onChange,
   style,
 }) => (
-  <FormItem
-    {...formItemLayout}
-    label={label}
-  >
-    <Switch
-      checked={input.value || false}
-      onChange={(value) => { onChange(value, input); }}
-      style={style}
-    />
-  </FormItem>
+  <div className="CustomField-container">
+    <FormItem
+      {...formItemLayout}
+      label={label}
+    >
+      <Switch
+        checked={input.value || false}
+        onChange={(value) => { onChange(value, input); }}
+        style={style}
+      />
+    </FormItem>
+    {
+      helpMessage &&
+      <FontAwesomeIcon
+        className="CustomField-switch-help"
+        icon={faQuestionSquare}
+        onClick={() => { InfoModal(label || 'Help', helpMessage); }}
+        size="2x"
+      />
+    }
+  </div>
 );
 
 CustomSwitch.defaultProps = {
+  helpMessage: null,
   formItemLayout: {},
   label: null,
   onChange: null,
@@ -34,6 +51,10 @@ CustomSwitch.defaultProps = {
 };
 
 CustomSwitch.propTypes = {
+  helpMessage: PropTypes.oneOfType([
+    PropTypes.shape({}),
+    PropTypes.string,
+  ]),
   formItemLayout: PropTypes.shape({
     labelCol: PropTypes.shape({}),
     wrapperCol: PropTypes.shape({}),

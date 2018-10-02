@@ -74,6 +74,7 @@ describe('Field', () => {
   test('componentElement returns switch', () => {
     const component = WrappedField({ ...options, ...{ type: 'switch' } });
     expect(component.type().props.className).toBe('switch');
+    expect(Object.keys(component.props).includes('helpMessage')).toBeTruthy();
     expect(Object.keys(component.props).includes('formItemLayout')).toBeTruthy();
     expect(Object.keys(component.props).includes('input')).toBeTruthy();
     expect(Object.keys(component.props).includes('label')).toBeTruthy();

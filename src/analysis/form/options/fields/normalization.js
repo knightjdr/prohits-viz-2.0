@@ -11,38 +11,38 @@ const Normalization = ({
   analysisType,
   normalization,
 }) => {
-  const preyNorm = normalization === 'prey';
+  const readoutNorm = normalization === 'readout';
   return (
     <div className="Normalization-container">
       <div
         className="Normalization-select"
         style={{
-          marginRight: normalization === 'prey' ? 20 : 0,
+          marginRight: normalization === 'readout' ? 20 : 0,
         }}
       >
         <CustomField
-          helpMessage={!preyNorm ? Info[analysisType].normalization : null}
-          label="Bait normalization"
+          helpMessage={!readoutNorm ? Info[analysisType].normalization : null}
+          label="Condition normalization"
           name="normalization"
           onChange={DefaultChange}
           options={[
             { text: 'none', value: 'none' },
             { text: 'Total abundance', value: 'total' },
-            { text: 'Specific prey', value: 'prey' },
+            { text: 'Specific readout', value: 'readout' },
           ]}
-          placeHolder="Bait normalization..."
+          placeHolder="Condition normalization..."
           type="select"
         />
       </div>
       {
-        normalization === 'prey' &&
+        normalization === 'readout' &&
         <div className="Normalization-input">
           <CustomField
             helpMessage={Info[analysisType].normalization}
-            label="Prey for normalization"
-            name="normalizationPrey"
+            label="Readout for normalization"
+            name="normalizationReadout"
             onChange={DefaultChange}
-            placeHolder="Prey for normalization..."
+            placeHolder="Readout for normalization..."
             type="input"
           />
         </div>

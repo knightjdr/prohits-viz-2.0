@@ -32,7 +32,7 @@ const HeaderSelection = ({
           name="condition"
           onChange={DefaultChange}
           options={columns.condition.options}
-          placeHolder="Bait column..."
+          placeHolder="Condition column..."
           required
           style={{
             gridColumn: 1,
@@ -45,7 +45,7 @@ const HeaderSelection = ({
           name="readout"
           onChange={DefaultChange}
           options={columns.readout.options}
-          placeHolder="Prey column..."
+          placeHolder="Readout column..."
           required
           style={{
             gridColumn: 2,

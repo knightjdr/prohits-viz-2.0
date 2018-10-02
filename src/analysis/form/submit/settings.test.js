@@ -59,15 +59,15 @@ describe('Settings', () => {
     const form = {
       analysisType: 'dotplot',
       ctrlSub: true,
-      preyLengthNorm: true,
+      readoutLengthNorm: true,
     };
     const settings = Settings(form);
     const ctrlSubIndex = settings.findIndex(setting => (setting.key === 'ctrlSub'));
     expect(ctrlSubIndex).toBeGreaterThanOrEqual(0);
     expect(settings[ctrlSubIndex].props.children).toBe('Control subtraction is selected');
-    const preyLengthNormIndex = settings.findIndex(setting => (setting.key === 'preyLengthNorm'));
-    expect(preyLengthNormIndex).toBeGreaterThanOrEqual(0);
-    expect(settings[preyLengthNormIndex].props.children).toBe('Prey length normalization is selected');
+    const readoutLengthNormIndex = settings.findIndex(setting => (setting.key === 'readoutLengthNorm'));
+    expect(readoutLengthNormIndex).toBeGreaterThanOrEqual(0);
+    expect(settings[readoutLengthNormIndex].props.children).toBe('Readout length normalization is selected');
     FalsyButNotZero.mockRestore();
   });
 
@@ -79,14 +79,14 @@ describe('Settings', () => {
     });
     let normalizationIndex = settings.findIndex(setting => (setting.key === 'normalization'));
     expect(normalizationIndex).toBeGreaterThanOrEqual(0);
-    expect(settings[normalizationIndex].props.children).toBe('Bait normalization: total abundance');
+    expect(settings[normalizationIndex].props.children).toBe('Condition normalization: total abundance');
     settings = Settings({
       analysisType: 'dotplot',
-      normalization: 'prey',
+      normalization: 'readout',
     });
     normalizationIndex = settings.findIndex(setting => (setting.key === 'normalization'));
     expect(normalizationIndex).toBeGreaterThanOrEqual(0);
-    expect(settings[normalizationIndex].props.children).toBe('Bait normalization: specific prey');
+    expect(settings[normalizationIndex].props.children).toBe('Condition normalization: specific readout');
     settings = Settings({
       analysisType: 'dotplot',
       normalization: 'test',

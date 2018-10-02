@@ -12,17 +12,17 @@ describe('Normalization', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find({ label: 'Prey for normalization' }).length).toEqual(0);
+    expect(wrapper.find({ label: 'Readout for normalization' }).length).toEqual(0);
   });
 
-  test('Renders for prey normalization', () => {
+  test('Renders for readout normalization', () => {
     const wrapper = shallow(
       <Normalization
         analysisType="dotplot"
-        normalization="prey"
+        normalization="readout"
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find({ label: 'Prey for normalization' }).length).toEqual(1);
+    expect(wrapper.find({ label: 'Readout for normalization' }).length).toEqual(1);
   });
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { arrayShallowEqual } from '../../../../helpers/array-shallow-equal';
-import PreyLengthNormalizationContainer from './prey-length-normalization-container';
+import ReadoutLengthNormalizationContainer from './readout-length-normalization-container';
 import FilterHeader from '../../header-selection/filter-header';
 
 jest.mock('../../../../helpers/array-shallow-equal');
@@ -17,18 +17,18 @@ const options = [
 const change = jest.fn();
 const header = ['column1', 'column2'];
 
-describe('PreyLengthNormalizationContainer', () => {
+describe('ReadoutLengthNormalizationContainer', () => {
   test('Store set on mount', () => {
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
       options,
     });
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm={false}
-        preyLength={undefined}
+        readoutLengthNorm={false}
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -38,7 +38,7 @@ describe('PreyLengthNormalizationContainer', () => {
     FilterHeader.mockRestore();
   });
 
-  test(`Store not updated by default via setInitialReduxFormState when preyLengthNorm
+  test(`Store not updated by default via setInitialReduxFormState when readoutLengthNorm
     is false`, () => {
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
@@ -48,11 +48,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm={false}
-        preyLength={undefined}
+        readoutLengthNorm={false}
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -60,12 +60,12 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setInitialReduxFormState(change, undefined, false, header);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('preyLengthNorm', false);
-    expect(change).toHaveBeenCalledWith('preyLength', 'column1');
+    expect(change).toHaveBeenCalledWith('readoutLengthNorm', false);
+    expect(change).toHaveBeenCalledWith('readoutLength', 'column1');
     FilterHeader.mockRestore();
   });
 
-  test(`Store updated via setInitialReduxFormState when preyLengthNorm is true
+  test(`Store updated via setInitialReduxFormState when readoutLengthNorm is true
     and can be set`, () => {
     FilterHeader.mockReturnValue({
       initialValue: 'column1',
@@ -75,11 +75,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm
-        preyLength={undefined}
+        readoutLengthNorm
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -87,12 +87,12 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('preyLengthNorm', true);
-    expect(change).toHaveBeenCalledWith('preyLength', 'column1');
+    expect(change).toHaveBeenCalledWith('readoutLengthNorm', true);
+    expect(change).toHaveBeenCalledWith('readoutLength', 'column1');
     FilterHeader.mockRestore();
   });
 
-  test(`Store not updated via setInitialReduxFormState when preyLengthNorm is true
+  test(`Store not updated via setInitialReduxFormState when readoutLengthNorm is true
     and cannot be set`, () => {
     FilterHeader.mockReturnValue({
       initialValue: null,
@@ -102,11 +102,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm
-        preyLength={undefined}
+        readoutLengthNorm
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -114,11 +114,11 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('preyLengthNorm', false);
+    expect(change).toHaveBeenCalledWith('readoutLengthNorm', false);
     FilterHeader.mockRestore();
   });
 
-  test(`Store column not updated via setInitialReduxFormState when preyLengthNorm is true
+  test(`Store column not updated via setInitialReduxFormState when readoutLengthNorm is true
     and column is already set`, () => {
     FilterHeader.mockReturnValue({
       initialValue: null,
@@ -128,11 +128,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm
-        preyLength="test"
+        readoutLengthNorm
+        readoutLength="test"
         header={header}
       />,
     );
@@ -140,7 +140,7 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setInitialReduxFormState(change, 'test', true, header);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('preyLengthNorm', true);
+    expect(change).toHaveBeenCalledWith('readoutLengthNorm', true);
     FilterHeader.mockRestore();
   });
 
@@ -149,11 +149,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm
-        preyLength={undefined}
+        readoutLengthNorm
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -181,11 +181,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm={false}
-        preyLength={undefined}
+        readoutLengthNorm={false}
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -193,7 +193,7 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setReduxFormState(change, headerNew);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('preyLength', 'column1');
+    expect(change).toHaveBeenCalledWith('readoutLength', 'column1');
     expect(wrapper.state().options).toEqual(optionsNew);
     arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
@@ -215,11 +215,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm={false}
-        preyLength={undefined}
+        readoutLengthNorm={false}
+        readoutLength={undefined}
         header={header}
       />,
     );
@@ -227,8 +227,8 @@ describe('PreyLengthNormalizationContainer', () => {
     wrapper.instance().setReduxFormState(change, headerNew);
     expect(FilterHeader).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('preyLengthNorm', false);
-    expect(change).toHaveBeenCalledWith('preyLength', undefined);
+    expect(change).toHaveBeenCalledWith('readoutLengthNorm', false);
+    expect(change).toHaveBeenCalledWith('readoutLength', undefined);
     expect(wrapper.state().options).toEqual(optionsNew);
     arrayShallowEqual.mockRestore();
     FilterHeader.mockRestore();
@@ -244,11 +244,11 @@ describe('PreyLengthNormalizationContainer', () => {
     ** is run with wrapper.instance() but I'm using props consistent with the
     ** function call */
     const wrapper = shallow(
-      <PreyLengthNormalizationContainer
+      <ReadoutLengthNormalizationContainer
         analysisType="dotplot"
         change={change}
-        preyLengthNorm={false}
-        preyLength={undefined}
+        readoutLengthNorm={false}
+        readoutLength={undefined}
         header={header}
       />,
     );

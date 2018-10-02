@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import PreyLengthNormalization from './prey-length-normalization';
+import ReadoutLengthNormalization from './readout-length-normalization';
 
-describe('PreyLengthNormalization', () => {
+describe('ReadoutLengthNormalization', () => {
   test('Renders', () => {
     const wrapper = shallow(
-      <PreyLengthNormalization
+      <ReadoutLengthNormalization
         analysisType="dotplot"
         options={[]}
       />,

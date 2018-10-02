@@ -1,46 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PreyLengthNormalization Renders 1`] = `
+exports[`ReadoutLengthNormalization Renders 1`] = `
 <div
-  className="PreyLengthNormalization-container"
+  className="ReadoutLengthNormalization-container"
 >
   <div
-    className="PreyLengthNormalization-checkbox"
+    className="ReadoutLengthNormalization-checkbox"
   >
     <div
-      className="PreyLengthNormalization-checkbox-label"
+      className="ReadoutLengthNormalization-checkbox-label"
     >
-      Normalize to prey length:
+      Normalize to readout length:
     </div>
     <CustomField
-      name="preyLengthNorm"
+      name="readoutLengthNorm"
       onChange={[Function]}
       type="switch"
     />
   </div>
   <div
-    className="PreyLengthNormalization-select"
+    className="ReadoutLengthNormalization-select"
   >
     <CustomField
       helpMessage={
         <div>
-          The spectral count/abundance value of each prey can be normalized to its protein length if a column with protein length is available in the input file. This option should be selected if you are worried the protein length may be unduly affecting spectral counts. The normalized value of a prey is calculated by dividing the median length of all preys in the data set by the length of prey i and then multiplying by the abundance of prey i.
+          The spectral count/abundance value of each readout can be normalized to its protein length if a column with protein length is available in the input file. This option should be selected if you are worried the protein length may be unduly affecting spectral counts. The normalized value of a readout is calculated by dividing the median length of all readouts in the data set by the length of readout i and then multiplying by the abundance of readout i.
           <div
             className="Info-img-container Info-img-padding"
           >
             <img
-              alt="Prey length normalization"
+              alt="Readout length normalization"
               src="length-normalization.svg"
             />
           </div>
-          If you are applying multiple transformations to your data, prey length normalization will always occur after control subtraction but before bait normalization and log transformation.
+          If you are applying multiple transformations to your data, readout length normalization will always occur after control subtraction but before condition normalization and log transformation.
         </div>
       }
-      label="Prey length column"
-      name="preyLength"
+      label="Readout length column"
+      name="readoutLength"
       onChange={[Function]}
       options={Array []}
-      placeHolder="Prey length column..."
+      placeHolder="Readout length column..."
       type="select"
     />
   </div>

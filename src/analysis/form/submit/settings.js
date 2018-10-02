@@ -5,7 +5,7 @@ import FalsyButNotZero from '../../../helpers/falsy-but-not-zero';
 
 const validTypes = {
   logTransform: [2, 'e', 10],
-  normalization: ['prey', 'total'],
+  normalization: ['readout', 'total'],
 };
 
 const Settings = (form) => {
@@ -30,10 +30,10 @@ const Settings = (form) => {
           text: 'Control subtraction is selected',
         });
       }
-      if (form.preyLengthNorm) {
+      if (form.readoutLengthNorm) {
         tagArray.push({
-          key: 'preyLengthNorm',
-          text: 'Prey length normalization is selected',
+          key: 'readoutLengthNorm',
+          text: 'Readout length normalization is selected',
         });
       }
       if (
@@ -42,7 +42,7 @@ const Settings = (form) => {
       ) {
         tagArray.push({
           key: 'normalization',
-          text: `Bait normalization: ${form.normalization === 'total' ? 'total abundance' : 'specific prey'}`,
+          text: `Condition normalization: ${form.normalization === 'total' ? 'total abundance' : 'specific readout'}`,
         });
       }
       if (

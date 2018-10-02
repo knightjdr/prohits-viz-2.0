@@ -38,7 +38,7 @@ exports[`DotplotOptions Renders 1`] = `
       ]
     }
   />
-  <PreyLengthNormalizationContainer
+  <ReadoutLengthNormalizationContainer
     analysisType="test"
     change={[Function]}
     header={
@@ -47,8 +47,8 @@ exports[`DotplotOptions Renders 1`] = `
         "b",
       ]
     }
-    preyLength="test"
-    preyLengthNorm={false}
+    readoutLength="test"
+    readoutLengthNorm={false}
   />
   <Normalization
     analysisType="test"
@@ -65,9 +65,9 @@ exports[`DotplotOptions Renders 1`] = `
   />
   <Clustering
     analysisType="test"
-    baitClustering="baits"
     clustering="test"
-    preyClustering="preys"
+    conditionClustering="conditions"
+    readoutClustering="readouts"
   />
   <Output
     analysisType="test"

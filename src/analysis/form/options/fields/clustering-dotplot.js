@@ -11,9 +11,9 @@ import './clustering.css';
 
 const Clustering = ({
   analysisType,
-  baitClustering,
+  conditionClustering,
   clustering,
-  preyClustering,
+  readoutClustering,
 }) => (
   <div>
     <div className="Clustering-header">
@@ -94,46 +94,46 @@ const Clustering = ({
       clustering === 'none' &&
       <div className="Clustering-none-container">
         <CustomField
-          helpMessage={Info[analysisType].baitClustering}
-          label="Bait options"
-          name="baitClustering"
+          helpMessage={Info[analysisType].conditionClustering}
+          label="Condition options"
+          name="conditionClustering"
           onChange={DefaultChange}
           options={[
-            { text: 'Supply baits', value: 'none' },
-            { text: 'Cluster all baits', value: 'baits' },
+            { text: 'Supply conditions', value: 'none' },
+            { text: 'Cluster all conditions', value: 'conditions' },
           ]}
-          placeHolder="Bait options..."
+          placeHolder="Condition options..."
           type="select"
         />
         {
-          baitClustering === 'none' &&
+          conditionClustering === 'none' &&
           <CustomField
-            label="Baits"
-            name="baitList"
+            label="Conditions"
+            name="conditionList"
             onChange={DefaultChange}
-            placeHolder="Baits..."
+            placeHolder="Conditions..."
             type="textArea"
           />
         }
         <CustomField
-          helpMessage={Info[analysisType].preyClustering}
-          label="Prey options"
-          name="preyClustering"
+          helpMessage={Info[analysisType].readoutClustering}
+          label="Readout options"
+          name="readoutClustering"
           onChange={DefaultChange}
           options={[
-            { text: 'Supply preys', value: 'none' },
-            { text: 'Cluster all preys', value: 'preys' },
+            { text: 'Supply readouts', value: 'none' },
+            { text: 'Cluster all readouts', value: 'readouts' },
           ]}
-          placeHolder="Prey options..."
+          placeHolder="Readout options..."
           type="select"
         />
         {
-          preyClustering === 'none' &&
+          readoutClustering === 'none' &&
           <CustomField
-            label="Preys"
-            name="preyList"
+            label="Readouts"
+            name="readoutList"
             onChange={DefaultChange}
-            placeHolder="Preys..."
+            placeHolder="Readouts..."
             type="textArea"
           />
         }
@@ -143,16 +143,16 @@ const Clustering = ({
 );
 
 Clustering.defaultProps = {
-  baitClustering: undefined,
+  conditionClustering: undefined,
   clustering: undefined,
-  preyClustering: undefined,
+  readoutClustering: undefined,
 };
 
 Clustering.propTypes = {
   analysisType: PropTypes.string.isRequired,
-  baitClustering: PropTypes.string,
+  conditionClustering: PropTypes.string,
   clustering: PropTypes.string,
-  preyClustering: PropTypes.string,
+  readoutClustering: PropTypes.string,
 };
 
 export default Clustering;

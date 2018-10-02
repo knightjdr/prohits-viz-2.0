@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import CustomField from '../../field/field';
 import DefaultChange from '../../field/default-change';
+import DefaultCheckboxChange from '../../field/default-checkbox-change';
 import Info from '../info/info';
 
 import './output.css';
@@ -34,6 +35,52 @@ const Output = ({
       placeHolder="Output folder..."
       type="input"
     />
+    <div className="Output-checkboxes">
+      <div className="Output-checkbox">
+        <div className="Output-checkbox-label">
+          Generate PDF:
+        </div>
+        <CustomField
+          helpMessage={Info[analysisType].pdf}
+          name="pdf"
+          onChange={DefaultCheckboxChange}
+          type="switch"
+        />
+      </div>
+      <div className="Output-checkbox">
+        <div className="Output-checkbox-label">
+          Generate PNG:
+        </div>
+        <CustomField
+          helpMessage={Info[analysisType].png}
+          name="png"
+          onChange={DefaultCheckboxChange}
+          type="switch"
+        />
+      </div>
+      <div className="Output-checkbox">
+        <div className="Output-checkbox-label">
+          Generate distance plots:
+        </div>
+        <CustomField
+          helpMessage={Info[analysisType].writeDistance}
+          name="writeDistance"
+          onChange={DefaultCheckboxChange}
+          type="switch"
+        />
+      </div>
+      <div className="Output-checkbox">
+        <div className="Output-checkbox-label">
+          Generate heatmap:
+        </div>
+        <CustomField
+          helpMessage={Info[analysisType].writeHeatmap}
+          name="writeHeatmap"
+          onChange={DefaultCheckboxChange}
+          type="switch"
+        />
+      </div>
+    </div>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import FilterHeader from './filter-header';
 
 /* Returns a list of suggested and other headers, along with an initial value
-** for the abundance, bait, prey and score columns. */
+** for the abundance, condition, readout and score columns. */
 
 export const recommendedHeaders = {
   dotplot: {

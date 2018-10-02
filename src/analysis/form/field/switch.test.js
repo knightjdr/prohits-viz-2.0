@@ -6,150 +6,130 @@ import TestForm from './__mocks__/form-wrapper';
 
 const inputChange = jest.fn();
 const onChange = jest.fn();
+const onSubmit = jest.fn();
 
 describe('Switch', () => {
-  test('Renders with false as initial value', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-      >
-        <Switch
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    expect(wrapper).toMatchSnapshot();
-    const switchEl = wrapper.find('Switch').first();
-    expect(switchEl.props().checked).toBeFalsy();
-  });
+  describe('with help text', () => {
+    let wrapper;
 
-  test('FormItem gets layout props', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-      >
-        <Switch
-          formItemLayout={{
-            labelCol: { span: 10 },
-            wrapperCol: { span: 20 },
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            change: inputChange,
+            value: undefined,
           }}
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const FormItem = wrapper.find('FormItem');
-    expect(FormItem.props().labelCol).toEqual({ span: 10 });
-    expect(FormItem.props().wrapperCol).toEqual({ span: 20 });
-  });
-
-  test('On change called on switch', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-      >
-        <Switch
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          placeHolder="Switch"
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const switchEl = wrapper.find('Switch').first();
-    switchEl.simulate('click');
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  test('Can be set via input.value', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-      >
-        <Switch
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    wrapper.setProps({
-      input: {
-        change: inputChange,
-        value: true,
-      },
+          meta={{}}
+          onSubmit={onSubmit}
+        >
+          <Switch
+            formItemLayout={{
+              labelCol: { span: 10 },
+              wrapperCol: { span: 20 },
+            }}
+            helpMessage="help"
+            input={{}}
+            label="TestSwitch"
+            onChange={onChange}
+            style={{ backgroundColor: '#000' }}
+          />
+        </TestForm>,
+      );
     });
-    const switchEl = wrapper.find('Switch').first();
-    expect(switchEl.props().checked).toBeTruthy();
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('renders with false as initial value', () => {
+      const switchEl = wrapper.find('Switch').first();
+      expect(switchEl.props().checked).toBeFalsy();
+    });
+
+    describe('FormItem', () => {
+      let formItem;
+
+      beforeAll(() => {
+        formItem = wrapper.find('FormItem');
+      });
+
+      it('should get label dimensions', () => {
+        expect(formItem.props().labelCol).toEqual({ span: 10 });
+      });
+
+      it('should get wrapper dimensions', () => {
+        expect(formItem.props().wrapperCol).toEqual({ span: 20 });
+      });
+    });
+
+    it('should call change called on switch', () => {
+      const switchEl = wrapper.find('Switch').first();
+      switchEl.simulate('click');
+      expect(onChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('should set value via input.value', () => {
+      wrapper.setProps({
+        input: {
+          change: inputChange,
+          value: true,
+        },
+      });
+      const switchEl = wrapper.find('Switch').first();
+      expect(switchEl.props().checked).toBeTruthy();
+    });
+
+    describe('on submit', () => {
+      beforeAll(() => {
+        onSubmit.mockClear();
+        const button = wrapper.find('button');
+        button.simulate('submit');
+      });
+
+      it('should call submit function', () => {
+        expect(onSubmit).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it('should render help', () => {
+      expect(wrapper.find('svg.CustomField-switch-help').length).toBe(1);
+    });
+
+    it('should add custom style', () => {
+      const checkboxStyle = wrapper.find('Switch').first().props().style;
+      expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
+    });
   });
 
-  test('Submit called on button click and submits with no errors', () => {
-    const onSubmitSpy = jest.fn();
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-        onSubmit={onSubmitSpy}
-      >
-        <Switch
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button');
-    button.simulate('submit');
-    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    const switchEl = wrapper.find('Switch').first();
-    expect(switchEl.props().checked).toBeFalsy();
-  });
+  describe('without help text', () => {
+    let wrapper;
 
-  test('Can add custom style', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{}}
-      >
-        <Switch
-          input={{}}
-          label="TestSwitch"
-          onChange={onChange}
-          style={{ backgroundColor: '#000' }}
-        />
-      </TestForm>,
-    );
-    const checkboxStyle = wrapper.find('Switch').first().props().style;
-    expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            change: inputChange,
+            value: undefined,
+          }}
+          meta={{}}
+          onSubmit={onSubmit}
+        >
+          <Switch
+            formItemLayout={{
+              labelCol: { span: 10 },
+              wrapperCol: { span: 20 },
+            }}
+            input={{}}
+            label="TestSwitch"
+            onChange={onChange}
+            style={{}}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

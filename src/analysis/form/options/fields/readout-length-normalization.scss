@@ -1,22 +1,22 @@
 @import 'style/ant';
 
-.PreyLengthNormalization-container {
+.ReadoutLengthNormalization-container {
   display: flex;
   flex-wrap: wrap;
 }
-.PreyLengthNormalization-checkbox {
+.ReadoutLengthNormalization-checkbox {
   display: flex;
   margin-right: 10px;
   margin-top: 38px;
   min-width: 250px;
   width: 25%;
 }
-.PreyLengthNormalization-checkbox-label {
+.ReadoutLengthNormalization-checkbox-label {
   @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: 170px;
 }
-.PreyLengthNormalization-select {
+.ReadoutLengthNormalization-select {
   flex-grow: 1;
 }

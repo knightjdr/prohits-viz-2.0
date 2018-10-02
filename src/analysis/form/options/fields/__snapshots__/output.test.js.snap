@@ -22,7 +22,7 @@ exports[`Output Renders 1`] = `
     for detailed information on the files output from this tool.
   </div>
   <CustomField
-    helpMessage="The name of the output folder"
+    helpMessage="The name of the output folder."
     inputType="text"
     label="Output folder"
     name="outputFolder"
@@ -30,5 +30,72 @@ exports[`Output Renders 1`] = `
     placeHolder="Output folder..."
     type="input"
   />
+  <div
+    className="Output-checkboxes"
+  >
+    <div
+      className="Output-checkbox"
+    >
+      <div
+        className="Output-checkbox-label"
+      >
+        Generate PDF:
+      </div>
+      <CustomField
+        helpMessage="SVG images will always be generated. Please, specify if you would also like PDFs."
+        name="pdf"
+        onChange={[Function]}
+        type="switch"
+      />
+    </div>
+    <div
+      className="Output-checkbox"
+    >
+      <div
+        className="Output-checkbox-label"
+      >
+        Generate PNG:
+      </div>
+      <CustomField
+        helpMessage="SVG images will always be generated. Please, specify if you would also like PNGs."
+        name="png"
+        onChange={[Function]}
+        type="switch"
+      />
+    </div>
+    <div
+      className="Output-checkbox"
+    >
+      <div
+        className="Output-checkbox-label"
+      >
+        Generate distance plots:
+      </div>
+      <CustomField
+        helpMessage="Images can also be generated showing the clustered distance
+          matrices of either the conditions or the readouts. Please specificy if
+          you would like to output these images as well."
+        name="writeDistance"
+        onChange={[Function]}
+        type="switch"
+      />
+    </div>
+    <div
+      className="Output-checkbox"
+    >
+      <div
+        className="Output-checkbox-label"
+      >
+        Generate heatmap:
+      </div>
+      <CustomField
+        helpMessage="Please specify if you would also like a heat map version of
+          the output image."
+        name="writeHeatmap"
+        onChange={[Function]}
+        type="switch"
+      />
+    </div>
+  </div>
 </div>
 `;

@@ -7,8 +7,8 @@ describe('ValidationDefault', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'file')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'analysisType')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'abundance')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'bait')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'prey')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'condition')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readout')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'score')).toBeTruthy();
   });
 
@@ -33,16 +33,16 @@ describe('ValidationDefault', () => {
       file: ['test'],
       analysisType: 'dotplot',
       abundance: 'test',
-      bait: 'test',
-      prey: 'test',
+      condition: 'test',
+      readout: 'test',
       score: 'test',
     });
     expect(Object.prototype.hasOwnProperty.call(errors, 'fileType')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'file')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'analysisType')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'abundance')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'bait')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'prey')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'condition')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readout')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'score')).toBeFalsy();
   });
 });

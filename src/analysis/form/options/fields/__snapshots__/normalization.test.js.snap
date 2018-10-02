@@ -13,14 +13,14 @@ exports[`Normalization Renders for default normalization 1`] = `
     }
   >
     <CustomField
-      helpMessage="No normalization is applied by default, but when baits in the same
+      helpMessage="No normalization is applied by default, but when conditions in the same
         dataset have been run on instruments with varying sensitivity or dynamic range,
         normalization should be applied. The options are to normalize by the total abundance
-        for all proteins identified in the run or normalize based on a specific prey.
+        for all proteins identified in the run or normalize based on a specific readout.
         If you are applying multiple transformations to your data, normalization will
-        always occur after control subtraction and prey length normalization but before
+        always occur after control subtraction and readout length normalization but before
         log transformation."
-      label="Bait normalization"
+      label="Condition normalization"
       name="normalization"
       onChange={[Function]}
       options={
@@ -34,19 +34,19 @@ exports[`Normalization Renders for default normalization 1`] = `
             "value": "total",
           },
           Object {
-            "text": "Specific prey",
-            "value": "prey",
+            "text": "Specific readout",
+            "value": "readout",
           },
         ]
       }
-      placeHolder="Bait normalization..."
+      placeHolder="Condition normalization..."
       type="select"
     />
   </div>
 </div>
 `;
 
-exports[`Normalization Renders for prey normalization 1`] = `
+exports[`Normalization Renders for readout normalization 1`] = `
 <div
   className="Normalization-container"
 >
@@ -60,7 +60,7 @@ exports[`Normalization Renders for prey normalization 1`] = `
   >
     <CustomField
       helpMessage={null}
-      label="Bait normalization"
+      label="Condition normalization"
       name="normalization"
       onChange={[Function]}
       options={
@@ -74,12 +74,12 @@ exports[`Normalization Renders for prey normalization 1`] = `
             "value": "total",
           },
           Object {
-            "text": "Specific prey",
-            "value": "prey",
+            "text": "Specific readout",
+            "value": "readout",
           },
         ]
       }
-      placeHolder="Bait normalization..."
+      placeHolder="Condition normalization..."
       type="select"
     />
   </div>
@@ -87,17 +87,17 @@ exports[`Normalization Renders for prey normalization 1`] = `
     className="Normalization-input"
   >
     <CustomField
-      helpMessage="No normalization is applied by default, but when baits in the same
+      helpMessage="No normalization is applied by default, but when conditions in the same
         dataset have been run on instruments with varying sensitivity or dynamic range,
         normalization should be applied. The options are to normalize by the total abundance
-        for all proteins identified in the run or normalize based on a specific prey.
+        for all proteins identified in the run or normalize based on a specific readout.
         If you are applying multiple transformations to your data, normalization will
-        always occur after control subtraction and prey length normalization but before
+        always occur after control subtraction and readout length normalization but before
         log transformation."
-      label="Prey for normalization"
-      name="normalizationPrey"
+      label="Readout for normalization"
+      name="normalizationReadout"
       onChange={[Function]}
-      placeHolder="Prey for normalization..."
+      placeHolder="Readout for normalization..."
       type="input"
     />
   </div>

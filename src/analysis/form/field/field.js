@@ -69,6 +69,7 @@ export const WrappedField = ({
       return (
         <CustomSwitch
           formItemLayout={formItemLayout}
+          helpMessage={helpMessage}
           input={input}
           label={label}
           onChange={onChange}

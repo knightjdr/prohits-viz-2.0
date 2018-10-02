@@ -55,25 +55,25 @@ const ValidationDotplot = (values) => {
   ) {
     errors.control = 'Select a column for control subtraction';
   }
-  // ensure column has been selected when prey length normalization is true
+  // ensure column has been selected when readout length normalization is true
   if (
-    values.preyLengthNorm &&
-    !values.preyLength
+    values.readoutLengthNorm &&
+    !values.readoutLength
   ) {
-    errors.preyLength = 'Select a column for prey length normalization';
+    errors.readoutLength = 'Select a column for readout length normalization';
   }
   // validate normalization
-  const validNorm = ['none', 'total', 'prey'];
+  const validNorm = ['none', 'total', 'readout'];
   if (
     values.normalization &&
     !validNorm.includes(values.normalization)
   ) {
     errors.normalization = 'Select a valid normalization method';
   } else if (
-    values.normalization === 'prey' &&
-    !values.normalizationPrey
+    values.normalization === 'readout' &&
+    !values.normalizationReadout
   ) {
-    errors.normalizationPrey = 'Select a prey for prey-based normalization';
+    errors.normalizationReadout = 'Select a readout for readout-based normalization';
   }
   // validate log transformation
   const validLog = ['none', 2, 'e', 10];
@@ -118,16 +118,16 @@ const ValidationDotplot = (values) => {
     }
   } else if (values.clustering === 'none') {
     if (
-      values.baitClustering === 'baits' &&
-      !values.baitList
+      values.conditionClustering === 'conditions' &&
+      !values.conditionList
     ) {
-      errors.baitList = 'Specify the baits to use for the non-clustered analysis';
+      errors.conditionList = 'Specify the conditions to use for the non-clustered analysis';
     }
     if (
-      values.preyClustering === 'preys' &&
-      !values.preyList
+      values.readoutClustering === 'readouts' &&
+      !values.readoutList
     ) {
-      errors.preyList = 'Specify the preys to use for the non-clustered analysis';
+      errors.readoutList = 'Specify the readouts to use for the non-clustered analysis';
     }
   }
   // validate output folder

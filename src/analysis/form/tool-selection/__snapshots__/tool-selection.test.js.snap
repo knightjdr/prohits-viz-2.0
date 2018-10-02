@@ -31,8 +31,8 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
           Array [
             Object {
               "disabled": true,
-              "text": "Bait v bait",
-              "value": "baitbait",
+              "text": "Condition v condition",
+              "value": "conditioncondition",
             },
             Object {
               "disabled": true,
@@ -60,7 +60,7 @@ exports[`ToolSelectionComponent Renders item with selected analysis type 1`] = `
       <Alert
         message={
           <span>
-            This tool takes quantitative information on bait-prey interactions and visualizes the interactions as either a dot plot or heat map. This is an ideal way of visualizing small to moderately sized data sets (≤ 20 baits). See the
+            This tool takes quantitative information on condition-readout datasets and visualizes the information as either a dot plot or heat map. This is an ideal way of visualizing small to moderately sized data sets (≤ 20 conditions). See the
              
             <Unknown
               className="tool-selection__link"
@@ -112,8 +112,8 @@ exports[`ToolSelectionComponent Renders item without selected analysis type 1`] 
           Array [
             Object {
               "disabled": true,
-              "text": "Bait v bait",
-              "value": "baitbait",
+              "text": "Condition v condition",
+              "value": "conditioncondition",
             },
             Object {
               "disabled": true,

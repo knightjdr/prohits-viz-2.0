@@ -6,7 +6,7 @@ exports[`Log Renders 1`] = `
     Log transformation will be performed after control subtraction, normalization
     and abundance filtering if these are also specified. If you are applying multiple
     transformations to your data, log transformation will always occur last (after
-    control subtraction, prey length normalization and bait normalization)."
+    control subtraction, readout length normalization and condition normalization)."
   label="Log transformation"
   name="logTransform"
   onChange={[Function]}

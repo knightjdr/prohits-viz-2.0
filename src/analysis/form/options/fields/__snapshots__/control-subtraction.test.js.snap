@@ -22,12 +22,12 @@ exports[`ControlSubtraction Renders 1`] = `
     className="ControlSubtraction-select"
   >
     <CustomField
-      helpMessage="The average value of a prey across control samples will be subtracted
-        from the detected value for the bait if this is selected. The quantitative value
-        for the prey becomes the value above and beyond what is seen across the control
+      helpMessage="The average value of a readout across control samples will be subtracted
+        from the detected value for the condition if this is selected. The quantitative value
+        for the readout becomes the value above and beyond what is seen across the control
         samples. Specify the column to use for controls in the adjacent \\"Control column\\"
         field. If you are applying multiple transformations to your data, control subtraction
-        will always occur first (before prey length, normalization, bait normalization
+        will always occur first (before readout length, normalization, condition normalization
         and log transformation)."
       label="Control column"
       name="control"

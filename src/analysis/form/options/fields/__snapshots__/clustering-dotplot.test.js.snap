@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ClusteringDotplot Renders for "none" clustering when requiring baits and preys 1`] = `
+exports[`ClusteringDotplot Renders for "none" clustering when requiring conditions and readouts 1`] = `
 <div>
   <div
     className="Clustering-header"
@@ -49,77 +49,77 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring baits an
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Bait options"
-      name="baitClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Condition options"
+      name="conditionClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply baits",
+            "text": "Supply conditions",
             "value": "none",
           },
           Object {
-            "text": "Cluster all baits",
-            "value": "baits",
+            "text": "Cluster all conditions",
+            "value": "conditions",
           },
         ]
       }
-      placeHolder="Bait options..."
+      placeHolder="Condition options..."
       type="select"
     />
     <CustomField
-      label="Baits"
-      name="baitList"
+      label="Conditions"
+      name="conditionList"
       onChange={[Function]}
-      placeHolder="Baits..."
+      placeHolder="Conditions..."
       type="textArea"
     />
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Prey options"
-      name="preyClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Readout options"
+      name="readoutClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply preys",
+            "text": "Supply readouts",
             "value": "none",
           },
           Object {
-            "text": "Cluster all preys",
-            "value": "preys",
+            "text": "Cluster all readouts",
+            "value": "readouts",
           },
         ]
       }
-      placeHolder="Prey options..."
+      placeHolder="Readout options..."
       type="select"
     />
     <CustomField
-      label="Preys"
-      name="preyList"
+      label="Readouts"
+      name="readoutList"
       onChange={[Function]}
-      placeHolder="Preys..."
+      placeHolder="Readouts..."
       type="textArea"
     />
   </div>
 </div>
 `;
 
-exports[`ClusteringDotplot Renders for "none" clustering when requiring only baits 1`] = `
+exports[`ClusteringDotplot Renders for "none" clustering when requiring only conditions 1`] = `
 <div>
   <div
     className="Clustering-header"
@@ -168,70 +168,70 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only bai
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Bait options"
-      name="baitClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Condition options"
+      name="conditionClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply baits",
+            "text": "Supply conditions",
             "value": "none",
           },
           Object {
-            "text": "Cluster all baits",
-            "value": "baits",
+            "text": "Cluster all conditions",
+            "value": "conditions",
           },
         ]
       }
-      placeHolder="Bait options..."
+      placeHolder="Condition options..."
       type="select"
     />
     <CustomField
-      label="Baits"
-      name="baitList"
+      label="Conditions"
+      name="conditionList"
       onChange={[Function]}
-      placeHolder="Baits..."
+      placeHolder="Conditions..."
       type="textArea"
     />
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Prey options"
-      name="preyClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Readout options"
+      name="readoutClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply preys",
+            "text": "Supply readouts",
             "value": "none",
           },
           Object {
-            "text": "Cluster all preys",
-            "value": "preys",
+            "text": "Cluster all readouts",
+            "value": "readouts",
           },
         ]
       }
-      placeHolder="Prey options..."
+      placeHolder="Readout options..."
       type="select"
     />
   </div>
 </div>
 `;
 
-exports[`ClusteringDotplot Renders for "none" clustering when requiring only preys 1`] = `
+exports[`ClusteringDotplot Renders for "none" clustering when requiring only readouts 1`] = `
 <div>
   <div
     className="Clustering-header"
@@ -280,63 +280,63 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only pre
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Bait options"
-      name="baitClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Condition options"
+      name="conditionClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply baits",
+            "text": "Supply conditions",
             "value": "none",
           },
           Object {
-            "text": "Cluster all baits",
-            "value": "baits",
+            "text": "Cluster all conditions",
+            "value": "conditions",
           },
         ]
       }
-      placeHolder="Bait options..."
+      placeHolder="Condition options..."
       type="select"
     />
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of bait and prey genes in the desired display order must be
-      supplied in the text boxes. Only baits and preys entered in the text box will be
-      included in the analysis and in the dot plot. Bait and prey names must be entered
+      In this case, a list of condition and readout genes in the desired display order must be
+      supplied in the text boxes. Only conditions and readouts entered in the text box will be
+      included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
-      user may want to control which baits are shown in the dot plot and their ordering,
-      while wanting to show and cluster all preys, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the bait or prey options menu."
-      label="Prey options"
-      name="preyClustering"
+      user may want to control which conditions are shown in the dot plot and their ordering,
+      while wanting to show and cluster all readouts, or vice versa. This can be done as well
+      by selecting \\"cluster all\\" under the condition or readout options menu."
+      label="Readout options"
+      name="readoutClustering"
       onChange={[Function]}
       options={
         Array [
           Object {
-            "text": "Supply preys",
+            "text": "Supply readouts",
             "value": "none",
           },
           Object {
-            "text": "Cluster all preys",
-            "value": "preys",
+            "text": "Cluster all readouts",
+            "value": "readouts",
           },
         ]
       }
-      placeHolder="Prey options..."
+      placeHolder="Readout options..."
       type="select"
     />
     <CustomField
-      label="Preys"
-      name="preyList"
+      label="Readouts"
+      name="readoutList"
       onChange={[Function]}
-      placeHolder="Preys..."
+      placeHolder="Readouts..."
       type="textArea"
     />
   </div>

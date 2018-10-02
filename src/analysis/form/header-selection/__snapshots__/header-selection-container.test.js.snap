@@ -7,10 +7,10 @@ exports[`NewsListContainer Renders initially 1`] = `
       "abundance": Object {
         "initialValue": "test",
       },
-      "bait": Object {
+      "condition": Object {
         "initialValue": "test",
       },
-      "prey": Object {
+      "readout": Object {
         "initialValue": "test",
       },
       "score": Object {

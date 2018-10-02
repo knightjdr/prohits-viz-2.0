@@ -35,7 +35,7 @@ exports[`HeaderSelection Renders 1`] = `
           },
         ]
       }
-      placeHolder="Bait column..."
+      placeHolder="Condition column..."
       required={true}
       style={
         Object {
@@ -57,7 +57,7 @@ exports[`HeaderSelection Renders 1`] = `
           },
         ]
       }
-      placeHolder="Prey column..."
+      placeHolder="Readout column..."
       required={true}
       style={
         Object {

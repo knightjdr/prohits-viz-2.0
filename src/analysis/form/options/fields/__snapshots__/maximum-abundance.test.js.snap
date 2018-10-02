@@ -2,9 +2,9 @@
 
 exports[`Maximumbundance Renders 1`] = `
 <CustomField
-  helpMessage="Any preys with an abundance value (e.g. spectral count) above this cutoff
+  helpMessage="Any readouts with an abundance value (e.g. spectral count) above this cutoff
       will be capped at this maximum in the output images. This is to give greater
-      visual dynamic range for lower values when outlier preys with very high
+      visual dynamic range for lower values when outlier readouts with very high
       abundance are present. This cutoff will be dependent on the instrument and
       interaction method used and should be selected based on the data set."
   inputType="number"

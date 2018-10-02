@@ -112,26 +112,26 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'control')).toBeFalsy();
   });
 
-  test(`Prey length column must be selected when prey length normalization is true
+  test(`Readout length column must be selected when readout length normalization is true
     but not required otherwise`, () => {
     FalsyButNotZero.mockReturnValue(true);
-    // prey length column required
+    // readout length column required
     let errors = ValidationDotplot({
-      preyLengthNorm: true,
+      readoutLengthNorm: true,
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyLength')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutLength')).toBeTruthy();
     // valid
     errors = ValidationDotplot({
-      preyLengthNorm: true,
-      preyLength: 'test',
+      readoutLengthNorm: true,
+      readoutLength: 'test',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyLength')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutLength')).toBeFalsy();
     // not required, so don't care about column
     errors = ValidationDotplot({
-      preyLengthNorm: false,
-      preyLength: 'test',
+      readoutLengthNorm: false,
+      readoutLength: 'test',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyLength')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutLength')).toBeFalsy();
   });
 
   test('Normalization method selected with required fields', () => {
@@ -146,17 +146,17 @@ describe('ValidationDotplot', () => {
       normalization: 'total',
     });
     expect(Object.prototype.hasOwnProperty.call(errors, 'normalization')).toBeFalsy();
-    // prey normalization required prey column
+    // readout normalization required readout column
     errors = ValidationDotplot({
-      normalization: 'prey',
+      normalization: 'readout',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'normalizationPrey')).toBeTruthy();
-    // valid for prey normaltization
+    expect(Object.prototype.hasOwnProperty.call(errors, 'normalizationReadout')).toBeTruthy();
+    // valid for readout normaltization
     errors = ValidationDotplot({
-      normalization: 'prey',
-      normalizationPrey: 'test',
+      normalization: 'readout',
+      normalizationReadout: 'test',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'normalizationPrey')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'normalizationReadout')).toBeFalsy();
   });
 
   test('Invalid log returns an error', () => {
@@ -205,33 +205,33 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'clusteringMethod')).toBeFalsy();
   });
 
-  test('No clustering requires bait and/or prey lists', () => {
+  test('No clustering requires condition and/or readout lists', () => {
     FalsyButNotZero.mockReturnValue(true);
     // missing lists
     let errors = ValidationDotplot({
-      baitClustering: 'baits',
+      conditionClustering: 'conditions',
       clustering: 'none',
-      preyClustering: 'preys',
+      readoutClustering: 'readouts',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'baitList')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyList')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'conditionList')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutList')).toBeTruthy();
     // valid
     errors = ValidationDotplot({
-      baitClustering: 'baits',
-      baitList: 'test',
+      conditionClustering: 'conditions',
+      conditionList: 'test',
       clustering: 'none',
-      preyClustering: 'preys',
-      preyList: 'test',
+      readoutClustering: 'readouts',
+      readoutList: 'test',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'baitList')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyList')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'conditionList')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutList')).toBeFalsy();
     // lists not required when clustering all
     errors = ValidationDotplot({
-      baitClustering: 'none',
+      conditionClustering: 'none',
       clustering: 'none',
-      preyClustering: 'none',
+      readoutClustering: 'none',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'baitList')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'preyList')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'conditionList')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'readoutList')).toBeFalsy();
   });
 });

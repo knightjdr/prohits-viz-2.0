@@ -13,3 +13,26 @@
 .Output-introduction-link {
   @extend .decorate-link;
 }
+.Output-checkbox {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 10px;
+  min-width: 250px;
+  width: auto;
+}
+.Output-checkbox-label {
+  @extend .ant-text;
+  margin-right: 10px;
+  margin-top: 8px;
+  width: auto;
+}
+.Output-checkboxes { 
+  display: flex;
+  flex-wrap: wrap;
+}
+// at 576, ant desin adds 10px to form items
+@media (max-width: 575px) {
+  .Output-checkbox {
+    margin-top: 28px;
+  }
+}

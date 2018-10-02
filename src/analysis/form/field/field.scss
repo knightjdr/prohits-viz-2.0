@@ -10,6 +10,12 @@
   margin-top: 45px;
   width: 25px;
 }
+.CustomField-switch-help {
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 5px;
+  width: 25px;
+}
 // at 576, ant desin adds 10px to form items
 @media (max-width: 575px) {
   .CustomField-help {

@@ -8,9 +8,9 @@ describe('ClusteringDotplot', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering={undefined}
+        conditionClustering={undefined}
         clustering="biclustering"
-        preyClustering={undefined}
+        readoutClustering={undefined}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -23,9 +23,9 @@ describe('ClusteringDotplot', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering={undefined}
+        conditionClustering={undefined}
         clustering="hierarchical"
-        preyClustering={undefined}
+        readoutClustering={undefined}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -34,48 +34,48 @@ describe('ClusteringDotplot', () => {
     expect(wrapper.find('.Clustering-none-container').length).toBe(0);
   });
 
-  test('Renders for "none" clustering when requiring baits and preys', () => {
+  test('Renders for "none" clustering when requiring conditions and readouts', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="none"
+        conditionClustering="none"
         clustering="none"
-        preyClustering="none"
+        readoutClustering="none"
       />,
     );
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.Clustering-biclustering-checkbox').length).toBe(0);
     expect(wrapper.find('.Clustering-hierarchical-container').length).toBe(0);
     expect(wrapper.find('.Clustering-none-container').length).toBe(1);
-    expect(wrapper.find({ label: 'Baits' }).length).toEqual(1);
-    expect(wrapper.find({ label: 'Preys' }).length).toEqual(1);
+    expect(wrapper.find({ label: 'Conditions' }).length).toEqual(1);
+    expect(wrapper.find({ label: 'Readouts' }).length).toEqual(1);
   });
 
-  test('Renders for "none" clustering when requiring only baits', () => {
+  test('Renders for "none" clustering when requiring only conditions', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="none"
+        conditionClustering="none"
         clustering="none"
-        preyClustering="preys"
+        readoutClustering="readouts"
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find({ label: 'Baits' }).length).toEqual(1);
-    expect(wrapper.find({ label: 'Preys' }).length).toEqual(0);
+    expect(wrapper.find({ label: 'Conditions' }).length).toEqual(1);
+    expect(wrapper.find({ label: 'Readouts' }).length).toEqual(0);
   });
 
-  test('Renders for "none" clustering when requiring only preys', () => {
+  test('Renders for "none" clustering when requiring only readouts', () => {
     const wrapper = shallow(
       <ClusteringDotplot
         analysisType="dotplot"
-        baitClustering="baits"
+        conditionClustering="conditions"
         clustering="none"
-        preyClustering="none"
+        readoutClustering="none"
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find({ label: 'Baits' }).length).toEqual(0);
-    expect(wrapper.find({ label: 'Preys' }).length).toEqual(1);
+    expect(wrapper.find({ label: 'Conditions' }).length).toEqual(0);
+    expect(wrapper.find({ label: 'Readouts' }).length).toEqual(1);
   });
 });

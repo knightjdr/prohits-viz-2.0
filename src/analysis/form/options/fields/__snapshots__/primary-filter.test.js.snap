@@ -4,7 +4,7 @@ exports[`PrimaryFilter Renders 1`] = `
 <CustomField
   helpMessage={
     <div>
-      All preys that satisfy this score filter for at least one bait will be displayed on the dot plot. If a prey satisfies this filter for at least one bait, all the quantitative values for this prey – even those that did not satisfy the cutoff in particular bait-prey pairs - will also be included. By default, prey confidence will be indicated with a circle edge as shown below:
+      All readouts that satisfy this score filter for at least one condition will be displayed on the dot plot. If a readout satisfies this filter for at least one condition, all the quantitative values for this readout – even those that did not satisfy the cutoff in particular condition-readout pairs - will also be included. By default, readout confidence will be indicated with a circle edge as shown below:
       <div
         className="Info-img-container"
       >

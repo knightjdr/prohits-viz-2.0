@@ -68,8 +68,8 @@ export class HeaderSelectionContainer extends Component {
     if (columns.condition.initialValue) {
       change('condition', columns.condition.initialValue);
     }
-    if (columns.prey.initialValue) {
-      change('prey', columns.prey.initialValue);
+    if (columns.readout.initialValue) {
+      change('readout', columns.readout.initialValue);
     }
     if (columns.score.initialValue) {
       change('score', columns.score.initialValue);
