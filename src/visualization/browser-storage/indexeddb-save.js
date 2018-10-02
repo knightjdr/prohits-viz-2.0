@@ -17,6 +17,8 @@ const Save = (item, store) => (
         ResolveRequest(db, item, store)
       ))
       .then(() => {
+        const event = new Event('indexeddb-update');
+        window.dispatchEvent(event);
         resolve();
       })
       .catch(() => {

@@ -27,12 +27,30 @@ beforeAll(() => (
 ));
 
 describe('Delete indexeddb', () => {
-  it('should delete an entry', () => (
-    Delete(1)
-      .then(() => (
-        expect(Get(1)).rejects.toBeUndefined()
-      ))
-  ));
+  describe('successfully', () => {
+    let spy;
+
+    afterAll(() => {
+      spy.mockRestore();
+    });
+
+    beforeAll(async (done) => {
+      spy = jest.spyOn(window, 'dispatchEvent');
+      Delete(1)
+        .then(() => {
+          done();
+        });
+    });
+
+    it('should save an entry', () => {
+      expect(Get(1)).rejects.toBeUndefined();
+    });
+
+    it('should emit event that indexeddb was updated', () => {
+      const event = new Event('indexeddb-update');
+      expect(spy).toHaveBeenCalledWith(event);
+    });
+  });
 
   it('should reject if transaction/request error', () => (
     // Using undefined store to trigger error.

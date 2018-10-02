@@ -35,6 +35,12 @@ export class IndexedDBContainer extends Component {
       });
     });
   }
+  componentDidMount = () => {
+    window.addEventListener('indexeddb-update', this.updateSessions);
+  }
+  componentWillUnmount = () => {
+    window.removeEventListener('indexeddb-update', this.updateSessions);
+  }
   changePage = (page) => {
     const startIndex = (page - 1) * PAGELENGTH;
     this.setState(({ sessions }) => ({
@@ -44,10 +50,8 @@ export class IndexedDBContainer extends Component {
   }
   deleteSession = (id, name) => {
     indexedDBDelete(id)
-      .then(() => indexedDBGetAll())
-      .then((sessions) => {
+      .then(() => {
         Notification(`Session '${name}' was deleted.`, true);
-        this.updateSession(sessions);
       })
       .catch(() => {
         Notification(`Session '${name}' could not be deleted.`, false);
@@ -67,10 +71,8 @@ export class IndexedDBContainer extends Component {
     const name = this.props.save.name || 'unnamed session';
     const saveState = sessionState(name);
     indexedDBSave(saveState)
-      .then(() => indexedDBGetAll())
-      .then((sessions) => {
+      .then(() => {
         Notification(`Session '${name}' was saved.`, true);
-        this.updateSession(sessions);
       })
       .catch(() => {
         Notification(`Session '${name}' could not be saved.`, false);
@@ -87,16 +89,19 @@ export class IndexedDBContainer extends Component {
       sessionsPageNumber: page,
     };
   }
-  updateSession = (sessions) => {
-    this.setState(({ sessionsPageNumber }) => {
-      const updatedPage = this.updatePage(sessions, sessionsPageNumber);
-      return {
-        sessionItemsTotal: sessions.length,
-        sessions,
-        sessionsPage: updatedPage.sessionsPage,
-        sessionsPageNumber: updatedPage.sessionsPageNumber,
-      };
-    });
+  updateSessions = () => {
+    indexedDBGetAll()
+      .then((sessions) => {
+        this.setState(({ sessionsPageNumber }) => {
+          const updatedPage = this.updatePage(sessions, sessionsPageNumber);
+          return {
+            sessionItemsTotal: sessions.length,
+            sessions,
+            sessionsPage: updatedPage.sessionsPage,
+            sessionsPageNumber: updatedPage.sessionsPageNumber,
+          };
+        });
+      });
   };
   render() {
     return this.props.render({

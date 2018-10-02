@@ -17,6 +17,8 @@ const Delete = (id, store) => (
         ResolveRequest(db, id, store)
       ))
       .then(() => {
+        const event = new Event('indexeddb-update');
+        window.dispatchEvent(event);
         resolve();
       })
       .catch(() => {

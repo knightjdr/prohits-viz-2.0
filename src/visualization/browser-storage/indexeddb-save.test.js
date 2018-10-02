@@ -28,12 +28,30 @@ beforeAll(() => (
 const item = { id: 1, name: 'test', date: 'today' };
 
 describe('Save indexeddb', () => {
-  it('should save an entry', () => (
-    Save(item)
-      .then(() => (
-        expect(Get(1)).resolves.toEqual(item)
-      ))
-  ));
+  describe('successfully', () => {
+    let spy;
+
+    afterAll(() => {
+      spy.mockRestore();
+    });
+
+    beforeAll(async (done) => {
+      spy = jest.spyOn(window, 'dispatchEvent');
+      Save(item)
+        .then(() => {
+          done();
+        });
+    });
+
+    it('should save an entry', () => {
+      expect(Get(1)).resolves.toEqual(item);
+    });
+
+    it('should emit event that indexeddb was updated', () => {
+      const event = new Event('indexeddb-update');
+      expect(spy).toHaveBeenCalledWith(event);
+    });
+  });
 
   it('should reject if transaction/request error', () => (
     // Using undefined store to trigger error.
