@@ -39,7 +39,7 @@ export const NewsListComponent = ({
     newsListElement = (
       <div>
         <div className="News-list-title">
-          NEWS
+          news
         </div>
         <List
           itemLayout="vertical"

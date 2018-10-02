@@ -1,11 +1,11 @@
 import indexedDB from 'fake-indexeddb';
 
-import convertISODate from '../../helpers/convert-iso-date';
+import convertIsoDate from '../../helpers/convert-iso-date';
 import getAll from './indexeddb-getall';
 import openIndex from './indexeddb-open';
 
 jest.mock('../../helpers/convert-iso-date');
-convertISODate.mockReturnValue('today');
+convertIsoDate.mockReturnValue('today');
 jest.mock('./indexeddb-open');
 
 // Setup up memory indexeddb and set as return value of open module.

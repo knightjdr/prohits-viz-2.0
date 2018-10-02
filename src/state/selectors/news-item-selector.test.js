@@ -1,9 +1,9 @@
-import ConvertIsoDate from '../../helpers/convert-iso-date';
+import convertIsoDate from '../../helpers/convert-iso-date';
 import NewsItemSelector, { addDateIfNotNull } from './news-item-selector';
 
-// mock ConvertIsoDate
+// mock convertIsoDate
 jest.mock('../../helpers/convert-iso-date');
-ConvertIsoDate.mockReturnValue('date');
+convertIsoDate.mockReturnValue('date');
 
 describe('Add date to news item', () => {
   it('should return a date', () => {

@@ -1,0 +1,23 @@
+@import 'style/theme';
+
+.tasks {
+  display: flex;
+  height: calc(100vh - 40px);
+  justify-content: center;
+  padding: 20px;
+}
+.tasks__complete > :first-child {
+  color: $success;
+  margin-right: 5px;
+}
+.tasks__error > :first-child {
+  color: $warning;
+  margin-right: 5px;
+}
+.tasks__inner {
+  max-width: 950px;
+}
+.tasks__running > :first-child {
+  color: $primary-medium;
+  margin-right: 5px;
+}

@@ -6,15 +6,15 @@ import Navbar from '../navbar/navbar-container';
 const links = [
   {
     route: '/visualization',
-    text: 'VISUALIZATION',
+    text: 'visualization',
   },
   {
     route: '/news',
-    text: 'NEWS',
+    text: 'news',
   },
   {
     route: '/help',
-    text: 'HELP',
+    text: 'help',
   },
 ];
 

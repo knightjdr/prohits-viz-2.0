@@ -5,6 +5,7 @@ import shortId from 'shortid';
 import './table.css';
 
 const FirstColumn = ({
+  cellHeight,
   firstColumn,
   rows,
 }) => (
@@ -12,7 +13,7 @@ const FirstColumn = ({
     className="table__first-column"
     style={{
       minWidth: firstColumn.minWidth,
-      width: firstColumn.width,
+      width: firstColumn.width || 'auto',
     }}
   >
     {
@@ -20,7 +21,10 @@ const FirstColumn = ({
         <div
           className={`table__cell ${row[firstColumn.name].className}`}
           key={shortId.generate()}
-          style={row[firstColumn.name].style}
+          style={{
+            ...row[firstColumn.name].style,
+            height: cellHeight,
+          }}
         >
           { row[firstColumn.name].content }
         </div>
@@ -30,6 +34,7 @@ const FirstColumn = ({
 );
 
 FirstColumn.propTypes = {
+  cellHeight: PropTypes.number.isRequired,
   firstColumn: PropTypes.shape({
     minWidth: PropTypes.number,
     name: PropTypes.string,

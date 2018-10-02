@@ -9,15 +9,15 @@ import './help.css';
 const links = [
   {
     route: '/analysis',
-    text: 'ANALYSIS',
+    text: 'analysis',
   },
   {
     route: '/visualization',
-    text: 'VISUALIZATION',
+    text: 'visualization',
   },
   {
     route: '/news',
-    text: 'NEWS',
+    text: 'news',
   },
 ];
 

@@ -9,15 +9,15 @@ exports[`Analysis Renders 1`] = `
       Array [
         Object {
           "route": "/visualization",
-          "text": "VISUALIZATION",
+          "text": "visualization",
         },
         Object {
           "route": "/news",
-          "text": "NEWS",
+          "text": "news",
         },
         Object {
           "route": "/help",
-          "text": "HELP",
+          "text": "help",
         },
       ]
     }

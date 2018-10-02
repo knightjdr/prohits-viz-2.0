@@ -1,9 +1,9 @@
-import ConvertIsoDate from '../../helpers/convert-iso-date';
+import convertIsoDate from '../../helpers/convert-iso-date';
 import NewsSelector from './news-selector';
 
-// mock ConvertIsoDate
+// mock convertIsoDate
 jest.mock('../../helpers/convert-iso-date');
-ConvertIsoDate.mockReturnValue('date');
+convertIsoDate.mockReturnValue('date');
 
 describe('News selector', () => {
   it('should return array of news items', () => {

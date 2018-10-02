@@ -11,19 +11,19 @@ exports[`Home It renders 1`] = `
       Array [
         Object {
           "route": "/analysis",
-          "text": "ANALYSIS",
+          "text": "analysis",
         },
         Object {
           "route": "/visualization",
-          "text": "VISUALIZATION",
+          "text": "visualization",
         },
         Object {
           "route": "/news",
-          "text": "NEWS",
+          "text": "news",
         },
         Object {
           "route": "/help",
-          "text": "HELP",
+          "text": "help",
         },
       ]
     }

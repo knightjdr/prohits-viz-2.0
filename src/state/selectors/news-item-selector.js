@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
-import ConvertIsoDate from '../../helpers/convert-iso-date';
+import convertIsoDate from '../../helpers/convert-iso-date';
 
 const getNewsItem = state => state.newsItem;
 
 export const addDateIfNotNull = item => (
-  item ? ConvertIsoDate(item.dbDate) : null
+  item ? convertIsoDate(item.dbDate) : null
 );
 
 const GetNewsItem = createSelector(

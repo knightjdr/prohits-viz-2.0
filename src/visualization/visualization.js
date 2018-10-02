@@ -10,15 +10,15 @@ import SelectType from './__select/visualization__select-container';
 const links = [
   {
     route: '/analysis',
-    text: 'ANALYSIS',
+    text: 'analysis',
   },
   {
     route: '/news',
-    text: 'NEWS',
+    text: 'news',
   },
   {
     route: '/help',
-    text: 'HELP',
+    text: 'help',
   },
 ];
 

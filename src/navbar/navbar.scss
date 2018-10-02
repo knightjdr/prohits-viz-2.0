@@ -17,6 +17,7 @@
 .Navbar-link {
   font-weight: bold;
   margin: 0px 5px;
+  text-transform: uppercase;
 }
 .Navbar-default a.Navbar-link:link {
   color: $accent-light;

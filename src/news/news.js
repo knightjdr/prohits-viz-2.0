@@ -12,15 +12,15 @@ import './news.css';
 const links = [
   {
     route: '/analysis',
-    text: 'ANALYSIS',
+    text: 'analysis',
   },
   {
     route: '/visualization',
-    text: 'VISUALIZATION',
+    text: 'visualization',
   },
   {
     route: '/help',
-    text: 'HELP',
+    text: 'help',
   },
 ];
 

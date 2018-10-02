@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ConvertIsoDate from '../helpers/convert-iso-date';
+import convertIsoDate from '../helpers/convert-iso-date';
 import FetchHome from '../state/get/home-actions';
 import { HomeContainer } from './home-container';
 
-// mock ConvertIsoDate
+// mock convertIsoDate
 jest.mock('../helpers/convert-iso-date');
-ConvertIsoDate.mockReturnValue('date');
+convertIsoDate.mockReturnValue('date');
 
 // mock fetch
 jest.mock('../state/get/home-actions');

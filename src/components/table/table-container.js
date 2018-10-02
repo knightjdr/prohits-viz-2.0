@@ -32,13 +32,13 @@ class TableContainer extends Component {
     onResize(this, this.setDimensions);
   }
   setDimensions = () => {
+    const height = this.calculateHeight();
     const leftOffset = this.tableRef.current.clientWidth -
       this.tableHeaderRef.current.clientWidth - 1;
-    const scrollBarWidth = this.tableRef.current.clientWidth - this.bodyRef.current.clientWidth;
     this.setState({
       bodyInnerWidth: this.tableHeaderRef.current.clientWidth,
-      bodyWidth: this.tableRef.current.clientWidth + scrollBarWidth,
-      height: this.calculateHeight(),
+      bodyWidth: this.tableRef.current.clientWidth + height.scrollBarWidth,
+      height: height.available,
       scrollLeftOffset: leftOffset,
       scrollLeftWidth: (this.tableRef.current.clientWidth - leftOffset) + 1,
     });
@@ -46,7 +46,12 @@ class TableContainer extends Component {
   calculateHeight = () => {
     const { top } = this.tableRef.current.getBoundingClientRect();
     // 48 is the pixel height of the table header.
-    return window.innerHeight - top - this.props.bottom - 48;
+    const available = window.innerHeight - top - this.props.bottom - 48;
+    const needed = this.props.rows.length * this.props.cellHeight;
+    return {
+      available,
+      scrollBarWidth: needed > available ? this.scrollBarWidth() : 0,
+    };
   }
   handleScroll = (e) => {
     const { scrollLeft } = e.target;
@@ -79,12 +84,16 @@ class TableContainer extends Component {
     this.touched = true;
     this.touchStart = e.touches[0].clientX;
   }
+  scrollBarWidth = () => (
+    this.tableRef.current.clientWidth - this.bodyRef.current.clientWidth
+  )
   render() {
     return (
       <Table
         bodyRef={this.bodyRef}
         bodyInnerWidth={this.state.bodyInnerWidth}
         bodyWidth={this.state.bodyWidth}
+        cellHeight={this.props.cellHeight}
         columns={this.props.columns}
         columnOrder={this.props.columnOrder}
         columnTemplate={this.props.columnTemplate}
@@ -109,11 +118,14 @@ class TableContainer extends Component {
 
 TableContainer.defaultProps = {
   bottom: 0,
+  cellHeight: 35,
+  columnTemplate: 'auto',
   maxBodyWidth: 500,
 };
 
 TableContainer.propTypes = {
   bottom: PropTypes.number,
+  cellHeight: PropTypes.number,
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       contentAlign: PropTypes.string,
@@ -126,7 +138,7 @@ TableContainer.propTypes = {
   columnOrder: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
-  columnTemplate: PropTypes.string.isRequired,
+  columnTemplate: PropTypes.string,
   firstColumn: PropTypes.shape({
     minWidth: PropTypes.number,
     name: PropTypes.string,

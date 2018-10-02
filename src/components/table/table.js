@@ -13,6 +13,7 @@ const Table = ({
   bodyInnerWidth,
   bodyRef,
   bodyWidth,
+  cellHeight,
   columns,
   columnOrder,
   columnTemplate,
@@ -59,10 +60,12 @@ const Table = ({
       }}
     >
       <FirstColumn
+        cellHeight={cellHeight}
         firstColumn={firstColumn}
         rows={rows}
       />
       <Body
+        cellHeight={cellHeight}
         columnOrder={columnOrder}
         columnTemplate={columnTemplate}
         handleTouchEnd={handleTouchEnd}
@@ -97,6 +100,7 @@ Table.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  cellHeight: PropTypes.number.isRequired,
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       contentAlign: PropTypes.string,

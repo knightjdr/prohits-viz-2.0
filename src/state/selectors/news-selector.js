@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import ConvertIsoDate from '../../helpers/convert-iso-date';
+import convertIsoDate from '../../helpers/convert-iso-date';
 
 const getNews = state => state.news;
 
@@ -10,7 +10,7 @@ const GetNews = createSelector(
     ...news,
     list: news.list.map(item => ({
       ...item,
-      date: ConvertIsoDate(item.dbDate),
+      date: convertIsoDate(item.dbDate),
     })),
   }),
 );

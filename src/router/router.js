@@ -9,6 +9,7 @@ import App from '../App';
 import Help from '../help/help';
 import Missing from '../404/404';
 import News from '../news/news';
+import Tasks from '../tasks/tasks-container';
 import Visualization from '../visualization/visualization';
 
 const Routes = () => (
@@ -31,6 +32,10 @@ const Routes = () => (
         <Route
           path="/news"
           component={News}
+        />
+        <Route
+          path="/tasks"
+          component={Tasks}
         />
         <Route
           path="/visualization"

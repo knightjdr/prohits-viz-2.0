@@ -24,7 +24,7 @@ exports[`News list Renders when loaded 1`] = `
     <div
       className="News-list-title"
     >
-      NEWS
+      news
     </div>
     <List
       bordered={false}

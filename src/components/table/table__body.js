@@ -3,6 +3,7 @@ import React from 'react';
 import shortId from 'shortid';
 
 const Body = ({
+  cellHeight,
   columnOrder,
   columnTemplate,
   handleTouchEnd,
@@ -30,21 +31,27 @@ const Body = ({
     >
       {
         rows.map((row, rowNo) => (
-          columnOrder.map((name, columnNo) => (
-            <div
-              className={`table__cell ${row[name].className}`}
-              key={shortId.generate()}
-              style={{
-                ...{
-                  gridColumn: columnNo + 1,
-                  gridRow: rowNo + 2,
-                },
-                ...row[name].style,
-              }}
-            >
-              { row[name].content }
-            </div>
-          ))
+          columnOrder.map((name, columnNo) => {
+            const className = row[name] && row[name].className;
+            const content = row[name] && row[name].content;
+            const style = row[name] && row[name].style ? row[name].style : {};
+            return (
+              <div
+                className={`table__cell ${className}`}
+                key={shortId.generate()}
+                style={{
+                  ...{
+                    gridColumn: columnNo + 1,
+                    gridRow: rowNo + 2,
+                  },
+                  ...style,
+                  height: cellHeight - 10,
+                }}
+              >
+                { content }
+              </div>
+            );
+          })
         ))
       }
     </div>
@@ -52,6 +59,7 @@ const Body = ({
 );
 
 Body.propTypes = {
+  cellHeight: PropTypes.number.isRequired,
   columnOrder: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
