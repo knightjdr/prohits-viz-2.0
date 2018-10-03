@@ -1,20 +1,22 @@
 import download from './download';
 
-const getFile = (path, options = {}) => (
+const getFile = (path, options = {}, callback) => (
   new Promise((resolve) => {
     const ext = options.ext || 'txt';
     const name = options.name || 'file';
+    const onSuccess = callback || download;
+    const type = options.responseType || 'blob';
     const url = `${process.env.REACT_APP_API_ROOT}/${path}`;
     fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
         }
-        return response.blob();
+        return response[type]();
       })
-      .then((blob) => {
+      .then((result) => {
         const filename = `${name}.${ext}`;
-        download(blob, filename);
+        onSuccess(result, filename);
         resolve();
       })
       .catch((err) => {

@@ -6,7 +6,7 @@ import './round-button.css';
 
 const RoundButton = ({
   className,
-  handleClick,
+  onClick,
   icon,
   ...otherProps
 }) => {
@@ -17,7 +17,7 @@ const RoundButton = ({
   return (
     <button
       className={classes.join(' ')}
-      onClick={handleClick}
+      onClick={onClick}
       type="button"
       {...otherProps}
     >
@@ -32,7 +32,7 @@ RoundButton.defaultProps = {
 
 RoundButton.propTypes = {
   className: PropTypes.string,
-  handleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   icon: PropTypes.shape({}).isRequired,
 };
 

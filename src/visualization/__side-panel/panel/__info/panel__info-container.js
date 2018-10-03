@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import colorGradient from '../../../color/color-gradient';
@@ -9,7 +9,7 @@ import { settingSelectorProp } from '../../../../state/selectors/visualization/s
 import { clearFile } from '../../../../state/set/interactive-file-actions';
 import { parameterSelector } from '../../../../state/selectors/visualization/params-selector';
 
-export class InfoContainer extends Component {
+export class InfoContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

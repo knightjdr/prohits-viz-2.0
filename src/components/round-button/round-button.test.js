@@ -5,7 +5,7 @@ import RoundButton from './round-button';
 
 jest.mock('@fortawesome/react-fontawesome');
 
-const handleClick = jest.fn();
+const onClick = jest.fn();
 
 describe('Round button component', () => {
   describe('with default props', () => {
@@ -14,7 +14,7 @@ describe('Round button component', () => {
     beforeAll(() => {
       wrapper = shallow(
         <RoundButton
-          handleClick={handleClick}
+          onClick={onClick}
           icon={{}}
         />,
       );
@@ -30,7 +30,7 @@ describe('Round button component', () => {
 
     it('should call click function', () => {
       wrapper.simulate('click');
-      expect(handleClick).toHaveBeenCalled();
+      expect(onClick).toHaveBeenCalled();
     });
   });
 
@@ -41,7 +41,7 @@ describe('Round button component', () => {
       wrapper = shallow(
         <RoundButton
           className="test-class"
-          handleClick={handleClick}
+          onClick={onClick}
           icon={{ name: 'icon' }}
           miscProp="something"
         />,

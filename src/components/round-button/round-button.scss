@@ -1,16 +1,10 @@
 @import 'style/reset';
-@import 'style/theme';
+@import 'style/button';
 
 .round-button {
   @extend .button-reset;
-  background-color: $primary-medium;
+  @extend .default-button;
   border-radius: 50%;
-  color: $text-light;
   height: 36px;
-  opacity: 1;
-  transition: background-color 0.5s ease;
   width: 36px;
-}
-.round-button:hover {
-  background-color: $primary-dark;
 }

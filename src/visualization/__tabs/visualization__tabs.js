@@ -21,7 +21,7 @@ const Tabs = ({
       showButton &&
       <RoundButton
         className="visualization__tabs-button"
-        handleClick={handleClick}
+        onClick={handleClick}
         icon={faWindow}
       />
     }

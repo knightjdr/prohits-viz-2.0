@@ -1,69 +1,97 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import format from './tasks__format';
+import arrUnique from '../helpers/arr-unique';
+import getFile from '../helpers/get-file';
+import getTaskStatus from '../state/post/task-thunk';
 import Tasks from './tasks';
+import taskSelector from '../state/selectors/task-selector';
+import { arrayShallowEqual } from '../helpers/array-shallow-equal';
 
-const tasks = [
-  {
-    analysis: 'dot plot',
-    date: new Date(),
-    id: 'task1',
-    status: 'running',
-  },
-  {
-    analysis: 'correlation',
-    date: new Date(),
-    id: 'task2',
-    files: [
-      {
-        name: 'error',
-        path: 'error',
-      },
-    ],
-    status: 'error',
-  },
-  {
-    analysis: 'dot plot',
-    date: new Date(),
-    files: [
-      {
-        name: 'dotplot',
-        path: 'interactive/dotplot',
-      },
-      {
-        name: 'condition-condition',
-        path: 'interactive/condition-condition',
-      },
-      {
-        name: 'log',
-        path: 'log',
-      },
-    ],
-    id: 'task3',
-    status: 'complete',
-  },
-];
-
-class TaskContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      tasks: format(tasks),
-    };
-  }
+export class TaskContainer extends Component {
   componentDidMount = () => {
-    this.updateStatus();
+    this.refreshStatus();
   }
-  updateStatus = () => {}
+  componentWillReceiveProps = (nextProps) => {
+    const { tasks } = nextProps;
+    this.updateTasks(tasks.list, this.props.tasks.list);
+  }
+  changeFile = (task, value) => {
+    this.selectFiles[task] = value;
+  }
+  downloadFolder = (id) => {
+    getFile(`task/${id}`, { ext: 'zip', name: id });
+  }
+  refreshStatus = () => {
+    const { fetchTaskStatus, tasks } = this.props;
+    const allTasks = [
+      ...tasks.list,
+      ...this.storedTasks,
+    ];
+    fetchTaskStatus(arrUnique(allTasks));
+  }
+  selectFiles = {}
+  storedTasks = () => []
+  updateTasks = (list, prevList) => {
+    if (!arrayShallowEqual(list, prevList)) {
+      this.refreshStatus();
+    }
+  }
+  viewFile = (id) => {
+    if (this.selectFiles[id]) {
+      this.props.history.push(`/visualization/${id}/${this.selectFiles[id]}`);
+    }
+  }
   render() {
     return (
       <Tasks
-        loading={this.state.loading}
-        tasks={this.state.tasks}
+        changeFile={this.changeFile}
+        downloadFolder={this.downloadFolder}
+        error={this.props.tasks.didError}
+        isUpdating={this.props.tasks.isUpdating}
+        tasks={this.props.tasks.status}
+        refreshStatus={this.refreshStatus}
+        viewFile={this.viewFile}
       />
     );
   }
 }
 
-export default TaskContainer;
+
+TaskContainer.propTypes = {
+  fetchTaskStatus: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  tasks: PropTypes.shape({
+    didError: PropTypes.bool,
+    isUpdating: PropTypes.bool,
+    list: PropTypes.arrayOf(
+      PropTypes.string,
+    ),
+    status: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ),
+  }).isRequired,
+};
+
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  tasks: taskSelector(state),
+});
+
+/* istanbul ignore next */
+const mapDispatchToProps = dispatch => ({
+  fetchTaskStatus: (tasks) => {
+    dispatch(getTaskStatus(tasks));
+  },
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TaskContainer);
+
+export default withRouter(ConnectedContainer);
