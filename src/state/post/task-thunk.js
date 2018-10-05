@@ -1,10 +1,18 @@
 import * as taskActions from '../set/task-actions';
 
-const getTaskStatus = tasks => (
-  (dispatch) => {
+import arrUnique from '../../helpers/arr-unique';
+
+const getTaskStatus = task => (
+  (dispatch, getStore) => {
+    const { tasks } = getStore();
     dispatch(taskActions.updatingTaskStatus());
 
-    const body = { tasks };
+    const taskList = [...tasks.list];
+    if (task) {
+      taskList.push(task);
+    }
+
+    const body = { tasks: arrUnique(taskList) };
     const headers = new Headers();
     headers.append('accept', 'application/json');
     headers.append('content-type', 'application/json');

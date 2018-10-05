@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextToHtml = (text) => {
+const textToHtml = (text) => {
   const paragraphs = text.split('\n\n');
   return paragraphs.map((paragraph, index) => {
     const key = `paragraph-${index}`;
@@ -13,4 +13,5 @@ const TextToHtml = (text) => {
     );
   });
 };
-export default TextToHtml;
+
+export default textToHtml;

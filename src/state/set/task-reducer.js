@@ -3,12 +3,8 @@ import * as actions from './task-actions';
 export const defaultState = {
   didError: false,
   isUpdating: false,
-  list: [
-    'test1',
-    'test2',
-    'test3',
-    'test4',
-  ],
+  list: [],
+  shouldUpdate: false,
   status: [],
 };
 
@@ -28,10 +24,16 @@ const task = (state = defaultState, action) => {
         didError: true,
         isUpdating: false,
       };
+    case actions.SHOULD_UPDATE_TASKS:
+      return {
+        ...state,
+        shouldUpdate: true,
+      };
     case actions.UPDATE_STATUS:
       return {
         didError: false,
         isUpdating: false,
+        shouldUpdate: false,
         list: action.list,
         status: action.status,
       };
@@ -40,6 +42,7 @@ const task = (state = defaultState, action) => {
         ...state,
         didError: false,
         isUpdating: true,
+        shouldUpdate: false,
       };
     default:
       return state;

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar Shows background 1`] = `
+exports[`navbar Shows background 1`] = `
 <div
-  className="Navbar Navbar-default"
+  className="navbar navbar_default"
   style={
     Object {
       "position": "relative",
@@ -10,21 +10,21 @@ exports[`Navbar Shows background 1`] = `
   }
 >
   <Component
-    className="Navbar-logo-link"
+    className="navbar__logo-link"
     onClick={[Function]}
     to="/"
   >
     <img
       alt="Logo"
-      className="Navbar-logo"
+      className="navbar__logo"
       src="logo_accent_nobg.svg"
     />
   </Component>
   <div
-    className="Navbar-link-container"
+    className="navbar__link-container"
   >
     <Component
-      className="Navbar-link"
+      className="navbar__link"
       key="analysis"
       onClick={[Function]}
       to="/analysis"
@@ -32,7 +32,7 @@ exports[`Navbar Shows background 1`] = `
       analysis
     </Component>
     <Component
-      className="Navbar-link"
+      className="navbar__link"
       key="help"
       onClick={[Function]}
       to="/help"
@@ -43,9 +43,9 @@ exports[`Navbar Shows background 1`] = `
 </div>
 `;
 
-exports[`Navbar Small screen 1`] = `
+exports[`navbar Small screen 1`] = `
 <div
-  className="Navbar Navbar-default"
+  className="navbar navbar_default"
   style={
     Object {
       "position": "relative",
@@ -53,33 +53,33 @@ exports[`Navbar Small screen 1`] = `
   }
 >
   <Component
-    className="Navbar-logo-link"
+    className="navbar__logo-link"
     onClick={[Function]}
     to="/"
   >
     <img
       alt="Logo"
-      className="Navbar-logo"
+      className="navbar__logo"
       src="logo_accent_nobg.svg"
     />
   </Component>
   <div
-    className="Navbar-link-container"
+    className="navbar__link-container"
   >
     <Popover
       content={
         <div
-          className="Navbar-menu-items"
+          className="navbar__menu-items"
         >
           <Unknown
-            className="Navbar-link"
+            className="navbar__link"
             onClick={[Function]}
             to="/analysis"
           >
             analysis
           </Unknown>
           <Unknown
-            className="Navbar-link"
+            className="navbar__link"
             onClick={[Function]}
             to="/help"
           >
@@ -97,7 +97,7 @@ exports[`Navbar Small screen 1`] = `
     >
       <FontAwesomeIcon$1
         border={false}
-        className="Navbar-menu"
+        className="navbar__menu"
         fixedWidth={false}
         flip={null}
         icon={
@@ -129,9 +129,9 @@ exports[`Navbar Small screen 1`] = `
 </div>
 `;
 
-exports[`Navbar Transparent background 1`] = `
+exports[`navbar Transparent background 1`] = `
 <div
-  className="Navbar Navbar-transparent"
+  className="navbar navbar_transparent"
   style={
     Object {
       "position": "relative",
@@ -139,21 +139,21 @@ exports[`Navbar Transparent background 1`] = `
   }
 >
   <Component
-    className="Navbar-logo-link"
+    className="navbar__logo-link"
     onClick={[Function]}
     to="/"
   >
     <img
       alt="Logo"
-      className="Navbar-logo"
+      className="navbar__logo"
       src="logo_nobg.svg"
     />
   </Component>
   <div
-    className="Navbar-link-container"
+    className="navbar__link-container"
   >
     <Component
-      className="Navbar-link"
+      className="navbar__link"
       key="analysis"
       onClick={[Function]}
       to="/analysis"
@@ -161,7 +161,7 @@ exports[`Navbar Transparent background 1`] = `
       analysis
     </Component>
     <Component
-      className="Navbar-link"
+      className="navbar__link"
       key="help"
       onClick={[Function]}
       to="/help"

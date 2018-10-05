@@ -6,7 +6,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 
 import Reducers from './reducers';
+import reHydrate from './local-storage/rehyrdate';
 import Router from '../router/router';
+import subscribeMiddleware from './local-storage/subscribe-middleware';
 // import TestState from './test-state/test-state';
 
 const socket = SocketIo(process.env.REACT_APP_API_HOST);
@@ -21,10 +23,11 @@ export const addDevTools = () => (
 
 export const store = createStore(
   Reducers,
-  // TestState,
+  reHydrate(),
   compose(
     applyMiddleware(
       Thunk,
+      subscribeMiddleware,
       createSocketIoMiddleware(socket, ['post/']),
     ),
     addDevTools(),

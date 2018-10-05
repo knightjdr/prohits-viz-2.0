@@ -1,6 +1,7 @@
 @import 'style/theme';
 
-.Navbar {
+.navbar {
+  display: flex;
   height: 40px;
   left: 0;
   line-height: 40px;
@@ -10,69 +11,76 @@
   top: 0;
   z-index: 10;
 }
-.Navbar-default {
+.navbar_default {
   background-color: $backdrop-dark;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-.Navbar-link {
+.navbar__link {
   font-weight: bold;
   margin: 0px 5px;
   text-transform: uppercase;
 }
-.Navbar-default a.Navbar-link:link {
+.navbar_default a.navbar__link:link,
+.navbar_default a.navbar__link:visited {
   color: $accent-light;
 }
-.Navbar-default a.Navbar-link:visited {
-  color: $accent-light;
-}
-.Navbar-default a.Navbar-link:hover {
+.navbar_default a.navbar__link:focus,
+.navbar_default a.navbar__link:hover,
+.navbar_default a.navbar__link:active {
   color: $primary-light;
 }
-.Navbar-link-container {
-  position: absolute;
-  right: 10px;
+.navbar__link-container {
+  margin-left: auto;
 }
-.Navbar-logo {
+.navbar__logo {
   height: 30px;
   margin-top: -5px;
 }
-.Navbar-logo-link {
-  float: left;
+.navbar__logo-link {
+  justify-self: flex-start;
 }
-.Navbar-menu {
+.navbar__menu {
   cursor: pointer;
   font-size: 1.8em;
   margin-top: 8px;
 }
-.Navbar-default .Navbar-menu {
+.navbar_default .navbar__menu,
+.navbar_default .navbar__tasks-icon {
   color: $accent-light;
 }
-.Navbar-menu-items {
+.navbar__menu-items {
   display: flex;
   flex-direction: column;
 }
-.Navbar-transparent {
+.navbar__tasks-icon {
+  cursor: pointer;
+  font-size: 1.8em;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+.navbar_transparent {
   background-color: transparent;
 }
-.Navbar-transparent a.Navbar-link:link {
+.navbar_transparent a.navbar__link:link,
+.navbar_transparent a.navbar__link:visited {
   color: $primary_dark;
 }
-.Navbar-transparent a.Navbar-link:visited {
-  color: $primary_dark;
-}
-.Navbar-transparent a.Navbar-link:hover {
+.navbar_transparent a.navbar__link:focus,
+.navbar_transparent a.navbar__link:hover,
+.navbar_transparent a.navbar__link:active {
   color: $accent-dark;
 }
-.Navbar-transparent .Navbar-menu {
+.navbar_transparent .navbar__menu,
+.navbar_transparent .navbar__tasks-icon {
   color: $primary_dark;
 }
 // menu links
-.Navbar-link:link {
+.navbar__link:link,
+.navbar__link:visited {
   color: $primary_dark;
 }
-.Navbar-link:visited {
-  color: $primary_dark;
-}
-.Navbar-link:hover {
+.navbar__link:focus,
+.navbar__link:hover
+.navbar__link:active {
   color: $accent-dark;
 }

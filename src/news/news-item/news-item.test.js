@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import TextToHtml from '../../helpers/text-to-html';
+import textToHtml from '../../helpers/text-to-html';
 import { NewsItemComponent } from './news-item';
 
-// mock TextToHtml
+// mock textToHtml
 jest.mock('../../helpers/text-to-html');
-TextToHtml.mockReturnValue('test');
+textToHtml.mockReturnValue('test');
 
 const testItem = {
   error: {

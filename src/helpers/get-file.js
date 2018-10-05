@@ -24,7 +24,7 @@ const getFile = (path, options = {}, callback) => (
           options.err &&
           typeof options.err === 'function'
         ) {
-          options.err(err);
+          options.err(err.string);
         }
       });
   })

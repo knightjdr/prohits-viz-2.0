@@ -1,5 +1,5 @@
 import React from 'react';
-import TextToHtml from './text-to-html';
+import textToHtml from './text-to-html';
 
 const expected = ([
   <p key="paragraph-0">some text</p>,
@@ -7,8 +7,8 @@ const expected = ([
 ]);
 const txt = 'some text\n\nmore text';
 
-describe('TextToHtml', () => {
-  it('Split text separated by two newlines to <p>', () => {
-    expect(TextToHtml(txt)).toEqual(expected);
+describe('Text to html', () => {
+  it('should split text separated by two newlines to <p>', () => {
+    expect(textToHtml(txt)).toEqual(expected);
   });
 });

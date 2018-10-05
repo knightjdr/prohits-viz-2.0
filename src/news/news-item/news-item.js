@@ -18,7 +18,7 @@ import { faExclamationTriangle } from '@fortawesome/pro-light-svg-icons';
 import { faNewspaper } from '@fortawesome/pro-regular-svg-icons';
 
 import NewsItemSelector from '../../state/selectors/news-item-selector';
-import TextToHtml from '../../helpers/text-to-html';
+import textToHtml from '../../helpers/text-to-html';
 
 import './news-item.css';
 
@@ -107,7 +107,7 @@ export const NewsItemComponent = ({
           </div>
           {newsButtons}
           <div className="News-item-details">
-            { TextToHtml(newsItem.item.details) }
+            { textToHtml(newsItem.item.details) }
           </div>
         </div>
       </div>

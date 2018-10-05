@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Navbar from './navbar';
+import navbar from './navbar';
 
 const links = [
   {
@@ -14,10 +14,10 @@ const links = [
   },
 ];
 
-describe('Navbar', () => {
+describe('navbar', () => {
   test('Shows background', () => {
     const wrapper = shallow(
-      <Navbar
+      <navbar
         background
         fixed={false}
         links={links}
@@ -25,15 +25,15 @@ describe('Navbar', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    const navbar = wrapper.find('.Navbar');
+    const navbar = wrapper.find('.navbar');
     expect(navbar.props().style.position).toBe('relative');
-    expect(wrapper.find('.Navbar-default').length).toBe(1);
+    expect(wrapper.find('.navbar_default').length).toBe(1);
     expect(wrapper.find('Popover').length).toBe(0);
   });
 
   test('Transparent background', () => {
     const wrapper = shallow(
-      <Navbar
+      <navbar
         background={false}
         fixed={false}
         links={links}
@@ -41,13 +41,13 @@ describe('Navbar', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.Navbar-transparent').length).toBe(1);
+    expect(wrapper.find('.navbar_transparent').length).toBe(1);
     expect(wrapper.find('Popover').length).toBe(0);
   });
 
   test('Small screen', () => {
     const wrapper = shallow(
-      <Navbar
+      <navbar
         background
         fixed={false}
         links={links}
@@ -60,14 +60,14 @@ describe('Navbar', () => {
 
   test('Has fixed position', () => {
     const wrapper = shallow(
-      <Navbar
+      <navbar
         background
         fixed
         links={links}
         smallScreen={false}
       />,
     );
-    const navbar = wrapper.find('.Navbar');
+    const navbar = wrapper.find('.navbar');
     expect(navbar.props().style.position).toBe('fixed');
   });
 });

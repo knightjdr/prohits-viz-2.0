@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Navbar from './navbar';
+import taskSelector from '../state/selectors/task-selector';
 
-const smallScreenSize = 680;
+const SMALL_SCREEN_SIZE = 680;
 
 class NavbarContainer extends Component {
   constructor(props) {
@@ -24,7 +26,7 @@ class NavbarContainer extends Component {
     });
   }
   smallScreen = () => {
-    const isSmall = window.innerWidth <= smallScreenSize;
+    const isSmall = window.innerWidth <= SMALL_SCREEN_SIZE;
     return isSmall;
   }
   render() {
@@ -34,6 +36,7 @@ class NavbarContainer extends Component {
         fixed={this.props.fixed}
         links={this.props.links}
         smallScreen={this.state.isSmallScreen}
+        tasks={this.props.tasks.list}
       />
     );
   }
@@ -54,6 +57,20 @@ NavbarContainer.propTypes = {
       text: PropTypes.string,
     }),
   ),
+  tasks: PropTypes.shape({
+    list: PropTypes.arrayOf(
+      PropTypes.string,
+    ),
+  }).isRequired,
 };
 
-export default NavbarContainer;
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  tasks: taskSelector(state),
+});
+
+const ConnectedContainer = connect(
+  mapStateToProps,
+)(NavbarContainer);
+
+export default ConnectedContainer;

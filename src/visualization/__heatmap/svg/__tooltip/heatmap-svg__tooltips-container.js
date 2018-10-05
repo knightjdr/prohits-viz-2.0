@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
 import Tooltips from './heatmap-svg__tooltips';
 
-export class TooltipsContainer extends Component {
+export class TooltipsContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.gElementRef = React.createRef();

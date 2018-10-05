@@ -1,13 +1,9 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Popover } from 'antd';
-import { faBars } from '@fortawesome/pro-solid-svg-icons';
 
-import Logo from '../assets/logos/logo_nobg.svg';
-import LogoAccent from '../assets/logos/logo_accent_nobg.svg';
-import ScrollTop from '../helpers/scroll-top';
+import Links from './navbar__links';
+import Logo from './navbar__logo';
+import Tasks from './navbar__tasks';
 
 import './navbar.css';
 
@@ -16,60 +12,28 @@ const Navbar = ({
   fixed,
   links,
   smallScreen,
+  tasks,
 }) => {
-  const className = background ? 'Navbar-default' : 'Navbar-transparent';
-  let linksElements = links.map(link => (
-    <NavLink
-      className="Navbar-link"
-      key={link.text}
-      onClick={ScrollTop}
-      to={link.route}
-    >
-      { link.text }
-    </NavLink>
-  ));
-  if (smallScreen) {
-    const menu = (
-      <div className="Navbar-menu-items">
-        { linksElements }
-      </div>
-    );
-    linksElements = (
-      <Popover
-        content={menu}
-        placement="leftBottom"
-        trigger="click"
-      >
-        <FontAwesomeIcon
-          className="Navbar-menu"
-          icon={faBars}
-        />
-      </Popover>
-    );
-  }
-  const logo = background ? LogoAccent : Logo;
+  const className = background ? 'navbar_default' : 'navbar_transparent';
   return (
-    <div
-      className={`Navbar ${className}`}
+    <nav
+      className={`navbar ${className}`}
       style={{
         position: fixed ? 'fixed' : 'relative',
       }}
     >
-      <NavLink
-        className="Navbar-logo-link"
-        onClick={ScrollTop}
-        to="/"
-      >
-        <img
-          alt="Logo"
-          className="Navbar-logo"
-          src={logo}
+      <Logo background={background} />
+      <div className="navbar__link-container">
+        <Tasks
+          smallScreen={smallScreen}
+          tasks={tasks}
         />
-      </NavLink>
-      <div className="Navbar-link-container">
-        { linksElements }
+        <Links
+          links={links}
+          smallScreen={smallScreen}
+        />
       </div>
-    </div>
+    </nav>
   );
 };
 
@@ -83,6 +47,9 @@ Navbar.propTypes = {
     }),
   ).isRequired,
   smallScreen: PropTypes.bool.isRequired,
+  tasks: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
 };
 
 export default Navbar;
