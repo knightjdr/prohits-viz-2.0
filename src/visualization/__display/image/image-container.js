@@ -12,20 +12,29 @@ export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: false,
       loading: true,
-      status: {},
     };
   }
   componentDidMount = () => {
     const { match } = this.props;
     this.getImage(match);
   }
+  componentWillReceiveProps = (nextProps) => {
+    const { imageType } = nextProps;
+    this.updateStatus(imageType, this.props.imageType);
+  }
   onLoad = (json) => {
     const name = json.parameters.name || json.parameters.imageType;
     const file = fillJson(name, json);
     this.props.parseFile(file);
   }
-  getError = () => {}
+  getError = () => {
+    this.setState({
+      error: true,
+      loading: false,
+    });
+  }
   getImage = (match) => {
     const { id, image } = match.params;
     const route = image ? `task/${id}/${image}` : `task/${id}`;
@@ -35,11 +44,19 @@ export class ImageContainer extends Component {
     };
     getFile(route, options, this.onLoad);
   }
+  updateStatus = (imageType, prevImageType) => {
+    if (imageType !== prevImageType) {
+      this.setState({
+        error: false,
+        loading: false,
+      });
+    }
+  }
   render() {
     return (
       <Image
+        error={this.state.error}
         loading={this.state.loading}
-        status={this.state.status}
         vizType={this.props.imageType}
       />
     );

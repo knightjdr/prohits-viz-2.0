@@ -8,28 +8,11 @@ import Navbar from '../navbar/navbar-container';
 import RouteNotFound from '../router/route-not-found';
 import SelectType from './__select/visualization__select-container';
 
-const links = [
-  {
-    route: '/analysis',
-    text: 'analysis',
-  },
-  {
-    route: '/news',
-    text: 'news',
-  },
-  {
-    route: '/help',
-    text: 'help',
-  },
-];
-
 export const VisualizationComponent = ({
   match,
 }) => (
   <div>
-    <Navbar
-      links={links}
-    />
+    <Navbar />
     <div>
       <Switch>
         <Route

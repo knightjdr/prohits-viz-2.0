@@ -3,16 +3,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnalysisForm from './analysis-form';
-import AnalysisFormSelector from '../../state/selectors/analysis-form-selector';
+import analysisFormSelector from '../../state/selectors/analysis-form-selector';
+import convertToForm from './submission/convert-to-form';
+import formSubmit from './submission/form-submit';
 import InitialValues from './initial-values/initial-values';
+import sessionSelector from '../../state/selectors/session-selector';
 
 export class FormContainerComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      analysisError: false,
       errors: {},
       initialValues: this.props.form,
       showOptions: false,
+      taskID: null,
     };
   }
   componentWillReceiveProps = (nextProps) => {
@@ -24,15 +29,35 @@ export class FormContainerComponent extends Component {
       });
     }
   }
-  onSubmit = (values) => {
-    console.log(values);
-    this.setState({
-      errors: {},
-    });
+  onSubmit = (obj) => {
+    const form = convertToForm(obj);
+    const type = obj.analysisType;
+    formSubmit(form, this.props.session, type)
+      .then((id) => {
+        this.setState({
+          taskID: id,
+          errors: {},
+        });
+      })
+      .catch(() => {
+        this.setState({
+          analysisError: true,
+        });
+      });
   }
   onSubmitFail = (errors) => {
     this.setState({
       errors,
+    });
+  }
+  closeError = () => {
+    this.setState({
+      analysisError: false,
+    });
+  }
+  closeStatus = () => {
+    this.setState({
+      taskID: null,
     });
   }
   handleOptions = () => {
@@ -51,6 +76,9 @@ export class FormContainerComponent extends Component {
   render() {
     return (
       <AnalysisForm
+        analysisError={this.state.analysisError}
+        closeError={this.closeError}
+        closeStatus={this.closeStatus}
         errors={this.state.errors}
         handleOptions={this.handleOptions}
         initialValues={this.state.initialValues}
@@ -58,20 +86,27 @@ export class FormContainerComponent extends Component {
         onSubmitFail={this.onSubmitFail}
         handleReset={this.handleReset}
         showOptions={this.state.showOptions}
+        taskID={this.state.taskID}
       />
     );
   }
 }
 
+FormContainerComponent.defaultProps = {
+  session: null,
+};
+
 FormContainerComponent.propTypes = {
   form: PropTypes.shape({
     analysisType: PropTypes.string,
   }).isRequired,
+  session: PropTypes.string,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  form: AnalysisFormSelector(state),
+  form: analysisFormSelector(state),
+  session: sessionSelector(state),
 });
 
 const ConnectedComponent = connect(

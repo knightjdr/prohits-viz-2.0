@@ -11,25 +11,6 @@ import Table from '../components/table/table-container';
 
 import './tasks.css';
 
-const links = [
-  {
-    route: '/analysis',
-    text: 'analysis',
-  },
-  {
-    route: '/visualization',
-    text: 'visualization',
-  },
-  {
-    route: '/news',
-    text: 'news',
-  },
-  {
-    route: '/help',
-    text: 'help',
-  },
-];
-
 const columnTemplate = 'minmax(150px, 20%) minmax(150px, 20%) minmax(150px, 20%) minmax(250px, 40%)';
 
 const Tasks = ({
@@ -48,7 +29,7 @@ const Tasks = ({
   viewFile,
 }) => (
   <Fragment>
-    { navbar && <Navbar links={links} /> }
+    { navbar && <Navbar /> }
     <main className="tasks">
 
       {
@@ -71,6 +52,7 @@ const Tasks = ({
               firstColumn={{
                 minWidth: 100,
                 name: 'id',
+                width: '150px',
               }}
               maxBodyWidth={400}
               rows={format(tasks, changeFile, viewFile, downloadFolder)}

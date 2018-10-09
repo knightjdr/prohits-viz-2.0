@@ -9,7 +9,9 @@ import FormStepSelector from '../../state/selectors/form-step-selector';
 import HeaderSelection from './header-selection/header-selection-container';
 import NextStep from './next-step/next-step';
 import Options from './options/options';
+import Status from './status/status-container';
 import Submit from './submit/submit';
+import SubmitError from './submission/error';
 import ToolSelection from './tool-selection/tool-selection';
 import Validation from './validation/validation';
 import { incrementFormStep } from '../../state/set/form-step-actions';
@@ -17,7 +19,10 @@ import { incrementFormStep } from '../../state/set/form-step-actions';
 import './analysis-form.css';
 
 export const AnalysisFormComponent = ({
+  analysisError,
   change,
+  closeError,
+  closeStatus,
   errors,
   handleOptions,
   handleSubmit,
@@ -25,6 +30,7 @@ export const AnalysisFormComponent = ({
   handleReset,
   showOptions,
   step,
+  taskID,
 }) => (
   <div className="Form-container">
     <Form onSubmit={handleSubmit}>
@@ -69,12 +75,30 @@ export const AnalysisFormComponent = ({
         }
       </div>
     </Form>
+    <SubmitError
+      closeModal={closeError}
+      visible={analysisError}
+    />
+    {
+      taskID &&
+      <Status
+        closeModal={closeStatus}
+        taskID={taskID}
+      />
+    }
   </div>
 );
 
+AnalysisFormComponent.defaultProps = {
+  taskID: null,
+};
+
 AnalysisFormComponent.propTypes = {
+  analysisError: PropTypes.bool.isRequired,
   // prop from reduxForm; use to set form values programmatically
   change: PropTypes.func.isRequired,
+  closeError: PropTypes.func.isRequired,
+  closeStatus: PropTypes.func.isRequired,
   errors: PropTypes.shape({}).isRequired,
   handleOptions: PropTypes.func.isRequired,
   // onSubmit prop converted to handleSubmit by redux form
@@ -83,6 +107,7 @@ AnalysisFormComponent.propTypes = {
   handleReset: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,
   step: PropTypes.number.isRequired,
+  taskID: PropTypes.string,
 };
 
 /* istanbul ignore next */

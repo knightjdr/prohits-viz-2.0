@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import colorGradient from '../../../color/color-gradient';
 import download from '../../../../helpers/download';
@@ -32,6 +33,7 @@ export class InfoContainer extends PureComponent {
     download(svg, 'legend.svg', 'image/svg+xml');
   }
   loadNewFile = () => {
+    this.props.history.replace('/visualization');
     this.props.clearFile();
   }
   render() {
@@ -53,6 +55,9 @@ InfoContainer.propTypes = {
   fillColor: PropTypes.string.isRequired,
   imageType: PropTypes.string.isRequired,
   invertColor: PropTypes.bool.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func,
+  }).isRequired,
   minAbundance: PropTypes.number.isRequired,
   params: PropTypes.shape({
     abundanceColumn: PropTypes.string,
@@ -88,4 +93,4 @@ const ConnectedContainer = connect(
   mapDispatchToProps,
 )(InfoContainer);
 
-export default ConnectedContainer;
+export default withRouter(ConnectedContainer);

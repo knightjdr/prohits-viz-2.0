@@ -2,12 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Modal } from 'antd';
 
-import './tasks.css';
-
-const Tasks = ({
+const Error = ({
   closeModal,
-  modalContent,
-  title,
   visible,
 }) => (
   <Modal
@@ -17,25 +13,16 @@ const Tasks = ({
     ]}
     onCancel={closeModal}
     okText="Close"
-    title={title}
+    title="Error"
     visible={visible}
   >
-    <div className="tasks__modal">
-      {modalContent}
-    </div>
+    There was an error submitting this task.
   </Modal>
 );
 
-Tasks.defaultProps = {
-  modalContent: null,
-  title: null,
-};
-
-Tasks.propTypes = {
+Error.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  modalContent: PropTypes.string,
-  title: PropTypes.string,
   visible: PropTypes.bool.isRequired,
 };
 
-export default Tasks;
+export default Error;

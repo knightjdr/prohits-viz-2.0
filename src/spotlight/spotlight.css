@@ -8,9 +8,7 @@
     opacity: 1; } }
 
 .Spotlight-container {
-  background-image: url("../assets/background/pattern.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #90AFC5;
   display: flex;
   flex-direction: column;
   font-family: BodyText;

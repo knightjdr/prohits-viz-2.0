@@ -24,40 +24,7 @@ const Dotplot = () => (
         </li>
         <li>
           PDFs: This contains the same images as in the SVG folder but in
-          PDF format. In some cases the following warning may appear on opening
-          the file in Illustrator:
-          “The font AdobePiStd is missing. Affected text will be displayed using
-          a substitute font.” If this occurs, the image will not display correctly.
-          To fix this issue on a Mac, follow these steps:
-          <ul>
-            <li className="HelpPages-align-left">
-              Navigate to /Library/Application Support/Adobe/PDFL/*Current Version*/Fonts/,
-              where *Current Version* refers to your version of Adobe.
-            </li>
-            <li>
-              Copy the font file AdobePiStd.otf.
-            </li>
-            <li>
-              Transfer the font file AdobePiStd.otf to /Library/Fonts/.
-            </li>
-          </ul>
-          To fix this issue on Windows:
-          <ul>
-            <li className="HelpPages-align-left">
-              Navigate to C:\Program Files\Common Files\Adobe\PDFL\*Current Version*\Fonts\,
-              where *Current Version* refers to your version of Adobe.
-            </li>
-            <li>
-              Copy the font file AdobePiStd.otf.
-            </li>
-            <li className="HelpPages-align-left">
-              Transfer the font file AdobePiStd.otf to
-              C:\Program Files\Adobe\Adobe Illustrator *Version*\Support Files\Required\Fonts\,
-              where *version refers to your version of Adobe illustrator.
-            </li>
-          </ul>
-          If the AdobePiStd.otf file is missing, it can be freely downloaded
-          from a number of sites on the web in either Mac or Windows format.
+          PDF format.
         </li>
         <li>
           InteractiveFiles: Contains plain text files formatted for our

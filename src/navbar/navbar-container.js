@@ -5,6 +5,25 @@ import { connect } from 'react-redux';
 import Navbar from './navbar';
 import taskSelector from '../state/selectors/task-selector';
 
+const links = [
+  {
+    route: '/analysis',
+    text: 'analysis',
+  },
+  {
+    route: '/visualization',
+    text: 'visualization',
+  },
+  {
+    route: '/news',
+    text: 'news',
+  },
+  {
+    route: '/help',
+    text: 'help',
+  },
+];
+
 const SMALL_SCREEN_SIZE = 680;
 
 class NavbarContainer extends Component {
@@ -34,7 +53,7 @@ class NavbarContainer extends Component {
       <Navbar
         background={this.props.background}
         fixed={this.props.fixed}
-        links={this.props.links}
+        links={links}
         smallScreen={this.state.isSmallScreen}
         tasks={this.props.tasks.list}
       />
@@ -45,18 +64,11 @@ class NavbarContainer extends Component {
 NavbarContainer.defaultProps = {
   background: true,
   fixed: false,
-  links: [],
 };
 
 NavbarContainer.propTypes = {
   background: PropTypes.bool,
   fixed: PropTypes.bool,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      route: PropTypes.string,
-      text: PropTypes.string,
-    }),
-  ),
   tasks: PropTypes.shape({
     list: PropTypes.arrayOf(
       PropTypes.string,

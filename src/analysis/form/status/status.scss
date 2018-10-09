@@ -1,0 +1,16 @@
+@import 'style/theme';
+
+.analysis__task-status-alert {
+  margin-bottom: 10px;
+}
+.analysis__task-status_default {
+  margin-right: 5px;
+}
+.analysis__task-status_green {
+  color: $success;
+  margin-right: 5px;
+}
+.analysis__task-status_red {
+  color: $warning;
+  margin-right: 5px;
+}

@@ -8,7 +8,6 @@ const RouterLink = ({
   children,
   className,
   to,
-  type,
   ...otherProps
 }) => (
   <Link

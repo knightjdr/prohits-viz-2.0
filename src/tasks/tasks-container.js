@@ -56,6 +56,9 @@ export class TaskContainer extends Component {
     const { fetchTaskStatus, id } = this.props;
     fetchTaskStatus(id);
   }
+  resfreshStatus = () => {
+    this.props.fetchTaskStatus();
+  }
   showText = (text, id) => {
     this.setState({
       modalContent: text,
@@ -113,7 +116,7 @@ export class TaskContainer extends Component {
         navbar={this.props.navbar}
         openModal={this.state.openModal}
         tasks={tasks}
-        refreshStatus={this.props.fetchTaskStatus}
+        refreshStatus={this.resfreshStatus}
         viewFile={this.viewFile}
       />
     );
@@ -152,8 +155,8 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  fetchTaskStatus: () => {
-    dispatch(getTaskStatus());
+  fetchTaskStatus: (id) => {
+    dispatch(getTaskStatus(id));
   },
 });
 

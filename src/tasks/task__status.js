@@ -1,7 +1,7 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import {
-  faExclamation,
+  faCheck,
   faExclamationTriangle,
   faSpinner,
 } from '@fortawesome/pro-solid-svg-icons';
@@ -11,7 +11,7 @@ const status = (taskStatus) => {
     case 'complete':
       return (
         <span className="tasks__complete">
-          <FontAwesomeIcon icon={faExclamation} />
+          <FontAwesomeIcon icon={faCheck} />
           complete
         </span>
       );

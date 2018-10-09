@@ -27,9 +27,9 @@ const AnalysisOptions = ({
         value={type}
       >
         <Option value="customize">customize image</Option>
-        <Option value="domain">domain</Option>
+        <Option value="domain" disabled>domain</Option>
         <Option value="go">GO enrichment</Option>
-        <Option value="network">network</Option>
+        <Option value="network" disabled>network</Option>
       </Select>
       {
         type &&

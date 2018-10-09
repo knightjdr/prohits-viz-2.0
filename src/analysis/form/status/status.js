@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Modal } from 'antd';
 
-import './tasks.css';
+import Content from './status__contents';
 
-const Tasks = ({
+import './status.css';
+
+const Status = ({
   closeModal,
-  modalContent,
-  title,
+  status,
+  taskID,
   visible,
 }) => (
   <Modal
@@ -17,25 +19,27 @@ const Tasks = ({
     ]}
     onCancel={closeModal}
     okText="Close"
-    title={title}
+    title={`Task ID: ${taskID}`}
     visible={visible}
   >
-    <div className="tasks__modal">
-      {modalContent}
+    <div className="analysis__task-status">
+      <Content
+        id={taskID}
+        status={status}
+      />
     </div>
   </Modal>
 );
 
-Tasks.defaultProps = {
-  modalContent: null,
-  title: null,
+Status.defaultProps = {
+  taskID: null,
 };
 
-Tasks.propTypes = {
+Status.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  modalContent: PropTypes.string,
-  title: PropTypes.string,
+  status: PropTypes.string.isRequired,
+  taskID: PropTypes.string,
   visible: PropTypes.bool.isRequired,
 };
 
-export default Tasks;
+export default Status;
