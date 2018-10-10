@@ -453,7 +453,7 @@ exports[`ClusteringDotplot Renders for hierarchical 1`] = `
   >
     <CustomField
       label="Distance metric"
-      name="distanceMetric"
+      name="distance"
       onChange={[Function]}
       options={
         Array [
@@ -517,8 +517,8 @@ exports[`ClusteringDotplot Renders for hierarchical 1`] = `
             "value": "single",
           },
           Object {
-            "text": "wards",
-            "value": "wards",
+            "text": "ward",
+            "value": "ward",
           },
         ]
       }

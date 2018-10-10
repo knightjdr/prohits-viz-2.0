@@ -8,7 +8,7 @@ exports[`Log Renders 1`] = `
     transformations to your data, log transformation will always occur last (after
     control subtraction, readout length normalization and condition normalization)."
   label="Log transformation"
-  name="logTransform"
+  name="logBase"
   onChange={[Function]}
   options={
     Array [

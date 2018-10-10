@@ -161,8 +161,8 @@ describe('ValidationDotplot', () => {
 
   test('Invalid log returns an error', () => {
     FalsyButNotZero.mockReturnValue(true);
-    const errors = ValidationDotplot({ logTransform: 'test' });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'logTransform')).toBeTruthy();
+    const errors = ValidationDotplot({ logBase: 'test' });
+    expect(Object.prototype.hasOwnProperty.call(errors, 'logBase')).toBeTruthy();
   });
 
   test('Invalid fill color returns an error', () => {
@@ -184,24 +184,24 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'clustering')).toBeTruthy();
     // missing distance metric and clustering method
     errors = ValidationDotplot({ clustering: 'hierarchical' });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'distanceMetric')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'distance')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clusteringMethod')).toBeTruthy();
     // invalid distance metric and clustering method
     errors = ValidationDotplot({
       clustering: 'hierarchical',
-      distanceMetric: 'test',
+      distance: 'test',
       clusteringMethod: 'test',
     });
-    expect(Object.prototype.hasOwnProperty.call(errors, 'distanceMetric')).toBeTruthy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'distance')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clusteringMethod')).toBeTruthy();
     // valid
     errors = ValidationDotplot({
       clustering: 'hierarchical',
-      distanceMetric: 'canberra',
-      clusteringMethod: 'wards',
+      distance: 'canberra',
+      clusteringMethod: 'ward',
     });
     expect(Object.prototype.hasOwnProperty.call(errors, 'clustering')).toBeFalsy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'distanceMetric')).toBeFalsy();
+    expect(Object.prototype.hasOwnProperty.call(errors, 'distance')).toBeFalsy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clusteringMethod')).toBeFalsy();
   });
 

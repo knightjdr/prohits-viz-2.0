@@ -78,10 +78,10 @@ const ValidationDotplot = (values) => {
   // validate log transformation
   const validLog = ['none', 2, 'e', 10];
   if (
-    values.logTransform &&
-    !validLog.includes(values.logTransform)
+    values.logBase &&
+    !validLog.includes(values.logBase)
   ) {
-    errors.logTransform = 'Select a valid log transformation';
+    errors.logBase = 'Select a valid log transformation';
   }
   // validate fill
   const validColors = ['blueBlack', 'greenBlack', 'greyscale', 'redBlack', 'yellowBlack'];
@@ -105,12 +105,12 @@ const ValidationDotplot = (values) => {
   }
   if (values.clustering === 'hierarchical') {
     const validDistance = ['binary', 'canberra', 'euclidean', 'jaccard', 'manhattan', 'maximum'];
-    if (!values.distanceMetric) {
-      errors.distanceMetric = 'Specify the distance metric for clustering';
-    } else if (!validDistance.includes(values.distanceMetric)) {
-      errors.distanceMetric = 'Select a valid distance metric';
+    if (!values.distance) {
+      errors.distance = 'Specify the distance metric for clustering';
+    } else if (!validDistance.includes(values.distance)) {
+      errors.distance = 'Select a valid distance metric';
     }
-    const validClustMethod = ['average', 'centroid', 'complete', 'mcquitty', 'median', 'single', 'wards'];
+    const validClustMethod = ['average', 'centroid', 'complete', 'mcquitty', 'median', 'single', 'ward'];
     if (!values.clusteringMethod) {
       errors.clusteringMethod = 'Specify the clutering method';
     } else if (!validClustMethod.includes(values.clusteringMethod)) {
@@ -129,10 +129,6 @@ const ValidationDotplot = (values) => {
     ) {
       errors.readoutList = 'Specify the readouts to use for the non-clustered analysis';
     }
-  }
-  // validate output folder
-  if (!values.outputFolder) {
-    errors.outputFolder = 'Specify the name of the output folder';
   }
   return errors;
 };

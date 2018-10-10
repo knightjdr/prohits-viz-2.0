@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import CustomField from '../../field/field';
-import DefaultChange from '../../field/default-change';
 import DefaultCheckboxChange from '../../field/default-checkbox-change';
 import Info from '../info/info';
 
@@ -26,15 +25,6 @@ const Output = ({
       </NavLink>{' '}
       for detailed information on the files output from this tool.
     </div>
-    <CustomField
-      helpMessage={Info[analysisType].outputFolder}
-      inputType="text"
-      label="Output folder"
-      name="outputFolder"
-      onChange={DefaultChange}
-      placeHolder="Output folder..."
-      type="input"
-    />
     <div className="Output-checkboxes">
       <div className="Output-checkbox">
         <div className="Output-checkbox-label">

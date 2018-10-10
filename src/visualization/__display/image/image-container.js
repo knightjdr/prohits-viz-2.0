@@ -6,7 +6,7 @@ import Image from './image';
 import fillJson from '../../fill/fill';
 import getFile from '../../../helpers/get-file';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
-import { parseFile } from '../../../state/set/interactive-file-actions';
+import { clearFile, parseFile } from '../../../state/set/interactive-file-actions';
 
 export class ImageContainer extends Component {
   constructor(props) {
@@ -15,6 +15,9 @@ export class ImageContainer extends Component {
       error: false,
       loading: true,
     };
+  }
+  componentWillMount = () => {
+    this.props.clearFile();
   }
   componentDidMount = () => {
     const { match } = this.props;
@@ -45,7 +48,10 @@ export class ImageContainer extends Component {
     getFile(route, options, this.onLoad);
   }
   updateStatus = (imageType, prevImageType) => {
-    if (imageType !== prevImageType) {
+    if (
+      imageType &&
+      imageType !== prevImageType
+    ) {
       this.setState({
         error: false,
         loading: false,
@@ -68,6 +74,7 @@ ImageContainer.defaultProps = {
 };
 
 ImageContainer.propTypes = {
+  clearFile: PropTypes.func.isRequired,
   imageType: PropTypes.string,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -85,6 +92,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  clearFile: () => {
+    dispatch(clearFile());
+  },
   parseFile: (file) => {
     dispatch(parseFile(file));
   },

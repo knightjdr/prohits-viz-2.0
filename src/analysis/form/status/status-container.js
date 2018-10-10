@@ -38,7 +38,8 @@ class StatusContainer extends Component {
   }
   updateTasks = (shouldUpdate) => {
     if (shouldUpdate) {
-      this.props.fetchTaskStatus();
+      const { fetchTaskStatus, taskID } = this.props;
+      fetchTaskStatus(taskID);
     }
   }
   render() {

@@ -59,7 +59,7 @@ const Clustering = ({
       <div className="Clustering-hierarchical-container">
         <CustomField
           label="Distance metric"
-          name="distanceMetric"
+          name="distance"
           onChange={DefaultChange}
           options={[
             { text: 'binary', value: 'binary' },
@@ -83,7 +83,7 @@ const Clustering = ({
             { text: 'McQuitty', value: 'mcquitty' },
             { text: 'median', value: 'median' },
             { text: 'single', value: 'single' },
-            { text: 'wards', value: 'wards' },
+            { text: 'ward', value: 'ward' },
           ]}
           placeHolder="Clustering method..."
           type="select"

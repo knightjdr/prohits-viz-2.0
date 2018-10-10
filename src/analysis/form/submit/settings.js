@@ -4,7 +4,7 @@ import { Tag } from 'antd';
 import FalsyButNotZero from '../../../helpers/falsy-but-not-zero';
 
 const validTypes = {
-  logTransform: [2, 'e', 10],
+  logBase: [2, 'e', 10],
   normalization: ['readout', 'total'],
 };
 
@@ -46,12 +46,12 @@ const Settings = (form) => {
         });
       }
       if (
-        form.logTransform &&
-        validTypes.logTransform.includes(form.logTransform)
+        form.logBase &&
+        validTypes.logBase.includes(form.logBase)
       ) {
         tagArray.push({
-          key: 'logTransform',
-          text: `Log transformation: base ${form.logTransform}`,
+          key: 'logBase',
+          text: `Log transformation: base ${form.logBase}`,
         });
       }
       tagArray.push({

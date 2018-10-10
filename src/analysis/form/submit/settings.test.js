@@ -100,14 +100,14 @@ describe('Settings', () => {
     FalsyButNotZero.mockReturnValue(true);
     let settings = Settings({
       analysisType: 'dotplot',
-      logTransform: 2,
+      logBase: 2,
     });
-    let logTransformIndex = settings.findIndex(setting => (setting.key === 'logTransform'));
+    let logTransformIndex = settings.findIndex(setting => (setting.key === 'logBase'));
     expect(logTransformIndex).toBeGreaterThanOrEqual(0);
     expect(settings[logTransformIndex].props.children).toBe('Log transformation: base 2');
     settings = Settings({
       analysisType: 'dotplot',
-      logTransform: 'test',
+      logBase: 'test',
     });
     logTransformIndex = settings.findIndex(setting => (setting.key === 'normalization'));
     expect(logTransformIndex).toBe(-1);
