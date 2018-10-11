@@ -38,13 +38,13 @@ const CustomInput = ({
       >
         <Input
           defaultValue={defaultValue}
-          onMouseLeave={(value) => {
+          onMouseLeave={(e) => {
             // if user changed input then update
-            if (value !== input.value) {
-              onChange(value, input);
+            if (e.target.value !== input.value) {
+              onChange(e.target.value, input);
             }
           }}
-          onPressEnter={(value) => { onChange(value, input); }}
+          onPressEnter={(e) => { onChange(e.target.value, input); }}
           placeholder={placeHolder}
           style={style}
           type={type}

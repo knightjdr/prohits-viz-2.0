@@ -1,3 +1,4 @@
+/* eslint no-self-compare: 0 */
 import FalsyButNotZero from '../../../helpers/falsy-but-not-zero';
 
 const ValidationDotplot = (values) => {
@@ -12,13 +13,13 @@ const ValidationDotplot = (values) => {
   // validate primary filter
   if (FalsyButNotZero(values.primaryFilter)) {
     errors.primaryFilter = 'Specify the primary filter';
-  } else if (typeof values.primaryFilter !== 'number') {
+  } else if (Number.isNaN(Number(values.primaryFilter))) {
     errors.primaryFilter = 'Primary filter must be a number';
   }
   // validate secondary filter
   if (FalsyButNotZero(values.secondaryFilter)) {
     errors.secondaryFilter = 'Specify the secondary filter';
-  } else if (typeof values.secondaryFilter !== 'number') {
+  } else if (Number.isNaN(Number(values.secondaryFilter))) {
     errors.secondaryFilter = 'Secondary filter must be a number';
   } else if (
     values.secondaryFilter &&
@@ -39,13 +40,13 @@ const ValidationDotplot = (values) => {
   // validate minimum abundance
   if (FalsyButNotZero(values.minAbundance)) {
     errors.minAbundance = 'Specify the minumum abundance';
-  } else if (typeof values.minAbundance !== 'number') {
+  } else if (Number.isNaN(Number(values.minAbundance))) {
     errors.minAbundance = 'Minumum abundance must be a number';
   }
   // validate maximun abundance
   if (FalsyButNotZero(values.abundanceCap)) {
     errors.abundanceCap = 'Specify the maximum abundance';
-  } else if (typeof values.abundanceCap !== 'number') {
+  } else if (Number.isNaN(Number(values.abundanceCap))) {
     errors.abundanceCap = 'Minumum abundance must be a number';
   }
   // ensure column has been selected when control subtraction is true
