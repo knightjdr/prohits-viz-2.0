@@ -1,3 +1,5 @@
+/* eslint react/no-danger: 0 */
+
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,8 +11,6 @@ import {
   EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
-  GooglePlusIcon,
-  GooglePlusShareButton,
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
@@ -18,7 +18,6 @@ import { faExclamationTriangle } from '@fortawesome/pro-light-svg-icons';
 import { faNewspaper } from '@fortawesome/pro-regular-svg-icons';
 
 import NewsItemSelector from '../../state/selectors/news-item-selector';
-import textToHtml from '../../helpers/text-to-html';
 
 import './news-item.css';
 
@@ -69,7 +68,7 @@ export const NewsItemComponent = ({
           className="News-item-share-button"
           hashtags={newsItem.item.hashtags}
           title={newsItem.item.headline}
-          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
         >
           <TwitterIcon size={32} round />
         </TwitterShareButton>
@@ -77,20 +76,14 @@ export const NewsItemComponent = ({
           className="News-item-share-button"
           hashtag={newsItem.item.hashtags[0]}
           quote={newsItem.item.headline}
-          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        <GooglePlusShareButton
-          className="News-item-share-button"
-          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
-        >
-          <GooglePlusIcon size={32} round />
-        </GooglePlusShareButton>
         <EmailShareButton
           className="News-item-share-button"
           subject={newsItem.item.headline}
-          url={`${process.env.REACT_APP_HOME_ROOT}/news/${newsItem.item._id}`}
+          url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
         >
           <EmailIcon size={32} round />
         </EmailShareButton>
@@ -98,18 +91,19 @@ export const NewsItemComponent = ({
     );
     newsItemElement = (
       <div className="News-item-content">
-        <div className="News-item-story">
-          <div className="News-item-headline">
+        <article className="News-item-story">
+          <header className="News-item-headline">
             { newsItem.item.headline }
-          </div>
-          <div className="News-item-date">
+          </header>
+          <time className="News-item-date">
             { newsItem.item.date }
-          </div>
+          </time>
           {newsButtons}
-          <div className="News-item-details">
-            { textToHtml(newsItem.item.details) }
-          </div>
-        </div>
+          <section
+            className="News-item-details"
+            dangerouslySetInnerHTML={{ __html: newsItem.item.html }}
+          />
+        </article>
       </div>
     );
   }
