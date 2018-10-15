@@ -2,14 +2,17 @@
 @import 'style/style';
 @import 'style/theme';
 
-.Newsfeed-container {
+.newsfeed {
   @extend .fadein;
   @extend .boxshadow;
+  align-self: start;
   background-color: $backdrop-light;
   border-radius: 2px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   font-family: BodyText;
+  grid-column: 1;
+  grid-row: 3;
   height: auto;
   margin: 20px 20px 0 20px;
   max-height: 200px;
@@ -17,33 +20,38 @@
   padding: 2px;
   width: auto;
 }
-.Newsfeed-header {
+.newsfeed__header {
   background-color: $backdrop-dark;
   color: $text-light;
   padding: 2px;
 }
-.Newsfeed-content {
+.newsfeed__inner {
   display: grid;
   grid-column-gap: 10px;
   grid-row-gap: 5px;
   padding: 5px;
 }
-.Newsfeed-content-date {
+.newsfeed__inner-date {
   justify-self: right;
   grid-column: 1;
 }
-.Newsfeed-content-news {
+.newsfeed__inner-news {
   justify-self: left;
   grid-column: 2;
   text-align: left;
 }
 // menu links
-.Newsfeed-link:link {
+.newsfeed__link:link {
   color: $primary_dark;
 }
-.Newsfeed-link:visited {
+.newsfeed__link:visited {
   color: $primary_dark;
 }
-.Newsfeed-link:hover {
+.newsfeed__link:hover {
   color: $accent-dark;
+}
+@media (max-width: 999px) {
+  .newsfeed {
+    grid-column: 1 / 3;
+  }
 }

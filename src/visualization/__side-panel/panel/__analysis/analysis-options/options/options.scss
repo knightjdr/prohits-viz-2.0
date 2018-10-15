@@ -81,6 +81,13 @@
 .analysis-option__details-order > :nth-child(odd) {
   width: 50px;
 }
+.analysis-option__details-go {
+  display: flex;
+  flex-direction: column;
+}
+.analysis-option__details-go > * {
+  margin-left: 0 !important;
+}
 .analysis-options__action-button {
   margin-top: 10px;
   display: flex;

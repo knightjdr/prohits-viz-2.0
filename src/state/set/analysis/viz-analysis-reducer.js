@@ -8,17 +8,17 @@ export const defaultState = {
   domain: {
     didFail: false,
     isRunning: false,
-    results: [],
+    results: {},
   },
   go: {
     didFail: false,
     isRunning: false,
-    results: [],
+    results: {},
   },
   network: {
     didFail: false,
     isRunning: false,
-    results: [],
+    results: {},
   },
   type: undefined,
 };
@@ -41,7 +41,7 @@ const analysis = (state = defaultState, action) => {
       newState[action.analysisType] = {
         didFail: false,
         isRunning: true,
-        results: [],
+        results: {},
       };
       return {
         ...state,
@@ -66,7 +66,7 @@ const analysis = (state = defaultState, action) => {
       newState[action.analysisType] = {
         didFail: true,
         isRunning: false,
-        results: [],
+        results: {},
       };
       return {
         ...state,

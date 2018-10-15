@@ -11,31 +11,31 @@ export const NewsfeedComponent = ({
   news,
 }) => {
   const newsElement = (
-    <div className="Newsfeed-container">
-      <div className="Newsfeed-header">
+    <div className="newsfeed">
+      <div className="newsfeed__header">
         News
       </div>
-      <div className="Newsfeed-content">
+      <div className="newsfeed__inner">
         {
           news.map((item, index) => ([
-            <div
-              className="Newsfeed-content-date"
+            <time
+              className="newsfeed__inner-date"
               key="date"
               style={{
                 gridRow: index + 1,
               }}
             >
               { item.date }
-            </div>,
+            </time>,
             <div
-              className="Newsfeed-content-news"
+              className="newsfeed__inner-news"
               key="news"
               style={{
                 gridRow: index + 1,
               }}
             >
               <NavLink
-                className="Newsfeed-link"
+                className="newsfeed__link"
                 to={`/news/${item.headline}`}
               >
                 { item.headline }

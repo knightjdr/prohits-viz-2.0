@@ -1,0 +1,9 @@
+.video {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+@media (max-width: 999px) {
+  .video {
+    display: none;
+  }
+}

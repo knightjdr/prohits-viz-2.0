@@ -9,7 +9,7 @@ const Database = ({
 }) => (
   <div>
     <div className="analysis-option__label">Query databases</div>
-    <div className="analysis-option__details">
+    <div className="analysis-option__details-go">
       <Checkbox
         checked={form.sf_CORUM}
         onChange={() => { handleCheckbox('sf_CORUM'); }}

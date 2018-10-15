@@ -16,10 +16,25 @@ export class GoContainer extends Component {
       results: formatRows(this.props.go.results),
     };
   }
+  componentWillReceiveProps = (nextProps) => {
+    const { go } = nextProps;
+    console.log(go);
+    this.updateResults(go, this.props.go);
+  }
   handleExport = () => {
     const header = Columns.header.map(item => item.name);
     const csv = convertToCsv(header, Columns.order, this.props.go.results.terms, '\t');
     download(csv, 'go-results.txt', 'text/tab-separated-values');
+  }
+  updateResults = (
+    { isRunning, results },
+    prevGo,
+  ) => {
+    if (!isRunning && prevGo.isRunning) {
+      this.setState({
+        results: formatRows(results),
+      });
+    }
   }
   render() {
     return (
