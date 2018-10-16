@@ -37,7 +37,7 @@ exports[`Spotlight With articles 1`] = `
           <img
             alt="Last name highlight"
             className="Spotlight-carousel-image"
-            src="test.png"
+            src="./images/test.png"
           />
         </LazyLoad>
       </div>

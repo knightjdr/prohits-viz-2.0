@@ -14,7 +14,7 @@ const inputOnChange = jest.fn();
 const onChange = jest.fn();
 
 describe('Input', () => {
-  test('Renders with no value, help message and type = text', () => {
+  it('should render with no value, help message and type = text', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -42,7 +42,7 @@ describe('Input', () => {
     expect(wrapper.find('svg.CustomField-help').length).toBe(1);
   });
 
-  test('Renders with without help message', () => {
+  it('should render with without help message', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -66,7 +66,7 @@ describe('Input', () => {
     expect(wrapper.find('svg.CustomField-help').length).toBe(0);
   });
 
-  test('Modal called on button click', () => {
+  it('should call modal on button click', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -94,7 +94,7 @@ describe('Input', () => {
     expect(InfoModal).toHaveBeenCalledWith('Label', 'help');
   });
 
-  test('Modal called on button click without title text', () => {
+  it('should call modal on button click without title text', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -121,7 +121,7 @@ describe('Input', () => {
     expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
   });
 
-  test('Renders with specified type', () => {
+  it('should render with specified type', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -147,7 +147,7 @@ describe('Input', () => {
     expect(input.props().type).toBe('number');
   });
 
-  test('On change called on enter', () => {
+  it('should call on change on enter', () => {
     const formInput = {
       onChange: inputOnChange,
       value: undefined,
@@ -172,12 +172,12 @@ describe('Input', () => {
     );
     jest.clearAllMocks();
     const input = wrapper.find('Input').first();
-    input.props().onPressEnter(10);
+    input.props().onPressEnter({ target: { value: 10 }});
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(10, formInput);
   });
 
-  test('On change called on blur when input changes', () => {
+  it('should call onchange on blur when input changes', () => {
     const formInput = {
       onChange: inputOnChange,
       value: undefined,
@@ -202,12 +202,12 @@ describe('Input', () => {
     );
     jest.clearAllMocks();
     const input = wrapper.find('Input').first();
-    input.props().onMouseLeave(10);
+    input.props().onMouseLeave({ target: { value: 10 }});
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(10, formInput);
   });
 
-  test('On change not called on blur when input is the same', () => {
+  it('should not call on change on blur when input is the same', () => {
     const formInput = {
       onChange: inputOnChange,
       value: undefined,
@@ -232,11 +232,11 @@ describe('Input', () => {
     );
     jest.clearAllMocks();
     const input = wrapper.find('Input').first();
-    input.props().onMouseLeave(undefined);
+    input.props().onMouseLeave({ target: { value: undefined }});
     expect(onChange).toHaveBeenCalledTimes(0);
   });
 
-  test('Can be set via input.value', () => {
+  it('should set via input.value', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -268,7 +268,7 @@ describe('Input', () => {
     expect(input.props().defaultValue).toBe(1);
   });
 
-  test('Submit called on button click', () => {
+  it('should call submit on button click', () => {
     const onSubmitSpy = jest.fn();
     const wrapper = mount(
       <TestForm
@@ -297,7 +297,7 @@ describe('Input', () => {
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
   });
 
-  test('Submit error adds prop visualization queue', () => {
+  it('should adds prop visualization queue on submit error', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -325,7 +325,7 @@ describe('Input', () => {
     expect(formItem.props().validateStatus).toBe('error');
   });
 
-  test('Can add custom style', () => {
+  it('should add custom style', () => {
     const wrapper = mount(
       <TestForm
         input={{

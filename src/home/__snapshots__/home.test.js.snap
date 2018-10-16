@@ -2,37 +2,22 @@
 
 exports[`Home It renders 1`] = `
 <div
-  className="Home-container"
+  className="home"
 >
-  <NavbarContainer
+  <Connect(NavbarContainer)
     background={false}
-    fixed={false}
-    links={
-      Array [
-        Object {
-          "route": "/analysis",
-          "text": "analysis",
-        },
-        Object {
-          "route": "/visualization",
-          "text": "visualization",
-        },
-        Object {
-          "route": "/news",
-          "text": "news",
-        },
-        Object {
-          "route": "/help",
-          "text": "help",
-        },
-      ]
-    }
   />
   <div
-    className="Home-text"
+    className="home__inner"
   >
-    <Title />
-    <Connect(Component) />
+    <div
+      className="home__grid"
+    >
+      <Title />
+      <Description />
+      <Connect(Component) />
+      <Video />
+    </div>
   </div>
 </div>
 `;

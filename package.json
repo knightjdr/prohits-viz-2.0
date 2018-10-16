@@ -94,7 +94,8 @@
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
     "setupFiles": [
-      "./src/test/shim.js"
+      "./src/test/shim.js",
+      "./__mocks__/local-storage.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

@@ -1,31 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News item It renders initially 1`] = `
+exports[`News item should render initially 1`] = `
 <div
   className="News-item-container"
 />
 `;
 
-exports[`News item It renders when loaded 1`] = `
+exports[`News item should render when loaded 1`] = `
 <div
   className="News-item-container"
 >
   <div
     className="News-item-content"
   >
-    <div
+    <article
       className="News-item-story"
     >
-      <div
+      <header
         className="News-item-headline"
       >
         test
-      </div>
-      <div
+      </header>
+      <time
         className="News-item-date"
       >
         test
-      </div>
+      </time>
       <div
         className="News-item-navbutton-container"
       >
@@ -95,7 +95,7 @@ exports[`News item It renders when loaded 1`] = `
             ]
           }
           title="test"
-          url="http://localhost:3000/news/abcd"
+          url="http://localhost:3000/news/test"
           windowHeight={400}
           windowWidth={550}
         >
@@ -111,21 +111,7 @@ exports[`News item It renders when loaded 1`] = `
           className="News-item-share-button"
           hashtag="#test"
           quote="test"
-          url="http://localhost:3000/news/abcd"
-          windowHeight={400}
-          windowWidth={550}
-        >
-          <Icon
-            className=""
-            iconBgStyle={Object {}}
-            logoFillColor="white"
-            round={true}
-            size={32}
-          />
-        </CreatedButton>
-        <CreatedButton
-          className="News-item-share-button"
-          url="http://localhost:3000/news/abcd"
+          url="http://localhost:3000/news/test"
           windowHeight={400}
           windowWidth={550}
         >
@@ -142,7 +128,7 @@ exports[`News item It renders when loaded 1`] = `
           onClick={[Function]}
           openWindow={false}
           subject="test"
-          url="http://localhost:3000/news/abcd"
+          url="http://localhost:3000/news/test"
         >
           <Icon
             className=""
@@ -153,17 +139,20 @@ exports[`News item It renders when loaded 1`] = `
           />
         </CreatedButton>
       </div>
-      <div
+      <section
         className="News-item-details"
-      >
-        test
-      </div>
-    </div>
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+      />
+    </article>
   </div>
 </div>
 `;
 
-exports[`News item It renders when loading 1`] = `
+exports[`News item should render when loading 1`] = `
 <div
   className="News-item-container"
 >
@@ -180,7 +169,7 @@ exports[`News item It renders when loading 1`] = `
 </div>
 `;
 
-exports[`News item It renders with error 1`] = `
+exports[`News item should render with error 1`] = `
 <div
   className="News-item-container"
 >

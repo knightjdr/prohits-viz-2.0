@@ -1,136 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`navbar Shows background 1`] = `
-<div
-  className="navbar navbar_default"
-  style={
-    Object {
-      "position": "relative",
-    }
-  }
->
-  <Component
-    className="navbar__logo-link"
-    onClick={[Function]}
-    to="/"
-  >
-    <img
-      alt="Logo"
-      className="navbar__logo"
-      src="logo_accent_nobg.svg"
-    />
-  </Component>
-  <div
-    className="navbar__link-container"
-  >
-    <Component
-      className="navbar__link"
-      key="analysis"
-      onClick={[Function]}
-      to="/analysis"
-    >
-      analysis
-    </Component>
-    <Component
-      className="navbar__link"
-      key="help"
-      onClick={[Function]}
-      to="/help"
-    >
-      help
-    </Component>
-  </div>
-</div>
-`;
-
-exports[`navbar Small screen 1`] = `
-<div
-  className="navbar navbar_default"
-  style={
-    Object {
-      "position": "relative",
-    }
-  }
->
-  <Component
-    className="navbar__logo-link"
-    onClick={[Function]}
-    to="/"
-  >
-    <img
-      alt="Logo"
-      className="navbar__logo"
-      src="logo_accent_nobg.svg"
-    />
-  </Component>
-  <div
-    className="navbar__link-container"
-  >
-    <Popover
-      content={
-        <div
-          className="navbar__menu-items"
-        >
-          <Unknown
-            className="navbar__link"
-            onClick={[Function]}
-            to="/analysis"
-          >
-            analysis
-          </Unknown>
-          <Unknown
-            className="navbar__link"
-            onClick={[Function]}
-            to="/help"
-          >
-            help
-          </Unknown>
-        </div>
-      }
-      mouseEnterDelay={0.1}
-      mouseLeaveDelay={0.1}
-      overlayStyle={Object {}}
-      placement="leftBottom"
-      prefixCls="ant-popover"
-      transitionName="zoom-big"
-      trigger="click"
-    >
-      <FontAwesomeIcon$1
-        border={false}
-        className="navbar__menu"
-        fixedWidth={false}
-        flip={null}
-        icon={
-          Object {
-            "icon": Array [
-              448,
-              512,
-              Array [],
-              "f0c9",
-              "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z",
-            ],
-            "iconName": "bars",
-            "prefix": "fas",
-          }
-        }
-        listItem={false}
-        mask={null}
-        name=""
-        pull={null}
-        pulse={false}
-        rotation={null}
-        size={null}
-        spin={false}
-        symbol={false}
-        transform={null}
-      />
-    </Popover>
-  </div>
-</div>
-`;
-
-exports[`navbar Transparent background 1`] = `
-<div
+exports[`navbar should have transparent background 1`] = `
+<nav
   className="navbar navbar_transparent"
   style={
     Object {
@@ -138,36 +9,69 @@ exports[`navbar Transparent background 1`] = `
     }
   }
 >
-  <Component
-    className="navbar__logo-link"
-    onClick={[Function]}
-    to="/"
-  >
-    <img
-      alt="Logo"
-      className="navbar__logo"
-      src="logo_nobg.svg"
-    />
-  </Component>
+  <Logo
+    background={false}
+  />
   <div
     className="navbar__link-container"
   >
-    <Component
-      className="navbar__link"
-      key="analysis"
-      onClick={[Function]}
-      to="/analysis"
-    >
-      analysis
-    </Component>
-    <Component
-      className="navbar__link"
-      key="help"
-      onClick={[Function]}
-      to="/help"
-    >
-      help
-    </Component>
+    <Tasks
+      smallScreen={false}
+      tasks={Array []}
+    />
+    <Links
+      links={
+        Array [
+          Object {
+            "route": "/analysis",
+            "text": "analysis",
+          },
+          Object {
+            "route": "/help",
+            "text": "help",
+          },
+        ]
+      }
+      smallScreen={false}
+    />
   </div>
-</div>
+</nav>
+`;
+
+exports[`navbar should show background 1`] = `
+<nav
+  className="navbar navbar_default"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <Logo
+    background={true}
+  />
+  <div
+    className="navbar__link-container"
+  >
+    <Tasks
+      smallScreen={false}
+      tasks={Array []}
+    />
+    <Links
+      links={
+        Array [
+          Object {
+            "route": "/analysis",
+            "text": "analysis",
+          },
+          Object {
+            "route": "/help",
+            "text": "help",
+          },
+        ]
+      }
+      smallScreen={false}
+    />
+  </div>
+</nav>
 `;

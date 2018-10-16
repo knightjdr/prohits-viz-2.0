@@ -15,7 +15,6 @@ describe('ValidationDotplot', () => {
     expect(Object.prototype.hasOwnProperty.call(errors, 'fillColor')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'edgeColor')).toBeTruthy();
     expect(Object.prototype.hasOwnProperty.call(errors, 'clustering')).toBeTruthy();
-    expect(Object.prototype.hasOwnProperty.call(errors, 'outputFolder')).toBeTruthy();
   });
 
   test('Correct values returns no errors', () => {

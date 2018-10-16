@@ -21,13 +21,8 @@ export class FormContainerComponent extends Component {
     };
   }
   componentWillReceiveProps = (nextProps) => {
-    const { form } = nextProps;
-    const { analysisType } = form;
-    if (analysisType !== this.props.form.analysisType) {
-      this.setState({
-        initialValues: { ...form, ...InitialValues(analysisType) },
-      });
-    }
+    const { form } = this.props;
+    this.updateType(nextProps, form.analysisType);
   }
   onSubmit = (obj) => {
     const form = convertToForm(obj);
@@ -70,6 +65,16 @@ export class FormContainerComponent extends Component {
     if (analysisType) {
       this.setState({
         initialValues: { ...this.props.form, ...InitialValues(analysisType) },
+      });
+    }
+  }
+  updateType = (
+    { form },
+    prevAnalysisType,
+  ) => {
+    if (form.analysisType !== prevAnalysisType) {
+      this.setState({
+        initialValues: { ...form, ...InitialValues(form.analysisType) },
       });
     }
   }

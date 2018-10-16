@@ -26,7 +26,7 @@ const links = [
 
 const SMALL_SCREEN_SIZE = 680;
 
-class NavbarContainer extends Component {
+export class NavbarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {

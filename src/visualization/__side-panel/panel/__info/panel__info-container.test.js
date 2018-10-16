@@ -25,6 +25,9 @@ const params = {
 };
 
 const clearFile = jest.fn();
+const history = {
+  replace: jest.fn(),
+};
 
 describe('Info panel container', () => {
   it('should transfer props to state object called legend', () => {
@@ -32,6 +35,7 @@ describe('Info panel container', () => {
       <InfoContainer
         {...params}
         clearFile={clearFile}
+        history={history}
       />,
     );
 
@@ -60,6 +64,7 @@ describe('Info panel container', () => {
       <InfoContainer
         {...params}
         clearFile={clearFile}
+        history={history}
       />,
     );
 
@@ -85,6 +90,7 @@ describe('Info panel container', () => {
       <InfoContainer
         {...params}
         clearFile={clearFile}
+        history={history}
       />,
     );
     clearFile.mockClear();

@@ -9,7 +9,7 @@ import {
 
 import Link from '../../../components/router-link/router-link';
 
-const statusContent = {
+export const statusContent = {
   complete: {
     alert: 'The task is complete.',
     color: 'analysis__task-status_green',
@@ -65,8 +65,8 @@ const statusContent = {
 };
 
 const StatusContent = ({
-  status,
   id,
+  status,
 }) => {
   const content = statusContent[status];
   const link = content.link ? `/visualization/${id}` : null;

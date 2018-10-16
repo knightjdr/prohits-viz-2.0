@@ -21,15 +21,6 @@ exports[`Output Renders 1`] = `
      
     for detailed information on the files output from this tool.
   </div>
-  <CustomField
-    helpMessage="The name of the output folder."
-    inputType="text"
-    label="Output folder"
-    name="outputFolder"
-    onChange={[Function]}
-    placeHolder="Output folder..."
-    type="input"
-  />
   <div
     className="Output-checkboxes"
   >

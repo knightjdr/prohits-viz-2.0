@@ -2,26 +2,7 @@
 
 exports[`Visualization Renders with base path 1`] = `
 <div>
-  <NavbarContainer
-    background={true}
-    fixed={false}
-    links={
-      Array [
-        Object {
-          "route": "/analysis",
-          "text": "analysis",
-        },
-        Object {
-          "route": "/news",
-          "text": "news",
-        },
-        Object {
-          "route": "/help",
-          "text": "help",
-        },
-      ]
-    }
-  />
+  <Connect(NavbarContainer) />
   <div>
     <Switch>
       <Route
@@ -32,7 +13,12 @@ exports[`Visualization Renders with base path 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="visualization/:vizId"
+        path="visualization/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="visualization/:id/:image"
       />
       <RouteNotFound />
     </Switch>

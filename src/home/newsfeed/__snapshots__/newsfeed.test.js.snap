@@ -2,18 +2,18 @@
 
 exports[`Newsfeed Renders with news items 1`] = `
 <div
-  className="Newsfeed-container"
+  className="newsfeed"
 >
   <div
-    className="Newsfeed-header"
+    className="newsfeed__header"
   >
     News
   </div>
   <div
-    className="Newsfeed-content"
+    className="newsfeed__inner"
   >
-    <div
-      className="Newsfeed-content-date"
+    <time
+      className="newsfeed__inner-date"
       key="date"
       style={
         Object {
@@ -22,9 +22,9 @@ exports[`Newsfeed Renders with news items 1`] = `
       }
     >
       Apr 25, 2018
-    </div>
+    </time>
     <div
-      className="Newsfeed-content-news"
+      className="newsfeed__inner-news"
       key="news"
       style={
         Object {
@@ -33,7 +33,7 @@ exports[`Newsfeed Renders with news items 1`] = `
       }
     >
       <Component
-        className="Newsfeed-link"
+        className="newsfeed__link"
         to="/news/test headline"
       >
         test headline

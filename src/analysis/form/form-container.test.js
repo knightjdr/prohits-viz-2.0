@@ -1,123 +1,207 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { FormContainerComponent } from './form-container';
+import convertToForm from './submission/convert-to-form';
+import formSubmit from './submission/form-submit';
 import InitialValues from './initial-values/initial-values';
+import { FormContainerComponent } from './form-container';
 
+jest.mock('./submission/convert-to-form');
+jest.mock('./submission/form-submit');
 jest.mock('./initial-values/initial-values');
 InitialValues.mockReturnValue({ initialValue: 'testInitial' });
 
+const sleep = ms => (
+  new Promise(resolve => setTimeout(resolve, ms))
+);
+
 describe('FormContainerComponent', () => {
-  test('Initial state', () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
       <FormContainerComponent
         form={{}}
+        session="sessionID"
       />,
     );
-    expect(wrapper.state().errors).toEqual({});
-    expect(wrapper.state().initialValues).toEqual({});
-    expect(wrapper.state().showOptions).toBeFalsy();
   });
 
-  test('When analysisType changes via props, update initial values', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{}}
-      />,
-    );
+  it('should set initial state', () => {
     expect(wrapper.state().initialValues).toEqual({});
-    wrapper.setProps({
-      form: {
-        analysisType: 'dotplot',
-      },
+  });
+
+  describe('prop change', () => {
+    beforeAll(() => {
+      wrapper.setState({ initialValues: {} });
     });
-    const expectedState = {
-      analysisType: 'dotplot',
-      initialValue: 'testInitial',
-    };
-    expect(wrapper.state().initialValues).toEqual(expectedState);
-  });
 
-  test('When analysisType does not change, do not update state', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{
+    it('should not update initial values when analysisType does not change via props', () => {
+      wrapper.setProps({
+        form: {
+          analysisType: undefined,
+        },
+      });
+      const expectedState = {
+        analysisType: undefined,
+      };
+      expect(wrapper.state().initialValues).toEqual(expectedState);
+    });
+
+    it('should update initial values when analysisType changes via props', () => {
+      wrapper.setProps({
+        form: {
           analysisType: 'dotplot',
-        }}
-      />,
-    );
-    expect(wrapper.state().initialValues).toEqual({ analysisType: 'dotplot' });
-    wrapper.setProps({
-      form: {
+        },
+      });
+      const expectedState = {
         analysisType: 'dotplot',
-      },
+        initialValue: 'testInitial',
+      };
+      expect(wrapper.state().initialValues).toEqual(expectedState);
     });
-    expect(wrapper.state().initialValues).toEqual({ analysisType: 'dotplot' });
   });
 
-  test('Update state with errors when submission fails', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{}}
-      />,
-    );
+  describe('form submission', () => {
+    const obj = { analysisType: 'dotplot' };
+
+    describe('success', () => {
+      beforeAll(async (done) => {
+        convertToForm.mockClear();
+        convertToForm.mockReturnValue({});
+        formSubmit.mockClear();
+        formSubmit.mockImplementation(() => Promise.resolve('taskid'));
+        wrapper.instance().onSubmit(obj);
+        await sleep(200);
+        done();
+      });
+
+      it('should convert to form object', () => {
+        expect(convertToForm).toHaveBeenCalledWith(obj);
+      });
+
+      it('should submit form', () => {
+        expect(formSubmit).toHaveBeenCalledWith({}, 'sessionID', 'dotplot');
+      });
+
+      it('should set task id', () => {
+        expect(wrapper.state().taskID).toBe('taskid');
+      });
+
+      it('should clear errors', () => {
+        expect(wrapper.state().errors).toEqual({});
+      });
+    });
+
+    describe('failure', () => {
+      beforeAll(async (done) => {
+        convertToForm.mockClear();
+        convertToForm.mockReturnValue({});
+        formSubmit.mockClear();
+        formSubmit.mockImplementation(() => Promise.reject('taskid'));
+        wrapper.instance().onSubmit(obj);
+        await sleep(200);
+        done();
+      });
+
+      it('should convert to form object', () => {
+        expect(convertToForm).toHaveBeenCalledWith(obj);
+      });
+
+      it('should submit form', () => {
+        expect(formSubmit).toHaveBeenCalledWith({}, 'sessionID', 'dotplot');
+      });
+
+      it('should clear errors', () => {
+        expect(wrapper.state().analysisError).toBeTruthy();
+      });
+    });
+  });
+
+  it('should update state with errors when submission fails', () => {
     wrapper.instance().onSubmitFail({ errors: 'test' });
     expect(wrapper.state().errors).toEqual({ errors: 'test' });
   });
 
-  test('handleOptions changes boolean status of state', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{}}
-      />,
-    );
-    expect(wrapper.state().showOptions).toBeFalsy();
+  it('should close analysis error modal', () => {
+    wrapper.setState({ analysisError: true });
+    wrapper.instance().closeError();
+    expect(wrapper.state().analysisError).toBeFalsy();
+  });
+
+  it('should clear task ID on closing modal', () => {
+    wrapper.setState({ taskID: 'abc' });
+    wrapper.instance().closeStatus();
+    expect(wrapper.state().taskID).toBeNull();
+  });
+
+  it('should change boolean status of state via handleOptions ', () => {
+    wrapper.setState({ showOptions: false });
     wrapper.instance().handleOptions();
     expect(wrapper.state().showOptions).toBeTruthy();
   });
 
-  test('Submission resets errors', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{}}
-      />,
-    );
-    wrapper.instance().onSubmitFail({ errors: 'test' });
-    expect(wrapper.state().errors).toEqual({ errors: 'test' });
-    wrapper.instance().onSubmit();
-    expect(wrapper.state().errors).toEqual({});
-  });
-
-  test('Reset sets inital values back to default when analysisType is set', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{
+  describe('reset', () => {
+    it('should reset inital values back to default when analysisType is set', () => {
+      wrapper.setProps({
+        form: {
+          analysisType: 'dotplot',
+        },
+      });
+      wrapper.setState({
+        initialValues: {
           analysisType: 'dotplot',
           initialValue: 'newValue',
-        }}
-      />,
-    );
-    expect(wrapper.state().initialValues).toEqual({
-      analysisType: 'dotplot',
-      initialValue: 'newValue',
+        },
+      });
+      wrapper.instance().handleReset();
+      expect(wrapper.state().initialValues).toEqual({
+        analysisType: 'dotplot',
+        initialValue: 'testInitial',
+      });
     });
-    wrapper.instance().handleReset();
-    expect(wrapper.state().initialValues).toEqual({
-      analysisType: 'dotplot',
-      initialValue: 'testInitial',
+
+    it('should not reset initial values when there is no analysis type', () => {
+      wrapper.setProps({
+        form: {
+        },
+      });
+      wrapper.setState({
+        initialValues: {
+          initialValue: 'newValue',
+        },
+      });
+      wrapper.instance().handleReset();
+      expect(wrapper.state().initialValues).toEqual({ initialValue: 'newValue' });
     });
   });
 
-  test('Reset does not reset initial values when there is no analysis type', () => {
-    const wrapper = shallow(
-      <FormContainerComponent
-        form={{
+  describe('update type', () => {
+    beforeAll(() => {
+      wrapper.setState({
+        initialValues: {
+          analysisType: 'dotplot',
           initialValue: 'newValue',
-        }}
-      />,
-    );
-    expect(wrapper.state().initialValues).toEqual({ initialValue: 'newValue' });
-    wrapper.instance().handleReset();
-    expect(wrapper.state().initialValues).toEqual({ initialValue: 'newValue' });
+        },
+      });
+    });
+
+    it('should not update when type does not change', () => {
+      wrapper.instance().updateType({ form: { analysisType: 'dotplot' } }, 'dotplot');
+      const expectedState = {
+        analysisType: 'dotplot',
+        initialValue: 'newValue',
+      };
+      expect(wrapper.state().initialValues).toEqual(expectedState);
+    });
+
+    it('should update when type changes', () => {
+      wrapper.instance().updateType({ form: { analysisType: 'correlation' } }, 'dotplot');
+      const expectedState = {
+        analysisType: 'correlation',
+        initialValue: 'testInitial',
+      };
+      expect(wrapper.state().initialValues).toEqual(expectedState);
+    });
   });
 });

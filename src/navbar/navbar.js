@@ -14,10 +14,11 @@ const Navbar = ({
   smallScreen,
   tasks,
 }) => {
-  const className = background ? 'navbar_default' : 'navbar_transparent';
+  const className = ['navbar'];
+  className.push(background ? 'navbar_default' : 'navbar_transparent');
   return (
     <nav
-      className={`navbar ${className}`}
+      className={className.join(' ')}
       style={{
         position: fixed ? 'fixed' : 'relative',
       }}

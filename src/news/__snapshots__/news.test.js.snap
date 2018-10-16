@@ -2,9 +2,7 @@
 
 exports[`News Renders item when ID specified 1`] = `
 <div>
-  <NavbarContainer
-    background={true}
-    fixed={false}
+  <Connect(NavbarContainer)
     links={
       Array [
         Object {
@@ -44,9 +42,7 @@ exports[`News Renders item when ID specified 1`] = `
 
 exports[`News Renders list when no ID specified 1`] = `
 <div>
-  <NavbarContainer
-    background={true}
-    fixed={false}
+  <Connect(NavbarContainer)
     links={
       Array [
         Object {

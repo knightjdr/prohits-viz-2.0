@@ -42,7 +42,7 @@ const testItem = {
 };
 
 describe('News item', () => {
-  test('It renders initially', () => {
+  it('should render initially', () => {
     const wrapper = shallow(
       <NewsItemComponent
         newsItem={testItem.init}
@@ -51,7 +51,7 @@ describe('News item', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('It renders when loading', () => {
+  it('should render when loading', () => {
     const wrapper = shallow(
       <NewsItemComponent
         newsItem={testItem.loading}
@@ -61,7 +61,7 @@ describe('News item', () => {
     expect(wrapper.find('Spin').length).toBe(1);
   });
 
-  test('It renders when loaded', () => {
+  it('should render when loaded', () => {
     const wrapper = shallow(
       <NewsItemComponent
         newsItem={testItem.loaded}
@@ -71,7 +71,7 @@ describe('News item', () => {
     expect(wrapper.find('.News-item-content').length).toBe(1);
   });
 
-  test('It renders with error', () => {
+  it('should render with error', () => {
     const wrapper = shallow(
       <NewsItemComponent
         newsItem={testItem.error}

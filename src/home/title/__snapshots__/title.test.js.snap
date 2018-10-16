@@ -2,16 +2,11 @@
 
 exports[`Title It renders 1`] = `
 <div
-  className="Title-text"
+  className="home__title"
 >
   <img
     alt="ProHits-viz"
     src="title.svg"
   />
-  <div
-    className="Title-description"
-  >
-    A suite of webtools for analyzing and visualizing protein-protein interaction data
-  </div>
 </div>
 `;

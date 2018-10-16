@@ -27,6 +27,7 @@ exports[`Analysis options panel with type specified should match snapshot 1`] = 
         customize image
       </Option>
       <Option
+        disabled={true}
         value="domain"
       >
         domain
@@ -37,6 +38,7 @@ exports[`Analysis options panel with type specified should match snapshot 1`] = 
         GO enrichment
       </Option>
       <Option
+        disabled={true}
         value="network"
       >
         network
@@ -82,6 +84,7 @@ exports[`Analysis options panel without type specified should match snapshot 1`]
         customize image
       </Option>
       <Option
+        disabled={true}
         value="domain"
       >
         domain
@@ -92,6 +95,7 @@ exports[`Analysis options panel without type specified should match snapshot 1`]
         GO enrichment
       </Option>
       <Option
+        disabled={true}
         value="network"
       >
         network

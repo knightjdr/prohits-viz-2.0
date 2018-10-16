@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouterLink with defaults should match snapshot 1`] = `
+<Link
+  className={null}
+  onClick={[Function]}
+  replace={false}
+  to="/test/route"
+>
+  link
+</Link>
+`;
+
+exports[`RouterLink with user values should match snapshot 1`] = `
+<Link
+  className="test-class"
+  onClick={[Function]}
+  otherProp="other-prop"
+  replace={false}
+  to="/test/route"
+>
+  testText
+</Link>
+`;

@@ -6,6 +6,7 @@ import ValidateJson from './visualization__select-validate';
 import { SelectContainer } from './visualization__select-container';
 
 // Mock validation.
+jest.mock('./visualization__select-type');
 jest.mock('./visualization__select-validate');
 jest.mock('../fill/fill');
 

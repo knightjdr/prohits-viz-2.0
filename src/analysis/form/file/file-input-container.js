@@ -26,14 +26,14 @@ export class FileInputContainer extends Component {
           this.props.setFileHeader(header);
         });
     }
-    // if the current file is the sample file remove it from new file list
+    // Prevent sample file from being run with other files.
     const newValue = value.fileList || []; // default
     if (
       newValue.length > 1 &&
-      input.value.length === 1 &&
-      input.value[0].uid === 'rc-upload-sampleFile'
+      newValue.some(file => file.uid === 'rc-upload-sampleFile')
     ) {
-      newValue.splice(0, 1);
+      const index = newValue.map(file => file.uid).indexOf('rc-upload-sampleFile');
+      newValue.splice(index, 1);
       this.props.change('sampleFile', false);
     }
     // update redux store with file list

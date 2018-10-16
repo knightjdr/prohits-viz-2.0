@@ -27,6 +27,7 @@ exports[`GO component when complete with results should match snapshot 1`] = `
   <React.Fragment>
     <TableContainer
       bottom={65}
+      cellHeight={35}
       columnOrder={
         Array [
           "termID",

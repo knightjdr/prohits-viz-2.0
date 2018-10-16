@@ -1,8 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+import InfoModal from './info-modal';
 import Switch from './switch';
 import TestForm from './__mocks__/form-wrapper';
+
+jest.mock('./info-modal');
 
 const inputChange = jest.fn();
 const onChange = jest.fn();
@@ -99,6 +102,13 @@ describe('Switch', () => {
       const checkboxStyle = wrapper.find('Switch').first().props().style;
       expect(checkboxStyle).toHaveProperty('backgroundColor', '#000');
     });
+
+    it('should open modal with label title', () => {
+      InfoModal.mockClear();
+      const button = wrapper.find('.CustomField-switch-help').first();
+      button.simulate('click');
+      expect(InfoModal).toHaveBeenCalledWith('TestSwitch', 'help');
+    });
   });
 
   describe('without help text', () => {
@@ -130,6 +140,42 @@ describe('Switch', () => {
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe('without label', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            change: inputChange,
+            value: undefined,
+          }}
+          meta={{}}
+          onSubmit={onSubmit}
+        >
+          <Switch
+            formItemLayout={{
+              labelCol: { span: 10 },
+              wrapperCol: { span: 20 },
+            }}
+            helpMessage="help"
+            input={{}}
+            onChange={onChange}
+            style={{ backgroundColor: '#000' }}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should open modal with default help title', () => {
+      InfoModal.mockClear();
+      wrapper.setProps({ label: null });
+      const button = wrapper.find('.CustomField-switch-help').first();
+      button.simulate('click');
+      expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
     });
   });
 });

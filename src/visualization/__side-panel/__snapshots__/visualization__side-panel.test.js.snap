@@ -263,7 +263,7 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
         />
       </button>
     </div>
-    <Connect(InfoContainer) />
+    <withRouter(Connect(InfoContainer)) />
   </div>
   <button
     className="visualization__side-panel-button"
@@ -571,7 +571,7 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
         />
       </button>
     </div>
-    <Connect(InfoContainer) />
+    <withRouter(Connect(InfoContainer)) />
   </div>
   <button
     className="visualization__side-panel-button"

@@ -20,7 +20,7 @@ const sampleFile = { originFileObj: new File([SampleHeader], 'samplefile.txt', {
 sampleFile.uid = 'rc-upload-sampleFile';
 
 describe('FileInputContainer', () => {
-  test('Renders initially', () => {
+  it('should render initially', () => {
     const wrapper = shallow(
       <FileInputContainer
         change={change}
@@ -31,7 +31,7 @@ describe('FileInputContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('onFileChange with empty file array', () => {
+  it('should call onFileChange with empty file array', () => {
     const wrapper = shallow(
       <FileInputContainer
         change={change}
@@ -55,7 +55,7 @@ describe('FileInputContainer', () => {
     expect(change).toHaveBeenCalledWith('file', []);
   });
 
-  test('onFileChange with undefined file array', () => {
+  it('should call onFileChange with undefined file array', () => {
     const wrapper = shallow(
       <FileInputContainer
         change={change}
@@ -79,7 +79,7 @@ describe('FileInputContainer', () => {
     expect(change).toHaveBeenCalledWith('file', []);
   });
 
-  test('onFileChange with a new file and no stored file', () => {
+  it('should call onFileChange with a new file and no stored file', () => {
     deepEqual.mockReturnValueOnce(false);
     const wrapper = shallow(
       <FileInputContainer
@@ -100,7 +100,7 @@ describe('FileInputContainer', () => {
     expect(change).toHaveBeenCalledWith('file', [newFile]);
   });
 
-  test('onFileChange with a new file the same as the stored file', () => {
+  it('should call onFileChange with a new file the same as the stored file', () => {
     deepEqual.mockReturnValueOnce(true);
     const wrapper = shallow(
       <FileInputContainer
@@ -121,7 +121,7 @@ describe('FileInputContainer', () => {
     expect(change).toHaveBeenCalledWith('file', [newFile]);
   });
 
-  test('onFileChange with a new file and current stored file is sample file', () => {
+  it('should call onFileChange with a new file and current stored file is sample file', () => {
     deepEqual.mockReturnValueOnce(false);
     const wrapper = shallow(
       <FileInputContainer
@@ -144,7 +144,7 @@ describe('FileInputContainer', () => {
     expect(change).toHaveBeenCalledWith('file', [newFile]);
   });
 
-  test('selectSampleFile', () => {
+  it('should selectSampleFile', () => {
     const wrapper = shallow(
       <FileInputContainer
         change={change}

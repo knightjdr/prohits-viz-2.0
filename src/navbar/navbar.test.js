@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import navbar from './navbar';
+import Navbar from './navbar';
 
 const links = [
   {
@@ -15,13 +15,14 @@ const links = [
 ];
 
 describe('navbar', () => {
-  test('Shows background', () => {
+  it('should show background', () => {
     const wrapper = shallow(
-      <navbar
+      <Navbar
         background
         fixed={false}
         links={links}
         smallScreen={false}
+        tasks={[]}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -31,13 +32,14 @@ describe('navbar', () => {
     expect(wrapper.find('Popover').length).toBe(0);
   });
 
-  test('Transparent background', () => {
+  it('should have transparent background', () => {
     const wrapper = shallow(
-      <navbar
+      <Navbar
         background={false}
         fixed={false}
         links={links}
         smallScreen={false}
+        tasks={[]}
       />,
     );
     expect(wrapper).toMatchSnapshot();
@@ -45,26 +47,14 @@ describe('navbar', () => {
     expect(wrapper.find('Popover').length).toBe(0);
   });
 
-  test('Small screen', () => {
+  it('should have fixed position', () => {
     const wrapper = shallow(
-      <navbar
-        background
-        fixed={false}
-        links={links}
-        smallScreen
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Popover').length).toBe(1);
-  });
-
-  test('Has fixed position', () => {
-    const wrapper = shallow(
-      <navbar
+      <Navbar
         background
         fixed
         links={links}
         smallScreen={false}
+        tasks={[]}
       />,
     );
     const navbar = wrapper.find('.navbar');
