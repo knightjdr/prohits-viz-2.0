@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Status modal should match snapshot 1`] = `
+exports[`Error modal should match snapshot 1`] = `
 <Modal
   closable={false}
   confirmLoading={false}
@@ -22,18 +22,11 @@ exports[`Status modal should match snapshot 1`] = `
   okType="primary"
   onCancel={[Function]}
   prefixCls="ant-modal"
-  title="Task ID: taskID"
+  title="Error"
   transitionName="zoom"
   visible={true}
   width={520}
 >
-  <div
-    className="analysis__task-status"
-  >
-    <StatusContent
-      id="taskID"
-      status="running"
-    />
-  </div>
+  There was an error submitting this task.
 </Modal>
 `;

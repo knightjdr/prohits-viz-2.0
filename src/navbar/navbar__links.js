@@ -1,6 +1,6 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Popover } from 'antd';
 import { faBars } from '@fortawesome/pro-solid-svg-icons';
 
@@ -10,15 +10,21 @@ const Links = ({
   links,
   smallScreen,
 }) => {
-  let linksElements = links.map(link => (
-    <RouterLink
-      className="navbar__link"
-      key={link.text}
-      to={link.route}
-    >
-      { link.text }
-    </RouterLink>
-  ));
+  let linksElements = (
+    <Fragment>
+      {
+        links.map(link => (
+          <RouterLink
+            className="navbar__link"
+            key={link.text}
+            to={link.route}
+          >
+            { link.text }
+          </RouterLink>
+        ))
+      }
+    </Fragment>
+  );
   if (smallScreen) {
     const menu = (
       <div className="navbar__menu-items">

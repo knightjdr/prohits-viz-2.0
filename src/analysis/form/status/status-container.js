@@ -6,7 +6,7 @@ import getTaskStatus from '../../../state/post/task-thunk';
 import Status from './status';
 import taskSelector from '../../../state/selectors/task-selector';
 
-class StatusContainer extends Component {
+export class StatusContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {

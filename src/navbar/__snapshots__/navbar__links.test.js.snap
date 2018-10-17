@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar links for normal screen should match snapshot 1`] = `
+<React.Fragment>
+  <RouterLink
+    className="navbar__link"
+    key="home"
+    to="/"
+  >
+    home
+  </RouterLink>
+  <RouterLink
+    className="navbar__link"
+    key="analysis"
+    to="/analysis"
+  >
+    analysis
+  </RouterLink>
+</React.Fragment>
+`;
+
+exports[`Navbar links for small screen should match snapshot 1`] = `
+<Popover
+  content={
+    <div
+      className="navbar__menu-items"
+    >
+      <Unknown>
+        <RouterLink
+          className="navbar__link"
+          to="/"
+        >
+          home
+        </RouterLink>
+        <RouterLink
+          className="navbar__link"
+          to="/analysis"
+        >
+          analysis
+        </RouterLink>
+      </Unknown>
+    </div>
+  }
+  mouseEnterDelay={0.1}
+  mouseLeaveDelay={0.1}
+  overlayStyle={Object {}}
+  placement="leftBottom"
+  prefixCls="ant-popover"
+  transitionName="zoom-big"
+  trigger="click"
+>
+  <FontAwesomeIcon$1
+    border={false}
+    className="navbar__menu"
+    fixedWidth={false}
+    flip={null}
+    icon={
+      Object {
+        "icon": Array [
+          448,
+          512,
+          Array [],
+          "f0c9",
+          "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z",
+        ],
+        "iconName": "bars",
+        "prefix": "fas",
+      }
+    }
+    listItem={false}
+    mask={null}
+    name=""
+    pull={null}
+    pulse={false}
+    rotation={null}
+    size={null}
+    spin={false}
+    symbol={false}
+    transform={null}
+  />
+</Popover>
+`;

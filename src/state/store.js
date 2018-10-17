@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 
 import Reducers from './reducers';
-import reHydrate from './local-storage/rehyrdate';
+import reHydrate from './local-storage/rehydrate';
 import Router from '../router/router';
 import subscribeMiddleware from './local-storage/subscribe-middleware';
 // import TestState from './test-state/test-state';

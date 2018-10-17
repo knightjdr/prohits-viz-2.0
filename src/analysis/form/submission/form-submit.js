@@ -1,4 +1,4 @@
-const formFetch = (form, session, type) => (
+const formSubmit = (form, session, type) => (
   new Promise((resolve, reject) => {
     const headers = new Headers();
     headers.append('accept', 'application/json');
@@ -25,4 +25,4 @@ const formFetch = (form, session, type) => (
   })
 );
 
-export default formFetch;
+export default formSubmit;
