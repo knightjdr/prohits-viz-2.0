@@ -56,8 +56,8 @@ export class TaskContainer extends Component {
     const { fetchTaskStatus, id } = this.props;
     fetchTaskStatus(id);
   }
-  resfreshStatus = () => {
-    this.props.fetchTaskStatus();
+  openModal = id => (text) => {
+    this.showText(text, id);
   }
   showText = (text, id) => {
     this.setState({
@@ -80,20 +80,17 @@ export class TaskContainer extends Component {
       this.selectFiles[id] &&
       txtFiles.includes(this.selectFiles[id])
     ) {
-      const viewFile = (text) => {
-        this.showText(text, id);
-      };
       const options = {
         err: this.getError,
         responseType: 'text',
       };
-      getFile(`task/${id}/${this.selectFiles[id]}`, options, viewFile);
+      getFile(`task/${id}/${this.selectFiles[id]}`, options, this.openModal(id));
     } else if (this.selectFiles[id]) {
       this.props.history.push(`/visualization/${id}/${this.selectFiles[id]}`);
     }
   }
   render() {
-    const missing = this.props.id && !this.props.tasks.list.includes(this.props.id);
+    const missing = Boolean(this.props.id && !this.props.tasks.list.includes(this.props.id));
     let tasks;
     if (missing) {
       tasks = [];
@@ -116,7 +113,7 @@ export class TaskContainer extends Component {
         navbar={this.props.navbar}
         openModal={this.state.openModal}
         tasks={tasks}
-        refreshStatus={this.resfreshStatus}
+        refreshStatus={this.fetchTasks}
         viewFile={this.viewFile}
       />
     );

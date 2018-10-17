@@ -49,6 +49,15 @@ describe('Map fetch thunk', () => {
         expect(fetchMock.lastUrl()).toBe('http://localhost:8004/api/sync/');
       });
 
+      it('should call fetch with correct headers', () => {
+        const expectedHeaders = {
+          accept: 'application/json',
+          'content-type': 'application/json',
+          session: 'sessionid',
+        };
+        expect(fetchMock.lastOptions().headers.map).toEqual(expectedHeaders);
+      });
+
       it('should call fetch with correct body', () => {
         const expectedBody = {
           abundanceCap: 50,
@@ -59,15 +68,6 @@ describe('Map fetch thunk', () => {
           imageType: 'heatmap',
         };
         expect(fetchMock.lastOptions().body).toBe(JSON.stringify(expectedBody));
-      });
-
-      it('should call fetch with correct headers', () => {
-        const expectedHeaders = {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          session: 'sessionid',
-        };
-        expect(fetchMock.lastOptions().headers.map).toEqual(expectedHeaders);
       });
 
       it('should dispatch synchronizing action', () => {
@@ -88,7 +88,7 @@ describe('Map fetch thunk', () => {
       let dispatcedActions;
 
       beforeAll(async (done) => {
-        fetchMock.postOnce('*', 400, { overwriteRoutes: true });
+        fetchMock.postOnce('*', 404, { overwriteRoutes: true });
 
         const state = {
           parameters: {

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tasks modal should match snapshot 1`] = `
+<Modal
+  closable={false}
+  confirmLoading={false}
+  footer={
+    Array [
+      <Button
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        type="primary"
+    >
+        Close
+    </Button>,
+    ]
+  }
+  maskTransitionName="fade"
+  okText="Close"
+  okType="primary"
+  onCancel={[Function]}
+  prefixCls="ant-modal"
+  title="Test"
+  transitionName="zoom"
+  visible={true}
+  width={520}
+>
+  <div
+    className="tasks__modal"
+  >
+    test
+  </div>
+</Modal>
+`;

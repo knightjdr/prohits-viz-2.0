@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayTask should match snapshot 1`] = `
+<TaskContainer
+  id="task1"
+  navbar={false}
+/>
+`;

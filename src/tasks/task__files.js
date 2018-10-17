@@ -15,10 +15,7 @@ const Files = ({
   id,
   viewFile,
 }) => {
-  if (
-    !files ||
-    !files.length
-  ) {
+  if (!files.length) {
     return '-';
   }
   return (

@@ -64,7 +64,7 @@ const Status = ({
 };
 
 Status.defaultProps = {
-  missing: null,
+  missing: false,
 };
 
 Status.propTypes = {

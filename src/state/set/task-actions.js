@@ -1,8 +1,8 @@
 export const ADD_TASK = 'ADD_TASK';
 export const SHOULD_UPDATE_TASKS = 'SHOULD_UPDATE_TASKS';
-export const UPDATING_TASK_STATUS = 'GETTING_TASK_STATUS';
 export const UPDATE_ERROR = 'UPDATE_ERROR';
 export const UPDATE_STATUS = 'UPDATE_STATUS';
+export const UPDATING_TASK_STATUS = 'GETTING_TASK_STATUS';
 
 export const updateError = () => ({
   type: UPDATE_ERROR,
