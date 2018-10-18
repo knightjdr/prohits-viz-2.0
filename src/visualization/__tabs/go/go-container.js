@@ -18,7 +18,6 @@ export class GoContainer extends Component {
   }
   componentWillReceiveProps = (nextProps) => {
     const { go } = nextProps;
-    console.log(go);
     this.updateResults(go, this.props.go);
   }
   handleExport = () => {

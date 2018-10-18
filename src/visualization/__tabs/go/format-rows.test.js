@@ -68,7 +68,11 @@ const expected = {
 };
 
 describe('Format rows', () => {
-  it('should reformat results', () => {
+  it('should format results for table', () => {
     expect(formatRows(results)).toEqual(expected);
+  });
+
+  it('should return empty array for terms when null', () => {
+    expect(formatRows({ ...results, terms: null }).terms).toEqual([]);
   });
 });

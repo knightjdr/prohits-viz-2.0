@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Visualization image for other image types should match snapshot 1`] = `<Heatmap />`;
+
+exports[`Visualization image for scatter images should match snapshot 1`] = `<ScatterContainer />`;
+
+exports[`Visualization image when loading should match snapshot 1`] = `
+<Status
+  error={false}
+  loading={true}
+/>
+`;
+
+exports[`Visualization image with error should match snapshot 1`] = `
+<Status
+  error={true}
+  loading={false}
+/>
+`;
