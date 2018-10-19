@@ -3,7 +3,7 @@
   "bugs": {
     "url": "https://github.com/knightjdr/prohits-viz-client/issues"
   },
-  "homepage": "https://github.com/knightjdr/prohits-viz-client",
+  "homepage": "https://prohits-viz.lunenfeld.ca/v2",
   "license": "MIT",
   "name": "prohits-viz-client",
   "private": false,

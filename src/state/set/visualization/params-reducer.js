@@ -1,6 +1,10 @@
 import * as fileActions from '../interactive-file-actions';
 
-export const defaultState = {};
+export const defaultState = {
+  abundanceColumn: 'Abundance',
+  scoreColumn: 'Score',
+  scoreType: 'lte',
+};
 
 const Parameters = (state = { ...defaultState }, action) => {
   switch (action.type) {

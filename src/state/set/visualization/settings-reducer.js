@@ -5,7 +5,7 @@ export const defaultState = {
   abundanceCap: 50,
   cellSize: 15,
   edgeColor: 'blueBlack',
-  fillColor: 'redBlack',
+  fillColor: 'blueBlack',
   imageType: 'heatmap',
   invertColor: false,
   minAbundance: 0,

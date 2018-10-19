@@ -179,6 +179,7 @@ Svg.defaultProps = {
   contextEvent: null,
   name: '',
   reference: null,
+  scoreType: 'lte',
 };
 
 Svg.propTypes = {
@@ -249,7 +250,7 @@ Svg.propTypes = {
       name: PropTypes.string,
     }),
   ).isRequired,
-  scoreType: PropTypes.string.isRequired,
+  scoreType: PropTypes.string,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,

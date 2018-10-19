@@ -125,7 +125,7 @@ StoreConnection.propTypes = {
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
   reset: PropTypes.func.isRequired,
-  scoreType: PropTypes.string.isRequired,
+  scoreType: PropTypes.string,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,

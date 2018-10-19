@@ -46,7 +46,7 @@ const SelectValidate = (jsonString) => {
     parameters.imageType === 'dotplot' ||
     parameters.imageType === 'heatmap'
   ) {
-    // The file should have a "column" key container a "names" array.
+    // The file should have a "column" key containing a "names" array.
     if (
       !columns ||
       !Object.prototype.hasOwnProperty.call(columns, 'names') ||
