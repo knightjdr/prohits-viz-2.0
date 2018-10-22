@@ -34,11 +34,6 @@ export class CustomizeContainer extends Component {
     setting[field] = !this.props.form[field];
     this.props.setCustomizeParameters(setting);
   }
-  handleSelect = (field, value) => {
-    const setting = {};
-    setting[field] = value;
-    this.props.setCustomizeParameters(setting);
-  }
   shouldUndoBeDisabled = currentState => (
     currentState === undefined || currentState.length < 2
   )
@@ -75,8 +70,8 @@ CustomizeContainer.propTypes = {
     }),
   ).isRequired,
   form: PropTypes.shape({
-    deleteBy: PropTypes.string,
-    orderBy: PropTypes.string,
+    deleteRC: PropTypes.bool,
+    reorder: PropTypes.bool,
     removeEmpty: PropTypes.bool,
     resetMaximums: PropTypes.bool,
   }).isRequired,

@@ -60,6 +60,7 @@ export class PlotContainer extends Component {
       this.props.dimensions,
       this.props.sortID,
       this.props.updateID,
+      this.props.cellSize,
     );
   }
   shouldComponentUpdate(nextProps) {
@@ -241,13 +242,14 @@ export class PlotContainer extends Component {
     rows,
     sortID,
     updateID,
-  }, prevPosition, prevDimensions, prevSortId, prevUpdateID) => {
+  }, prevPosition, prevDimensions, prevSortId, prevUpdateID, prevCellSize) => {
     if (
       updateID !== prevUpdateID ||
       position.x !== prevPosition.x ||
       position.y !== prevPosition.y ||
       dimensions.pageX !== prevDimensions.pageX ||
       dimensions.pageY !== prevDimensions.pageY ||
+      cellSize !== prevCellSize ||
       sortID !== prevSortId
     ) {
       this.setState({

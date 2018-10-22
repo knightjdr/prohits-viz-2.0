@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import Arrows from '../../__heatmap/svg/__arrows/heatmap-svg__arrows-container';
 import Columns from '../../__heatmap/svg/__columns/heatmap-svg__columns-container';
 import ContextColumns from './context-menu/context-menu-columns';
+import Delete from '../../__heatmap/svg/__delete/heatmap-svg__delete-container';
 import Plot from '../../__heatmap/svg/plot/heatmap-svg__plot-container';
 import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
 import StatusBar from '../../__heatmap/svg/__status/heatmap-svg__status-container';
@@ -17,6 +18,7 @@ const Svg = ({
   columns,
   contextEvent,
   contextTarget,
+  customizeOptions,
   customizeID,
   dimensions,
   display,
@@ -100,6 +102,12 @@ const Svg = ({
         toggleTooltip={toggleTooltip}
         updateID={customizeID}
       />
+      <Delete
+        cellSize={settings.cellSize}
+        dimensions={dimensions}
+        position={position}
+        show={customizeOptions.deleteRC}
+      />
     </svg>
     <StatusBar
       canTranslate={width.canTranslate}
@@ -162,6 +170,10 @@ Svg.propTypes = {
   contextEvent: PropTypes.shape({}),
   contextTarget: PropTypes.string.isRequired,
   customizeID: PropTypes.number,
+  customizeOptions: PropTypes.shape({
+    deleteRC: PropTypes.bool,
+    reorder: PropTypes.bool,
+  }).isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     height: PropTypes.number,

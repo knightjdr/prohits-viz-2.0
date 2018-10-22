@@ -529,6 +529,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).not.toHaveBeenCalled();
       });
@@ -545,6 +546,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });
@@ -564,6 +566,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });
@@ -583,6 +586,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });
@@ -602,6 +606,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });
@@ -621,6 +626,24 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
+        );
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should update when cell size changes', () => {
+        spy.mockClear();
+        const nextProps = {
+          ...props,
+          cellSize: 20,
+        };
+        wrapper.instance().updatePage(
+          nextProps,
+          props.position,
+          props.dimensions,
+          undefined,
+          undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });
@@ -637,6 +660,7 @@ describe('Plot container', () => {
           props.dimensions,
           undefined,
           undefined,
+          10,
         );
         expect(spy).toHaveBeenCalled();
       });

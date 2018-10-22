@@ -17,9 +17,11 @@ import { settingSelector } from '../../../state/selectors/visualization/settings
 import { sortRows } from '../../../state/set/analysis/customize/rows-actions';
 import { toggleTooltips, updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
 import { updatePosition } from '../../../state/set/analysis/customize/position-actions';
+import { VizFormPropSelector } from '../../../state/selectors/analysis/viz-analysis-form-selector';
 
 export const StoreConnection = ({
   customize,
+  customizeOptions,
   dimensions,
   display,
   name,
@@ -54,6 +56,7 @@ export const StoreConnection = ({
     ...otherProps,
     columns,
     customizeID,
+    customizeOptions,
     dimensions,
     display,
     name,
@@ -103,6 +106,10 @@ StoreConnection.propTypes = {
       }),
     }),
   ).isRequired,
+  customizeOptions: PropTypes.shape({
+    deleteRC: PropTypes.bool,
+    reorder: PropTypes.bool,
+  }).isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     height: PropTypes.number,
@@ -153,6 +160,7 @@ StoreConnection.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   customize: customizeDataSelector(state),
+  customizeOptions: VizFormPropSelector(state, 'customize'),
   dimensions: dimensionSelector(state),
   display: displayCustomizeSelector(state),
   name: parameterSelectorProp(state, 'name'),

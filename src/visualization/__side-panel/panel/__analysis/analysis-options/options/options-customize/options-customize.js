@@ -10,7 +10,6 @@ import Undo from './options-customize__undo';
 const Customize = ({
   form,
   handleCheckbox,
-  handleSelect,
   undo,
   undoDisabled,
   updateDisabled,
@@ -31,9 +30,9 @@ const Customize = ({
       update={updateImage}
     />
     <Order
-      deleteBy={form.deleteBy}
-      handleSelect={handleSelect}
-      orderBy={form.orderBy}
+      deleteRC={form.deleteRC}
+      handleCheckbox={handleCheckbox}
+      reorder={form.reorder}
     />
     <Undo
       disabled={undoDisabled}
@@ -44,13 +43,12 @@ const Customize = ({
 
 Customize.propTypes = {
   form: PropTypes.shape({
-    deleteBy: PropTypes.string,
-    orderBy: PropTypes.string,
+    deleteRC: PropTypes.bool,
+    reorder: PropTypes.bool,
     removeEmpty: PropTypes.bool,
     resetMaximums: PropTypes.bool,
   }).isRequired,
   handleCheckbox: PropTypes.func.isRequired,
-  handleSelect: PropTypes.func.isRequired,
   undo: PropTypes.func.isRequired,
   undoDisabled: PropTypes.bool.isRequired,
   updateDisabled: PropTypes.bool.isRequired,

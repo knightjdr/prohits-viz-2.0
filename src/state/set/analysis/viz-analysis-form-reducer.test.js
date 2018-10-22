@@ -20,14 +20,14 @@ describe('Analysis GO form set reducer', () => {
 
   it('should handle SET_CUSTOMIZE_PARAMETER action', () => {
     const action = {
-      setting: { orderBy: 'column' },
+      setting: { reorder: true },
       type: actions.SET_CUSTOMIZE_PARAMETER,
     };
     const expectedState = {
       ...defaultState,
       customize: {
         ...defaultState.customize,
-        orderBy: 'column',
+        reorder: true,
       },
     };
     expect(vizAnalysisForms(undefined, action)).toEqual(expectedState);

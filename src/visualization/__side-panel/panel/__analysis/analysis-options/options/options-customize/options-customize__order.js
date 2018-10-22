@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Select } from 'antd';
-
-const { Option } = Select;
+import { Switch } from 'antd';
 
 const Order = ({
-  deleteBy,
-  handleSelect,
-  orderBy,
+  deleteRC,
+  handleCheckbox,
+  reorder,
 }) => (
   <div>
     <div className="analysis-option__label">Customization</div>
@@ -15,56 +13,30 @@ const Order = ({
       <div>
         Delete:
       </div>
-      <Select
-        allowClear
-        onChange={(value) => { handleSelect('deleteBy', value); }}
-        placeholder="Delete by..."
-        value={deleteBy}
-      >
-        <Option
-          value="column"
-        >
-          by column
-        </Option>
-        <Option
-          value="row"
-        >
-          by row
-        </Option>
-      </Select>
+      <Switch
+        onChange={(value) => { handleCheckbox('deleteRC', value); }}
+        checked={deleteRC}
+      />
       <div>
-        Order:
+        Reorder:
       </div>
-      <Select
-        allowClear
-        onChange={(value) => { handleSelect('orderBy', value); }}
-        placeholder="Order by..."
-        value={orderBy}
-      >
-        <Option
-          value="column"
-        >
-          by column
-        </Option>
-        <Option
-          value="row"
-        >
-          by row
-        </Option>
-      </Select>
+      <Switch
+        onChange={(value) => { handleCheckbox('reorder', value); }}
+        checked={reorder}
+      />
     </div>
   </div>
 );
 
 Order.defaultProps = {
-  deleteBy: undefined,
-  orderBy: undefined,
+  deleteRC: false,
+  reorder: false,
 };
 
 Order.propTypes = {
-  deleteBy: PropTypes.string,
-  handleSelect: PropTypes.func.isRequired,
-  orderBy: PropTypes.string,
+  deleteRC: PropTypes.bool,
+  handleCheckbox: PropTypes.func.isRequired,
+  reorder: PropTypes.bool,
 };
 
 export default Order;

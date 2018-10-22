@@ -6,7 +6,7 @@ export const defaultState = {
   plotFixed: false,
   plotTranslate: 0,
   selectionBox: true,
-  tab: 'info',
+  tab: 'analysis',
   tooltips: false,
 };
 

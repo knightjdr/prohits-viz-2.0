@@ -5,9 +5,9 @@ import * as fileActions from '../interactive-file-actions';
 
 export const defaultState = {
   customize: {
-    deleteBy: undefined,
-    orderBy: undefined,
+    deleteRC: false,
     removeEmpty: false,
+    reorder: false,
     resetMaximums: false,
   },
   domain: {},
