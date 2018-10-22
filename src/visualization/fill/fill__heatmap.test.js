@@ -17,6 +17,9 @@ const file = {
     names: ['a', 'b', 'c'],
     ref: null,
   },
+  parameters: {
+    imageType: 'heatmap',
+  },
   rows: {
     list: [
       { data: [{ value: 1 }, { value: 2 }, { value: 3 }], name: 'x' },
@@ -46,8 +49,11 @@ const expected = {
   },
   panel: panel.defaultState,
   parameters: {
-    imageType: null,
+    abundanceColumn: 'Abundance',
+    imageType: 'heatmap',
     name: 'name',
+    scoreColumn: 'Score',
+    scoreType: 'lte',
   },
   position: position.defaultState,
   positionCustomize: position.defaultState,

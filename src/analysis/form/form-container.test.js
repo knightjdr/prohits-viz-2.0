@@ -11,6 +11,8 @@ jest.mock('./submission/form-submit');
 jest.mock('./initial-values/initial-values');
 InitialValues.mockReturnValue({ initialValue: 'testInitial' });
 
+const clearStep = jest.fn();
+
 const sleep = ms => (
   new Promise(resolve => setTimeout(resolve, ms))
 );
@@ -21,6 +23,7 @@ describe('FormContainerComponent', () => {
   beforeAll(() => {
     wrapper = shallow(
       <FormContainerComponent
+        clearStep={clearStep}
         form={{}}
         session="sessionID"
       />,
@@ -98,7 +101,7 @@ describe('FormContainerComponent', () => {
         convertToForm.mockClear();
         convertToForm.mockReturnValue({});
         formSubmit.mockClear();
-        formSubmit.mockImplementation(() => Promise.reject('taskid'));
+        formSubmit.mockImplementation(() => Promise.reject(new Error('taskid')));
         wrapper.instance().onSubmit(obj);
         await sleep(200);
         done();
@@ -142,22 +145,31 @@ describe('FormContainerComponent', () => {
   });
 
   describe('reset', () => {
-    it('should reset inital values back to default when analysisType is set', () => {
-      wrapper.setProps({
-        form: {
-          analysisType: 'dotplot',
-        },
+    describe('successfully', () => {
+      beforeAll(() => {
+        clearStep.mockClear();
+        wrapper.setProps({
+          form: {
+            analysisType: 'dotplot',
+          },
+        });
+        wrapper.setState({
+          initialValues: {
+            analysisType: 'dotplot',
+            initialValue: 'newValue',
+          },
+        });
+        wrapper.instance().handleReset();
       });
-      wrapper.setState({
-        initialValues: {
-          analysisType: 'dotplot',
-          initialValue: 'newValue',
-        },
+
+      it('should reset inital values back to default when analysisType is set', () => {
+        expect(wrapper.state().initialValues).toEqual({
+          initialValue: 'testInitial',
+        });
       });
-      wrapper.instance().handleReset();
-      expect(wrapper.state().initialValues).toEqual({
-        analysisType: 'dotplot',
-        initialValue: 'testInitial',
+
+      it('should call clear step', () => {
+        expect(clearStep).toHaveBeenCalled();
       });
     });
 

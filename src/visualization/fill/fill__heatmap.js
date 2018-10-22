@@ -52,7 +52,7 @@ const heatmap = (name, file) => {
     rows: fillRows(rows),
     save: fillSave(save),
     search: fillSearch(search),
-    settings: fillSettings(settings),
+    settings: fillSettings(settings, parameters.imageType),
     tabs: fillTabs(tabs),
     vizanalysis: fillVizAnalysis(vizanalysis),
     vizanalysisform: fillVizAnalysisForm(vizanalysisform),

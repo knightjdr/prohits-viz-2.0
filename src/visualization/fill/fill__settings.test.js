@@ -6,6 +6,16 @@ describe('Fill settings', () => {
     expect(fillSettings()).toEqual({ current: defaultState });
   });
 
+  it('should return parameter imageType when valid and settings type not specified', () => {
+    const expectedSettings = {
+      current: {
+        ...defaultState,
+        imageType: 'dotplot',
+      },
+    };
+    expect(fillSettings(undefined, 'dotplot')).toEqual(expectedSettings);
+  });
+
   it('should return user input when valid', () => {
     const user = {
       current: {

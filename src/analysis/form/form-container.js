@@ -8,6 +8,7 @@ import convertToForm from './submission/convert-to-form';
 import formSubmit from './submission/form-submit';
 import InitialValues from './initial-values/initial-values';
 import sessionSelector from '../../state/selectors/session-selector';
+import { clearFormStep } from '../../state/set/form-step-actions';
 
 export class FormContainerComponent extends Component {
   constructor(props) {
@@ -63,8 +64,9 @@ export class FormContainerComponent extends Component {
   handleReset = () => {
     const { analysisType } = this.props.form;
     if (analysisType) {
+      this.props.clearStep();
       this.setState({
-        initialValues: { ...this.props.form, ...InitialValues(analysisType) },
+        initialValues: { ...InitialValues(analysisType) },
       });
     }
   }
@@ -102,11 +104,19 @@ FormContainerComponent.defaultProps = {
 };
 
 FormContainerComponent.propTypes = {
+  clearStep: PropTypes.func.isRequired,
   form: PropTypes.shape({
     analysisType: PropTypes.string,
   }).isRequired,
   session: PropTypes.string,
 };
+
+/* istanbul ignore next */
+const mapDispatchToProps = dispatch => ({
+  clearStep: () => {
+    dispatch(clearFormStep());
+  },
+});
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
@@ -116,6 +126,7 @@ const mapStateToProps = state => ({
 
 const ConnectedComponent = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(FormContainerComponent);
 
 export default ConnectedComponent;
