@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
-import deleteIcons from './delete-icons';
+import deleteIcons from './customize__delete-icons';
 
 const Delete = ({
   cellSize,

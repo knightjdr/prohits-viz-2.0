@@ -1,17 +1,12 @@
 import React from 'react';
 
-import round from '../../../../helpers/round';
-
-const SVG_SCALE_SIZE = 10;
+import iconPosition from '../customize__icon-position';
 
 const deleteIcons = (num, cellSize, handleClick, type, mouseEnter, mouseLeave) => {
-  const effectiveCellSize = cellSize * 0.8;
-  const scale = round(effectiveCellSize / SVG_SCALE_SIZE, 2);
-  const offset = type === 'col' ? round((cellSize - effectiveCellSize) / 2, 2) : 0;
-  const translate = { x: 0, y: 0 };
+  const position = iconPosition(cellSize, type);
   const translateDim = type === 'col' ? 'x' : 'y';
   return [...Array(num).keys()].map((i) => {
-    translate[translateDim] = (cellSize * i) + offset;
+    position.translate[translateDim] = (cellSize * i) + position.offset;
     return (
       <g
         className="delete-icon__circle"
@@ -20,7 +15,7 @@ const deleteIcons = (num, cellSize, handleClick, type, mouseEnter, mouseLeave) =
         onClick={() => { handleClick(i, type); }}
         onMouseEnter={() => { mouseEnter(i, type); }}
         onMouseLeave={() => { mouseLeave(i, type); }}
-        transform={`translate(${translate.x} ${translate.y}) scale(${scale})`}
+        transform={`translate(${position.translate.x} ${position.translate.y}) scale(${position.scale})`}
       >
         <circle fill="#fff" cx="5" cy="6" r="4" />
         <path

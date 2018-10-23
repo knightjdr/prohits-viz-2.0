@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
-import Delete from './heatmap-svg__delete';
+import Delete from './customize__delete';
 
 class DeleteContainer extends PureComponent {
   constructor(props) {

@@ -4,8 +4,9 @@ import React, { Fragment } from 'react';
 import Arrows from '../../__heatmap/svg/__arrows/heatmap-svg__arrows-container';
 import Columns from '../../__heatmap/svg/__columns/heatmap-svg__columns-container';
 import ContextColumns from './context-menu/context-menu-columns';
-import Delete from '../../__heatmap/svg/__delete/heatmap-svg__delete-container';
+import Delete from '../../__heatmap/svg/customize/__delete/customize__delete-container';
 import Plot from '../../__heatmap/svg/plot/heatmap-svg__plot-container';
+import Reorder from '../../__heatmap/svg/customize/__reorder/customize__reorder-container';
 import Rows from '../../__heatmap/svg/__rows/heatmap-svg__rows-container';
 import StatusBar from '../../__heatmap/svg/__status/heatmap-svg__status-container';
 import Tooltip from '../../__heatmap/svg/__tooltip/svg__tooltip';
@@ -108,6 +109,11 @@ const Svg = ({
         deleteItem={deleteItem}
         dimensions={dimensions}
         position={position}
+        show={customizeOptions.deleteRC}
+      />
+      <Reorder
+        cellSize={settings.cellSize}
+        dimensions={dimensions}
         show={customizeOptions.deleteRC}
       />
     </svg>
