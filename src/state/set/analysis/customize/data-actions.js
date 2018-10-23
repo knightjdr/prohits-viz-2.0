@@ -8,19 +8,37 @@ export const RESET_CUSTOMIZE_STATE = 'RESET_CUSTOMIZE_STATE';
 export const SET_CUSTOMIZE_STATE = 'SET_CUSTOMIZE_STATE';
 export const UNDO_CUSTOMIZE_STATE = 'UNDO_CUSTOMIZE_STATE';
 
-export const addCustomizeState = (columns, rows, removeEmpty, resetMaximums) => ({
+export const addCustomizeState = ({
   columns,
+  direction,
+  rows,
+  removeEmpty,
+  resetMaximums,
+  sortBy,
+}) => ({
+  columns,
+  direction,
   removeEmpty,
   resetMaximums,
   rows,
+  sortBy,
   type: ADD_CUSTOMIZE_STATE,
 });
 
-export const replaceCustomizeState = (columns, rows, removeEmpty, resetMaximums) => ({
+export const replaceCustomizeState = ({
   columns,
+  direction,
+  rows,
   removeEmpty,
   resetMaximums,
+  sortBy,
+}) => ({
+  columns,
+  direction,
   rows,
+  removeEmpty,
+  resetMaximums,
+  sortBy,
   type: REPLACE_CUSTOMIZE_STATE,
 });
 
@@ -170,6 +188,37 @@ export const customizeImage = () => (
   }
 );
 
+/* Update a customized image to delete a row or column. */
+export const deleteFromImage = (deleteIndex, type) => (
+  (dispatch, getState) => {
+    const { customize } = getState();
+    const newState = deepCopy(customize[customize.length - 1]);
+    if (type === 'col') {
+      const columnName = newState.columns.names[deleteIndex];
+      newState.columns.names.splice(deleteIndex, 1);
+      newState.columns.ref = newState.columns.ref === columnName ? null : newState.columns.ref;
+      if (newState.sortBy === deleteIndex) {
+        newState.direction = null;
+        newState.sortBy = null;
+      } else if (newState.sortBy > deleteIndex) {
+        newState.sortBy -= 1;
+      }
+      newState.rows.list = newState.rows.list.map((row) => {
+        const { data } = row;
+        data.splice(deleteIndex, 1);
+        return {
+          data,
+          name: row.name,
+        };
+      });
+    } else {
+      newState.rows.list.splice(deleteIndex, 1);
+      newState.rows.order.splice(deleteIndex, 1);
+    }
+    dispatch(addCustomizeState(newState));
+  }
+);
+
 /* Update a customized image if the display options have changed. If
 ** empty columns or rows are removed, an action will be called to add
 ** the image to the customized state array, otherwise it will just replace
@@ -184,21 +233,38 @@ export const updateImage = (
     currentState.resetMaximums !== resetMaximums
   ) {
     const newState = deepCopy(currentState);
+    const sortByName = newState.sortBy ? newState.columns.names[newState.sortBy] : null;
     const blanked = removeBlanks(removeEmpty, newState.columns.names, newState.rows);
-    newState.columns = blanked.columns;
+    newState.columns.names = blanked.columns;
+    newState.columns.ref = newState.columns.ref
+      && newState.columns.names.includes(newState.columns.ref)
+      ? newState.columns.ref : null;
     newState.rows = blanked.rows;
     newState.rows.list = resetMaximums ?
       recalculateRatios(resetMaximums, newState.rows.list)
       :
       restoreRatios(newState.rows.list);
+    if (
+      !sortByName
+      || !newState.columns.names.includes(sortByName)
+    ) {
+      newState.direction = null;
+      newState.sortBy = null;
+    } else if (
+      blanked.didRemove
+      && sortByName
+      && newState.columns.names.includes(sortByName)
+    ) {
+      newState.sortBy = newState.columns.names.indexOf(sortByName);
+    }
 
     if (
-      currentState.removeEmpty !== removeEmpty &&
+      currentState.removeEmpty !== newState.removeEmpty &&
       blanked.didRemove
     ) {
-      dispatch(addCustomizeState(newState.columns, newState.rows, removeEmpty, resetMaximums));
+      dispatch(addCustomizeState(newState));
     } else {
-      dispatch(replaceCustomizeState(newState.columns, newState.rows, removeEmpty, resetMaximums));
+      dispatch(replaceCustomizeState(newState));
     }
   }
 };

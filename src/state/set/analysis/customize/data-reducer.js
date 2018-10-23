@@ -16,8 +16,8 @@ const data = (state = defaultState, action) => {
         ...state,
         {
           columns: {
-            names: [...action.columns],
-            ref: action.ref,
+            names: [...action.columns.names],
+            ref: action.columns.ref,
           },
           direction: action.direction,
           id,
@@ -44,8 +44,8 @@ const data = (state = defaultState, action) => {
         ...state.slice(0, -1),
         {
           columns: {
-            names: [...action.columns],
-            ref: action.ref,
+            names: [...action.columns.names],
+            ref: action.columns.ref,
           },
           direction: action.direction,
           id,

@@ -10,7 +10,7 @@ import searchSelector from '../../../state/selectors/visualization/search-select
 import { customizeDataSelector } from '../../../state/selectors/analysis/customize/data-selector';
 import { displayCustomizeSelector } from '../../../state/selectors/analysis/customize/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
-import { resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
+import { deleteFromImage, resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
 import { setDimensions } from '../../../state/set/analysis/customize/dimension-actions';
 import { setReference } from '../../../state/set/analysis/customize/columns-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
@@ -22,6 +22,7 @@ import { VizFormPropSelector } from '../../../state/selectors/analysis/viz-analy
 export const StoreConnection = ({
   customize,
   customizeOptions,
+  deleteItem,
   dimensions,
   display,
   name,
@@ -57,6 +58,7 @@ export const StoreConnection = ({
     columns,
     customizeID,
     customizeOptions,
+    deleteItem,
     dimensions,
     display,
     name,
@@ -110,6 +112,7 @@ StoreConnection.propTypes = {
     deleteRC: PropTypes.bool,
     reorder: PropTypes.bool,
   }).isRequired,
+  deleteItem: PropTypes.func.isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     height: PropTypes.number,
@@ -173,6 +176,9 @@ const mapStateToProps = state => ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  deleteItem: (index, type) => {
+    dispatch(deleteFromImage(index, type));
+  },
   reset: () => {
     dispatch(resetCustomizeState());
   },

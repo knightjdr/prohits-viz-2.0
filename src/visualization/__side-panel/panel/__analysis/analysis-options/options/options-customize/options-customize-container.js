@@ -40,6 +40,11 @@ export class CustomizeContainer extends Component {
   shouldUpdateBeDisabled = currentState => (
     currentState === undefined || currentState.length < 1
   )
+  undo = () => {
+    if (!this.state.undoDisabled) {
+      this.props.undo();
+    }
+  }
   updateImage = () => {
     const { customize, form } = this.props;
     this.props.updateImage(
@@ -54,7 +59,7 @@ export class CustomizeContainer extends Component {
         form={this.props.form}
         handleCheckbox={this.handleCheckbox}
         handleSelect={this.handleSelect}
-        undo={this.props.undo}
+        undo={this.undo}
         undoDisabled={this.state.undoDisabled}
         updateDisabled={this.state.updateDisabled}
         updateImage={this.updateImage}

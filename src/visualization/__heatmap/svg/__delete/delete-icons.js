@@ -4,7 +4,7 @@ import round from '../../../../helpers/round';
 
 const SVG_SCALE_SIZE = 10;
 
-const deleteIcons = (num, cellSize, handleClick, type) => {
+const deleteIcons = (num, cellSize, handleClick, type, mouseEnter, mouseLeave) => {
   const effectiveCellSize = cellSize * 0.8;
   const scale = round(effectiveCellSize / SVG_SCALE_SIZE, 2);
   const offset = type === 'col' ? round((cellSize - effectiveCellSize) / 2, 2) : 0;
@@ -14,12 +14,15 @@ const deleteIcons = (num, cellSize, handleClick, type) => {
     translate[translateDim] = (cellSize * i) + offset;
     return (
       <g
+        className="delete-icon__circle"
         cursor="pointer"
-        key={i}
+        key={`icon-${i}`}
         onClick={() => { handleClick(i, type); }}
+        onMouseEnter={() => { mouseEnter(i, type); }}
+        onMouseLeave={() => { mouseLeave(i, type); }}
         transform={`translate(${translate.x} ${translate.y}) scale(${scale})`}
       >
-        <circle fill="#fff" cx="5" cy="5" r="4" />
+        <circle fill="#fff" cx="5" cy="6" r="4" />
         <path
           d="M5,1.562c-2.762,0-5,2.238-5,5s2.238,5,5,5s5-2.238,5-5S7.762,1.562,5,1.562z M7.452,7.875c0.095,0.095,0.095,0.248,0,0.343
           L6.653,9.014c-0.095,0.095-0.248,0.095-0.343,0L5,7.691L3.688,9.014c-0.095,0.095-0.248,0.095-0.343,0L2.548,8.216

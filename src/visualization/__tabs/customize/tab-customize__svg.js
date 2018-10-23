@@ -20,6 +20,7 @@ const Svg = ({
   contextTarget,
   customizeOptions,
   customizeID,
+  deleteItem,
   dimensions,
   display,
   fixLeft,
@@ -104,6 +105,7 @@ const Svg = ({
       />
       <Delete
         cellSize={settings.cellSize}
+        deleteItem={deleteItem}
         dimensions={dimensions}
         position={position}
         show={customizeOptions.deleteRC}
@@ -174,6 +176,7 @@ Svg.propTypes = {
     deleteRC: PropTypes.bool,
     reorder: PropTypes.bool,
   }).isRequired,
+  deleteItem: PropTypes.func.isRequired,
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     height: PropTypes.number,

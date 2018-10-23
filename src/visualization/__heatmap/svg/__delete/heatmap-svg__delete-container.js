@@ -4,9 +4,50 @@ import React, { PureComponent } from 'react';
 import Delete from './heatmap-svg__delete';
 
 class DeleteContainer extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rect: {
+        height: 0,
+        show: false,
+        width: 0,
+        x: 0,
+        y: 0,
+      },
+    };
+  }
   deleteItem = (id, type) => {
-    const { x, y } = this.props.position;
-    const index = type === 'col' ? x + id : y + id;
+    const { deleteItem, position } = this.props;
+    const index = type === 'col' ? position.x + id : position.y + id;
+    deleteItem(index, type);
+  }
+  mouseEnter = (index, type) => {
+    const { cellSize } = this.props;
+    const rect = {};
+    if (type === 'col') {
+      rect.height = 100;
+      rect.width = cellSize;
+      rect.x = 100 + (index * cellSize);
+      rect.y = 0;
+    } else {
+      rect.height = cellSize;
+      rect.width = 100;
+      rect.x = 0;
+      rect.y = 100 + (index * cellSize);
+    }
+    this.setState({
+      rect: {
+        ...rect,
+        show: true,
+      },
+    });
+  }
+  mouseLeave = () => {
+    this.setState({
+      rect: {
+        show: false,
+      },
+    });
   }
   render() {
     return (
@@ -14,7 +55,10 @@ class DeleteContainer extends PureComponent {
         cellSize={this.props.cellSize}
         deleteItem={this.deleteItem}
         dimensions={this.props.dimensions}
-        show
+        mouseEnter={this.mouseEnter}
+        mouseLeave={this.mouseLeave}
+        rect={this.state.rect}
+        show={this.props.show}
       />
     );
   }
@@ -22,6 +66,7 @@ class DeleteContainer extends PureComponent {
 
 DeleteContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
+  deleteItem: PropTypes.func.isRequired,
   dimensions: PropTypes.shape({
     pageX: PropTypes.number,
     pageY: PropTypes.number,

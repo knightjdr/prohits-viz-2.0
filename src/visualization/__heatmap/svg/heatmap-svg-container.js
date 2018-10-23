@@ -53,7 +53,12 @@ export class SvgDimensions extends Component {
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
-    this.updateDimensions(nextProps, this.props.settings, this.props.updateID);
+    this.updateDimensions(
+      nextProps,
+      this.props.settings,
+      this.props.updateID,
+      this.props.customizeID,
+    );
     this.updateTranslate(nextProps, this.props.panel);
   }
   componentWillUnmount = () => {
@@ -228,14 +233,16 @@ export class SvgDimensions extends Component {
   }
   updateDimensions = ({
     columns,
+    customizeID,
     display,
     panel,
     rowNames,
     settings,
     updateID,
-  }, prevSettings, prevUpdateID) => {
+  }, prevSettings, prevUpdateID, prevCustomizeID) => {
     if (
       updateID !== prevUpdateID ||
+      customizeID !== prevCustomizeID ||
       settings.cellSize !== prevSettings.cellSize
     ) {
       this.setDimensions(settings.cellSize, columns, panel, rowNames, display);
@@ -281,6 +288,7 @@ export class SvgDimensions extends Component {
 }
 
 SvgDimensions.defaultProps = {
+  customizeID: null,
   setSelectedGenes: null,
   updateID: null,
 };
@@ -290,6 +298,7 @@ SvgDimensions.propTypes = {
     names: PropTypes.arrayOf(PropTypes.string),
     ref: PropTypes.string,
   }).isRequired,
+  customizeID: PropTypes.number,
   display: PropTypes.shape({
     plotFixed: PropTypes.bool,
     plotTranslate: PropTypes.number,
