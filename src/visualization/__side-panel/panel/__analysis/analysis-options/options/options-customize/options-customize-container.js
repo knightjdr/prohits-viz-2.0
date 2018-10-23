@@ -32,6 +32,11 @@ export class CustomizeContainer extends Component {
   handleCheckbox = (field) => {
     const setting = {};
     setting[field] = !this.props.form[field];
+    if (field === 'deleteRC') {
+      setting.reorder = false;
+    } else if (field === 'reorder') {
+      setting.deleteRC = false;
+    }
     this.props.setCustomizeParameters(setting);
   }
   shouldUndoBeDisabled = currentState => (
