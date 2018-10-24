@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Columns from './heatmap-svg__columns';
+import setFontSize from '../font-size/font-size';
 import trimText from '../helpers/trim-text';
 
 export class ColumnsContainer extends Component {
@@ -13,7 +14,7 @@ export class ColumnsContainer extends Component {
       pageWidth,
       position,
     } = this.props;
-    const fontSize = this.fontSize(cellSize);
+    const fontSize = setFontSize(cellSize);
     this.state = {
       fontSize,
       names: this.checkColumnSize(
@@ -66,13 +67,12 @@ export class ColumnsContainer extends Component {
   checkColumnSize = (names, fontSize) => (
     names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
   )
-  fontSize = cellSize => cellSize * 0.6
   openMenu = (e, target) => {
     this.props.openContextMenu(e, target, 'column');
   }
   updateFontSize = (cellSize, prevCellSize, columns) => {
     if (cellSize !== prevCellSize) {
-      const fontSize = this.fontSize(cellSize);
+      const fontSize = setFontSize(cellSize);
       this.setState({
         fontSize,
         names: this.checkColumnSize(columns.names, fontSize),

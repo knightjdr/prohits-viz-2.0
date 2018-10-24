@@ -113,7 +113,10 @@ const Svg = ({
       />
       <Reorder
         cellSize={settings.cellSize}
+        columnNames={columns.names}
         dimensions={dimensions}
+        position={position}
+        rowNames={rowNames}
         show={customizeOptions.deleteRC}
       />
     </svg>

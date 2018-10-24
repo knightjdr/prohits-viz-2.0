@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Rows from './heatmap-svg__rows';
+import setFontSize from '../font-size/font-size';
 import trimText from '../helpers/trim-text';
 
 export class RowsContainer extends Component {
@@ -13,7 +14,7 @@ export class RowsContainer extends Component {
       rows,
       position,
     } = this.props;
-    const fontSize = this.fontSize(cellSize);
+    const fontSize = setFontSize(cellSize);
     this.state = {
       fontSize,
       names: this.checkRowSize(
@@ -75,7 +76,7 @@ export class RowsContainer extends Component {
   }
   updateFontSize = (cellSize, prevCellSize, rows) => {
     if (cellSize !== prevCellSize) {
-      const fontSize = this.fontSize(cellSize);
+      const fontSize = setFontSize(cellSize);
       this.setState({
         fontSize,
         names: this.checkRowSize(rows, fontSize),

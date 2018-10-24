@@ -21,8 +21,8 @@ const arrows = {
   ),
 };
 
-const reorderIcons = (num, cellSize, type) => {
-  const position = iconPosition(cellSize, type);
+const reorderIcons = (num, cellSize, type, mouseDown) => {
+  const position = iconPosition(cellSize);
   const translateDim = type === 'col' ? 'x' : 'y';
   return [...Array(num).keys()].map((i) => {
     position.translate[translateDim] = (cellSize * i) + position.offset;
@@ -31,6 +31,7 @@ const reorderIcons = (num, cellSize, type) => {
         className="delete-icon__circle"
         cursor="pointer"
         key={`icon-${i}`}
+        onMouseDown={(e) => { mouseDown(e, i); }}
         transform={`
           translate(${position.translate.x} ${position.translate.y})
           scale(${position.scale})

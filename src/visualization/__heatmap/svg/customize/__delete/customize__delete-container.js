@@ -22,16 +22,16 @@ class DeleteContainer extends PureComponent {
     deleteItem(index, type);
   }
   mouseEnter = (index, type) => {
-    const { cellSize } = this.props;
+    const { cellSize, dimensions } = this.props;
     const rect = {};
     if (type === 'col') {
-      rect.height = 100;
+      rect.height = 100 + (cellSize * dimensions.pageY);
       rect.width = cellSize;
       rect.x = 100 + (index * cellSize);
       rect.y = 0;
     } else {
       rect.height = cellSize;
-      rect.width = 100;
+      rect.width = 100 + (cellSize * dimensions.pageX);
       rect.x = 0;
       rect.y = 100 + (index * cellSize);
     }
