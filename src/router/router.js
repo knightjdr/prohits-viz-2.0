@@ -13,7 +13,7 @@ import Tasks from '../tasks/tasks-container';
 import Visualization from '../visualization/visualization';
 
 const Routes = () => (
-  <Router>
+  <Router basename={process.env.REACT_APP_BASE}>
     <CaptureRouteNotFound>
       <Switch>
         <Route

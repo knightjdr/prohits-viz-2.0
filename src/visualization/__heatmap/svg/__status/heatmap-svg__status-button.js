@@ -18,7 +18,7 @@ const OptionButton = ({
       className={classes.join(' ')}
       onClick={onClick}
       tooltip={tooltip}
-      tooltip-position="right"
+      tooltip-position="left"
       type="button"
     >
       { children }

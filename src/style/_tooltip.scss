@@ -2,7 +2,7 @@
   position: relative;
 }
 [tooltip]::before {
-  border-color: rgba(0,0,0,0.7) transparent transparent transparent;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
   border-style: solid;
   border-width: 4px 6px 0 6px;
   content: '';
@@ -12,10 +12,11 @@
   top: -6px;
   transform: translateX(-50%);
   transition: opacity 0.5s ease;
-  z-index: 100;
+  visibility: hidden;
+  z-index: 1000;
 }
 [tooltip]::after {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   color: #fff;
   content: attr(tooltip);
@@ -30,7 +31,8 @@
   top: -6px;
   transform: translateX(-50%) translateY(-100%);
   transition: opacity 0.5s ease;
-  z-index: 100;
+  visibility: hidden;
+  z-index: 1000;
 }
 [tooltip-position='left']::before {
   left: 0%;
@@ -75,4 +77,5 @@
 [tooltip]:hover::after,
 [tooltip]:hover::before {
   opacity: 1;
+  visibility: visible;
 }

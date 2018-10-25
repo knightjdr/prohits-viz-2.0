@@ -262,18 +262,8 @@ class ReorderContainer extends PureComponent {
         index,
         type,
       } = this.selectedItem;
-      if (type === 'col') {
-        this.mouseUpColumn(index, dropIndex);
-      } else {
-        this.mouseUpRow(index, dropIndex);
-      }
+      this.props.reorder(index, dropIndex, type);
     }
-  }
-  mouseUpColumn = (index, dropIndex) => {
-    console.log(index, dropIndex);
-  }
-  mouseUpRow = (index, dropIndex) => {
-    console.log(index, dropIndex);
   }
   updateDimensions = ({ cellSize, dimensions }, prevCellSize, prevDimensions) => {
     if (
@@ -309,7 +299,7 @@ class ReorderContainer extends PureComponent {
         mouseMoveRow={this.mouseMoveRow}
         mouseUp={this.mouseUp}
         row={this.state.row}
-        show
+        show={this.props.show}
         showIcons={this.state.showIcons}
         text={this.state.text}
       />
@@ -328,6 +318,7 @@ ReorderContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  reorder: PropTypes.func.isRequired,
   rowNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   show: PropTypes.bool.isRequired,
 };

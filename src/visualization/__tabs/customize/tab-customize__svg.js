@@ -31,6 +31,7 @@ const Svg = ({
   openContextMenu,
   position,
   reference,
+  reorder,
   reset,
   rowNames,
   rows,
@@ -116,8 +117,9 @@ const Svg = ({
         columnNames={columns.names}
         dimensions={dimensions}
         position={position}
+        reorder={reorder}
         rowNames={rowNames}
-        show={customizeOptions.deleteRC}
+        show={customizeOptions.reorder}
       />
     </svg>
     <StatusBar
@@ -214,6 +216,7 @@ Svg.propTypes = {
   }).isRequired,
   openContextMenu: PropTypes.func.isRequired,
   reference: PropTypes.string,
+  reorder: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   rowNames: PropTypes.arrayOf(
     PropTypes.string,

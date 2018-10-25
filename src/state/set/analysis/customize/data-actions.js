@@ -1,4 +1,6 @@
 import * as tabActions from '../../visualization/tab-actions';
+
+import arrMove from '../../../../helpers/arr-move';
 import deepCopy from '../../../../helpers/deep-copy';
 import round from '../../../../helpers/round';
 
@@ -219,6 +221,27 @@ export const deleteFromImage = (deleteIndex, type) => (
   }
 );
 
+/* Update a customized image to reorder a row or column. */
+export const reorderImage = (from, to, type) => (
+  (dispatch, getState) => {
+    if (to !== from) {
+      const { customize } = getState();
+      const newState = deepCopy(customize[customize.length - 1]);
+      if (type === 'col') {
+        newState.columns.names = arrMove(from, to, newState.columns.names);
+        newState.rows.list = newState.rows.list.map(row => ({
+          data: arrMove(from, to, row.data),
+          name: row.name,
+        }));
+      } else {
+        newState.rows.list = arrMove(from, to, newState.rows.list);
+        newState.rows.order = arrMove(from, to, newState.rows.order);
+      }
+      dispatch(addCustomizeState(newState));
+    }
+  }
+);
+
 /* Update a customized image if the display options have changed. If
 ** empty columns or rows are removed, an action will be called to add
 ** the image to the customized state array, otherwise it will just replace
@@ -259,8 +282,8 @@ export const updateImage = (
     }
 
     if (
-      currentState.removeEmpty !== newState.removeEmpty &&
-      blanked.didRemove
+      currentState.removeEmpty !== removeEmpty
+      && blanked.didRemove
     ) {
       dispatch(addCustomizeState(newState));
     } else {

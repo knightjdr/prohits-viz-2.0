@@ -51,7 +51,8 @@ a.basic-link:visited {
   top: -6px;
   transform: translateX(-50%);
   transition: opacity 0.5s ease;
-  z-index: 100; }
+  visibility: hidden;
+  z-index: 1000; }
 
 [tooltip]::after {
   background: rgba(0, 0, 0, 0.7);
@@ -69,7 +70,8 @@ a.basic-link:visited {
   top: -6px;
   transform: translateX(-50%) translateY(-100%);
   transition: opacity 0.5s ease;
-  z-index: 100; }
+  visibility: hidden;
+  z-index: 1000; }
 
 [tooltip-position='left']::before {
   left: 0%;
@@ -113,7 +115,8 @@ a.basic-link:visited {
 
 [tooltip]:hover::after,
 [tooltip]:hover::before {
-  opacity: 1; }
+  opacity: 1;
+  visibility: visible; }
 
 body {
   color: #2A3132;

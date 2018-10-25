@@ -6,6 +6,7 @@ export const values = {
     conditionList: '',
     clustering: 'hierarchical',
     clusteringMethod: 'ward',
+    clusteringOptimize: true,
     ctrlSub: true,
     distance: 'canberra',
     edgeColor: 'blueBlack',

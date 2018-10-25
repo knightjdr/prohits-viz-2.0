@@ -1,22 +1,15 @@
 import deepCopy from '../../../helpers/deep-copy';
-import AnnotationReducer from './annotation-reducer';
+import AnnotationReducer, { defaultState } from './annotation-reducer';
 import * as actions from './annotation-actions';
 import * as fileActions from '../interactive-file-actions';
 
-const DefaultState = {
-  color: '#f44336',
-  fontSize: 12,
-  list: [],
-  show: true,
-};
-
 jest.mock('../../../helpers/deep-copy');
-deepCopy.mockReturnValue(DefaultState.list);
+deepCopy.mockReturnValue(defaultState.list);
 
 describe('Annotation set reducer', () => {
   it('should return an empty initial state', () => {
     const action = {};
-    const expectedState = DefaultState;
+    const expectedState = defaultState;
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -28,9 +21,9 @@ describe('Annotation set reducer', () => {
       y: 1,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       list: [
-        ...DefaultState.list,
+        ...defaultState.list,
         {
           text: 'test',
           x: 0,
@@ -46,7 +39,7 @@ describe('Annotation set reducer', () => {
       type: actions.CLEAR_ALL_ANNOTATIONS,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       list: [],
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -57,7 +50,7 @@ describe('Annotation set reducer', () => {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });
@@ -67,7 +60,7 @@ describe('Annotation set reducer', () => {
       type: actions.CLEAR_LAST_ANNOTATION,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       list: [],
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -100,7 +93,7 @@ describe('Annotation set reducer', () => {
       type: actions.SET_ANNOTATION_COLOR,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       color: '#000000',
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -112,7 +105,7 @@ describe('Annotation set reducer', () => {
       type: actions.SET_ANNOTATION_SIZE,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       fontSize: 14,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -123,7 +116,7 @@ describe('Annotation set reducer', () => {
       type: actions.TOGGLE_ANNOTATIONS,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       show: false,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
@@ -137,7 +130,7 @@ describe('Annotation set reducer', () => {
       type: actions.UPDATE_ANNOTATION,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
       list,
     };
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);

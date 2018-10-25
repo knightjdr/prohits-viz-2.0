@@ -4,7 +4,7 @@ import * as fileActions from '../interactive-file-actions';
 
 export const defaultState = {
   color: '#f44336',
-  fontSize: 12,
+  fontSize: 16,
   list: [],
   show: true,
 };

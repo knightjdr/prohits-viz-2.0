@@ -10,7 +10,7 @@ import searchSelector from '../../../state/selectors/visualization/search-select
 import { customizeDataSelector } from '../../../state/selectors/analysis/customize/data-selector';
 import { displayCustomizeSelector } from '../../../state/selectors/analysis/customize/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
-import { deleteFromImage, resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
+import { deleteFromImage, reorderImage, resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
 import { setDimensions } from '../../../state/set/analysis/customize/dimension-actions';
 import { setReference } from '../../../state/set/analysis/customize/columns-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
@@ -30,6 +30,7 @@ export const StoreConnection = ({
   position,
   renderProp,
   renderSvg,
+  reorder,
   reset,
   scoreType,
   search,
@@ -65,6 +66,7 @@ export const StoreConnection = ({
     panel,
     position,
     renderProp: renderSvg,
+    reorder,
     reset,
     rowNames,
     rows,
@@ -134,6 +136,7 @@ StoreConnection.propTypes = {
   }).isRequired,
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
+  reorder: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   scoreType: PropTypes.string,
   search: PropTypes.shape({
@@ -178,6 +181,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   deleteItem: (index, type) => {
     dispatch(deleteFromImage(index, type));
+  },
+  reorder: (from, to, type) => {
+    dispatch(reorderImage(from, to, type));
   },
   reset: () => {
     dispatch(resetCustomizeState());
