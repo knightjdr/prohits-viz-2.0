@@ -1,4 +1,4 @@
-import { TabSelector, TabSelectorProp } from './tab-selector';
+import { tabSelector, tabSelectorProp } from './tab-selector';
 
 const state = {
   tabs: {
@@ -9,10 +9,10 @@ const state = {
 
 describe('Tab selector', () => {
   it('should return tab state', () => {
-    expect(TabSelector(state)).toEqual(state.tabs);
+    expect(tabSelector(state)).toEqual(state.tabs);
   });
 
   it('should return a specific prop from tab state', () => {
-    expect(TabSelectorProp(state, 'selected')).toBe('test');
+    expect(tabSelectorProp(state, 'selected')).toBe('test');
   });
 });

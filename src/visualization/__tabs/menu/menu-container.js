@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Menu from './menu';
 import { removeTab, setTab } from '../../../state/set/visualization/tab-actions';
-import { TabSelector } from '../../../state/selectors/visualization/tab-selector';
+import { tabSelector } from '../../../state/selectors/visualization/tab-selector';
 
 export class MenuContainer extends Component {
   handleClick = (selected) => {
@@ -42,7 +42,7 @@ MenuContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  tabs: TabSelector(state),
+  tabs: tabSelector(state),
 });
 
 /* istanbul ignore next */

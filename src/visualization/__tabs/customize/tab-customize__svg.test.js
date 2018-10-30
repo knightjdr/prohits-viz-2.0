@@ -15,8 +15,13 @@ describe('Customize heatmap svg', () => {
         addMarkerBox: jest.fn(),
         annotations: {},
         closeContextMenu: jest.fn(),
-        columns: {},
+        columns: { names: [] },
         contextTarget: '',
+        customizeOptions: {
+          deleteRC: false,
+          reorder: false,
+        },
+        deleteItem: jest.fn(),
         dimensions: {
           pageX: 10,
           pageY: 20,
@@ -38,6 +43,7 @@ describe('Customize heatmap svg', () => {
           x: 0,
           y: 0,
         },
+        reorder: jest.fn(),
         reset: jest.fn(),
         rowNames: [],
         rows: {

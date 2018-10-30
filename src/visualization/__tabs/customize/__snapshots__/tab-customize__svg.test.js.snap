@@ -55,7 +55,11 @@ exports[`Customize heatmap svg should match snapshot 1`] = `
     />
     <ColumnsContainer
       cellSize={20}
-      columns={Object {}}
+      columns={
+        Object {
+          "names": Array [],
+        }
+      }
       handleClick={[Function]}
       openContextMenu={[Function]}
       pageWidth={10}
@@ -75,6 +79,42 @@ exports[`Customize heatmap svg should match snapshot 1`] = `
       sortID={null}
       toggleTooltip={[Function]}
       updateID={null}
+    />
+    <DeleteContainer
+      cellSize={20}
+      deleteItem={[Function]}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      show={false}
+    />
+    <ReorderContainer
+      cellSize={20}
+      columnNames={Array []}
+      dimensions={
+        Object {
+          "pageX": 10,
+          "pageY": 20,
+        }
+      }
+      position={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      reorder={[Function]}
+      rowNames={Array []}
+      show={false}
     />
   </svg>
   <StatusContainer

@@ -151,25 +151,45 @@ const resetRows = [
 
 describe('Customize data actions', () => {
   it('should dispatch an action to ADD_CUSTOMIZE_STATE', () => {
-    const expectedAction = {
-      columns: [],
+    const action = {
+      columns: { names: [] },
+      rows: { list: [] },
       removeEmpty: true,
       resetMaximums: true,
-      rows: [],
+    };
+    const expectedAction = {
+      columns: {
+        names: [],
+      },
+      direction: undefined,
+      removeEmpty: true,
+      resetMaximums: true,
+      rows: { list: [] },
+      sortBy: undefined,
       type: actions.ADD_CUSTOMIZE_STATE,
     };
-    expect(actions.addCustomizeState([], [], true, true)).toEqual(expectedAction);
+    expect(actions.addCustomizeState(action)).toEqual(expectedAction);
   });
 
   it('should dispatch an action to REPLACE_CUSTOMIZE_STATE', () => {
-    const expectedAction = {
-      columns: [],
+    const action = {
+      columns: { names: [] },
+      rows: { list: [] },
       removeEmpty: true,
       resetMaximums: true,
-      rows: [],
+    };
+    const expectedAction = {
+      columns: {
+        names: [],
+      },
+      direction: undefined,
+      removeEmpty: true,
+      resetMaximums: true,
+      rows: { list: [] },
+      sortBy: undefined,
       type: actions.REPLACE_CUSTOMIZE_STATE,
     };
-    expect(actions.replaceCustomizeState([], [], true, true)).toEqual(expectedAction);
+    expect(actions.replaceCustomizeState(action)).toEqual(expectedAction);
   });
 
   it('should dispatch an action to RESET_CUSTOMIZE_STATE', () => {
@@ -293,6 +313,351 @@ describe('Customize data actions', () => {
     });
   });
 
+  describe('when deleting from an image', () => {
+    describe('when deleting column', () => {
+      describe('that matches previous sort by index', () => {
+        let dispatcedActions;
+
+        beforeAll(() => {
+          const store = mockStore({
+            customize: [{
+              columns: {
+                names: columns,
+                ref: null,
+              },
+              direction: null,
+              removeEmpty: false,
+              resetMaximums: false,
+              rows,
+              sortBy: 1,
+            }],
+          });
+          store.dispatch(actions.deleteFromImage(1, 'col'));
+          dispatcedActions = store.getActions();
+        });
+
+        it('should dispatch add state action', () => {
+          expect(dispatcedActions).toContainEqual({
+            columns: {
+              names: ['a', 'c', 'd'],
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: false,
+            resetMaximums: false,
+            rows: {
+              list: [
+                {
+                  data: [
+                    { ratio: 0.25, value: 1 },
+                    { ratio: 0.75, value: 3 },
+                    { ratio: 1, value: 4 },
+                  ],
+                  name: 'x',
+                },
+                {
+                  data: [
+                    { ratio: 0.25, value: 0 },
+                    { ratio: 0.25, value: 0 },
+                    { ratio: 0.25, value: 0 },
+                  ],
+                  name: 'y',
+                },
+                {
+                  data: [
+                    { ratio: 0.25, value: 9 },
+                    { ratio: 0.75, value: 11 },
+                    { ratio: 0.25, value: 12 },
+                  ],
+                  name: 'z',
+                },
+              ],
+              order: ['x', 'y', 'z'],
+            },
+            sortBy: null,
+            type: actions.ADD_CUSTOMIZE_STATE,
+          });
+        });
+      });
+
+      describe('that is less than previous sort by index and was ref', () => {
+        let dispatcedActions;
+
+        beforeAll(() => {
+          const store = mockStore({
+            customize: [{
+              columns: {
+                names: columns,
+                ref: 'a',
+              },
+              direction: null,
+              removeEmpty: false,
+              resetMaximums: false,
+              rows,
+              sortBy: 2,
+            }],
+          });
+          store.dispatch(actions.deleteFromImage(0, 'col'));
+          dispatcedActions = store.getActions();
+        });
+
+        it('should dispatch add state action', () => {
+          expect(dispatcedActions).toContainEqual({
+            columns: {
+              names: ['b', 'c', 'd'],
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: false,
+            resetMaximums: false,
+            rows: {
+              list: [
+                {
+                  data: [
+                    { ratio: 0.5, value: 0 },
+                    { ratio: 0.75, value: 3 },
+                    { ratio: 1, value: 4 },
+                  ],
+                  name: 'x',
+                },
+                {
+                  data: [
+                    { ratio: 0.25, value: 0 },
+                    { ratio: 0.25, value: 0 },
+                    { ratio: 0.25, value: 0 },
+                  ],
+                  name: 'y',
+                },
+                {
+                  data: [
+                    { ratio: 0.5, value: 0 },
+                    { ratio: 0.75, value: 11 },
+                    { ratio: 0.25, value: 12 },
+                  ],
+                  name: 'z',
+                },
+              ],
+              order: ['x', 'y', 'z'],
+            },
+            sortBy: 1,
+            type: actions.ADD_CUSTOMIZE_STATE,
+          });
+        });
+      });
+    });
+
+    describe('when deleting row', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const store = mockStore({
+          customize: [{
+            columns: {
+              names: columns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: false,
+            resetMaximums: false,
+            rows,
+            sortBy: null,
+          }],
+        });
+        store.dispatch(actions.deleteFromImage(1, 'row'));
+        dispatcedActions = store.getActions();
+      });
+
+      it('should dispatch add state action', () => {
+        expect(dispatcedActions).toContainEqual({
+          columns: {
+            names: columns,
+            ref: null,
+          },
+          direction: null,
+          removeEmpty: false,
+          resetMaximums: false,
+          rows: {
+            list: [
+              {
+                data: [
+                  { ratio: 0.25, value: 1 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 0.75, value: 3 },
+                  { ratio: 1, value: 4 },
+                ],
+                name: 'x',
+              },
+              {
+                data: [
+                  { ratio: 0.25, value: 9 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 0.75, value: 11 },
+                  { ratio: 0.25, value: 12 },
+                ],
+                name: 'z',
+              },
+            ],
+            order: ['x', 'z'],
+          },
+          sortBy: null,
+          type: actions.ADD_CUSTOMIZE_STATE,
+        });
+      });
+    });
+  });
+
+  describe('when reordering an image', () => {
+    describe('where to position matches from position', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const store = mockStore({});
+        store.dispatch(actions.reorderImage(1, 1, 'col'));
+        dispatcedActions = store.getActions();
+      });
+
+      it('should not dispatch any actions', () => {
+        expect(dispatcedActions.length).toBe(0);
+      });
+    });
+
+    describe('when reordering columns', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const store = mockStore({
+          customize: [{
+            columns: {
+              names: columns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: false,
+            resetMaximums: false,
+            rows,
+            sortBy: null,
+          }],
+        });
+        store.dispatch(actions.reorderImage(1, 2, 'col'));
+        dispatcedActions = store.getActions();
+      });
+
+      it('should dispatch add state action', () => {
+        expect(dispatcedActions).toContainEqual({
+          columns: {
+            names: ['a', 'c', 'b', 'd'],
+            ref: null,
+          },
+          direction: null,
+          removeEmpty: false,
+          resetMaximums: false,
+          rows: {
+            list: [
+              {
+                data: [
+                  { ratio: 0.25, value: 1 },
+                  { ratio: 0.75, value: 3 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 1, value: 4 },
+                ],
+                name: 'x',
+              },
+              {
+                data: [
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                ],
+                name: 'y',
+              },
+              {
+                data: [
+                  { ratio: 0.25, value: 9 },
+                  { ratio: 0.75, value: 11 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 0.25, value: 12 },
+                ],
+                name: 'z',
+              },
+            ],
+            order: ['x', 'y', 'z'],
+          },
+          sortBy: null,
+          type: actions.ADD_CUSTOMIZE_STATE,
+        });
+      });
+    });
+
+    describe('when reordering rows', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const store = mockStore({
+          customize: [{
+            columns: {
+              names: columns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: false,
+            resetMaximums: false,
+            rows,
+            sortBy: null,
+          }],
+        });
+        store.dispatch(actions.reorderImage(1, 2, 'row'));
+        dispatcedActions = store.getActions();
+      });
+
+      it('should dispatch add state action', () => {
+        expect(dispatcedActions).toContainEqual({
+          columns: {
+            names: columns,
+            ref: null,
+          },
+          direction: null,
+          removeEmpty: false,
+          resetMaximums: false,
+          rows: {
+            list: [
+              {
+                data: [
+                  { ratio: 0.25, value: 1 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 0.75, value: 3 },
+                  { ratio: 1, value: 4 },
+                ],
+                name: 'x',
+              },
+              {
+                data: [
+                  { ratio: 0.25, value: 9 },
+                  { ratio: 0.5, value: 0 },
+                  { ratio: 0.75, value: 11 },
+                  { ratio: 0.25, value: 12 },
+                ],
+                name: 'z',
+              },
+              {
+                data: [
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                  { ratio: 0.25, value: 0 },
+                ],
+                name: 'y',
+              },
+            ],
+            order: ['x', 'z', 'y'],
+          },
+          sortBy: null,
+          type: actions.ADD_CUSTOMIZE_STATE,
+        });
+      });
+    });
+  });
+
   describe('when updating an image', () => {
     describe('where the settings do not change', () => {
       let dispatcedActions;
@@ -316,6 +681,122 @@ describe('Customize data actions', () => {
     });
 
     describe('to remove empty rows and columns', () => {
+      describe('when there is no sortby index', () => {
+        let dispatcedActions;
+
+        beforeAll(() => {
+          const store = mockStore({});
+          store.dispatch(actions.updateImage(
+            {
+              columns: {
+                names: columns,
+                ref: null,
+              },
+              removeEmpty: false,
+              resetMaximums: false,
+              rows,
+            },
+            true,
+            false,
+          ));
+          dispatcedActions = store.getActions();
+        });
+
+        it('should dispatch add state action', () => {
+          expect(dispatcedActions).toContainEqual({
+            columns: {
+              names: emptyColumns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: true,
+            resetMaximums: false,
+            rows: emptyRows,
+            sortBy: null,
+            type: actions.ADD_CUSTOMIZE_STATE,
+          });
+        });
+      });
+
+      describe('when the sort by index is deleted', () => {
+        let dispatcedActions;
+
+        beforeAll(() => {
+          const store = mockStore({});
+          store.dispatch(actions.updateImage(
+            {
+              columns: {
+                names: columns,
+                ref: null,
+              },
+              removeEmpty: false,
+              resetMaximums: false,
+              rows,
+              sortBy: 1,
+            },
+            true,
+            false,
+          ));
+          dispatcedActions = store.getActions();
+        });
+
+        it('should dispatch add state action', () => {
+          expect(dispatcedActions).toContainEqual({
+            columns: {
+              names: emptyColumns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: true,
+            resetMaximums: false,
+            rows: emptyRows,
+            sortBy: null,
+            type: actions.ADD_CUSTOMIZE_STATE,
+          });
+        });
+      });
+
+      describe('when the sort by index is kept but column is deleted', () => {
+        let dispatcedActions;
+
+        beforeAll(() => {
+          const store = mockStore({});
+          store.dispatch(actions.updateImage(
+            {
+              columns: {
+                names: columns,
+                ref: null,
+              },
+              direction: null,
+              removeEmpty: false,
+              resetMaximums: false,
+              rows,
+              sortBy: 2,
+            },
+            true,
+            false,
+          ));
+          dispatcedActions = store.getActions();
+        });
+
+        it('should dispatch add state action', () => {
+          expect(dispatcedActions).toContainEqual({
+            columns: {
+              names: emptyColumns,
+              ref: null,
+            },
+            direction: null,
+            removeEmpty: true,
+            resetMaximums: false,
+            rows: emptyRows,
+            sortBy: 1,
+            type: actions.ADD_CUSTOMIZE_STATE,
+          });
+        });
+      });
+    });
+
+    describe('when ref column is deleted', () => {
       let dispatcedActions;
 
       beforeAll(() => {
@@ -324,11 +805,13 @@ describe('Customize data actions', () => {
           {
             columns: {
               names: columns,
-              ref: null,
+              ref: 'b',
             },
+            direction: null,
             removeEmpty: false,
             resetMaximums: false,
             rows,
+            sortBy: null,
           },
           true,
           false,
@@ -338,88 +821,103 @@ describe('Customize data actions', () => {
 
       it('should dispatch add state action', () => {
         expect(dispatcedActions).toContainEqual({
-          columns: emptyColumns,
+          columns: {
+            names: emptyColumns,
+            ref: null,
+          },
+          direction: null,
           removeEmpty: true,
           resetMaximums: false,
           rows: emptyRows,
+          sortBy: null,
           type: actions.ADD_CUSTOMIZE_STATE,
         });
       });
     });
+  });
 
-    describe('to reset row ratios', () => {
-      let dispatcedActions;
+  describe('to reset row ratios', () => {
+    let dispatcedActions;
 
-      beforeAll(() => {
-        const store = mockStore({});
-        store.dispatch(actions.updateImage(
-          {
-            columns: {
-              names: columns,
-              ref: null,
-            },
-            removeEmpty: false,
-            resetMaximums: false,
-            rows,
+    beforeAll(() => {
+      const store = mockStore({});
+      store.dispatch(actions.updateImage(
+        {
+          columns: {
+            names: columns,
+            ref: null,
           },
-          false,
-          true,
-        ));
-        dispatcedActions = store.getActions();
-      });
+          removeEmpty: false,
+          resetMaximums: false,
+          rows,
+        },
+        false,
+        true,
+      ));
+      dispatcedActions = store.getActions();
+    });
 
-      it('should dispatch replace state action', () => {
-        expect(dispatcedActions).toContainEqual({
-          columns,
+    it('should dispatch replace state action', () => {
+      expect(dispatcedActions).toContainEqual({
+        columns: {
+          names: columns,
+          ref: null,
+        },
+        direction: null,
+        removeEmpty: false,
+        resetMaximums: true,
+        rows: {
+          ...rows,
+          list: resetRows,
+        },
+        sortBy: null,
+        type: actions.REPLACE_CUSTOMIZE_STATE,
+      });
+    });
+  });
+
+  describe('to restore row ratios', () => {
+    let dispatcedActions;
+
+    beforeAll(() => {
+      const store = mockStore({});
+      store.dispatch(actions.updateImage(
+        {
+          columns: {
+            names: columns,
+            ref: null,
+          },
           removeEmpty: false,
           resetMaximums: true,
           rows: {
             ...rows,
             list: resetRows,
           },
-          type: actions.REPLACE_CUSTOMIZE_STATE,
-        });
-      });
+        },
+        false,
+        false,
+      ));
+      dispatcedActions = store.getActions();
     });
 
-    describe('to restore row ratios', () => {
-      let dispatcedActions;
-
-      beforeAll(() => {
-        const store = mockStore({});
-        store.dispatch(actions.updateImage(
-          {
-            columns: {
-              names: columns,
-              ref: null,
-            },
-            removeEmpty: false,
-            resetMaximums: true,
-            rows: {
-              ...rows,
-              list: resetRows,
-            },
-          },
-          false,
-          false,
-        ));
-        dispatcedActions = store.getActions();
-      });
-
-      it('should dispatch replace state action', () => {
-        expect(dispatcedActions).toContainEqual({
-          columns,
-          removeEmpty: false,
-          resetMaximums: false,
-          rows,
-          type: actions.REPLACE_CUSTOMIZE_STATE,
-        });
+    it('should dispatch replace state action', () => {
+      expect(dispatcedActions).toContainEqual({
+        columns: {
+          names: columns,
+          ref: null,
+        },
+        direction: null,
+        removeEmpty: false,
+        resetMaximums: false,
+        rows,
+        sortBy: null,
+        type: actions.REPLACE_CUSTOMIZE_STATE,
       });
     });
   });
 
   describe('when customizing an image', () => {
-    describe('where there are not selected genes', () => {
+    describe('where there are no selected genes', () => {
       let dispatcedActions;
 
       beforeAll(() => {

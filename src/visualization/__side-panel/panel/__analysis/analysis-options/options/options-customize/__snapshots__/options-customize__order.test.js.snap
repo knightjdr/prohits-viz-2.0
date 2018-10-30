@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize display subpanel should match snapshot 1`] = `
+<div>
+  <div
+    className="analysis-option__label"
+  >
+    Customization
+  </div>
+  <div
+    className="analysis-option__details analysis-option__details-order"
+  >
+    <div>
+      Delete:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <div>
+      Reorder:
+    </div>
+    <Switch
+      checked={false}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+  </div>
+</div>
+`;

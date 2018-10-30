@@ -14,6 +14,13 @@ exports[`Store connection when there is customized state should match snapshot 1
     }
   }
   customizeID={1}
+  customizeOptions={
+    Object {
+      "deleteRC": false,
+      "reorder": false,
+    }
+  }
+  deleteItem={[Function]}
   dimensions={Object {}}
   display={Object {}}
   markers={Object {}}
@@ -22,6 +29,7 @@ exports[`Store connection when there is customized state should match snapshot 1
   panel={false}
   position={Object {}}
   renderProp={[Function]}
+  reorder={[Function]}
   reset={[Function]}
   rowNames={
     Array [
@@ -77,6 +85,13 @@ exports[`Store connection when there is no customized state should match snapsho
   annotations={Object {}}
   columns={Object {}}
   customizeID={null}
+  customizeOptions={
+    Object {
+      "deleteRC": false,
+      "reorder": false,
+    }
+  }
+  deleteItem={[Function]}
   dimensions={Object {}}
   display={Object {}}
   markers={Object {}}
@@ -85,6 +100,7 @@ exports[`Store connection when there is no customized state should match snapsho
   panel={false}
   position={Object {}}
   renderProp={[Function]}
+  reorder={[Function]}
   reset={[Function]}
   rowNames={Array []}
   rows={Object {}}

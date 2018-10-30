@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Tabs from './visualization__tabs';
-import { TabSelector } from '../../state/selectors/visualization/tab-selector';
+import { tabSelector } from '../../state/selectors/visualization/tab-selector';
 
 export class TabsContainer extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ TabsContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  tabs: TabSelector(state),
+  tabs: tabSelector(state),
 });
 
 

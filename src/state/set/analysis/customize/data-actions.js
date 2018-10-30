@@ -4,7 +4,7 @@ import arrMove from '../../../../helpers/arr-move';
 import deepCopy from '../../../../helpers/deep-copy';
 import round from '../../../../helpers/round';
 
-export const ADD_CUSTOMIZE_STATE = 'UPDATE_CUSTOMIZE_STATE';
+export const ADD_CUSTOMIZE_STATE = 'ADD_CUSTOMIZE_STATE';
 export const REPLACE_CUSTOMIZE_STATE = 'REPLACE_CUSTOMIZE_STATE';
 export const RESET_CUSTOMIZE_STATE = 'RESET_CUSTOMIZE_STATE';
 export const SET_CUSTOMIZE_STATE = 'SET_CUSTOMIZE_STATE';
@@ -280,6 +280,8 @@ export const updateImage = (
     ) {
       newState.sortBy = newState.columns.names.indexOf(sortByName);
     }
+    newState.removeEmpty = removeEmpty;
+    newState.resetMaximums = resetMaximums;
 
     if (
       currentState.removeEmpty !== removeEmpty

@@ -5,7 +5,7 @@ exports[`Status Button component with default props should match snapshot 1`] = 
   className="heatmap-svg__status-button"
   onClick={[Function]}
   tooltip="button"
-  tooltip-position="right"
+  tooltip-position="left"
   type="button"
 >
   button

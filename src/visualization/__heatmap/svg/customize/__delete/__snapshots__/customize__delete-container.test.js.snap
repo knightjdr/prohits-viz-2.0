@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete component when shown with rect should match snapshot 1`] = `
+<React.Fragment>
+  <rect
+    fill="#000"
+    fillOpacity={0.3}
+    height={20}
+    visibility="visible"
+    width={100}
+    x={0}
+    y={100}
+  />
+  <g
+    transform="translate(100 0)"
+  />
+  <g
+    transform="translate(0 100)"
+  />
+</React.Fragment>
+`;
+
+exports[`Delete component when shown without rect should match snapshot 1`] = `
+<React.Fragment>
+  <rect
+    fill="#000"
+    fillOpacity={0.3}
+    height={20}
+    visibility="hidden"
+    width={100}
+    x={0}
+    y={100}
+  />
+  <g
+    transform="translate(100 0)"
+  />
+  <g
+    transform="translate(0 100)"
+  />
+</React.Fragment>
+`;

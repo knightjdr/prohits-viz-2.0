@@ -18,6 +18,7 @@ const Delete = ({
       fill="#000"
       fillOpacity={0.3}
       height={rect.height}
+      visibility={rect.show ? 'visible' : 'hidden'}
       width={rect.width}
       x={rect.x}
       y={rect.y}

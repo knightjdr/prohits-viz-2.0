@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Router Renders 1`] = `
-<BrowserRouter>
+<BrowserRouter
+  basename="/"
+>
   <withRouter()>
     <Switch>
       <Route

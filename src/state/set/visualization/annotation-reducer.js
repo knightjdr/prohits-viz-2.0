@@ -32,7 +32,7 @@ const Annotations = (state = defaultState, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
         color: '#f44336',
-        fontSize: 12,
+        fontSize: 16,
         list: [],
         show: true,
       };

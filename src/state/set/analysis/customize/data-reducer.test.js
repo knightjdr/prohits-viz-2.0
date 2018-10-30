@@ -31,9 +31,11 @@ describe('Customize data reducer', () => {
 
   it('should handle ADD_CUSTOMIZE_STATE action', () => {
     const action = {
-      columns: ['d', 'e', 'f'],
+      columns: {
+        names: ['d', 'e', 'f'],
+        ref: 'd',
+      },
       direction: null,
-      ref: 'd',
       removeEmpty: false,
       resetMaximums: false,
       rows: {
@@ -103,7 +105,9 @@ describe('Customize data reducer', () => {
 
   it('should handle REPLACE_CUSTOMIZE_STATE', () => {
     const action = {
-      columns: ['d', 'e', 'f'],
+      columns: {
+        names: ['d', 'e', 'f'],
+      },
       direction: null,
       removeEmpty: false,
       resetMaximums: false,

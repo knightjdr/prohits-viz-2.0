@@ -3,23 +3,26 @@ import React, { PureComponent } from 'react';
 
 import Delete from './customize__delete';
 
+const defaultRect = {
+  height: 0,
+  show: false,
+  width: 0,
+  x: 0,
+  y: 0,
+};
+
 class DeleteContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      rect: {
-        height: 0,
-        show: false,
-        width: 0,
-        x: 0,
-        y: 0,
-      },
+      rect: { ...defaultRect },
     };
   }
   deleteItem = (id, type) => {
     const { deleteItem, position } = this.props;
     const index = type === 'col' ? position.x + id : position.y + id;
     deleteItem(index, type);
+    this.setState({ rect: { ...defaultRect } });
   }
   mouseEnter = (index, type) => {
     const { cellSize, dimensions } = this.props;

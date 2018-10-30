@@ -10,5 +10,5 @@
   transition: transform 0.5s cubic-bezier(.17, .67, .16, .99);
 }
 .heatmap-svg__wrapper  *::selection {
-  background: transparent;
+  background: $primary-light;
 }

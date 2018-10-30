@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Customize from './options-customize';
 import { customizeDataSelector } from '../../../../../../../state/selectors/analysis/customize/data-selector';
 import { setCustomizeParameters } from '../../../../../../../state/set/analysis/viz-analysis-form-actions';
+import { tabSelectorProp } from '../../../../../../../state/selectors/visualization/tab-selector';
 import { VizFormPropSelector } from '../../../../../../../state/selectors/analysis/viz-analysis-form-selector';
 import { undoCustomizeState, updateImage } from '../../../../../../../state/set/analysis/customize/data-actions';
 
@@ -30,8 +31,9 @@ export class CustomizeContainer extends Component {
     customize.length > 0 ? customize.length - 1 : 0
   )
   handleCheckbox = (field) => {
-    const setting = {};
-    setting[field] = !this.props.form[field];
+    const setting = {
+      [field]: !this.props.form[field],
+    };
     if (field === 'deleteRC') {
       setting.reorder = false;
     } else if (field === 'reorder') {
@@ -46,17 +48,22 @@ export class CustomizeContainer extends Component {
     currentState === undefined || currentState.length < 1
   )
   undo = () => {
-    if (!this.state.undoDisabled) {
+    if (
+      this.props.tab === 'customize'
+      && !this.state.undoDisabled
+    ) {
       this.props.undo();
     }
   }
   updateImage = () => {
-    const { customize, form } = this.props;
-    this.props.updateImage(
-      customize[this.newestIndex],
-      form.removeEmpty,
-      form.resetMaximums,
-    );
+    const { customize, form, tab } = this.props;
+    if (tab === 'customize') {
+      this.props.updateImage(
+        customize[this.newestIndex],
+        form.removeEmpty,
+        form.resetMaximums,
+      );
+    }
   }
   render() {
     return (
@@ -86,6 +93,7 @@ CustomizeContainer.propTypes = {
     resetMaximums: PropTypes.bool,
   }).isRequired,
   setCustomizeParameters: PropTypes.func.isRequired,
+  tab: PropTypes.string.isRequired,
   undo: PropTypes.func.isRequired,
   updateImage: PropTypes.func.isRequired,
 };
@@ -94,6 +102,7 @@ CustomizeContainer.propTypes = {
 const mapStateToProps = state => ({
   customize: customizeDataSelector(state),
   form: VizFormPropSelector(state, 'customize'),
+  tab: tabSelectorProp(state, 'selected'),
 });
 
 /* istanbul ignore next */

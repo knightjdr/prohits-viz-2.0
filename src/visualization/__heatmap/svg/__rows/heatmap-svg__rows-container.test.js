@@ -1,9 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import setFontSize from '../font-size/font-size';
 import TrimText from '../helpers/trim-text';
 import { RowsContainer } from './heatmap-svg__rows-container';
 
+jest.mock('../font-size/font-size');
+setFontSize.mockReturnValue(9);
 jest.mock('../helpers/trim-text');
 TrimText.mockImplementation(text => ({ original: text, text, trimmed: false }));
 
@@ -49,6 +52,7 @@ describe('Heatmap row container', () => {
 
   describe('should update when props change', () => {
     beforeAll(() => {
+      setFontSize.mockReturnValueOnce(12);
       const originalProps = {
         cellSize: 15,
         pageHeight: 3,
@@ -255,16 +259,16 @@ describe('Heatmap row container', () => {
 
     describe('fontSize', () => {
       it('should not update when cell size does not change', () => {
-        wrapper.instance().fontSize.mockClear();
+        setFontSize.mockClear();
         wrapper.instance().updateFontSize(15, 15, []);
-        expect(wrapper.instance().fontSize).not.toHaveBeenCalled();
+        expect(setFontSize).not.toHaveBeenCalled();
       });
 
-      it('should update when cell size does change', () => {
+      it('should update when cell size changes', () => {
         wrapper.instance().checkRowSize.mockClear();
-        wrapper.instance().fontSize.mockClear();
+        setFontSize.mockClear();
         wrapper.instance().updateFontSize(20, 15, []);
-        expect(wrapper.instance().fontSize).toHaveBeenCalled();
+        expect(setFontSize).toHaveBeenCalled();
         expect(wrapper.instance().checkRowSize).toHaveBeenCalled();
       });
     });
