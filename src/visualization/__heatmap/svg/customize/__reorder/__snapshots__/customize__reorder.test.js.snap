@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reorder component after mousedown with no icons should match snapshot 1`] = `
+<React.Fragment>
+  <g
+    transform="translate(100 0)"
+  >
+    <rect
+      fillOpacity={0}
+      height={100}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      width={200}
+    />
+  </g>
+  <g
+    transform="translate(0 100)"
+  >
+    <rect
+      fillOpacity={0}
+      height={200}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      width={100}
+    />
+  </g>
+  <g
+    pointerEvents="none"
+  >
+    <rect
+      fill="#fff"
+      height={100}
+      width={20}
+      x={0}
+      y={0}
+    />
+    <g
+      transform="rotate(0 0 0) translate(0 0)"
+    >
+      <rect
+        fill="#fff"
+        height={0}
+        transform=""
+        width={0}
+      />
+      <text
+        alignmentBaseline="middle"
+        fontSize={12}
+      />
+    </g>
+    <line
+      stroke="#000"
+      strokeDasharray={4}
+      x1={0}
+      x2={0}
+      y1={0}
+      y2={300}
+    />
+    <line
+      stroke="#000"
+      strokeDasharray={4}
+      x1={20}
+      x2={20}
+      y1={0}
+      y2={300}
+    />
+    <circle
+      cx={110}
+      cy={10}
+      fill="#336B87"
+      r={10}
+    />
+  </g>
+</React.Fragment>
+`;
+
+exports[`Reorder component showing icons should match snapshot 1`] = `
+<React.Fragment>
+  <g
+    transform="translate(100 0)"
+  >
+    <rect
+      fillOpacity={0}
+      height={100}
+      onMouseLeave={null}
+      onMouseMove={null}
+      onMouseUp={null}
+      width={200}
+    />
+  </g>
+  <g
+    transform="translate(0 100)"
+  >
+    <rect
+      fillOpacity={0}
+      height={200}
+      onMouseLeave={null}
+      onMouseMove={null}
+      onMouseUp={null}
+      width={100}
+    />
+  </g>
+</React.Fragment>
+`;

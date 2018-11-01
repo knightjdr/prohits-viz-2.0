@@ -139,16 +139,19 @@ const Clustering = ({
         }
       </div>
     }
-    <div className="Clustering-checkbox">
-      <div className="Clustering-checkbox-label">
-        Optimize clustering:
+    {
+      clustering !== 'biclustering' &&
+      <div className="Clustering-checkbox">
+        <div className="Clustering-checkbox-label">
+          Optimize clustering:
+        </div>
+        <CustomField
+          name="clusteringOptimize"
+          onChange={DefaultCheckboxChange}
+          type="switch"
+        />
       </div>
-      <CustomField
-        name="clusteringOptimize"
-        onChange={DefaultCheckboxChange}
-        type="switch"
-      />
-    </div>
+    }
   </div>
 );
 

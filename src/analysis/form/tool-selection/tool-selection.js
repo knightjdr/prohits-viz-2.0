@@ -38,7 +38,7 @@ export const ToolSelectionComponent = ({
       <Divider>Analysis tool</Divider>
       <div>
         Select the tool you would like to use for your analysis. A detailed
-        description of the tools can be found
+        description of the tools can be found{' '}
         <NavLink
           className="tool-selection__link"
           onClick={ScrollTop}

@@ -28,9 +28,9 @@ const Reorder = ({
         <rect
           fillOpacity={0}
           height={column.height}
-          onMouseLeave={mouseUp}
-          onMouseMove={circle.show ? mouseMoveColumn : null}
-          onMouseUp={mouseUp}
+          onMouseLeave={showIcons ? null : mouseUp}
+          onMouseMove={showIcons ? null : mouseMoveColumn}
+          onMouseUp={showIcons ? null : mouseUp}
           width={column.width}
         />
         {
@@ -42,9 +42,9 @@ const Reorder = ({
         <rect
           fillOpacity={0}
           height={row.height}
-          onMouseLeave={mouseUp}
-          onMouseMove={circle.show ? mouseMoveRow : null}
-          onMouseUp={mouseUp}
+          onMouseLeave={showIcons ? null : mouseUp}
+          onMouseMove={showIcons ? null : mouseMoveRow}
+          onMouseUp={showIcons ? null : mouseUp}
           width={row.width}
         />
         {
@@ -53,7 +53,7 @@ const Reorder = ({
         }
       </g>
       {
-        circle.show
+        !showIcons
         && (
           <g pointerEvents="none">
             <rect
@@ -110,7 +110,6 @@ Reorder.propTypes = {
   cellSize: PropTypes.number.isRequired,
   circle: PropTypes.shape({
     radius: PropTypes.number,
-    show: PropTypes.bool,
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,

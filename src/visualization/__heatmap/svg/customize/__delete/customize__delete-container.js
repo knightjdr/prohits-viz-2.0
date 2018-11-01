@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 
 import Delete from './customize__delete';
 
-const defaultRect = {
+export const defaultRect = {
   height: 0,
   show: false,
   width: 0,

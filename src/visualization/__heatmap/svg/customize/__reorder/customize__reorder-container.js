@@ -14,7 +14,6 @@ class ReorderContainer extends PureComponent {
     this.state = {
       circle: {
         radius: 0,
-        show: false,
         x: 0,
         y: 0,
       },
@@ -121,7 +120,6 @@ class ReorderContainer extends PureComponent {
     const x = LABEL_WIDTH + (cellSize * index);
     const circle = {
       radius,
-      show: true,
       x: x + radius,
       y: radius,
     };
@@ -167,7 +165,6 @@ class ReorderContainer extends PureComponent {
     const y = LABEL_WIDTH + (cellSize * index);
     const circle = {
       radius,
-      show: true,
       x: radius,
       y: y + radius,
     };
@@ -249,14 +246,9 @@ class ReorderContainer extends PureComponent {
   mouseUp = () => {
     if (
       this.selectedItem
-      && this.state.circle.show
+      && !this.state.showIcons
     ) {
-      this.setState({
-        circle: {
-          show: false,
-        },
-        showIcons: true,
-      });
+      this.setState({ showIcons: true });
       const {
         dropIndex,
         index,
