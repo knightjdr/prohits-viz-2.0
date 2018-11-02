@@ -11,7 +11,7 @@ import Router from '../router/router';
 import subscribeMiddleware from './local-storage/subscribe-middleware';
 // import TestState from './test-state/test-state';
 
-const socket = SocketIo(process.env.REACT_APP_API_HOST);
+const socket = SocketIo(process.env.REACT_APP_WS_HOST, { path: '/ws' });
 
 export const addDevTools = () => (
   process.env.NODE_ENV === 'development' &&
