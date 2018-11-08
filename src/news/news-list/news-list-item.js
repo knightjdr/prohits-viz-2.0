@@ -11,7 +11,7 @@ const NewsListItem = ({
       <div>
         { item.date }
       </div>
-      <div className="News-list-details">
+      <div className="news__list-details">
         { item.details }
       </div>
     </div>

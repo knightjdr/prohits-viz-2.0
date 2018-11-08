@@ -1,25 +1,25 @@
 @import 'style/mixins';
 
-.News-list-container {
+.news__list {
   max-width: 1000px;
   width: calc(100vh - 40px);
 }
-.News-list-container .ant-list-item-meta-title {
+.news__list .ant-list-item-meta-title {
   font-family: TitleFont;
   text-transform: uppercase;
 }
-.News-list-details {
+.news__list-details {
   @include line-clamp(2);
   text-align: justify;
 }
-.News-list-message {
+.news__list-message {
   text-align: center;
 }
-.News-list-pagination {
+.news__list-pagination {
   float: right;
 }
-.News-list-title {
+.news__list-title {
   font-family: TitleFont;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
 }

@@ -29,7 +29,7 @@ export const NewsComponent = ({
 }) => (
   <div>
     <Navbar links={links} />
-    <div className="News-container">
+    <div className="news">
       <Switch>
         <Route
           exact

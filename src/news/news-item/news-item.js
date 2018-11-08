@@ -27,7 +27,7 @@ export const NewsItemComponent = ({
   let newsItemElement = null;
   if (newsItem.isLoading) {
     newsItemElement = (
-      <div className="News-item-message">
+      <div className="news__item-message">
         <Spin
           size="large"
         />
@@ -35,20 +35,20 @@ export const NewsItemComponent = ({
     );
   } else if (newsItem.error) {
     newsItemElement = (
-      <div className="News-item-message">
+      <div className="news__item-message">
         <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
         There was an error retrieving this story
       </div>
     );
   } else if (newsItem.isLoaded) {
     const newsButtons = (
-      <div className="News-item-navbutton-container">
+      <div className="news__item-navbutton-container">
         <Tooltip
           placement="right"
           title="News archive"
         >
           <NavLink
-            className="News-item-navlink"
+            className="news__item-navlink"
             to="/news"
           >
             <Button
@@ -61,11 +61,11 @@ export const NewsItemComponent = ({
             </Button>
           </NavLink>
         </Tooltip>
-        <div className="News-item-share-buttons-title">
+        <div className="news__item-share-buttons-title">
           Share
         </div>
         <TwitterShareButton
-          className="News-item-share-button"
+          className="news__item-share-button"
           hashtags={newsItem.item.hashtags}
           title={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
@@ -73,7 +73,7 @@ export const NewsItemComponent = ({
           <TwitterIcon size={32} round />
         </TwitterShareButton>
         <FacebookShareButton
-          className="News-item-share-button"
+          className="news__item-share-button"
           hashtag={newsItem.item.hashtags[0]}
           quote={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
@@ -81,7 +81,7 @@ export const NewsItemComponent = ({
           <FacebookIcon size={32} round />
         </FacebookShareButton>
         <EmailShareButton
-          className="News-item-share-button"
+          className="news__item-share-button"
           subject={newsItem.item.headline}
           url={`${process.env.REACT_APP_HOME_ROOT}/news/${encodeURI(newsItem.item.headline)}`}
         >
@@ -90,17 +90,17 @@ export const NewsItemComponent = ({
       </div>
     );
     newsItemElement = (
-      <div className="News-item-content">
-        <article className="News-item-story">
-          <header className="News-item-headline">
+      <div className="news__item-content">
+        <article className="news__item-story">
+          <header className="news__item-headline">
             { newsItem.item.headline }
           </header>
-          <time className="News-item-date">
+          <time className="news__item-date">
             { newsItem.item.date }
           </time>
           {newsButtons}
           <section
-            className="News-item-details"
+            className="news__item-details"
             dangerouslySetInnerHTML={{ __html: newsItem.item.html }}
           />
         </article>
@@ -108,7 +108,7 @@ export const NewsItemComponent = ({
     );
   }
   return (
-    <div className="News-item-container">
+    <div className="news__item">
       { newsItemElement }
     </div>
   );

@@ -1,70 +1,70 @@
 @import 'style/button';
 @import 'style/theme';
 
-.News-item-container {
+.news__item {
   max-width: 950px;
   width: calc(100vw - 50px);
 }
-.News-item-content {
+.news__item-content {
   display: flex;
 }
-.News-item-date {
-  font-size: 1.2em;
+.news__item-date {
+  font-size: 1.2rem;
 }
-.News-item-details {
+.news__item-details {
   margin-top: 20px;
   text-align: justify;
 }
-.News-item-headline {
+.news__item-headline {
   font-family: TitleFont;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: bold;
 }
-.News-item-message {
+.news__item-message {
   text-align: center;
 }
-.News-item-navlink,
-.News-item-navlink:hover,
-.News-item-navlink:visited, {
+.news__item-navlink,
+.news__item-navlink:hover,
+.news__item-navlink:visited, {
   color: $accent-dark;
 }
-.News-item-share-button {
+.news__item-share-button {
   @extend .nobutton;
 }
-.News-item-share-buttons-title {
+.news__item-share-buttons-title {
   font-weight: 600;
 }
-.News-item-navbutton-container {
+.news__item-navbutton-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 55px;
 }
-.News-item-navbutton-container > *:not(:last-child) {
+.news__item-navbutton-container > *:not(:last-child) {
   margin-bottom: 5px;
 }
-.News-item-share-buttons-title {
+.news__item-share-buttons-title {
   margin-top: 10px;
 }
-.News-item-story {
+.news__item-story {
   margin-left: 50px;
 }
 @media screen and (min-width: 1000px) {
-  .News-item-navbutton-container {
+  .news__item-navbutton-container {
     left: calc((100vw - 950px) / 2);
   }
 }
 @media (max-width:999px) and (min-width:680px) {
-  .News-item-navbutton-container {
+  .news__item-navbutton-container {
     left: 25px;
   }
 }
 @media screen and (max-width: 679px) {
-  .News-item-story {
+  .news__item-story {
     margin-left: 0;
   }
-  .News-item-navbutton-container {
+  .news__item-navbutton-container {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -73,11 +73,11 @@
     position: relative;
     top: 0;
   }
-  .News-item-navbutton-container > *:not(:last-child) {
+  .news__item-navbutton-container > *:not(:last-child) {
     margin-right: 5px;
     margin-bottom: 0;
   }
-  .News-item-share-buttons-title {
+  .news__item-share-buttons-title {
     margin: 0 5px 0 10px;
   }
 }

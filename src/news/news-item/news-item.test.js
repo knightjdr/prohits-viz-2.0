@@ -68,7 +68,7 @@ describe('News item', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.News-item-content').length).toBe(1);
+    expect(wrapper.find('.news__item-content').length).toBe(1);
   });
 
   it('should render with error', () => {
@@ -78,7 +78,7 @@ describe('News item', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    const text = wrapper.find('.News-item-message').text();
+    const text = wrapper.find('.news__item-message').text();
     const re = RegExp('There was an error retrieving this story');
     expect(re.test(text)).toBeTruthy();
   });

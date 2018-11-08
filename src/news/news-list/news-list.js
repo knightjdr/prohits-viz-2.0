@@ -22,14 +22,14 @@ export const NewsListComponent = ({
   let newsListElement = null;
   if (news.error) {
     newsListElement = (
-      <div className="News-list-message">
+      <div className="news__list-message">
         <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
         There was an error retrieving the news
       </div>
     );
   } else if (news.isLoading) {
     newsListElement = (
-      <div className="News-list-message">
+      <div className="news__list-message">
         <Spin
           size="large"
         />
@@ -38,7 +38,7 @@ export const NewsListComponent = ({
   } else if (news.isLoaded) {
     newsListElement = (
       <div>
-        <div className="News-list-title">
+        <div className="news__list-title">
           news
         </div>
         <List
@@ -48,7 +48,7 @@ export const NewsListComponent = ({
           renderItem={NewsListItemRender}
         />
         <Pagination
-          className="News-list-pagination"
+          className="news__list-pagination"
           current={newsPage.pageIndex}
           hideOnSinglePage
           onChange={changePage}
@@ -59,7 +59,7 @@ export const NewsListComponent = ({
     );
   }
   return (
-    <div className="News-list-container">
+    <div className="news__list">
       { newsListElement }
     </div>
   );
