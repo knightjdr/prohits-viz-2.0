@@ -37,6 +37,7 @@ const fetchNewsItem = newsId => (
 
     // Fetch and handle response.
     return fetch(url, {
+      cache: 'default',
       headers,
     })
       .then((response) => {
