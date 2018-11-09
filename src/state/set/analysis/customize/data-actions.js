@@ -3,6 +3,7 @@ import * as tabActions from '../../visualization/tab-actions';
 import arrMove from '../../../../helpers/arr-move';
 import deepCopy from '../../../../helpers/deep-copy';
 import round from '../../../../helpers/round';
+import orderArrayByKeys from '../../../../helpers/order-array-by-keys';
 
 export const ADD_CUSTOMIZE_STATE = 'ADD_CUSTOMIZE_STATE';
 export const REPLACE_CUSTOMIZE_STATE = 'REPLACE_CUSTOMIZE_STATE';
@@ -62,18 +63,19 @@ export const undoCustomizeState = () => ({
 
 export const filterRows = (columns, rows, selectedColumns, selectedRows) => {
   const columnIndices = selectedColumns.map(gene => columns.indexOf(gene));
-  return rows.list.reduce((accum, row) => {
+  const filteredRows = rows.list.reduce((accum, row) => {
     if (selectedRows.includes(row.name)) {
       return [
         ...accum,
         {
-          data: row.data.filter((column, index) => columnIndices.includes(index)),
+          data: columnIndices.reduce((dataAccum, index) => [...dataAccum, row.data[index]], []),
           name: row.name,
         },
       ];
     }
     return accum;
   }, []);
+  return orderArrayByKeys(filteredRows, 'name', selectedRows);
 };
 
 export const removeBlanks = (remove, columns, rows) => {

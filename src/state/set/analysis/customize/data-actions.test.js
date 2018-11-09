@@ -217,23 +217,44 @@ describe('Customize data actions', () => {
     expect(actions.undoCustomizeState([], [], true, true)).toEqual(expectedAction);
   });
 
-  it('should filter a row list', () => {
-    const genes = {
-      columnsSelected: ['a', 'd'],
-      rowsSelected: ['x', 'z'],
-    };
-    const expected = [
-      {
-        data: [{ ratio: 0.25, value: 1 }, { ratio: 1, value: 4 }],
-        name: 'x',
-      },
-      {
-        data: [{ ratio: 0.25, value: 9 }, { ratio: 0.25, value: 12 }],
-        name: 'z',
-      },
-    ];
-    const filtered = actions.filterRows(columns, rows, genes.columnsSelected, genes.rowsSelected);
-    expect(filtered).toEqual(expected);
+  describe('Filter data array', () => {
+    it('should filter a row list', () => {
+      const genes = {
+        columnsSelected: ['a', 'd'],
+        rowsSelected: ['x', 'z'],
+      };
+      const expected = [
+        {
+          data: [{ ratio: 0.25, value: 1 }, { ratio: 1, value: 4 }],
+          name: 'x',
+        },
+        {
+          data: [{ ratio: 0.25, value: 9 }, { ratio: 0.25, value: 12 }],
+          name: 'z',
+        },
+      ];
+      const filtered = actions.filterRows(columns, rows, genes.columnsSelected, genes.rowsSelected);
+      expect(filtered).toEqual(expected);
+    });
+
+    it('should filter a row list in specified order', () => {
+      const genes = {
+        columnsSelected: ['d', 'a'],
+        rowsSelected: ['z', 'x'],
+      };
+      const expected = [
+        {
+          data: [{ ratio: 0.25, value: 12 }, { ratio: 0.25, value: 9 }],
+          name: 'z',
+        },
+        {
+          data: [{ ratio: 1, value: 4 }, { ratio: 0.25, value: 1 }],
+          name: 'x',
+        },
+      ];
+      const filtered = actions.filterRows(columns, rows, genes.columnsSelected, genes.rowsSelected);
+      expect(filtered).toEqual(expected);
+    });
   });
 
   describe('and remove empty rows and columns', () => {
