@@ -11,7 +11,7 @@ describe('ArrowPrompt', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
-    const container = wrapper.find('.ArrowPrompt-down-prompt-container');
+    const container = wrapper.find('.arrow-prompt__down');
     expect(container.props().style).toHaveProperty('opacity', 1);
   });
 
@@ -21,7 +21,7 @@ describe('ArrowPrompt', () => {
         hide
       />,
     );
-    const container = wrapper.find('.ArrowPrompt-down-prompt-container');
+    const container = wrapper.find('.arrow-prompt__down');
     expect(container.props().style).toHaveProperty('opacity', 0);
   });
 });

@@ -2,19 +2,19 @@
 
 exports[`HelpBar It renders 1`] = `
 <div
-  className="HelpBar-container"
+  className="help__bar"
 >
   <div
-    className="HelpBar-panel "
+    className="help__bar-panel "
   >
     <div
-      className="HelpBar-breadcrumb "
+      className="help__bar-breadcrumb "
     >
       <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
-    className="HelpBar-button "
+    className="help__bar-button "
     ghost={false}
     loading={false}
     onClick={[Function]}
@@ -61,19 +61,19 @@ exports[`HelpBar It renders 1`] = `
 
 exports[`HelpBar It renders on small screen 1`] = `
 <div
-  className="HelpBar-container"
+  className="help__bar"
 >
   <div
-    className="HelpBar-panel HelpBar-panel-transition-out"
+    className="help__bar-panel help__bar-panel-transition-out"
   >
     <div
-      className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-out"
+      className="help__bar-breadcrumb help__bar-breadcrumb-transition-out"
     >
       <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
-    className="HelpBar-button HelpBar-button-transition-out"
+    className="help__bar-button help__bar-button-transition-out"
     ghost={false}
     loading={false}
     onClick={[Function]}
@@ -120,19 +120,19 @@ exports[`HelpBar It renders on small screen 1`] = `
 
 exports[`HelpBar It renders on small screen with panel 1`] = `
 <div
-  className="HelpBar-container"
+  className="help__bar"
 >
   <div
-    className="HelpBar-panel HelpBar-panel-transition-in"
+    className="help__bar-panel help__bar-panel-transition-in"
   >
     <div
-      className="HelpBar-breadcrumb HelpBar-breadcrumb-transition-in"
+      className="help__bar-breadcrumb help__bar-breadcrumb-transition-in"
     >
       <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
-    className="HelpBar-button HelpBar-button-transition-in"
+    className="help__bar-button help__bar-button-transition-in"
     ghost={false}
     loading={false}
     onClick={[Function]}
@@ -179,19 +179,19 @@ exports[`HelpBar It renders on small screen with panel 1`] = `
 
 exports[`HelpBar It renders with panel 1`] = `
 <div
-  className="HelpBar-container"
+  className="help__bar"
 >
   <div
-    className="HelpBar-panel "
+    className="help__bar-panel "
   >
     <div
-      className="HelpBar-breadcrumb "
+      className="help__bar-breadcrumb "
     >
       <withRouter(TreeRoutesContainer) />
     </div>
   </div>
   <Button
-    className="HelpBar-button "
+    className="help__bar-button "
     ghost={false}
     loading={false}
     onClick={[Function]}

@@ -1,18 +1,24 @@
-.HelpNavButtons-backward-text {
+@import 'style/theme';
+
+.help__nav-backward-text {
   margin-left: 5px;
 }
-.HelpNavButtons-container {
+.help__nav-buttons {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.HelpNavButtons-forward {
+.help__nav-buttons a {
+  color: $text-light;
+  text-decoration: none;
+}
+.help__nav-forward {
   float: right;
 }
-.HelpNavButtons-forward-text {
+.help__nav-forward-text {
   margin-right: 5px;
 }
 @media screen and (max-width: 680px) {
-  .HelpNavButtons-backward {
+  .help__nav-backward {
     margin-left: 40px;
   }
 }

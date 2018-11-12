@@ -14,18 +14,18 @@ const HelpNavButtons = ({
   navBackward,
   navForward,
 }) => (
-  <div className="HelpNavButtons-container">
+  <div className="help__nav-buttons">
     {
       navBackward &&
       <Button
-        className="HelpNavButtons-backward"
+        className="help__nav-backward"
         type="primary"
       >
         <NavLink to={navBackward}>
           <Icon>
             <FontAwesomeIcon icon={faChevronLeft} />
           </Icon>
-          <span className="HelpNavButtons-backward-text">
+          <span className="help__nav-backward-text">
             Backward
           </span>
         </NavLink>
@@ -34,11 +34,11 @@ const HelpNavButtons = ({
     {
       navForward &&
       <Button
-        className="HelpNavButtons-forward"
+        className="help__nav-forward"
         type="primary"
       >
         <NavLink to={navForward}>
-          <span className="HelpNavButtons-forward-text">
+          <span className="help__nav-forward-text">
             Forward
           </span>
           <Icon>

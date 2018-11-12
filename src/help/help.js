@@ -7,9 +7,9 @@ import Navbar from '../navbar/navbar-container';
 import './help.css';
 
 const Help = () => (
-  <div className="Help-container">
+  <div className="help">
     <Navbar fixed />
-    <div className="Help-content">
+    <div className="help__inner">
       <HelpBar />
       <HelpDetails />
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FileFormat = () => (
-  <div>
+  <article>
     <p>
       ProHits-viz requires tabular input files in either tab-delimited or csv format.
       At a minimum, the file must contain four columns specifying the bait/condition,
@@ -37,7 +37,7 @@ const FileFormat = () => (
       <li><a className="basic-link" href="http://www.crapome.org" rel="noopener noreferrer" target="_blank">CRAPome</a></li>
       <li><a className="basic-link" href="https://usegalaxyp.org/" rel="noopener noreferrer" target="_blank">GalaxyP</a></li>
     </ul>
-  </div>
+  </article>
 );
 
 export default FileFormat;

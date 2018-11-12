@@ -13,7 +13,7 @@ describe('Custom select menu', () => {
     openContextMenu.mockClear();
   });
 
-  it('should render with a hidden placholder item', () => {
+  it('should render with a hidden placeholder item', () => {
     const wrapper = shallow(
       <Select
         canPaste={false}

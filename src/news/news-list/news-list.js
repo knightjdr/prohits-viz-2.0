@@ -1,10 +1,9 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { List, Pagination, Spin } from 'antd';
+import { List, Pagination } from 'antd';
 import { connect } from 'react-redux';
-import { faExclamationTriangle } from '@fortawesome/pro-solid-svg-icons';
 
+import Loading from '../../components/loading/loading';
 import NewsListItem from './news-list-item';
 import NewsPageSelector from '../../state/selectors/news-page-selector';
 import NewsSelector from '../../state/selectors/news-selector';
@@ -22,18 +21,14 @@ export const NewsListComponent = ({
   let newsListElement = null;
   if (news.error) {
     newsListElement = (
-      <div className="news__list-message">
-        <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-        There was an error retrieving the news
-      </div>
+      <Loading
+        error
+        message="There was an error retrieving the news"
+      />
     );
   } else if (news.isLoading) {
     newsListElement = (
-      <div className="news__list-message">
-        <Spin
-          size="large"
-        />
-      </div>
+      <Loading />
     );
   } else if (news.isLoaded) {
     newsListElement = (

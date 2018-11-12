@@ -1,0 +1,16 @@
+@import 'style/theme';
+
+.loading {
+  align-items: center;
+  display: flex;
+  font-size: 1rem;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.loading_error :first-child {
+  color: $warning;
+}

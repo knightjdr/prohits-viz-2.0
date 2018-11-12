@@ -15,13 +15,22 @@
   margin-top: 20px;
   text-align: justify;
 }
+.news__item-details a {
+  text-decoration: underline;
+}
+.news__item-details a:link,
+.news__item-details a:visited {
+  color: $primary-medium;
+}
+.news__item-details a:focus,
+.news__item-details a:hover,
+.news__item-details a:active {
+  color: $accent-light;
+}
 .news__item-headline {
   font-family: TitleFont;
   font-size: 1.5rem;
   font-weight: bold;
-}
-.news__item-message {
-  text-align: center;
 }
 .news__item-navlink,
 .news__item-navlink:hover,

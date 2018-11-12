@@ -16,6 +16,7 @@ const Select = ({
     multiple
     onChange={(e) => { listSelect(e, target); }}
     onContextMenu={(e) => { openContextMenu(e, canPaste, target); }}
+    placeholder="Select..."
     ref={setRef}
   >
     [<option className="selection__select_option-hidden" value="">Placeholder</option>,

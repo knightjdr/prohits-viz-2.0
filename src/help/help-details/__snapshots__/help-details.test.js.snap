@@ -2,10 +2,10 @@
 
 exports[`HelpDetails Renders 1`] = `
 <div
-  className="HelpDetails-container"
+  className="help__details"
 >
   <div
-    className="HelpDetails-flex-container"
+    className="help__details-inner"
   >
     <Breadcrumb
       prefixCls="ant-breadcrumb"
@@ -22,7 +22,7 @@ exports[`HelpDetails Renders 1`] = `
       </BreadcrumbItem>
     </Breadcrumb>
     <div
-      className="HelpDetails-pages"
+      className="help__details-pages"
     >
       <Switch>
         <Route

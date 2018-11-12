@@ -2,10 +2,10 @@
 
 exports[`HelpNavButtons Renders with back route only 1`] = `
 <div
-  className="HelpNavButtons-container"
+  className="help__nav-buttons"
 >
   <Button
-    className="HelpNavButtons-backward"
+    className="help__nav-backward"
     ghost={false}
     loading={false}
     prefixCls="ant-btn"
@@ -46,7 +46,7 @@ exports[`HelpNavButtons Renders with back route only 1`] = `
         />
       </Icon>
       <span
-        className="HelpNavButtons-backward-text"
+        className="help__nav-backward-text"
       >
         Backward
       </span>
@@ -57,10 +57,10 @@ exports[`HelpNavButtons Renders with back route only 1`] = `
 
 exports[`HelpNavButtons Renders with both forward and back route 1`] = `
 <div
-  className="HelpNavButtons-container"
+  className="help__nav-buttons"
 >
   <Button
-    className="HelpNavButtons-backward"
+    className="help__nav-backward"
     ghost={false}
     loading={false}
     prefixCls="ant-btn"
@@ -101,14 +101,14 @@ exports[`HelpNavButtons Renders with both forward and back route 1`] = `
         />
       </Icon>
       <span
-        className="HelpNavButtons-backward-text"
+        className="help__nav-backward-text"
       >
         Backward
       </span>
     </Component>
   </Button>
   <Button
-    className="HelpNavButtons-forward"
+    className="help__nav-forward"
     ghost={false}
     loading={false}
     prefixCls="ant-btn"
@@ -118,7 +118,7 @@ exports[`HelpNavButtons Renders with both forward and back route 1`] = `
       to="/testforward"
     >
       <span
-        className="HelpNavButtons-forward-text"
+        className="help__nav-forward-text"
       >
         Forward
       </span>
@@ -160,10 +160,10 @@ exports[`HelpNavButtons Renders with both forward and back route 1`] = `
 
 exports[`HelpNavButtons Renders with forward route only 1`] = `
 <div
-  className="HelpNavButtons-container"
+  className="help__nav-buttons"
 >
   <Button
-    className="HelpNavButtons-forward"
+    className="help__nav-forward"
     ghost={false}
     loading={false}
     prefixCls="ant-btn"
@@ -173,7 +173,7 @@ exports[`HelpNavButtons Renders with forward route only 1`] = `
       to="/testforward"
     >
       <span
-        className="HelpNavButtons-forward-text"
+        className="help__nav-forward-text"
       >
         Forward
       </span>

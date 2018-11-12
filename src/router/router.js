@@ -6,11 +6,11 @@ import CaptureRouteNotFound from './capture-not-found';
 // routes
 import Analysis from '../analysis/analysis';
 import App from '../App';
-import Help from '../help/help';
+import Help from '../help/help-loadable';
 import Missing from '../404/404';
 import News from '../news/news';
 import Tasks from '../tasks/tasks-container';
-import Visualization from '../visualization/visualization';
+import Visualization from '../visualization/visualization-loadable';
 
 const Routes = () => (
   <Router basename={process.env.REACT_APP_BASE}>

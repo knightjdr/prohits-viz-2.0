@@ -47,6 +47,14 @@
   justify-content: center;
   width: 25px;
 }
+@media (max-width: 768px) {
+  .selection__grid {
+    grid-template-rows: auto auto;
+  }
+  .selection__select {
+    height: auto;
+  }
+}
 @media (max-width: 374px) {
   .selection__grid {
     grid-column-gap: 4px;

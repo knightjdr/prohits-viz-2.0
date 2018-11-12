@@ -2,13 +2,13 @@
 
 exports[`Help It renders 1`] = `
 <div
-  className="Help-container"
+  className="help"
 >
   <Connect(NavbarContainer)
     fixed={true}
   />
   <div
-    className="Help-content"
+    className="help__inner"
   >
     <HelpBarContainer />
     <withRouter() />

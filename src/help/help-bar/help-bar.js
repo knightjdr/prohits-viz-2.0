@@ -20,26 +20,26 @@ const HelpBar = ({
     isSmallScreen &&
     isPanelVisible
   ) {
-    breadcrumbClass = 'HelpBar-breadcrumb-transition-in';
-    buttonClass = 'HelpBar-button-transition-in';
-    panelClass = 'HelpBar-panel-transition-in';
+    breadcrumbClass = 'help__bar-breadcrumb-transition-in';
+    buttonClass = 'help__bar-button-transition-in';
+    panelClass = 'help__bar-panel-transition-in';
   } else if (
     isSmallScreen &&
     !isPanelVisible
   ) {
-    breadcrumbClass = 'HelpBar-breadcrumb-transition-out';
-    buttonClass = 'HelpBar-button-transition-out';
-    panelClass = 'HelpBar-panel-transition-out';
+    breadcrumbClass = 'help__bar-breadcrumb-transition-out';
+    buttonClass = 'help__bar-button-transition-out';
+    panelClass = 'help__bar-panel-transition-out';
   }
   return (
-    <div className="HelpBar-container">
-      <div className={`HelpBar-panel ${panelClass}`}>
-        <div className={`HelpBar-breadcrumb ${breadcrumbClass}`}>
+    <div className="help__bar">
+      <div className={`help__bar-panel ${panelClass}`}>
+        <div className={`help__bar-breadcrumb ${breadcrumbClass}`}>
           <TreeRoutes />
         </div>
       </div>
       <Button
-        className={`HelpBar-button ${buttonClass}`}
+        className={`help__bar-button ${buttonClass}`}
         onClick={showPanel}
         shape="circle"
         type="primary"

@@ -1,7 +1,7 @@
 import * as actions from './panel-actions';
 import * as fileActions from '../interactive-file-actions';
 
-export const defaultState = false;
+export const defaultState = true;
 
 const Panel = (state = defaultState, action) => {
   switch (action.type) {

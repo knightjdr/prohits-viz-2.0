@@ -6,6 +6,7 @@ exports[`Custom select menu should render with a hidden placholder item 1`] = `
   multiple={true}
   onChange={[Function]}
   onContextMenu={[Function]}
+  placeholder="Select..."
 >
   [
   <option

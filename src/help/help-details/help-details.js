@@ -45,12 +45,12 @@ export const HelpDetailsComponent = ({
   ));
   const contentElement = toRouteNodes();
   return (
-    <div className="HelpDetails-container">
-      <div className="HelpDetails-flex-container">
+    <div className="help__details">
+      <div className="help__details-inner">
         <Breadcrumb separator=">">
           { breadcrumbElement }
         </Breadcrumb>
-        <div className="HelpDetails-pages">
+        <div className="help__details-pages">
           <Switch>
             { contentElement }
             <RouteNotFound />

@@ -31,14 +31,14 @@ const heatmapData = (state) => {
     scoreType,
     secondaryFilter,
   };
-  if (activeTab === 'main') {
-    const { columns, rows } = state();
-    data.columns = columns.names;
-    data.rows = rows.list;
-  } else {
+  if (activeTab === 'customize') {
     const { customize } = state();
     data.columns = customize[customize.length - 1].columns.names;
     data.rows = customize[customize.length - 1].rows.list;
+  } else {
+    const { columns, rows } = state();
+    data.columns = columns.names;
+    data.rows = rows.list;
   }
   return data;
 };

@@ -3,7 +3,7 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Spin, Tooltip } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {
@@ -14,9 +14,9 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
-import { faExclamationTriangle } from '@fortawesome/pro-light-svg-icons';
 import { faNewspaper } from '@fortawesome/pro-regular-svg-icons';
 
+import Loading from '../../components/loading/loading';
 import NewsItemSelector from '../../state/selectors/news-item-selector';
 
 import './news-item.css';
@@ -27,18 +27,14 @@ export const NewsItemComponent = ({
   let newsItemElement = null;
   if (newsItem.isLoading) {
     newsItemElement = (
-      <div className="news__item-message">
-        <Spin
-          size="large"
-        />
-      </div>
+      <Loading />
     );
   } else if (newsItem.error) {
     newsItemElement = (
-      <div className="news__item-message">
-        <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-        There was an error retrieving this story
-      </div>
+      <Loading
+        error
+        message="There was an error retrieving this story"
+      />
     );
   } else if (newsItem.isLoaded) {
     const newsButtons = (
