@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Heatmap = () => (
-  <div>
-    Heatmap
-  </div>
+  <article>
+    <p>Heat map</p>
+  </article>
 );
 
 export default Heatmap;

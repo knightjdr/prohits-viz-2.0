@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Archive = () => (
-  <div>
-    Archive
-  </div>
+  <article>
+    <p>Archive</p>
+  </article>
 );
 
 export default Archive;

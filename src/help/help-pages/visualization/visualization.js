@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Visualization = () => (
-  <div>
-    Visualization
-  </div>
+  <article>
+    <p>Visualization</p>
+  </article>
 );
 
 export default Visualization;

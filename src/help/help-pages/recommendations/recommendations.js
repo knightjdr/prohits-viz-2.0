@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Recommendations = () => (
-  <div>
-    Recommendations
-  </div>
+  <article>
+    <p>Recommendations</p>
+  </article>
 );
 
 export default Recommendations;

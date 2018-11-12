@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help module Heatmap should render and match snapshot 1`] = `
+<article>
+  <p>
+    Heat map
+  </p>
+</article>
+`;

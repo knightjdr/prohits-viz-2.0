@@ -1,7 +1,7 @@
 import HelpRoutesMap, { RoutesToMap } from './help-routes-map';
 
 // mock HelpRoutes
-jest.mock('./help-routes');
+jest.mock('../help-pages/help-pages');
 
 const expected = {
   arr: ['/help', '/help/tools', '/help/tools/dotplot', '/help/visualization'],

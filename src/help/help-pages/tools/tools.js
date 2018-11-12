@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Tools = () => (
-  <div>
-    Tools
-  </div>
+  <article>
+    <p>Tools</p>
+  </article>
 );
 
 export default Tools;

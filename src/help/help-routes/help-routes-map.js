@@ -1,4 +1,4 @@
-import HelpRoutes from './help-routes';
+import HelpRoutes from '../help-pages/help-pages';
 
 export const RoutesToMap = (routeArr = HelpRoutes) => {
   const mapped = {

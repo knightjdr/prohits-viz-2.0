@@ -5,7 +5,7 @@ import RoutesFromPath from '../../helpers/routes-from-path';
 import { HelpDetailsComponent } from './help-details';
 
 // mock HelpRoutes
-jest.mock('../help-routes/help-routes');
+jest.mock('../help-pages/help-pages');
 
 // mock RoutesFromPath
 jest.mock('../../helpers/routes-from-path');

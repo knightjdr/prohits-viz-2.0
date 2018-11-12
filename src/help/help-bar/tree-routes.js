@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Tree } from 'antd';
 
-import HelpRoutes from '../help-routes/help-routes';
+import HelpPages from '../help-pages/help-pages';
 
 const { TreeNode } = Tree;
 
@@ -30,7 +30,7 @@ export const TreeRoutesComponent = ({
     expandedKeys={expandedRoutes}
     onExpand={expandNode}
   >
-    { treeNodes(HelpRoutes) }
+    { treeNodes(HelpPages) }
   </Tree>
 );
 

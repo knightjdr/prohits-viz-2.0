@@ -1,9 +1,9 @@
 import React from 'react';
 
 const FileFormat = () => (
-  <div>
-    File format
-  </div>
+  <article>
+    <p>File format</p>
+  </article>
 );
 
 export default FileFormat;

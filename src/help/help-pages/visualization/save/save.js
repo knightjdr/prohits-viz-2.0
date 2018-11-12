@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Save = () => (
-  <div>
-    Save
-  </div>
+  <article>
+    <p>Save</p>
+  </article>
 );
 
 export default Save;

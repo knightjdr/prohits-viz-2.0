@@ -5,13 +5,13 @@ import { NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import RouteNotFound from '../../router/route-not-found';
 
 import HelpNavButtons from './help-nav-buttons-container';
-import HelpRoutes from '../help-routes/help-routes';
+import HelpPages from '../help-pages/help-pages';
 import HelpRoutesMap from '../help-routes/help-routes-map';
 import RoutesFromPath from '../../helpers/routes-from-path';
 
 import './help-details.css';
 
-export const toRouteNodes = (routes = HelpRoutes) => {
+export const toRouteNodes = (routes = HelpPages) => {
   let routeArr = [];
   routes.forEach((route) => {
     routeArr.push(

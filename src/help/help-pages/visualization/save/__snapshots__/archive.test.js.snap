@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help module Archive should render and match snapshot 1`] = `
+<article>
+  <p>
+    Archive
+  </p>
+</article>
+`;
