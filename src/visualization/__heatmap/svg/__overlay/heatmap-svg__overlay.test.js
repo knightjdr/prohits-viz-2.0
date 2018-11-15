@@ -64,24 +64,6 @@ describe('Overlay', () => {
         rect.simulate('mousedown');
         expect(handleMouseDown).toHaveBeenCalled();
       });
-
-      it('should handle mouse leave', () => {
-        handleMouseUp.mockClear();
-        rect.simulate('mouseleave');
-        expect(handleMouseUp).toHaveBeenCalled();
-      });
-
-      it('should handle mouse move', () => {
-        handleMouseMove.mockClear();
-        rect.simulate('mousemove');
-        expect(handleMouseMove).toHaveBeenCalled();
-      });
-
-      it('should handle mouse up', () => {
-        handleMouseUp.mockClear();
-        rect.simulate('mouseup');
-        expect(handleMouseUp).toHaveBeenCalled();
-      });
     });
   });
 
@@ -138,18 +120,6 @@ describe('Overlay', () => {
 
       it('should set width', () => {
         expect(rect.props().width).toBe(20);
-      });
-
-      it('should handle mouse move', () => {
-        handleMouseMove.mockClear();
-        rect.simulate('mousemove');
-        expect(handleMouseMove).toHaveBeenCalled();
-      });
-
-      it('should handle mouse up', () => {
-        handleMouseUp.mockClear();
-        rect.simulate('mouseup');
-        expect(handleMouseUp).toHaveBeenCalled();
       });
     });
   });

@@ -5,6 +5,9 @@ import arrUnique from '../../helpers/arr-unique';
 const getTaskStatus = task => (
   (dispatch, getStore) => {
     const { tasks } = getStore();
+    if (!task && tasks.list.length === 0) {
+      return null;
+    }
     dispatch(taskActions.updatingTaskStatus());
 
     const taskList = [...tasks.list];

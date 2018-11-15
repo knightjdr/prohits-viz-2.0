@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NewsListItem Renders 1`] = `
+exports[`NewsListItem should render and match snapshot 1`] = `
 <Item
   actions={
     Array [
@@ -19,7 +19,7 @@ exports[`NewsListItem Renders 1`] = `
           test
         </div>
         <div
-          className="News-list-details"
+          className="news__list-details"
         >
           test
         </div>

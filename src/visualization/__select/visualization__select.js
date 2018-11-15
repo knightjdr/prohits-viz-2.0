@@ -50,14 +50,21 @@ const Selection = ({
       Select the image to display interactively. This file must be JSON format
       (extension .json). If you have downloaded an analysis results folder from
       ProHits-viz these files will be located in the &quot;interactive&quot;
-      subfolder. See the {' '}
+      subfolder. See the{' '}
       <NavLink
         className="visualization__select-instructions-link"
-        to="/help/format"
+        to="/help/visualization/format"
       >
         help
       </NavLink>{' '}
-      for information on the input format.
+      for information on the input format. If you would like to test a sample file,
+      click{' '}
+      <NavLink
+        className="visualization__select-instructions-link"
+        to="/visualization/samplefile/dotplot"
+      >
+        here
+      </NavLink>.
     </div>
     <BrowserSession />
   </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`News Renders item when ID specified 1`] = `
+exports[`News should render item when ID specified 1`] = `
 <div>
   <Connect(NavbarContainer)
     links={
@@ -21,7 +21,7 @@ exports[`News Renders item when ID specified 1`] = `
     }
   />
   <div
-    className="News-container"
+    className="news"
   >
     <Switch>
       <Route
@@ -40,7 +40,7 @@ exports[`News Renders item when ID specified 1`] = `
 </div>
 `;
 
-exports[`News Renders list when no ID specified 1`] = `
+exports[`News should render list when no ID specified 1`] = `
 <div>
   <Connect(NavbarContainer)
     links={
@@ -61,7 +61,7 @@ exports[`News Renders list when no ID specified 1`] = `
     }
   />
   <div
-    className="News-container"
+    className="news"
   >
     <Switch>
       <Route

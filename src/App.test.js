@@ -11,92 +11,105 @@ jest.mock('./spotlight/spotlight');
 jest.mock('./tools/tools');
 jest.mock('./about/about');
 
+const { addEventListener, removeEventListener } = window;
+
 beforeAll(() => {
   Object.defineProperty(window, 'addEventListener', { value: jest.fn(), writable: true });
   Object.defineProperty(window, 'removeEventListener', { value: jest.fn(), writable: true });
 });
 
+afterAll(() => {
+  window.addEventListener = addEventListener;
+  window.removeEventListener = removeEventListener;
+});
+
 describe('App', () => {
-  afterEach(() => {
-    Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
-  });
+  describe('mounting with screen top at 0', () => {
+    let wrapper;
 
-  test('Renders', () => {
-    jest.clearAllMocks();
-    const wrapper = mount(
-      <App />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(window.addEventListener).toHaveBeenCalledWith('scroll', wrapper.instance().handleScroll);
-    expect(wrapper.state().hidePrompt).toBeFalsy();
-  });
-
-  test('Mounting with scrollY > 0 hides prompt', () => {
-    jest.clearAllMocks();
-    Object.defineProperty(window, 'scrollY', { value: 10, writable: true });
-    const wrapper = mount(
-      <App />,
-    );
-    expect(window.addEventListener).not.toHaveBeenCalledWith('scroll');
-    expect(wrapper.state().hidePrompt).toBeTruthy();
-  });
-
-  test('checkTop hides prompt and removes event listener when scrollTop > 0', () => {
-    const wrapper = mount(
-      <App />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().checkTop(0);
-    expect(wrapper.state().hidePrompt).toBeFalsy();
-    wrapper.instance().checkTop(1);
-    expect(window.removeEventListener).toHaveBeenCalledWith('scroll', wrapper.instance().handleScroll);
-    expect(wrapper.state().hidePrompt).toBeTruthy();
-  });
-
-  test('checkTop does nothing when prompt is already hidden', () => {
-    const wrapper = mount(
-      <App />,
-    );
-    jest.clearAllMocks();
-    wrapper.setState({
-      hidePrompt: true,
+    beforeAll(() => {
+      Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
+      wrapper = mount(
+        <App />,
+      );
     });
-    wrapper.instance().checkTop(1);
-    expect(window.removeEventListener).not.toHaveBeenCalledWith('scroll');
-    expect(wrapper.state().hidePrompt).toBeTruthy();
-  });
 
-  test('handleScroll calls checkTop with scroll top', () => {
-    const wrapper = mount(
-      <App />,
-    );
-    jest.clearAllMocks();
-    const checkTopSpy = jest.spyOn(wrapper.instance(), 'checkTop');
-    wrapper.instance().handleScroll();
-    expect(checkTopSpy).toHaveBeenCalledTimes(1);
-    expect(checkTopSpy).toHaveBeenCalledWith(0);
-    checkTopSpy.mockRestore();
-  });
-
-  test('Unmount remove event listener', () => {
-    const wrapper = mount(
-      <App />,
-    );
-    jest.clearAllMocks();
-    const { handleScroll } = wrapper.instance();
-    wrapper.unmount();
-    expect(window.removeEventListener).toHaveBeenCalledWith('scroll', handleScroll);
-  });
-
-  test('Unmount does not remove event listener when already removed', () => {
-    const wrapper = mount(
-      <App />,
-    );
-    jest.clearAllMocks();
-    wrapper.setState({
-      hidePrompt: true,
+    it('should add event listener', () => {
+      expect(window.addEventListener).toHaveBeenCalledWith('scroll', wrapper.instance().handleScroll);
     });
-    wrapper.unmount();
-    expect(window.removeEventListener).not.toHaveBeenCalledWith('scroll');
+
+    it('should not hide prompt', () => {
+      expect(wrapper.state().hidePrompt).toBeFalsy();
+    });
+
+    describe('check top', () => {
+      it('should not remove listener when prompt is already hidden', () => {
+        wrapper.setState({
+          hidePrompt: true,
+        });
+        wrapper.instance().checkTop(1);
+        expect(window.removeEventListener).not.toHaveBeenCalledWith('scroll');
+      });
+
+      it('should remove listener when prompt is visible', () => {
+        wrapper.setState({
+          hidePrompt: false,
+        });
+        wrapper.instance().checkTop(1);
+        expect(window.removeEventListener).toHaveBeenCalledWith('scroll', expect.anything());
+      });
+    });
+
+    describe('handle scroll', () => {
+      let spy;
+
+      afterAll(() => {
+        spy.mockRestore();
+      });
+
+      beforeAll(() => {
+        spy = jest.spyOn(wrapper.instance(), 'checkTop');
+        wrapper.update();
+        wrapper.instance().handleScroll();
+      });
+
+      it('should call method', () => {
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it('should remove event listener on unmount', () => {
+      window.removeEventListener.mockClear();
+      wrapper.setState({
+        hidePrompt: false,
+      });
+      wrapper.unmount();
+      expect(window.removeEventListener).toHaveBeenCalledWith('scroll', expect.anything());
+    });
+  });
+
+  describe('mounting with screen top > 0', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      window.addEventListener.mockClear();
+      Object.defineProperty(window, 'scrollY', { value: 10, writable: true });
+      wrapper = mount(
+        <App />,
+      );
+    });
+
+    it('should not add event listener', () => {
+      expect(window.addEventListener).not.toHaveBeenCalledWith('scroll', expect.anything());
+    });
+
+    it('should hide prompt', () => {
+      expect(wrapper.state().hidePrompt).toBeTruthy();
+    });
+
+    it('should not remove event listener on umount when already removed', () => {
+      wrapper.unmount();
+      expect(window.removeEventListener).not.toHaveBeenCalledWith('scroll');
+    });
   });
 });

@@ -51,35 +51,73 @@ describe('News item', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render when loading', () => {
-    const wrapper = shallow(
-      <NewsItemComponent
-        newsItem={testItem.loading}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Spin').length).toBe(1);
+  describe('when loading', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <NewsItemComponent
+          newsItem={testItem.loading}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show loading component', () => {
+      expect(wrapper.find('Loading').length).toBe(1);
+    });
+
+    it('should have loading component with no error', () => {
+      const loading = wrapper.find('Loading');
+      expect(loading.props().error).toBeFalsy();
+    });
   });
 
-  it('should render when loaded', () => {
-    const wrapper = shallow(
-      <NewsItemComponent
-        newsItem={testItem.loaded}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.news__item-content').length).toBe(1);
+  describe('when loaded', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <NewsItemComponent
+          newsItem={testItem.loaded}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render new item', () => {
+      expect(wrapper.find('.news__item-content').length).toBe(1);
+    });
   });
 
-  it('should render with error', () => {
-    const wrapper = shallow(
-      <NewsItemComponent
-        newsItem={testItem.error}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    const text = wrapper.find('.news__item-message').text();
-    const re = RegExp('There was an error retrieving this story');
-    expect(re.test(text)).toBeTruthy();
+  describe('with error', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <NewsItemComponent
+          newsItem={testItem.error}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show loading component', () => {
+      expect(wrapper.find('Loading').length).toBe(1);
+    });
+
+    it('should have loading component with error', () => {
+      const loading = wrapper.find('Loading');
+      expect(loading.props().error).toBeTruthy();
+    });
   });
 });

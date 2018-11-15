@@ -109,16 +109,24 @@ exports[`Selection should display an error 1`] = `
   <div
     className="visualization__select-instructions"
   >
-    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
+    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the
      
     <Component
       className="visualization__select-instructions-link"
-      to="/help/format"
+      to="/help/visualization/format"
     >
       help
     </Component>
      
-    for information on the input format.
+    for information on the input format. If you would like to test a sample file, click
+     
+    <Component
+      className="visualization__select-instructions-link"
+      to="/visualization/samplefile/dotplot"
+    >
+      here
+    </Component>
+    .
   </div>
   <BrowserSession />
 </div>
@@ -231,16 +239,24 @@ exports[`Selection should display default view 1`] = `
   <div
     className="visualization__select-instructions"
   >
-    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
+    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the
      
     <Component
       className="visualization__select-instructions-link"
-      to="/help/format"
+      to="/help/visualization/format"
     >
       help
     </Component>
      
-    for information on the input format.
+    for information on the input format. If you would like to test a sample file, click
+     
+    <Component
+      className="visualization__select-instructions-link"
+      to="/visualization/samplefile/dotplot"
+    >
+      here
+    </Component>
+    .
   </div>
   <BrowserSession />
 </div>
@@ -353,16 +369,24 @@ exports[`Selection should display loading message 1`] = `
   <div
     className="visualization__select-instructions"
   >
-    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the 
+    Select the image to display interactively. This file must be JSON format (extension .json). If you have downloaded an analysis results folder from ProHits-viz these files will be located in the "interactive" subfolder. See the
      
     <Component
       className="visualization__select-instructions-link"
-      to="/help/format"
+      to="/help/visualization/format"
     >
       help
     </Component>
      
-    for information on the input format.
+    for information on the input format. If you would like to test a sample file, click
+     
+    <Component
+      className="visualization__select-instructions-link"
+      to="/visualization/samplefile/dotplot"
+    >
+      here
+    </Component>
+    .
   </div>
   <BrowserSession />
 </div>

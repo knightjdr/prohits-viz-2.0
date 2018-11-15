@@ -11,7 +11,7 @@ const item = {
 };
 
 describe('NewsListItem', () => {
-  test('Renders', () => {
+  it('should render and match snapshot', () => {
     const wrapper = shallow(
       <NewsListItem
         item={item}

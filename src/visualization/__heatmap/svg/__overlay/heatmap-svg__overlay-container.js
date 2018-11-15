@@ -43,6 +43,21 @@ export class OverlayContainer extends Component {
       this.props.addMarkerBox(markerHeight, markerWidth, markerX, markerY);
     }
   }
+  coordinate = (vertex, current, start) => {
+    const coord = current[vertex] < start[vertex] ? current[vertex] : start[vertex];
+    return coord < 0 ? 0 : coord;
+  }
+  dimension = (vertex, page, current, start) => {
+    const { cellSize, dimensions } = this.props;
+    const max = cellSize * dimensions[page];
+    let pos = current[vertex];
+    if (pos < 0) {
+      pos = 0;
+    } else if (pos > max) {
+      pos = max;
+    }
+    return Math.abs(pos - start[vertex]);
+  }
   handleMouseMove = (e) => {
     if (this.dragging) {
       this.overlayMouseMove(e);
@@ -52,10 +67,14 @@ export class OverlayContainer extends Component {
     if (this.dragging) {
       this.dragging = false;
       this.overlayMouseUp(e);
+      window.removeEventListener('mousemove', this.handleMouseMove);
+      window.removeEventListener('mouseup', this.handleMouseUp);
     }
   }
   handleMouseDown = (e) => {
     const { cellSize } = this.props;
+    window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('mouseup', this.handleMouseUp);
     this.boundary = this.getBoundary();
     this.dragging = true;
     this.startPosition = {
@@ -98,15 +117,17 @@ export class OverlayContainer extends Component {
       x: e.clientX - this.boundary.x,
       y: e.clientY - this.boundary.y,
     };
-    const x = currentPos.x < this.startPosition.x ? currentPos.x : this.startPosition.x;
-    const y = currentPos.y < this.startPosition.y ? currentPos.y : this.startPosition.y;
+    const height = this.dimension('y', 'pageY', currentPos, this.startPosition);
+    const width = this.dimension('x', 'pageX', currentPos, this.startPosition);
+    const x = this.coordinate('x', currentPos, this.startPosition);
+    const y = this.coordinate('y', currentPos, this.startPosition);
     this.setState({
       marker: {
-        height: Math.abs(currentPos.y - this.startPosition.y),
+        height,
         show: true,
         x,
         y,
-        width: Math.abs(currentPos.x - this.startPosition.x),
+        width,
       },
     });
   }
@@ -126,8 +147,8 @@ export class OverlayContainer extends Component {
       height > 0 &&
       width > 0
     ) {
-      const x = currentPos.x < this.startPosition.x ? currentPos.x : this.startPosition.x;
-      const y = currentPos.y < this.startPosition.y ? currentPos.y : this.startPosition.y;
+      const x = this.coordinate('x', currentPos, this.startPosition);
+      const y = this.coordinate('y', currentPos, this.startPosition);
       this.setState({
         marker: {
           height,
@@ -192,8 +213,6 @@ export class OverlayContainer extends Component {
       this.props.showSelectionbox &&
       <Overlay
         cursor={this.state.cursor}
-        handleMouseMove={this.handleMouseMove}
-        handleMouseUp={this.handleMouseUp}
         handleMouseDown={this.handleMouseDown}
         height={this.props.dimensions.height}
         marker={this.state.marker}

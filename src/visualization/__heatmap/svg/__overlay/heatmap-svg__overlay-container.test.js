@@ -24,6 +24,18 @@ const position = {
 };
 const rows = ['u', 'w', 'x', 'y', 'z'];
 
+const { addEventListener, removeEventListener } = window;
+
+beforeAll(() => {
+  Object.defineProperty(window, 'addEventListener', { value: jest.fn(), writable: true });
+  Object.defineProperty(window, 'removeEventListener', { value: jest.fn(), writable: true });
+});
+
+afterAll(() => {
+  window.addEventListener = addEventListener;
+  window.removeEventListener = removeEventListener;
+});
+
 describe('Overlay container', () => {
   let wrapper;
 
@@ -92,6 +104,63 @@ describe('Overlay container', () => {
     });
   });
 
+  describe('setting x or y mouse move coordinate', () => {
+    it('should return start coordinate when start postion is smaller than current', () => {
+      const current = { x: 50 };
+      const start = { x: 20 };
+      expect(wrapper.instance().coordinate('x', current, start)).toBe(20);
+    });
+
+    it('should return current coordinate when start postion is larger than current', () => {
+      const current = { x: 30 };
+      const start = { x: 50 };
+      expect(wrapper.instance().coordinate('x', current, start)).toBe(30);
+    });
+
+    it('should return 0 when current postion is less than 0', () => {
+      const current = { x: -10 };
+      const start = { x: 20 };
+      expect(wrapper.instance().coordinate('x', current, start)).toBe(0);
+    });
+  });
+
+  describe('overlay height and width when moving mouse', () => {
+    beforeAll(() => {
+      wrapper.setProps({
+        cellSize: 20,
+        dimensions,
+      });
+    });
+
+    describe('position within boundaries', () => {
+      it('should return height when start postion is smaller than current', () => {
+        const current = { x: 50 };
+        const start = { x: 20 };
+        expect(wrapper.instance().dimension('x', 'pageX', current, start)).toBe(30);
+      });
+
+      it('should return height when start postion is larger than current', () => {
+        const current = { x: 50 };
+        const start = { x: 80 };
+        expect(wrapper.instance().dimension('x', 'pageX', current, start)).toBe(30);
+      });
+    });
+
+    describe('position outside boundaries', () => {
+      it('should return height when current position below bottom boundary', () => {
+        const current = { x: -10 };
+        const start = { x: 20 };
+        expect(wrapper.instance().dimension('x', 'pageX', current, start)).toBe(20);
+      });
+
+      it('should return height when current position beyond upper boundary', () => {
+        const current = { x: 220 };
+        const start = { x: 20 };
+        expect(wrapper.instance().dimension('x', 'pageX', current, start)).toBe(180);
+      });
+    });
+  });
+
   describe('mouse move', () => {
     let spy;
 
@@ -133,22 +202,53 @@ describe('Overlay container', () => {
       wrapper.update();
     });
 
-    it('should not call overlay up method when not dragging', () => {
-      wrapper.instance().dragging = false;
-      wrapper.instance().handleMouseUp({});
-      expect(spy).not.toHaveBeenCalled();
+    describe('when not dragging', () => {
+      it('should not call overlay up method when not dragging', () => {
+        wrapper.instance().dragging = false;
+        wrapper.instance().handleMouseUp({});
+        expect(spy).not.toHaveBeenCalled();
+      });
     });
 
-    it('should call overlay up method when dragging', () => {
-      wrapper.instance().dragging = true;
-      wrapper.instance().handleMouseUp({});
-      expect(spy).toHaveBeenCalled();
+    describe('when dragging', () => {
+      beforeAll(() => {
+        window.addEventListener.mockClear();
+        window.removeEventListener.mockClear();
+        wrapper.instance().dragging = true;
+        wrapper.instance().handleMouseUp({});
+      });
+
+      it('should set dragging to false', () => {
+        expect(wrapper.instance().dragging).toBeFalsy();
+      });
+
+      it('should call overlay up method when dragging', () => {
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('should remove mousemove event listener', () => {
+        expect(window.removeEventListener).toHaveBeenCalledWith('mousemove', wrapper.instance().handleMouseMove);
+      });
+
+      it('should remove mouseup event listener', () => {
+        expect(window.removeEventListener).toHaveBeenCalledWith('mouseup', wrapper.instance().handleMouseUp);
+      });
     });
   });
 
   describe('mouse down', () => {
     beforeAll(() => {
+      window.addEventListener.mockClear();
+      window.removeEventListener.mockClear();
       wrapper.instance().handleMouseDown({ clientX: 15, clientY: 40 });
+    });
+
+    it('should add mousemove event listener', () => {
+      expect(window.addEventListener).toHaveBeenCalledWith('mousemove', wrapper.instance().handleMouseMove);
+    });
+
+    it('should add mouseup event listener', () => {
+      expect(window.addEventListener).toHaveBeenCalledWith('mouseup', wrapper.instance().handleMouseUp);
     });
 
     it('should set boundary', () => {

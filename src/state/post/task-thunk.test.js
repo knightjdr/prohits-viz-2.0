@@ -13,6 +13,26 @@ afterAll(() => {
 });
 
 describe('Get task status', () => {
+  describe('with no tasks', () => {
+    let dispatcedActions;
+
+    beforeAll(async (done) => {
+      const state = {
+        tasks: {
+          list: [],
+        },
+      };
+      const store = mockStore(state);
+      store.dispatch(getTaskStatus());
+      dispatcedActions = store.getActions();
+      done();
+    });
+
+    it('should not call any actions', () => {
+      expect(dispatcedActions.length).toBe(0);
+    });
+  });
+
   describe('with successful response', () => {
     let dispatcedActions;
 

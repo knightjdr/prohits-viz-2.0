@@ -3,8 +3,6 @@ import React, { Fragment } from 'react';
 
 const Overlay = ({
   cursor,
-  handleMouseMove,
-  handleMouseUp,
   handleMouseDown,
   height,
   marker,
@@ -23,8 +21,6 @@ const Overlay = ({
           fill="black"
           fillOpacity="0.4"
           height={marker.height}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
           stroke="#000"
           strokeOpacity="0.8"
           strokeWidth="1"
@@ -38,9 +34,6 @@ const Overlay = ({
         fill="black"
         height={height}
         onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
         opacity="0"
         x="0"
         y="0"
@@ -52,8 +45,6 @@ const Overlay = ({
 
 Overlay.propTypes = {
   cursor: PropTypes.string.isRequired,
-  handleMouseMove: PropTypes.func.isRequired,
-  handleMouseUp: PropTypes.func.isRequired,
   handleMouseDown: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,
   marker: PropTypes.shape({

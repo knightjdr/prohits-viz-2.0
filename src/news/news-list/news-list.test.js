@@ -12,33 +12,6 @@ const item = {
 };
 const pageLength = 5;
 
-const testNewsList = {
-  error: {
-    error: true,
-    isLoaded: false,
-    isLoading: false,
-    list: [],
-  },
-  init: {
-    error: false,
-    isLoaded: false,
-    isLoading: false,
-    list: [],
-  },
-  loaded: {
-    error: false,
-    isLoaded: true,
-    isLoading: false,
-    list: [item],
-  },
-  loading: {
-    error: false,
-    isLoaded: false,
-    isLoading: true,
-    list: [],
-  },
-};
-
 const testPage = {
   empty: {
     page: [],
@@ -50,81 +23,154 @@ const testPage = {
   },
 };
 
-
 describe('News list', () => {
-  test('Renders item on render call', () => {
-    const wrapper = shallow(
-      <NewsListItemRender
-        item={changePage}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('news list item', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <NewsListItemRender
+          item={changePage}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
-  test('Renders initially', () => {
-    const wrapper = shallow(
-      <NewsListComponent
-        changePage={changePage}
-        news={testNewsList.init}
-        newsPage={testPage.empty}
-        pageLength={pageLength}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+  describe('news list', () => {
+    describe('initialized', () => {
+      let wrapper;
 
-  test('Renders when loading', () => {
-    const wrapper = shallow(
-      <NewsListComponent
-        changePage={changePage}
-        news={testNewsList.loading}
-        newsPage={testPage.empty}
-        pageLength={pageLength}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Spin').length).toBe(1);
-  });
+      beforeAll(() => {
+        const newsList = {
+          error: false,
+          isLoaded: false,
+          isLoading: false,
+          list: [],
+        };
+        wrapper = shallow(
+          <NewsListComponent
+            changePage={changePage}
+            news={newsList}
+            newsPage={testPage.empty}
+            pageLength={pageLength}
+          />,
+        );
+      });
 
-  test('Renders when loaded', () => {
-    const wrapper = shallow(
-      <NewsListComponent
-        changePage={changePage}
-        news={testNewsList.loaded}
-        newsPage={testPage.loaded}
-        pageLength={pageLength}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.news__list-title').length).toBe(1);
-  });
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
 
-  test('Renders with error', () => {
-    const wrapper = shallow(
-      <NewsListComponent
-        changePage={changePage}
-        news={testNewsList.error}
-        newsPage={testPage.empty}
-        pageLength={pageLength}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    const text = wrapper.find('.news__list-message').text();
-    const re = RegExp('There was an error retrieving the news');
-    expect(re.test(text)).toBeTruthy();
-  });
+      it('should render null', () => {
+        expect(wrapper.find('.news__list').text()).toBe('');
+      });
+    });
 
-  test('ChangePage called on pagination element', () => {
-    const wrapper = shallow(
-      <NewsListComponent
-        changePage={changePage}
-        news={testNewsList.loaded}
-        newsPage={testPage.loaded}
-        pageLength={pageLength}
-      />,
-    );
-    wrapper.find('Pagination').simulate('change', { target: 1 });
-    expect(changePage).toHaveBeenCalledTimes(1);
-    expect(changePage).toHaveBeenCalledWith({ target: 1 });
+    describe('loaded with errors', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        const newsList = {
+          error: true,
+          isLoaded: false,
+          isLoading: false,
+          list: [],
+        };
+        wrapper = shallow(
+          <NewsListComponent
+            changePage={changePage}
+            news={newsList}
+            newsPage={testPage.empty}
+            pageLength={pageLength}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should show loading component', () => {
+        expect(wrapper.find('Loading').length).toBe(1);
+      });
+
+      it('should have loading component with error', () => {
+        const loading = wrapper.find('Loading');
+        expect(loading.props().error).toBeTruthy();
+      });
+    });
+
+    describe('loading', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        const newsList = {
+          error: false,
+          isLoaded: false,
+          isLoading: true,
+          list: [],
+        };
+        wrapper = shallow(
+          <NewsListComponent
+            changePage={changePage}
+            news={newsList}
+            newsPage={testPage.empty}
+            pageLength={pageLength}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should show loading component', () => {
+        expect(wrapper.find('Loading').length).toBe(1);
+      });
+
+      it('should have loading component with no error', () => {
+        const loading = wrapper.find('Loading');
+        expect(loading.props().error).toBeFalsy();
+      });
+    });
+
+    describe('loaded list', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        changePage.mockClear();
+        const newsList = {
+          error: false,
+          isLoaded: true,
+          isLoading: false,
+          list: [item],
+        };
+        wrapper = shallow(
+          <NewsListComponent
+            changePage={changePage}
+            news={newsList}
+            newsPage={testPage.loaded}
+            pageLength={pageLength}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should render list', () => {
+        expect(wrapper.find('.news__list-title').length).toBe(1);
+      });
+
+      it('should call changePageon pagination element', () => {
+        wrapper.find('Pagination').simulate('change', { target: 1 });
+        expect(changePage).toHaveBeenCalledWith({ target: 1 });
+      });
+    });
   });
 });

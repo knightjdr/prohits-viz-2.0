@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Custom select menu should render with a hidden placholder item 1`] = `
+exports[`Custom select menu should render with a hidden placeholder item 1`] = `
 <select
   className="selection__select"
   multiple={true}

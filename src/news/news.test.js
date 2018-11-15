@@ -13,7 +13,7 @@ const route = {
 };
 
 describe('News', () => {
-  test('Renders list when no ID specified', () => {
+  it('should render list when no ID specified', () => {
     const wrapper = shallow(
       <NewsComponent
         match={route.noId}
@@ -22,7 +22,7 @@ describe('News', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Renders item when ID specified', () => {
+  it('should render item when ID specified', () => {
     const wrapper = shallow(
       <NewsComponent
         match={route.withId}

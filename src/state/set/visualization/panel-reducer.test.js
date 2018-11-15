@@ -2,9 +2,9 @@ import PanelReducer from './panel-reducer';
 import * as actions from './panel-actions';
 
 describe('Panel reducer set reducer', () => {
-  it('should return an empty initial state', () => {
+  it('should return default initial state', () => {
     const action = {};
-    const expectedState = false;
+    const expectedState = true;
     expect(PanelReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -12,7 +12,7 @@ describe('Panel reducer set reducer', () => {
     const action = {
       type: actions.TOGGLE_PANEL,
     };
-    const expectedState = true;
+    const expectedState = false;
     expect(PanelReducer(undefined, action)).toEqual(expectedState);
   });
 });
