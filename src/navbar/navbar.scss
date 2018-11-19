@@ -11,7 +11,7 @@
   top: 0;
   z-index: 10;
 }
-.navbar_default {
+.navbar_dark {
   background-color: $backdrop-dark;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -20,13 +20,13 @@
   margin: 0px 5px;
   text-transform: uppercase;
 }
-.navbar_default a.navbar__link:link,
-.navbar_default a.navbar__link:visited {
+.navbar_dark a.navbar__link:link,
+.navbar_dark a.navbar__link:visited {
   color: $accent-light;
 }
-.navbar_default a.navbar__link:focus,
-.navbar_default a.navbar__link:hover,
-.navbar_default a.navbar__link:active {
+.navbar_dark a.navbar__link:focus,
+.navbar_dark a.navbar__link:hover,
+.navbar_dark a.navbar__link:active {
   color: $primary-light;
 }
 .navbar__link-container {
@@ -44,13 +44,30 @@
   font-size: 1.8rem;
   margin-top: 8px;
 }
-.navbar_default .navbar__menu,
-.navbar_default .navbar__tasks-icon {
+.navbar_dark .navbar__menu,
+.navbar_dark .navbar__tasks-icon {
   color: $accent-light;
 }
 .navbar__menu-items {
   display: flex;
   flex-direction: column;
+}
+.navbar_semi-transparent {
+  background-color: rgba(51, 107, 135, 0.8);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23);
+}
+.navbar_semi-transparent .navbar__menu,
+.navbar_semi-transparent .navbar__tasks-icon {
+  color: #eee;
+}
+.navbar_semi-transparent a.navbar__link:link,
+.navbar_semi-transparent a.navbar__link:visited {
+  color: #eee;
+}
+.navbar_semi-transparent a.navbar__link:focus,
+.navbar_semi-transparent a.navbar__link:hover,
+.navbar_semi-transparent a.navbar__link:active {
+  color: $primary-dark;
 }
 .navbar__tasks-icon {
   cursor: pointer;

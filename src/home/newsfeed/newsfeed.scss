@@ -5,16 +5,15 @@
 .newsfeed {
   @extend .fadein;
   @extend .boxshadow;
-  align-self: start;
+  align-self: center;
   background-color: $backdrop-light;
   border-radius: 2px;
   display: inline-flex;
   flex-direction: column;
   font-family: BodyText;
-  grid-column: 1;
-  grid-row: 3;
   height: auto;
-  margin: 20px 20px 0 20px;
+  margin: 20px;
+  margin-top: 40px;
   max-height: 200px;
   max-width: 350px;
   padding: 2px;
@@ -50,8 +49,8 @@
 .newsfeed__link:hover {
   color: $accent-dark;
 }
-@media (max-width: 999px) {
+@media (max-width: 768px) {
   .newsfeed {
-    grid-column: 1 / 3;
+    margin-top: 20px;
   }
 }

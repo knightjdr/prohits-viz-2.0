@@ -62,12 +62,12 @@ export class NavbarContainer extends Component {
 }
 
 NavbarContainer.defaultProps = {
-  background: true,
+  background: 'dark',
   fixed: false,
 };
 
 NavbarContainer.propTypes = {
-  background: PropTypes.bool,
+  background: PropTypes.string,
   fixed: PropTypes.bool,
   tasks: PropTypes.shape({
     list: PropTypes.arrayOf(

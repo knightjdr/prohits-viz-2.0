@@ -28,3 +28,11 @@
   justify-content: center;
   max-width: 1200px;
 }
+@media (max-width: 768px) {
+  .Tools-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+}

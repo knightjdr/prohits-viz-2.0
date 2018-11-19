@@ -1,36 +1,39 @@
-.About-container {
+.about {
   color: #2A3132;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10px 20px; }
 
-.About-footer {
+.about__footer {
   margin-top: 10px; }
 
-.About-funding {
+.about__funding {
   align-items: center;
   color: #2A3132;
   display: flex;
   flex-direction: column;
   padding: 20px 20px 0px 20px; }
 
-.About-funding-wrapper {
+.about__funding-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 10px;
   max-width: 1200px; }
 
-.About-funding-link {
+.about__funding-link {
   margin: 10px 10px; }
 
-.About-link {
+.about__link {
   color: #2A3132;
   margin-left: 4px; }
 
-.About-link:visited {
-  color: #90AFC5; }
+.about__link:link,
+.about__link:visited {
+  color: #2A3132; }
 
-.About-link:hover {
-  color: #763626; }
+.about__link:focus,
+.about__link:hover,
+.about__link:active {
+  color: #AC867C; }

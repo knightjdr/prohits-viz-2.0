@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`navbar should have transparent background 1`] = `
+exports[`navbar dark background should match snapshot 1`] = `
 <nav
-  className="navbar navbar_transparent"
+  className="navbar navbar_dark"
   style={
     Object {
       "position": "relative",
@@ -10,7 +10,7 @@ exports[`navbar should have transparent background 1`] = `
   }
 >
   <Logo
-    background={false}
+    background="dark"
   />
   <div
     className="navbar__link-container"
@@ -38,9 +38,9 @@ exports[`navbar should have transparent background 1`] = `
 </nav>
 `;
 
-exports[`navbar should show background 1`] = `
+exports[`navbar semi-transparent background should match snapshot 1`] = `
 <nav
-  className="navbar navbar_default"
+  className="navbar navbar_semi-transparent"
   style={
     Object {
       "position": "relative",
@@ -48,7 +48,45 @@ exports[`navbar should show background 1`] = `
   }
 >
   <Logo
-    background={true}
+    background="semi"
+  />
+  <div
+    className="navbar__link-container"
+  >
+    <Tasks
+      smallScreen={false}
+      tasks={Array []}
+    />
+    <Links
+      links={
+        Array [
+          Object {
+            "route": "/analysis",
+            "text": "analysis",
+          },
+          Object {
+            "route": "/help",
+            "text": "help",
+          },
+        ]
+      }
+      smallScreen={false}
+    />
+  </div>
+</nav>
+`;
+
+exports[`navbar transparent background should match snapshot 1`] = `
+<nav
+  className="navbar navbar_transparent"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <Logo
+    background="transparent"
   />
   <div
     className="navbar__link-container"

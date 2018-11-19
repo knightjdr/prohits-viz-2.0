@@ -1,39 +1,42 @@
 @import 'style/theme';
 
-.About-container {
+.about {
   color: $text-dark;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10px 20px;
 }
-.About-footer {
+.about__footer {
   margin-top: 10px;
 }
-.About-funding {
+.about__funding {
   align-items: center;
   color: $text-dark;
   display: flex;
   flex-direction: column;
   padding: 20px 20px 0px 20px;
 }
-.About-funding-wrapper {
+.about__funding-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 10px;
   max-width: 1200px;
 }
-.About-funding-link {
+.about__funding-link {
   margin: 10px 10px;
 }
-.About-link {
+.about__link {
   color: $primary-dark;
   margin-left: 4px;
 }
-.About-link:visited {
-  color: $primary-light;
+.about__link:link,
+.about__link:visited {
+  color: $primary-dark;
 }
-.About-link:hover {
-  color: $accent-dark;
+.about__link:focus,
+.about__link:hover,
+.about__link:active {
+  color: $accent-light;
 }

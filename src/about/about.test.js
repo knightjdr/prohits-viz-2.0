@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import About from './about';
 
 describe('About', () => {
-  test('It renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <About />,
     );

@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About It renders 1`] = `
+exports[`About should match snapshot 1`] = `
 <div
-  className="About-container"
+  className="about"
 >
   <div
-    className="About-funding"
+    className="about__funding"
   >
     <div>
       Funding for this project was graciously provided by:
     </div>
     <div
-      className="About-funding-wrapper"
+      className="about__funding-wrapper"
     >
       <a
-        className="About-funding-link"
+        className="about__funding-link"
         href="http://www.cihr-irsc.gc.ca/"
         key="CIHR"
         rel="noopener noreferrer"
@@ -27,7 +27,7 @@ exports[`About It renders 1`] = `
         />
       </a>
       <a
-        className="About-funding-link"
+        className="about__funding-link"
         href="https://www.genomecanada.ca/"
         key="Genome Canada"
         rel="noopener noreferrer"
@@ -40,7 +40,7 @@ exports[`About It renders 1`] = `
         />
       </a>
       <a
-        className="About-funding-link"
+        className="about__funding-link"
         href="http://www.ontariogenomics.ca/"
         key="Ontario Genomics"
         rel="noopener noreferrer"
@@ -53,7 +53,7 @@ exports[`About It renders 1`] = `
         />
       </a>
       <a
-        className="About-funding-link"
+        className="about__funding-link"
         href="http://www.lunenfeld.ca/"
         key="LTRI"
         rel="noopener noreferrer"
@@ -68,11 +68,11 @@ exports[`About It renders 1`] = `
     </div>
   </div>
   <div
-    className="About-footer"
+    className="about__footer"
   >
     © 2018,
     <a
-      className="About-link"
+      className="about__link"
       href="http://gingraslab.lunenfeld.ca/"
       rel="noopener noreferrer"
       target="_blank"

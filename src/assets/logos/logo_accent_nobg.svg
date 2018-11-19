@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="252.072px" height="248.163px" viewBox="0 0 252.072 248.163" enable-background="new 0 0 252.072 248.163"
-	 xml:space="preserve">
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="75.4634" y1="184.9697" x2="75.4634" y2="-15.0835" gradientTransform="matrix(0.8634 -0.5044 0.6326 1.0828 -55.1724 54.1383)">
-	<stop  offset="0.25" style="stop-color:#AC867C"/>
-	<stop  offset="1" style="stop-color:#F5F5F5;stop-opacity:0"/>
-</linearGradient>
-<polygon fill="url(#SVGID_1_)" points="101.026,231.381 0,0 152.898,201.226 "/>
-<circle fill="#AC867C" cx="128.036" cy="218.163" r="30"/>
-<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="96.6611" y1="176.5947" x2="96.6611" y2="-23.4688" gradientTransform="matrix(0.8686 0.4955 -0.6214 1.0892 153.9728 -22.0796)">
-	<stop  offset="0.25" style="stop-color:#AC867C"/>
-	<stop  offset="1" style="stop-color:#F5F5F5;stop-opacity:0"/>
-</linearGradient>
-<polygon fill="url(#SVGID_2_)" points="102.204,203.182 252.072,0 154.256,233.027 "/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="252.072" height="248.163"><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="75.463" y1="184.97" x2="75.463" y2="-15.084" gradientTransform="matrix(.8634 -.5044 .6326 1.0828 -55.172 54.138)"><stop offset=".25" stop-color="#ac867c"/><stop offset="1" stop-color="#f5f5f5" stop-opacity="0"/></linearGradient><path fill="url(#a)" d="M101.026 231.381L0 0l152.898 201.226z"/><circle fill="#AC867C" cx="128.036" cy="218.163" r="30"/><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="96.661" y1="176.595" x2="96.661" y2="-23.469" gradientTransform="matrix(.8686 .4955 -.6214 1.0892 153.973 -22.08)"><stop offset=".25" stop-color="#ac867c"/><stop offset="1" stop-color="#f5f5f5" stop-opacity="0"/></linearGradient><path fill="url(#b)" d="M102.204 203.182L252.072 0l-97.816 233.027z"/></svg>

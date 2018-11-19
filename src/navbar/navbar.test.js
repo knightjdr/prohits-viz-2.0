@@ -15,49 +15,85 @@ const links = [
 ];
 
 describe('navbar', () => {
-  it('should show background', () => {
-    const wrapper = shallow(
-      <Navbar
-        background
-        fixed={false}
-        links={links}
-        smallScreen={false}
-        tasks={[]}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    const navbar = wrapper.find('.navbar');
-    expect(navbar.props().style.position).toBe('relative');
-    expect(wrapper.find('.navbar_default').length).toBe(1);
-    expect(wrapper.find('Popover').length).toBe(0);
+  describe('dark background', () => {
+    let wrapper;
+    let navbar;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Navbar
+          background="dark"
+          fixed={false}
+          links={links}
+          smallScreen={false}
+          tasks={[]}
+        />,
+      );
+      navbar = wrapper.find('.navbar');
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have relative position', () => {
+      expect(navbar.props().style.position).toBe('relative');
+    });
+
+    it('should have dark background', () => {
+      expect(wrapper.find('.navbar_dark').length).toBe(1);
+    });
+
+    it('should not show popover', () => {
+      expect(wrapper.find('Popover').length).toBe(0);
+    });
   });
 
-  it('should have transparent background', () => {
-    const wrapper = shallow(
-      <Navbar
-        background={false}
-        fixed={false}
-        links={links}
-        smallScreen={false}
-        tasks={[]}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.navbar_transparent').length).toBe(1);
-    expect(wrapper.find('Popover').length).toBe(0);
+  describe('semi-transparent background', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Navbar
+          background="semi"
+          fixed={false}
+          links={links}
+          smallScreen={false}
+          tasks={[]}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have semi background', () => {
+      expect(wrapper.find('.navbar_semi-transparent').length).toBe(1);
+    });
   });
 
-  it('should have fixed position', () => {
-    const wrapper = shallow(
-      <Navbar
-        background
-        fixed
-        links={links}
-        smallScreen={false}
-        tasks={[]}
-      />,
-    );
-    const navbar = wrapper.find('.navbar');
-    expect(navbar.props().style.position).toBe('fixed');
+  describe('transparent background', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Navbar
+          background="transparent"
+          fixed={false}
+          links={links}
+          smallScreen={false}
+          tasks={[]}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have semi background', () => {
+      expect(wrapper.find('.navbar_transparent').length).toBe(1);
+    });
   });
 });

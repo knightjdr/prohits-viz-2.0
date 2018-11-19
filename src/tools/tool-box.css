@@ -88,17 +88,22 @@
 .boxshadow-faint {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4); }
 
+.toolbox__details {
+  display: flex; }
+
 .ToolBox-container {
   background-color: #f5f5f5;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 240px 70px;
-  grid-template-rows: 20px 110px;
-  height: 140px;
-  margin: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  margin: 20px;
+  min-height: 140px;
+  max-width: 320px;
   padding: 10px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 320px; }
+  width: auto; }
 
 .ToolBox-container:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
@@ -109,8 +114,7 @@
   display: flex;
   font-size: 50px;
   justify-content: center;
-  grid-row: 2;
-  grid-column: 2; }
+  margin-left: 10px; }
 
 .ToolBox-text {
   align-items: center;
@@ -118,8 +122,6 @@
   display: flex;
   font-family: BodyText;
   font-size: 0.9em;
-  grid-row: 2;
-  grid-column: 1;
   padding: 10px;
   text-align: justify; }
 
@@ -127,12 +129,8 @@
   color: #763626;
   font-family: TitleFont;
   font-size: 1.1em;
-  grid-row: 1;
-  grid-column: 1;
   text-transform: uppercase; }
 
 @media (max-width: 499px) {
   .ToolBox-container {
-    grid-template-columns: 220px 70px;
-    grid-template-rows: 20px 110px;
-    width: 300px; } }
+    margin: 20px 0; } }

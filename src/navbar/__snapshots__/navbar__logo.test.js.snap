@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar Logo should match snapshot when the navbar has a background 1`] = `
+exports[`Navbar Logo should match snapshot when the navbar has a dark background 1`] = `
 <RouterLink
   className="navbar__logo-link"
   to="/"
@@ -13,7 +13,20 @@ exports[`Navbar Logo should match snapshot when the navbar has a background 1`] 
 </RouterLink>
 `;
 
-exports[`Navbar Logo should match snapshot when the navbar has no background 1`] = `
+exports[`Navbar Logo should match snapshot when the navbar has a semi transparent background 1`] = `
+<RouterLink
+  className="navbar__logo-link"
+  to="/"
+>
+  <img
+    alt="ProHits-viz logo"
+    className="navbar__logo"
+    src="logo_white_nobg.svg"
+  />
+</RouterLink>
+`;
+
+exports[`Navbar Logo should match snapshot when the navbar has a transparent background 1`] = `
 <RouterLink
   className="navbar__logo-link"
   to="/"

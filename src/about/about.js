@@ -32,7 +32,7 @@ const fundingDetails = [
 const About = () => {
   const logoElement = fundingDetails.map(agency => (
     <a
-      className="About-funding-link"
+      className="about__funding-link"
       href={agency.url}
       key={agency.name}
       rel="noopener noreferrer"
@@ -46,19 +46,19 @@ const About = () => {
     </a>
   ));
   return (
-    <div className="About-container">
-      <div className="About-funding">
+    <div className="about">
+      <div className="about__funding">
         <div>
           Funding for this project was graciously provided by:
         </div>
-        <div className="About-funding-wrapper">
+        <div className="about__funding-wrapper">
           { logoElement }
         </div>
       </div>
-      <div className="About-footer">
+      <div className="about__footer">
         &copy; 2018,
         <a
-          className="About-link"
+          className="about__link"
           href="http://gingraslab.lunenfeld.ca/"
           rel="noopener noreferrer"
           target="_blank"

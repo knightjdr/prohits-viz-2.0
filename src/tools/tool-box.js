@@ -19,37 +19,55 @@ export const getImageElement = image => (
 );
 
 const ToolBox = ({
+  external,
   image,
   route,
   text,
   title,
 }) => {
   const imageElement = getImageElement(image);
+  const linkContent = (
+    <div className="ToolBox-container">
+      <div className="ToolBox-title">
+        { title }
+      </div>
+      <div className="toolbox__details">
+        <div className="ToolBox-text">
+          { text }
+        </div>
+        <div className="ToolBox-image">
+          { imageElement }
+        </div>
+      </div>
+    </div>
+  );
   return (
     <button
       className="toolbox__button"
       onClick={ScrollTop}
     >
-      <NavLink
-        to={route}
-      >
-        <div className="ToolBox-container">
-          <div className="ToolBox-image">
-            { imageElement }
-          </div>
-          <div className="ToolBox-text">
-            { text }
-          </div>
-          <div className="ToolBox-title">
-            { title }
-          </div>
-        </div>
-      </NavLink>
+      {
+        external ?
+          <a href={route}>
+            {linkContent}
+          </a>
+          :
+          <NavLink
+            to={route}
+          >
+            {linkContent}
+          </NavLink>
+      }
     </button>
   );
 };
 
+ToolBox.defaultProps = {
+  external: false,
+};
+
 ToolBox.propTypes = {
+  external: PropTypes.bool,
   image: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string,

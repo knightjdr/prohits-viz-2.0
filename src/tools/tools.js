@@ -4,6 +4,7 @@ import {
   faFileAlt,
   faNewspaper,
   faQuestion,
+  faVideo,
 } from '@fortawesome/pro-solid-svg-icons';
 
 import ToolBox from './tool-box';
@@ -31,6 +32,13 @@ const details = {
     text: 'Read more about the latest news and features available at ProHits-viz',
     title: 'News',
   },
+  videos: {
+    external: true,
+    image: <FontAwesomeIcon icon={faVideo} size="xs" />,
+    route: 'https://www.youtube.com/channel/UCGR-0ixL4z526JUVQU8P4xQ',
+    text: 'Watch demonstration videos on the latest features and tutorials and using our tools',
+    title: 'Videos',
+  },
   visualization: {
     image: Dotplot,
     route: '/visualization',
@@ -57,6 +65,13 @@ const Tools = () => (
         route={details.visualization.route}
         text={details.visualization.text}
         title={details.visualization.title}
+      />
+      <ToolBox
+        external={details.videos.external}
+        image={details.videos.image}
+        route={details.videos.route}
+        text={details.videos.text}
+        title={details.videos.title}
       />
       <ToolBox
         image={details.news.image}

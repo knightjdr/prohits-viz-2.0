@@ -15,7 +15,17 @@ const Navbar = ({
   tasks,
 }) => {
   const className = ['navbar'];
-  className.push(background ? 'navbar_default' : 'navbar_transparent');
+  switch (background) {
+    case 'transparent':
+      className.push('navbar_transparent');
+      break;
+    case 'semi':
+      className.push('navbar_semi-transparent');
+      break;
+    default:
+      className.push('navbar_dark');
+      break;
+  }
   return (
     <nav
       className={className.join(' ')}
@@ -39,7 +49,7 @@ const Navbar = ({
 };
 
 Navbar.propTypes = {
-  background: PropTypes.bool.isRequired,
+  background: PropTypes.string.isRequired,
   fixed: PropTypes.bool.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({
