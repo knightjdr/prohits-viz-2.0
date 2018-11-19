@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import panelSelector from '../../state/selectors/visualization/panel-selector';
@@ -8,19 +8,23 @@ import { changePanelTab } from '../../state/set/visualization/display-actions';
 import { displayPropSelector } from '../../state/selectors/visualization/display-selector';
 import { togglePanel } from '../../state/set/visualization/panel-actions';
 
-export const SidePanelContainer = ({
-  changeTab,
-  panel,
-  tab,
-  toggleSidePanel,
-}) => (
-  <SidePanel
-    isVisible={panel}
-    selectTab={changeTab}
-    tab={tab}
-    togglePanel={toggleSidePanel}
-  />
-);
+export class SidePanelContainer extends PureComponent {
+  componentDidMount = () => {
+    if (window.innerWidth <= process.env.REACT_APP_SMALL_SCREEN) {
+      this.props.toggleSidePanel();
+    }
+  }
+  render() {
+    return (
+      <SidePanel
+        isVisible={this.props.panel}
+        selectTab={this.props.changeTab}
+        tab={this.props.tab}
+        togglePanel={this.props.toggleSidePanel}
+      />
+    );
+  }
+}
 
 SidePanelContainer.propTypes = {
   changeTab: PropTypes.func.isRequired,

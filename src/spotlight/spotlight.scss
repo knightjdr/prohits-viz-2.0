@@ -1,7 +1,7 @@
 @import 'style/animations';
 @import 'style/theme';
 
-.Spotlight-container {
+.spotlight {
   @extend .fadein;
   background-color: $primary-light;
   display: flex;
@@ -11,23 +11,16 @@
   min-height: 376px;
   padding: 40px 20px;
 }
-.Spotlight-carousel {
+.spotlight__carousel {
   margin-top: 15px;
   width: calc(100vw - 40px);
 }
-.Spotlight-carousel-container {
-  align-items: center;
-  display: flex !important;
-  justify-content: center;
-  padding: 10px;
-  width: 900px;
-}
-.Spotlight-carousel-description {
+.spotlight__carousel-description {
   color: $text-dark;
   margin-left: 10px;
   max-width: 700px;
 }
-.Spotlight-carousel-image-container {
+.spotlight__carousel-images {
   border: 4px solid $primary-medium;
   border-radius: 2px;
   margin-top: 5px;
@@ -35,17 +28,32 @@
   max-width: 250px;
   min-width: 200px;
 }
-.Spotlight-carousel-image {
+.spotlight__carousel-image {
   max-height: 100%;
   max-width: 100%;
 }
-.Spotlight-header {
+.spotlight__carousel-inner-flex {
+  display: flex !important;
+  justify-content: center;
+}
+.spotlight__carousel-inner {
+  align-items: center;
+  background-color: #f5f5f5;
+  background-image: url('../assets/background/cubes.png');
+  /* background by SVGBackgrounds.com */
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  width: 900px;
+}
+.spotlight__header {
   font-family: TitleFont;
   font-size: 1.3em;
   margin-bottom: 10px;
   position: relative;
 }
-.Spotlight-header:before{
+.spotlight__header:before{
   content: "";
   position: absolute;
   width: 7%;
@@ -54,28 +62,33 @@
   left: 46.5%;
   border-bottom: 2px solid $text-dark;
 }
-.Spotlight-howto {
+.spotlight__howto {
   color: $text-dark;
   margin-top: 20px;
 }
-.Spotlight-link-container {
+.spotlight__link {
+  margin: 0px 10px;
+}
+.spotlight__link:link,
+.spotlight__link:visited {
+  color: $accent-dark;
+}
+.spotlight__link:focus,
+.spotlight__link:hover,
+.spotlight__link:active {
+  color: $primary-medium;
+}
+.spotlight__links{
   margin-bottom: 10px;
   margin-top: 5px;
 }
-.Spotlight-link {
-  color: $accent-dark;
-  margin: 0px 10px;
-}
-.Spotlight-link:visited {
-  color: $primary-medium;
-}
-.Spotlight-link:hover {
-  color: $primary-medium;
-}
 .ant-carousel {
-  display: flex !important;
+  display: flex;
   height: auto;
   justify-content: center;
+}
+.ant-carousel .slick-dots {
+  bottom: 15px;
 }
 .ant-carousel .slick-dots li button {
   border: 0;
@@ -98,32 +111,32 @@
   width: 30px;
 }
 @media screen and (max-width: 899px) {
-  .Spotlight-carousel-container {
+  .spotlight__carousel-inner-flex {
     width: calc(100vw - 9%);
   }
-  .Spotlight-carousel {
+  .spotlight__carousel{
     max-width: calc(100vw - 9%);
   }
-  .Spotlight-carousel-description {
+  .spotlight__carousel-description {
     max-width: calc(100vw - 32%);
   }
-  .Spotlight-carousel-image-container {
+  .spotlight__carousel-images {
     max-height: calc(100vw / 5);
     max-width: calc(100vw / 5);
     min-width: calc(100vw / 5);
   }
 }
 @media screen and (max-width: 699px) {
-  .Spotlight-carousel-container {
+  .spotlight__carousel-inner-flex {
     align-items: flex-start;
   }
 }
 @media screen and (max-width: 499px) {
-  .Spotlight-carousel-description {
+  .spotlight__carousel-description {
     text-align: justify;
     max-width: calc(100vw - 20%);
   }
-  .Spotlight-carousel-image-container {
+  .spotlight__carousel-images {
     display: none;
   }
 }

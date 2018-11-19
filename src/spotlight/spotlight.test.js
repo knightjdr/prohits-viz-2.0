@@ -22,7 +22,7 @@ const testArticles = [
 ];
 
 describe('Spotlight', () => {
-  test('With articles', () => {
+  it('should render with articles', () => {
     const wrapper = shallow(
       <SpotlightComponent
         articles={testArticles}
@@ -31,7 +31,7 @@ describe('Spotlight', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Without articles', () => {
+  it('should render without articles', () => {
     const wrapper = shallow(
       <SpotlightComponent
         articles={[]}

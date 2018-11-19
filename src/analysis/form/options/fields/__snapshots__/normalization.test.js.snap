@@ -13,13 +13,10 @@ exports[`Normalization Renders for default normalization 1`] = `
     }
   >
     <CustomField
-      helpMessage="No normalization is applied by default, but when conditions in the same
-        dataset have been run on instruments with varying sensitivity or dynamic range,
-        normalization should be applied. The options are to normalize by the total abundance
-        for all proteins identified in the run or normalize based on a specific readout.
-        If you are applying multiple transformations to your data, normalization will
-        always occur after control subtraction and readout length normalization but before
-        log transformation."
+      helpMessage="No normalization is applied by default but data can be normalized by the total
+        abundance between conditions or by a specific readout. If you are applying multiple
+        transformations to your data, normalization will always occur after control subtraction
+        and readout length normalization but before log transformation."
       label="Condition normalization"
       name="normalization"
       onChange={[Function]}
@@ -87,13 +84,10 @@ exports[`Normalization Renders for readout normalization 1`] = `
     className="Normalization-input"
   >
     <CustomField
-      helpMessage="No normalization is applied by default, but when conditions in the same
-        dataset have been run on instruments with varying sensitivity or dynamic range,
-        normalization should be applied. The options are to normalize by the total abundance
-        for all proteins identified in the run or normalize based on a specific readout.
-        If you are applying multiple transformations to your data, normalization will
-        always occur after control subtraction and readout length normalization but before
-        log transformation."
+      helpMessage="No normalization is applied by default but data can be normalized by the total
+        abundance between conditions or by a specific readout. If you are applying multiple
+        transformations to your data, normalization will always occur after control subtraction
+        and readout length normalization but before log transformation."
       label="Readout for normalization"
       name="normalizationReadout"
       onChange={[Function]}

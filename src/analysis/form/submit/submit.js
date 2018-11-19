@@ -1,11 +1,12 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Tooltip } from 'antd';
+import { Button } from 'antd';
 import { connect } from 'react-redux';
 import {
   faMinusSquare,
   faPlusSquare,
+  faSpinner,
 } from '@fortawesome/pro-solid-svg-icons';
 
 import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
@@ -20,11 +21,12 @@ export const SubmitComponent = ({
   handleOptions,
   handleReset,
   showOptions,
+  submitPending,
 }) => {
   const optionsIcon = showOptions ?
     (
       <FontAwesomeIcon
-        className="Submit-hide-options-icon"
+        className="submit__hide-options-icon"
         icon={faMinusSquare}
         size="sm"
       />
@@ -32,45 +34,50 @@ export const SubmitComponent = ({
     :
     (
       <FontAwesomeIcon
-        className="Submit-show-options-icon"
+        className="submit__show-options-icon"
         icon={faPlusSquare}
         size="sm"
       />
     );
   const headerElement = (
-    <div className="Submit-container">
+    <div className="submit">
       <div>
         Hit the submit button when ready or customize options.
       </div>
-      <div className="Submit-status-container">
-        <div className="Submit-analysis-overview">
+      <div className="submit__status">
+        <div className="submit__settings">
           <div>
             Current settings:
           </div>
           { Settings(form) }
         </div>
-        <div className="Submit-button-container">
+        <div className="submit__buttons">
           <Button
             className="submit__buttons-submit"
+            disabled={submitPending}
             htmlType="submit"
             type="submit"
           >
             Submit
           </Button>
-          <Tooltip
-            placement="left"
-            title="Reset options"
-          >
-            <Button
-              className="submit__buttons-warning"
-              onClick={handleReset}
-              type="button"
-            >
-              Reset
-            </Button>
-          </Tooltip>
+          {
+            submitPending &&
+            <span className="submit_pending">
+              <FontAwesomeIcon icon={faSpinner} spin />
+              submission pending
+            </span>
+          }
           <Button
-            className="Submit-options-button"
+            className="submit__buttons-warning"
+            onClick={handleReset}
+            tooltip="Reset form"
+            tooltip-placement="left"
+            type="button"
+          >
+            Reset
+          </Button>
+          <Button
+            className="submit__buttons-options"
             onClick={handleOptions}
             type="primary"
           >
@@ -92,6 +99,7 @@ SubmitComponent.propTypes = {
   handleOptions: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,
+  submitPending: PropTypes.bool.isRequired,
 };
 
 /* istanbul ignore next */

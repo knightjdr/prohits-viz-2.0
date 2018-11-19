@@ -60,7 +60,7 @@ const Settings = (form) => {
       });
       return (tagArray.map(tag => (
         <Tag
-          className="Submit-tag"
+          className="submit__tag"
           key={tag.key}
         >
           {tag.text}

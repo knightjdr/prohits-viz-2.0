@@ -94,6 +94,10 @@ describe('FormContainerComponent', () => {
       it('should clear errors', () => {
         expect(wrapper.state().errors).toEqual({});
       });
+
+      it('should falsy submit pending', () => {
+        expect(wrapper.state().submitPending).toBeFalsy();
+      });
     });
 
     describe('failure', () => {
@@ -117,6 +121,10 @@ describe('FormContainerComponent', () => {
 
       it('should clear errors', () => {
         expect(wrapper.state().analysisError).toBeTruthy();
+      });
+
+      it('should falsy submit pending', () => {
+        expect(wrapper.state().submitPending).toBeFalsy();
       });
     });
   });

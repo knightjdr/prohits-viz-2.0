@@ -26,7 +26,7 @@ describe('Custom select menu', () => {
     expect(wrapper).toMatchSnapshot();
     const option = wrapper.find('.selection__select_option-hidden');
     expect(option.props().value).toBe('');
-    expect(option.props().children).toBe('Placeholder');
+    expect(option.props().children).toBe('Select...');
   });
 
   it('should call list select prop method on change', () => {

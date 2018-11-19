@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Spotlight With articles 1`] = `
+exports[`Spotlight should render with articles 1`] = `
 <div
-  className="Spotlight-container"
+  className="spotlight"
 >
   <div
-    className="Spotlight-header"
+    className="spotlight__header"
   >
     SPOTLIGHT
   </div>
@@ -13,70 +13,74 @@ exports[`Spotlight With articles 1`] = `
     arrows={false}
     autoplay={true}
     autoplaySpeed="8000"
-    className="Spotlight-carousel"
+    className="spotlight__carousel"
     dots={true}
     draggable={false}
     prefixCls="ant-carousel"
   >
     <div
-      className="Spotlight-carousel-container"
+      className="spotlight__carousel-inner-flex"
       key="article-0"
     >
       <div
-        className="Spotlight-carousel-image-container"
+        className="spotlight__carousel-inner"
       >
-        <LazyLoad
-          height={250}
-          offset={500}
-          once={false}
-          overflow={false}
-          resize={false}
-          scroll={true}
-          unmountIfInvisible={false}
-        >
-          <img
-            alt="Last name highlight"
-            className="Spotlight-carousel-image"
-            src="./images/test.png"
-          />
-        </LazyLoad>
-      </div>
-      <div>
         <div
-          className="Spotlight-carousel-description"
+          className="spotlight__carousel-images"
         >
-          Last name and colleagues used the test tool
-                        tool at ProHits-viz to test description.
+          <LazyLoad
+            height={250}
+            offset={500}
+            once={false}
+            overflow={false}
+            resize={false}
+            scroll={true}
+            unmountIfInvisible={false}
+          >
+            <img
+              alt="Last name highlight"
+              className="spotlight__carousel-image"
+              src="./images/test.png"
+            />
+          </LazyLoad>
         </div>
-        <div
-          className="Spotlight-link-container"
-        >
-          <a
-            className="Spotlight-link"
-            href="https://www.ncbi.nlm.nih.gov/pubmed/111111"
-            rel="noopener noreferrer"
-            target="_blank"
+        <div>
+          <div
+            className="spotlight__carousel-description"
           >
-            Pubmed
-          </a>
-          <a
-            className="Spotlight-link"
-            href="test url"
-            rel="noopener noreferrer"
-            target="_blank"
+            Last name and colleagues used the test tool
+                            tool at ProHits-viz to test description.
+          </div>
+          <div
+            className="spotlight__links"
           >
-            Publisher
-          </a>
+            <a
+              className="spotlight__link"
+              href="https://www.ncbi.nlm.nih.gov/pubmed/111111"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Pubmed
+            </a>
+            <a
+              className="spotlight__link"
+              href="test url"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Publisher
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </Carousel>
   <div
-    className="Spotlight-howto"
+    className="spotlight__howto"
   >
     If you would like to have your work featured on ProHits-viz, check out our help to find out how
   </div>
 </div>
 `;
 
-exports[`Spotlight Without articles 1`] = `""`;
+exports[`Spotlight should render without articles 1`] = `""`;

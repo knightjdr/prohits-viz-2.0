@@ -1,40 +1,54 @@
 @import 'style/button';
 
-.Submit-analysis-overview {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-}
-.Submit-analysis-overview > *:not(:last-child) {
-  margin-bottom: 5px;
-}
-.Submit-button-container {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-  margin-top: 27px;
-}
-.Submit-button-container > *:not(:last-child) {
-  margin-bottom: 10px;
-}
-.Submit-container {
+.submit {
   margin-top: 20px;
 }
-.Submit-options-button {
-  margin-left: auto;
+.submit__buttons {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  margin-top: 27px;
 }
-.Submit-status-container {
+.submit__buttons > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.submit__buttons-options {
+  grid-column: 1;
+  grid-row: 3;
+}
+.submit__buttons-submit {
+  @extend .success-button;
+  grid-column: 1;
+  grid-row: 1;
+}
+.submit__buttons-warning {
+  @extend .warning-button;
+  grid-column: 1;
+  grid-row: 2;
+}
+.submit_pending {
+  grid-column: 2;
+  grid-row: 1;
+}
+.submit_pending > :first-child{
+  margin: 0 5px;
+}
+.submit__settings {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.submit__settings > *:not(:last-child) {
+  margin-bottom: 5px;
+}
+.submit__status {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.Submit-tag {
+.submit__tag {
   cursor: default;
 }
-.submit__buttons-submit {
-  @extend .success-button;
-}
-.submit__buttons-warning {
-  @extend .warning-button;
-}
+

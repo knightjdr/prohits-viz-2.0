@@ -1,27 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SubmitComponent Renders submit view with options 1`] = `
+exports[`Submit component default view should match snapshot 1`] = `
 <div
-  className="Submit-container"
+  className="submit"
 >
   <div>
     Hit the submit button when ready or customize options.
   </div>
   <div
-    className="Submit-status-container"
+    className="submit__status"
   >
     <div
-      className="Submit-analysis-overview"
+      className="submit__settings"
     >
       <div>
         Current settings:
       </div>
     </div>
     <div
-      className="Submit-button-container"
+      className="submit__buttons"
     >
       <Button
         className="submit__buttons-submit"
+        disabled={false}
         ghost={false}
         htmlType="submit"
         loading={false}
@@ -30,29 +31,20 @@ exports[`SubmitComponent Renders submit view with options 1`] = `
       >
         Submit
       </Button>
-      <Tooltip
-        arrowPointAtCenter={false}
-        autoAdjustOverflow={true}
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
-        placement="left"
-        prefixCls="ant-tooltip"
-        title="Reset options"
-        transitionName="zoom-big-fast"
-      >
-        <Button
-          className="submit__buttons-warning"
-          ghost={false}
-          loading={false}
-          onClick={[Function]}
-          prefixCls="ant-btn"
-          type="button"
-        >
-          Reset
-        </Button>
-      </Tooltip>
       <Button
-        className="Submit-options-button"
+        className="submit__buttons-warning"
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        tooltip="Reset form"
+        tooltip-placement="left"
+        type="button"
+      >
+        Reset
+      </Button>
+      <Button
+        className="submit__buttons-options"
         ghost={false}
         loading={false}
         onClick={[Function]}
@@ -61,7 +53,94 @@ exports[`SubmitComponent Renders submit view with options 1`] = `
       >
         <FontAwesomeIcon$1
           border={false}
-          className="Submit-hide-options-icon"
+          className="submit__show-options-icon"
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f0fe",
+                "M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-32 252c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92H92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z",
+              ],
+              "iconName": "plus-square",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size="sm"
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+         Options
+      </Button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Submit component showing options should match snapshot 1`] = `
+<div
+  className="submit"
+>
+  <div>
+    Hit the submit button when ready or customize options.
+  </div>
+  <div
+    className="submit__status"
+  >
+    <div
+      className="submit__settings"
+    >
+      <div>
+        Current settings:
+      </div>
+    </div>
+    <div
+      className="submit__buttons"
+    >
+      <Button
+        className="submit__buttons-submit"
+        disabled={false}
+        ghost={false}
+        htmlType="submit"
+        loading={false}
+        prefixCls="ant-btn"
+        type="submit"
+      >
+        Submit
+      </Button>
+      <Button
+        className="submit__buttons-warning"
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        tooltip="Reset form"
+        tooltip-placement="left"
+        type="button"
+      >
+        Reset
+      </Button>
+      <Button
+        className="submit__buttons-options"
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        type="primary"
+      >
+        <FontAwesomeIcon$1
+          border={false}
+          className="submit__hide-options-icon"
           fixedWidth={false}
           flip={null}
           icon={
@@ -95,28 +174,29 @@ exports[`SubmitComponent Renders submit view with options 1`] = `
 </div>
 `;
 
-exports[`SubmitComponent Renders submit view without options 1`] = `
+exports[`Submit component when pending should match snapshot 1`] = `
 <div
-  className="Submit-container"
+  className="submit"
 >
   <div>
     Hit the submit button when ready or customize options.
   </div>
   <div
-    className="Submit-status-container"
+    className="submit__status"
   >
     <div
-      className="Submit-analysis-overview"
+      className="submit__settings"
     >
       <div>
         Current settings:
       </div>
     </div>
     <div
-      className="Submit-button-container"
+      className="submit__buttons"
     >
       <Button
         className="submit__buttons-submit"
+        disabled={true}
         ghost={false}
         htmlType="submit"
         loading={false}
@@ -125,29 +205,54 @@ exports[`SubmitComponent Renders submit view without options 1`] = `
       >
         Submit
       </Button>
-      <Tooltip
-        arrowPointAtCenter={false}
-        autoAdjustOverflow={true}
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
-        placement="left"
-        prefixCls="ant-tooltip"
-        title="Reset options"
-        transitionName="zoom-big-fast"
+      <span
+        className="submit_pending"
       >
-        <Button
-          className="submit__buttons-warning"
-          ghost={false}
-          loading={false}
-          onClick={[Function]}
-          prefixCls="ant-btn"
-          type="button"
-        >
-          Reset
-        </Button>
-      </Tooltip>
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                512,
+                512,
+                Array [],
+                "f110",
+                "M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z",
+              ],
+              "iconName": "spinner",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={true}
+          symbol={false}
+          transform={null}
+        />
+        submission pending
+      </span>
       <Button
-        className="Submit-options-button"
+        className="submit__buttons-warning"
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        tooltip="Reset form"
+        tooltip-placement="left"
+        type="button"
+      >
+        Reset
+      </Button>
+      <Button
+        className="submit__buttons-options"
         ghost={false}
         loading={false}
         onClick={[Function]}
@@ -156,7 +261,7 @@ exports[`SubmitComponent Renders submit view without options 1`] = `
       >
         <FontAwesomeIcon$1
           border={false}
-          className="Submit-show-options-icon"
+          className="submit__show-options-icon"
           fixedWidth={false}
           flip={null}
           icon={

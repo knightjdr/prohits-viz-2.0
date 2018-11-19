@@ -148,6 +148,7 @@ exports[`AnalysisFormComponent second step should match snapshot 1`] = `
           handleOptions={[Function]}
           handleReset={[Function]}
           showOptions={false}
+          submitPending={false}
         />
         <Options
           change={[Function]}

@@ -15,62 +15,64 @@ export const SpotlightComponent = ({
     const key = `article-${index}`;
     return (
       <div
-        className="Spotlight-carousel-container"
+        className="spotlight__carousel-inner-flex"
         key={key}
       >
-        <div className="Spotlight-carousel-image-container">
-          <LazyLoad
-            height={250}
-            offset={500}
-          >
-            <img
-              alt={`${article.authorLastName} highlight`}
-              className="Spotlight-carousel-image"
-              src={`./images/${article.image}`}
-            />
-          </LazyLoad>
-        </div>
-        <div>
-          <div className="Spotlight-carousel-description">
-            { `${article.authorLastName} and colleagues used the ${article.tool}
-              tool at ProHits-viz to ${article.description}.`
-            }
+        <div className="spotlight__carousel-inner">
+          <div className="spotlight__carousel-images">
+            <LazyLoad
+              height={250}
+              offset={500}
+            >
+              <img
+                alt={`${article.authorLastName} highlight`}
+                className="spotlight__carousel-image"
+                src={`./images/${article.image}`}
+              />
+            </LazyLoad>
           </div>
-          <div className="Spotlight-link-container">
-            <a
-              className="Spotlight-link"
-              href={`https://www.ncbi.nlm.nih.gov/pubmed/${article.pubmed}`}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Pubmed
-            </a>
-            <a
-              className="Spotlight-link"
-              href={article.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Publisher
-            </a>
+          <div>
+            <div className="spotlight__carousel-description">
+              { `${article.authorLastName} and colleagues used the ${article.tool}
+                tool at ProHits-viz to ${article.description}.`
+              }
+            </div>
+            <div className="spotlight__links">
+              <a
+                className="spotlight__link"
+                href={`https://www.ncbi.nlm.nih.gov/pubmed/${article.pubmed}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Pubmed
+              </a>
+              <a
+                className="spotlight__link"
+                href={article.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Publisher
+              </a>
+            </div>
           </div>
         </div>
       </div>
     );
   });
   const spotlightElement = (
-    <div className="Spotlight-container">
-      <div className="Spotlight-header">
+    <div className="spotlight">
+      <div className="spotlight__header">
         SPOTLIGHT
       </div>
       <Carousel
         autoplay
         autoplaySpeed="8000"
-        className="Spotlight-carousel"
+        className="spotlight__carousel"
       >
         { carouselElement }
       </Carousel>
-      <div className="Spotlight-howto">
+      <div className="spotlight__howto">
         If you would like to have your work featured on ProHits-viz, check out our
         help to find out how
       </div>

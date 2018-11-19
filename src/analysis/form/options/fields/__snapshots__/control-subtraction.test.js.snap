@@ -27,7 +27,7 @@ exports[`ControlSubtraction Renders 1`] = `
         for the readout becomes the value above and beyond what is seen across the control
         samples. Specify the column to use for controls in the adjacent \\"Control column\\"
         field. If you are applying multiple transformations to your data, control subtraction
-        will always occur first (before readout length, normalization, condition normalization
+        will always occur first (before readout length normalization, condition normalization
         and log transformation)."
       label="Control column"
       name="control"

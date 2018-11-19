@@ -29,6 +29,7 @@ export const AnalysisFormComponent = ({
   nextStep,
   handleReset,
   showOptions,
+  submitPending,
   step,
   taskID,
 }) => (
@@ -66,6 +67,7 @@ export const AnalysisFormComponent = ({
               handleOptions={handleOptions}
               handleReset={handleReset}
               showOptions={showOptions}
+              submitPending={submitPending}
             />
             <Options
               change={change}
@@ -106,6 +108,7 @@ AnalysisFormComponent.propTypes = {
   nextStep: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
   showOptions: PropTypes.bool.isRequired,
+  submitPending: PropTypes.bool.isRequired,
   step: PropTypes.number.isRequired,
   taskID: PropTypes.string,
 };

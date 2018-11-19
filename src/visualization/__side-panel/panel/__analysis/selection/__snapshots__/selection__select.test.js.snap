@@ -6,14 +6,14 @@ exports[`Custom select menu should render with a hidden placeholder item 1`] = `
   multiple={true}
   onChange={[Function]}
   onContextMenu={[Function]}
-  placeholder="Select..."
 >
   [
   <option
     className="selection__select_option-hidden"
+    disabled={true}
     value=""
   >
-    Placeholder
+    Select...
   </option>
   , ...
   <option

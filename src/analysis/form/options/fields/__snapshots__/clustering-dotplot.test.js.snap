@@ -49,13 +49,13 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring conditio
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of condition and readout genes in the desired display order must be
+      In this case, a list of conditions and readouts in the desired display order must be
       supplied in the text boxes. Only conditions and readouts entered in the text box will be
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Condition options"
       name="conditionClustering"
       onChange={[Function]}
@@ -88,8 +88,8 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring conditio
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Readout options"
       name="readoutClustering"
       onChange={[Function]}
@@ -182,13 +182,13 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only con
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of condition and readout genes in the desired display order must be
+      In this case, a list of conditions and readouts in the desired display order must be
       supplied in the text boxes. Only conditions and readouts entered in the text box will be
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Condition options"
       name="conditionClustering"
       onChange={[Function]}
@@ -221,8 +221,8 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only con
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Readout options"
       name="readoutClustering"
       onChange={[Function]}
@@ -308,13 +308,13 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only rea
   >
     <CustomField
       helpMessage="The user can generate dot plots without clustering if desired.
-      In this case, a list of condition and readout genes in the desired display order must be
+      In this case, a list of conditions and readouts in the desired display order must be
       supplied in the text boxes. Only conditions and readouts entered in the text box will be
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Condition options"
       name="conditionClustering"
       onChange={[Function]}
@@ -340,8 +340,8 @@ exports[`ClusteringDotplot Renders for "none" clustering when requiring only rea
       included in the analysis and in the dot plot. Condition and readout names must be entered
       as they appear in the input file name and are case sensitive. In some cases the
       user may want to control which conditions are shown in the dot plot and their ordering,
-      while wanting to show and cluster all readouts, or vice versa. This can be done as well
-      by selecting \\"cluster all\\" under the condition or readout options menu."
+      while wanting to show and cluster all readouts, or vice versa. This can be done by selecting
+      \\"cluster all\\" under the condition or readout options menu."
       label="Readout options"
       name="readoutClustering"
       onChange={[Function]}

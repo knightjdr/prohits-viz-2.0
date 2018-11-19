@@ -3,16 +3,32 @@ import { shallow } from 'enzyme';
 
 import { SidePanelContainer } from './visualization__side-panel-container';
 
+const togglePanel = jest.fn();
+
 describe('Visualization panel container', () => {
-  it('should match snapshot', () => {
-    const wrapper = shallow(
+  it('should not toggle panel when viewport is > 768px', () => {
+    global.innerWidth = 769;
+    shallow(
       <SidePanelContainer
         changeTab={jest.fn()}
         panel
         tab="info"
-        toggleSidePanel={jest.fn()}
+        toggleSidePanel={togglePanel}
       />,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(togglePanel).not.toHaveBeenCalled();
+  });
+
+  it('should toggle panel when viewport is 768px or less', () => {
+    global.innerWidth = 768;
+    shallow(
+      <SidePanelContainer
+        changeTab={jest.fn()}
+        panel
+        tab="info"
+        toggleSidePanel={togglePanel}
+      />,
+    );
+    expect(togglePanel).toHaveBeenCalled();
   });
 });

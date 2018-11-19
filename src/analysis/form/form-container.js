@@ -18,6 +18,7 @@ export class FormContainerComponent extends Component {
       errors: {},
       initialValues: this.props.form,
       showOptions: false,
+      submitPending: false,
       taskID: null,
     };
   }
@@ -26,6 +27,7 @@ export class FormContainerComponent extends Component {
     this.updateType(nextProps, form.analysisType);
   }
   onSubmit = (obj) => {
+    this.setState({ submitPending: true });
     const form = convertToForm(obj);
     const type = obj.analysisType;
     formSubmit(form, this.props.session, type)
@@ -33,11 +35,13 @@ export class FormContainerComponent extends Component {
         this.setState({
           taskID: id,
           errors: {},
+          submitPending: false,
         });
       })
       .catch(() => {
         this.setState({
           analysisError: true,
+          submitPending: false,
         });
       });
   }
@@ -93,6 +97,7 @@ export class FormContainerComponent extends Component {
         onSubmitFail={this.onSubmitFail}
         handleReset={this.handleReset}
         showOptions={this.state.showOptions}
+        submitPending={this.state.submitPending}
         taskID={this.state.taskID}
       />
     );

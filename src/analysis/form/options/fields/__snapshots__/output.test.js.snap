@@ -81,7 +81,7 @@ exports[`Output Renders 1`] = `
       </div>
       <CustomField
         helpMessage="Please specify if you would also like a heat map version of
-          the output image."
+          the dot plot image."
         name="writeHeatmap"
         onChange={[Function]}
         type="switch"

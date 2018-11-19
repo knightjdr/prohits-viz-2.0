@@ -35,6 +35,7 @@ describe('AnalysisFormComponent', () => {
           nextStep={nextStep}
           showOptions={false}
           step={0}
+          submitPending={false}
         />,
       );
     });
@@ -75,6 +76,7 @@ describe('AnalysisFormComponent', () => {
           nextStep={nextStep}
           showOptions={false}
           step={1}
+          submitPending={false}
         />,
       );
     });
@@ -114,6 +116,7 @@ describe('AnalysisFormComponent', () => {
           nextStep={nextStep}
           showOptions={false}
           step={2}
+          submitPending={false}
         />,
       );
     });
@@ -157,6 +160,7 @@ describe('AnalysisFormComponent', () => {
           nextStep={nextStep}
           showOptions={false}
           step={0}
+          submitPending={false}
           taskID="task"
         />,
       );
