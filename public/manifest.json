@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ProHits-viz",
+  "name": "ProHits-viz suite of interactive analysis tools",
   "icons": [
     {
       "src": "favicon.ico",

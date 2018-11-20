@@ -8,12 +8,12 @@ import Tools from './tools/tools';
 import './App.css';
 
 const App = () => (
-  <div className="app">
+  <main className="app">
     <Home />
     <Tools />
     <Spotlight />
     <About />
-  </div>
+  </main>
 );
 
 export default App;

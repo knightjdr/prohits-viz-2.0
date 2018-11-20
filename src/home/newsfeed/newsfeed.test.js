@@ -19,7 +19,7 @@ const testNews = [
 ];
 
 describe('Newsfeed', () => {
-  test('Renders with news items', () => {
+  it('should match snapshot with news items', () => {
     const wrapper = shallow(
       <NewsfeedComponent
         news={testNews}
@@ -28,7 +28,7 @@ describe('Newsfeed', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Renders without news items', () => {
+  it('should match snapshot without news items', () => {
     const wrapper = shallow(
       <NewsfeedComponent
         news={[]}

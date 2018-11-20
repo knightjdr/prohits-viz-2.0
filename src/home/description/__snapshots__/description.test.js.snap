@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home description should match snapshot 1`] = `
-<div
+<p
   className="home__description"
 >
-  ProHits-viz is a suite of webtools for analyzing and visualizing protein-protein interaction data
-</div>
+  ProHits-viz is a suite of webtools for analyzing and visualizing screens and protein-protein interaction data
+</p>
 `;

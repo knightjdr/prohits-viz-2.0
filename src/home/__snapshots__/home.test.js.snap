@@ -1,23 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home It renders 1`] = `
-<div
+exports[`Home should match snapshot 1`] = `
+<section
   className="home"
 >
   <Connect(NavbarContainer)
-    background={false}
+    background="semi"
   />
   <div
     className="home__inner"
   >
     <div
-      className="home__grid"
+      className="home__about"
     >
       <Title />
       <Description />
       <Connect(Component) />
-      <Video />
     </div>
   </div>
-</div>
+</section>
 `;

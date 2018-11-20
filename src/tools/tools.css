@@ -1,17 +1,17 @@
-.Tools-container {
+.tools {
   align-items: center;
   display: flex;
   flex-direction: column;
   padding: 40px 20px; }
 
-.Tools-description {
+.tools__description {
   color: #763626;
   font-family: TitleFont;
   font-size: 1.3em;
   margin-bottom: 10px;
   position: relative; }
 
-.Tools-description:before {
+.tools__description:before {
   content: "";
   position: absolute;
   width: 50%;
@@ -20,14 +20,14 @@
   left: 25%;
   border-bottom: 2px solid #763626; }
 
-.Tools-toolbox-wrapper {
+.tools__toolbox {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px; }
 
 @media (max-width: 768px) {
-  .Tools-container {
+  .tools {
     align-items: center;
     display: flex;
     flex-direction: column;

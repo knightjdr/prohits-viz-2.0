@@ -1,18 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tools It renders 1`] = `
-<div
-  className="Tools-container"
+<section
+  className="tools"
 >
-  <div
-    className="Tools-description"
+  <h1
+    className="tools__description"
   >
     GETTING STARTED
-  </div>
+  </h1>
   <div
-    className="Tools-toolbox-wrapper"
+    className="tools__toolbox"
   >
     <ToolBox
+      external={false}
       image={
         <FontAwesomeIcon$1
           border={false}
@@ -50,6 +51,7 @@ exports[`Tools It renders 1`] = `
       title="Analysis"
     />
     <ToolBox
+      external={false}
       image="dotplot.svg"
       route="/visualization"
       text="Access our interactive visualization tools here if you have already
@@ -57,6 +59,44 @@ exports[`Tools It renders 1`] = `
       title="Visualization"
     />
     <ToolBox
+      external={true}
+      image={
+        <FontAwesomeIcon$1
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
+            Object {
+              "icon": Array [
+                576,
+                512,
+                Array [],
+                "f03d",
+                "M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z",
+              ],
+              "iconName": "video",
+              "prefix": "fas",
+            }
+          }
+          listItem={false}
+          mask={null}
+          name=""
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size="xs"
+          spin={false}
+          symbol={false}
+          transform={null}
+        />
+      }
+      route="https://www.youtube.com/channel/UCGR-0ixL4z526JUVQU8P4xQ"
+      text="Watch demonstration videos on the latest features and tutorials on using our tools"
+      title="Videos"
+    />
+    <ToolBox
+      external={false}
       image={
         <FontAwesomeIcon$1
           border={false}
@@ -93,6 +133,7 @@ exports[`Tools It renders 1`] = `
       title="News"
     />
     <ToolBox
+      external={false}
       image={
         <FontAwesomeIcon$1
           border={false}
@@ -130,5 +171,5 @@ exports[`Tools It renders 1`] = `
       title="Help"
     />
   </div>
-</div>
+</section>
 `;

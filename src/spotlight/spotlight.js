@@ -32,11 +32,11 @@ export const SpotlightComponent = ({
             </LazyLoad>
           </div>
           <div>
-            <div className="spotlight__carousel-description">
+            <p className="spotlight__carousel-description">
               { `${article.authorLastName} and colleagues used the ${article.tool}
                 tool at ProHits-viz to ${article.description}.`
               }
-            </div>
+            </p>
             <div className="spotlight__links">
               <a
                 className="spotlight__link"
@@ -61,10 +61,10 @@ export const SpotlightComponent = ({
     );
   });
   const spotlightElement = (
-    <div className="spotlight">
-      <div className="spotlight__header">
+    <section className="spotlight">
+      <h1 className="spotlight__header">
         SPOTLIGHT
-      </div>
+      </h1>
       <Carousel
         autoplay
         autoplaySpeed="8000"
@@ -72,11 +72,11 @@ export const SpotlightComponent = ({
       >
         { carouselElement }
       </Carousel>
-      <div className="spotlight__howto">
+      <p className="spotlight__howto">
         If you would like to have your work featured on ProHits-viz, check out our
         help to find out how
-      </div>
-    </div>
+      </p>
+    </section>
   );
   return (
     articles.length > 0 ? spotlightElement : null

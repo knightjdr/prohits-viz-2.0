@@ -46,11 +46,11 @@ const About = () => {
     </a>
   ));
   return (
-    <div className="about">
+    <footer className="about">
       <div className="about__funding">
-        <div>
+        <p>
           Funding for this project was graciously provided by:
-        </div>
+        </p>
         <div className="about__funding-wrapper">
           { logoElement }
         </div>
@@ -66,7 +66,7 @@ const About = () => {
           Gingras lab
         </a>
       </div>
-    </div>
+    </footer>
   );
 };
 

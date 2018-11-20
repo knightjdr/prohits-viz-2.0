@@ -36,7 +36,7 @@ const details = {
     external: true,
     image: <FontAwesomeIcon icon={faVideo} size="xs" />,
     route: 'https://www.youtube.com/channel/UCGR-0ixL4z526JUVQU8P4xQ',
-    text: 'Watch demonstration videos on the latest features and tutorials and using our tools',
+    text: 'Watch demonstration videos on the latest features and tutorials on using our tools',
     title: 'Videos',
   },
   visualization: {
@@ -49,11 +49,11 @@ const details = {
 };
 
 const Tools = () => (
-  <div className="Tools-container">
-    <div className="Tools-description">
+  <section className="tools">
+    <h1 className="tools__description">
       GETTING STARTED
-    </div>
-    <div className="Tools-toolbox-wrapper">
+    </h1>
+    <div className="tools__toolbox">
       <ToolBox
         image={details.analysis.image}
         route={details.analysis.route}
@@ -86,7 +86,7 @@ const Tools = () => (
         title={details.help.title}
       />
     </div>
-  </div>
+  </section>
 );
 
 export default Tools;

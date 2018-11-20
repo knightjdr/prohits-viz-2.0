@@ -9,25 +9,29 @@ exports[`Toolbox It renders 1`] = `
     to="/test"
   >
     <div
-      className="ToolBox-container"
+      className="toolbox"
     >
       <div
-        className="ToolBox-image"
-      >
-        <img
-          alt="Toolbox"
-          src="test.png"
-        />
-      </div>
-      <div
-        className="ToolBox-text"
+        className="toolbox__title"
       >
         Test
       </div>
       <div
-        className="ToolBox-title"
+        className="toolbox__details"
       >
-        Test
+        <div
+          className="toolbox__text"
+        >
+          Test
+        </div>
+        <div
+          className="toolbox__image"
+        >
+          <img
+            alt="Toolbox"
+            src="test.png"
+          />
+        </div>
       </div>
     </div>
   </Component>

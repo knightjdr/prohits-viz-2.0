@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Spotlight should render with articles 1`] = `
-<div
+<section
   className="spotlight"
 >
-  <div
+  <h1
     className="spotlight__header"
   >
     SPOTLIGHT
-  </div>
+  </h1>
   <Carousel
     arrows={false}
     autoplay={true}
@@ -45,12 +45,12 @@ exports[`Spotlight should render with articles 1`] = `
           </LazyLoad>
         </div>
         <div>
-          <div
+          <p
             className="spotlight__carousel-description"
           >
             Last name and colleagues used the test tool
                             tool at ProHits-viz to test description.
-          </div>
+          </p>
           <div
             className="spotlight__links"
           >
@@ -75,12 +75,12 @@ exports[`Spotlight should render with articles 1`] = `
       </div>
     </div>
   </Carousel>
-  <div
+  <p
     className="spotlight__howto"
   >
     If you would like to have your work featured on ProHits-viz, check out our help to find out how
-  </div>
-</div>
+  </p>
+</section>
 `;
 
 exports[`Spotlight should render without articles 1`] = `""`;

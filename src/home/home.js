@@ -8,7 +8,7 @@ import Title from './title/title';
 import './home.css';
 
 const Home = () => (
-  <div className="home">
+  <section className="home">
     <Navbar background="semi" />
     <div className="home__inner">
       <div className="home__about">
@@ -17,7 +17,7 @@ const Home = () => (
         <Newsfeed />
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default Home;

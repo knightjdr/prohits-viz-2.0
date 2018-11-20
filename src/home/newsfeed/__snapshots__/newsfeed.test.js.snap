@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Newsfeed Renders with news items 1`] = `
+exports[`Newsfeed should match snapshot with news items 1`] = `
 <div
   className="newsfeed"
 >
@@ -43,4 +43,4 @@ exports[`Newsfeed Renders with news items 1`] = `
 </div>
 `;
 
-exports[`Newsfeed Renders without news items 1`] = `""`;
+exports[`Newsfeed should match snapshot without news items 1`] = `""`;

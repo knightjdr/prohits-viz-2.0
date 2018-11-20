@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`About should match snapshot 1`] = `
-<div
+<footer
   className="about"
 >
   <div
     className="about__funding"
   >
-    <div>
+    <p>
       Funding for this project was graciously provided by:
-    </div>
+    </p>
     <div
       className="about__funding-wrapper"
     >
@@ -80,5 +80,5 @@ exports[`About should match snapshot 1`] = `
       Gingras lab
     </a>
   </div>
-</div>
+</footer>
 `;
