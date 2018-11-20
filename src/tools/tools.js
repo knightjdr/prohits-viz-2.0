@@ -4,7 +4,7 @@ import {
   faFileAlt,
   faNewspaper,
   faQuestion,
-  faVideo,
+  faFilm,
 } from '@fortawesome/pro-solid-svg-icons';
 
 import ToolBox from './tool-box';
@@ -34,7 +34,7 @@ const details = {
   },
   videos: {
     external: true,
-    image: <FontAwesomeIcon icon={faVideo} size="xs" />,
+    image: <FontAwesomeIcon icon={faFilm} size="xs" />,
     route: 'https://www.youtube.com/channel/UCGR-0ixL4z526JUVQU8P4xQ',
     text: 'Watch demonstration videos on the latest features and tutorials on using our tools',
     title: 'Videos',
