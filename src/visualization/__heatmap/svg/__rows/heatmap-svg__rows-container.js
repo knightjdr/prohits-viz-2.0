@@ -68,7 +68,7 @@ export class RowsContainer extends Component {
     return rows.slice(y, pageEnd);
   }
   checkRowSize = (names, fontSize) => (
-    names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
+    names.map(name => trimText(name, 'Lato', `${fontSize}px`, 98))
   )
   fontSize = cellSize => cellSize * 0.6
   openMenu = (e, target) => {

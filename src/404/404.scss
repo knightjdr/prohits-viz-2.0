@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/theme';
 
 .Missing-container {
@@ -26,6 +27,6 @@
   max-width: 800px;
 }
 .Missing-title {
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 2.5em;
 }

@@ -1,26 +1,2 @@
-@font-face {
-  font-family: 'TitleFont';
-  src: local('TitleFont'), url(./assets/fonts/Raleway/Raleway-ExtraBold.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Cartoon';
-  src: local('Cartoon'), url(./assets/fonts/Fredoka_One/FredokaOne-Regular.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'BodyText';
-  src: local('BodyText'), url(./assets/fonts/Lato/Lato-Regular.ttf) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'BodyText';
-  src: local('BodyText'), url(./assets/fonts/Lato/Lato-Italic.ttf) format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'BodyText';
-  src: local('BodyText'), url(./assets/fonts/Lato/Lato-Bold.ttf) format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
+$BodyFont: 'Lato', sans-serif;
+$TitleFont: 'Raleway', sans-serif;

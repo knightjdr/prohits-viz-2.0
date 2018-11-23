@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/animations';
 @import 'style/theme';
 
@@ -6,7 +7,6 @@
   background-color: $primary-light;
   display: flex;
   flex-direction: column;
-  font-family: BodyText;
   justify-content: center;
   min-height: 376px;
   padding: 40px 20px;
@@ -48,7 +48,7 @@
   width: 900px;
 }
 .spotlight__header {
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 1.3em;
   margin-bottom: 10px;
   position: relative;

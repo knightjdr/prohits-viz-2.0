@@ -65,7 +65,7 @@ export class ColumnsContainer extends Component {
     return names.slice(x, pageEnd);
   }
   checkColumnSize = (names, fontSize) => (
-    names.map(name => trimText(name, 'BodyText', `${fontSize}px`, 98))
+    names.map(name => trimText(name, 'Lato', `${fontSize}px`, 98))
   )
   openMenu = (e, target) => {
     this.props.openContextMenu(e, target, 'column');

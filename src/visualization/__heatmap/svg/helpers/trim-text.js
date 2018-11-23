@@ -1,6 +1,6 @@
 const TrimText = (
   text,
-  fontFamily = 'BodyText',
+  fontFamily = 'Lato',
   fontSize = '12px',
   width = 100,
 ) => {

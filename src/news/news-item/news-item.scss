@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/button';
 @import 'style/theme';
 
@@ -28,7 +29,7 @@
   color: $accent-light;
 }
 .news__item-headline {
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 1.5rem;
   font-weight: bold;
 }

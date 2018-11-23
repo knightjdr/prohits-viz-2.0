@@ -120,14 +120,13 @@
   align-items: center;
   color: #2A3132;
   display: flex;
-  font-family: BodyText;
   font-size: 0.9em;
   padding: 10px;
   text-align: justify; }
 
 .toolbox__title {
   color: #763626;
-  font-family: TitleFont;
+  font-family: "Raleway", sans-serif;
   font-size: 1.1em;
   text-transform: uppercase; }
 

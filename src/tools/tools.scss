@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/theme';
 
 .tools {
@@ -8,7 +9,7 @@
 }
 .tools__description {
   color: $accent-dark;
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 1.3em;
   margin-bottom: 10px;
   position: relative;

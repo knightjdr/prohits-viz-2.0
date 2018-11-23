@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/mixins';
 
 .news__list {
@@ -5,7 +6,7 @@
   width: calc(100vh - 40px);
 }
 .news__list .ant-list-item-meta-title {
-  font-family: TitleFont;
+  font-family: $TitleFont;
   text-transform: uppercase;
 }
 .news__list-details {
@@ -19,7 +20,7 @@
   float: right;
 }
 .news__list-title {
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 2rem;
   font-weight: bold;
 }

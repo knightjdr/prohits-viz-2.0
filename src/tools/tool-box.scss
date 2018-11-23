@@ -1,3 +1,4 @@
+@import 'style/font';
 @import 'style/button';
 @import 'style/style';
 @import 'style/theme';
@@ -38,14 +39,13 @@
   align-items: center;
   color: $text-dark;
   display: flex;
-  font-family: BodyText;
   font-size: 0.9em;
   padding: 10px;
   text-align: justify;
 }
 .toolbox__title {
   color: $accent-dark;
-  font-family: TitleFont;
+  font-family: $TitleFont;
   font-size: 1.1em;
   text-transform: uppercase;
 }
