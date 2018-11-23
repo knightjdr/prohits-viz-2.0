@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CaptureRouteNotFound from './capture-not-found';
 
 // routes
-import Analysis from '../analysis/analysis';
+import Analysis from '../analysis/analysis-loadable';
 import App from '../App';
 import Help from '../help/help-loadable';
 import Missing from '../404/404';
