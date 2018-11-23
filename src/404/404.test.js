@@ -16,13 +16,12 @@ describe('404', () => {
     );
   });
 
-  test('Renders', () => {
+  it('should match', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('MailTo called when contact button clicked', () => {
+  it('should open MailTo when contact button clicked', () => {
     wrapper.find('Button').at(2).simulate('click');
-    expect(MailTo).toHaveBeenCalledTimes(1);
-    expect(MailTo).toHaveBeenCalledWith('Missing page');
+    expect(MailTo).toHaveBeenCalledWith('404: missing page');
   });
 });

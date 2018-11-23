@@ -7,13 +7,13 @@ import MailTo from '../helpers/mail-to';
 import './404.css';
 
 const Missing = () => (
-  <div className="Missing-container">
-    <div className="Missing-title">
+  <main className="missing">
+    <h1>
       Page Not Found
-    </div>
-    <div className="Missing-test">
+    </h1>
+    <p className="Missing-test">
       The page you were looking for was moved, removed, renamed or never existed.
-    </div>
+    </p>
     <div className="Missing-nav-buttons">
       <Button type="primary">
         <NavLink to="/">
@@ -26,13 +26,13 @@ const Missing = () => (
         </NavLink>
       </Button>
       <Button
-        onClick={() => { MailTo('Missing page'); }}
+        onClick={() => { MailTo('404: missing page'); }}
         type="primary"
       >
         Contact
       </Button>
     </div>
-  </div>
+  </main>
 );
 
 export default Missing;

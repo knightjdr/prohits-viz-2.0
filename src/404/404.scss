@@ -1,7 +1,7 @@
 @import 'style/font';
 @import 'style/theme';
 
-.Missing-container {
+.missing {
   align-items: center;
   background-color: $primary-dark;
   color: $text-light;
@@ -10,6 +10,16 @@
   justify-content: center;
   height: 100vh;
   width: 100%;
+}
+.missing > h1 {
+  color: inherit;
+  font-family: $TitleFont;
+  font-size: 2.5em;
+}
+.missing > p {
+  font-size: 1.2em;
+  margin-top: 20px;
+  max-width: 800px;
 }
 .Missing-nav-buttons {
   display: flex;
@@ -20,13 +30,4 @@
 .Missing-nav-buttons Button {
   margin-left: 10px;
   margin-right: 10px;
-}
-.Missing-test {
-  font-size: 1.2em;
-  margin-top: 20px;
-  max-width: 800px;
-}
-.Missing-title {
-  font-family: $TitleFont;
-  font-size: 2.5em;
 }

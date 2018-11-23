@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`404 Renders 1`] = `
-<div
-  className="Missing-container"
+exports[`404 should match 1`] = `
+<main
+  className="missing"
 >
-  <div
-    className="Missing-title"
-  >
+  <h1>
     Page Not Found
-  </div>
-  <div
+  </h1>
+  <p
     className="Missing-test"
   >
     The page you were looking for was moved, removed, renamed or never existed.
-  </div>
+  </p>
   <div
     className="Missing-nav-buttons"
   >
@@ -51,5 +49,5 @@ exports[`404 Renders 1`] = `
       Contact
     </Button>
   </div>
-</div>
+</main>
 `;
