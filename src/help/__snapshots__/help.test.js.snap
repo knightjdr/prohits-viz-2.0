@@ -1,12 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Help It renders 1`] = `
+exports[`Help should match snapshot 1`] = `
 <div
   className="help"
 >
-  <Connect(NavbarContainer)
-    fixed={true}
-  />
   <div
     className="help__inner"
   >

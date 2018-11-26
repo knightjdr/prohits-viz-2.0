@@ -96,4 +96,30 @@ describe('navbar', () => {
       expect(wrapper.find('.navbar_transparent').length).toBe(1);
     });
   });
+
+  describe('fixed background', () => {
+    let wrapper;
+    let navbar;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Navbar
+          background="dark"
+          fixed
+          links={links}
+          smallScreen={false}
+          tasks={[]}
+        />,
+      );
+      navbar = wrapper.find('.navbar');
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have fixed position', () => {
+      expect(navbar.props().style.position).toBe('fixed');
+    });
+  });
 });

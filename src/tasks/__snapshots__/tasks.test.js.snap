@@ -1,8 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tasks with navbar and error should match snapshot 1`] = `
+exports[`Tasks when updating should match snapshot 1`] = `
 <React.Fragment>
-  <Connect(NavbarContainer) />
+  <main
+    className="tasks"
+  >
+    <Status
+      error={false}
+      isUpdating={true}
+      missing={false}
+      taskNo={1}
+    />
+    <Refresh
+      handleClick={[Function]}
+      tooltip="Refresh status"
+      tooltip-position="right"
+    />
+  </main>
+  <Tasks
+    closeModal={[Function]}
+    modalContent="test"
+    title="Test"
+    visible={false}
+  />
+</React.Fragment>
+`;
+
+exports[`Tasks with error should match snapshot 1`] = `
+<React.Fragment>
   <main
     className="tasks"
   >
@@ -27,9 +52,8 @@ exports[`Tasks with navbar and error should match snapshot 1`] = `
 </React.Fragment>
 `;
 
-exports[`Tasks with navbar and missing task should match snapshot 1`] = `
+exports[`Tasks with missing task should match snapshot 1`] = `
 <React.Fragment>
-  <Connect(NavbarContainer) />
   <main
     className="tasks"
   >
@@ -54,9 +78,8 @@ exports[`Tasks with navbar and missing task should match snapshot 1`] = `
 </React.Fragment>
 `;
 
-exports[`Tasks with navbar and no tasks should match snapshot 1`] = `
+exports[`Tasks with no tasks should match snapshot 1`] = `
 <React.Fragment>
-  <Connect(NavbarContainer) />
   <main
     className="tasks"
   >
@@ -81,9 +104,8 @@ exports[`Tasks with navbar and no tasks should match snapshot 1`] = `
 </React.Fragment>
 `;
 
-exports[`Tasks with navbar and tasks and no issues should match snapshot 1`] = `
+exports[`Tasks with tasks and no issues should match snapshot 1`] = `
 <React.Fragment>
-  <Connect(NavbarContainer) />
   <main
     className="tasks"
   >
@@ -185,59 +207,6 @@ exports[`Tasks with navbar and tasks and no issues should match snapshot 1`] = `
           },
         ]
       }
-    />
-    <Refresh
-      handleClick={[Function]}
-      tooltip="Refresh status"
-      tooltip-position="right"
-    />
-  </main>
-  <Tasks
-    closeModal={[Function]}
-    modalContent="test"
-    title="Test"
-    visible={false}
-  />
-</React.Fragment>
-`;
-
-exports[`Tasks with navbar and updating should match snapshot 1`] = `
-<React.Fragment>
-  <Connect(NavbarContainer) />
-  <main
-    className="tasks"
-  >
-    <Status
-      error={false}
-      isUpdating={true}
-      missing={false}
-      taskNo={1}
-    />
-    <Refresh
-      handleClick={[Function]}
-      tooltip="Refresh status"
-      tooltip-position="right"
-    />
-  </main>
-  <Tasks
-    closeModal={[Function]}
-    modalContent="test"
-    title="Test"
-    visible={false}
-  />
-</React.Fragment>
-`;
-
-exports[`Tasks without navbar should match snapshot 1`] = `
-<React.Fragment>
-  <main
-    className="tasks"
-  >
-    <Status
-      error={true}
-      isUpdating={false}
-      missing={false}
-      taskNo={1}
     />
     <Refresh
       handleClick={[Function]}

@@ -44,7 +44,7 @@ const ToolBox = ({
   return (
     <button
       className="toolbox__button"
-      onClick={ScrollTop}
+      onClick={external ? null : ScrollTop}
     >
       {
         external ?

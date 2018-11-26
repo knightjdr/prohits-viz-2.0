@@ -8,7 +8,6 @@ const VisualizationDisplay = ({
 }) => (
   <Tasks
     id={match.params.id}
-    navbar={false}
   />
 );
 

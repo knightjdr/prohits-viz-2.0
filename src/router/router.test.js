@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Router from './router';
 
 describe('Router', () => {
-  test('Renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <Router />,
     );

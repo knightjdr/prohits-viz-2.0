@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router locations help route should match snapshot 1`] = `
+<React.Fragment>
+  <Connect(NavbarContainer)
+    background="dark"
+    fixed={true}
+  />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/analysis"
+    />
+    <Route
+      component={[Function]}
+      path="/help"
+    />
+    <Route
+      component={[Function]}
+      path="/news"
+    />
+    <Route
+      component={[Function]}
+      path="/tasks"
+    />
+    <Route
+      component={[Function]}
+      path="/visualization"
+    />
+    <Route
+      component={[Function]}
+      path="*"
+    />
+  </Switch>
+</React.Fragment>
+`;
+
+exports[`Router locations home route should match snapshot 1`] = `
+<React.Fragment>
+  <Connect(NavbarContainer)
+    background="semi"
+    fixed={false}
+  />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/analysis"
+    />
+    <Route
+      component={[Function]}
+      path="/help"
+    />
+    <Route
+      component={[Function]}
+      path="/news"
+    />
+    <Route
+      component={[Function]}
+      path="/tasks"
+    />
+    <Route
+      component={[Function]}
+      path="/visualization"
+    />
+    <Route
+      component={[Function]}
+      path="*"
+    />
+  </Switch>
+</React.Fragment>
+`;
+
+exports[`Router locations other route should match snapshot 1`] = `
+<React.Fragment>
+  <Connect(NavbarContainer)
+    background="dark"
+    fixed={false}
+  />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/analysis"
+    />
+    <Route
+      component={[Function]}
+      path="/help"
+    />
+    <Route
+      component={[Function]}
+      path="/news"
+    />
+    <Route
+      component={[Function]}
+      path="/tasks"
+    />
+    <Route
+      component={[Function]}
+      path="/visualization"
+    />
+    <Route
+      component={[Function]}
+      path="*"
+    />
+  </Switch>
+</React.Fragment>
+`;

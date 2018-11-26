@@ -1,48 +1,73 @@
 import React from 'react';
-import * as moduleToMock from 'react-router-dom';
 import { shallow } from 'enzyme';
 
 import Image from '../test/test.png';
-import ScrollTop from '../helpers/scroll-top';
+import scrollTop from '../helpers/scroll-top';
 import ToolBox, { getImageElement } from './tool-box';
 
 // mock ScrollTop
 jest.mock('../helpers/scroll-top');
-ScrollTop.mockReturnValue();
-
-// mock NavLink
-moduleToMock.NavLink = () => (
-  <div />
-);
-jest.setMock('react-router-dom', moduleToMock);
+scrollTop.mockReturnValue();
 
 describe('Toolbox', () => {
-  let wrapper;
-  beforeAll(() => {
-    wrapper = shallow(
-      <ToolBox
-        image={Image}
-        route="/test"
-        text="Test"
-        title="Test"
-      />,
-    );
+  describe('get image element', () => {
+    it('should convert image to image element when image is a component', () => {
+      const image = <img alt="Toolbox" src="test" />;
+      expect(getImageElement(image)).toEqual(image);
+    });
+
+    it('should convert image to image element when image is a string', () => {
+      const image = <img alt="Toolbox" src="test" />;
+      expect(getImageElement('test')).toEqual(image);
+    });
   });
 
-  test('It renders', () => {
-    expect(wrapper).toMatchSnapshot();
+  describe('with internal link', () => {
+    let wrapper;
+    beforeAll(() => {
+      scrollTop.mockClear();
+      wrapper = shallow(
+        <ToolBox
+          image={Image}
+          route="/test"
+          text="Test"
+          title="Test"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should scroll to top on clicking a nav link', () => {
+      wrapper.find('.toolbox__button').simulate('click');
+      expect(scrollTop).toHaveBeenCalled();
+    });
   });
 
-  test('Clicking a nav link scrolls to top', () => {
-    wrapper.find('.toolbox__button').simulate('click');
-    expect(ScrollTop).toHaveBeenCalledTimes(1);
-  });
+  describe('with external link', () => {
+    let wrapper;
+    beforeAll(() => {
+      scrollTop.mockClear();
+      wrapper = shallow(
+        <ToolBox
+          external
+          image={Image}
+          route="/test"
+          text="Test"
+          title="Test"
+        />,
+      );
+    });
 
-  test('Images are converted into image element', () => {
-    const image = <img alt="Toolbox" src="test" />;
-    // if the image is already a component, return it
-    expect(getImageElement(image)).toEqual(image);
-    // if the image is a string or path, create image element for it
-    expect(getImageElement('test')).toEqual(image);
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not scroll to top on clicking a link', () => {
+      wrapper.find('.toolbox__button').simulate('click');
+      expect(scrollTop).not.toHaveBeenCalled();
+    });
   });
 });

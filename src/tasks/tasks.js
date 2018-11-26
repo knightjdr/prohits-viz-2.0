@@ -4,7 +4,6 @@ import React, { Fragment } from 'react';
 import columns from './tasks__columns';
 import format from './tasks__format';
 import Modal from './tasks__modal';
-import Navbar from '../navbar/navbar-container';
 import Refresh from './tasks__refresh';
 import Status from './tasks__status';
 import Table from '../components/table/table-container';
@@ -22,14 +21,12 @@ const Tasks = ({
   missing,
   modalContent,
   modalTitle,
-  navbar,
   openModal,
   tasks,
   refreshStatus,
   viewFile,
 }) => (
   <Fragment>
-    { navbar && <Navbar /> }
     <main className="tasks">
 
       {
@@ -89,7 +86,6 @@ Tasks.propTypes = {
   missing: PropTypes.bool,
   modalContent: PropTypes.string,
   modalTitle: PropTypes.string,
-  navbar: PropTypes.bool.isRequired,
   openModal: PropTypes.bool.isRequired,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({}),

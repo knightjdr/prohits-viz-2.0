@@ -2,9 +2,8 @@
 
 .home {
   background: linear-gradient(160deg,#336b87,#4f7e98,#6a91aa,#83a5bc,#9eb8cb,#b9cad6,#d3dce2,#eeeeee);
-  height: 50vh;
-  min-height: 400px;
-  position: relative;
+  height: calc(50vh - 40px);
+  min-height: 360px;
   width: 100%;
 }
 .home__about {

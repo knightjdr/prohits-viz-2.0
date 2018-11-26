@@ -1,6 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toolbox It renders 1`] = `
+exports[`Toolbox with external link should match snapshot 1`] = `
+<button
+  className="toolbox__button"
+  onClick={null}
+>
+  <a
+    href="/test"
+  >
+    <div
+      className="toolbox"
+    >
+      <div
+        className="toolbox__title"
+      >
+        Test
+      </div>
+      <div
+        className="toolbox__details"
+      >
+        <div
+          className="toolbox__text"
+        >
+          Test
+        </div>
+        <div
+          className="toolbox__image"
+        >
+          <img
+            alt="Toolbox"
+            src="test.png"
+          />
+        </div>
+      </div>
+    </div>
+  </a>
+</button>
+`;
+
+exports[`Toolbox with internal link should match snapshot 1`] = `
 <button
   className="toolbox__button"
   onClick={[Function]}

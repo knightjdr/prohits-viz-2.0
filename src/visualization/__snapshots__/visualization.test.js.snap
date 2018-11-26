@@ -2,7 +2,6 @@
 
 exports[`Visualization Renders with base path 1`] = `
 <div>
-  <Connect(NavbarContainer) />
   <div>
     <Switch>
       <Route
