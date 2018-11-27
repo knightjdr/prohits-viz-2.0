@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Heatmap from '../../__heatmap/visualization__heatmap';
+import Pie from '../../__pie/visualization__pie';
 import Scatter from '../../__scatter/visualization__scatter-container';
 import Status from './image__status';
 
@@ -23,6 +24,8 @@ const ImageType = ({
         loading={loading}
       />
     );
+  } else if (vizType === 'pie') {
+    vizElement = <Pie />;
   } else if (vizType === 'scatter') {
     vizElement = <Scatter />;
   } else {

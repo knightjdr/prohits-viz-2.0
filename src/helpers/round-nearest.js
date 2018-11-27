@@ -1,4 +1,5 @@
-const RoundNearest = (value, round) => (
+const roundNearest = (value, round) => (
   Math.round(value / round) * round
 );
-export default RoundNearest;
+
+export default roundNearest;

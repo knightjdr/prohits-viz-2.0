@@ -14,10 +14,12 @@ const Columns = (state = defaultState, action) => {
         names: [],
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        ref: action.file.columns.ref,
-        names: [...action.file.columns.names],
-      };
+      return action.file.columns
+        ? {
+          ref: action.file.columns.ref,
+          names: [...action.file.columns.names],
+        }
+        : { ...defaultState };
     case SET_REFERENCE:
       return {
         ref: action.ref,

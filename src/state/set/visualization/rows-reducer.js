@@ -21,13 +21,15 @@ const Rows = (state = defaultState, action) => {
         sortBy: null,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        direction: action.file.rows.direction,
-        id: null,
-        list: deepCopy(action.file.rows.list),
-        order: [...action.file.rows.order],
-        sortBy: action.file.rows.sortBy,
-      };
+      return action.file.rows
+        ? {
+          direction: action.file.rows.direction,
+          id: null,
+          list: deepCopy(action.file.rows.list),
+          order: [...action.file.rows.order],
+          sortBy: action.file.rows.sortBy,
+        }
+        : { ...defaultState };
     case actions.RESTORE_ROWS:
       return {
         ...state,

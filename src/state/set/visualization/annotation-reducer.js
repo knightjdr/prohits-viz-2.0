@@ -44,12 +44,14 @@ const Annotations = (state = defaultState, action) => {
         list: newList,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        color: action.file.annotations.color,
-        fontSize: action.file.annotations.fontSize,
-        list: deepCopy(action.file.annotations.list),
-        show: action.file.annotations.show,
-      };
+      return action.file.annotations
+        ? {
+          color: action.file.annotations.color || defaultState.color,
+          fontSize: action.file.annotations.fontSize || defaultState.fontSize,
+          list: action.file.annotations.list ? deepCopy(action.file.annotations.list) : [],
+          show: action.file.annotations.show,
+        }
+        : { ...defaultState };
     case actions.SET_ANNOTATION_COLOR:
       return {
         ...state,

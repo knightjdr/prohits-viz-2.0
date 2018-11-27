@@ -24,14 +24,16 @@ const Genes = (state = defaultState, action) => {
         rowsSelected: [],
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        columnMap: { ...action.file.genes.columnMap },
-        columns: [...action.file.genes.columns],
-        columnsSelected: [...action.file.genes.columnsSelected],
-        rowMap: { ...action.file.genes.rowMap },
-        rows: [...action.file.genes.rows],
-        rowsSelected: [...action.file.genes.rowsSelected],
-      };
+      return action.file.genes
+        ? {
+          columnMap: { ...action.file.genes.columnMap },
+          columns: [...action.file.genes.columns],
+          columnsSelected: [...action.file.genes.columnsSelected],
+          rowMap: { ...action.file.genes.rowMap },
+          rows: [...action.file.genes.rows],
+          rowsSelected: [...action.file.genes.rowsSelected],
+        }
+        : { ...defaultState };
     case rowActions.RESTORE_ROWS:
       return {
         ...state,

@@ -66,6 +66,27 @@ describe('Visualization control', () => {
     });
   });
 
+  describe('when vizType is pie', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = shallow(
+        <SelectType
+          handleFile={jest.fn()}
+          loading={false}
+          vizType="pie"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should display pie plot component', () => {
+      expect(wrapper.find('Pie').length).toBe(1);
+    });
+  });
+
   describe('when vizType is scatter', () => {
     let wrapper;
     beforeAll(() => {

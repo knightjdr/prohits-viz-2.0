@@ -48,6 +48,28 @@ describe('Visualization image', () => {
     });
   });
 
+  describe('for pie images', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <Image
+          error={false}
+          loading={false}
+          vizType="pie"
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render pie component', () => {
+      expect(wrapper.find('Pie').length).toBe(1);
+    });
+  });
+
   describe('for scatter images', () => {
     let wrapper;
 

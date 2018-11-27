@@ -17,13 +17,15 @@ const Search = (state = defaultState, action) => {
     case actions.CLEAR_SEARCH:
       return defaultState;
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        columns: { ...action.file.search.columns },
-        match: action.file.search.match,
-        rows: { ...action.file.search.rows },
-        searched: action.file.search.searched,
-        term: action.file.search.term,
-      };
+      return action.file.search
+        ? {
+          columns: { ...action.file.search.columns },
+          match: action.file.search.match,
+          rows: { ...action.file.search.rows },
+          searched: action.file.search.searched,
+          term: action.file.search.term,
+        }
+        : { ...defaultState };
     case rowActions.RESTORE_ROWS:
       return defaultState;
     case actions.SET_SEARCH_RESULTS:

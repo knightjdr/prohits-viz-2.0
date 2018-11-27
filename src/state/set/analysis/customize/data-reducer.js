@@ -33,7 +33,9 @@ const data = (state = defaultState, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return [];
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return deepCopy(action.file.customize);
+      return action.file.customize
+        ? deepCopy(action.file.customize)
+        : [...defaultState];
     case tabActions.REMOVE_TAB:
       if (action.tab === 'customize') {
         return [];

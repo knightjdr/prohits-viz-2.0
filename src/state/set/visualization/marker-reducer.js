@@ -45,12 +45,14 @@ const Markers = (state = defaultState, action) => {
         list: newList,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        color: action.file.markers.color,
-        list: deepCopy(action.file.markers.list),
-        record: action.file.markers.record,
-        show: action.file.markers.show,
-      };
+      return action.file.markers
+        ? {
+          color: action.file.markers.color,
+          list: deepCopy(action.file.markers.list),
+          record: action.file.markers.record,
+          show: action.file.markers.show,
+        }
+        : { ...defaultState };
     case actions.SET_MARKER_COLOR:
       return {
         ...state,

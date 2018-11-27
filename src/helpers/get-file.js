@@ -20,6 +20,7 @@ const getFile = (path, options = {}, callback) => (
         resolve();
       })
       .catch((err) => {
+        console.log(err);
         if (
           options.err &&
           typeof options.err === 'function'

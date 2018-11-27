@@ -35,12 +35,14 @@ const Map = (state = { ...defaultState }, action) => {
         updateOriginal: action.updateOriginal,
       };
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        ...defaultState,
-        image: action.file.minimap.image,
-        synced: action.file.minimap.synced,
-        syncImage: action.file.minimap.syncImage,
-      };
+      return action.file.minimap
+        ? {
+          ...defaultState,
+          image: action.file.minimap.image,
+          synced: action.file.minimap.synced,
+          syncImage: action.file.minimap.syncImage,
+        }
+        : { ...defaultState };
     case rowActions.RESTORE_ROWS:
       return {
         ...state,

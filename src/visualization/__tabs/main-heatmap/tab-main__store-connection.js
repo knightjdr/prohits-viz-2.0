@@ -155,6 +155,7 @@ StoreConnection.propTypes = {
     rows: PropTypes.shape({}),
     term: PropTypes.string,
   }).isRequired,
+  setDims: PropTypes.func.isRequired,
   setRef: PropTypes.func.isRequired,
   setSelectedGenes: PropTypes.func.isRequired,
   settings: PropTypes.shape({

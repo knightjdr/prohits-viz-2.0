@@ -21,11 +21,13 @@ const Tabs = (state = defaultState, action) => {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return defaultState;
     case fileActions.PARSE_INTERACTIVE_FILE:
-      return {
-        available: [...action.file.tabs.available],
-        selected: action.file.tabs.selected,
-        show: action.file.tabs.show,
-      };
+      return action.file.tabs
+        ? {
+          available: [...action.file.tabs.available],
+          selected: action.file.tabs.selected,
+          show: action.file.tabs.show,
+        }
+        : { ...defaultState };
     case actions.REMOVE_TAB:
       newTabs = state.available.filter(item => item !== action.tab);
       return {
