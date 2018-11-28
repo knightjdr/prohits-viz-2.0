@@ -5,7 +5,7 @@ import colorGradient from '../../../color/color-gradient';
 import getPage from './transforms/get-page';
 import Plot from './heatmap-svg__plot';
 import round from '../../../../helpers/round';
-import setRange from './transforms/set-range';
+import setRange from '../../../../helpers/set-range';
 import setEdgeRange from './transforms/set-edge-range';
 
 const NUM_COLORS = 101;

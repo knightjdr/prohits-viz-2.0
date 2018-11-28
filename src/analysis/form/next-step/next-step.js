@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { connect } from 'react-redux';
 
-import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import AnalysisFormSelector from '../../../state/selectors/form/analysis-form-selector';
 import IsNotEmpty from '../../../helpers/is-not-empty';
 
 import './next-step.css';

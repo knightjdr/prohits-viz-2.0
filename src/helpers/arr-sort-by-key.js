@@ -4,8 +4,8 @@ import sorting from './sort';
 /* Sorts an array of objects by an object key
 ** dir = 'asc' yields sort order A, B, C or 1, 2, 3
 ** dir = 'des' yields sort order C, B, A or 3, 2, 1
-** type = 'string' for character sorting, type = 'numeric' for numeric sorting */
-const arrSortByKey = (arr, key, dir = 'asc', type = 'string') => {
+** type = 'character' for character sorting, type = 'numeric' for numeric sorting */
+const arrSortByKey = (arr, key, dir = 'asc', type = 'character') => {
   // make sure input variable is an array of objects, and that a key is defined
   // if not, simply return whatever arr is
   if (

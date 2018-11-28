@@ -80,6 +80,7 @@ describe('Annotation set reducer', () => {
       type: fileActions.PARSE_INTERACTIVE_FILE,
     };
     const expectedState = {
+      ...defaultState,
       color: '#000000',
       list,
       show: false,

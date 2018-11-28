@@ -1,5 +1,13 @@
-// Sort two characters or numbers.
+// Sort two booleans, characters, numbers.
 const sort = {
+  bool: (a, b) => {
+    if (a && !b) {
+      return 1;
+    } if (!a && b) {
+      return -1;
+    }
+    return 0;
+  },
   character: (a, b) => {
     // Ensure a and b are not null or if one is null sort as if less than the other.
     if (
@@ -12,7 +20,6 @@ const sort = {
     } else if (!b) {
       return -1;
     }
-    // a and b are defined, now sort ignoring case.
     const nameA = String(a).toLowerCase();
     const nameB = String(b).toLowerCase();
     if (nameA < nameB) {

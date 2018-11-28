@@ -1,7 +1,17 @@
 import sort from './sort';
 
 describe('Sort', () => {
-  it('should sort characters', () => {
+  it('should sort as booleans', () => {
+    expect(sort.bool('a', 'b')).toBe(0);
+    expect(sort.bool('1', '1')).toBe(0);
+    expect(sort.bool('a', '1')).toBe(0);
+    expect(sort.bool(true, false)).toBe(1);
+    expect(sort.bool(true, null)).toBe(1);
+    expect(sort.bool(false, true)).toBe(-1);
+    expect(sort.bool(null, true)).toBe(-1);
+  });
+
+  it('should sort as characters', () => {
     expect(sort.character('a', 'b')).toBe(-1);
     expect(sort.character('b', 'a')).toBe(1);
     expect(sort.character('a', 'a')).toBe(0);
@@ -14,7 +24,7 @@ describe('Sort', () => {
     expect(sort.character(2, 12)).toBe(1);
   });
 
-  it('should sort numbers', () => {
+  it('should sort as numbers', () => {
     expect(sort.numeric(1, 2)).toBe(-1);
     expect(sort.numeric(2, 1)).toBe(1);
     expect(sort.numeric(1, 1)).toBe(0);

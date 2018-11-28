@@ -3,9 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Divider } from 'antd';
 
-import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import AnalysisFormSelector from '../../../state/selectors/form/analysis-form-selector';
 import DotplotOptions from './dotplot-options';
-import HeaderSelector from '../../../state/selectors/header-selector';
+import HeaderSelector from '../../../state/selectors/form/header-selector';
 
 import './options.css';
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import FileInput from './file-input';
 import ParseHeader from './parse-header';
-import { clearFileHeader, setFileHeader } from '../../../state/set/header-actions';
+import { clearFileHeader, setFileHeader } from '../../../state/set/form/header-actions';
 
 export const SampleHeader = 'Bait\tPrey\tPreyGene\tSpec\tSpecSum\tAvgSpec\tNumReplicates\tctrlCounts\tAvgP\tMaxP\tTopoAvgP\tTopoMaxP\tSaintScore\tlogOddsScore\tFoldChange\tBFDR\tUniqueSpec\tUniqueSpecSum\tUniqueAvgSpec\tPreySequenceLength\n';
 

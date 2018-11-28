@@ -38,6 +38,44 @@ exports[`navbar dark background should match snapshot 1`] = `
 </nav>
 `;
 
+exports[`navbar fixed background should match snapshot 1`] = `
+<nav
+  className="navbar navbar_dark"
+  style={
+    Object {
+      "position": "fixed",
+    }
+  }
+>
+  <Logo
+    background="dark"
+  />
+  <div
+    className="navbar__link-container"
+  >
+    <Tasks
+      smallScreen={false}
+      tasks={Array []}
+    />
+    <Links
+      links={
+        Array [
+          Object {
+            "route": "/analysis",
+            "text": "analysis",
+          },
+          Object {
+            "route": "/help",
+            "text": "help",
+          },
+        ]
+      }
+      smallScreen={false}
+    />
+  </div>
+</nav>
+`;
+
 exports[`navbar semi-transparent background should match snapshot 1`] = `
 <nav
   className="navbar navbar_semi-transparent"

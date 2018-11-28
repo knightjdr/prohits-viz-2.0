@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import ArrSort from '../../../../helpers/arr-sort-by-key';
-import createSlice from './paths/pie-slices';
-import Pie from './pie-svg__plot';
+import createSlice from './enrichment-slices';
+import Enrichment from './enrichment';
 
 const data = [
   { color: '#ef5350', readouts: 15, term: 'cytoplasm' },
   { color: '#2196f3', readouts: 23, term: 'nucleus' },
 ];
 
-export class PieContainer extends Component {
+export class EnrichmentContainer extends Component {
   constructor(props) {
     super(props);
     const { radius } = this.props;
@@ -21,7 +21,7 @@ export class PieContainer extends Component {
   }
   render() {
     return (
-      <Pie
+      <Enrichment
         radius={this.props.radius}
         slices={this.state.slices}
       />
@@ -29,8 +29,8 @@ export class PieContainer extends Component {
   }
 }
 
-PieContainer.propTypes = {
+EnrichmentContainer.propTypes = {
   radius: PropTypes.number.isRequired,
 };
 
-export default PieContainer;
+export default EnrichmentContainer;

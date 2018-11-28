@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import panelSelector from '../../../state/selectors/visualization/panel-selector';
+import segmentsSelector from '../../../state/selectors/visualization/segment-selector';
 import { displaySelector } from '../../../state/selectors/visualization/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
@@ -13,6 +14,7 @@ export const StoreConnection = ({
   panel,
   renderProp,
   renderSvg,
+  segments,
   setDims,
   settings,
   updatePlotXY,
@@ -23,6 +25,7 @@ export const StoreConnection = ({
   name,
   panel,
   renderProp: renderSvg,
+  segments,
   setDims,
   settings,
   updatePlotXY,
@@ -41,6 +44,13 @@ StoreConnection.propTypes = {
   panel: PropTypes.bool.isRequired,
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
+  segments: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundance: PropTypes.number,
+      known: PropTypes.bool,
+      readout: PropTypes.string,
+    }),
+  ).isRequired,
   settings: PropTypes.shape({}).isRequired,
   updatePlotXY: PropTypes.func.isRequired,
 };
@@ -50,6 +60,7 @@ const mapStateToProps = state => ({
   display: displaySelector(state),
   name: parameterSelectorProp(state, 'name'),
   panel: panelSelector(state),
+  segments: segmentsSelector(state),
   settings: settingSelector(state),
 });
 

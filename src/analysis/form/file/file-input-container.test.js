@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import ParseHeader from './parse-header';
 import { FileInputContainer, SampleHeader } from './file-input-container';
-import { clearFileHeader, setFileHeader } from '../../../state/set/header-actions';
+import { clearFileHeader, setFileHeader } from '../../../state/set/form/header-actions';
 
 jest.mock('deep-equal');
 

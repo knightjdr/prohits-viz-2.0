@@ -1,7 +1,7 @@
-import percToCoord from './percent-to-coordinate';
-import roundNearest from '../../../../../helpers/round-nearest';
+import percToCoord from '../helpers/percent-to-coordinate';
+import roundNearest from '../../../../helpers/round-nearest';
 
-const pieSlice = (data, radius) => {
+const enrichmentSlice = (data, radius) => {
   let cumulativePercent = 0;
   let last = [radius, 0];
   const total = data.reduce((accum, datum) => accum + datum.readouts, 0);
@@ -27,4 +27,4 @@ const pieSlice = (data, radius) => {
   });
 };
 
-export default pieSlice;
+export default enrichmentSlice;

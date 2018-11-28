@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import colorGradient from '../../../color/color-gradient';
 import getPage from './transforms/get-page';
 import setEdgeRange from './transforms/set-edge-range';
-import setRange from './transforms/set-range';
+import setRange from '../../../../helpers/set-range';
 import { PlotContainer } from './heatmap-svg__plot-container';
 
 jest.mock('../../../color/color-gradient');
@@ -13,7 +13,7 @@ colorGradient.mockReturnValue(['#000', '#888', '#fff']);
 ** 1 for numbers 1 < and <= 5 and 2 otherwise. */
 jest.mock('./transforms/set-edge-range');
 /* The mock for set range will cap values at 50 and 0. */
-jest.mock('./transforms/set-range');
+jest.mock('../../../../helpers/set-range');
 /* This mock will always return a function that returns predefined page array. */
 jest.mock('./transforms/get-page');
 

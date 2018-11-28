@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
-import Pie from '../../__pie/svg/plot/pie-svg__plot-container';
-import Segment from '../../__pie/svg/plot/segment-svg__plot-container';
+import Known from '../../__pie/svg/known/known-container';
+import Pie from '../../__pie/svg/enrichment/enrichment-container';
+import Segment from '../../__pie/svg/segment/segment-container';
 
 const Svg = ({
   pieDimensions,
+  segments,
 }) => {
   const radius = Math.ceil(pieDimensions.wrapper / 2);
   return (
@@ -18,8 +20,16 @@ const Svg = ({
         xmlns="http://www.w3.org/2000/svg"
       >
         <g transform="rotate(-90)">
-          <Segment
+          <Known
             radius={radius}
+            segments={segments}
+          />
+          <Segment
+            abundanceCap={50}
+            radius={radius}
+            segmentColor="blueBlack"
+            segments={segments}
+            sort
           />
           <Pie
             radius={radius}
@@ -34,6 +44,13 @@ Svg.propTypes = {
   pieDimensions: PropTypes.shape({
     wrapper: PropTypes.number,
   }).isRequired,
+  segments: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundance: PropTypes.number,
+      known: PropTypes.bool,
+      readout: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 const renderSvg = props => <Svg {...props} />;

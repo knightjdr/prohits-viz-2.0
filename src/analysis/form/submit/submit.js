@@ -9,7 +9,7 @@ import {
   faSpinner,
 } from '@fortawesome/pro-solid-svg-icons';
 
-import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import AnalysisFormSelector from '../../../state/selectors/form/analysis-form-selector';
 import Errors from './errors';
 import Settings from './settings';
 

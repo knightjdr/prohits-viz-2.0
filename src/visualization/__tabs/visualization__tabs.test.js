@@ -5,7 +5,7 @@ import Tabs from './visualization__tabs';
 
 jest.mock('./customize/tab-customize');
 jest.mock('./go/go-container');
-jest.mock('./main/tab-main');
+jest.mock('./main-heatmap/tab-main');
 
 describe('Tab button', () => {
   describe('when visible', () => {
@@ -16,6 +16,7 @@ describe('Tab button', () => {
         <Tabs
           activeTab="main"
           handleClick={jest.fn()}
+          imageType="heatmap"
           showButton
           showMenu
         />,
@@ -43,6 +44,7 @@ describe('Tab button', () => {
         <Tabs
           activeTab="customize"
           handleClick={jest.fn()}
+          imageType="heatmap"
           showButton
           showMenu
         />,
@@ -61,6 +63,7 @@ describe('Tab button', () => {
         <Tabs
           activeTab="go"
           handleClick={jest.fn()}
+          imageType="heatmap"
           showButton
           showMenu
         />,
@@ -80,6 +83,7 @@ describe('Tab button', () => {
         <Tabs
           activeTab="main"
           handleClick={jest.fn()}
+          imageType="heatmap"
           showButton={false}
           showMenu
         />,

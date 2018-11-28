@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import AnalysisFormSelector from '../../../state/selectors/form/analysis-form-selector';
 import { arrayShallowEqual } from '../../../helpers/array-shallow-equal';
 import DefineColumns from './define-columns';
 import HeaderSelection from './header-selection';
-import HeaderSelector from '../../../state/selectors/header-selector';
+import HeaderSelector from '../../../state/selectors/form/header-selector';
 
 export class HeaderSelectionContainer extends Component {
   constructor(props) {

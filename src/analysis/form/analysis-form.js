@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import FileInput from './file/file-input-container';
-import FormStepSelector from '../../state/selectors/form-step-selector';
+import FormStepSelector from '../../state/selectors/form/form-step-selector';
 import HeaderSelection from './header-selection/header-selection-container';
 import NextStep from './next-step/next-step';
 import Options from './options/options';
@@ -14,7 +14,7 @@ import Submit from './submit/submit';
 import SubmitError from './submission/error';
 import ToolSelection from './tool-selection/tool-selection';
 import Validation from './validation/validation';
-import { incrementFormStep } from '../../state/set/form-step-actions';
+import { incrementFormStep } from '../../state/set/form/form-step-actions';
 
 import './analysis-form.css';
 

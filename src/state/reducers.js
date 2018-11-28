@@ -9,10 +9,10 @@ import dimensions from './set/visualization/dimension-reducer';
 import dimensionsCustomize from './set/analysis/customize/dimension-reducer';
 import display from './set/visualization/display-reducer';
 import displayCustomize from './set/analysis/customize/display-reducer';
-import formStep from './set/form-step-reducer';
+import formStep from './set/form/form-step-reducer';
 import genes from './set/visualization/genes-reducer';
 import go from './set/analysis/go-reducer';
-import header from './set/header-reducer';
+import header from './set/form/header-reducer';
 import home from './get/home-reducer';
 import markers from './set/visualization/marker-reducer';
 import minimap from './set/visualization/map-reducer';
@@ -26,6 +26,7 @@ import positionCustomize from './set/analysis/customize/position-reducer';
 import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
+import segments from './set/visualization/segment-reducer';
 import session from './set/session-reducer';
 import settings from './set/visualization/settings-reducer';
 import tabs from './set/visualization/tab-reducer';
@@ -59,6 +60,7 @@ const Reducers = combineReducers({
   rows,
   save,
   search,
+  segments,
   session,
   settings,
   tabs,

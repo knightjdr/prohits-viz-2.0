@@ -1,0 +1,8 @@
+.enrichment__slice {
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.3s cubic-bezier(.17, .67, .16, .99);
+}
+.enrichment__slice:hover {
+  transform: scale(1.05);
+}

@@ -4,7 +4,7 @@ import { Alert, Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import AnalysisFormSelector from '../../../state/selectors/analysis-form-selector';
+import AnalysisFormSelector from '../../../state/selectors/form/analysis-form-selector';
 import CustomField from '../field/field';
 import DefaultChange from '../field/default-change';
 import ScrollTop from '../../../helpers/scroll-top';

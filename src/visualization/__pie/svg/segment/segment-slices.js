@@ -1,5 +1,5 @@
-import percToCoord from './percent-to-coordinate';
-import roundNearest from '../../../../../helpers/round-nearest';
+import percToCoord from '../helpers/percent-to-coordinate';
+import roundNearest from '../../../../helpers/round-nearest';
 
 const pieSlice = (data, radii) => {
   let cumulativePercent = 0;
@@ -44,10 +44,11 @@ const pieSlice = (data, radii) => {
       fill: datum.color,
       readout: datum.readout,
       text: {
-        alignment: cumulativePercent < 0.25 || cumulativePercent > 0.75 ? 'baseline' : 'hanging',
-        anchor: cumulativePercent > 0.5 ? 'end' : 'start',
         x: textPoint[0],
-        y: textPoint[1],
+        xOffset: cumulativePercent > 0.5,
+        y: cumulativePercent < 0.25 || cumulativePercent > 0.75
+          ? textPoint[1] - 8
+          : textPoint[1] + 8,
       },
     };
   });

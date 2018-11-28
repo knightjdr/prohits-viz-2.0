@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AnalysisForm from './analysis-form';
-import analysisFormSelector from '../../state/selectors/analysis-form-selector';
+import analysisFormSelector from '../../state/selectors/form/analysis-form-selector';
 import convertToForm from './submission/convert-to-form';
 import formSubmit from './submission/form-submit';
 import InitialValues from './initial-values/initial-values';
 import sessionSelector from '../../state/selectors/session-selector';
-import { clearFormStep } from '../../state/set/form-step-actions';
+import { clearFormStep } from '../../state/set/form/form-step-actions';
 
 export class FormContainerComponent extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import './pie-svg__plot.css';
+import './enrichment.css';
 
-const Pie = ({
+const Enrichment = ({
   radius,
   slices,
 }) => (
@@ -11,7 +11,7 @@ const Pie = ({
     {
       slices.map(slice => (
         <path
-          className="pie-svg__slice"
+          className="enrichment__slice"
           d={`
             M ${slice.m.x} ${slice.m.y}
             A ${radius} ${radius} 0 ${slice.a.arc} 1 ${slice.a.x} ${slice.a.y}
@@ -29,7 +29,7 @@ const Pie = ({
   </g>
 );
 
-Pie.propTypes = {
+Enrichment.propTypes = {
   radius: PropTypes.number.isRequired,
   slices: PropTypes.arrayOf(
     PropTypes.shape({
@@ -48,4 +48,4 @@ Pie.propTypes = {
   ).isRequired,
 };
 
-export default Pie;
+export default Enrichment;
