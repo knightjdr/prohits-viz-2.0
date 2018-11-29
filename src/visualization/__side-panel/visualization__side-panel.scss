@@ -15,7 +15,9 @@
   right: 0;
   top: 10px;
   transform: translateX(350px);
-  transition: all 0.5s cubic-bezier(.17, .67, .16, .99);
+  transition-property: all;
+  transition-duration: 0s;
+  transition-timing-function: cubic-bezier(.17, .67, .16, .99);
   width: 90vw;
   z-index: 102;
 }

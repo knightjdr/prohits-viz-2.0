@@ -48,7 +48,7 @@ describe('Visualization image', () => {
     });
   });
 
-  describe('for pie images', () => {
+  describe('for segcircle images', () => {
     let wrapper;
 
     beforeAll(() => {
@@ -56,7 +56,7 @@ describe('Visualization image', () => {
         <Image
           error={false}
           loading={false}
-          vizType="pie"
+          vizType="segcircle"
         />,
       );
     });
@@ -65,8 +65,8 @@ describe('Visualization image', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render pie component', () => {
-      expect(wrapper.find('Pie').length).toBe(1);
+    it('should render segcircle component', () => {
+      expect(wrapper.find('Segcircle').length).toBe(1);
     });
   });
 

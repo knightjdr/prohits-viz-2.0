@@ -11,7 +11,7 @@ jest.mock('deep-equal');
 jest.mock('./parse-header');
 ParseHeader.mockReturnValue(Promise.resolve(SampleHeader));
 
-jest.mock('../../../state/set/header-actions');
+jest.mock('../../../state/set/form/header-actions');
 const change = jest.fn();
 
 const newFile = { originFileObj: new File([SampleHeader], 'newfile.txt', { type: 'text/plain' }) };

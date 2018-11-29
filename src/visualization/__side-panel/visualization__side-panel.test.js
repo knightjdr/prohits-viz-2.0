@@ -13,10 +13,12 @@ describe('Visualization panel', () => {
     beforeAll(() => {
       wrapper = shallow(
         <VisualizationPanel
+          animationDuration={0}
           isVisible={false}
           selectTab={selectTab}
           tab="info"
           togglePanel={togglePanel}
+          transitionDuration={0}
         />,
       );
     });
@@ -40,10 +42,12 @@ describe('Visualization panel', () => {
     beforeAll(() => {
       wrapper = shallow(
         <VisualizationPanel
+          animationDuration={0}
           isVisible
           selectTab={selectTab}
           tab="info"
           togglePanel={togglePanel}
+          transitionDuration={0}
         />,
       );
     });

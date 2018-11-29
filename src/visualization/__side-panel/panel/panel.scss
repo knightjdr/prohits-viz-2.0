@@ -1,5 +1,7 @@
 .panel {
-  animation: panelin 0.3s cubic-bezier(.17, .67, .16, .99);
+  animation-duration: inherit;
+  animation-name: panelin;
+  animation-timing-function: cubic-bezier(.17, .67, .16, .99);
   padding: 10px 15px;
 }
 .panel__border {

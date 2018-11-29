@@ -6,7 +6,7 @@ import './text.css';
 const Text = ({
   text,
 }) => (
-  <g transform="scale(0.8)">
+  <g transform="scale(0.95)">
     {
       text.map(details => (
         <g

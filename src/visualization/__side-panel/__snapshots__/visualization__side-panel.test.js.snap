@@ -6,8 +6,10 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
     className="visualization__side-panel"
     style={
       Object {
+        "animationDuration": "0s",
         "opacity": 0,
         "transform": "translateX(350px)",
+        "transitionDuration": "0s",
       }
     }
   >
@@ -314,8 +316,10 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
     className="visualization__side-panel"
     style={
       Object {
+        "animationDuration": "0s",
         "opacity": 1,
         "transform": "translateX(-10px)",
+        "transitionDuration": "0s",
       }
     }
   >

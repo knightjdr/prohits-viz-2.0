@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
-import Known from '../../__pie/svg/known/known-container';
-import Pie from '../../__pie/svg/enrichment/enrichment-container';
-import Segment from '../../__pie/svg/segment/segment-container';
+import Known from '../../__segcircle/svg/known/known-container';
+import Circle from '../../__segcircle/svg/circle/circle-container';
 
 const Svg = ({
+  circles,
   pieDimensions,
-  segments,
 }) => {
   const radius = Math.ceil(pieDimensions.wrapper / 2);
   return (
@@ -22,17 +21,12 @@ const Svg = ({
         <g transform="rotate(-90)">
           <Known
             radius={radius}
-            segments={segments}
+            readouts={circles.readouts}
           />
-          <Segment
-            abundanceCap={50}
+          <Circle
+            circles={circles}
             radius={radius}
-            segmentColor="blueBlack"
-            segments={segments}
-            sort
-          />
-          <Pie
-            radius={radius}
+            thickness={50}
           />
         </g>
       </svg>
@@ -41,16 +35,24 @@ const Svg = ({
 };
 
 Svg.propTypes = {
+  circles: PropTypes.shape({
+    readouts: PropTypes.arrayOf(
+      PropTypes.shape({
+        known: PropTypes.bool,
+        readout: PropTypes.string,
+      }),
+    ),
+    order: PropTypes.arrayOf(PropTypes.number),
+    segments: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        values: PropTypes.arrayOf(PropTypes.number),
+      }),
+    ),
+  }).isRequired,
   pieDimensions: PropTypes.shape({
     wrapper: PropTypes.number,
   }).isRequired,
-  segments: PropTypes.arrayOf(
-    PropTypes.shape({
-      abundance: PropTypes.number,
-      known: PropTypes.bool,
-      readout: PropTypes.string,
-    }),
-  ).isRequired,
 };
 
 const renderSvg = props => <Svg {...props} />;

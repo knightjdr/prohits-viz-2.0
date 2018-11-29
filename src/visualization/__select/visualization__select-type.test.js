@@ -66,14 +66,14 @@ describe('Visualization control', () => {
     });
   });
 
-  describe('when vizType is pie', () => {
+  describe('when vizType is segcircle', () => {
     let wrapper;
     beforeAll(() => {
       wrapper = shallow(
         <SelectType
           handleFile={jest.fn()}
           loading={false}
-          vizType="pie"
+          vizType="segcircle"
         />,
       );
     });
@@ -82,8 +82,8 @@ describe('Visualization control', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should display pie plot component', () => {
-      expect(wrapper.find('Pie').length).toBe(1);
+    it('should display segcircle plot component', () => {
+      expect(wrapper.find('Segcircle').length).toBe(1);
     });
   });
 

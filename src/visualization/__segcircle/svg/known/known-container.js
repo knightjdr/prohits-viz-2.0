@@ -9,10 +9,10 @@ export class KnownContainer extends Component {
     super(props);
     const {
       radius,
-      segments,
+      readouts,
     } = this.props;
     this.state = {
-      end: createKnown(segments, radius),
+      end: createKnown(readouts, radius),
     };
   }
   render() {
@@ -27,7 +27,7 @@ export class KnownContainer extends Component {
 
 KnownContainer.propTypes = {
   radius: PropTypes.number.isRequired,
-  segments: PropTypes.arrayOf(
+  readouts: PropTypes.arrayOf(
     PropTypes.shape({
       known: PropTypes.bool,
     }),

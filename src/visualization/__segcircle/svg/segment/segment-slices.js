@@ -1,20 +1,18 @@
 import percToCoord from '../helpers/percent-to-coordinate';
 import roundNearest from '../../../../helpers/round-nearest';
 
-const pieSlice = (data, radii) => {
+const pieSlice = (data, radii, readouts) => {
   let cumulativePercent = 0;
   const last = {
-    inner: [radii.segment, 0],
-    outer: [radii.full, 0],
+    inner: [radii.inner, 0],
+    outer: [radii.outer, 0],
   };
   const arc = data.length < 2 ? 1 : 0;
   const percent = roundNearest(1 / data.length, 0.0001);
-  const halfPercent = percent / 2;
-  return data.map((datum) => {
+  return data.map((datum, index) => {
     cumulativePercent += percent;
-    const innerPoint = percToCoord(cumulativePercent, radii.segment);
-    const outerPoint = percToCoord(cumulativePercent, radii.full);
-    const textPoint = percToCoord(cumulativePercent - halfPercent, radii.text);
+    const innerPoint = percToCoord(cumulativePercent, radii.inner);
+    const outerPoint = percToCoord(cumulativePercent, radii.outer);
     const start = {
       inner: [...last.inner],
       outer: [...last.outer],
@@ -26,7 +24,6 @@ const pieSlice = (data, radii) => {
         x: start.outer[0],
         y: start.outer[1],
       },
-      abundance: datum.abundance,
       b: {
         arc,
         x: outerPoint[0],
@@ -41,15 +38,8 @@ const pieSlice = (data, radii) => {
         x: start.inner[0],
         y: start.inner[1],
       },
-      fill: datum.color,
-      readout: datum.readout,
-      text: {
-        x: textPoint[0],
-        xOffset: cumulativePercent > 0.5,
-        y: cumulativePercent < 0.25 || cumulativePercent > 0.75
-          ? textPoint[1] - 8
-          : textPoint[1] + 8,
-      },
+      fill: datum,
+      readout: readouts[index],
     };
   });
 };

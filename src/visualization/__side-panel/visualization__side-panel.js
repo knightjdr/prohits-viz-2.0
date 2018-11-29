@@ -40,16 +40,20 @@ const showPanel = {
 };
 
 const SidePanel = ({
+  animationDuration,
   isVisible,
   selectTab,
   tab,
   togglePanel,
+  transitionDuration,
 }) => (
   <Fragment>
     <div
       className="visualization__side-panel"
       style={{
         ...showPanel.sidePanel[isVisible],
+        animationDuration: `${animationDuration}s`,
+        transitionDuration: `${transitionDuration}s`,
       }}
     >
       <div className="visualization__side-panel-tabs">
@@ -118,10 +122,12 @@ const SidePanel = ({
 );
 
 SidePanel.propTypes = {
+  animationDuration: PropTypes.number.isRequired,
   isVisible: PropTypes.bool.isRequired,
   selectTab: PropTypes.func.isRequired,
   tab: PropTypes.string.isRequired,
   togglePanel: PropTypes.func.isRequired,
+  transitionDuration: PropTypes.number.isRequired,
 };
 
 export default SidePanel;

@@ -5,7 +5,7 @@ import { faWindow } from '@fortawesome/pro-solid-svg-icons';
 import Customize from './customize/tab-customize';
 import Go from './go/go-container';
 import MainHeatmap from './main-heatmap/tab-main';
-import MainPie from './main-pie/main-pie';
+import MainPie from './main-segcircle/main-segcircle';
 import Menu from './menu/menu-container';
 import RoundButton from '../../components/round-button/round-button';
 
@@ -29,7 +29,7 @@ const Tabs = ({
     }
     { activeTab === 'main' && imageType === 'dotplot' && <MainHeatmap /> }
     { activeTab === 'main' && imageType === 'heatmap' && <MainHeatmap /> }
-    { activeTab === 'main' && imageType === 'pie' && <MainPie /> }
+    { activeTab === 'main' && imageType === 'segcircle' && <MainPie /> }
     { activeTab === 'customize' && <Customize /> }
     { activeTab === 'go' && <Go /> }
     <Menu

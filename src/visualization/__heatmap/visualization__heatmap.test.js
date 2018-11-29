@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Heatmap from './visualization__heatmap';
 
 describe('Heatmap interface', () => {
-  it('should render', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(<Heatmap />);
     expect(wrapper).toMatchSnapshot();
   });

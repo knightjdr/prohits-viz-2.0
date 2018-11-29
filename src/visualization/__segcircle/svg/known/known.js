@@ -16,7 +16,7 @@ const Known = ({
     fill="none"
     stroke="#000"
     strokeWidth="3"
-    transform="scale(0.62 0.62)"
+    transform="scale(0.9 0.9)"
   />
 );
 

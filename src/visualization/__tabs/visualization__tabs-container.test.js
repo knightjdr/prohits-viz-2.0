@@ -9,6 +9,7 @@ describe('Tab container', () => {
   beforeAll(() => {
     wrapper = shallow(
       <TabsContainer
+        imageType="heatmap"
         tabs={{
           selected: 'main',
           show: true,

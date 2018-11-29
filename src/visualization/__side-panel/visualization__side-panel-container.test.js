@@ -14,6 +14,10 @@ describe('Visualization panel container', () => {
         panel
         tab="info"
         toggleSidePanel={togglePanel}
+        update={{
+          animationDuration: 0,
+          transitionDuration: 0,
+        }}
       />,
     );
     expect(togglePanel).not.toHaveBeenCalled();
@@ -27,6 +31,10 @@ describe('Visualization panel container', () => {
         panel
         tab="info"
         toggleSidePanel={togglePanel}
+        update={{
+          animationDuration: 0,
+          transitionDuration: 0,
+        }}
       />,
     );
     expect(togglePanel).toHaveBeenCalled();

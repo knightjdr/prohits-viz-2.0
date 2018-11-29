@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import MainConnected from './main-pie__store-connection';
-import renderSvg from './main-pie__svg';
+import MainConnected from './main-segcircle__store-connection';
+import renderSvg from './main-segcircle__svg';
 
-import '../../__pie/svg/pie-svg.css';
+import '../../__segcircle/svg/segcircle-svg.css';
 
 const SvgInterface = ({
   plotTranslate,
@@ -13,7 +13,7 @@ const SvgInterface = ({
   ...otherProps
 }) => (
   <div
-    className="pie-svg__wrapper"
+    className="segcircle-svg__wrapper"
     ref={setContainerRef}
     style={{
       transform: `translate(${plotTranslate}px)`,

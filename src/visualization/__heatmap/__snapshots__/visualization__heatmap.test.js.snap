@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Heatmap interface should render 1`] = `
+exports[`Heatmap interface should match snapshot 1`] = `
 <div
   className="visualization__heatmap"
 >
   <Connect(TabsContainer) />
-  <Connect(SidePanelContainer) />
+  <Connect(Component) />
   <Connect(FloatMapContainer) />
 </div>
 `;

@@ -26,7 +26,7 @@ import positionCustomize from './set/analysis/customize/position-reducer';
 import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
-import segments from './set/visualization/segment-reducer';
+import segcircles from './set/visualization/segcircles-reducer';
 import session from './set/session-reducer';
 import settings from './set/visualization/settings-reducer';
 import tabs from './set/visualization/tab-reducer';
@@ -60,7 +60,7 @@ const Reducers = combineReducers({
   rows,
   save,
   search,
-  segments,
+  segcircles,
   session,
   settings,
   tabs,
