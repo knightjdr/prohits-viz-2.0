@@ -17,6 +17,7 @@ const fillSettings = (userSettings = { current: {} }, paramsImageType) => {
     minAbundance,
     primaryFilter,
     secondaryFilter,
+    thickness,
   } = userSettings.current;
   settings.abundanceCap = typeof abundanceCap === 'number' ? abundanceCap : defaultState.abundanceCap;
   settings.cellSize = Number.isInteger(cellSize) && cellSize > 0 ?
