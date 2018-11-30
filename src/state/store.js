@@ -9,7 +9,7 @@ import Reducers from './reducers';
 import reHydrate from './local-storage/rehydrate';
 import Router from '../router/router';
 import subscribeMiddleware from './local-storage/subscribe-middleware';
-// import TestState from './test-state/test-state';
+import TestState from './test-state/test-state';
 
 const socket = SocketIo(process.env.REACT_APP_WS_HOST, { path: '/ws' });
 
@@ -23,7 +23,7 @@ export const addDevTools = () => (
 
 export const store = createStore(
   Reducers,
-  reHydrate(),
+  TestState,
   compose(
     applyMiddleware(
       Thunk,

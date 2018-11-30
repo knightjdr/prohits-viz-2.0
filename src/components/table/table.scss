@@ -96,3 +96,13 @@
 .table__horizontal-scroll > div {
   height: 1px;
 }
+@media (max-width: 768px) {
+  .table__body * {
+    pointer-events: none;
+  }
+  .table__body a,
+  .table__body button,
+  .table__body select {
+    pointer-events: auto;
+  }
+}

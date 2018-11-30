@@ -6,21 +6,13 @@ const Body = ({
   cellHeight,
   columnOrder,
   columnTemplate,
-  handleTouchEnd,
-  handleTouchMove,
-  handleTouchStart,
   rows,
   scrollLeftPosition,
   width,
 }) => (
   <div
     className="table__body-right"
-    onTouchEnd={handleTouchEnd}
-    onTouchMove={handleTouchMove}
-    onTouchStart={handleTouchStart}
-    style={{
-      width,
-    }}
+    style={{ width }}
   >
     <div
       className="table__body-right-inner"
@@ -64,9 +56,6 @@ Body.propTypes = {
     PropTypes.string,
   ).isRequired,
   columnTemplate: PropTypes.string.isRequired,
-  handleTouchEnd: PropTypes.func.isRequired,
-  handleTouchMove: PropTypes.func.isRequired,
-  handleTouchStart: PropTypes.func.isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,

@@ -44,7 +44,7 @@ const Go = ({
           firstColumn={{
             minWidth: 175,
             name: 'term',
-            width: '20%',
+            width: 175,
           }}
           maxBodyWidth={600}
           rows={results.terms}

@@ -20,9 +20,13 @@ class TableContainer extends Component {
   componentDidMount = () => {
     this.setDimensions();
     window.addEventListener('resize', this.onResize);
+    window.addEventListener('touchcancel', this.handleTouchEnd, false);
+    window.addEventListener('touchend', this.handleTouchEnd, false);
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('touchcancel', this.handleTouchEnd, false);
+    window.removeEventListener('touchend', this.handleTouchEnd, false);
   }
   onResize = () => {
     this.setState({
@@ -64,15 +68,19 @@ class TableContainer extends Component {
   }
   handleTouchMove = (e) => {
     if (this.touched) {
+      const { firstColumn, maxBodyWidth } = this.props;
       const scrollLeft = this.touchStart - e.touches[0].clientX;
       this.touchStart = e.touches[0].clientX;
-      this.setState(({ scrollLeftPosition, scrollLeftWidth }) => {
-        const minLeft = this.props.maxBodyWidth - scrollLeftWidth;
+      this.setState(({ scrollLeftPosition }) => {
+        const minWidth = maxBodyWidth - (this.bodyRef.current.clientWidth - firstColumn.width);
+        if (minWidth <= 0) {
+          return {};
+        }
         let newPosition = scrollLeftPosition - scrollLeft;
         if (newPosition > 0) {
           newPosition = 0;
-        } else if (newPosition < -minLeft) {
-          newPosition = -minLeft;
+        } else if (newPosition < -minWidth) {
+          newPosition = -minWidth;
         }
         return {
           scrollLeftPosition: newPosition,
@@ -99,7 +107,6 @@ class TableContainer extends Component {
         columnTemplate={this.props.columnTemplate}
         firstColumn={this.props.firstColumn}
         handleScroll={this.handleScroll}
-        handleTouchEnd={this.handleTouchEnd}
         handleTouchMove={this.handleTouchMove}
         handleTouchStart={this.handleTouchStart}
         height={this.state.height}
@@ -142,7 +149,7 @@ TableContainer.propTypes = {
   firstColumn: PropTypes.shape({
     minWidth: PropTypes.number,
     name: PropTypes.string,
-    width: PropTypes.string,
+    width: PropTypes.number,
   }).isRequired,
   maxBodyWidth: PropTypes.number,
   rows: PropTypes.arrayOf(

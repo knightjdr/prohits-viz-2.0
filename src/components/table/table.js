@@ -19,7 +19,6 @@ const Table = ({
   columnTemplate,
   firstColumn,
   handleScroll,
-  handleTouchEnd,
   handleTouchMove,
   handleTouchStart,
   height,
@@ -53,6 +52,8 @@ const Table = ({
     </div>
     <div
       className="table__body"
+      onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
       ref={bodyRef}
       style={{
         maxHeight: height,
@@ -68,7 +69,6 @@ const Table = ({
         cellHeight={cellHeight}
         columnOrder={columnOrder}
         columnTemplate={columnTemplate}
-        handleTouchEnd={handleTouchEnd}
         handleTouchMove={handleTouchMove}
         handleTouchStart={handleTouchStart}
         rows={rows}
@@ -117,10 +117,9 @@ Table.propTypes = {
   firstColumn: PropTypes.shape({
     minWidth: PropTypes.number,
     name: PropTypes.string,
-    width: PropTypes.string,
+    width: PropTypes.number,
   }).isRequired,
   handleScroll: PropTypes.func.isRequired,
-  handleTouchEnd: PropTypes.func.isRequired,
   handleTouchMove: PropTypes.func.isRequired,
   handleTouchStart: PropTypes.func.isRequired,
   height: PropTypes.number.isRequired,

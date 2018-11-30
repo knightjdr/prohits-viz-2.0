@@ -38,7 +38,7 @@ FirstColumn.propTypes = {
   firstColumn: PropTypes.shape({
     minWidth: PropTypes.number,
     name: PropTypes.string,
-    width: PropTypes.string,
+    width: PropTypes.number,
   }).isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.shape({}),

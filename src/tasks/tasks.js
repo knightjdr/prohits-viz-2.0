@@ -47,11 +47,11 @@ const Tasks = ({
               columnOrder={columns.order}
               columnTemplate={columnTemplate}
               firstColumn={{
-                minWidth: 120,
+                minWidth: 150,
                 name: 'id',
-                width: '150px',
+                width: 150,
               }}
-              maxBodyWidth={400}
+              maxBodyWidth={700}
               rows={format(tasks, changeFile, viewFile, downloadFolder)}
             />
           )
