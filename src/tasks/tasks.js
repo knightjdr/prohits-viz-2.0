@@ -47,7 +47,7 @@ const Tasks = ({
               columnOrder={columns.order}
               columnTemplate={columnTemplate}
               firstColumn={{
-                minWidth: 100,
+                minWidth: 120,
                 name: 'id',
                 width: '150px',
               }}
