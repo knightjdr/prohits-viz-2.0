@@ -23,8 +23,10 @@ export class CircleContainer extends Component {
     };
   }
   debouncedMouseEnter = debounce((circleIndex, segmentIndex) => {
-    this.handleMouseEnter(circleIndex, segmentIndex);
-  }, 100);
+    if (this.mouseOver) {
+      this.handleMouseEnter(circleIndex, segmentIndex);
+    }
+  }, 100, false, () => { this.mouseOver = true; });
   handleMouseEnter = (circleIndex, segmentIndex) => {
     this.segmentEntered = true;
     const { circles, radius } = this.props;
@@ -52,6 +54,7 @@ export class CircleContainer extends Component {
         hoveredText: null,
       });
     }
+    this.mouseOver = false;
   }
   textX = (x, radius, width) => {
     if (x < -radius) {

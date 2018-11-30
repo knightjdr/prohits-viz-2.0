@@ -1,12 +1,16 @@
 /* Returns a function, that, as long as it continues to be invoked, will not
 ** be triggered. The function will be called after it stops being called for
 ** 'wait' milliseconds. If 'immediate' is passed, trigger the function on the
-** leading edge, instead of the trailing */
+** leading edge, instead of the trailing. 'start' is a function that can be
+** called immediateley. */
 
-function debounce(func, wait, immediate) {
+function debounce(func, wait, immediate, start) {
   let timeout;
   return function debounced(...args) {
     const context = this;
+    if (start) {
+      start.apply(context);
+    }
     const later = function delayedFunc() {
       timeout = null;
       if (!immediate) {
