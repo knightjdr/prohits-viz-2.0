@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 
+import debounce from '../../../../helpers/debounce';
 import getTextPosition from '../helpers/get-text-position';
 import Segment from '../segment/segment-container';
 import Text from '../text/text';
@@ -17,44 +18,40 @@ export class CircleContainer extends Component {
     this.state = {
       readouts,
       space: thickness / 4,
-      text: [],
+      hoveredText: null,
       textPosition: getTextPosition(readouts, radius),
     };
   }
+  debouncedMouseEnter = debounce((circleIndex, segmentIndex) => {
+    this.handleMouseEnter(circleIndex, segmentIndex);
+  }, 100);
   handleMouseEnter = (circleIndex, segmentIndex) => {
+    this.segmentEntered = true;
     const { circles, radius } = this.props;
     const { textPosition } = this.state;
     const abundance = circles.segments[circleIndex].values[segmentIndex];
+    const mertic = circles.segments[circleIndex].name;
     const position = textPosition[segmentIndex];
     const readout = circles.readouts[segmentIndex].name;
-    const string = `${readout}: ${abundance}`;
+    const string = `${readout}, ${mertic}: ${abundance}`;
     const width = textSize(string, 'Lato', '16px');
-    this.setState(({ text }) => ({
-      text: [
-        ...text,
-        {
-          x: this.textX(position.x, radius, 8),
-          y: this.textY(position.y, position.yOffset, radius, width),
-          class: 'pie__text_hovered',
-          id: readout,
-          string,
-          width: width + 4,
-        },
-      ],
-    }));
-  }
-  handleMouseLeave = (segmentIndex) => {
-    const { circles } = this.props;
-    const readout = circles.readouts[segmentIndex].name;
-    this.setState(({ text }) => {
-      const index = text.findIndex(entry => entry.id === readout);
-      if (index > -1) {
-        return {
-          text: text.filter((entry, i) => i !== index),
-        };
-      }
-      return {};
+    this.setState({
+      hoveredText: {
+        x: this.textX(position.x, radius, 8),
+        y: this.textY(position.y, position.yOffset, radius, width),
+        id: readout,
+        string,
+        width: width + 4,
+      },
     });
+  }
+  handleMouseLeave = () => {
+    if (this.segmentEntered) {
+      this.segmentEntered = false;
+      this.setState({
+        hoveredText: null,
+      });
+    }
   }
   textX = (x, radius, width) => {
     if (x < -radius) {
@@ -84,7 +81,7 @@ export class CircleContainer extends Component {
               abundanceCap={segment.abundanceCap}
               circleIndex={index}
               color={segment.color}
-              handleMouseEnter={this.handleMouseEnter}
+              handleMouseEnter={this.debouncedMouseEnter}
               handleMouseLeave={this.handleMouseLeave}
               key={segment.name}
               radius={radius - (index * (thickness + space))}
@@ -94,7 +91,7 @@ export class CircleContainer extends Component {
             />
           ))
         }
-        <Text text={this.state.text} />
+        <Text hoveredText={this.state.hoveredText} />
       </Fragment>
     );
   }
