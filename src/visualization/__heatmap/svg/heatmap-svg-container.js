@@ -3,14 +3,6 @@ import React, { Component } from 'react';
 
 import onResize from '../../../helpers/on-resize';
 
-const COL_MARGIN = 100;
-const EXTRA_ARROW_PADDING = 30;
-const EXTRA_PADDING = 2;
-const HORZ_PADDING = 50;
-const ROW_MARGIN = 100;
-const SIDE_PANEL = 400;
-const VERT_PADDING = 20;
-
 export class SvgDimensions extends Component {
   constructor(props) {
     super(props);
@@ -91,24 +83,30 @@ export class SvgDimensions extends Component {
       return -(((window.innerWidth - width.wrapper) / 2) - 20);
     } else if (width.canTranslate && panel) {
       const freeWidth = window.innerWidth - width.wrapper;
-      const translateBy = freeWidth > SIDE_PANEL ?
-        SIDE_PANEL / 2
+      const sidePanel = Number(process.env.REACT_APP_SIDE_PANEL_WIDTH);
+      const translateBy = freeWidth > sidePanel
+        ? sidePanel / 2
         : (freeWidth / 2) - 20; // Subtract 20 to ensure image does overflow into padding.
       return -translateBy;
     }
     return 0;
   }
   calculateHeight = (cellSize, rows, removePadding) => {
+    const arrowPadding = Number(process.env.REACT_APP_HEATMAP_ARROW_PADDING);
+    const colMargin = Number(process.env.REACT_APP_HEATMAP_COL_MARGIN);
+    const padding = Number(process.env.REACT_APP_HEATMAP_PADDING);
+    const vertPadding = Number(process.env.REACT_APP_HEATMAP_VERT_PADDING);
+
     // Available height for image wrapper.
-    let wrapper = this.wrapperRef.current.getBoundingClientRect().height - VERT_PADDING;
+    let wrapper = this.wrapperRef.current.getBoundingClientRect().height - vertPadding;
 
     // If horizontal scroll arrows are being shown, remove some more height from wrapper.
     if (removePadding) {
-      wrapper -= EXTRA_ARROW_PADDING;
+      wrapper -= arrowPadding;
     }
 
     // Available height for plot and maximum number of rows.
-    const heatmap = wrapper - COL_MARGIN;
+    const heatmap = wrapper - colMargin;
     const pageY = Math.floor(heatmap / cellSize);
 
     /* If there are not enough rows to fill available height,
@@ -120,7 +118,7 @@ export class SvgDimensions extends Component {
       height.heatmap = rowNum * cellSize;
       height.pageY = rowNum;
       height.rows = rowNum;
-      height.wrapper = height.heatmap + COL_MARGIN + EXTRA_PADDING;
+      height.wrapper = height.heatmap + colMargin + padding;
     } else {
       height.arrowsY = true;
       height.heatmap = pageY * cellSize;
@@ -131,9 +129,13 @@ export class SvgDimensions extends Component {
     return height;
   }
   calculateWidth = (cellSize, columns) => {
+    const horzPadding = Number(process.env.REACT_APP_HEATMAP_HORZ_PADDING);
+    const padding = Number(process.env.REACT_APP_HEATMAP_PADDING);
+    const rowMargin = Number(process.env.REACT_APP_HEATMAP_ROW_MARGIN);
+
     // Maximum sizes.
-    const wrapper = this.wrapperRef.current.getBoundingClientRect().width - HORZ_PADDING;
-    const heatmap = wrapper - ROW_MARGIN;
+    const wrapper = this.wrapperRef.current.getBoundingClientRect().width - horzPadding;
+    const heatmap = wrapper - rowMargin;
     const pageX = Math.floor(heatmap / cellSize);
 
     /* If there are not enough columns to fill available width,
@@ -146,7 +148,7 @@ export class SvgDimensions extends Component {
       width.columns = columnNum;
       width.heatmap = columnNum * cellSize;
       width.pageX = columnNum;
-      width.wrapper = width.heatmap + ROW_MARGIN + EXTRA_PADDING;
+      width.wrapper = width.heatmap + rowMargin + padding;
     } else {
       width.arrowsX = true;
       width.columns = columnNum;

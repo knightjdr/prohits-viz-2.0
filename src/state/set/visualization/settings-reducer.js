@@ -11,6 +11,7 @@ export const defaultState = {
   minAbundance: 0,
   primaryFilter: 0.01,
   secondaryFilter: 0.05,
+  thickness: 50,
 };
 
 const Settings = (state = {

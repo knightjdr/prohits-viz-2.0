@@ -7,6 +7,7 @@ import Circle from '../../__segcircle/svg/circle/circle-container';
 const Svg = ({
   circles,
   pieDimensions,
+  settings,
 }) => {
   const radius = Math.ceil(pieDimensions.wrapper / 2);
   return (
@@ -26,7 +27,7 @@ const Svg = ({
           <Circle
             circles={circles}
             radius={radius}
-            thickness={50}
+            thickness={settings.thickness}
           />
         </g>
       </svg>
@@ -52,6 +53,9 @@ Svg.propTypes = {
   }).isRequired,
   pieDimensions: PropTypes.shape({
     wrapper: PropTypes.number,
+  }).isRequired,
+  settings: PropTypes.shape({
+    thickness: PropTypes.number,
   }).isRequired,
 };
 

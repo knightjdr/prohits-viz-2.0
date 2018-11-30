@@ -7,6 +7,7 @@ import { displaySelector } from '../../../state/selectors/visualization/display-
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
+import { updateSetting } from '../../../state/set/visualization/settings-actions';
 
 export const StoreConnection = ({
   circles,
@@ -18,6 +19,7 @@ export const StoreConnection = ({
   setDims,
   settings,
   updatePlotXY,
+  updateSettingValue,
   ...otherProps
 }) => renderProp({
   ...otherProps,
@@ -29,6 +31,7 @@ export const StoreConnection = ({
   setDims,
   settings,
   updatePlotXY,
+  updateSettingValue,
 });
 
 StoreConnection.defaultProps = {
@@ -59,8 +62,11 @@ StoreConnection.propTypes = {
   panel: PropTypes.bool.isRequired,
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
-  settings: PropTypes.shape({}).isRequired,
+  settings: PropTypes.shape({
+    thickness: PropTypes.number,
+  }).isRequired,
   updatePlotXY: PropTypes.func.isRequired,
+  updateSettingValue: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
@@ -76,6 +82,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updatePlotXY: (fixed, translate) => {
     dispatch(updatePlotPosition(fixed, translate));
+  },
+  updateSettingValue: (setting, value) => {
+    dispatch(updateSetting(setting, value));
   },
 });
 
