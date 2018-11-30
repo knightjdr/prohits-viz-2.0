@@ -2,9 +2,9 @@
 
 exports[`Visualization image for other image types should match snapshot 1`] = `<Heatmap />`;
 
-exports[`Visualization image for pie images should match snapshot 1`] = `<Pie />`;
-
 exports[`Visualization image for scatter images should match snapshot 1`] = `<ScatterContainer />`;
+
+exports[`Visualization image for segcircle images should match snapshot 1`] = `<Segcircle />`;
 
 exports[`Visualization image when loading should match snapshot 1`] = `
 <Status

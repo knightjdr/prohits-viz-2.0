@@ -12,6 +12,6 @@ exports[`Visualization control when vizType is null should match snapshot 1`] = 
 />
 `;
 
-exports[`Visualization control when vizType is pie should match snapshot 1`] = `<Pie />`;
-
 exports[`Visualization control when vizType is scatter should match snapshot 1`] = `<ScatterContainer />`;
+
+exports[`Visualization control when vizType is segcircle should match snapshot 1`] = `<Segcircle />`;

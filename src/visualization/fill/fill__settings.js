@@ -29,6 +29,8 @@ const fillSettings = (userSettings = { current: {} }, paramsImageType) => {
   settings.primaryFilter = typeof primaryFilter === 'number' ? primaryFilter : defaultState.primaryFilter;
   settings.secondaryFilter = typeof secondaryFilter === 'number' ?
     secondaryFilter : defaultState.secondaryFilter;
+  settings.thickness = typeof thickness === 'number' ?
+    thickness : defaultState.thickness;
 
   if (acceptedImageTypes.includes(imageType)) {
     settings.imageType = imageType;

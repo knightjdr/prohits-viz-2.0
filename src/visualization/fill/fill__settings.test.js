@@ -19,6 +19,7 @@ describe('Fill settings', () => {
   it('should return user input when valid', () => {
     const user = {
       current: {
+        ...defaultState,
         abundanceCap: 25,
         cellSize: 10,
         edgeColor: 'redBlack',
