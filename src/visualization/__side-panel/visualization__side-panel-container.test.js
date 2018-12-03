@@ -13,6 +13,7 @@ describe('Visualization panel container', () => {
         changeTab={jest.fn()}
         panel
         tab="info"
+        tabs={[]}
         toggleSidePanel={togglePanel}
         update={{
           animationDuration: 0,
@@ -30,6 +31,7 @@ describe('Visualization panel container', () => {
         changeTab={jest.fn()}
         panel
         tab="info"
+        tabs={[]}
         toggleSidePanel={togglePanel}
         update={{
           animationDuration: 0,

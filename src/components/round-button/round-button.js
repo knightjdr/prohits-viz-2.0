@@ -6,8 +6,9 @@ import './round-button.css';
 
 const RoundButton = ({
   className,
-  onClick,
   icon,
+  onClick,
+  size,
   ...otherProps
 }) => {
   const classes = ['round-button'];
@@ -21,19 +22,21 @@ const RoundButton = ({
       type="button"
       {...otherProps}
     >
-      <FontAwesomeIcon icon={icon} size="lg" />
+      <FontAwesomeIcon icon={icon} size={size} />
     </button>
   );
 };
 
 RoundButton.defaultProps = {
   className: null,
+  size: 'lg',
 };
 
 RoundButton.propTypes = {
   className: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
   icon: PropTypes.shape({}).isRequired,
+  onClick: PropTypes.func.isRequired,
+  size: PropTypes.string,
 };
 
 export default RoundButton;

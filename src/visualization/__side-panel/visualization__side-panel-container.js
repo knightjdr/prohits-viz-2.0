@@ -22,6 +22,7 @@ export class SidePanelContainer extends Component {
         isVisible={this.props.panel}
         selectTab={this.props.changeTab}
         tab={this.props.tab}
+        tabs={this.props.tabs}
         togglePanel={this.props.toggleSidePanel}
         transitionDuration={this.props.update.transitionDuration}
       />
@@ -33,6 +34,7 @@ SidePanelContainer.propTypes = {
   changeTab: PropTypes.func.isRequired,
   panel: PropTypes.bool.isRequired,
   tab: PropTypes.string.isRequired,
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
   toggleSidePanel: PropTypes.func.isRequired,
   update: PropTypes.shape({
     animationDuration: PropTypes.number,

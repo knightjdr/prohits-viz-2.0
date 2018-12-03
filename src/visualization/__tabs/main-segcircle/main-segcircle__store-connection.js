@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import panelSelector from '../../../state/selectors/visualization/panel-selector';
-import segCirclesSelector from '../../../state/selectors/visualization/segcircles-selector';
+import { segCirclesSelector } from '../../../state/selectors/visualization/segcircles-selector';
 import { displaySelector } from '../../../state/selectors/visualization/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';

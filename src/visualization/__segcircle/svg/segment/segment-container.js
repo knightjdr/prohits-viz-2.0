@@ -14,19 +14,45 @@ export class SegmentContainer extends Component {
     const {
       abundanceCap,
       color,
+      minAbundance,
       radius,
       readouts,
       thickness,
       values,
     } = this.props;
     this.gradient = colorGradient(color, process.env.REACT_APP_NUM_GRADIENT_COLORS);
-    this.range = setRange(0, abundanceCap, 0, process.env.REACT_APP_NUM_GRADIENT_COLORS - 1);
+    this.range = setRange(
+      minAbundance,
+      abundanceCap,
+      0,
+      process.env.REACT_APP_NUM_GRADIENT_COLORS - 1,
+    );
+    this.colorValues = valuesToColor(values, this.gradient, this.range);
     const radii = calculateRadii(radius, thickness);
-    const colorValues = valuesToColor(values, this.gradient, this.range);
     this.state = {
       radii,
-      segments: createSegments(colorValues, radii, readouts),
+      segments: createSegments(this.colorValues, radii, readouts),
     };
+  }
+  componentDidUpdate = (prevProps) => {
+    const { radius, thickness } = prevProps;
+    this.updateRadii(this.props, radius, thickness);
+  }
+  updateRadii = ({
+    radius,
+    readouts,
+    thickness,
+  }, prevRadius, prevThickness) => {
+    if (
+      radius !== prevRadius
+      || thickness !== prevThickness
+    ) {
+      const radii = calculateRadii(radius, thickness);
+      this.setState({
+        radii,
+        segments: createSegments(this.colorValues, radii, readouts),
+      });
+    }
   }
   render() {
     return (
@@ -49,6 +75,7 @@ SegmentContainer.propTypes = {
   color: PropTypes.string.isRequired,
   handleMouseEnter: PropTypes.func.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
+  minAbundance: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
   readouts: PropTypes.arrayOf(PropTypes.string).isRequired,
   thickness: PropTypes.number.isRequired,

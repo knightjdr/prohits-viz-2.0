@@ -4,7 +4,9 @@ import React, { Component, Fragment } from 'react';
 import debounce from '../../../../helpers/debounce';
 import getTextPosition from '../helpers/get-text-position';
 import Segment from '../segment/segment-container';
+import sortCircles from '../helpers/sort-circles';
 import Text from '../text/text';
+import textLimits from '../text/text-limits';
 import textSize from '../../../../helpers/text-size';
 
 /* The plot is being rotated -90 in main-segcircle-svg, so the "x" and
@@ -14,13 +16,20 @@ export class CircleContainer extends Component {
   constructor(props) {
     super(props);
     const { circles, radius, thickness } = this.props;
-    const readouts = circles.readouts.map(readout => readout.name);
+    const sortedCircles = sortCircles(circles, 0);
+    const readouts = sortedCircles.readouts.map(readout => readout.name);
     this.state = {
-      readouts,
-      space: thickness / 4,
       hoveredText: null,
-      textPosition: getTextPosition(readouts, radius),
+      readouts,
+      circles: sortedCircles,
+      space: thickness / 4,
+      text: getTextPosition(readouts, radius),
     };
+  }
+  componentDidUpdate = (prevProps) => {
+    const { radius, thickness } = prevProps;
+    this.updateText(this.props, radius);
+    this.updateThickness(this.props, thickness);
   }
   debouncedMouseEnter = debounce((circleIndex, segmentIndex) => {
     if (this.mouseOver) {
@@ -29,18 +38,18 @@ export class CircleContainer extends Component {
   }, 100, false, () => { this.mouseOver = true; });
   handleMouseEnter = (circleIndex, segmentIndex) => {
     this.segmentEntered = true;
-    const { circles, radius } = this.props;
-    const { textPosition } = this.state;
+    const { radius } = this.props;
+    const { circles, text } = this.state;
     const abundance = circles.segments[circleIndex].values[segmentIndex];
     const mertic = circles.segments[circleIndex].name;
-    const position = textPosition[segmentIndex];
+    const position = text[segmentIndex];
     const readout = circles.readouts[segmentIndex].name;
     const string = `${readout}, ${mertic}: ${abundance}`;
     const width = textSize(string, 'Lato', '16px');
     this.setState({
       hoveredText: {
-        x: this.textX(position.x, radius, 8),
-        y: this.textY(position.y, position.yOffset, radius, width),
+        x: textLimits.x(position.x, radius, 8),
+        y: textLimits.y(position.y, position.yOffset, radius, width),
         id: readout,
         string,
         width: width + 4,
@@ -56,26 +65,23 @@ export class CircleContainer extends Component {
     }
     this.mouseOver = false;
   }
-  textX = (x, radius, width) => {
-    if (x < -radius) {
-      return -radius;
-    } if (x > radius - width) {
-      return radius - width;
+  updateText = ({ radius }, prevRadius) => {
+    if (radius !== prevRadius) {
+      this.setState(({ readouts }) => ({
+        text: getTextPosition(readouts, radius),
+      }));
     }
-    return x;
   }
-  textY = (y, offset, radius, width) => {
-    const position = offset ? y - width : y;
-    if (position < -radius) {
-      return -radius;
-    } if (position > radius - width) {
-      return radius - width;
+  updateThickness = ({ thickness }, prevThickness) => {
+    if (thickness !== prevThickness) {
+      this.setState({
+        space: thickness / 4,
+      });
     }
-    return position;
   }
   render() {
-    const { circles, radius, thickness } = this.props;
-    const { readouts, space } = this.state;
+    const { radius, thickness } = this.props;
+    const { circles, readouts, space } = this.state;
     return (
       <Fragment>
         {
@@ -87,6 +93,7 @@ export class CircleContainer extends Component {
               handleMouseEnter={this.debouncedMouseEnter}
               handleMouseLeave={this.handleMouseLeave}
               key={segment.name}
+              minAbundance={segment.minAbundance}
               radius={radius - (index * (thickness + space))}
               readouts={readouts}
               thickness={thickness}
@@ -94,7 +101,11 @@ export class CircleContainer extends Component {
             />
           ))
         }
-        <Text hoveredText={this.state.hoveredText} />
+        <Text
+          hoveredText={this.state.hoveredText}
+          text={this.state.text}
+          show={false}
+        />
       </Fragment>
     );
   }

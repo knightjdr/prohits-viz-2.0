@@ -6,28 +6,27 @@ import InfoPanel from './panel__info';
 const downloadLegend = jest.fn();
 
 describe('Info panel', () => {
-  it('should render', () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
       <InfoPanel
         downloadLegend={downloadLegend}
-        legend={{}}
         loadNewFile={jest.fn()}
         params={{ name: 'test' }}
+        segments={[]}
+        settings={{}}
       />,
     );
+  });
+
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should call download legend function when button clicked', () => {
-    const wrapper = shallow(
-      <InfoPanel
-        downloadLegend={downloadLegend}
-        legend={{}}
-        loadNewFile={jest.fn()}
-        params={{ name: 'test' }}
-      />,
-    );
-    wrapper.find('button').simulate('click');
+    downloadLegend.mockClear();
+    wrapper.find('RoundButton').simulate('click');
     expect(downloadLegend).toHaveBeenCalledTimes(1);
   });
 });

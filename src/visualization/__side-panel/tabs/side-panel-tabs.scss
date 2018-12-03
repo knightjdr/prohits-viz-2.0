@@ -1,0 +1,47 @@
+@import 'style/reset';
+@import 'style/theme';
+
+.side-panel__button-close {
+  position: absolute;
+  right: 12px;
+  top: 7px;
+}
+.side-panel-tab_selected {
+  background-color: $primary-light !important;
+}
+.side-panel-tab_selected svg {
+  color: $primary-dark !important;
+}
+.side-panel-tabs {
+  display: flex;
+}
+.side-panel-tabs > button:not(:last-child) {
+  @extend .button-reset;
+  background-color: $backdrop-light;
+  border-bottom: 1px solid $primary-light;
+  height: 50px;
+  max-width: 50px;
+  transition: background-color 0.5s ease;
+  width: 14%;
+}
+.side-panel-tabs > button:not(:last-child):hover svg {
+  color: $primary-dark;
+  transform: scale(1.2);
+}
+.side-panel-tabs > :first-child {
+  border-top-left-radius: 3px;
+}
+.side-panel-tabs > button:not(:last-child) svg {
+  color: $primary-medium;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+.side-panel__filler {
+  border-bottom: 1px solid $primary-light;
+  flex-grow: 1;
+}
+@media (max-width: 374px) {
+  .side-panel__button-close {
+    right: 6px;
+  }
+}

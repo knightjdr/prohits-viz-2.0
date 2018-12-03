@@ -5,11 +5,24 @@ import './text.css';
 
 const Text = ({
   hoveredText,
+  show,
   text,
 }) => (
   <g transform="scale(0.95)">
+    <filter id="dropshadow" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="1" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
     {
-      text.length > 0
+      show
+      && text.length > 0
       && text.map(details => (
         <text
           className="pie__text"
@@ -36,6 +49,7 @@ const Text = ({
             height="24"
             rx="2"
             ry="2"
+            style={{ filter: 'url(#dropshadow)' }}
             x={hoveredText.x}
             y={hoveredText.y - 17}
             width={hoveredText.width}
@@ -66,6 +80,7 @@ Text.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }),
+  show: PropTypes.bool.isRequired,
   text: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

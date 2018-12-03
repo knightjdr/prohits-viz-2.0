@@ -9,7 +9,9 @@ import './visualization__heatmap.css';
 const Heatmap = () => (
   <div className="visualization__heatmap">
     <Tabs />
-    <SidePanel />
+    <SidePanel
+      tabs={['info', 'map', 'settings', 'annotation', 'analysis', 'save']}
+    />
     <FloatMap />
   </div>
 );

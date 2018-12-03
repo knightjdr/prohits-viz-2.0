@@ -83,10 +83,10 @@ export class SvgDimensions extends Component {
   }
   translateLeft = () => {
     const { display, panel } = this.props;
-    const { width } = this.state;
+    const { dims } = this.state;
     this.props.updatePlotXY(
       !display.plotFixed,
-      this.setTranslate({ plotFixed: !display.plotFixed }, panel, width),
+      this.setTranslate({ plotFixed: !display.plotFixed }, panel, dims),
     );
   }
   updateDimensions = ({
@@ -104,10 +104,10 @@ export class SvgDimensions extends Component {
       panel !== prevPanel &&
       !display.plotFixed
     ) {
-      const { width } = this.state;
+      const { dims } = this.state;
       this.props.updatePlotXY(
         false,
-        this.setTranslate(display, panel, width),
+        this.setTranslate(display, panel, dims),
       );
     }
   }

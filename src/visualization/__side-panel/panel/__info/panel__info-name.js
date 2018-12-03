@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Popconfirm } from 'antd';
+import { Popconfirm } from 'antd';
+
+import Button from '../../../../components/button/button';
 
 import './panel__info.css';
 
@@ -23,7 +25,9 @@ const Name = ({
         placement="bottomRight"
         title="Confirm open new file."
       >
-        <Button>
+        <Button
+          type="light"
+        >
           Load new file
         </Button>
       </Popconfirm>

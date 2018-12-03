@@ -22,79 +22,16 @@
   z-index: 102;
 }
 .visualization__side-panel-button {
-  @extend .button-reset;
-  background-color: $primary-medium;
-  border-radius: 50%;
-  color: $text-light;
-  height: 36px;
   opacity: 1;
   position: absolute;
   right: 5px;
   top: 17px;
   transition: all 0.5s ease;
-  width: 36px;
   z-index: 101;
-}
-.visualization__side-panel-button:hover {
-  background-color: $primary-dark;
-}
-.visualization__side-panel-button-close {
-  @extend .button-reset;
-  background-color: $primary-medium;
-  border-radius: 50%;
-  color: $text-light;
-  height: 36px;
-  position: absolute;
-  right: 12px;
-  top: 7px;
-  transition: background-color 0.5s ease;
-  width: 36px;
-}
-.visualization__side-panel-button-close:hover {
-  background-color: $primary-dark;
 }
 .visualization__side-panel-container {
   height: 100%;
   overflow: hidden;
   position: relative;
   width: 100%;
-}
-.visualization__side-panel-tabs {
-  display: flex;
-}
-.visualization__side-panel-tabs > button:not(:last-child) {
-  @extend .button-reset;
-  background-color: $backdrop-light;
-  border-bottom: 1px solid $primary-light;
-  height: 50px;
-  max-width: 50px;
-  transition: background-color 0.5s ease;
-  width: 14%;
-}
-.visualization__side-panel-tabs > button:not(:last-child):hover svg {
-  color: $primary-dark;
-  transform: scale(1.2);
-}
-.visualization__side-panel-tabs > :first-child {
-  border-top-left-radius: 3px;
-}
-.visualization__side-panel-tabs > button:not(:last-child) svg {
-  color: $primary-medium;
-  transform-origin: center;
-  transition: all 0.3s ease;
-}
-.visualization__side-panel-tab-selected {
-  background-color: $primary-light !important;
-}
-.visualization__side-panel-tab-selected svg {
-  color: $primary-dark !important;
-}
-.visualization__side-panel-tab-filler {
-  border-bottom: 1px solid $primary-light;
-  flex-grow: 1;
-}
-@media (max-width: 374px) {
-  .visualization__side-panel-button-close {
-    right: 6px;
-  }
 }

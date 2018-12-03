@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import colorGradient from '../../../../color/color-gradient';
+
 const HeatmapLegend = ({
   abundanceCap,
-  abundanceName,
-  gradientFill,
+  abundanceColumn,
+  fillColor,
+  invertColor,
   minAbundance,
 }) => {
+  const gradientFill = colorGradient(fillColor, 101, invertColor);
   const numColors = gradientFill.length;
   const halfColorIndex = Math.floor(numColors / 2);
   return (
@@ -26,7 +30,7 @@ const HeatmapLegend = ({
       </defs>
       <g>
         <text x="100" y="20" textAnchor="middle">
-          {abundanceName}
+          {abundanceColumn}
         </text>
         <rect x="25" y="30" height="20" width="150" fill="url('#legendGradient')" />
         <text x="25" y="65" textAnchor="middle">
@@ -42,10 +46,9 @@ const HeatmapLegend = ({
 
 HeatmapLegend.propTypes = {
   abundanceCap: PropTypes.number.isRequired,
-  abundanceName: PropTypes.string.isRequired,
-  gradientFill: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
+  abundanceColumn: PropTypes.string.isRequired,
+  fillColor: PropTypes.string.isRequired,
+  invertColor: PropTypes.bool.isRequired,
   minAbundance: PropTypes.number.isRequired,
 };
 

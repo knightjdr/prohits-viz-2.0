@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dotplot legend should render with score type where larger scores are better 1`] = `
+exports[`Dotplot legend larger scores are better should match snapshot 1`] = `
 <svg
   height="250"
   id="legend"
@@ -18,7 +18,7 @@ exports[`Dotplot legend should render with score type where larger scores are be
       />
       <stop
         offset="50%"
-        stopColor="#ff0000"
+        stopColor="#0000ff"
       />
       <stop
         offset="100%"
@@ -121,7 +121,7 @@ exports[`Dotplot legend should render with score type where larger scores are be
       cy="175"
       fill="none"
       r="12"
-      stroke="#ff0000"
+      stroke="#0000ff"
       strokeWidth="2"
     />
     <text
@@ -154,7 +154,7 @@ exports[`Dotplot legend should render with score type where larger scores are be
 </svg>
 `;
 
-exports[`Dotplot legend should render with score type where smaller scores are better 1`] = `
+exports[`Dotplot legend smaller scores are better should match snapshot 1`] = `
 <svg
   height="250"
   id="legend"
@@ -172,7 +172,7 @@ exports[`Dotplot legend should render with score type where smaller scores are b
       />
       <stop
         offset="50%"
-        stopColor="#ff0000"
+        stopColor="#0000ff"
       />
       <stop
         offset="100%"
@@ -275,7 +275,7 @@ exports[`Dotplot legend should render with score type where smaller scores are b
       cy="175"
       fill="none"
       r="12"
-      stroke="#ff0000"
+      stroke="#0000ff"
       strokeWidth="2"
     />
     <text

@@ -1,31 +1,59 @@
 import { shallow } from 'enzyme';
 
+import colorGradient from '../../../../color/color-gradient';
 import DotplotLegend from './legend__dotplot';
+
+jest.mock('../../../../color/color-gradient');
+colorGradient.mockReturnValue(['#ffffff', '#0000ff', '#000000']);
 
 const params = {
   abundanceCap: 50,
-  abundanceName: 'Abundance',
-  gradientEdge: ['#ffffff', '#ff0000', '#000000'],
-  gradientFill: ['#ffffff', '#ff0000', '#000000'],
+  abundanceColumn: 'Abundance',
+  edgeColor: 'blueBlack',
+  fillColor: 'redBlack',
+  invertColor: false,
   minAbundance: 0,
   primaryFilter: 0.01,
-  scoreName: 'Score',
+  scoreColumn: 'Score',
   scoreType: 'lte',
   secondaryFilter: 0.05,
 };
 
 describe('Dotplot legend', () => {
-  it('should render with score type where smaller scores are better', () => {
-    const wrapper = shallow(
-      DotplotLegend({ ...params }),
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('smaller scores are better', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      colorGradient.mockClear();
+      wrapper = shallow(
+        DotplotLegend({ ...params }),
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should set color gradient for edge', () => {
+      expect(colorGradient).toHaveBeenCalledWith('blueBlack', 101, false);
+    });
+
+    it('should set color gradient for fill', () => {
+      expect(colorGradient).toHaveBeenCalledWith('redBlack', 101, false);
+    });
   });
 
-  it('should render with score type where larger scores are better', () => {
-    const wrapper = shallow(
-      DotplotLegend({ ...params, scoreType: 'gte' }),
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('larger scores are better', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        DotplotLegend({ ...params, scoreType: 'gte' }),
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

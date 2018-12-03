@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidePanelTab when tab is not selected should match snapshot 1`] = `
+<button
+  className={null}
+  onClick={[Function]}
+  type="button"
+>
+  <FontAwesomeIcon$1
+    border={false}
+    className=""
+    fixedWidth={false}
+    flip={null}
+    icon={null}
+    listItem={false}
+    mask={null}
+    name=""
+    pull={null}
+    pulse={false}
+    rotation={null}
+    size="2x"
+    spin={false}
+    symbol={false}
+    transform={null}
+  />
+</button>
+`;
+
+exports[`SidePanelTab when tab is selected should match snapshot 1`] = `
+<button
+  className="side-panel-tab_selected"
+  onClick={[Function]}
+  type="button"
+>
+  <FontAwesomeIcon$1
+    border={false}
+    className=""
+    fixedWidth={false}
+    flip={null}
+    icon={null}
+    listItem={false}
+    mask={null}
+    name=""
+    pull={null}
+    pulse={false}
+    rotation={null}
+    size="2x"
+    spin={false}
+    symbol={false}
+    transform={null}
+  />
+</button>
+`;

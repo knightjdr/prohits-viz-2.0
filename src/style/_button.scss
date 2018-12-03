@@ -40,6 +40,26 @@
   color: $text-dark;
   cursor: not-allowed;
 }
+.light-button {
+  border: 1px solid #d9d9d9;
+  transition: all 0.5s;
+}
+.light-button,
+.light-button:focus {
+  @extend .basic-button;
+  background-color: $text-light;
+  color: $primary-medium;
+}
+.light-button:hover {
+  background: $primary-medium radial-gradient(circle, transparent 1%, $primary-medium 1%) center/15000%;
+  border: 1px solid $primary-light;
+  color: $text-light;
+}
+.light-button:active {
+  background-color: #fff;
+  background-size: 100%;
+  transition: background 0s;
+}
 .success-button,
 .success-button:focus {
   @extend .basic-button;

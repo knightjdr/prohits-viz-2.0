@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Heatmap legend should render 1`] = `
+exports[`Heatmap legend should to match snapshot 1`] = `
 <svg
   height="80"
   id="legend"
@@ -18,7 +18,7 @@ exports[`Heatmap legend should render 1`] = `
       />
       <stop
         offset="50%"
-        stopColor="#ff0000"
+        stopColor="#0000ff"
       />
       <stop
         offset="100%"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Name component on info panel should render 1`] = `
+exports[`Name component on info panel should match snapshot 1`] = `
 <div
   className="panel__info-name"
 >
@@ -23,9 +23,9 @@ exports[`Name component on info panel should render 1`] = `
       trigger="click"
     >
       <Button
-        ghost={false}
-        loading={false}
-        prefixCls="ant-btn"
+        className={null}
+        disabled={false}
+        type="light"
       >
         Load new file
       </Button>

@@ -1,19 +1,23 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ScoreEntities from './legend__score-entities';
+import colorGradient from '../../../../color/color-gradient';
+import scoreEntities from './legend__score-entities';
 
 const DotplotLegend = ({
   abundanceCap,
-  abundanceName,
-  gradientEdge,
-  gradientFill,
+  abundanceColumn,
+  edgeColor,
+  fillColor,
+  invertColor,
   minAbundance,
   primaryFilter,
-  scoreName,
+  scoreColumn,
   scoreType,
   secondaryFilter,
 }) => {
+  const gradientEdge = colorGradient(edgeColor, 101, invertColor);
+  const gradientFill = colorGradient(fillColor, 101, invertColor);
   const numColors = gradientFill.length;
   const halfColorIndex = Math.floor(numColors / 2);
   const quarterColorIndex = Math.floor(numColors / 4);
@@ -34,7 +38,7 @@ const DotplotLegend = ({
       </defs>
       <g>
         <text x="100" y="20" textAnchor="middle">
-          {abundanceName}
+          {abundanceColumn}
         </text>
         <rect x="25" y="30" height="20" width="150" fill="url('#legendGradient')" />
         <text x="25" y="65" textAnchor="middle">
@@ -55,7 +59,7 @@ const DotplotLegend = ({
       </g>
       <g>
         <text y="230" x="100" textAnchor="middle">
-          {scoreName}
+          {scoreColumn}
         </text>
         <circle
           cx="50"
@@ -66,7 +70,7 @@ const DotplotLegend = ({
           strokeWidth="2"
         />
         <text y="205" x="50" textAnchor="middle">
-          {ScoreEntities[scoreType].primary} {primaryFilter}
+          {scoreEntities[scoreType].primary} {primaryFilter}
         </text>
         <circle
           cx="100"
@@ -77,7 +81,7 @@ const DotplotLegend = ({
           strokeWidth="2"
         />
         <text y="205" x="100" textAnchor="middle">
-          {ScoreEntities[scoreType].secondary} {secondaryFilter}
+          {scoreEntities[scoreType].secondary} {secondaryFilter}
         </text>
         <circle
           fill="none"
@@ -88,7 +92,7 @@ const DotplotLegend = ({
           strokeWidth="2"
         />
         <text y="205" x="150" textAnchor="middle">
-          {ScoreEntities[scoreType].other} {secondaryFilter}
+          {scoreEntities[scoreType].other} {secondaryFilter}
         </text>
       </g>
     </svg>
@@ -97,16 +101,13 @@ const DotplotLegend = ({
 
 DotplotLegend.propTypes = {
   abundanceCap: PropTypes.number.isRequired,
-  abundanceName: PropTypes.string.isRequired,
-  gradientEdge: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
-  gradientFill: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
+  abundanceColumn: PropTypes.string.isRequired,
+  edgeColor: PropTypes.string.isRequired,
+  fillColor: PropTypes.string.isRequired,
+  invertColor: PropTypes.bool.isRequired,
   minAbundance: PropTypes.number.isRequired,
   primaryFilter: PropTypes.number.isRequired,
-  scoreName: PropTypes.string.isRequired,
+  scoreColumn: PropTypes.string.isRequired,
   scoreType: PropTypes.string.isRequired,
   secondaryFilter: PropTypes.number.isRequired,
 };

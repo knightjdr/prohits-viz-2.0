@@ -7,7 +7,6 @@ const Button = ({
   children,
   className,
   disabled,
-  onClick,
   type,
   ...otherProps
 }) => {
@@ -18,7 +17,6 @@ const Button = ({
   return (
     <button
       className={classes.join(' ')}
-      onClick={onClick}
       type="button"
       {...otherProps}
     >
@@ -42,9 +40,9 @@ Button.propTypes = {
   ]),
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
   type: PropTypes.oneOf([
     'default',
+    'light',
     'success',
     'warning',
   ]),

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info panel settings should match snapshot 1`] = `
+<div
+  className="panel__info-settings"
+>
+  <Setting
+    field="b"
+    key="b"
+    value="string param"
+  />
+  <Setting
+    field="c"
+    key="c"
+    value={
+      Array [
+        <div>
+          d
+      </div>,
+        <div>
+          e
+      </div>,
+      ]
+    }
+  />
+  <Setting
+    field="g"
+    key="g"
+    value="true"
+  />
+  <Setting
+    field="scoreType"
+    key="scoreType"
+    value="smaller scores better"
+  />
+</div>
+`;
