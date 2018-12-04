@@ -5,8 +5,9 @@ import Known from '../../__segcircle/svg/known/known-container';
 import Circle from '../../__segcircle/svg/circle/circle-container';
 
 const Svg = ({
-  circles,
   pieDimensions,
+  plot,
+  segcircleSettings,
   settings,
 }) => {
   const radius = Math.ceil(pieDimensions.wrapper / 2);
@@ -22,11 +23,12 @@ const Svg = ({
         <g transform="rotate(-90)">
           <Known
             radius={radius}
-            readouts={circles.readouts}
+            readouts={plot.readouts}
           />
           <Circle
-            circles={circles}
+            circles={plot}
             radius={radius}
+            settings={segcircleSettings}
             thickness={settings.thickness}
           />
         </g>
@@ -36,14 +38,16 @@ const Svg = ({
 };
 
 Svg.propTypes = {
-  circles: PropTypes.shape({
+  pieDimensions: PropTypes.shape({
+    wrapper: PropTypes.number,
+  }).isRequired,
+  plot: PropTypes.shape({
     readouts: PropTypes.arrayOf(
       PropTypes.shape({
         known: PropTypes.bool,
         readout: PropTypes.string,
       }),
     ),
-    order: PropTypes.arrayOf(PropTypes.number),
     segments: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
@@ -51,9 +55,13 @@ Svg.propTypes = {
       }),
     ),
   }).isRequired,
-  pieDimensions: PropTypes.shape({
-    wrapper: PropTypes.number,
-  }).isRequired,
+  segcircleSettings: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundanceCap: PropTypes.number,
+      color: PropTypes.string,
+      minAbundance: PropTypes.number,
+    }),
+  ).isRequired,
   settings: PropTypes.shape({
     thickness: PropTypes.number,
   }).isRequired,

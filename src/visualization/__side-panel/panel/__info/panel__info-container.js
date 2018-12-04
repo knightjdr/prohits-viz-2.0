@@ -5,16 +5,18 @@ import { withRouter } from 'react-router-dom';
 
 import download from '../../../../helpers/download';
 import Info from './panel__info';
+import plotSelector from '../../../../state/selectors/visualization/plot-selector';
+import { segCircleSettingsSelector } from '../../../../state/selectors/visualization/segcircle-settings-selector';
 import { settingSelector } from '../../../../state/selectors/visualization/settings-selector';
 import { clearFile } from '../../../../state/set/interactive-file-actions';
 import { parameterSelector } from '../../../../state/selectors/visualization/params-selector';
-import { segCirclesSelectorProp } from '../../../../state/selectors/visualization/segcircles-selector';
 
 export const InfoContainer = ({
   clearCurrentFile,
   history,
   params,
-  segments,
+  plot,
+  segcircleSettings,
   settings,
 }) => {
   const downloadLegend = () => {
@@ -30,14 +32,16 @@ export const InfoContainer = ({
       downloadLegend={downloadLegend}
       loadNewFile={loadNewFile}
       params={params}
-      segments={segments}
+      segcircleSettings={segcircleSettings}
+      segments={plot.segments}
       settings={settings}
     />
   );
 };
 
 InfoContainer.defaultProps = {
-  segments: [],
+  plot: { segments: [] },
+  segcircleSettings: [],
 };
 
 InfoContainer.propTypes = {
@@ -46,12 +50,18 @@ InfoContainer.propTypes = {
     replace: PropTypes.func,
   }).isRequired,
   params: PropTypes.shape({}).isRequired,
-  segments: PropTypes.arrayOf(
+  plot: PropTypes.shape({
+    segments: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    ),
+  }),
+  segcircleSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,
       minAbundance: PropTypes.number,
-      name: PropTypes.string,
     }),
   ),
   settings: PropTypes.shape({}).isRequired,
@@ -60,7 +70,8 @@ InfoContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   params: parameterSelector(state),
-  segments: segCirclesSelectorProp(state, 'segments'),
+  plot: plotSelector(state),
+  segcircleSettings: segCircleSettingsSelector(state),
   settings: settingSelector(state),
 });
 

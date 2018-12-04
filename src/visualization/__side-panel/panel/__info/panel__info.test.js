@@ -14,6 +14,7 @@ describe('Info panel', () => {
         downloadLegend={downloadLegend}
         loadNewFile={jest.fn()}
         params={{ name: 'test' }}
+        segcircleSettings={[]}
         segments={[]}
         settings={{}}
       />,

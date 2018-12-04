@@ -5,9 +5,10 @@ import colorGradient from '../../../../color/color-gradient';
 
 const SegCircleLegend = ({
   known,
+  segcircleSettings,
   segments,
 }) => {
-  const height = (segments.length * 70) + 60;
+  const height = (segcircleSettings.length * 70) + 60;
   return (
     <svg
       id="legend"
@@ -17,17 +18,18 @@ const SegCircleLegend = ({
       viewBox={`0 0 200 ${height}`}
     >
       {
-        segments.map((segment, index) => {
-          const gradientFill = colorGradient(segment.color, 101, false);
+        segcircleSettings.map((setting, index) => {
+          const gradientFill = colorGradient(setting.color, 101, false);
+          const { name } = segments[index];
           const numColors = gradientFill.length;
           const halfColorIndex = Math.floor(numColors / 2);
           return (
             <g
-              key={segment.name}
+              key={name}
               transform={`translate(0 ${index * 70})`}
             >
               <defs>
-                <linearGradient id={`${segment.name}-legendGradient`}>
+                <linearGradient id={`${name}-legendGradient`}>
                   <stop offset="0%" stopColor={gradientFill[0]} />
                   <stop offset="50%" stopColor={gradientFill[halfColorIndex]} />
                   <stop offset="100%" stopColor={gradientFill[numColors - 1]} />
@@ -35,14 +37,14 @@ const SegCircleLegend = ({
               </defs>
               <g>
                 <text x="100" y="20" textAnchor="middle">
-                  {segment.name}
+                  {name}
                 </text>
-                <rect x="25" y="30" height="20" width="150" fill={`url('#${segment.name}-legendGradient')`} />
+                <rect x="25" y="30" height="20" width="150" fill={`url('#${name}-legendGradient')`} />
                 <text x="25" y="65" textAnchor="middle">
-                  {segment.minAbundance}
+                  {setting.minAbundance}
                 </text>
                 <text x="175" y="65" textAnchor="middle">
-                  {segment.abundanceCap}
+                  {setting.abundanceCap}
                 </text>
               </g>
             </g>
@@ -77,6 +79,13 @@ const SegCircleLegend = ({
 
 SegCircleLegend.propTypes = {
   known: PropTypes.bool.isRequired,
+  segcircleSettings: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundanceCap: PropTypes.number,
+      color: PropTypes.string,
+      minAbundance: PropTypes.number,
+    }),
+  ).isRequired,
   segments: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,

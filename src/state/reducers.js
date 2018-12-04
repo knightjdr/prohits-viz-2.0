@@ -3,6 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 // reducers
 import annotations from './set/visualization/annotation-reducer';
+import availablePlots from './set/visualization/available-plots-reducer';
 import columns from './set/visualization/columns-reducer';
 import customize from './set/analysis/customize/data-reducer';
 import dimensions from './set/visualization/dimension-reducer';
@@ -21,12 +22,13 @@ import newsItem from './get/news-item-reducer';
 import newsPage from './set/news-page-reducer';
 import panel from './set/visualization/panel-reducer';
 import parameters from './set/visualization/params-reducer';
+import plot from './set/visualization/plot-reducer';
 import position from './set/visualization/position-reducer';
 import positionCustomize from './set/analysis/customize/position-reducer';
 import rows from './set/visualization/rows-reducer';
 import save from './set/visualization/save-reducer';
 import search from './set/visualization/search-reducer';
-import segcircles from './set/visualization/segcircles-reducer';
+import segcircleSettings from './set/visualization/segcircle-settings-reducer';
 import session from './set/session-reducer';
 import settings from './set/visualization/settings-reducer';
 import tabs from './set/visualization/tab-reducer';
@@ -36,6 +38,7 @@ import vizanalysisform from './set/analysis/viz-analysis-form-reducer';
 
 const Reducers = combineReducers({
   annotations,
+  availablePlots,
   columns,
   customize,
   dimensions,
@@ -55,12 +58,13 @@ const Reducers = combineReducers({
   newsPage,
   panel,
   parameters,
+  plot,
   position,
   positionCustomize,
   rows,
   save,
   search,
-  segcircles,
+  segcircleSettings,
   session,
   settings,
   tabs,

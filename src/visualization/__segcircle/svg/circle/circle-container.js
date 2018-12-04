@@ -80,20 +80,20 @@ export class CircleContainer extends Component {
     }
   }
   render() {
-    const { radius, thickness } = this.props;
+    const { radius, settings, thickness } = this.props;
     const { circles, readouts, space } = this.state;
     return (
       <Fragment>
         {
           circles.segments.map((segment, index) => (
             <Segment
-              abundanceCap={segment.abundanceCap}
+              abundanceCap={settings[index].abundanceCap}
               circleIndex={index}
-              color={segment.color}
+              color={settings[index].color}
               handleMouseEnter={this.debouncedMouseEnter}
               handleMouseLeave={this.handleMouseLeave}
               key={segment.name}
-              minAbundance={segment.minAbundance}
+              minAbundance={settings[index].minAbundance}
               radius={radius - (index * (thickness + space))}
               readouts={readouts}
               thickness={thickness}
@@ -119,7 +119,6 @@ CircleContainer.propTypes = {
         name: PropTypes.string,
       }),
     ),
-    order: PropTypes.arrayOf(PropTypes.number),
     segments: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
@@ -128,6 +127,13 @@ CircleContainer.propTypes = {
     ),
   }).isRequired,
   radius: PropTypes.number.isRequired,
+  settings: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundanceCap: PropTypes.number,
+      color: PropTypes.string,
+      minAbundance: PropTypes.number,
+    }),
+  ).isRequired,
   thickness: PropTypes.number.isRequired,
 };
 

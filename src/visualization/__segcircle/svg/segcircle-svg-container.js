@@ -17,11 +17,11 @@ export class SvgDimensions extends Component {
   }
   componentDidMount = () => {
     const {
-      circles,
       display,
       panel,
+      plot,
     } = this.props;
-    this.setDimensions(panel, display, circles.segments.length);
+    this.setDimensions(panel, display, plot.segments.length);
     window.addEventListener('resize', this.onResize);
   }
   componentWillReceiveProps = (nextProps) => {
@@ -37,9 +37,9 @@ export class SvgDimensions extends Component {
   onResize = () => {
     onResize(this, this.resizeEnd, 800);
   }
-  setDimensions = (panel, display, circles) => {
+  setDimensions = (panel, display, circleNumber) => {
     const dims = this.calculateDims();
-    const thickness = this.defineThickness(circles, dims.wrapper);
+    const thickness = this.defineThickness(circleNumber, dims.wrapper);
     const translate = this.setTranslate(display, panel, dims);
     this.setState({
       dims,
@@ -69,11 +69,11 @@ export class SvgDimensions extends Component {
       wrapper: height < width ? height - padding : width - padding,
     };
   }
-  defineThickness = (circles, height) => {
+  defineThickness = (circleNumber, height) => {
     let thickness = Number(process.env.REACT_APP_SEGCIRCLE_THICKNESS);
     const radius = height / 2;
-    if (thickness * (1 + (1.25 * circles)) > radius) {
-      thickness = Math.floor(radius / (1 + (1.25 * circles)));
+    if (thickness * (1 + (1.25 * circleNumber)) > radius) {
+      thickness = Math.floor(radius / (1 + (1.25 * circleNumber)));
     }
     return thickness;
   }
@@ -90,13 +90,13 @@ export class SvgDimensions extends Component {
     );
   }
   updateDimensions = ({
-    circles,
     display,
     panel,
+    plot,
     updateID,
   }, prevUpdateID) => {
     if (updateID !== prevUpdateID) {
-      this.setDimensions(panel, display, circles.segments.length);
+      this.setDimensions(panel, display, plot.segments.length);
     }
   }
   updateTranslate = ({ display, panel }, prevPanel) => {
@@ -130,14 +130,14 @@ SvgDimensions.defaultProps = {
 };
 
 SvgDimensions.propTypes = {
-  circles: PropTypes.shape({
-    segments: PropTypes.arrayOf(PropTypes.shape({})),
-  }).isRequired,
   display: PropTypes.shape({
     plotFixed: PropTypes.bool,
     plotTranslate: PropTypes.number,
   }).isRequired,
   panel: PropTypes.bool.isRequired,
+  plot: PropTypes.shape({
+    segments: PropTypes.arrayOf(PropTypes.shape({})),
+  }).isRequired,
   renderProp: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
   updateID: PropTypes.number,

@@ -20,7 +20,8 @@ describe('Info panel container', () => {
         clearCurrentFile={clearCurrentFile}
         history={history}
         params={{}}
-        segments={[]}
+        plot={{ segments: [] }}
+        segcircleSettings={[]}
         settings={{}}
       />,
     );

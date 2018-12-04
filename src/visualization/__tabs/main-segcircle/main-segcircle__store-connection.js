@@ -2,18 +2,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import panelSelector from '../../../state/selectors/visualization/panel-selector';
-import { segCirclesSelector } from '../../../state/selectors/visualization/segcircles-selector';
+import plotSelector from '../../../state/selectors/visualization/plot-selector';
 import { displaySelector } from '../../../state/selectors/visualization/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
+import { segCircleSettingsSelector } from '../../../state/selectors/visualization/segcircle-settings-selector';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
 import { updateSetting } from '../../../state/set/visualization/settings-actions';
 
 export const StoreConnection = ({
-  circles,
   display,
   name,
   panel,
+  plot,
   renderProp,
   renderSvg,
   setDims,
@@ -23,10 +24,10 @@ export const StoreConnection = ({
   ...otherProps
 }) => renderProp({
   ...otherProps,
-  circles,
   display,
   name,
   panel,
+  plot,
   renderProp: renderSvg,
   setDims,
   settings,
@@ -39,7 +40,13 @@ StoreConnection.defaultProps = {
 };
 
 StoreConnection.propTypes = {
-  circles: PropTypes.shape({
+  display: PropTypes.shape({
+    plotFixed: PropTypes.bool,
+    plotTranslate: PropTypes.number,
+  }).isRequired,
+  name: PropTypes.string,
+  panel: PropTypes.bool.isRequired,
+  plot: PropTypes.shape({
     readouts: PropTypes.arrayOf(
       PropTypes.shape({
         known: PropTypes.bool,
@@ -54,14 +61,15 @@ StoreConnection.propTypes = {
       }),
     ),
   }).isRequired,
-  display: PropTypes.shape({
-    plotFixed: PropTypes.bool,
-    plotTranslate: PropTypes.number,
-  }).isRequired,
-  name: PropTypes.string,
-  panel: PropTypes.bool.isRequired,
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
+  segcircleSettings: PropTypes.arrayOf(
+    PropTypes.shape({
+      abundanceCap: PropTypes.number,
+      color: PropTypes.string,
+      minAbundance: PropTypes.number,
+    }),
+  ).isRequired,
   settings: PropTypes.shape({
     thickness: PropTypes.number,
   }).isRequired,
@@ -71,10 +79,11 @@ StoreConnection.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  circles: segCirclesSelector(state),
   display: displaySelector(state),
   name: parameterSelectorProp(state, 'name'),
   panel: panelSelector(state),
+  plot: plotSelector(state),
+  segcircleSettings: segCircleSettingsSelector(state),
   settings: settingSelector(state),
 });
 

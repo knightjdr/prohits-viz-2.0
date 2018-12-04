@@ -7,23 +7,25 @@ jest.mock('../../../../color/color-gradient');
 colorGradient.mockReturnValue(['#ffffff', '#0000ff', '#000000']);
 
 const segments = [
+  { name: 'attribute 1' },
+  { name: 'attribute 1' },
+  { name: 'attribute 1' },
+];
+const settings = [
   {
     abundanceCap: 50,
     color: 'blueBlack',
     minAbundance: 0,
-    name: 'attribute 1',
   },
   {
     abundanceCap: 50,
     color: 'redBlack',
     minAbundance: 0,
-    name: 'attribute 1',
   },
   {
     abundanceCap: 50,
     color: 'yellowBlack',
     minAbundance: 0,
-    name: 'attribute 1',
   },
 ];
 
@@ -36,6 +38,7 @@ describe('SegCircle legend', () => {
       wrapper = shallow(
         SegCircleLegend({
           known: true,
+          segcircleSettings: settings,
           segments,
         }),
       );
@@ -70,6 +73,7 @@ describe('SegCircle legend', () => {
       wrapper = shallow(
         SegCircleLegend({
           known: false,
+          segcircleSettings: settings,
           segments,
         }),
       );
