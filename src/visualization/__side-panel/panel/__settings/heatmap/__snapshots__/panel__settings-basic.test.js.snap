@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Basic heatmap panel settings should match snapshot 1`] = `
+<div
+  className="panel__settings-section"
+>
+  <Menu
+    field="imageType"
+    name="Image type"
+    onChange={[Function]}
+    onClick={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "dot plot",
+          "value": "dotplot",
+        },
+        Object {
+          "text": "heat map",
+          "value": "heatmap",
+        },
+      ]
+    }
+    store="heatmap"
+    value="heatmap"
+  />
+  <Input
+    field="cellSize"
+    min={1}
+    name="Cell size"
+    onChange={[Function]}
+    onClick={[Function]}
+    parser={[Function]}
+    step={1}
+    store={20}
+    value={20}
+  />
+</div>
+`;

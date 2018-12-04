@@ -1,40 +1,22 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import Settings from './panel__settings';
 import SettingResetSelector from '../../../../state/selectors/visualization/settings-reset-selector';
-import { settingSelectorProp } from '../../../../state/selectors/visualization/settings-selector';
+import { parameterSelectorProp } from '../../../../state/selectors/visualization/params-selector';
+import { settingSelector } from '../../../../state/selectors/visualization/settings-selector';
 import { resetSettings, updateSetting } from '../../../../state/set/visualization/settings-actions';
 
-export class SettingsContainer extends Component {
+export class SettingsContainer extends PureComponent {
   constructor(props) {
     super(props);
+    const { settings } = this.props;
     this.state = {
       // Store input settings (not necessarily insync with store).
-      settings: {
-        abundanceCap: this.props.abundanceCap,
-        cellSize: this.props.cellSize,
-        edgeColor: this.props.edgeColor,
-        fillColor: this.props.fillColor,
-        imageType: this.props.imageType,
-        invertColor: this.props.invertColor,
-        minAbundance: this.props.minAbundance,
-        primaryFilter: this.props.primaryFilter,
-        secondaryFilter: this.props.secondaryFilter,
-      },
+      settings: { ...settings },
       // Store settings. Use this to determine in UI if state matches store.
-      storeSettings: {
-        abundanceCap: this.props.abundanceCap,
-        cellSize: this.props.cellSize,
-        edgeColor: this.props.edgeColor,
-        fillColor: this.props.fillColor,
-        imageType: this.props.imageType,
-        invertColor: this.props.invertColor,
-        minAbundance: this.props.minAbundance,
-        primaryFilter: this.props.primaryFilter,
-        secondaryFilter: this.props.secondaryFilter,
-      },
+      storeSettings: { ...settings },
     };
   }
   componentWillReceiveProps = (nextProps) => {
@@ -54,29 +36,29 @@ export class SettingsContainer extends Component {
       },
     }));
   }
-  restoreAllSettings = (nextProps, settings, storeSettings) => {
+  restoreAllSettings = ({ settings }, current, storeSettings) => {
     // Find settings that have changed.
-    const updateSettings = Object.keys(settings).filter(prop => (
-      settings[prop] !== nextProps[prop]
+    const updateSettings = Object.keys(current).filter(prop => (
+      current[prop] !== settings[prop]
     ));
     // Find store settings that have changed.
     const updateStoreSettings = Object.keys(storeSettings).filter(prop => (
-      storeSettings[prop] !== nextProps[prop]
+      storeSettings[prop] !== settings[prop]
     ));
     // Create object of new changes and merge with state.
     const newSettings = updateSettings.reduce(((obj, setting) => {
       const newPair = {};
-      newPair[setting] = nextProps[setting];
+      newPair[setting] = settings[setting];
       return { ...obj, ...newPair };
     }), {});
     const newStoreSettings = updateStoreSettings.reduce(((obj, setting) => {
       const newPair = {};
-      newPair[setting] = nextProps[setting];
+      newPair[setting] = settings[setting];
       return { ...obj, ...newPair };
     }), {});
     this.setState({
       settings: {
-        ...settings,
+        ...current,
         ...newSettings,
       },
       storeSettings: {
@@ -85,16 +67,16 @@ export class SettingsContainer extends Component {
       },
     });
   }
-  syncStoreSettings = (nextProps, storeSettings) => {
+  syncStoreSettings = ({ settings }, storeSettings) => {
     // Find store settings that have changed.
     const updateStoreSettings = Object.keys(storeSettings).filter(prop => (
-      storeSettings[prop] !== nextProps[prop]
+      storeSettings[prop] !== settings[prop]
     ));
     // If settings have changed, create object of new changes and merge with state.
     if (updateStoreSettings.length > 0) {
       const newSettings = updateStoreSettings.reduce(((obj, setting) => {
         const newPair = {};
-        newPair[setting] = nextProps[setting];
+        newPair[setting] = settings[setting];
         return { ...obj, ...newPair };
       }), {});
       this.setState({
@@ -107,15 +89,16 @@ export class SettingsContainer extends Component {
   }
   updateSetting = (setting) => {
     if (this.state.settings[setting] !== this.state.storeSettings[setting]) {
-      this.props.updateSetting(setting, this.state.settings[setting]);
+      this.props.update(setting, this.state.settings[setting]);
     }
   }
   render() {
     return (
       <Settings
         changeSetting={this.changeSetting}
+        imageKind={this.props.imageKind}
         settings={this.state.settings}
-        resetSettings={this.props.resetSettings}
+        resetSettings={this.props.resetAll}
         storeSettings={this.state.storeSettings}
         updateSetting={this.updateSetting}
       />
@@ -124,40 +107,26 @@ export class SettingsContainer extends Component {
 }
 
 SettingsContainer.propTypes = {
-  abundanceCap: PropTypes.number.isRequired,
-  cellSize: PropTypes.number.isRequired,
-  edgeColor: PropTypes.string.isRequired,
-  fillColor: PropTypes.string.isRequired,
-  imageType: PropTypes.string.isRequired,
-  invertColor: PropTypes.bool.isRequired,
-  minAbundance: PropTypes.number.isRequired,
-  primaryFilter: PropTypes.number.isRequired,
+  imageKind: PropTypes.string.isRequired,
   reset: PropTypes.bool.isRequired,
-  resetSettings: PropTypes.func.isRequired,
-  secondaryFilter: PropTypes.number.isRequired,
-  updateSetting: PropTypes.func.isRequired,
+  resetAll: PropTypes.func.isRequired,
+  settings: PropTypes.shape({}).isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  abundanceCap: settingSelectorProp(state, 'abundanceCap'),
-  cellSize: settingSelectorProp(state, 'cellSize'),
-  edgeColor: settingSelectorProp(state, 'edgeColor'),
-  fillColor: settingSelectorProp(state, 'fillColor'),
-  imageType: settingSelectorProp(state, 'imageType'),
-  invertColor: settingSelectorProp(state, 'invertColor'),
-  minAbundance: settingSelectorProp(state, 'minAbundance'),
-  primaryFilter: settingSelectorProp(state, 'primaryFilter'),
+  imageKind: parameterSelectorProp(state, 'imageType'),
   reset: SettingResetSelector(state),
-  secondaryFilter: settingSelectorProp(state, 'secondaryFilter'),
+  settings: settingSelector(state),
 });
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
-  resetSettings: () => {
+  resetAll: () => {
     dispatch(resetSettings());
   },
-  updateSetting: (setting, value) => {
+  update: (setting, value) => {
     dispatch(updateSetting(setting, value));
   },
 });

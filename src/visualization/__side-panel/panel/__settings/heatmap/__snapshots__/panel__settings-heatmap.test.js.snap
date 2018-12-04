@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel settings for heatmap should match snapshot 1`] = `
+<div
+  className="panel"
+>
+  <Info
+    border={false}
+    title="Basic settings"
+  >
+    <Basic
+      changeSetting={[Function]}
+      settings={Object {}}
+      storeSettings={Object {}}
+      updateSetting={[Function]}
+    />
+  </Info>
+  <Info
+    border={true}
+    title="Colour palette"
+  >
+    <Palette
+      changeSetting={[Function]}
+      settings={Object {}}
+      storeSettings={Object {}}
+      updateSetting={[Function]}
+    />
+  </Info>
+  <Info
+    border={true}
+    title="Filters"
+  >
+    <Filter
+      changeSetting={[Function]}
+      settings={Object {}}
+      storeSettings={Object {}}
+      updateSetting={[Function]}
+    />
+  </Info>
+  <Info
+    border={true}
+    title={null}
+  >
+    <Reset
+      resetSettings={[Function]}
+    />
+  </Info>
+</div>
+`;

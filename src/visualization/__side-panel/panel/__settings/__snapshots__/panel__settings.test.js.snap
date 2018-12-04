@@ -1,53 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Settings panel should render 1`] = `
-<div
-  className="panel"
->
-  <div
-    className="panel__title"
-  >
-    Basic settings
-  </div>
-  <Basic
-    changeSetting={[Function]}
-    settings={Object {}}
-    storeSettings={Object {}}
-    updateSetting={[Function]}
-  />
-  <div
-    className="panel__border"
-  />
-  <div
-    className="panel__title"
-  >
-    Colour palette
-  </div>
-  <Palette
-    changeSetting={[Function]}
-    settings={Object {}}
-    storeSettings={Object {}}
-    updateSetting={[Function]}
-  />
-  <div
-    className="panel__border"
-  />
-  <div
-    className="panel__title"
-  >
-    Filters
-  </div>
-  <Filter
-    changeSetting={[Function]}
-    settings={Object {}}
-    storeSettings={Object {}}
-    updateSetting={[Function]}
-  />
-  <div
-    className="panel__border"
-  />
-  <Reset
-    resetSettings={[Function]}
-  />
-</div>
+exports[`Settings panel with dotplot image should render 1`] = `
+<HeatmapSettings
+  changeSetting={[Function]}
+  resetSettings={[Function]}
+  settings={Object {}}
+  storeSettings={Object {}}
+  updateSetting={[Function]}
+/>
+`;
+
+exports[`Settings panel with heatmap image should render 1`] = `
+<HeatmapSettings
+  changeSetting={[Function]}
+  resetSettings={[Function]}
+  settings={Object {}}
+  storeSettings={Object {}}
+  updateSetting={[Function]}
+/>
+`;
+
+exports[`Settings panel with segcircle image should render 1`] = `
+<SegCircleSettings
+  changeSetting={[Function]}
+  resetSettings={[Function]}
+  settings={Object {}}
+  storeSettings={Object {}}
+  updateSetting={[Function]}
+/>
 `;

@@ -19,7 +19,7 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
       tabs={Array []}
       togglePanel={[Function]}
     />
-    <withRouter(Connect(InfoContainer)) />
+    <withRouter(Connect(Component)) />
   </div>
   <RoundButton
     className="visualization__side-panel-button"
@@ -37,6 +37,7 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
       }
     }
     onClick={[Function]}
+    size="lg"
     style={
       Object {
         "opacity": 1,
@@ -66,7 +67,7 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
       tabs={Array []}
       togglePanel={[Function]}
     />
-    <withRouter(Connect(InfoContainer)) />
+    <withRouter(Connect(Component)) />
   </div>
   <RoundButton
     className="visualization__side-panel-button"
@@ -84,6 +85,7 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
       }
     }
     onClick={[Function]}
+    size="lg"
     style={
       Object {
         "opacity": 0,

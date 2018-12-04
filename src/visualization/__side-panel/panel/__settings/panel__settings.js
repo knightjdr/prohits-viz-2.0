@@ -1,59 +1,46 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Basic from './panel__settings-basic';
-import Filters from './panel__settings-filter';
-import Palette from './panel__settings-palette';
-import Reset from './panel__settings-reset';
+import Heatmap from './heatmap/panel__settings-heatmap';
+import SegCircle from './segcircle/panel__settings-segcircle';
 
 import './panel__settings.css';
 
 const Settings = ({
   changeSetting,
+  imageKind,
   settings,
   resetSettings,
   storeSettings,
   updateSetting,
-}) => (
-  <div className="panel">
-    <div className="panel__title">
-      Basic settings
-    </div>
-    <Basic
-      changeSetting={changeSetting}
-      settings={settings}
-      storeSettings={storeSettings}
-      updateSetting={updateSetting}
-    />
-    <div className="panel__border" />
-    <div className="panel__title">
-      Colour palette
-    </div>
-    <Palette
-      changeSetting={changeSetting}
-      settings={settings}
-      storeSettings={storeSettings}
-      updateSetting={updateSetting}
-    />
-    <div className="panel__border" />
-    <div className="panel__title">
-      Filters
-    </div>
-    <Filters
-      changeSetting={changeSetting}
-      settings={settings}
-      storeSettings={storeSettings}
-      updateSetting={updateSetting}
-    />
-    <div className="panel__border" />
-    <Reset
-      resetSettings={resetSettings}
-    />
-  </div>
-);
+}) => {
+  switch (imageKind) {
+    case 'segcircle':
+      return (
+        <SegCircle
+          changeSetting={changeSetting}
+          settings={settings}
+          resetSettings={resetSettings}
+          storeSettings={storeSettings}
+          updateSetting={updateSetting}
+        />
+      );
+    default:
+      return (
+        <Heatmap
+          changeSetting={changeSetting}
+          settings={settings}
+          resetSettings={resetSettings}
+          storeSettings={storeSettings}
+          updateSetting={updateSetting}
+        />
+      );
+  }
+};
 
 Settings.propTypes = {
   changeSetting: PropTypes.func.isRequired,
+  imageKind: PropTypes.string.isRequired,
   resetSettings: PropTypes.func.isRequired,
   settings: PropTypes.shape({}).isRequired,
   storeSettings: PropTypes.shape({}).isRequired,

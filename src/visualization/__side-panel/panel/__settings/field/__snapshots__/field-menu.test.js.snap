@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel settings menu field should match snapshot 1`] = `
+<React.Fragment>
+  <div>
+    Test field
+  </div>
+  <div>
+    <Select
+      choiceTransitionName="zoom"
+      onChange={[Function]}
+      prefixCls="ant-select"
+      showSearch={false}
+      transitionName="slide-up"
+      value={1}
+    >
+      <Option
+        key="1"
+        value="1"
+      >
+        a
+      </Option>
+      <Option
+        key="2"
+        value="2"
+      >
+        b
+      </Option>
+    </Select>
+    <FieldButton
+      className={null}
+      hasChanged={false}
+      onClick={[Function]}
+      round={false}
+    />
+  </div>
+</React.Fragment>
+`;

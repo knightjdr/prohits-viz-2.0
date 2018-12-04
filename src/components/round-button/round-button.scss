@@ -8,3 +8,19 @@
   height: 36px;
   width: 36px;
 }
+.round-button_default {
+  @extend .default-button;
+}
+.round-button_disabled {
+  @extend .disabled-button;
+  opacity: 0.8;
+}
+.round-button_light {
+  @extend .light-button;
+}
+.round-button_success {
+  @extend .success-button;
+}
+.round-button_warning {
+  @extend .warning-button;
+}

@@ -16,12 +16,13 @@ describe('Reset panel settings', () => {
     );
   });
 
-  it('should render and match snapshot', () => {
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should call reset settings on clicking settings reset button', () => {
-    wrapper.find('button').first().simulate('click');
+    resetSettings.mockClear();
+    wrapper.find('RoundButton').simulate('click');
     expect(resetSettings).toHaveBeenCalled();
   });
 });

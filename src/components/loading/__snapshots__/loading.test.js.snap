@@ -12,7 +12,6 @@ exports[`Loading when loading should match snapshot 1`] = `
     spinning={true}
     wrapperClassName=""
   />
-  ;
 </div>
 `;
 

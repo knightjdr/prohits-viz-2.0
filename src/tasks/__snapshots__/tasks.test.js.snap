@@ -141,12 +141,12 @@ exports[`Tasks with tasks and no issues should match snapshot 1`] = `
       }
       firstColumn={
         Object {
-          "minWidth": 100,
+          "minWidth": 150,
           "name": "id",
-          "width": "150px",
+          "width": 150,
         }
       }
-      maxBodyWidth={400}
+      maxBodyWidth={700}
       rows={
         Array [
           Object {

@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palette panel settings should match snapshot 1`] = `
+<div
+  className="panel__settings-section"
+>
+  <Menu
+    field="edgeColor"
+    name="Edge color"
+    onChange={[Function]}
+    onClick={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "blue-black",
+          "value": "blueBlack",
+        },
+        Object {
+          "text": "green-black",
+          "value": "greenBlack",
+        },
+        Object {
+          "text": "red-black",
+          "value": "redBlack",
+        },
+        Object {
+          "text": "yellow-black",
+          "value": "yellowBlack",
+        },
+        Object {
+          "text": "greyscale",
+          "value": "greyscale",
+        },
+      ]
+    }
+    store="blueBlack"
+    value="blueBlack"
+  />
+  <Menu
+    field="fillColor"
+    name="Fill color"
+    onChange={[Function]}
+    onClick={[Function]}
+    options={
+      Array [
+        Object {
+          "text": "blue-black",
+          "value": "blueBlack",
+        },
+        Object {
+          "text": "green-black",
+          "value": "greenBlack",
+        },
+        Object {
+          "text": "red-black",
+          "value": "redBlack",
+        },
+        Object {
+          "text": "yellow-black",
+          "value": "yellowBlack",
+        },
+        Object {
+          "text": "greyscale",
+          "value": "greyscale",
+        },
+      ]
+    }
+    store="blueBlack"
+    value="blueBlack"
+  />
+  <FieldSwitch
+    checked={false}
+    field="invertColor"
+    name="Invert color gradient"
+    onChange={[Function]}
+    onClick={[Function]}
+    store={false}
+  />
+</div>
+`;

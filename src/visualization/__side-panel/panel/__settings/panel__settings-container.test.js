@@ -3,9 +3,6 @@ import { shallow } from 'enzyme';
 
 import { SettingsContainer } from './panel__settings-container';
 
-const resetSettings = jest.fn();
-const updateSetting = jest.fn();
-
 const settings = {
   abundanceCap: 50,
   cellSize: 20,
@@ -18,116 +15,99 @@ const settings = {
   secondaryFilter: 0.05,
 };
 
-describe('Settings container', () => {
-  beforeEach(() => {
-    /* Clear call count */
-    resetSettings.mockClear();
-    updateSetting.mockClear();
-  });
+const resetAll = jest.fn();
+const update = jest.fn();
 
-  it('should set settings and store state from props', () => {
-    const wrapper = shallow(
+describe('Settings container', () => {
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
       <SettingsContainer
+        imageKind="heatmap"
         reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
+        resetAll={resetAll}
+        settings={settings}
+        update={update}
       />,
     );
+  });
+
+  it('should set current state settings from props', () => {
     expect(wrapper.state('settings')).toEqual(settings);
+  });
+
+  it('should set current store settings from props', () => {
     expect(wrapper.state('storeSettings')).toEqual(settings);
   });
 
-  it('should change component state setting when changeSetting method called', () => {
-    const wrapper = shallow(
-      <SettingsContainer
-        reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
-      />,
-    );
-    wrapper.instance().changeSetting('abundanceCap', 49);
-    expect(wrapper.state('settings').abundanceCap).toBe(49);
-    expect(wrapper.state('storeSettings').abundanceCap).toBe(50);
-  });
-
-  it(`should call prop update seting when updateSetting method called and local state
-  does not match store state`, () => {
-    const wrapper = shallow(
-      <SettingsContainer
-        reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
-      />,
-    );
-
-    // State and store match, so prop method is not called.
-    wrapper.instance().updateSetting('abundanceCap');
-    expect(updateSetting).not.toHaveBeenCalled();
-
-    // State and store differ, so prop method is called.
-    wrapper.instance().changeSetting('abundanceCap', 49);
-    wrapper.instance().updateSetting('abundanceCap');
-    expect(updateSetting).toHaveBeenCalledWith('abundanceCap', 49);
-  });
-
-  it('should reset all settings when "reset" is true', () => {
-    const wrapper = shallow(
-      <SettingsContainer
-        reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
-      />,
-    );
-
-    // Change state.
-    wrapper.setState({
-      settings: {
-        ...settings,
-        ...{ abundanceCap: 49 },
-      },
-      storeSettings: {
-        ...settings,
-        ...{ abundanceCap: 49 },
-      },
+  describe('on prop change', () => {
+    it('should update store settings when a prop has changed and "reset" is false', () => {
+      wrapper.setProps({ settings: { abundanceCap: 49 }, reset: false });
+      expect(wrapper.state('storeSettings').abundanceCap).toBe(49);
     });
+  });
+
+  it('should change component state setting when changeSetting method called', () => {
+    wrapper.instance().changeSetting('abundanceCap', 49);
     expect(wrapper.state('settings').abundanceCap).toBe(49);
-    expect(wrapper.state('storeSettings').abundanceCap).toBe(49);
-    wrapper.setProps({ abundanceCap: 50, reset: true });
-    expect(wrapper.state('settings').abundanceCap).toBe(50);
-    expect(wrapper.state('storeSettings').abundanceCap).toBe(50);
   });
 
-  it('should update store settings when a prop has change and "reset" is false', () => {
-    const wrapper = shallow(
-      <SettingsContainer
-        reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
-      />,
-    );
+  describe('restoring settings', () => {
+    beforeAll(() => {
+      wrapper.setState({
+        settings: {
+          ...settings,
+          ...{ abundanceCap: 49 },
+        },
+        storeSettings: {
+          ...settings,
+          ...{ abundanceCap: 49 },
+        },
+      });
+      wrapper.setProps({ settings: { abundanceCap: 50 }, reset: true });
+    });
 
-    // Change prop.
-    wrapper.setProps({ abundanceCap: 49, reset: false });
-    expect(wrapper.state('storeSettings').abundanceCap).toBe(49);
+    it('should restore settings when "reset" is true', () => {
+      expect(wrapper.state('settings').abundanceCap).toBe(50);
+    });
+
+    it('should restore store settings when "reset" is true', () => {
+      expect(wrapper.state('storeSettings').abundanceCap).toBe(50);
+    });
   });
 
-  it('should not update store settings when a prop has not changed and "reset" is false', () => {
-    const wrapper = shallow(
-      <SettingsContainer
-        reset={false}
-        resetSettings={resetSettings}
-        updateSetting={updateSetting}
-        {...settings}
-      />,
-    );
+  describe('update state settings', () => {
+    it('should not call updateSetting prop when local state matches store state', () => {
+      wrapper.setState({
+        settings: {
+          ...settings,
+          ...{ abundanceCap: 50 },
+        },
+        storeSettings: {
+          ...settings,
+          ...{ abundanceCap: 50 },
+        },
+      });
+      update.mockClear();
+      wrapper.instance().updateSetting('abundanceCap');
+      expect(update).not.toHaveBeenCalled();
+    });
 
-    // Change prop.
-    wrapper.setProps({});
-    expect(wrapper.state('storeSettings').abundanceCap).toBe(50);
+    it('should call updateSetting prop when local state does not match store state', () => {
+      wrapper.setState({
+        settings: {
+          ...settings,
+          ...{ abundanceCap: 49 },
+        },
+        storeSettings: {
+          ...settings,
+          ...{ abundanceCap: 50 },
+        },
+      });
+      update.mockClear();
+      wrapper.instance().updateSetting('abundanceCap');
+      expect(update).toHaveBeenCalledWith('abundanceCap', 49);
+    });
   });
 });

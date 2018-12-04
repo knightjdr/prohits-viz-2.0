@@ -1,7 +1,8 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { faUndo} from '@fortawesome/pro-regular-svg-icons';
+import { faUndo } from '@fortawesome/pro-regular-svg-icons';
+
+import RoundButton from '../../../../components/round-button/round-button';
 
 const Reset = ({
   resetSettings,
@@ -10,13 +11,13 @@ const Reset = ({
     <div>
       Reset:
     </div>
-    <button
+    <RoundButton
       className="panel__settings-reset-button"
       onClick={resetSettings}
-      type="button"
-    >
-      <FontAwesomeIcon icon={faUndo} />
-    </button>
+      icon={faUndo}
+      size="1x"
+      type="warning"
+    />
   </div>
 );
 

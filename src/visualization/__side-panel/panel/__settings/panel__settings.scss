@@ -2,38 +2,7 @@
 @import 'style/button';
 @import 'style/theme';
 
-.panel__settings-button_theme-sync {
-  @extend .button-reset;
-  @extend .default-button;
-  align-items: center;
-  background-position: center;
-  border-radius: 0 4px 4px 0;
-  display: flex;
-  font-size: 16px;
-  height: 32px;
-  justify-content: center;
-  width: 32px;
-}
-.panel__settings-button_theme-notsync {
-  @extend .button-reset;
-  @extend .success-button;
-  align-items: center;
-  background-position: center;
-  border-radius: 0 4px 4px 0;
-  display: flex;
-  font-size: 16px;
-  height: 32px;
-  justify-content: center;
-  width: 32px;
-}
-.panel__settings-button-invert {
-  border-radius: 4px;
-  justify-self: end;
-  margin-left: 70px;
-}
-.panel__settings-basic,
-.panel__settings-filter,
-.panel__settings-palette {
+.panel__settings-section {
   align-items: center;
   display: grid;
   grid-column-gap: 10px;
@@ -41,26 +10,18 @@
   grid-template-columns: 150px 155px;
   justify-content: center;
 }
-.panel__settings-basic > div:nth-child(even),
-.panel__settings-filter > div:nth-child(even),
-.panel__settings-palette > div:nth-child(even) {
+.panel__settings-section > div:nth-child(even) {
   align-items: center;
   display: flex;
 }
-.panel__settings-basic > div:nth-child(odd),
-.panel__settings-filter > div:nth-child(odd),
-.panel__settings-palette > div:nth-child(odd) {
+.panel__settings-section > div:nth-child(odd) {
   justify-self: right;
 }
-.panel__settings-basic > div:nth-child(odd)::after,
-.panel__settings-filter > div:nth-child(odd)::after,
-.panel__settings-palette > div:nth-child(odd)::after {
+.panel__settings-section > div:nth-child(odd)::after {
   content: ':';
 }
-.panel__settings-basic .ant-select-selection,
-.panel__settings-basic .ant-input-number,
-.panel__settings-filter .ant-input-number,
-.panel__settings-palette .ant-select-selection {
+.panel__settings-section .ant-input-number,
+.panel__settings-section .ant-select-selection {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   width: 115px;
@@ -87,9 +48,7 @@
   width: 30px;
 }
 @media (max-width: 374px) {
-  .panel__settings-basic,
-  .panel__settings-filter,
-  .panel__settings-palette {
+  .panel__settings-section {
     align-items: center;
     display: grid;
     grid-column-gap: 10px;
@@ -98,16 +57,11 @@
     justify-content: center;
     margin-left: 0;
   }
-  .panel__settings-basic .ant-select-selection,
-  .panel__settings-basic .ant-input-number,
-  .panel__settings-filter .ant-input-number,
-  .panel__settings-palette .ant-select-selection {
+  .panel__settings-section .ant-input-number,
+  .panel__settings-section .ant-select-selection {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     width: 75px;
-  }
-  .panel__settings-button-invert {
-    margin-left: 30px;
   }
   .panel__settings-reset {
     margin-right: 0;

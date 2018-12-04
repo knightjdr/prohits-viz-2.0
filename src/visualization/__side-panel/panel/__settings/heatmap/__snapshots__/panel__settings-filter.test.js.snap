@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter panel settings should match snapshot 1`] = `
+<div
+  className="panel__settings-section"
+>
+  <Input
+    field="abundanceCap"
+    name="Abundance cap"
+    onChange={[Function]}
+    onClick={[Function]}
+    store={50}
+    value={50}
+  />
+  <Input
+    field="minAbundance"
+    name="Abundance minimum"
+    onChange={[Function]}
+    onClick={[Function]}
+    store={0}
+    value={0}
+  />
+  <Input
+    field="primaryFilter"
+    name="Primary filter"
+    onChange={[Function]}
+    onClick={[Function]}
+    step={0.01}
+    store={0.01}
+    value={0.01}
+  />
+  <Input
+    field="secondaryFilter"
+    name="Secondary filter"
+    onChange={[Function]}
+    onClick={[Function]}
+    step={0.01}
+    store={0.05}
+    value={0.05}
+  />
+</div>
+`;

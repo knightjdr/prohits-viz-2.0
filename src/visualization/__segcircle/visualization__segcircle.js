@@ -9,7 +9,7 @@ const Segcircle = () => (
   <div className="visualization__segcircle">
     <Tabs />
     <SidePanel
-      tabs={['info']}
+      tabs={['info', 'settings']}
     />
   </div>
 );

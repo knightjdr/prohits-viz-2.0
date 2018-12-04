@@ -25,7 +25,7 @@ describe('Round button component', () => {
     });
 
     it('should have default class', () => {
-      expect(wrapper.hasClass('round-button')).toBeTruthy();
+      expect(wrapper.hasClass('round-button_default')).toBeTruthy();
     });
 
     it('should call click function', () => {
@@ -44,6 +44,7 @@ describe('Round button component', () => {
           onClick={onClick}
           icon={{ name: 'icon' }}
           miscProp="something"
+          type="success"
         />,
       );
     });
@@ -59,6 +60,10 @@ describe('Round button component', () => {
 
     it('should have added prop', () => {
       expect(wrapper.prop('miscProp')).toBe('something');
+    });
+
+    it('should have success class', () => {
+      expect(wrapper.hasClass('round-button_success')).toBeTruthy();
     });
   });
 });

@@ -17,7 +17,9 @@ exports[`Tasks refresh should match snapshot 1`] = `
     }
   }
   onClick={[Function]}
+  size="lg"
   tooltip="Refresh status"
   tooltip-position="left"
+  type="default"
 />
 `;

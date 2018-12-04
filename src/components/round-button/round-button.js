@@ -9,9 +9,10 @@ const RoundButton = ({
   icon,
   onClick,
   size,
+  type,
   ...otherProps
 }) => {
-  const classes = ['round-button'];
+  const classes = ['round-button', `round-button_${type}`];
   if (className) {
     classes.push(className);
   }
@@ -30,6 +31,7 @@ const RoundButton = ({
 RoundButton.defaultProps = {
   className: null,
   size: 'lg',
+  type: 'default',
 };
 
 RoundButton.propTypes = {
@@ -37,6 +39,7 @@ RoundButton.propTypes = {
   icon: PropTypes.shape({}).isRequired,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default RoundButton;

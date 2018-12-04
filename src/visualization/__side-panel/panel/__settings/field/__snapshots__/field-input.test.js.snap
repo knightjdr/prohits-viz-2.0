@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel settings input field should match snapshot 1`] = `
+<React.Fragment>
+  <div>
+    Test field
+  </div>
+  <div>
+    <InputNumber
+      min={0}
+      onChange={[Function]}
+      prefixCls="ant-input-number"
+      step={1}
+      value={1}
+    />
+    <FieldButton
+      className={null}
+      hasChanged={false}
+      onClick={[Function]}
+      round={false}
+    />
+  </div>
+</React.Fragment>
+`;

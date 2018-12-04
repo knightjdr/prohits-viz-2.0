@@ -45,6 +45,10 @@ const Info = ({
   </div>
 );
 
+Info.defaultProps = {
+  segments: [],
+};
+
 Info.propTypes = {
   downloadLegend: PropTypes.func.isRequired,
   loadNewFile: PropTypes.func.isRequired,
@@ -58,7 +62,7 @@ Info.propTypes = {
   ).isRequired,
   segments: PropTypes.arrayOf(
     PropTypes.shape({}),
-  ).isRequired,
+  ),
   settings: PropTypes.shape({}).isRequired,
 };
 

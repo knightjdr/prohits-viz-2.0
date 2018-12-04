@@ -5,7 +5,18 @@ exports[`Heatmap interface should match snapshot 1`] = `
   className="visualization__heatmap"
 >
   <Connect(TabsContainer) />
-  <Connect(Component) />
+  <Connect(Component)
+    tabs={
+      Array [
+        "info",
+        "map",
+        "settings",
+        "annotation",
+        "analysis",
+        "save",
+      ]
+    }
+  />
   <Connect(FloatMapContainer) />
 </div>
 `;

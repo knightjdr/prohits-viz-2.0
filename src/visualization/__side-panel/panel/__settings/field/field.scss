@@ -1,0 +1,18 @@
+.panel__settings-field-button {
+  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  height: 32px;
+  width: 32px;
+}
+.panel__settings-field-button_round {
+  border-radius: 4px;
+}
+.panel__settings-field-button_right {
+  justify-self: end;
+  margin-left: 70px;
+}
+@media (max-width: 374px) {
+  .panel__settings-field-button_invert {
+    margin-left: 30px;
+  }
+}

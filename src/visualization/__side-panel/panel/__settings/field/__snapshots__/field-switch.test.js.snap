@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel settings switch field should match snapshot 1`] = `
+<React.Fragment>
+  <div>
+    Test field
+  </div>
+  <div>
+    <Switch
+      checked={true}
+      onChange={[Function]}
+      prefixCls="ant-switch"
+    />
+    <FieldButton
+      className="panel__settings-field-button_right"
+      hasChanged={false}
+      onClick={[Function]}
+      round={true}
+    />
+  </div>
+</React.Fragment>
+`;

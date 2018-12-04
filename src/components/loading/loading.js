@@ -23,7 +23,7 @@ const Loading = ({
   } else if (pastDelay) {
     return (
       <div className="loading">
-        <Spin size="large" />;
+        <Spin size="large" />
       </div>
     );
   }

@@ -2,7 +2,7 @@
 
 exports[`Round button component with default props should match snapshot 1`] = `
 <button
-  className="round-button"
+  className="round-button round-button_default"
   onClick={[Function]}
   type="button"
 >
