@@ -7,10 +7,12 @@ import SegCircle from './segcircle/panel__settings-segcircle';
 import './panel__settings.css';
 
 const Settings = ({
+  changePlot,
   changeSetting,
   imageKind,
-  settings,
+  plots,
   resetSettings,
+  settings,
   storeSettings,
   updateSetting,
 }) => {
@@ -18,9 +20,11 @@ const Settings = ({
     case 'segcircle':
       return (
         <SegCircle
+          changePlot={changePlot}
           changeSetting={changeSetting}
-          settings={settings}
+          plots={plots}
           resetSettings={resetSettings}
+          settings={settings}
           storeSettings={storeSettings}
           updateSetting={updateSetting}
         />
@@ -29,8 +33,8 @@ const Settings = ({
       return (
         <Heatmap
           changeSetting={changeSetting}
-          settings={settings}
           resetSettings={resetSettings}
+          settings={settings}
           storeSettings={storeSettings}
           updateSetting={updateSetting}
         />
@@ -39,8 +43,12 @@ const Settings = ({
 };
 
 Settings.propTypes = {
+  changePlot: PropTypes.func.isRequired,
   changeSetting: PropTypes.func.isRequired,
   imageKind: PropTypes.string.isRequired,
+  plots: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ).isRequired,
   resetSettings: PropTypes.func.isRequired,
   settings: PropTypes.shape({}).isRequired,
   storeSettings: PropTypes.shape({}).isRequired,

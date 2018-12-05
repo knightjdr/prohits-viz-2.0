@@ -15,21 +15,30 @@ import textSize from '../../../../helpers/text-size';
 export class CircleContainer extends Component {
   constructor(props) {
     super(props);
-    const { circles, radius, thickness } = this.props;
-    const sortedCircles = sortCircles(circles, 0);
-    const readouts = sortedCircles.readouts.map(readout => readout.name);
+    const { plot, radius, thickness } = this.props;
+    const config = this.configCircle(plot, radius);
     this.state = {
+      circles: config.circles,
       hoveredText: null,
-      readouts,
-      circles: sortedCircles,
+      readouts: config.readouts,
       space: thickness / 4,
-      text: getTextPosition(readouts, radius),
+      text: config.text,
     };
   }
   componentDidUpdate = (prevProps) => {
-    const { radius, thickness } = prevProps;
+    const { plot, radius, thickness } = prevProps;
+    this.updateCircles(this.props, plot.name);
     this.updateText(this.props, radius);
     this.updateThickness(this.props, thickness);
+  }
+  configCircle = (circles, radius) => {
+    const sortedCircles = sortCircles(circles, 0);
+    const readouts = sortedCircles.readouts.map(readout => readout.name);
+    return {
+      circles: sortedCircles,
+      readouts,
+      text: getTextPosition(readouts, radius),
+    };
   }
   debouncedMouseEnter = debounce((circleIndex, segmentIndex) => {
     if (this.mouseOver) {
@@ -64,6 +73,19 @@ export class CircleContainer extends Component {
       });
     }
     this.mouseOver = false;
+  }
+  updateCircles = ({
+    plot,
+    radius,
+  }, prevName) => {
+    if (plot.name !== prevName) {
+      const config = this.configCircle(plot, radius);
+      this.setState({
+        circles: config.circles,
+        readouts: config.readouts,
+        text: config.text,
+      });
+    }
   }
   updateText = ({ radius }, prevRadius) => {
     if (radius !== prevRadius) {
@@ -112,7 +134,8 @@ export class CircleContainer extends Component {
 }
 
 CircleContainer.propTypes = {
-  circles: PropTypes.shape({
+  plot: PropTypes.shape({
+    name: PropTypes.string,
     readouts: PropTypes.arrayOf(
       PropTypes.shape({
         known: PropTypes.bool,

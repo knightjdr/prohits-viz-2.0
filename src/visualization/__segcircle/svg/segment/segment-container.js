@@ -27,16 +27,20 @@ export class SegmentContainer extends Component {
       0,
       process.env.REACT_APP_NUM_GRADIENT_COLORS - 1,
     );
-    this.colorValues = valuesToColor(values, this.gradient, this.range);
     const radii = calculateRadii(radius, thickness);
     this.state = {
       radii,
-      segments: createSegments(this.colorValues, radii, readouts),
+      segments: this.configSegments(radii, readouts, values),
     };
   }
   componentDidUpdate = (prevProps) => {
-    const { radius, thickness } = prevProps;
+    const { radius, thickness, values } = prevProps;
+    this.updateSegments(this.props, values);
     this.updateRadii(this.props, radius, thickness);
+  }
+  configSegments = (radii, readouts, values) => {
+    this.colorValues = valuesToColor(values, this.gradient, this.range);
+    return createSegments(this.colorValues, radii, readouts);
   }
   updateRadii = ({
     radius,
@@ -52,6 +56,16 @@ export class SegmentContainer extends Component {
         radii,
         segments: createSegments(this.colorValues, radii, readouts),
       });
+    }
+  }
+  updateSegments = ({
+    readouts,
+    values,
+  }, prevValues) => {
+    if (values !== prevValues) {
+      this.setState(({ radii }) => ({
+        segments: this.configSegments(radii, readouts, values),
+      }));
     }
   }
   render() {

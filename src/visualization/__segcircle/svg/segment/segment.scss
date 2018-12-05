@@ -1,7 +1,7 @@
 .segment__path {
   cursor: pointer;
   pointer-events: all;
-  transition: all 0.3s cubic-bezier(.17, .67, .16, .99);
+  transition: transform 0.3s cubic-bezier(.17, .67, .16, .99);
 }
 .segment__path:hover,
 .segment__backdrop:hover + .segment__path  {

@@ -2,21 +2,31 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import PanelSection from '../../__section/panel__section';
+import Plots from './panel__settings-plots';
 import Reset from '../panel__settings-reset';
 
 const SegCircleSettings = ({
+  changePlot,
   changeSetting,
-  settings,
+  plots,
   resetSettings,
+  settings,
   storeSettings,
   updateSetting,
 }) => (
   <div className="panel">
     <PanelSection
       border={false}
-      title="Basic settings"
+      title="Plot"
     >
-      Section
+      <Plots
+        changePlot={changePlot}
+        changeSetting={changeSetting}
+        plots={plots}
+        settings={settings}
+        storeSettings={storeSettings}
+        updateSetting={updateSetting}
+      />
     </PanelSection>
     <PanelSection>
       <Reset resetSettings={resetSettings} />
@@ -25,7 +35,11 @@ const SegCircleSettings = ({
 );
 
 SegCircleSettings.propTypes = {
+  changePlot: PropTypes.func.isRequired,
   changeSetting: PropTypes.func.isRequired,
+  plots: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ).isRequired,
   resetSettings: PropTypes.func.isRequired,
   settings: PropTypes.shape({}).isRequired,
   storeSettings: PropTypes.shape({}).isRequired,

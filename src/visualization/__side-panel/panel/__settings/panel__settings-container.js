@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import Settings from './panel__settings';
 import SettingResetSelector from '../../../../state/selectors/visualization/settings-reset-selector';
+import { availablePlotsSelector } from '../../../../state/selectors/visualization/available-plots-selector';
+import { changePlot } from '../../../../state/set/visualization/plot-actions';
 import { parameterSelectorProp } from '../../../../state/selectors/visualization/params-selector';
 import { settingSelector } from '../../../../state/selectors/visualization/settings-selector';
 import { resetSettings, updateSetting } from '../../../../state/set/visualization/settings-actions';
@@ -97,8 +99,10 @@ export class SettingsContainer extends PureComponent {
       <Settings
         changeSetting={this.changeSetting}
         imageKind={this.props.imageKind}
-        settings={this.state.settings}
+        changePlot={this.props.changePlot}
+        plots={this.props.plots}
         resetSettings={this.props.resetAll}
+        settings={this.state.settings}
         storeSettings={this.state.storeSettings}
         updateSetting={this.updateSetting}
       />
@@ -107,7 +111,11 @@ export class SettingsContainer extends PureComponent {
 }
 
 SettingsContainer.propTypes = {
+  changePlot: PropTypes.func.isRequired,
   imageKind: PropTypes.string.isRequired,
+  plots: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ).isRequired,
   reset: PropTypes.bool.isRequired,
   resetAll: PropTypes.func.isRequired,
   settings: PropTypes.shape({}).isRequired,
@@ -117,12 +125,16 @@ SettingsContainer.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = state => ({
   imageKind: parameterSelectorProp(state, 'imageType'),
+  plots: availablePlotsSelector(state),
   reset: SettingResetSelector(state),
   settings: settingSelector(state),
 });
 
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
+  changePlot: (plot) => {
+    dispatch(changePlot(plot));
+  },
   resetAll: () => {
     dispatch(resetSettings());
   },

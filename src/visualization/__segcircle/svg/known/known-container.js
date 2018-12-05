@@ -16,14 +16,17 @@ export class KnownContainer extends Component {
     };
   }
   componentDidUpdate = (prevProps) => {
-    const { radius } = prevProps;
-    this.updateSegment(this.props, radius);
+    const { radius, readouts } = prevProps;
+    this.updateSegment(this.props, radius, readouts);
   }
   updateSegment = ({
     radius,
     readouts,
-  }, prevRadius) => {
-    if (radius !== prevRadius) {
+  }, prevRadius, prevReadouts) => {
+    if (
+      radius !== prevRadius
+      || readouts !== prevReadouts
+    ) {
       this.setState({
         end: createKnown(readouts, radius),
       });

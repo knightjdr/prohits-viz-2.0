@@ -26,7 +26,7 @@ const Svg = ({
             readouts={plot.readouts}
           />
           <Circle
-            circles={plot}
+            plot={plot}
             radius={radius}
             settings={segcircleSettings}
             thickness={settings.thickness}

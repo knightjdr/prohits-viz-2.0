@@ -1,6 +1,6 @@
 import isJson from '../../helpers/is-json';
 
-const validTypes = ['dotplot', 'heatmap', 'scatter'];
+const validTypes = ['dotplot', 'heatmap', 'segcircle', 'scatter'];
 
 // SelectValidate validates that an input file is JSON formatted and has the
 // necessary fields and values for the interactive viewer. If the analysis
