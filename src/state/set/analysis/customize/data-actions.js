@@ -4,6 +4,8 @@ import arrMove from '../../../../helpers/arr-move';
 import deepCopy from '../../../../helpers/deep-copy';
 import round from '../../../../helpers/round';
 import orderArrayByKeys from '../../../../helpers/order-array-by-keys';
+import { updateGeneList } from '../../visualization/genes-actions';
+import { updatePosition } from './position-actions';
 
 export const ADD_CUSTOMIZE_STATE = 'ADD_CUSTOMIZE_STATE';
 export const REPLACE_CUSTOMIZE_STATE = 'REPLACE_CUSTOMIZE_STATE';
@@ -157,20 +159,36 @@ export const customizeImage = () => (
       rows,
       vizanalysisform,
     } = getState();
-    // Skip if selected genes are not present for rows and columns.
+    let { columnsSelected, rowsSelected } = genes;
+    // Skip if selected genes are empty for either rows and columns.
     if (
-      genes.columnsSelected.length !== 0 &&
-      genes.rowsSelected.length !== 0
+      columnsSelected.length > 0 ||
+      rowsSelected.length > 0
     ) {
       dispatch(tabActions.addTab('customize'));
+
+      // Get genes to use for customization if no columns or rows selected
+      if (columnsSelected.length === 0) {
+        columnsSelected = genes.columns;
+        dispatch(updateGeneList({
+          columns: [],
+          columnsSelected,
+        }));
+      } else if (rowsSelected.length === 0) {
+        rowsSelected = genes.rows;
+        dispatch(updateGeneList({
+          rows: [],
+          rowsSelected,
+        }));
+      }
 
       // Subset global image based on selected row and column items.
       const { removeEmpty, resetMaximums } = vizanalysisform.customize;
       const customState = {
-        columns: genes.columnsSelected,
+        columns: columnsSelected,
         rows: {
-          list: filterRows(columns.names, rows, genes.columnsSelected, genes.rowsSelected),
-          order: genes.rowsSelected,
+          list: filterRows(columns.names, rows, columnsSelected, rowsSelected),
+          order: rowsSelected,
         },
         removeEmpty,
         resetMaximums,
@@ -289,6 +307,7 @@ export const updateImage = (
       currentState.removeEmpty !== removeEmpty
       && blanked.didRemove
     ) {
+      dispatch(updatePosition(0, 0));
       dispatch(addCustomizeState(newState));
     } else {
       dispatch(replaceCustomizeState(newState));

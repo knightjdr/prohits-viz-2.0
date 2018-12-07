@@ -2,6 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import * as actions from './data-actions';
+import * as geneActions from '../../visualization/genes-actions';
+import * as positionActions from './position-actions';
 import * as tabActions from '../../visualization/tab-actions';
 
 // configure mock store
@@ -737,6 +739,14 @@ describe('Customize data actions', () => {
             type: actions.ADD_CUSTOMIZE_STATE,
           });
         });
+
+        it('should dispatch update position action', () => {
+          expect(dispatcedActions).toContainEqual({
+            x: 0,
+            y: 0,
+            type: positionActions.UPDATE_CUSTOMIZE_POSITION,
+          });
+        });
       });
 
       describe('when the sort by index is deleted', () => {
@@ -964,7 +974,7 @@ describe('Customize data actions', () => {
       });
     });
 
-    describe('where there are selected genes', () => {
+    describe('where there are selected genes for both columns and rows', () => {
       let dispatcedActions;
 
       beforeAll(() => {
@@ -1002,6 +1012,116 @@ describe('Customize data actions', () => {
           removeEmpty: true,
           resetMaximums: false,
           rows: emptyRows,
+          type: actions.SET_CUSTOMIZE_STATE,
+        });
+      });
+    });
+
+    describe('where there are selected genes for only columns', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const state = {
+          columns: {
+            names: columns,
+          },
+          genes: {
+            columns: [],
+            columnsSelected: ['a', 'b', 'c', 'd'],
+            rows: ['x', 'y', 'z'],
+            rowsSelected: [],
+          },
+          rows,
+          vizanalysisform: {
+            customize: {
+              removeEmpty: false,
+              resetMaximums: false,
+            },
+          },
+        };
+        const store = mockStore(state);
+        store.dispatch(actions.customizeImage());
+        dispatcedActions = store.getActions();
+      });
+
+      it('should dispatch an action to add a tab', () => {
+        expect(dispatcedActions).toContainEqual({
+          tab: 'customize',
+          type: tabActions.ADD_TAB,
+        });
+      });
+
+      it('should dispatch an update gene list action', () => {
+        expect(dispatcedActions).toContainEqual({
+          selections: {
+            rows: [],
+            rowsSelected: ['x', 'y', 'z'],
+          },
+          type: geneActions.UPDATE_SELECTIONS,
+        });
+      });
+
+      it('should dispatch a set state action', () => {
+        expect(dispatcedActions).toContainEqual({
+          columns,
+          removeEmpty: false,
+          resetMaximums: false,
+          rows,
+          type: actions.SET_CUSTOMIZE_STATE,
+        });
+      });
+    });
+
+    describe('where there are selected genes for only rows', () => {
+      let dispatcedActions;
+
+      beforeAll(() => {
+        const state = {
+          columns: {
+            names: columns,
+          },
+          genes: {
+            columns: ['a', 'b', 'c', 'd'],
+            columnsSelected: [],
+            rows: [],
+            rowsSelected: ['x', 'y', 'z'],
+          },
+          rows,
+          vizanalysisform: {
+            customize: {
+              removeEmpty: false,
+              resetMaximums: false,
+            },
+          },
+        };
+        const store = mockStore(state);
+        store.dispatch(actions.customizeImage());
+        dispatcedActions = store.getActions();
+      });
+
+      it('should dispatch an action to add a tab', () => {
+        expect(dispatcedActions).toContainEqual({
+          tab: 'customize',
+          type: tabActions.ADD_TAB,
+        });
+      });
+
+      it('should dispatch an update gene list action', () => {
+        expect(dispatcedActions).toContainEqual({
+          selections: {
+            columns: [],
+            columnsSelected: ['a', 'b', 'c', 'd'],
+          },
+          type: geneActions.UPDATE_SELECTIONS,
+        });
+      });
+
+      it('should dispatch a set state action', () => {
+        expect(dispatcedActions).toContainEqual({
+          columns,
+          removeEmpty: false,
+          resetMaximums: false,
+          rows,
           type: actions.SET_CUSTOMIZE_STATE,
         });
       });
