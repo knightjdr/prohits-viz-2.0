@@ -8,7 +8,7 @@ const pieSlice = (data, radii, readouts) => {
     outer: [radii.outer, 0],
   };
   const arc = data.length < 2 ? 1 : 0;
-  const percent = roundNearest(1 / data.length, 0.0001);
+  const percent = roundNearest(1 / data.length, 0.000001);
   return data.map((datum, index) => {
     cumulativePercent += percent;
     const innerPoint = percToCoord(cumulativePercent, radii.inner);
