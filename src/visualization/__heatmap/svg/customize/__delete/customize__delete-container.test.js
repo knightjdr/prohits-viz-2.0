@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import DeleteContainer, { defaultRect } from './customize__delete-container';
 
 const deleteItem = jest.fn();
+const setSelections = jest.fn();
 
 describe('Customize delete container', () => {
   let wrapper;
@@ -12,6 +13,7 @@ describe('Customize delete container', () => {
     wrapper = shallow(
       <DeleteContainer
         cellSize={20}
+        columns={['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']}
         deleteItem={deleteItem}
         dimensions={{
           pageX: 10,
@@ -21,6 +23,8 @@ describe('Customize delete container', () => {
           x: 5,
           y: 5,
         }}
+        rows={['q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']}
+        setSelections={setSelections}
         show
       />,
     );
@@ -39,7 +43,12 @@ describe('Customize delete container', () => {
           },
         });
         deleteItem.mockClear();
+        setSelections.mockClear();
         wrapper.instance().deleteItem(1, 'col');
+      });
+
+      it('should call setSelections prop method', () => {
+        expect(setSelections).toHaveBeenCalledWith(['g'], 'columnsSelected', 'columns', false, 'columnMap');
       });
 
       it('should call deleteItem prop method', () => {
@@ -63,7 +72,12 @@ describe('Customize delete container', () => {
           },
         });
         deleteItem.mockClear();
+        setSelections.mockClear();
         wrapper.instance().deleteItem(1, 'row');
+      });
+
+      it('should call setSelections prop method', () => {
+        expect(setSelections).toHaveBeenCalledWith(['w'], 'rowsSelected', 'rows', false, 'rowMap');
       });
 
       it('should call deleteItem prop method', () => {

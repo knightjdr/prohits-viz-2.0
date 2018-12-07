@@ -62,6 +62,7 @@ exports[`Store connection when there is customized state should match snapshot 1
   scoreType="lte"
   search={Object {}}
   setDims={[Function]}
+  setGeneSelections={[Function]}
   setRef={[Function]}
   setSelectedGenes={[Function]}
   settings={Object {}}
@@ -74,6 +75,7 @@ exports[`Store connection when there is customized state should match snapshot 1
   toggleSelection={[Function]}
   toggleTips={[Function]}
   updateAnnotation={[Function]}
+  updateGeneOrder={[Function]}
   updatePlotXY={[Function]}
   updateXY={[Function]}
 />
@@ -107,6 +109,7 @@ exports[`Store connection when there is no customized state should match snapsho
   scoreType="lte"
   search={Object {}}
   setDims={[Function]}
+  setGeneSelections={[Function]}
   setRef={[Function]}
   setSelectedGenes={[Function]}
   settings={Object {}}
@@ -119,6 +122,7 @@ exports[`Store connection when there is no customized state should match snapsho
   toggleSelection={[Function]}
   toggleTips={[Function]}
   updateAnnotation={[Function]}
+  updateGeneOrder={[Function]}
   updatePlotXY={[Function]}
   updateXY={[Function]}
 />

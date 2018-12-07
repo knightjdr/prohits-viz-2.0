@@ -52,6 +52,7 @@ describe('Customize heatmap svg', () => {
         scoreType: 'lte',
         search: {},
         setContainerRef: {},
+        setGeneSelections: jest.fn(),
         setSelections: jest.fn(),
         setRef: jest.fn(),
         setReference: jest.fn(),
@@ -77,6 +78,7 @@ describe('Customize heatmap svg', () => {
         toggleTooltip: jest.fn(),
         translateLeft: jest.fn(),
         updateAnnotation: jest.fn(),
+        updateGeneOrder: jest.fn(),
         updatePlotXY: jest.fn(),
         updateXY: jest.fn(),
         width: {

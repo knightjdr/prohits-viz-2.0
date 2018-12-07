@@ -13,6 +13,7 @@ import { parameterSelectorProp } from '../../../state/selectors/visualization/pa
 import { deleteFromImage, reorderImage, resetCustomizeState } from '../../../state/set/analysis/customize/data-actions';
 import { setDimensions } from '../../../state/set/analysis/customize/dimension-actions';
 import { setReference } from '../../../state/set/analysis/customize/columns-actions';
+import { setSelections, updateGeneList } from '../../../state/set/visualization/genes-actions';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { sortRows } from '../../../state/set/analysis/customize/rows-actions';
 import { toggleTooltips, updatePlotPosition } from '../../../state/set/analysis/customize/display-actions';
@@ -35,10 +36,12 @@ export const StoreConnection = ({
   scoreType,
   search,
   setDims,
+  setGeneSelections,
   setRef,
   settings,
   sort,
   toggleTips,
+  updateGeneOrder,
   updatePlotXY,
   updateXY,
   ...otherProps
@@ -72,12 +75,14 @@ export const StoreConnection = ({
     rows,
     scoreType,
     search,
-    setRef,
     setDims,
+    setGeneSelections,
+    setRef,
     settings,
     sort,
     sortInfo: { id: 0 },
     toggleTips,
+    updateGeneOrder,
     updatePlotXY,
     updateXY,
   });
@@ -145,6 +150,7 @@ StoreConnection.propTypes = {
     rows: PropTypes.shape({}),
     term: PropTypes.string,
   }).isRequired,
+  setGeneSelections: PropTypes.func.isRequired,
   setRef: PropTypes.func.isRequired,
   settings: PropTypes.shape({
     abundanceCap: PropTypes.number,
@@ -159,6 +165,7 @@ StoreConnection.propTypes = {
   }).isRequired,
   sort: PropTypes.func.isRequired,
   toggleTips: PropTypes.func.isRequired,
+  updateGeneOrder: PropTypes.func.isRequired,
   updatePlotXY: PropTypes.func.isRequired,
   updateXY: PropTypes.func.isRequired,
 };
@@ -194,11 +201,17 @@ const mapDispatchToProps = dispatch => ({
   setRef: (ref) => {
     dispatch(setReference(ref));
   },
+  setGeneSelections: (list, source, target, replace, sort, sortBy) => {
+    dispatch(setSelections(list, source, target, replace, sort, sortBy));
+  },
   sort: (index, direction, ref) => {
     dispatch(sortRows(index, direction, ref));
   },
   toggleTips: () => {
     dispatch(toggleTooltips());
+  },
+  updateGeneOrder: (selections) => {
+    dispatch(updateGeneList(selections));
   },
   updatePlotXY: (fixed, translate) => {
     dispatch(updatePlotPosition(fixed, translate));

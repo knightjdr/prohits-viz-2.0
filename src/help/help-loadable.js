@@ -5,7 +5,7 @@ import Loading from '../components/loading/loading';
 const HelpLoadable = Loadable({
   loader: () => import('./help'),
   loading: Loading,
-  delay: 500,
+  delay: process.env.REACT_APP_LOADABLE_DELAY,
 });
 
 export default HelpLoadable;

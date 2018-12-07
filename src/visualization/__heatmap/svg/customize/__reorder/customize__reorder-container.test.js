@@ -8,6 +8,7 @@ jest.mock('../../font-size/font-size');
 setFontSize.mockReturnValue(12);
 
 const reorder = jest.fn();
+const updateGeneOrder = jest.fn();
 
 describe('Customize reorder container', () => {
   let wrapper;
@@ -16,7 +17,7 @@ describe('Customize reorder container', () => {
     wrapper = shallow(
       <ReorderContainer
         cellSize={20}
-        columnNames={['a', 'b', 'c', 'd', 'e']}
+        columns={['a', 'b', 'c', 'd', 'e']}
         dimensions={{
           pageX: 5,
           pageY: 5,
@@ -26,8 +27,9 @@ describe('Customize reorder container', () => {
           y: 0,
         }}
         reorder={reorder}
-        rowNames={['v', 'w', 'x', 'y', 'z']}
+        rows={['v', 'w', 'x', 'y', 'z']}
         show
+        updateGeneOrder={updateGeneOrder}
       />);
   });
 
@@ -497,25 +499,62 @@ describe('Customize reorder container', () => {
     });
 
     describe('with selected item and icons are not visible', () => {
-      beforeAll(() => {
-        wrapper.instance().selectedItem = {
-          dropIndex: 2,
-          index: 1,
-          type: 'col',
-        };
-        wrapper.setState({
-          showIcons: false,
+      describe('reordering column', () => {
+        beforeAll(() => {
+          wrapper.instance().selectedItem = {
+            dropIndex: 2,
+            index: 1,
+            type: 'col',
+          };
+          wrapper.setState({
+            showIcons: false,
+          });
+          updateGeneOrder.mockClear();
+          reorder.mockClear();
+          wrapper.instance().mouseUp();
+        });
+
+        it('should call updateGeneOrder method', () => {
+          const orderedArr = ['a', 'c', 'b', 'd', 'e'];
+          expect(updateGeneOrder).toHaveBeenCalledWith({ columnsSelected: orderedArr });
+        });
+
+        it('should call reorder method', () => {
+          expect(reorder).toHaveBeenCalledWith(1, 2, 'col');
+        });
+
+        it('should show icons', () => {
+          expect(wrapper.state('showIcons')).toBeTruthy();
         });
       });
 
-      it('should call reorder method', () => {
-        reorder.mockClear();
-        wrapper.instance().mouseUp();
-        expect(reorder).toHaveBeenCalledWith(1, 2, 'col');
-      });
+      describe('reordering rows', () => {
+        beforeAll(() => {
+          wrapper.instance().selectedItem = {
+            dropIndex: 2,
+            index: 1,
+            type: 'row',
+          };
+          wrapper.setState({
+            showIcons: false,
+          });
+          updateGeneOrder.mockClear();
+          reorder.mockClear();
+          wrapper.instance().mouseUp();
+        });
 
-      it('should show icons', () => {
-        expect(wrapper.state('showIcons')).toBeTruthy();
+        it('should call updateGeneOrder method', () => {
+          const orderedArr = ['v', 'x', 'w', 'y', 'z'];
+          expect(updateGeneOrder).toHaveBeenCalledWith({ rowsSelected: orderedArr });
+        });
+
+        it('should call reorder method', () => {
+          expect(reorder).toHaveBeenCalledWith(1, 2, 'row');
+        });
+
+        it('should show icons', () => {
+          expect(wrapper.state('showIcons')).toBeTruthy();
+        });
       });
     });
   });

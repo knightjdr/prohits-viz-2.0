@@ -82,6 +82,7 @@ exports[`Customize heatmap svg should match snapshot 1`] = `
     />
     <DeleteContainer
       cellSize={20}
+      columns={Array []}
       deleteItem={[Function]}
       dimensions={
         Object {
@@ -95,11 +96,13 @@ exports[`Customize heatmap svg should match snapshot 1`] = `
           "y": 0,
         }
       }
+      rows={Array []}
+      setSelections={[Function]}
       show={false}
     />
     <ReorderContainer
       cellSize={20}
-      columnNames={Array []}
+      columns={Array []}
       dimensions={
         Object {
           "pageX": 10,
@@ -113,8 +116,9 @@ exports[`Customize heatmap svg should match snapshot 1`] = `
         }
       }
       reorder={[Function]}
-      rowNames={Array []}
+      rows={Array []}
       show={false}
+      updateGeneOrder={[Function]}
     />
   </svg>
   <StatusContainer

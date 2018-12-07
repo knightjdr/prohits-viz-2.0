@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
+import arrMove from '../../../../../helpers/arr-move';
 import between from '../../../../../helpers/between';
 import Reorder from './customize__reorder';
 import setFontSize from '../../font-size/font-size';
@@ -112,7 +113,7 @@ class ReorderContainer extends PureComponent {
   mouseDownColumn = (e, index) => {
     const {
       cellSize,
-      columnNames,
+      columns,
       dimensions,
       position,
     } = this.props;
@@ -132,7 +133,7 @@ class ReorderContainer extends PureComponent {
     const lines = this.setColumnLine(cellSize, dimensions, index);
     const text = {
       height: cellSize,
-      name: columnNames[position.x + index],
+      name: columns[position.x + index],
       rotation: 90,
       transform: `translate(-2 ${-radius})`,
       width: LABEL_WIDTH - cellSize,
@@ -159,7 +160,7 @@ class ReorderContainer extends PureComponent {
       cellSize,
       dimensions,
       position,
-      rowNames,
+      rows,
     } = this.props;
     const radius = cellSize / 2;
     const y = LABEL_WIDTH + (cellSize * index);
@@ -177,7 +178,7 @@ class ReorderContainer extends PureComponent {
     const lines = this.setRowLine(cellSize, dimensions, index);
     const text = {
       height: cellSize,
-      name: rowNames[position.y + index],
+      name: rows[position.y + index],
       rotation: 0,
       transform: `translate(-2 ${-radius})`,
       width: LABEL_WIDTH - cellSize,
@@ -250,11 +251,30 @@ class ReorderContainer extends PureComponent {
     ) {
       this.setState({ showIcons: true });
       const {
+        columns,
+        reorder,
+        rows,
+        updateGeneOrder,
+      } = this.props;
+      const {
         dropIndex,
         index,
         type,
       } = this.selectedItem;
-      this.props.reorder(index, dropIndex, type);
+      let arr;
+      let key;
+      if (type === 'col') {
+        arr = columns;
+        key = 'columnsSelected';
+      } else {
+        arr = rows;
+        key = 'rowsSelected';
+      }
+      const orderedArr = arrMove(index, dropIndex, arr);
+      updateGeneOrder({
+        [key]: orderedArr,
+      });
+      reorder(index, dropIndex, type);
     }
   }
   updateDimensions = ({ cellSize, dimensions }, prevCellSize, prevDimensions) => {
@@ -301,7 +321,7 @@ class ReorderContainer extends PureComponent {
 
 ReorderContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
-  columnNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
   dimensions: PropTypes.shape({
     pageX: PropTypes.number,
     pageY: PropTypes.number,
@@ -311,8 +331,9 @@ ReorderContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   reorder: PropTypes.func.isRequired,
-  rowNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
   show: PropTypes.bool.isRequired,
+  updateGeneOrder: PropTypes.func.isRequired,
 };
 
 export default ReorderContainer;

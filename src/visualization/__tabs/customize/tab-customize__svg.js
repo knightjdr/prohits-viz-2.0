@@ -37,6 +37,7 @@ const Svg = ({
   rows,
   scoreType,
   search,
+  setGeneSelections,
   setReference,
   settings,
   showContext,
@@ -46,6 +47,7 @@ const Svg = ({
   toggleTooltip,
   tooltip,
   translateLeft,
+  updateGeneOrder,
   updateXY,
   width,
 }) => (
@@ -107,19 +109,23 @@ const Svg = ({
       />
       <Delete
         cellSize={settings.cellSize}
+        columns={columns.names}
         deleteItem={deleteItem}
         dimensions={dimensions}
         position={position}
+        rows={rowNames}
         show={customizeOptions.deleteRC}
+        setSelections={setGeneSelections}
       />
       <Reorder
         cellSize={settings.cellSize}
-        columnNames={columns.names}
+        columns={columns.names}
         dimensions={dimensions}
         position={position}
         reorder={reorder}
-        rowNames={rowNames}
+        rows={rowNames}
         show={customizeOptions.reorder}
+        updateGeneOrder={updateGeneOrder}
       />
     </svg>
     <StatusBar
@@ -240,6 +246,7 @@ Svg.propTypes = {
     term: PropTypes.string,
   }).isRequired,
   setReference: PropTypes.func.isRequired,
+  setGeneSelections: PropTypes.func.isRequired,
   settings: PropTypes.shape({
     abundanceCap: PropTypes.number,
     cellSize: PropTypes.number,
@@ -265,6 +272,7 @@ Svg.propTypes = {
   }).isRequired,
   translateLeft: PropTypes.func.isRequired,
   toggleTips: PropTypes.func.isRequired,
+  updateGeneOrder: PropTypes.func.isRequired,
   updateXY: PropTypes.func.isRequired,
   width: PropTypes.shape({
     arrowsX: PropTypes.bool,

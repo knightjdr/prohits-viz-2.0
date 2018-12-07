@@ -19,8 +19,32 @@ class DeleteContainer extends PureComponent {
     };
   }
   deleteItem = (id, type) => {
-    const { deleteItem, position } = this.props;
-    const index = type === 'col' ? position.x + id : position.y + id;
+    const {
+      columns,
+      deleteItem,
+      position,
+      rows,
+      setSelections,
+    } = this.props;
+    let index;
+    let name;
+    let sortBy;
+    let source;
+    let target;
+    if (type === 'col') {
+      index = position.x + id;
+      name = columns[index];
+      sortBy = 'columnMap';
+      source = 'columnsSelected';
+      target = 'columns';
+    } else {
+      index = position.y + id;
+      name = rows[index];
+      sortBy = 'rowMap';
+      source = 'rowsSelected';
+      target = 'rows';
+    }
+    setSelections([name], source, target, false, sortBy);
     deleteItem(index, type);
     this.setState({ rect: { ...defaultRect } });
   }
@@ -69,6 +93,7 @@ class DeleteContainer extends PureComponent {
 
 DeleteContainer.propTypes = {
   cellSize: PropTypes.number.isRequired,
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
   deleteItem: PropTypes.func.isRequired,
   dimensions: PropTypes.shape({
     pageX: PropTypes.number,
@@ -78,6 +103,8 @@ DeleteContainer.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelections: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };
 
