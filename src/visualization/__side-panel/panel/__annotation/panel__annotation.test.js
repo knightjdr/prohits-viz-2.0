@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Annotation from './panel__annotation';
 
 describe('Annotation panel', () => {
-  it('should render', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <Annotation
         addAnnotation={jest.fn()}
@@ -28,6 +28,7 @@ describe('Annotation panel', () => {
         search={{}}
         showAnnotationPicker={false}
         showMarkerPicker={false}
+        tab="main"
         toggleAnnotationColorPicker={jest.fn()}
         toggleMarkerColorPicker={jest.fn()}
         toggleMarkers={jest.fn()}

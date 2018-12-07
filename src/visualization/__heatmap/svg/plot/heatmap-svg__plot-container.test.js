@@ -48,6 +48,8 @@ const props = {
   ],
   scoreType: 'lte',
   secondaryFilter: 5,
+  sortID: null,
+  updateID: null,
 };
 
 describe('Plot container', () => {
@@ -154,14 +156,16 @@ describe('Plot container', () => {
   });
 
   describe('component update', () => {
-    it('should not update if props do not change', () => {
+    beforeEach(() => {
       wrapper.setProps(props);
+    });
+
+    it('should not update if props do not change', () => {
       const nextProps = props;
       expect(wrapper.instance().shouldComponentUpdate(nextProps)).toBeFalsy();
     });
 
     it('should update if update ID changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         updateID: 1,
@@ -170,7 +174,6 @@ describe('Plot container', () => {
     });
 
     it('should update if abundanceCap changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         abundanceCap: 25,
@@ -179,7 +182,6 @@ describe('Plot container', () => {
     });
 
     it('should update if cellSize changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         cellSize: 20,
@@ -188,7 +190,6 @@ describe('Plot container', () => {
     });
 
     it('should update if page X size changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         dimensions: {
@@ -200,7 +201,6 @@ describe('Plot container', () => {
     });
 
     it('should update if page Y size changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         dimensions: {
@@ -212,7 +212,6 @@ describe('Plot container', () => {
     });
 
     it('should update if edge color changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         edgeColor: 'redBlack',
@@ -221,7 +220,6 @@ describe('Plot container', () => {
     });
 
     it('should update if fill color changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         fillColor: 'redBlack',
@@ -230,7 +228,6 @@ describe('Plot container', () => {
     });
 
     it('should update if imageType changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         imageType: 'dotplot',
@@ -239,7 +236,6 @@ describe('Plot container', () => {
     });
 
     it('should update if invertColor changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         invertColor: true,
@@ -248,7 +244,6 @@ describe('Plot container', () => {
     });
 
     it('should update if minAbundance changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         minAbundance: 5,
@@ -257,7 +252,6 @@ describe('Plot container', () => {
     });
 
     it('should update if x position changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         position: {
@@ -269,7 +263,6 @@ describe('Plot container', () => {
     });
 
     it('should update if y position changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         position: {
@@ -281,7 +274,6 @@ describe('Plot container', () => {
     });
 
     it('should update if primaryFilter changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         primaryFilter: 5,
@@ -290,7 +282,6 @@ describe('Plot container', () => {
     });
 
     it('should update if secondaryFilter changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         secondaryFilter: 20,
@@ -299,7 +290,6 @@ describe('Plot container', () => {
     });
 
     it('should update if sortID changes', () => {
-      wrapper.setProps(props);
       const nextProps = {
         ...props,
         sortID: 1,

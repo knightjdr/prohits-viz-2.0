@@ -30,6 +30,7 @@ const Annotation = ({
   showAnnotationPicker,
   showMarkerPicker,
   showMarkers,
+  tab,
   toggleAnnotationColorPicker,
   toggleMarkerColorPicker,
   toggleMarkers,
@@ -83,6 +84,7 @@ const Annotation = ({
       clearSearch={clearSearch}
       handleSearch={handleSearch}
       search={search}
+      tab={tab}
       updateSearchTerm={updateSearchTerm}
     />
   </div>
@@ -116,6 +118,7 @@ Annotation.propTypes = {
   record: PropTypes.bool,
   search: PropTypes.shape({
     match: PropTypes.bool,
+    matchCustomize: PropTypes.bool,
     search: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
@@ -123,6 +126,7 @@ Annotation.propTypes = {
   showAnnotationPicker: PropTypes.bool.isRequired,
   showMarkerPicker: PropTypes.bool.isRequired,
   showMarkers: PropTypes.bool,
+  tab: PropTypes.string.isRequired,
   toggleAnnotationColorPicker: PropTypes.func.isRequired,
   toggleMarkerColorPicker: PropTypes.func.isRequired,
   toggleMarkers: PropTypes.func.isRequired,

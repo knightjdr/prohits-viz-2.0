@@ -39,7 +39,7 @@ describe('Panel save container', () => {
     );
   });
 
-  describe('when props change should call download image method', () => {
+  describe('when props change', () => {
     let spy;
 
     beforeAll(() => {
@@ -51,9 +51,9 @@ describe('Panel save container', () => {
       spy.mockRestore();
     });
 
-    it('should ', () => {
+    it('should call download image method', () => {
       expect(spy).not.toHaveBeenCalled();
-      wrapper.setProps();
+      wrapper.setProps({});
       expect(spy).toHaveBeenCalled();
     });
   });

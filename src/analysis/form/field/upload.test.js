@@ -107,7 +107,7 @@ describe('Select', () => {
         />
       </TestForm>,
     );
-    const button = wrapper.find('button [type="submit"]');
+    const button = wrapper.find('button').at(1);
     button.simulate('submit');
     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
   });

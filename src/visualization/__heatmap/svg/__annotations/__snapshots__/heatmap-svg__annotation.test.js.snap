@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Annotation with annotations or markers should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <defs>
     <clipPath
       id="overlayClip"
@@ -59,11 +59,11 @@ exports[`Annotation with annotations or markers should match snapshot 1`] = `
       a
     </text>
   </g>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Annotation without annotations or markers and dragging should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <defs>
     <clipPath
       id="overlayClip"
@@ -98,11 +98,11 @@ exports[`Annotation without annotations or markers and dragging should match sna
       y="0"
     />
   </g>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Annotation without annotations or markers and not dragging should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <defs>
     <clipPath
       id="overlayClip"
@@ -137,5 +137,5 @@ exports[`Annotation without annotations or markers and not dragging should match
       y="0"
     />
   </g>
-</React.Fragment>
+</Fragment>
 `;

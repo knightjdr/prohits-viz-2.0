@@ -193,7 +193,7 @@ const mapStateToProps = state => ({
   rowNames: rowNameSelector(state),
   rows: rowSelector(state),
   scoreType: parameterSelectorProp(state, 'scoreType'),
-  search: searchSelector(state),
+  search: searchSelector(state, 'main'),
   settings: settingSelector(state),
   sortInfo: sortSeletor(state),
 });

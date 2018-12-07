@@ -15,7 +15,7 @@ beforeEach(() => {
 });
 
 describe('Search component on annotation panel', () => {
-  describe('should render', () => {
+  describe('with default props', () => {
     let wrapper;
 
     beforeAll(() => {
@@ -25,9 +25,11 @@ describe('Search component on annotation panel', () => {
           handleSearch={handleSearch}
           search={{
             match: false,
+            matchCustomize: false,
             searched: false,
             term: '',
           }}
+          tab="main"
           updateSearchTerm={updateSearchTerm}
         />,
       );
@@ -35,6 +37,11 @@ describe('Search component on annotation panel', () => {
 
     it('and should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not show warning when "searched" is false', () => {
+      const warning = wrapper.find('.panel__annotation-search-warning');
+      expect(warning.props().style.height).toBe(0);
     });
 
     it('should call updateSearchTerm when input changes', () => {
@@ -53,42 +60,8 @@ describe('Search component on annotation panel', () => {
     });
   });
 
-  describe('should render warning', () => {
-    it('but not when "searched" is false', () => {
-      const wrapper = shallow(
-        <Search
-          clearSearch={clearSearch}
-          handleSearch={handleSearch}
-          search={{
-            match: false,
-            searched: false,
-            term: '',
-          }}
-          updateSearchTerm={updateSearchTerm}
-        />,
-      );
-      const warning = wrapper.find('.panel__annotation-search-warning');
-      expect(warning.props().style.height).toBe(0);
-    });
-
-    it('not when "matched" is true', () => {
-      const wrapper = shallow(
-        <Search
-          clearSearch={clearSearch}
-          handleSearch={handleSearch}
-          search={{
-            match: true,
-            searched: true,
-            term: '',
-          }}
-          updateSearchTerm={updateSearchTerm}
-        />,
-      );
-      const warning = wrapper.find('.panel__annotation-search-warning');
-      expect(warning.props().style.height).toBe(0);
-    });
-
-    describe('only when searched is true and matched is false', () => {
+  describe('with no match on main tab', () => {
+    describe('when viewing main tab', () => {
       let wrapper;
 
       beforeAll(() => {
@@ -98,20 +71,115 @@ describe('Search component on annotation panel', () => {
             handleSearch={handleSearch}
             search={{
               match: false,
+              matchCustomize: true,
               searched: true,
               term: '',
             }}
+            tab="main"
             updateSearchTerm={updateSearchTerm}
           />,
         );
       });
 
-      it('and should match snapshot', () => {
+      it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
       });
-      it('and display warning', () => {
+
+      it('should display warning', () => {
         const warning = wrapper.find('.panel__annotation-search-warning');
-        expect(warning.props().style.height).toBe(31);
+        expect(warning.props().style.height).toBeGreaterThan(0);
+      });
+    });
+
+    describe('when not viewing main tab', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        wrapper = shallow(
+          <Search
+            clearSearch={clearSearch}
+            handleSearch={handleSearch}
+            search={{
+              match: false,
+              matchCustomize: true,
+              searched: true,
+              term: '',
+            }}
+            tab="customize"
+            updateSearchTerm={updateSearchTerm}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should display warning', () => {
+        const warning = wrapper.find('.panel__annotation-search-warning');
+        expect(warning.props().style.height).toBe(0);
+      });
+    });
+  });
+
+  describe('with no match on customize tab', () => {
+    describe('when viewing main tab', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        wrapper = shallow(
+          <Search
+            clearSearch={clearSearch}
+            handleSearch={handleSearch}
+            search={{
+              match: true,
+              matchCustomize: false,
+              searched: true,
+              term: '',
+            }}
+            tab="main"
+            updateSearchTerm={updateSearchTerm}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should display warning', () => {
+        const warning = wrapper.find('.panel__annotation-search-warning');
+        expect(warning.props().style.height).toBe(0);
+      });
+    });
+
+    describe('when viewing customize tab', () => {
+      let wrapper;
+
+      beforeAll(() => {
+        wrapper = shallow(
+          <Search
+            clearSearch={clearSearch}
+            handleSearch={handleSearch}
+            search={{
+              match: true,
+              matchCustomize: false,
+              searched: true,
+              term: '',
+            }}
+            tab="customize"
+            updateSearchTerm={updateSearchTerm}
+          />,
+        );
+      });
+
+      it('should match snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
+
+      it('should display warning', () => {
+        const warning = wrapper.find('.panel__annotation-search-warning');
+        expect(warning.props().style.height).toBeGreaterThan(0);
       });
     });
   });

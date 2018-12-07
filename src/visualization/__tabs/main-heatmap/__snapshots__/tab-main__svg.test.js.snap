@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main heatmap svg should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <svg
     id="svg-main"
     width={500}
@@ -219,5 +219,5 @@ exports[`Main heatmap svg should match snapshot 1`] = `
     text=""
     top={0}
   />
-</React.Fragment>
+</Fragment>
 `;

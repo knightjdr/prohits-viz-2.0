@@ -2,6 +2,7 @@ import * as actions from './position-actions';
 import * as dataActions from './data-actions';
 import * as fileActions from '../../interactive-file-actions';
 import * as rowActions from './rows-actions';
+import * as searchActions from '../../visualization/search-actions';
 import * as tabActions from '../../visualization/tab-actions';
 
 import position, { initState } from './position-reducer';
@@ -88,6 +89,22 @@ describe('Position set reducer', () => {
     const expectedState = {
       x: 5,
       y: 0,
+    };
+    expect(position(currentState, action)).toEqual(expectedState);
+  });
+
+  it('should handle SET_SEARCH_RESULTS action', () => {
+    const action = {
+      positionCustomize: { x: 10, y: 10 },
+      type: searchActions.SET_SEARCH_RESULTS,
+    };
+    const currentState = {
+      x: 5,
+      y: 5,
+    };
+    const expectedState = {
+      x: 10,
+      y: 10,
     };
     expect(position(currentState, action)).toEqual(expectedState);
   });

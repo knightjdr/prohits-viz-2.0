@@ -2,6 +2,7 @@ import * as actions from './position-actions';
 import * as dataActions from './data-actions';
 import * as fileActions from '../../interactive-file-actions';
 import * as rowActions from './rows-actions';
+import * as searchActions from '../../visualization/search-actions';
 import * as tabActions from '../../visualization/tab-actions';
 
 export const initState = {
@@ -22,6 +23,8 @@ const position = (state = { ...initState }, action) => {
       return state;
     case dataActions.RESET_CUSTOMIZE_STATE:
       return { ...initState };
+    case searchActions.SET_SEARCH_RESULTS:
+      return { ...action.positionCustomize };
     case rowActions.SORT_CUSTOMIZE_STATE:
       return {
         ...state,

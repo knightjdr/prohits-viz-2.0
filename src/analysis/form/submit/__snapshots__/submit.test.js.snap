@@ -53,7 +53,7 @@ exports[`Submit component default view should match snapshot 1`] = `
       >
         <FontAwesomeIcon$1
           border={false}
-          className="submit__show-options-icon"
+          className="submit__show-options-icon submit__options-icon"
           fixedWidth={false}
           flip={null}
           icon={
@@ -80,7 +80,7 @@ exports[`Submit component default view should match snapshot 1`] = `
           symbol={false}
           transform={null}
         />
-         Options
+        Options
       </Button>
     </div>
   </div>
@@ -140,7 +140,7 @@ exports[`Submit component showing options should match snapshot 1`] = `
       >
         <FontAwesomeIcon$1
           border={false}
-          className="submit__hide-options-icon"
+          className="submit__hide-options-icon submit__options-icon"
           fixedWidth={false}
           flip={null}
           icon={
@@ -167,7 +167,7 @@ exports[`Submit component showing options should match snapshot 1`] = `
           symbol={false}
           transform={null}
         />
-         Options
+        Options
       </Button>
     </div>
   </div>
@@ -261,7 +261,7 @@ exports[`Submit component when pending should match snapshot 1`] = `
       >
         <FontAwesomeIcon$1
           border={false}
-          className="submit__show-options-icon"
+          className="submit__show-options-icon submit__options-icon"
           fixedWidth={false}
           flip={null}
           icon={
@@ -288,7 +288,7 @@ exports[`Submit component when pending should match snapshot 1`] = `
           symbol={false}
           transform={null}
         />
-         Options
+        Options
       </Button>
     </div>
   </div>

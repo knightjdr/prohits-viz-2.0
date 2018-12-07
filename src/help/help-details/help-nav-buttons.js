@@ -1,7 +1,7 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Icon } from 'antd';
+import { Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import {
   faChevronLeft,
@@ -22,9 +22,7 @@ const HelpNavButtons = ({
         type="primary"
       >
         <NavLink to={navBackward}>
-          <Icon>
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </Icon>
+          <FontAwesomeIcon icon={faChevronLeft} />
           <span className="help__nav-backward-text">
             Backward
           </span>
@@ -41,9 +39,7 @@ const HelpNavButtons = ({
           <span className="help__nav-forward-text">
             Forward
           </span>
-          <Icon>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </Icon>
+          <FontAwesomeIcon icon={faChevronRight} />
         </NavLink>
       </Button>
     }

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Panel section with border and title should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <div
     className="panel__section-border"
   />
@@ -11,25 +11,25 @@ exports[`Panel section with border and title should match snapshot 1`] = `
     test
   </div>
   children
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Panel section without border should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <div
     className="panel__section-title"
   >
     test
   </div>
   children
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Panel section without title should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <div
     className="panel__section-border"
   />
   children
-</React.Fragment>
+</Fragment>
 `;

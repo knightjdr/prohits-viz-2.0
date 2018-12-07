@@ -176,7 +176,7 @@ const mapStateToProps = state => ({
   markers: markerSelector(state),
   minimap: MapSelector(state),
   position: PositionSelector(state),
-  search: searchSelector(state),
+  search: searchSelector(state, 'main'),
 });
 
 /* istanbul ignore next */

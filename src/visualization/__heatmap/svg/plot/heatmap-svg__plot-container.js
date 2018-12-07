@@ -79,23 +79,21 @@ export class PlotContainer extends Component {
       sortID,
       updateID,
     } = nextProps;
-    return (
-      updateID !== this.props.updateID ||
-      abundanceCap !== this.props.abundanceCap ||
-      cellSize !== this.props.cellSize ||
-      dimensions.pageX !== this.props.dimensions.pageX ||
-      dimensions.pageY !== this.props.dimensions.pageY ||
-      edgeColor !== this.props.edgeColor ||
-      fillColor !== this.props.fillColor ||
-      imageType !== this.props.imageType ||
-      invertColor !== this.props.invertColor ||
-      minAbundance !== this.props.minAbundance ||
-      position.x !== this.props.position.x ||
-      position.y !== this.props.position.y ||
-      primaryFilter !== this.props.primaryFilter ||
-      secondaryFilter !== this.props.secondaryFilter ||
-      sortID !== this.props.sortID
-    );
+    return ((updateID || this.props.updateID) && updateID !== this.props.updateID)
+      || ((sortID || this.props.sortID) && sortID !== this.props.sortID)
+      || abundanceCap !== this.props.abundanceCap
+      || cellSize !== this.props.cellSize
+      || dimensions.pageX !== this.props.dimensions.pageX
+      || dimensions.pageY !== this.props.dimensions.pageY
+      || edgeColor !== this.props.edgeColor
+      || fillColor !== this.props.fillColor
+      || imageType !== this.props.imageType
+      || invertColor !== this.props.invertColor
+      || minAbundance !== this.props.minAbundance
+      || position.x !== this.props.position.x
+      || position.y !== this.props.position.y
+      || primaryFilter !== this.props.primaryFilter
+      || secondaryFilter !== this.props.secondaryFilter;
   }
   setEdgeSize = cellSize => (
     cellSize < 15 ? round(cellSize / 10, 1) : 1.5
@@ -244,13 +242,13 @@ export class PlotContainer extends Component {
     updateID,
   }, prevPosition, prevDimensions, prevSortId, prevUpdateID, prevCellSize) => {
     if (
-      updateID !== prevUpdateID ||
-      position.x !== prevPosition.x ||
-      position.y !== prevPosition.y ||
-      dimensions.pageX !== prevDimensions.pageX ||
-      dimensions.pageY !== prevDimensions.pageY ||
-      cellSize !== prevCellSize ||
-      sortID !== prevSortId
+      ((updateID || prevUpdateID) && updateID !== prevUpdateID)
+      || ((sortID || prevSortId) && sortID !== prevSortId)
+      || position.x !== prevPosition.x
+      || position.y !== prevPosition.y
+      || dimensions.pageX !== prevDimensions.pageX
+      || dimensions.pageY !== prevDimensions.pageY
+      || cellSize !== prevCellSize
     ) {
       this.setState({
         page: this.getPage(

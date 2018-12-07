@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <div
     className="visualization__side-panel"
     style={
@@ -45,11 +45,11 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
     }
     type="button"
   />
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Visualization panel when panel visible should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <div
     className="visualization__side-panel"
     style={
@@ -93,5 +93,5 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
     }
     type="button"
   />
-</React.Fragment>
+</Fragment>
 `;

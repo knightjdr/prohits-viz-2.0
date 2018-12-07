@@ -26,6 +26,7 @@ import {
   searchGenes,
   setSearchTerm,
 } from '../../../../state/set/visualization/search-actions';
+import { tabSelectorProp } from '../../../../state/selectors/visualization/tab-selector';
 
 export class AnnotationContainer extends Component {
   constructor(props) {
@@ -95,6 +96,7 @@ export class AnnotationContainer extends Component {
         showAnnotationPicker={this.state.showAnnotationPicker}
         showMarkerPicker={this.state.showMarkerPicker}
         showMarkers={this.props.markers.show}
+        tab={this.props.tab}
         toggleAnnotationColorPicker={this.toggleAnnotationColorPicker}
         toggleMarkerColorPicker={this.toggleMarkerColorPicker}
         toggleMarkers={this.props.toggleMarkers}
@@ -126,6 +128,7 @@ AnnotationContainer.propTypes = {
   placeAnnotation: PropTypes.func.isRequired,
   search: PropTypes.shape({
     match: PropTypes.bool,
+    matchCustomize: PropTypes.bool,
     search: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
@@ -134,6 +137,7 @@ AnnotationContainer.propTypes = {
   setAnnotationSize: PropTypes.func.isRequired,
   setMarkerColor: PropTypes.func.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
+  tab: PropTypes.string.isRequired,
   toggleAnnotations: PropTypes.func.isRequired,
   toggleMarkers: PropTypes.func.isRequired,
   toggleRecordMarker: PropTypes.func.isRequired,
@@ -143,7 +147,8 @@ AnnotationContainer.propTypes = {
 const mapStateToProps = state => ({
   annotations: AnnotationSelector(state),
   markers: markerSelector(state),
-  search: searchSelector(state),
+  search: searchSelector(state, 'all'),
+  tab: tabSelectorProp(state, 'selected'),
 });
 
 /* istanbul ignore next */

@@ -25,58 +25,64 @@ const Search = ({
   clearSearch,
   handleSearch,
   search,
+  tab,
   updateSearchTerm,
-}) => (
-  <div className="panel__annotation-search">
-    <div className="panel__annotation-annotations-input">
-      <Input
-        onChange={(e) => { updateSearchTerm(e.target.value); }}
-        onPressEnter={handleSearch}
-        placeholder="Gene name"
-        value={search.term}
-      />
-      <button
-        className="panel__annotation-button_theme-default"
-        onClick={handleSearch}
-        type="button"
-      >
-        <FontAwesomeIcon icon={faSearch} />
-      </button>
-    </div>
-    <div
-      className="panel__annotation-search-warning"
-      style={warningStyle[Boolean(search.searched && !search.match)]}
-    >
-      <FontAwesomeIcon icon={faExclamationTriangle} />
-      <div>
-        No match found.
-      </div>
-    </div>
-    <div className="panel__annotation-search-grid">
-      <div>
-        Clear search
-      </div>
-      <div>
+}) => {
+  const match = tab === 'customize' ? search.matchCustomize : search.match;
+  return (
+    <div className="panel__annotation-search">
+      <div className="panel__annotation-annotations-input">
+        <Input
+          onChange={(e) => { updateSearchTerm(e.target.value); }}
+          onPressEnter={handleSearch}
+          placeholder="Gene name"
+          value={search.term}
+        />
         <button
-          className="panel__annotation-button_theme-warning"
-          onClick={clearSearch}
+          className="panel__annotation-button_theme-default"
+          onClick={handleSearch}
           type="button"
         >
-          <FontAwesomeIcon icon={faTrashAlt} />
+          <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
+      <div
+        className="panel__annotation-search-warning"
+        style={warningStyle[Boolean(search.searched && !match)]}
+      >
+        <FontAwesomeIcon icon={faExclamationTriangle} />
+        <div>
+          No match found.
+        </div>
+      </div>
+      <div className="panel__annotation-search-grid">
+        <div>
+          Clear search
+        </div>
+        <div>
+          <button
+            className="panel__annotation-button_theme-warning"
+            onClick={clearSearch}
+            type="button"
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Search.propTypes = {
   clearSearch: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
   search: PropTypes.shape({
     match: PropTypes.bool,
+    matchCustomize: PropTypes.bool,
     search: PropTypes.bool,
     term: PropTypes.string,
   }).isRequired,
+  tab: PropTypes.string.isRequired,
   updateSearchTerm: PropTypes.func.isRequired,
 };
 

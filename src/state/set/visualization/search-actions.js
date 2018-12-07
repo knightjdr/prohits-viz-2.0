@@ -8,11 +8,15 @@ export const clearSearch = () => ({
   type: CLEAR_SEARCH,
 });
 
-export const setSearchResults = (term, columns, rows, match, position) => ({
-  columns,
-  match,
-  position,
-  rows,
+export const setSearchResults = (term, main, customize) => ({
+  columns: main.columns,
+  columnsCustomize: customize.columns,
+  match: main.match,
+  matchCustomize: customize.match,
+  position: main.position,
+  positionCustomize: customize.position,
+  rows: main.rows,
+  rowsCustomize: customize.rows,
   term,
   type: SET_SEARCH_RESULTS,
 });
@@ -85,36 +89,58 @@ export const searchMatch = (obj1, obj2) => (
   Object.keys(obj1).length > 0 || Object.keys(obj2).length > 0
 );
 
+export const formatSearch = (term, columns, rows, dimensions, position) => {
+  const searchedColumns = queryArray(columns.names, term);
+  const searchedRows = queryArray(rows.list.map(item => item.name), term);
+  const match = searchMatch(searchedColumns.matches, searchedRows.matches);
+  const updatedPosition = newPosition(searchedRows.first, searchedRows.first, dimensions, position);
+  return {
+    columns: searchedColumns.matches,
+    match,
+    position: updatedPosition,
+    rows: searchedRows.matches,
+  };
+};
+
 /* Search columns and rows for matches to the search term. */
 export const searchGenes = () => (
   (dispatch, getState) => {
     const {
       columns,
+      customize,
       dimensions,
+      dimensionsCustomize,
       position,
+      positionCustomize,
       rows,
       search,
+      tabs,
     } = getState();
     const { term } = search;
     if (term) {
-      const { names } = columns;
-      const { list } = rows;
-      const rowNames = list.map(item => item.name);
+      const mainImage = formatSearch(term, columns, rows, dimensions, position);
 
-      // Check rows and columns for matches.
-      const columnResults = queryArray(names, term);
-      const rowResults = queryArray(rowNames, term);
-
-      // Is there a match?
-      dispatch(
-        setSearchResults(
+      // Check customize image.
+      let customizeImage = {
+        columns: {},
+        match: false,
+        position: positionCustomize,
+        rows: {},
+      };
+      if (
+        tabs.available.includes('customize')
+        && customize.length > 0
+      ) {
+        const lastImage = customize[customize.length - 1];
+        customizeImage = formatSearch(
           term,
-          columnResults.matches,
-          rowResults.matches,
-          searchMatch(columnResults.matches, rowResults.matches),
-          newPosition(columnResults.first, rowResults.first, dimensions, position),
-        ),
-      );
+          lastImage.columns,
+          lastImage.rows,
+          dimensionsCustomize,
+          positionCustomize,
+        );
+      }
+      dispatch(setSearchResults(term, mainImage, customizeImage));
     }
   }
 );

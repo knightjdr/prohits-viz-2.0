@@ -31,8 +31,11 @@ describe('Search reducer', () => {
       file: {
         search: {
           columns: { a: 1 },
+          columnsCustomize: { a: 1 },
           match: true,
+          matchCustomize: true,
           rows: { b: 1 },
+          rowsCustomize: { b: 1 },
           searched: true,
           term: 'testTerm',
         },
@@ -41,8 +44,11 @@ describe('Search reducer', () => {
     };
     const expectedState = {
       columns: { a: 1 },
+      columnsCustomize: { a: 1 },
       match: true,
+      matchCustomize: true,
       rows: { b: 1 },
+      rowsCustomize: { b: 1 },
       searched: true,
       term: 'testTerm',
     };
@@ -60,15 +66,21 @@ describe('Search reducer', () => {
   it('should handle SET_SEARCH_RESULTS action', () => {
     const action = {
       columns: { a: 1 },
+      columnsCustomize: {},
       match: true,
+      matchCustomize: false,
       rows: { b: 1 },
+      rowsSelected: {},
       term: 'testTerm',
       type: actions.SET_SEARCH_RESULTS,
     };
     const expectedState = {
       columns: { a: 1 },
+      columnsCustomize: {},
       match: true,
+      matchCustomize: false,
       rows: { b: 1 },
+      rowsCustomize: {},
       searched: true,
       term: 'testTerm',
     };
@@ -82,8 +94,11 @@ describe('Search reducer', () => {
     };
     const expectedState = {
       columns: {},
+      columnsCustomize: {},
       match: false,
+      matchCustomize: false,
       rows: {},
+      rowsCustomize: {},
       searched: false,
       term: 'testTerm',
     };

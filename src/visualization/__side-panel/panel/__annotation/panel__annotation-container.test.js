@@ -56,17 +56,12 @@ describe('Annotation container', () => {
         setAnnotationSize={jest.fn()}
         setMarkerColor={setMarkerColor}
         setSearchTerm={jest.fn()}
+        tab="main"
         toggleAnnotations={jest.fn()}
         toggleRecordMarker={jest.fn()}
         toggleMarkers={jest.fn()}
       />,
     );
-  });
-
-  it('should have a blank/empty default state', () => {
-    expect(wrapper.state('annotation')).toBe('');
-    expect(wrapper.state('showAnnotationPicker')).toBeFalsy();
-    expect(wrapper.state('showMarkerPicker')).toBeFalsy();
   });
 
   it('should call add annotation prop method via component method', () => {
@@ -77,14 +72,12 @@ describe('Annotation container', () => {
 
   it('should close annotation color picker', () => {
     wrapper.setState({ showAnnotationPicker: true });
-    expect(wrapper.state('showAnnotationPicker')).toBeTruthy();
     wrapper.instance().closeAnnotationColorPicker();
     expect(wrapper.state('showAnnotationPicker')).toBeFalsy();
   });
 
   it('should close marker color picker', () => {
     wrapper.setState({ showMarkerPicker: true });
-    expect(wrapper.state('showMarkerPicker')).toBeTruthy();
     wrapper.instance().closeMarkerColorPicker();
     expect(wrapper.state('showMarkerPicker')).toBeFalsy();
   });
@@ -100,15 +93,13 @@ describe('Annotation container', () => {
   });
 
   it('should toggle annotation color picker', () => {
-    wrapper.instance().toggleAnnotationColorPicker();
-    expect(wrapper.state('showAnnotationPicker')).toBeTruthy();
+    wrapper.setState({ showAnnotationPicker: true });
     wrapper.instance().toggleAnnotationColorPicker();
     expect(wrapper.state('showAnnotationPicker')).toBeFalsy();
   });
 
   it('should toggle marker color picker', () => {
-    wrapper.instance().toggleMarkerColorPicker();
-    expect(wrapper.state('showMarkerPicker')).toBeTruthy();
+    wrapper.setState({ showMarkerPicker: true });
     wrapper.instance().toggleMarkerColorPicker();
     expect(wrapper.state('showMarkerPicker')).toBeFalsy();
   });

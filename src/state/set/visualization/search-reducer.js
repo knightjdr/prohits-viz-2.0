@@ -4,8 +4,11 @@ import * as rowActions from './rows-actions';
 
 export const defaultState = {
   columns: {},
+  columnsCustomize: {},
   match: false,
+  matchCustomize: false,
   rows: {},
+  rowsCustomize: {},
   searched: false,
   term: '',
 };
@@ -20,8 +23,11 @@ const Search = (state = defaultState, action) => {
       return action.file.search
         ? {
           columns: { ...action.file.search.columns },
+          columnsCustomize: { ...action.file.search.columnsCustomize },
           match: action.file.search.match,
+          matchCustomize: action.file.search.matchCustomize,
           rows: { ...action.file.search.rows },
+          rowsCustomize: { ...action.file.search.rowsCustomize },
           searched: action.file.search.searched,
           term: action.file.search.term,
         }
@@ -31,8 +37,11 @@ const Search = (state = defaultState, action) => {
     case actions.SET_SEARCH_RESULTS:
       return {
         columns: { ...action.columns },
+        columnsCustomize: { ...action.columnsCustomize },
         match: action.match,
+        matchCustomize: action.matchCustomize,
         rows: { ...action.rows },
+        rowsCustomize: { ...action.rowsCustomize },
         searched: true,
         term: action.term,
       };
@@ -40,6 +49,7 @@ const Search = (state = defaultState, action) => {
       return {
         ...state,
         match: false,
+        matchCustomize: false,
         searched: false,
         term: action.term,
       };

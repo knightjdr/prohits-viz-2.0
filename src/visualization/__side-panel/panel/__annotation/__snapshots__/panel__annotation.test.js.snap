@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Annotation panel should render 1`] = `
+exports[`Annotation panel should match snapshot 1`] = `
 <div
   className="panel"
 >
@@ -58,6 +58,7 @@ exports[`Annotation panel should render 1`] = `
     clearSearch={[Function]}
     handleSearch={[Function]}
     search={Object {}}
+    tab="main"
     updateSearchTerm={[Function]}
   />
 </div>

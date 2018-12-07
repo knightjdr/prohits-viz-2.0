@@ -26,7 +26,7 @@ export const SubmitComponent = ({
   const optionsIcon = showOptions ?
     (
       <FontAwesomeIcon
-        className="submit__hide-options-icon"
+        className="submit__hide-options-icon submit__options-icon"
         icon={faMinusSquare}
         size="sm"
       />
@@ -34,7 +34,7 @@ export const SubmitComponent = ({
     :
     (
       <FontAwesomeIcon
-        className="submit__show-options-icon"
+        className="submit__show-options-icon submit__options-icon"
         icon={faPlusSquare}
         size="sm"
       />
@@ -81,7 +81,7 @@ export const SubmitComponent = ({
             onClick={handleOptions}
             type="primary"
           >
-            {optionsIcon} Options
+            {optionsIcon}Options
           </Button>
         </div>
         {Errors(errors)}

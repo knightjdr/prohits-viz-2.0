@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Reorder component after mousedown with no icons should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <g
     transform="translate(100 0)"
   >
@@ -73,11 +73,11 @@ exports[`Reorder component after mousedown with no icons should match snapshot 1
       r={10}
     />
   </g>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Reorder component showing icons should match snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <g
     transform="translate(100 0)"
   >
@@ -102,5 +102,5 @@ exports[`Reorder component showing icons should match snapshot 1`] = `
       width={100}
     />
   </g>
-</React.Fragment>
+</Fragment>
 `;

@@ -180,7 +180,7 @@ const mapStateToProps = state => ({
   panel: panelSelector(state),
   position: positionSelector(state),
   scoreType: parameterSelectorProp(state, 'scoreType'),
-  search: searchSelector(state),
+  search: searchSelector(state, 'customize'),
   settings: settingSelector(state),
 });
 
