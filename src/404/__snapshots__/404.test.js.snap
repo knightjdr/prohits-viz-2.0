@@ -7,13 +7,11 @@ exports[`404 should match 1`] = `
   <h1>
     Page Not Found
   </h1>
-  <p
-    className="Missing-test"
-  >
+  <p>
     The page you were looking for was moved, removed, renamed or never existed.
   </p>
   <div
-    className="Missing-nav-buttons"
+    className="missing__nav-buttons"
   >
     <Button
       ghost={false}

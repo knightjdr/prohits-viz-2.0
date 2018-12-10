@@ -1,6 +1,10 @@
 const defaultSubject = 'ProHit-viz help';
 
-const MailTo = (subject = defaultSubject) => {
-  window.location.href = `mailto:contact@prohits-viz.org?subject=${subject}`;
+const mailTo = (subject = defaultSubject, body) => {
+  let mailToString = `mailto:contact@prohits-viz.org?subject=${subject}`;
+  if (body) {
+    mailToString += `&body=${body}`;
+  }
+  window.location.href = mailToString;
 };
-export default MailTo;
+export default mailTo;

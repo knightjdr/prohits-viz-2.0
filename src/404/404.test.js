@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Missing from './404';
 import MailTo from '../helpers/mail-to';
 
-// mock convertIsoDate
+// mock mail to
 jest.mock('../helpers/mail-to');
 MailTo.mockReturnValue();
 

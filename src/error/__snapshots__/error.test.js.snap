@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error  should match 1`] = `
+<main
+  className="error"
+>
+  <h1>
+    Whoops, something went wrong
+  </h1>
+  <p>
+    You can report the error by clicking below. If you do so please report any details about what you were doing and include the file you were using if applicable.
+  </p>
+  <div
+    className="error__nav-buttons"
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      onClick={[Function]}
+      prefixCls="ant-btn"
+      type="primary"
+    >
+      Report error
+    </Button>
+  </div>
+</main>
+`;
