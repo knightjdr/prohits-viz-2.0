@@ -24,7 +24,9 @@ describe('Settings container', () => {
   beforeAll(() => {
     wrapper = shallow(
       <SettingsContainer
+        changePlot={jest.fn()}
         imageKind="heatmap"
+        plots={[]}
         reset={false}
         resetAll={resetAll}
         settings={settings}

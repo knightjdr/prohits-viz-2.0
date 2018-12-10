@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Status modal content complete should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="analysis__task-status-alert"
   >
@@ -45,11 +45,11 @@ exports[`Status modal content complete should match snapshot 1`] = `
     http://localhost:3000
     /visualization/taskID
   </RouterLink>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Status modal content error should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="analysis__task-status-alert"
   >
@@ -93,11 +93,11 @@ exports[`Status modal content error should match snapshot 1`] = `
     http://localhost:3000
     /visualization/taskID
   </RouterLink>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Status modal content loading should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="analysis__task-status-alert"
   >
@@ -132,11 +132,11 @@ exports[`Status modal content loading should match snapshot 1`] = `
     />
     Initializing...
   </div>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Status modal content running should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="analysis__task-status-alert"
   >
@@ -171,28 +171,30 @@ exports[`Status modal content running should match snapshot 1`] = `
     />
     The task is running.
   </div>
-  <p>
-    You can track its status from:
-  </p>
-  <ol>
-    <li>
-      This window
-    </li>
-    <li>
-      From the link below
-    </li>
-    <li>
-      By clicking the "Tasks" link on the navigation menu at the top of the page
-    </li>
-  </ol>
-  <p>
-    The task results will be available for 24 hours.
-  </p>
+  <React.Fragment>
+    <p>
+      You can track its status from:
+    </p>
+    <ol>
+      <li>
+        This window
+      </li>
+      <li>
+        From the link below
+      </li>
+      <li>
+        By clicking the "Tasks" link on the navigation menu at the top of the page
+      </li>
+    </ol>
+    <p>
+      The task results will be available for 24 hours.
+    </p>
+  </React.Fragment>
   <RouterLink
     to="/visualization/taskID"
   >
     http://localhost:3000
     /visualization/taskID
   </RouterLink>
-</Fragment>
+</React.Fragment>
 `;

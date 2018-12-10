@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Router locations help route should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <Connect(NavbarContainer)
     background="dark"
     fixed={true}
@@ -37,11 +37,11 @@ exports[`Router locations help route should match snapshot 1`] = `
       path="*"
     />
   </Switch>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Router locations home route should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <Connect(NavbarContainer)
     background="semi"
     fixed={false}
@@ -77,11 +77,11 @@ exports[`Router locations home route should match snapshot 1`] = `
       path="*"
     />
   </Switch>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Router locations other route should match snapshot 1`] = `
-<Fragment>
+<React.Fragment>
   <Connect(NavbarContainer)
     background="dark"
     fixed={false}
@@ -117,5 +117,5 @@ exports[`Router locations other route should match snapshot 1`] = `
       path="*"
     />
   </Switch>
-</Fragment>
+</React.Fragment>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Save image component with no save status should render 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="panel__save-image"
   >
@@ -66,11 +66,11 @@ exports[`Save image component with no save status should render 1`] = `
       />
     </Button>
   </div>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Save image component with save status should render 1`] = `
-<Fragment>
+<React.Fragment>
   <div
     className="panel__save-image"
   >
@@ -176,5 +176,5 @@ exports[`Save image component with save status should render 1`] = `
       There was an error saving the image...
     </div>
   </div>
-</Fragment>
+</React.Fragment>
 `;

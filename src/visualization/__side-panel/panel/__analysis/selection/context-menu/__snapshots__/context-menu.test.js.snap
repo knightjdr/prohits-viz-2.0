@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Context menu when rendering with paste ability should render 1`] = `
-<Fragment>
+<React.Fragment>
   <button
     onClick={[Function]}
     type="button"
@@ -26,11 +26,11 @@ exports[`Context menu when rendering with paste ability should render 1`] = `
   >
     Paste and replace
   </button>
-</Fragment>
+</React.Fragment>
 `;
 
 exports[`Context menu when rendering without paste ability should render 1`] = `
-<Fragment>
+<React.Fragment>
   <button
     onClick={[Function]}
     type="button"
@@ -43,5 +43,5 @@ exports[`Context menu when rendering without paste ability should render 1`] = `
   >
     Copy all
   </button>
-</Fragment>
+</React.Fragment>
 `;
