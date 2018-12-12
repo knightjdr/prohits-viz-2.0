@@ -1,6 +1,6 @@
 import { defaultState } from '../../state/set/visualization/settings-reducer';
 
-const acceptedColors = ['blueBlack', 'greenBlack', 'greyscale', 'redBlack', 'yellowBlack'];
+const acceptedColors = ['blueBlack', 'blueRed', 'blueYellow', 'greenBlack', 'greyscale', 'redBlack', 'yellowBlack'];
 const acceptedImageTypes = ['dotplot', 'heatmap'];
 
 const fillSettings = (userSettings = { current: {} }, paramsImageType) => {

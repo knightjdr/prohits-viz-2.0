@@ -10,18 +10,30 @@ const Palette = ({
   storeSettings,
   updateSetting,
 }) => (
-  <div className="panel__settings-section">
+  <div className="panel__settings-section panel__settings-section_width-right">
     <Menu
       field="edgeColor"
       name="Edge color"
       onChange={changeSetting}
       onClick={updateSetting}
       options={[
-        { text: 'blue-black', value: 'blueBlack' },
-        { text: 'green-black', value: 'greenBlack' },
-        { text: 'red-black', value: 'redBlack' },
-        { text: 'yellow-black', value: 'yellowBlack' },
-        { text: 'greyscale', value: 'greyscale' },
+        {
+          optGroup: 'mono',
+          options: [
+            { text: 'blue-black', value: 'blueBlack' },
+            { text: 'green-black', value: 'greenBlack' },
+            { text: 'red-black', value: 'redBlack' },
+            { text: 'yellow-black', value: 'yellowBlack' },
+            { text: 'greyscale', value: 'greyscale' },
+          ],
+        },
+        {
+          optGroup: 'dual',
+          options: [
+            { text: 'blue-yellow', value: 'blueYellow' },
+            { text: 'blue-red', value: 'blueRed' },
+          ],
+        },
       ]}
       store={storeSettings.edgeColor}
       value={settings.edgeColor}
@@ -32,11 +44,23 @@ const Palette = ({
       onChange={changeSetting}
       onClick={updateSetting}
       options={[
-        { text: 'blue-black', value: 'blueBlack' },
-        { text: 'green-black', value: 'greenBlack' },
-        { text: 'red-black', value: 'redBlack' },
-        { text: 'yellow-black', value: 'yellowBlack' },
-        { text: 'greyscale', value: 'greyscale' },
+        {
+          optGroup: 'mono',
+          options: [
+            { text: 'blue-black', value: 'blueBlack' },
+            { text: 'green-black', value: 'greenBlack' },
+            { text: 'red-black', value: 'redBlack' },
+            { text: 'yellow-black', value: 'yellowBlack' },
+            { text: 'greyscale', value: 'greyscale' },
+          ],
+        },
+        {
+          optGroup: 'dual',
+          options: [
+            { text: 'blue-yellow', value: 'blueYellow' },
+            { text: 'blue-red', value: 'blueRed' },
+          ],
+        },
       ]}
       store={storeSettings.fillColor}
       value={settings.fillColor}
@@ -44,7 +68,7 @@ const Palette = ({
     <Switch
       checked={settings.invertColor}
       field="invertColor"
-      name="Invert color gradient"
+      name="Invert color"
       onChange={changeSetting}
       onClick={updateSetting}
       store={storeSettings.invertColor}

@@ -29,9 +29,15 @@
   border-top-right-radius: 0;
   width: 115px;
 }
+.panel__settings-section .ant-switch {
+  margin-right: 70px;
+}
 .panel__settings-section_width-right .ant-input-number,
 .panel__settings-section_width-right .ant-select-selection {
   width: 145px;
+}
+.panel__settings-section_width-right .ant-switch {
+  margin-right: 100px;
 }
 .panel__settings-reset {
   align-items: center;

@@ -4,7 +4,7 @@ import { Select } from 'antd';
 
 import FieldButton from './field-button';
 
-const { Option } = Select;
+const { Option, OptGroup } = Select;
 
 const Menu = ({
   field,
@@ -33,12 +33,32 @@ const Menu = ({
         >
           {
             options.map(option => (
-              <Option
-                key={option.value}
-                value={option.value}
-              >
-                {option.text}
-              </Option>
+              option.optGroup
+              ? (
+                <OptGroup
+                  key={option.optGroup}
+                  label={option.optGroup}
+                >
+                  {
+                    option.options.map(subOption => (
+                      <Option
+                        key={subOption.value}
+                        value={subOption.value}
+                      >
+                        {subOption.text}
+                      </Option>
+                    ))
+                  }
+                </OptGroup>
+              )
+              : (
+                <Option
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.text}
+                </Option>
+              )
             ))
           }
         </Select>
@@ -58,6 +78,8 @@ Menu.propTypes = {
   onClick: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      optGroup: PropTypes.string,
+      options: PropTypes.arrayOf(PropTypes.shape({})),
       text: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
