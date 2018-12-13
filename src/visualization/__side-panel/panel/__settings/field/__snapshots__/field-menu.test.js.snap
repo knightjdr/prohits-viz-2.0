@@ -26,6 +26,17 @@ exports[`Panel settings menu field should match snapshot 1`] = `
       >
         b
       </Option>
+      <OptGroup
+        key="group"
+        label="group"
+      >
+        <Option
+          key="3"
+          value="3"
+        >
+          c
+        </Option>
+      </OptGroup>
     </Select>
     <FieldButton
       className={null}

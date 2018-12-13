@@ -15,6 +15,7 @@ const heatmapData = (state) => {
     fillColor,
     imageType,
     invertColor,
+    minAbundance,
     primaryFilter,
     secondaryFilter,
   } = settings.current;
@@ -27,6 +28,7 @@ const heatmapData = (state) => {
     imageType,
     invertColor,
     markers,
+    minAbundance,
     primaryFilter,
     scoreType,
     secondaryFilter,

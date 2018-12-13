@@ -2,7 +2,7 @@
 
 exports[`Palette panel settings should match snapshot 1`] = `
 <div
-  className="panel__settings-section"
+  className="panel__settings-section panel__settings-section_width-right"
 >
   <Menu
     field="edgeColor"
@@ -12,24 +12,42 @@ exports[`Palette panel settings should match snapshot 1`] = `
     options={
       Array [
         Object {
-          "text": "blue-black",
-          "value": "blueBlack",
+          "optGroup": "mono",
+          "options": Array [
+            Object {
+              "text": "blue-black",
+              "value": "blueBlack",
+            },
+            Object {
+              "text": "green-black",
+              "value": "greenBlack",
+            },
+            Object {
+              "text": "red-black",
+              "value": "redBlack",
+            },
+            Object {
+              "text": "yellow-black",
+              "value": "yellowBlack",
+            },
+            Object {
+              "text": "greyscale",
+              "value": "greyscale",
+            },
+          ],
         },
         Object {
-          "text": "green-black",
-          "value": "greenBlack",
-        },
-        Object {
-          "text": "red-black",
-          "value": "redBlack",
-        },
-        Object {
-          "text": "yellow-black",
-          "value": "yellowBlack",
-        },
-        Object {
-          "text": "greyscale",
-          "value": "greyscale",
+          "optGroup": "dual",
+          "options": Array [
+            Object {
+              "text": "blue-yellow",
+              "value": "blueYellow",
+            },
+            Object {
+              "text": "blue-red",
+              "value": "blueRed",
+            },
+          ],
         },
       ]
     }
@@ -44,24 +62,42 @@ exports[`Palette panel settings should match snapshot 1`] = `
     options={
       Array [
         Object {
-          "text": "blue-black",
-          "value": "blueBlack",
+          "optGroup": "mono",
+          "options": Array [
+            Object {
+              "text": "blue-black",
+              "value": "blueBlack",
+            },
+            Object {
+              "text": "green-black",
+              "value": "greenBlack",
+            },
+            Object {
+              "text": "red-black",
+              "value": "redBlack",
+            },
+            Object {
+              "text": "yellow-black",
+              "value": "yellowBlack",
+            },
+            Object {
+              "text": "greyscale",
+              "value": "greyscale",
+            },
+          ],
         },
         Object {
-          "text": "green-black",
-          "value": "greenBlack",
-        },
-        Object {
-          "text": "red-black",
-          "value": "redBlack",
-        },
-        Object {
-          "text": "yellow-black",
-          "value": "yellowBlack",
-        },
-        Object {
-          "text": "greyscale",
-          "value": "greyscale",
+          "optGroup": "dual",
+          "options": Array [
+            Object {
+              "text": "blue-yellow",
+              "value": "blueYellow",
+            },
+            Object {
+              "text": "blue-red",
+              "value": "blueRed",
+            },
+          ],
         },
       ]
     }
@@ -71,7 +107,7 @@ exports[`Palette panel settings should match snapshot 1`] = `
   <FieldSwitch
     checked={false}
     field="invertColor"
-    name="Invert color gradient"
+    name="Invert color"
     onChange={[Function]}
     onClick={[Function]}
     store={false}

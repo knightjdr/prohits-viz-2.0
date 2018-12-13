@@ -15,6 +15,7 @@ const syncMap = (updateOriginal = false) => (
       fillColor,
       imageType,
       invertColor,
+      minAbundance,
       primaryFilter,
       secondaryFilter,
     } = settings.current;
@@ -23,6 +24,7 @@ const syncMap = (updateOriginal = false) => (
       abundanceCap,
       fillColor,
       invertColor,
+      minAbundance,
       rows: rows.list,
       scoreType,
     };

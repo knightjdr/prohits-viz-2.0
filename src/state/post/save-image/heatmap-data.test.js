@@ -29,6 +29,7 @@ const state = {
       fillColor: 'blueBlack',
       imageType: 'dotplot',
       invertColor: false,
+      minAbundance: 5,
       primaryFilter: 0.01,
       secondaryFilter: 0.05,
     },
@@ -52,6 +53,7 @@ describe('Getting store data for saving', () => {
       imageType: 'dotplot',
       invertColor: false,
       markers: {},
+      minAbundance: 5,
       primaryFilter: 0.01,
       rows: [
         { data: {}, name: 'x' },
@@ -75,6 +77,7 @@ describe('Getting store data for saving', () => {
       imageType: 'dotplot',
       invertColor: false,
       markers: {},
+      minAbundance: 5,
       primaryFilter: 0.01,
       rows: [
         { data: {}, name: 'u' },

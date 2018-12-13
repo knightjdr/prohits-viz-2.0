@@ -19,6 +19,12 @@ describe('Panel settings menu field', () => {
         options={[
           { text: 'a', value: '1' },
           { text: 'b', value: '2' },
+          {
+            optGroup: 'group',
+            options: [
+              { text: 'c', value: '3' },
+            ],
+          },
         ]}
         store={1}
         value={1}
@@ -35,8 +41,12 @@ describe('Panel settings menu field', () => {
     expect(div.text()).toBe('Test field');
   });
 
-  it('should have two options elements', () => {
-    expect(wrapper.find('Option').length).toBe(2);
+  it('should have three options elements', () => {
+    expect(wrapper.find('Option').length).toBe(3);
+  });
+
+  it('should have one opt group elements', () => {
+    expect(wrapper.find('OptGroup').length).toBe(1);
   });
 
   it('should call onChange from select', () => {

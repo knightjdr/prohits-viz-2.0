@@ -14,6 +14,7 @@ const params = {
   f: {},
   // Boolean handlers
   g: true,
+  h: [],
 };
 
 describe('Info panel settings', () => {
@@ -47,6 +48,10 @@ describe('Info panel settings', () => {
     const setting = wrapper.findWhere(node => node.key() === 'c');
     expect(setting.length).toBe(1);
     expect(setting.props().value.length).toBe(2);
+  });
+
+  it('should omit empty array', () => {
+    expect(wrapper.findWhere(node => node.key() === 'h').length).toBe(0);
   });
 
   it('should return expected text for score', () => {
