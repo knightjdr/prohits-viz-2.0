@@ -4,7 +4,7 @@ exports[`Map panel markers should render and match snapshot 1`] = `
 <React.Fragment>
   <div
     className="panel__map-marker"
-    key="1"
+    key="mapmarker1"
     style={
       Object {
         "borderColor": "#000000",
@@ -17,7 +17,7 @@ exports[`Map panel markers should render and match snapshot 1`] = `
   />
   <div
     className="panel__map-marker"
-    key="1"
+    key="mapmarker1"
     style={
       Object {
         "borderColor": "#000000",

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import shortId from 'shortid';
+import nanoid from 'nanoid';
 
 const Body = ({
   cellHeight,
@@ -26,11 +26,12 @@ const Body = ({
           columnOrder.map((name, columnNo) => {
             const className = row[name] && row[name].className;
             const content = row[name] && row[name].content;
+            const key = `bodycell${nanoid()}`;
             const style = row[name] && row[name].style ? row[name].style : {};
             return (
               <div
                 className={`table__cell ${className}`}
-                key={shortId.generate()}
+                key={key}
                 style={{
                   ...{
                     gridColumn: columnNo + 1,

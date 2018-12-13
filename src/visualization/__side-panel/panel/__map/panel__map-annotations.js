@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import ShortID from 'shortid';
+import nanoid from 'nanoid';
 
 import './panel__map.css';
 
@@ -9,19 +9,22 @@ const Annotations = ({
 }) => (
   <Fragment>
     {
-      annotations.list.map(annotation => (
-        <div
-          className="panel__map-annotation"
-          tooltip={annotation.text}
-          key={ShortID.generate()}
-          style={{
-            backgroundColor: annotations.color,
-            left: `calc(${annotation.x * 100}% - 5px)`,
-            top: `calc(${annotation.y * 100}% - 5px)`,
-          }}
-          tooltip-position="top"
-        />
-      ))
+      annotations.list.map((annotation) => {
+        const key = `mapannotation${nanoid()}`;
+        return (
+          <div
+            className="panel__map-annotation"
+            tooltip={annotation.text}
+            key={key}
+            style={{
+              backgroundColor: annotations.color,
+              left: `calc(${annotation.x * 100}% - 5px)`,
+              top: `calc(${annotation.y * 100}% - 5px)`,
+            }}
+            tooltip-position="top"
+          />
+        );
+      })
     }
   </Fragment>
 );

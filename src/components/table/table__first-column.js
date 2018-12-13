@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import shortId from 'shortid';
+import nanoid from 'nanoid';
 
 import './table.css';
 
@@ -17,18 +17,21 @@ const FirstColumn = ({
     }}
   >
     {
-      rows.map(row => (
-        <div
-          className={`table__cell ${row[firstColumn.name].className}`}
-          key={shortId.generate()}
-          style={{
-            ...row[firstColumn.name].style,
-            height: cellHeight,
-          }}
-        >
-          { row[firstColumn.name].content }
-        </div>
-      ))
+      rows.map((row) => {
+        const key = `firstcolumn${nanoid()}`;
+        return (
+          <div
+            className={`table__cell ${row[firstColumn.name].className}`}
+            key={key}
+            style={{
+              ...row[firstColumn.name].style,
+              height: cellHeight,
+            }}
+          >
+            { row[firstColumn.name].content }
+          </div>
+        );
+      })
     }
   </div>
 );

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import ShortID from 'shortid';
+import nanoid from 'nanoid';
 
 const AnnotationOverlay = ({
   annotations,
@@ -44,36 +44,42 @@ const AnnotationOverlay = ({
       />
       {
         showMarkers &&
-        markers.map(markerBox => (
-          <rect
-            fill="none"
-            height={markerBox.height}
-            key={ShortID.generate()}
-            stroke={markerColor}
-            strokeWidth="1"
-            x={markerBox.x}
-            y={markerBox.y}
-            width={markerBox.width}
-          />
-        ))
+        markers.map((markerBox) => {
+          const key = `marker${nanoid()}`;
+          return (
+            <rect
+              fill="none"
+              height={markerBox.height}
+              key={key}
+              stroke={markerColor}
+              strokeWidth="1"
+              x={markerBox.x}
+              y={markerBox.y}
+              width={markerBox.width}
+            />
+          );
+        })
       }
       {
         showAnnotations &&
-        annotations.map((annotation, index) => (
-          <text
-            cursor="pointer"
-            fontSize={fontSize}
-            key={ShortID.generate()}
-            onMouseDown={() => { handleMouseDown(index); }}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            textAnchor="middle"
-            x={annotation.x}
-            y={annotation.y}
-          >
-            {annotation.text}
-          </text>
-        ))
+        annotations.map((annotation, index) => {
+          const key = `annotation${nanoid()}`;
+          return (
+            <text
+              cursor="pointer"
+              fontSize={fontSize}
+              key={key}
+              onMouseDown={() => { handleMouseDown(index); }}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              textAnchor="middle"
+              x={annotation.x}
+              y={annotation.y}
+            >
+              {annotation.text}
+            </text>
+          );
+        })
       }
     </g>
   </Fragment>

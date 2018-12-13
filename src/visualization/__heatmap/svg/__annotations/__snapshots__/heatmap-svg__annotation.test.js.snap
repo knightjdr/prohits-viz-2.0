@@ -38,7 +38,7 @@ exports[`Annotation with annotations or markers should match snapshot 1`] = `
     <rect
       fill="none"
       height={5}
-      key="1"
+      key="marker1"
       stroke="#000"
       strokeWidth="1"
       width={6}
@@ -48,7 +48,7 @@ exports[`Annotation with annotations or markers should match snapshot 1`] = `
     <text
       cursor="pointer"
       fontSize={12}
-      key="1"
+      key="annotation1"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseUp={[Function]}

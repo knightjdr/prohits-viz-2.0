@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Markers from './panel__map-markers';
 
-jest.mock('shortid');
+jest.mock('nanoid');
 
 const markers = {
   color: '#000000',

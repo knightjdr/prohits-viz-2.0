@@ -4,7 +4,7 @@ exports[`Map panel annotations should render and match snapshot 1`] = `
 <React.Fragment>
   <div
     className="panel__map-annotation"
-    key="1"
+    key="mapannotation1"
     style={
       Object {
         "backgroundColor": "#0000ff",
@@ -17,7 +17,7 @@ exports[`Map panel annotations should render and match snapshot 1`] = `
   />
   <div
     className="panel__map-annotation"
-    key="1"
+    key="mapannotation1"
     style={
       Object {
         "backgroundColor": "#0000ff",

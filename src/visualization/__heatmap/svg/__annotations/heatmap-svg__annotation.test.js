@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Annotation from './heatmap-svg__annotation';
 
-jest.mock('shortid');
+jest.mock('nanoid');
 
 const handleMouseDown = jest.fn();
 const handleMouseMove = jest.fn();

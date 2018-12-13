@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import ShortID from 'shortid';
+import nanoid from 'nanoid';
 
 import './panel__map.css';
 
@@ -9,32 +9,38 @@ const Search = ({
 }) => (
   <Fragment>
     {
-      Object.entries(search.columns).map(([name, position]) => (
-        <div
-          className="panel__map-search-match"
-          tooltip={name}
-          key={ShortID.generate()}
-          style={{
-            left: `calc(${position * 100}% - 5px)`,
-            top: -5,
-          }}
-          tooltip-position="right"
-        />
-      ))
+      Object.entries(search.columns).map(([name, position]) => {
+        const key = `searchcolumn${nanoid()}`;
+        return (
+          <div
+            className="panel__map-search-match"
+            tooltip={name}
+            key={key}
+            style={{
+              left: `calc(${position * 100}% - 5px)`,
+              top: -5,
+            }}
+            tooltip-position="right"
+          />
+        );
+      })
     }
     {
-      Object.entries(search.rows).map(([name, position]) => (
-        <div
-          className="panel__map-search-match"
-          tooltip={name}
-          key={ShortID.generate()}
-          style={{
-            left: -5,
-            top: `calc(${position * 100}% - 5px)`,
-          }}
-          tooltip-position="right"
-        />
-      ))
+      Object.entries(search.rows).map(([name, position]) => {
+        const key = `searchcolumn${nanoid()}`;
+        return (
+          <div
+            className="panel__map-search-match"
+            tooltip={name}
+            key={key}
+            style={{
+              left: -5,
+              top: `calc(${position * 100}% - 5px)`,
+            }}
+            tooltip-position="right"
+          />
+        );
+      })
     }
   </Fragment>
 );

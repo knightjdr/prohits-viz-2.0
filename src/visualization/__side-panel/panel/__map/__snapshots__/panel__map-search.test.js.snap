@@ -4,7 +4,7 @@ exports[`Search dots on map panel should render and match snapshot 1`] = `
 <React.Fragment>
   <div
     className="panel__map-search-match"
-    key="1"
+    key="searchcolumn1"
     style={
       Object {
         "left": "calc(20% - 5px)",
@@ -16,7 +16,7 @@ exports[`Search dots on map panel should render and match snapshot 1`] = `
   />
   <div
     className="panel__map-search-match"
-    key="1"
+    key="searchcolumn1"
     style={
       Object {
         "left": "calc(50% - 5px)",
@@ -28,7 +28,7 @@ exports[`Search dots on map panel should render and match snapshot 1`] = `
   />
   <div
     className="panel__map-search-match"
-    key="1"
+    key="searchcolumn1"
     style={
       Object {
         "left": -5,
@@ -40,7 +40,7 @@ exports[`Search dots on map panel should render and match snapshot 1`] = `
   />
   <div
     className="panel__map-search-match"
-    key="1"
+    key="searchcolumn1"
     style={
       Object {
         "left": -5,

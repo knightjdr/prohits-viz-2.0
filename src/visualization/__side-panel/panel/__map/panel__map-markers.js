@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import ShortID from 'shortid';
+import nanoid from 'nanoid';
 
 import './panel__map.css';
 
@@ -9,19 +9,22 @@ const Markers = ({
 }) => (
   <Fragment>
     {
-      markers.list.map(marker => (
-        <div
-          className="panel__map-marker"
-          key={ShortID.generate()}
-          style={{
-            borderColor: markers.color,
-            height: `${marker.height * 100}%`,
-            left: `${marker.x * 100}%`,
-            top: `${marker.y * 100}%`,
-            width: `${marker.width * 100}%`,
-          }}
-        />
-      ))
+      markers.list.map((marker) => {
+        const key = `mapmarker${nanoid()}`;
+        return (
+          <div
+            className="panel__map-marker"
+            key={key}
+            style={{
+              borderColor: markers.color,
+              height: `${marker.height * 100}%`,
+              left: `${marker.x * 100}%`,
+              top: `${marker.y * 100}%`,
+              width: `${marker.width * 100}%`,
+            }}
+          />
+        );
+      })
     }
   </Fragment>
 );
