@@ -25,7 +25,7 @@ const FieldButton = ({
       icon={faSync}
       onClick={onClick}
       size="1x"
-      type={hasChanged ? 'success' : 'default'}
+      theme={hasChanged ? 'success' : 'default'}
     />
   );
 };

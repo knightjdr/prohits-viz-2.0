@@ -18,7 +18,8 @@ exports[`Panel settings button default appearance should match snapshot 1`] = `
   }
   onClick={[Function]}
   size="1x"
-  type="default"
+  theme="default"
+  type="button"
 />
 `;
 
@@ -40,7 +41,8 @@ exports[`Panel settings button when value has changed should match snapshot 1`] 
   }
   onClick={[Function]}
   size="1x"
-  type="success"
+  theme="success"
+  type="button"
 />
 `;
 
@@ -62,6 +64,7 @@ exports[`Panel settings button with round corners and user specified class shoul
   }
   onClick={[Function]}
   size="1x"
-  type="default"
+  theme="default"
+  type="button"
 />
 `;

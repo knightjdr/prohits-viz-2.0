@@ -19,7 +19,7 @@ const Archive = ({
       <Button
         className="panel__save-button"
         onClick={archive}
-        type="disabled"
+        theme="disabled"
       >
         <FontAwesomeIcon icon={faArchive} />
       </Button>

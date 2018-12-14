@@ -137,7 +137,8 @@ exports[`GO component when complete with results should match snapshot 1`] = `
         className="visualization__go-annotation-button"
         disabled={false}
         onClick={[Function]}
-        type="success"
+        theme="success"
+        type="button"
       >
         <FontAwesomeIcon$1
           border={false}

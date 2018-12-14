@@ -16,7 +16,8 @@ exports[`Annotation should match snapshot 1`] = `
     className={null}
     disabled={false}
     onClick={[Function]}
-    type="default"
+    theme="default"
+    type="button"
   >
     Annotate
   </Button>
@@ -24,7 +25,8 @@ exports[`Annotation should match snapshot 1`] = `
     className={null}
     disabled={false}
     onClick={[Function]}
-    type="warning"
+    theme="warning"
+    type="button"
   >
     <FontAwesomeIcon$1
       border={false}

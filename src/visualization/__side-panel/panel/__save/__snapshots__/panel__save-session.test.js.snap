@@ -22,7 +22,8 @@ exports[`Save session component should render with no support for indexeddb stor
       className="panel__save-button"
       disabled={false}
       onClick={[Function]}
-      type="default"
+      theme="default"
+      type="button"
     >
       <FontAwesomeIcon$1
         border={false}
@@ -80,7 +81,8 @@ exports[`Save session component should render with support for indexeddb storage
       className="panel__save-button"
       disabled={false}
       onClick={[Function]}
-      type="default"
+      theme="default"
+      type="button"
     >
       <FontAwesomeIcon$1
         border={false}
@@ -138,7 +140,8 @@ exports[`Save session component with indexeddb storage and sessions present shou
       className="panel__save-button"
       disabled={false}
       onClick={[Function]}
-      type="default"
+      theme="default"
+      type="button"
     >
       <FontAwesomeIcon$1
         border={false}
@@ -178,7 +181,8 @@ exports[`Save session component with indexeddb storage and sessions present shou
         className="panel__save-button"
         disabled={false}
         onClick={[Function]}
-        type="default"
+        theme="default"
+        type="button"
       >
         <FontAwesomeIcon$1
           border={false}

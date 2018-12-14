@@ -25,7 +25,7 @@ const Annotation = ({
     </Button>
     <Button
       onClick={clearAnnotation}
-      type="warning"
+      theme="warning"
     >
       <FontAwesomeIcon icon={faEraser} />
     </Button>

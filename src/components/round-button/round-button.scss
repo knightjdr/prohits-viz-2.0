@@ -3,7 +3,6 @@
 
 .round-button {
   @extend .button-reset;
-  @extend .default-button;
   border-radius: 50%;
   height: 36px;
   width: 36px;
@@ -20,6 +19,9 @@
 }
 .round-button_success {
   @extend .success-button;
+}
+.round-button_transparent {
+  @extend .transparent-button;
 }
 .round-button_warning {
   @extend .warning-button;

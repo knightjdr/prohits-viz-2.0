@@ -40,7 +40,7 @@ describe('Button component', () => {
           className="test-class"
           onClick={handleClick}
           miscProp="something"
-          type="warning"
+          theme="warning"
         />,
       );
     });
@@ -53,7 +53,7 @@ describe('Button component', () => {
       expect(wrapper.prop('miscProp')).toBe('something');
     });
 
-    it('should have button type as class', () => {
+    it('should have button theme as class', () => {
       expect(wrapper.hasClass('button_warning')).toBeTruthy();
     });
   });
@@ -74,7 +74,7 @@ describe('Button component', () => {
       expect(wrapper.hasClass('button_disabled')).toBeTruthy();
     });
 
-    it('should not have button type as class', () => {
+    it('should not have button theme as class', () => {
       expect(wrapper.hasClass('button_default')).toBeFalsy();
     });
   });

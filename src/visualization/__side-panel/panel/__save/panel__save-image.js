@@ -35,7 +35,6 @@ const SaveImage = ({
         className="panel__save-button-image"
         disabled={isSaving}
         onClick={saveImage}
-        type="default"
       >
         <FontAwesomeIcon
           icon={isSaving ? faSpinner : faSave}

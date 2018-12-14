@@ -7,17 +7,18 @@ const Button = ({
   children,
   className,
   disabled,
+  theme,
   type,
   ...otherProps
 }) => {
-  const classes = disabled ? ['button_disabled'] : [`button_${type}`];
+  const classes = disabled ? ['button_disabled'] : [`button_${theme}`];
   if (className) {
     classes.push(className);
   }
   return (
     <button
       className={classes.join(' ')}
-      type="button"
+      type={type}
       {...otherProps}
     >
       { children }
@@ -29,7 +30,8 @@ Button.defaultProps = {
   children: 'button',
   className: null,
   disabled: false,
-  type: 'default',
+  theme: 'default',
+  type: 'button',
 };
 
 Button.propTypes = {
@@ -40,13 +42,14 @@ Button.propTypes = {
   ]),
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  type: PropTypes.oneOf([
+  theme: PropTypes.oneOf([
     'default',
     'disabled',
     'light',
     'success',
     'warning',
   ]),
+  type: PropTypes.string,
 };
 
 export default Button;

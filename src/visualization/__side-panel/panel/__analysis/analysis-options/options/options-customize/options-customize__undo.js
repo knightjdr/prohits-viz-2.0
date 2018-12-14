@@ -14,7 +14,7 @@ const Undo = ({
       className="analysis-options__action-button-inner"
       disabled={disabled}
       onClick={undo}
-      type="warning"
+      theme="warning"
     >
       <FontAwesomeIcon icon={faUndo} />
       <span>Undo</span>

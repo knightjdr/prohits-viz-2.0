@@ -12,24 +12,66 @@ export class FloatMapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      height: 'auto',
       mouseDown: false,
+      opacity: 1,
+      opaque: true,
     };
   }
   componentWillReceiveProps = (nextProps) => {
     this.resetPosition(nextProps, this.props.minimap.attached);
   }
-  handleMouseDown = () => {
+  handleMouseDown = (e) => {
+    const { clientX, clientY } = e;
+    this.lastPosition = {
+      x: clientX,
+      y: clientY,
+    };
     this.setState({ mouseDown: true });
+  }
+  handleMouseEnter = () => {
+    if (!this.state.opaque) {
+      this.setState({
+        opacity: 1,
+      });
+    }
+  }
+  handleMouseLeave = () => {
+    if (
+      !this.state.opaque
+      && !this.state.mouseDown
+    ) {
+      this.setState({
+        opacity: 0,
+      });
+    }
   }
   handleMouseMove = (e) => {
     if (this.state.mouseDown) {
       const { clientX, clientY } = e;
-      // 32 and 20 are the right and top position of the arrow icon.
-      this.props.updateMapPosition(window.innerWidth - clientX - 32, clientY - 20);
+      const { display } = this.props;
+      const newPosition = {
+        x: display.floatMapRight + (this.lastPosition.x - clientX),
+        y: display.floatMapTop - (this.lastPosition.y - clientY),
+      };
+      this.lastPosition = {
+        x: clientX,
+        y: clientY,
+      };
+      this.props.updateMapPosition(newPosition.x, newPosition.y);
     }
   }
   handleMouseUp = () => {
     this.setState({ mouseDown: false });
+  }
+  reattach = () => {
+    const { attachMap } = this.props;
+    attachMap();
+    this.setState({
+      height: 'auto',
+      opacity: 1,
+      opaque: true,
+    });
   }
   resetPosition = ({ minimap }, prevAttached) => {
     if (
@@ -39,16 +81,36 @@ export class FloatMapContainer extends Component {
       this.props.resetMapPosition();
     }
   };
+  toggleHeight = () => {
+    this.setState(({ height }) => ({
+      height: height ? 0 : 'auto',
+      opacity: 1,
+      opaque: true,
+    }));
+  }
+  toggleOpacity = () => {
+    this.setState(({ opaque }) => ({
+      height: 'auto',
+      opaque: !opaque,
+    }));
+  }
   render() {
     return (
       <FloatMap
         attached={this.props.minimap.attached}
-        attachMap={this.props.attachMap}
+        attachMap={this.reattach}
         handleMouseDown={this.handleMouseDown}
         handleMouseMove={this.handleMouseMove}
         handleMouseUp={this.handleMouseUp}
+        height={this.state.height}
         mouseDown={this.state.mouseDown}
+        mouseEnter={this.handleMouseEnter}
+        mouseLeave={this.handleMouseLeave}
+        opacity={this.state.opacity}
+        opaque={this.state.opaque}
         right={this.props.display.floatMapRight}
+        toggleHeight={this.toggleHeight}
+        toggleOpacity={this.toggleOpacity}
         top={this.props.display.floatMapTop}
       />
     );

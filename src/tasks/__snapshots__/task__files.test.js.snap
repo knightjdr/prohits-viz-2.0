@@ -29,7 +29,8 @@ exports[`Task files with files should match snapshot 1`] = `
     className="tasks__files-view"
     disabled={false}
     onClick={[Function]}
-    type="default"
+    theme="default"
+    type="button"
   >
     View
   </Button>
@@ -37,6 +38,7 @@ exports[`Task files with files should match snapshot 1`] = `
     className="tasks__files-download"
     disabled={false}
     onClick={[Function]}
+    theme="default"
     type="success"
   >
     <FontAwesomeIcon$1

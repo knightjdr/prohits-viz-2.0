@@ -43,6 +43,7 @@ exports[`Visualization panel when panel is hidden should match snapshot 1`] = `
         "opacity": 1,
       }
     }
+    theme="default"
     type="button"
   />
 </React.Fragment>
@@ -91,6 +92,7 @@ exports[`Visualization panel when panel visible should match snapshot 1`] = `
         "opacity": 0,
       }
     }
+    theme="default"
     type="button"
   />
 </React.Fragment>

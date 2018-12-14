@@ -36,6 +36,7 @@ exports[`SidePanelTabs should match snapshot 1`] = `
     }
     onClick={[Function]}
     size="lg"
+    theme="default"
     type="button"
   />
 </div>

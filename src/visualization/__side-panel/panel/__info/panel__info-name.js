@@ -26,7 +26,7 @@ const Name = ({
         title="Confirm open new file."
       >
         <Button
-          type="light"
+          theme="light"
         >
           Load new file
         </Button>

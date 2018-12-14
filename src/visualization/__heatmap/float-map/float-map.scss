@@ -9,9 +9,9 @@
   border-radius: 3px;
   max-width: 350px;
   min-width: 200px;
-  padding: 10px 15px;
   position: fixed;
   right: 50px;
+  transition: opacity 0.3s cubic-bezier(.17, .67, .16, .99);
   top: 100px;
   width: auto;
   z-index: 201;
@@ -25,29 +25,27 @@
   top: 0;
   z-index: 200;
 }
-.float__title {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-bottom: 10px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
+.float-map__inner {
+  border-top: 1px solid $primary-light;
 }
-.float__title > button:first-child {
-  @extend .button-reset;
-  @extend .default-button;
-  border-radius: 50%;
-  padding: 8px;
-  position: absolute;
+.float-map__buttons {
+  display: flex;
+  padding: 2px;
+}
+.float-map__buttons button {
+  height: 32px;
+  width: 32px;
+}
+.float-map__buttons_left {
   left: 0;
-  top: -5px;
 }
-.float__title > button:last-child {
-  @extend .button-reset;
-  border-radius: 50%;
-  opacity: 0.8;
-  padding: 8px;
-  position: absolute;
-  right: -5px;
-  top: -8px;
+.float-map__buttons_left > :not(:last-child) {
+  margin-right: 5px;
+}
+.float-map__buttons_right {
+  margin-left: auto;
+  right: 0;
+}
+.float-map__buttons-move {
+  color: #424242;
 }

@@ -27,9 +27,9 @@ describe('Panel settings button', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
-    it('should have default type', () => {
+    it('should have default theme', () => {
       const button = wrapper.find('RoundButton');
-      expect(button.props().type).toBe('default');
+      expect(button.props().theme).toBe('default');
     });
   });
 
@@ -75,9 +75,9 @@ describe('Panel settings button', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should have default type', () => {
+    it('should have success theme', () => {
       const button = wrapper.find('RoundButton');
-      expect(button.props().type).toBe('success');
+      expect(button.props().theme).toBe('success');
     });
   });
 });

@@ -25,7 +25,8 @@ exports[`Name component on info panel should match snapshot 1`] = `
       <Button
         className={null}
         disabled={false}
-        type="light"
+        theme="light"
+        type="button"
       >
         Load new file
       </Button>

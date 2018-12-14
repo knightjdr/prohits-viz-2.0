@@ -54,7 +54,7 @@ const Go = ({
           <Button
             className="visualization__go-annotation-button"
             onClick={handleExport}
-            type="success"
+            theme="success"
           >
             <FontAwesomeIcon icon={faFileExport} />
             <span>Export</span>

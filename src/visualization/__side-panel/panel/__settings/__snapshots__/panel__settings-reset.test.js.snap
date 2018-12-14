@@ -24,7 +24,8 @@ exports[`Reset panel settings should match snapshot 1`] = `
     }
     onClick={[Function]}
     size="1x"
-    type="warning"
+    theme="warning"
+    type="button"
   />
 </div>
 `;

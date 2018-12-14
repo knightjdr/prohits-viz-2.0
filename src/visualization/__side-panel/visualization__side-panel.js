@@ -60,7 +60,6 @@ const SidePanel = ({
       icon={faBars}
       onClick={togglePanel}
       style={showPanel.button[isVisible]}
-      type="button"
     />
   </Fragment>
 );

@@ -36,7 +36,7 @@ const AnalysisOptions = ({
         <Button
           className="analysis-options__button"
           onClick={performAnalysis}
-          type="success"
+          theme="success"
         >
           Submit
         </Button>

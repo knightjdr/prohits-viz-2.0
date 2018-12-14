@@ -16,7 +16,7 @@ const Reset = ({
       onClick={resetSettings}
       icon={faUndo}
       size="1x"
-      type="warning"
+      theme="warning"
     />
   </div>
 );

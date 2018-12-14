@@ -15,7 +15,8 @@ exports[`Status view when hidden should match snapshot 1`] = `
     className={null}
     disabled={false}
     onClick={[Function]}
-    type="default"
+    theme="default"
+    type="button"
   >
     <FontAwesomeIcon$1
       border={false}
@@ -78,7 +79,8 @@ exports[`Status view when visible should match snapshot 1`] = `
     className={null}
     disabled={false}
     onClick={[Function]}
-    type="default"
+    theme="default"
+    type="button"
   >
     <FontAwesomeIcon$1
       border={false}

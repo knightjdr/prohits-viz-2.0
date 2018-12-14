@@ -31,7 +31,6 @@ const SaveSession = ({
       <Button
         className="panel__save-button"
         onClick={saveSessionFile}
-        type="default"
       >
         <FontAwesomeIcon icon={faFileDownload} />
       </Button>
@@ -44,7 +43,6 @@ const SaveSession = ({
           <Button
             className="panel__save-button"
             onClick={saveSessionBrowser}
-            type="default"
           >
             <FontAwesomeIcon icon={faBrowser} />
           </Button>

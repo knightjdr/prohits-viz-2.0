@@ -44,7 +44,7 @@ describe('Round button component', () => {
           onClick={onClick}
           icon={{ name: 'icon' }}
           miscProp="something"
-          type="success"
+          theme="success"
         />,
       );
     });
@@ -62,7 +62,7 @@ describe('Round button component', () => {
       expect(wrapper.prop('miscProp')).toBe('something');
     });
 
-    it('should have success class', () => {
+    it('should have success theme', () => {
       expect(wrapper.hasClass('round-button_success')).toBeTruthy();
     });
   });

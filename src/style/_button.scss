@@ -75,6 +75,20 @@
   background-size: 100%;
   transition: background 0s;
 }
+.transparent-button,
+.transparent-button:focus {
+  @extend .basic-button;
+  background-color: none;
+  color: $text-dark;
+}
+.transparent-button:hover {
+  background: #e0e0e0 radial-gradient(circle, transparent 1%, #e0e0e0 1%) center/15000%;
+}
+.transparent-button:active {
+  background-color: $text-light;
+  background-size: 100%;
+  transition: background 0s;
+}
 .warning-button,
 .warning-button:focus {
   @extend .basic-button;

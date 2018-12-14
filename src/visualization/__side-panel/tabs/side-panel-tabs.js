@@ -29,7 +29,6 @@ const SidePanelTabs = ({
       className="side-panel__button-close"
       icon={faArrowRight}
       onClick={togglePanel}
-      type="button"
     />
   </div>
 );

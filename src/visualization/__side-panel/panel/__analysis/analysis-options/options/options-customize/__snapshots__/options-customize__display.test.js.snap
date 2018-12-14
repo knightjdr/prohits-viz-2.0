@@ -34,7 +34,8 @@ exports[`Customize display subpanel when disabled should match snapshot 1`] = `
       className="analysis-options__action-button-inner"
       disabled={true}
       onClick={[Function]}
-      type="default"
+      theme="default"
+      type="button"
     >
       <FontAwesomeIcon$1
         border={false}
@@ -107,7 +108,8 @@ exports[`Customize display subpanel when not disabled should match snapshot 1`] 
       className="analysis-options__action-button-inner"
       disabled={false}
       onClick={[Function]}
-      type="default"
+      theme="default"
+      type="button"
     >
       <FontAwesomeIcon$1
         border={false}

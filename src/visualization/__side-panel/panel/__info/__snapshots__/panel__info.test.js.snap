@@ -47,7 +47,8 @@ exports[`Info panel should match snapshot 1`] = `
       }
       onClick={[Function]}
       size="1x"
-      type="default"
+      theme="default"
+      type="button"
     />
   </div>
 </div>

@@ -12,7 +12,8 @@
 .disabled-button:hover,
 .disabled-button:active, .light-button,
 .light-button:focus, .success-button,
-.success-button:focus, .warning-button,
+.success-button:focus, .transparent-button,
+.transparent-button:focus, .warning-button,
 .warning-button:focus {
   background-position: center;
   transition: background 0.5s; }
@@ -69,6 +70,19 @@
   color: #f5f5f5; }
 
 .success-button:active {
+  background-color: #f5f5f5;
+  background-size: 100%;
+  transition: background 0s; }
+
+.transparent-button,
+.transparent-button:focus {
+  background-color: none;
+  color: #2A3132; }
+
+.transparent-button:hover {
+  background: #e0e0e0 radial-gradient(circle, transparent 1%, #e0e0e0 1%) center/15000%; }
+
+.transparent-button:active {
   background-color: #f5f5f5;
   background-size: 100%;
   transition: background 0s; }
