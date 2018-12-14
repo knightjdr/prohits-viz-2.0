@@ -19,7 +19,7 @@ const heatmapData = (state) => {
     primaryFilter,
     secondaryFilter,
   } = settings.current;
-  const { scoreType } = parameters;
+  const { scoreType, xLabel, yLabel } = parameters;
   const data = {
     abundanceCap,
     annotations,
@@ -32,6 +32,8 @@ const heatmapData = (state) => {
     primaryFilter,
     scoreType,
     secondaryFilter,
+    xLabel,
+    yLabel,
   };
   if (activeTab === 'customize') {
     const { customize } = state();

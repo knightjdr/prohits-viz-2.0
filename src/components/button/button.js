@@ -42,6 +42,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   type: PropTypes.oneOf([
     'default',
+    'disabled',
     'light',
     'success',
     'warning',

@@ -6,7 +6,7 @@ import './settings.css';
 
 const Settings = (params) => {
   // Do not show parameter keys for things in this array.
-  const omitKeys = ['imageType', 'name'];
+  const omitKeys = ['imageType', 'name', 'xLabel', 'yLabel'];
   // Convert score type value as indicated in this object.
   const scoreType = {
     gte: 'larger scores better',

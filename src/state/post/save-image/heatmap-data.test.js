@@ -14,7 +14,11 @@ const state = {
     },
   }],
   markers: {},
-  parameters: { scoreType: 'lte' },
+  parameters: {
+    scoreType: 'lte',
+    xLabel: 'bait',
+    yLabel: 'prey',
+  },
   rows: {
     list: [
       { data: {}, name: 'x' },
@@ -62,6 +66,8 @@ describe('Getting store data for saving', () => {
       ],
       secondaryFilter: 0.05,
       scoreType: 'lte',
+      xLabel: 'bait',
+      yLabel: 'prey',
     };
     expect(heatmapData(currentState)).toEqual(expected);
   });
@@ -86,6 +92,8 @@ describe('Getting store data for saving', () => {
       ],
       secondaryFilter: 0.05,
       scoreType: 'lte',
+      xLabel: 'bait',
+      yLabel: 'prey',
     };
     expect(heatmapData(currentState)).toEqual(expected);
   });

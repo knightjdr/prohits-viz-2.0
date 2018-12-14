@@ -12,7 +12,7 @@ exports[`Archive session component should render 1`] = `
       className="panel__save-button"
       disabled={false}
       onClick={[Function]}
-      type="default"
+      type="disabled"
     >
       <FontAwesomeIcon$1
         border={false}
