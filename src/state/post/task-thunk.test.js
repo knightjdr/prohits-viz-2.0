@@ -18,6 +18,7 @@ describe('Get task status', () => {
 
     beforeAll(async (done) => {
       const state = {
+        session: 'sessionid',
         tasks: {
           list: [],
         },
@@ -43,6 +44,7 @@ describe('Get task status', () => {
       };
       fetchMock.postOnce('*', mockResponse);
       const state = {
+        session: 'sessionid',
         tasks: {
           list: ['task1'],
         },
@@ -63,6 +65,7 @@ describe('Get task status', () => {
       const expectedHeaders = {
         accept: 'application/json',
         'content-type': 'application/json',
+        session: 'sessionid',
       };
       expect(fetchMock.lastOptions().headers.map).toEqual(expectedHeaders);
     });
@@ -97,6 +100,7 @@ describe('Get task status', () => {
       };
       fetchMock.postOnce('*', mockResponse, { overwriteRoutes: true });
       const state = {
+        session: 'sessionid',
         tasks: {
           list: ['task1'],
         },
@@ -122,6 +126,7 @@ describe('Get task status', () => {
     beforeAll(async (done) => {
       fetchMock.postOnce('*', 404, { overwriteRoutes: true });
       const state = {
+        session: 'sessionid',
         tasks: {
           list: ['task1'],
         },

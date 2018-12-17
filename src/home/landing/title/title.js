@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TitleImage from '../../assets/title/title.svg';
+import TitleImage from './assets/title.svg';
 
 const Title = () => (
   <div className="home__title">

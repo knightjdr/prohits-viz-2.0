@@ -1,19 +1,14 @@
 import React from 'react';
 
-import About from './about/about';
-import Home from './home/home-container';
-import Spotlight from './spotlight/spotlight';
-import Tools from './tools/tools';
+import ErrorBoundary from './error/error-boundary-container';
+import Store from './state/store';
 
-import './App.css';
+import './app.css';
 
 const App = () => (
-  <main className="app">
-    <Home />
-    <Tools />
-    <Spotlight />
-    <About />
-  </main>
+  <ErrorBoundary>
+    <Store />
+  </ErrorBoundary>
 );
 
 export default App;

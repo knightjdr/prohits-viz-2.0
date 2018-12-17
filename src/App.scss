@@ -1,10 +1,11 @@
+@import 'style/font';
+@import 'style/link';
 @import 'style/theme';
+@import 'style/tooltip';
 
-.app {
-  background-attachment: fixed;
-  background-color: $backdrop-light;
-  background-image: url('./assets/background/network.svg');
-  /* background by SVGBackgrounds.com */
-  perspective: 1px;
-  text-align: center;
+body {
+  color: $text-dark;
+  font-family: $BodyFont;
+  margin: 0;
+  padding: 0;
 }

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match snapshot 1`] = `
+<section
+  className="landing"
+>
+  <div
+    className="landing__inner"
+  >
+    <div
+      className="landing__about"
+    >
+      <Title />
+      <Description />
+      <Connect(Component) />
+    </div>
+  </div>
+</section>
+`;

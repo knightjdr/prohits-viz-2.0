@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Image from '../test/test.png';
-import scrollTop from '../helpers/scroll-top';
+import Image from '../../test/test.png';
+import scrollTop from '../../helpers/scroll-top';
 import ToolBox, { getImageElement } from './tool-box';
 
 // mock ScrollTop
-jest.mock('../helpers/scroll-top');
+jest.mock('../../helpers/scroll-top');
 scrollTop.mockReturnValue();
 
 describe('Toolbox', () => {

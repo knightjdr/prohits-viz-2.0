@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import NewsfeedSelector from '../../state/selectors/newsfeed-selector';
+import NewsfeedSelector from '../../../state/selectors/newsfeed-selector';
 
 import './newsfeed.css';
 

@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/pro-solid-svg-icons';
 
 import ToolBox from './tool-box';
-import Dotplot from '../assets/icons/dotplot.svg';
+import Dotplot from '../../assets/icons/dotplot.svg';
 import './tools.css';
 
 const details = {

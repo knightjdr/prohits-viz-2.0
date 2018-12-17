@@ -1,9 +1,9 @@
 import React from 'react';
 
-import CIHR from '../assets/funding/CIHR.svg';
-import GenomeCanada from '../assets/funding/GenomeCanada.svg';
-import LTRI from '../assets/funding/LTRI.svg';
-import OntarioGenomics from '../assets/funding/OntarioGenomics.svg';
+import CIHR from './assets/funding/CIHR.svg';
+import GenomeCanada from './assets/funding/GenomeCanada.svg';
+import LTRI from './assets/funding/LTRI.svg';
+import OntarioGenomics from './assets/funding/OntarioGenomics.svg';
 import './about.css';
 
 const fundingDetails = [

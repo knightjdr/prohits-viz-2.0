@@ -1,30 +1,26 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import FetchHome from '../state/get/home-actions';
-import Home from './home';
+import FetchHome from '../../state/get/home-actions';
+import Landing from './landing';
 
-export class HomeContainer extends Component {
+export class LandingContainer extends PureComponent {
   componentDidMount = () => {
-    this.getHomeContent();
-  }
-  getHomeContent = () => {
     this.props.fetchHome();
   }
   render() {
     return (
-      <Home />
+      <Landing />
     );
   }
 }
 
-HomeContainer.propTypes = {
+LandingContainer.propTypes = {
   fetchHome: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
-
 const mapDispatchToProps = dispatch => ({
   fetchHome: () => {
     dispatch(FetchHome());
@@ -34,6 +30,6 @@ const mapDispatchToProps = dispatch => ({
 const ConnectedContainer = connect(
   null,
   mapDispatchToProps,
-)(HomeContainer);
+)(LandingContainer);
 
 export default ConnectedContainer;

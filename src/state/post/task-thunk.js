@@ -4,7 +4,7 @@ import arrUnique from '../../helpers/arr-unique';
 
 const getTaskStatus = task => (
   (dispatch, getStore) => {
-    const { tasks } = getStore();
+    const { session, tasks } = getStore();
     if (!task && tasks.list.length === 0) {
       return null;
     }
@@ -19,6 +19,7 @@ const getTaskStatus = task => (
     const headers = new Headers();
     headers.append('accept', 'application/json');
     headers.append('content-type', 'application/json');
+    headers.append('session', session);
     const url = `${process.env.REACT_APP_API_ROOT}/task`;
     return fetch(url, {
       cache: 'no-store',

@@ -10,6 +10,7 @@
   max-width: 350px;
   min-width: 200px;
   position: fixed;
+  
   right: 50px;
   transition: opacity 0.3s cubic-bezier(.17, .67, .16, .99);
   top: 100px;
@@ -27,6 +28,7 @@
 }
 .float-map__inner {
   border-top: 1px solid $primary-light;
+  resize: both;
 }
 .float-map__buttons {
   display: flex;

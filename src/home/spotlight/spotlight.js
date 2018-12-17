@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Carousel } from 'antd';
 
-import ArticleSelector from '../state/selectors/article-selector';
+import ArticleSelector from '../../state/selectors/article-selector';
 
 import './spotlight.css';
 

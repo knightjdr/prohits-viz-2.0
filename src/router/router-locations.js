@@ -5,7 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 // routes
 import Analysis from '../analysis/analysis-loadable';
-import App from '../App';
+import Home from '../home/home';
 import Help from '../help/help-loadable';
 import Missing from '../404/404';
 import Navbar from '../navbar/navbar-container';
@@ -23,7 +23,7 @@ export const Locations = ({ location }) => (
       <Route
         exact
         path="/"
-        component={App}
+        component={Home}
       />
       <Route
         path="/analysis"

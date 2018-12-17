@@ -1,72 +1,10 @@
 @import 'style/theme';
 
 .home {
-  background: linear-gradient(160deg,#336b87,#4f7e98,#6a91aa,#83a5bc,#9eb8cb,#b9cad6,#d3dce2,#eeeeee);
-  height: calc(50vh - 40px);
-  min-height: 360px;
-  width: 100%;
-}
-.home__about {
-  align-items: left;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.home__description {
-  border-radius: 1px;
-  font-size: 1.3em;
-  margin-top: 20px;
-  max-width: 500px;
-}
-.home__image {
-  background-color: #eeeeee;
-  padding: 10px;
-}
-.home__inner {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  padding: 60px 40px;
-  width: 100%;
-}
-.home__inner > div {
-  margin: 0 20px;
-}
-.home__title {
-  position: relative;
-}
-.home__title::after {
-  border-bottom: 2px solid $primary-dark;
-  bottom: -10px;
-  content: '';
-  left: 15%;
-  position: absolute;
-  width: 70%;
-}
-.home__video {
-  background-color: $text-light;
-  border-radius: 1px;
-  padding: 15px;
-}
-@media (max-width: 768px) {
-  .home {
-    height: 100vh;
-  }
-  .home__about {
-    top: 0;
-  }
-  .home__description {
-    font-size: 1.2em;
-    max-width: 100%;
-  }
-  .home__image {
-    display: none;
-  }
-  .home__inner {
-    padding: 40px 20px;
-  }
-  .home__title {
-    margin-bottom: 0;
-  }
+  background-attachment: fixed;
+  background-color: $backdrop-light;
+  background-image: url('./assets/background/network.svg');
+  /* background by SVGBackgrounds.com */
+  perspective: 1px;
+  text-align: center;
 }
