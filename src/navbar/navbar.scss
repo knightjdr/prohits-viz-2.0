@@ -20,6 +20,11 @@
   margin: 0px 5px;
   text-transform: uppercase;
 }
+.navbar_dark a.navbar__link,
+.navbar_semi-transparent a.navbar__link,
+.navbar_transparent a.navbar__link {
+  text-decoration: none;
+}
 .navbar_dark a.navbar__link:link,
 .navbar_dark a.navbar__link:visited {
   color: $accent-light;
