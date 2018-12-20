@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   faAdjust,
   faArrows,
@@ -14,23 +14,27 @@ import renderMap from '../../__side-panel/panel/__map/panel__map-contents';
 
 import './float-map.css';
 
-const FloatMap = ({
+const FloatMap = forwardRef(({
   attached,
   attachMap,
-  handleMouseDown,
+  handleMouseDownMove,
+  handleMouseDownResize,
   handleMouseMove,
   handleMouseUp,
   height,
+  imageLimits,
   mouseDown,
   mouseEnter,
   mouseLeave,
   opacity,
   opaque,
   right,
-  toggleHeight,
+  scale,
   toggleOpacity,
+  toggleVisibility,
   top,
-}) => (
+  width,
+}, ref) => (
   <div
     className="float-map__backdrop"
     onMouseMove={handleMouseMove}
@@ -46,6 +50,7 @@ const FloatMap = ({
       className="float-map"
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
+      ref={ref}
       style={{
         opacity,
         right,
@@ -64,11 +69,11 @@ const FloatMap = ({
             tooltip-position="bottom"
           />
           <Button
-            icon={height ? faEyeSlash : faEye}
-            onClick={toggleHeight}
+            icon={scale ? faEyeSlash : faEye}
+            onClick={toggleVisibility}
             size="1x"
-            theme={height ? 'transparent' : 'warning'}
-            tooltip={height ? 'Hide minimap' : 'Show minimap'}
+            theme={scale ? 'transparent' : 'warning'}
+            tooltip={scale ? 'Hide minimap' : 'Show minimap'}
             tooltip-position="bottom"
           />
           <Button
@@ -83,9 +88,7 @@ const FloatMap = ({
           <Button
             className="float-map__button-move"
             icon={faArrows}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
+            onMouseDown={handleMouseDownMove}
             theme="transparent"
           />
         </div>
@@ -93,39 +96,66 @@ const FloatMap = ({
       <div
         className="float-map__inner"
         style={{
-          height,
-          padding: height ? 5 : 0,
-          opacity: height ? 1 : 0,
+          height: scale ? height : 0,
+          padding: scale ? 5 : 0,
+          opacity: scale ? 1 : 0,
+          width: scale ? width : 0,
         }}
       >
-        {
-          height !== 0
-          && <MapWrapper render={renderMap} />
-        }
+        <MapWrapper
+          imageLimits={imageLimits}
+          render={renderMap}
+        />
       </div>
+      {
+        scale !== 0
+        && (
+          <button
+            className="float-map__resize"
+            onMouseDown={handleMouseDownResize}
+          />
+        )
+      }
     </div>
   </div>
-);
+));
 
 FloatMap.propTypes = {
   attached: PropTypes.bool.isRequired,
   attachMap: PropTypes.func.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
+  handleMouseDownMove: PropTypes.func.isRequired,
+  handleMouseDownResize: PropTypes.func.isRequired,
   handleMouseMove: PropTypes.func.isRequired,
   handleMouseUp: PropTypes.func.isRequired,
   height: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]).isRequired,
+  imageLimits: PropTypes.shape({
+    maxHeight: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    maxWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    panelHeight: PropTypes.string,
+  }).isRequired,
   mouseDown: PropTypes.bool.isRequired,
   mouseEnter: PropTypes.func.isRequired,
   mouseLeave: PropTypes.func.isRequired,
   opacity: PropTypes.number.isRequired,
   opaque: PropTypes.bool.isRequired,
   right: PropTypes.number.isRequired,
-  toggleHeight: PropTypes.func.isRequired,
+  scale: PropTypes.number.isRequired,
   toggleOpacity: PropTypes.func.isRequired,
+  toggleVisibility: PropTypes.func.isRequired,
   top: PropTypes.number.isRequired,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 export default FloatMap;

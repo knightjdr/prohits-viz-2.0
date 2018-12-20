@@ -7,13 +7,10 @@
   @extend .boxshadow;
   background-color: $backdrop-light;
   border-radius: 3px;
-  max-width: 350px;
+  height: auto;
   min-width: 200px;
   position: fixed;
-  
-  right: 50px;
   transition: opacity 0.3s cubic-bezier(.17, .67, .16, .99);
-  top: 100px;
   width: auto;
   z-index: 201;
 }
@@ -28,7 +25,6 @@
 }
 .float-map__inner {
   border-top: 1px solid $primary-light;
-  resize: both;
 }
 .float-map__buttons {
   display: flex;
@@ -50,4 +46,15 @@
 }
 .float-map__buttons-move {
   color: #424242;
+}
+.float-map__resize {
+  @extend .nobutton;
+  background-image: url('../../../assets/icons/resize.svg');
+  cursor: nesw-resize;
+  bottom: 0;
+  height: 15px;
+  left: 0;
+  padding: 0;
+  position: absolute;
+  width: 15px;
 }

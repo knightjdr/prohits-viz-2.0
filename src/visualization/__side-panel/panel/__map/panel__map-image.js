@@ -9,6 +9,7 @@ import './panel__map.css';
 
 const Image = ({
   annotations,
+  imageLimits,
   markers,
   minimap,
   navigatePosition,
@@ -22,6 +23,7 @@ const Image = ({
     <img
       alt="Mini map"
       src={syncImage || minimap}
+      style={imageLimits}
     />
     <button
       className="panel__map-select"
@@ -60,6 +62,16 @@ Image.defaultProps = {
 
 Image.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
+  imageLimits: PropTypes.shape({
+    maxHeight: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    maxWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+  }).isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,
   navigatePosition: PropTypes.func.isRequired,

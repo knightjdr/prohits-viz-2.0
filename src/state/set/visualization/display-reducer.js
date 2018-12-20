@@ -1,8 +1,8 @@
 import * as actions from './display-actions';
 
 export const defaultState = {
-  floatMapRight: 50,
-  floatMapTop: 100,
+  floatMapRight: 10,
+  floatMapTop: 10,
   plotFixed: false,
   plotTranslate: 0,
   selectionBox: true,
@@ -20,8 +20,8 @@ const display = (state = { ...defaultState }, action) => {
     case actions.RESET_MAP_POSITION:
       return {
         ...state,
-        floatMapRight: 20,
-        floatMapTop: 100,
+        floatMapRight: 10,
+        floatMapTop: 10,
       };
     case actions.TOGGLE_SELECTION_BOX:
       return {

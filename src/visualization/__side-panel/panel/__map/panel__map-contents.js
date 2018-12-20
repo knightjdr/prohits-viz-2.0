@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import Image from './panel__map-image';
 import Synced from './panel__map-sync';
@@ -8,6 +8,7 @@ import './panel__map.css';
 
 export const MapContent = ({
   annotations,
+  imageLimits,
   isSyncing,
   markers,
   minimap,
@@ -21,34 +22,44 @@ export const MapContent = ({
   syncImage,
   syncMap,
 }) => (
-  <Fragment>
-    <div className="panel__map">
-      {
-        synced && (minimap || syncImage) ?
-          <Image
-            annotations={annotations}
-            minimap={minimap}
-            navigatePosition={navigatePosition}
-            rangeBox={rangeBox}
-            search={search}
-            showAnnotations={showAnnotations}
-            showMarkers={showMarkers}
-            syncImage={syncImage}
-            markers={markers}
-          />
-          :
-          <Synced
-            minimap={minimap}
-            isSyncing={isSyncing}
-            syncError={syncError}
-            syncMap={syncMap}
-          />
-      }
-    </div>
-  </Fragment>
+  <div
+    className="panel__map"
+    style={{
+      height: imageLimits.panelHeight,
+    }}
+  >
+    {
+      synced && (minimap || syncImage) ?
+        <Image
+          annotations={annotations}
+          floatMap
+          imageLimits={imageLimits}
+          minimap={minimap}
+          navigatePosition={navigatePosition}
+          rangeBox={rangeBox}
+          search={search}
+          showAnnotations={showAnnotations}
+          showMarkers={showMarkers}
+          syncImage={syncImage}
+          markers={markers}
+        />
+        :
+        <Synced
+          minimap={minimap}
+          isSyncing={isSyncing}
+          syncError={syncError}
+          syncMap={syncMap}
+        />
+    }
+  </div>
 );
 
 MapContent.defaultProps = {
+  imageLimits: {
+    maxHeight: 'calc(100vh - 165px)',
+    maxWidth: 320,
+    panelHeight: 'calc(100vh - 165px)',
+  },
   minimap: null,
   showAnnotations: false,
   showMarkers: false,
@@ -57,6 +68,17 @@ MapContent.defaultProps = {
 
 MapContent.propTypes = {
   annotations: PropTypes.shape({}).isRequired,
+  imageLimits: PropTypes.shape({
+    maxHeight: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    maxWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    panelHeight: PropTypes.string,
+  }),
   isSyncing: PropTypes.bool.isRequired,
   markers: PropTypes.shape({}).isRequired,
   minimap: PropTypes.string,

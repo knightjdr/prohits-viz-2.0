@@ -102,6 +102,7 @@ export class MapContainer extends Component {
     const childProps = {
       annotations: this.props.annotations,
       dimensions: this.props.dimensions,
+      imageLimits: this.props.imageLimits,
       isAttached: this.props.reverseAttached ?
         !this.props.minimap.attached
         : this.props.minimap.attached,
@@ -126,6 +127,11 @@ export class MapContainer extends Component {
 }
 
 MapContainer.defaultProps = {
+  imageLimits: {
+    maxHeight: 'calc(100vh - 165px)',
+    maxWidth: 320,
+    panelHeight: 'calc(100vh - 165px)',
+  },
   reverseAttached: false,
 };
 
@@ -133,13 +139,24 @@ MapContainer.propTypes = {
   annotations: PropTypes.shape({
     show: PropTypes.bool,
   }).isRequired,
-  reverseAttached: PropTypes.bool,
+
   dimensions: PropTypes.shape({
     columns: PropTypes.number,
     pageX: PropTypes.number,
     pageY: PropTypes.number,
     rows: PropTypes.number,
   }).isRequired,
+  imageLimits: PropTypes.shape({
+    maxHeight: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    maxWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    panelHeight: PropTypes.string,
+  }),
   markers: PropTypes.shape({
     color: PropTypes.string,
     list: PropTypes.arrayOf(PropTypes.shape({})),
@@ -158,6 +175,7 @@ MapContainer.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   render: PropTypes.func.isRequired,
+  reverseAttached: PropTypes.bool,
   search: PropTypes.shape({
     columns: PropTypes.shape({}),
     match: PropTypes.bool,
