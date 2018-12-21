@@ -22,14 +22,14 @@ const FloatMap = forwardRef(({
   handleMouseMove,
   handleMouseUp,
   height,
-  imageLimits,
+  imageMax,
   mouseDown,
   mouseEnter,
   mouseLeave,
   opacity,
   opaque,
   right,
-  scale,
+  visible,
   toggleOpacity,
   toggleVisibility,
   top,
@@ -68,11 +68,11 @@ const FloatMap = forwardRef(({
             tooltip-position="bottom"
           />
           <RoundButton
-            icon={scale ? faEyeSlash : faEye}
+            icon={visible ? faEyeSlash : faEye}
             onClick={toggleVisibility}
             size="1x"
-            theme={scale ? 'transparent' : 'warning'}
-            tooltip={scale ? 'Hide minimap' : 'Show minimap'}
+            theme={visible ? 'transparent' : 'warning'}
+            tooltip={visible ? 'Hide minimap' : 'Show minimap'}
             tooltip-position="bottom"
           />
           <RoundButton
@@ -96,20 +96,20 @@ const FloatMap = forwardRef(({
         className="float-map__inner"
         ref={ref}
         style={{
-          height: scale ? height : 0,
-          opacity: scale ? 1 : 0,
-          padding: scale ? 5 : 0,
-          pointerEvents: scale ? 'auto' : 'none',
-          width: scale ? width : 0,
+          height: visible ? height : 0,
+          opacity: visible ? 1 : 0,
+          padding: visible ? 5 : 0,
+          pointerEvents: visible ? 'auto' : 'none',
+          width: visible ? width : 0,
         }}
       >
         <MapWrapper
-          imageLimits={imageLimits}
+          imageLimits={imageMax}
           render={renderMap}
         />
       </div>
       {
-        scale
+        visible
         && (
           <button
             className="float-map__resize"
@@ -132,7 +132,7 @@ FloatMap.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]).isRequired,
-  imageLimits: PropTypes.shape({
+  imageMax: PropTypes.shape({
     maxHeight: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
@@ -149,7 +149,7 @@ FloatMap.propTypes = {
   opacity: PropTypes.number.isRequired,
   opaque: PropTypes.bool.isRequired,
   right: PropTypes.number.isRequired,
-  scale: PropTypes.bool.isRequired,
+  visible: PropTypes.bool.isRequired,
   toggleOpacity: PropTypes.func.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
   top: PropTypes.number.isRequired,

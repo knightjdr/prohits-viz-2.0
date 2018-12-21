@@ -1,11 +1,20 @@
 import { createSelector } from 'reselect';
 
 const getMap = state => state.minimap;
+const getMapProp = (state, prop) => state.minimap[prop];
 
-const GetMap = createSelector(
+const mapSelector = createSelector(
   [getMap],
   minimap => (
     minimap
   ),
 );
-export default GetMap;
+
+export const mapSelectorProp = createSelector(
+  [getMapProp],
+  prop => (
+    prop
+  ),
+);
+
+export default mapSelector;

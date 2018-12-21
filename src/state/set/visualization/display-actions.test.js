@@ -16,6 +16,20 @@ describe('Display set actions', () => {
     expect(actions.resetMapPosition()).toEqual(expectedAction);
   });
 
+  it('should dispatch an action to toggle map opacity', () => {
+    const expectedAction = {
+      type: actions.TOGGLE_MAP_OPACITY,
+    };
+    expect(actions.toggleMapOpacity()).toEqual(expectedAction);
+  });
+
+  it('should dispatch an action to toggle map visibility', () => {
+    const expectedAction = {
+      type: actions.TOGGLE_MAP_VISIBILITY,
+    };
+    expect(actions.toggleMapVisibility()).toEqual(expectedAction);
+  });
+
   it('should dispatch an action to toggle selection box', () => {
     const expectedAction = {
       type: actions.TOGGLE_SELECTION_BOX,
@@ -37,6 +51,15 @@ describe('Display set actions', () => {
       type: actions.UPDATE_MAP_POSITION,
     };
     expect(actions.updateMapPosition(100, 200)).toEqual(expectedAction);
+  });
+
+  it('should dispatch an action to update size position', () => {
+    const expectedAction = {
+      height: 500,
+      width: 600,
+      type: actions.UPDATE_MAP_SIZE,
+    };
+    expect(actions.updateMapSize(500, 600)).toEqual(expectedAction);
   });
 
   it('should dispatch an action to update plot position', () => {

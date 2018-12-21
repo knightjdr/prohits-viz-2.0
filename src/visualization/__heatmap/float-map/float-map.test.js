@@ -24,7 +24,7 @@ const props = {
   handleMouseMove,
   handleMouseUp,
   height: 500,
-  imageLimits: {
+  imageMax: {
     maxHeight: 490,
     maxWidth: 490,
   },
@@ -34,7 +34,7 @@ const props = {
   opacity: 1,
   opaque: true,
   right: 10,
-  scale: true,
+  visible: true,
   toggleOpacity,
   toggleVisibility,
   top: 10,
@@ -275,7 +275,7 @@ describe('Floating minimap', () => {
       wrapper = shallow(
         <FloatMap
           {...props}
-          scale={false}
+          visible={false}
         />,
       );
     });

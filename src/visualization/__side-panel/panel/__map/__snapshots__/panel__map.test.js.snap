@@ -83,6 +83,13 @@ exports[`Map panel should render when attached to sidepanel should match snapsho
   </div>
   <Component
     annotations={Object {}}
+    imageLimits={
+      Object {
+        "maxHeight": "calc(100vh - 165px)",
+        "maxWidth": 320,
+        "panelHeight": "calc(100vh - 165px)",
+      }
+    }
     isSyncing={false}
     markers={Object {}}
     minimap="image"
