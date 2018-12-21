@@ -6,13 +6,17 @@ import Image from './panel__map-image';
 const navigatePosition = jest.fn();
 
 describe('Minimap image', () => {
-  describe('should render with minimap', () => {
+  describe('with minimap', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = shallow(
         <Image
           annotations={{}}
+          imageLimits={{
+            maxHeight: 500,
+            maxWidth: 600,
+          }}
           markers={{}}
           minimap="map"
           navigatePosition={navigatePosition}
@@ -33,22 +37,29 @@ describe('Minimap image', () => {
       );
     });
 
-    it('and match snapshot', () => {
+    it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('and display map', () => {
+    it('should display map', () => {
       expect(wrapper.find('img').props().src).toBe('map');
     });
 
-    it('and display range box', () => {
-      expect(wrapper.find('.panel__map-position').props().style.height).toBe('20%');
-      expect(wrapper.find('.panel__map-position').props().style.left).toBe('20%');
-      expect(wrapper.find('.panel__map-position').props().style.top).toBe('20%');
-      expect(wrapper.find('.panel__map-position').props().style.width).toBe('20%');
+    it('should display range box', () => {
+      const rangeBox = wrapper.find('.panel__map-position');
+      expect(rangeBox.props().style.height).toBe('20%');
+      expect(rangeBox.props().style.left).toBe('20%');
+      expect(rangeBox.props().style.top).toBe('20%');
+      expect(rangeBox.props().style.width).toBe('20%');
     });
 
-    it('and call prop method navigatePosition on click', () => {
+    it('should have img style set for max height and width', () => {
+      const img = wrapper.find('img');
+      expect(img.props().style.maxHeight).toBe(500);
+      expect(img.props().style.maxWidth).toBe(600);
+    });
+
+    it('should call prop method navigatePosition on click', () => {
       wrapper.find('button').simulate('click');
       expect(navigatePosition).toHaveBeenCalledTimes(1);
     });
@@ -58,6 +69,10 @@ describe('Minimap image', () => {
     const wrapper = shallow(
       <Image
         annotations={{}}
+        imageLimits={{
+          maxHeight: 500,
+          maxWidth: 600,
+        }}
         markers={{}}
         minimap="map"
         navigatePosition={navigatePosition}
@@ -83,6 +98,10 @@ describe('Minimap image', () => {
     const wrapper = shallow(
       <Image
         annotations={{}}
+        imageLimits={{
+          maxHeight: 500,
+          maxWidth: 600,
+        }}
         markers={{}}
         minimap="map"
         navigatePosition={navigatePosition}
@@ -108,6 +127,10 @@ describe('Minimap image', () => {
     const wrapper = shallow(
       <Image
         annotations={{}}
+        imageLimits={{
+          maxHeight: 500,
+          maxWidth: 600,
+        }}
         markers={{}}
         minimap="map"
         navigatePosition={navigatePosition}
@@ -133,6 +156,10 @@ describe('Minimap image', () => {
     const wrapper = shallow(
       <Image
         annotations={{}}
+        imageLimits={{
+          maxHeight: 500,
+          maxWidth: 600,
+        }}
         markers={{}}
         minimap="map"
         navigatePosition={navigatePosition}

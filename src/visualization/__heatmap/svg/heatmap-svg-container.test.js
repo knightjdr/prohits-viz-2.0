@@ -534,7 +534,7 @@ describe('Svg container', () => {
         display: {
           ...props.display,
           plotFixed: false,
-        }
+        },
       };
       wrapper.instance().updateTranslate(nextProps, false);
       expect(props.updatePlotXY).not.toHaveBeenCalled();

@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import columnSelector from '../../../state/selectors/visualization/columns-selector';
+import debounce from '../../../helpers/debounce';
 import FloatMap from './float-map';
 import mapSelector from '../../../state/selectors/visualization/map-selector';
 import rowNameSelector from '../../../state/selectors/visualization/row-name-selector';
@@ -15,20 +16,34 @@ export class FloatMapContainer extends PureComponent {
     super(props);
     const { columns, rows } = this.props;
     this.mapRef = React.createRef();
+    this.imageLimits = this.setImageLimits();
     this.state = {
       height: 'auto',
-      imageLimits: this.setImageLimits(columns.names, rows),
+      imageLimits: this.setInitialLimits(columns.names, rows),
       mouseDown: false,
       opacity: 1,
       opaque: true,
-      scale: 1,
+      scale: true,
       width: 'auto',
     };
   }
-  componentWillReceiveProps = (nextProps) => {
-    this.resetPosition(nextProps, this.props.minimap.attached);
+  componentDidMount = () => {
+    window.addEventListener('resize', this.debouncedResize);
   }
-  setImageLimits = (columns, rows) => {
+  componentDidUpdate = (prevProps) => {
+    this.resetPosition(this.props.minimap.attached, prevProps.minimap.attached);
+  }
+  setImageLimits = () => ({
+    height: {
+      max: window.innerHeight - 60,
+      min: 20,
+    },
+    width: {
+      max: window.innerWidth - 20,
+      min: 200,
+    },
+  })
+  setInitialLimits = (columns, rows) => {
     const maxHeight = window.innerHeight - 20 > 1000 ? 1000 : window.innerHeight - 20;
     const maxWidth = window.innerWidth / 2 > 1000 ? 1000 : window.innerWidth / 2;
     const maxImageSize = columns.length > rows.length ? maxWidth : maxHeight - 60;
@@ -38,10 +53,18 @@ export class FloatMapContainer extends PureComponent {
       panelHeight: 'auto',
     };
   }
-  handleMouseDown = (x, y) => {
+  componentWillUnMount = () => {
+    window.RemoveEventListener('resize', this.debouncedResize);
+  }
+  debouncedResize = debounce(() => {
+    this.imageLimits = this.setImageLimits();
+  }, 100, false);
+  handleMouseDown = (x, y, height, width) => {
     this.lastPosition = {
+      height,
       x,
       y,
+      width,
     };
     this.setState({ mouseDown: true });
   }
@@ -53,7 +76,8 @@ export class FloatMapContainer extends PureComponent {
   handleMouseDownResize = (e) => {
     const { clientX, clientY } = e;
     this.moveType = 'resize';
-    this.handleMouseDown(clientX, clientY);
+    const { clientHeight, clientWidth } = this.mapRef.current;
+    this.handleMouseDown(clientX, clientY, clientHeight, clientWidth);
   }
   handleMouseEnter = () => {
     if (!this.state.opaque) {
@@ -85,17 +109,6 @@ export class FloatMapContainer extends PureComponent {
   handleMouseUp = () => {
     this.setState({ mouseDown: false });
   }
-  resizeMap = (x, y) => {
-    this.setState({
-      height: 200,
-      imageLimits: {
-        maxHeight: 200 - 10,
-        maxWidth: 200 - 10,
-        panelHeight: 'auto',
-      },
-      width: 200,
-    });
-  }
   mapPosition = (x, y) => {
     const { display } = this.props;
     const newPosition = {
@@ -108,19 +121,58 @@ export class FloatMapContainer extends PureComponent {
     };
     this.props.updateMapPosition(newPosition.x, newPosition.y);
   }
+  newDimensions = (change) => {
+    const dimensions = {
+      height: this.lastPosition.height - change.y,
+      width: this.lastPosition.width + change.x,
+    };
+    if (dimensions.height > this.imageLimits.height.max) {
+      dimensions.height = this.imageLimits.height.max;
+    } else if (dimensions.height < this.imageLimits.height.min) {
+      dimensions.height = this.imageLimits.height.min;
+    }
+    if (dimensions.width > this.imageLimits.width.max) {
+      dimensions.width = this.imageLimits.width.max;
+    } else if (dimensions.width < this.imageLimits.width.min) {
+      dimensions.width = this.imageLimits.width.min;
+    }
+    return dimensions;
+  }
+  resizeMap = (x, y) => {
+    const change = {
+      x: this.lastPosition.x - x,
+      y: this.lastPosition.y - y,
+    };
+    const dimensions = this.newDimensions(change);
+    this.lastPosition = {
+      height: dimensions.height,
+      x,
+      y,
+      width: dimensions.width,
+    };
+    this.setState({
+      height: dimensions.height,
+      imageLimits: {
+        maxHeight: dimensions.height - 10,
+        maxWidth: dimensions.width - 10,
+        panelHeight: 'auto',
+      },
+      width: dimensions.width,
+    });
+  }
   reattach = () => {
     const { attachMap } = this.props;
     attachMap();
     this.setState({
       opacity: 1,
       opaque: true,
-      scale: 1,
+      scale: true,
     });
   }
-  resetPosition = ({ minimap }, prevAttached) => {
+  resetPosition = (attached, prevAttached) => {
     if (
-      minimap.attached !== prevAttached &&
-      minimap.attached
+      attached !== prevAttached
+      && attached
     ) {
       this.props.resetMapPosition();
     }
@@ -129,13 +181,13 @@ export class FloatMapContainer extends PureComponent {
     this.setState(({ scale }) => ({
       opacity: 1,
       opaque: true,
-      scale: scale ? 0 : 1,
+      scale: !scale,
     }));
   }
   toggleOpacity = () => {
     this.setState(({ opaque }) => ({
       opaque: !opaque,
-      scale: 1,
+      scale: true,
     }));
   }
   render() {

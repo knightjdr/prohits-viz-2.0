@@ -8,7 +8,7 @@ import {
   faPaperclip,
 } from '@fortawesome/pro-regular-svg-icons';
 
-import Button from '../../../components/round-button/round-button';
+import RoundButton from '../../../components/round-button/round-button';
 import MapWrapper from '../../__side-panel/panel/__map/panel__map-container';
 import renderMap from '../../__side-panel/panel/__map/panel__map-contents';
 
@@ -50,7 +50,6 @@ const FloatMap = forwardRef(({
       className="float-map"
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
-      ref={ref}
       style={{
         opacity,
         right,
@@ -60,7 +59,7 @@ const FloatMap = forwardRef(({
     >
       <div className="float-map__buttons">
         <div className="float-map__buttons_left">
-          <Button
+          <RoundButton
             className="float-map__button-attach"
             icon={faPaperclip}
             onClick={attachMap}
@@ -68,7 +67,7 @@ const FloatMap = forwardRef(({
             tooltip="Attach map"
             tooltip-position="bottom"
           />
-          <Button
+          <RoundButton
             icon={scale ? faEyeSlash : faEye}
             onClick={toggleVisibility}
             size="1x"
@@ -76,7 +75,7 @@ const FloatMap = forwardRef(({
             tooltip={scale ? 'Hide minimap' : 'Show minimap'}
             tooltip-position="bottom"
           />
-          <Button
+          <RoundButton
             icon={faAdjust}
             onClick={toggleOpacity}
             theme={opaque ? 'transparent' : 'success'}
@@ -85,7 +84,7 @@ const FloatMap = forwardRef(({
           />
         </div>
         <div className="float-map__buttons_right">
-          <Button
+          <RoundButton
             className="float-map__button-move"
             icon={faArrows}
             onMouseDown={handleMouseDownMove}
@@ -95,10 +94,12 @@ const FloatMap = forwardRef(({
       </div>
       <div
         className="float-map__inner"
+        ref={ref}
         style={{
           height: scale ? height : 0,
-          padding: scale ? 5 : 0,
           opacity: scale ? 1 : 0,
+          padding: scale ? 5 : 0,
+          pointerEvents: scale ? 'auto' : 'none',
           width: scale ? width : 0,
         }}
       >
@@ -108,7 +109,7 @@ const FloatMap = forwardRef(({
         />
       </div>
       {
-        scale !== 0
+        scale
         && (
           <button
             className="float-map__resize"
@@ -148,7 +149,7 @@ FloatMap.propTypes = {
   opacity: PropTypes.number.isRequired,
   opaque: PropTypes.bool.isRequired,
   right: PropTypes.number.isRequired,
-  scale: PropTypes.number.isRequired,
+  scale: PropTypes.bool.isRequired,
   toggleOpacity: PropTypes.func.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
   top: PropTypes.number.isRequired,
