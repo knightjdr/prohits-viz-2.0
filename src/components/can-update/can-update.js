@@ -4,28 +4,14 @@ import { Component } from 'react';
 class CanUpdate extends Component {
   constructor(props) {
     super(props);
-    const { beforeUpdate } = this.props;
     this.mounted = false;
-    this.state = {
-      canUpdate: false,
-      update: { ...beforeUpdate },
-    };
   }
   componentDidMount = () => {
     this.mounted = true;
   }
-  componentWillReceiveProps = (nextProps) => {
-    if (!this.state.canUpdate && this.mounted) {
-      const { afterUpdate } = nextProps;
-      this.setState({
-        canUpdate: true,
-        update: { ...afterUpdate },
-      });
-    }
-  }
   render() {
-    const { update } = this.state;
-    const { render } = this.props;
+    const { afterUpdate, beforeUpdate, render } = this.props;
+    const update = this.mounted ? afterUpdate : beforeUpdate;
     return render({ update });
   }
 }

@@ -9,7 +9,7 @@ const availablePlots = (state = defaultState, action) => {
     case fileActions.PARSE_INTERACTIVE_FILE:
       return action.file.availablePlots
         ? action.file.availablePlots
-        : defaultState;
+        : [...defaultState];
     default:
       return state;
   }

@@ -26,33 +26,44 @@ describe('Search reducer', () => {
     expect(searchReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE action', () => {
-    const action = {
-      file: {
-        search: {
-          columns: { a: 1 },
-          columnsCustomize: { a: 1 },
-          match: true,
-          matchCustomize: true,
-          rows: { b: 1 },
-          rowsCustomize: { b: 1 },
-          searched: true,
-          term: 'testTerm',
+  describe('PARSE_INTERACTIVE_FILE action', () => {
+    it('should handle action when search field present', () => {
+      const action = {
+        file: {
+          search: {
+            columns: { a: 1 },
+            columnsCustomize: { a: 1 },
+            match: true,
+            matchCustomize: true,
+            rows: { b: 1 },
+            rowsCustomize: { b: 1 },
+            searched: true,
+            term: 'testTerm',
+          },
         },
-      },
-      type: fileActions.PARSE_INTERACTIVE_FILE,
-    };
-    const expectedState = {
-      columns: { a: 1 },
-      columnsCustomize: { a: 1 },
-      match: true,
-      matchCustomize: true,
-      rows: { b: 1 },
-      rowsCustomize: { b: 1 },
-      searched: true,
-      term: 'testTerm',
-    };
-    expect(searchReducer(undefined, action)).toEqual(expectedState);
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = {
+        columns: { a: 1 },
+        columnsCustomize: { a: 1 },
+        match: true,
+        matchCustomize: true,
+        rows: { b: 1 },
+        rowsCustomize: { b: 1 },
+        searched: true,
+        term: 'testTerm',
+      };
+      expect(searchReducer(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should handle action when search field missing', () => {
+      const action = {
+        file: {},
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = { ...defaultState };
+      expect(searchReducer(undefined, action)).toEqual(expectedState);
+    });
   });
 
   it('should handle RESTORE_ROWS action', () => {

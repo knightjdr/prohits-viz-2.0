@@ -1,23 +1,15 @@
 import deepCopy from '../../../helpers/deep-copy';
-import RowsReducer from './rows-reducer';
+import rowsReducer, { defaultState } from './rows-reducer';
 import * as actions from './rows-actions';
 import * as fileActions from '../interactive-file-actions';
-
-const DefaultState = {
-  direction: null,
-  id: null,
-  list: [],
-  order: [],
-  sortBy: null,
-};
 
 jest.mock('../../../helpers/deep-copy');
 
 describe('Rows set reducer', () => {
   it('should return an empty initial state', () => {
     const action = {};
-    const expectedState = DefaultState;
-    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+    const expectedState = defaultState;
+    expect(rowsReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle CLEAR_INTERACTIVE_FILE action', () => {
@@ -25,37 +17,48 @@ describe('Rows set reducer', () => {
       type: fileActions.CLEAR_INTERACTIVE_FILE,
     };
     const expectedState = {
-      ...DefaultState,
+      ...defaultState,
     };
-    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+    expect(rowsReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE action', () => {
-    const list = [
-      { data: {}, name: 'a' },
-      { data: {}, name: 'b' },
-      { data: {}, name: 'c' },
-    ];
-    deepCopy.mockReturnValue(list);
-    const action = {
-      file: {
-        rows: {
-          direction: 'asc',
-          list,
-          order: ['a', 'b', 'c'],
-          sortBy: 1,
+  describe('PARSE_INTERACTIVE_FILE action', () => {
+    it('should handle action when rows field present', () => {
+      const list = [
+        { data: {}, name: 'a' },
+        { data: {}, name: 'b' },
+        { data: {}, name: 'c' },
+      ];
+      deepCopy.mockReturnValue(list);
+      const action = {
+        file: {
+          rows: {
+            direction: 'asc',
+            list,
+            order: ['a', 'b', 'c'],
+            sortBy: 1,
+          },
         },
-      },
-      type: fileActions.PARSE_INTERACTIVE_FILE,
-    };
-    const expectedState = {
-      direction: 'asc',
-      id: null,
-      list,
-      order: ['a', 'b', 'c'],
-      sortBy: 1,
-    };
-    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = {
+        direction: 'asc',
+        id: null,
+        list,
+        order: ['a', 'b', 'c'],
+        sortBy: 1,
+      };
+      expect(rowsReducer(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should handle action when rows field missing', () => {
+      const action = {
+        file: {},
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = { ...defaultState };
+      expect(rowsReducer(undefined, action)).toEqual(expectedState);
+    });
   });
 
   it('should handle RESTORE_ROWS action', () => {
@@ -79,7 +82,7 @@ describe('Rows set reducer', () => {
       order: [],
       sortBy: null,
     };
-    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+    expect(rowsReducer(undefined, action)).toEqual(expectedState);
   });
 
   it('should handle UPDATE_ROWS action', () => {
@@ -103,6 +106,6 @@ describe('Rows set reducer', () => {
       order: [],
       sortBy: 1,
     };
-    expect(RowsReducer(undefined, action)).toEqual(expectedState);
+    expect(rowsReducer(undefined, action)).toEqual(expectedState);
   });
 });

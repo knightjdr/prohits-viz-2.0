@@ -9,7 +9,7 @@ export const defaultState = {
   show: true,
 };
 
-const Markers = (state = defaultState, action) => {
+const markers = (state = defaultState, action) => {
   let newList;
   switch (action.type) {
     case actions.ADD_MARKER:
@@ -72,4 +72,4 @@ const Markers = (state = defaultState, action) => {
       return state;
   }
 };
-export default Markers;
+export default markers;

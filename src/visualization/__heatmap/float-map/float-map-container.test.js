@@ -250,37 +250,77 @@ describe('Floating minimap container', () => {
     });
 
     describe('mouse enter', () => {
-      it('should set opacity to 1 when panel is opaque', () => {
-        wrapper.setProps({ opaque: true });
-        wrapper.instance().handleMouseEnter();
-        expect(wrapper.state('opacity')).toBe(1);
-      });
-
-      it('should not change opacity when panel is not opaque', () => {
-        wrapper.setProps({ opaque: false });
+      it('should not change opacity when panel is opaque', () => {
+        const display = {
+          floatMapRight: 20,
+          floatMapTop: 100,
+          height: 'auto',
+          opaque: true,
+          visible: true,
+          width: 'auto',
+        };
         wrapper.setState({ opacity: 0 });
+        wrapper.setProps({ display });
         wrapper.instance().handleMouseEnter();
         expect(wrapper.state('opacity')).toBe(0);
+      });
+
+      it('should change opacity when panel is not opaque', () => {
+        const display = {
+          floatMapRight: 20,
+          floatMapTop: 100,
+          height: 'auto',
+          opaque: false,
+          visible: true,
+          width: 'auto',
+        };
+        wrapper.setProps({ display });
+        wrapper.instance().handleMouseEnter();
+        expect(wrapper.state('opacity')).toBe(1);
       });
     });
 
     describe('mouse leave', () => {
       it('should set opacity to 0 when panel is not opaque and mouse is not down', () => {
-        wrapper.setProps({ opaque: false });
+        const display = {
+          floatMapRight: 20,
+          floatMapTop: 100,
+          height: 'auto',
+          opaque: false,
+          visible: true,
+          width: 'auto',
+        };
+        wrapper.setProps({ display });
         wrapper.setState({ mouseDown: false });
         wrapper.instance().handleMouseLeave();
         expect(wrapper.state('opacity')).toBe(0);
       });
 
       it('should not change opacity when panel is opaque', () => {
-        wrapper.setProps({ opaque: true });
+        const display = {
+          floatMapRight: 20,
+          floatMapTop: 100,
+          height: 'auto',
+          opaque: true,
+          visible: true,
+          width: 'auto',
+        };
+        wrapper.setProps({ display });
         wrapper.setState({ mouseDown: false, opacity: 1 });
         wrapper.instance().handleMouseLeave();
         expect(wrapper.state('opacity')).toBe(1);
       });
 
       it('should not change opacity when mouse id down', () => {
-        wrapper.setProps({ opaque: false });
+        const display = {
+          floatMapRight: 20,
+          floatMapTop: 100,
+          height: 'auto',
+          opaque: false,
+          visible: true,
+          width: 'auto',
+        };
+        wrapper.setProps({ display });
         wrapper.setState({ mouseDown: true, opacity: 1 });
         wrapper.instance().handleMouseLeave();
         expect(wrapper.state('opacity')).toBe(1);
@@ -361,6 +401,77 @@ describe('Floating minimap container', () => {
       });
     });
 
+    describe('new dimensions', () => {
+      it('should set height and width to max limit when new dimension would exceed them', () => {
+        wrapper.instance().imageLimits = {
+          height: {
+            max: 1000,
+            min: 100,
+          },
+          width: {
+            max: 1000,
+            min: 100,
+          },
+        };
+        wrapper.instance().lastPosition = {
+          height: 500,
+          width: 500,
+        };
+        const expected = {
+          height: 1000,
+          width: 1000,
+        };
+        const result = wrapper.instance().newDimensions({ x: 600, y: -600 });
+        expect(result).toEqual(expected);
+      });
+
+      it('should set height and width to min limit when new dimension would go below them', () => {
+        wrapper.instance().imageLimits = {
+          height: {
+            max: 1000,
+            min: 100,
+          },
+          width: {
+            max: 1000,
+            min: 100,
+          },
+        };
+        wrapper.instance().lastPosition = {
+          height: 500,
+          width: 500,
+        };
+        const expected = {
+          height: 100,
+          width: 100,
+        };
+        const result = wrapper.instance().newDimensions({ x: -600, y: 600 });
+        expect(result).toEqual(expected);
+      });
+
+      it('should set height and width', () => {
+        wrapper.instance().imageLimits = {
+          height: {
+            max: 1000,
+            min: 100,
+          },
+          width: {
+            max: 1000,
+            min: 100,
+          },
+        };
+        wrapper.instance().lastPosition = {
+          height: 500,
+          width: 500,
+        };
+        const expected = {
+          height: 400,
+          width: 600,
+        };
+        const result = wrapper.instance().newDimensions({ x: 100, y: 100 });
+        expect(result).toEqual(expected);
+      });
+    });
+
     describe('reattach', () => {
       beforeAll(() => {
         attachMap.mockClear();
@@ -374,6 +485,44 @@ describe('Floating minimap container', () => {
 
       it('should opacity to 1', () => {
         expect(wrapper.state('opacity')).toBe(1);
+      });
+    });
+
+    describe('resizeMap', () => {
+      beforeAll(() => {
+        updateMapSize.mockClear();
+        wrapper.update();
+        wrapper.instance().imageLimits = {
+          height: {
+            max: 1000,
+            min: 100,
+          },
+          width: {
+            max: 1000,
+            min: 100,
+          },
+        };
+        wrapper.instance().lastPosition = {
+          height: 500,
+          width: 500,
+          x: 250,
+          y: 200,
+        };
+        wrapper.instance().resizeMap(100, 100);
+      });
+
+      it('should update last position', () => {
+        const expected = {
+          height: 400,
+          width: 650,
+          x: 100,
+          y: 100,
+        };
+        expect(wrapper.instance().lastPosition).toEqual(expected);
+      });
+
+      it('should call prop method to update map size', () => {
+        expect(updateMapSize).toHaveBeenCalledWith(400, 650);
       });
     });
 

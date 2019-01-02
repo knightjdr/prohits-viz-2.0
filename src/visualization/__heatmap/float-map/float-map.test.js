@@ -330,4 +330,31 @@ describe('Floating minimap', () => {
       expect(wrapper.find('.float-map__resize').length).toBe(0);
     });
   });
+
+  describe('when attached', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      attachMap.mockClear();
+      handleMouseDownMove.mockClear();
+      handleMouseDownResize.mockClear();
+      handleMouseMove.mockClear();
+      handleMouseUp.mockClear();
+      mouseEnter.mockClear();
+      mouseLeave.mockClear();
+      toggleOpacity.mockClear();
+      toggleVisibility.mockClear();
+      wrapper = shallow(
+        <FloatMap
+          {...props}
+          attached
+        />,
+      );
+    });
+
+    it('should have display none', () => {
+      const backdrop = wrapper.find('.float-map__backdrop');
+      expect(backdrop.props().style.display).toBe('none');
+    });
+  });
 });

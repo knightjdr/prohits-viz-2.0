@@ -66,26 +66,59 @@ describe('Annotation set reducer', () => {
     expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE action', () => {
-    const list = [{ text: 'test', x: 0.1, y: 0.1 }];
-    deepCopy.mockReturnValueOnce(list);
-    const action = {
-      file: {
-        annotations: {
-          color: '#000000',
-          list,
-          show: false,
+  describe('PARSE_INTERACTIVE_FILE action', () => {
+    it('should handle action when annotations field present', () => {
+      const list = [{ text: 'test', x: 0.1, y: 0.1 }];
+      deepCopy.mockReturnValueOnce(list);
+      const action = {
+        file: {
+          annotations: {
+            color: '#000000',
+            fontSize: 20,
+            list,
+            show: false,
+          },
         },
-      },
-      type: fileActions.PARSE_INTERACTIVE_FILE,
-    };
-    const expectedState = {
-      ...defaultState,
-      color: '#000000',
-      list,
-      show: false,
-    };
-    expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = {
+        ...defaultState,
+        color: '#000000',
+        fontSize: 20,
+        list,
+        show: false,
+      };
+      expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should handle action when subfields missing', () => {
+      const list = [{ text: 'test', x: 0.1, y: 0.1 }];
+      deepCopy.mockReturnValueOnce(list);
+      const action = {
+        file: {
+          annotations: {
+            list,
+            show: false,
+          },
+        },
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = {
+        ...defaultState,
+        list,
+        show: false,
+      };
+      expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should handle action when annotations field missing', () => {
+      const action = {
+        file: {},
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = { ...defaultState };
+      expect(AnnotationReducer(undefined, action)).toEqual(expectedState);
+    });
   });
 
   it('should handle SET_ANNOTATION_COLOR action', () => {

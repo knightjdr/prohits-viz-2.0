@@ -10,7 +10,7 @@ export const defaultState = {
   sortBy: null,
 };
 
-const Rows = (state = defaultState, action) => {
+const rows = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
@@ -51,4 +51,4 @@ const Rows = (state = defaultState, action) => {
   }
 };
 
-export default Rows;
+export default rows;

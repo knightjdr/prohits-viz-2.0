@@ -7,7 +7,7 @@ export const defaultState = {
   show: false,
 };
 
-const Tabs = (state = defaultState, action) => {
+const tabs = (state = defaultState, action) => {
   let newTabs;
   switch (action.type) {
     case actions.ADD_TAB:
@@ -45,4 +45,4 @@ const Tabs = (state = defaultState, action) => {
   }
 };
 
-export default Tabs;
+export default tabs;

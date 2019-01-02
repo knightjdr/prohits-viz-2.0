@@ -12,7 +12,7 @@ export const defaultState = {
   rowsSelected: [],
 };
 
-const Genes = (state = defaultState, action) => {
+const genes = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
@@ -55,4 +55,4 @@ const Genes = (state = defaultState, action) => {
       return state;
   }
 };
-export default Genes;
+export default genes;

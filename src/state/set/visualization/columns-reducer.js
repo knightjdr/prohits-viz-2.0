@@ -6,7 +6,7 @@ export const defaultState = {
   names: [],
 };
 
-const Columns = (state = defaultState, action) => {
+const columns = (state = defaultState, action) => {
   switch (action.type) {
     case fileActions.CLEAR_INTERACTIVE_FILE:
       return {
@@ -30,4 +30,4 @@ const Columns = (state = defaultState, action) => {
   }
 };
 
-export default Columns;
+export default columns;

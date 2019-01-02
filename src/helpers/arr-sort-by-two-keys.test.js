@@ -4,6 +4,7 @@ const testArray = [
   { a: 'd', b: 3, c: true },
   { a: 'd', b: 2, c: true },
   { a: 'a', b: 2, c: false },
+  { a: 'a', b: 2, c: false },
   { a: 'e', b: 4, c: false },
 ];
 
@@ -34,6 +35,7 @@ describe('sort array of object by two keys', () => {
     it('should sort character and numeric values', () => {
       const expected = [
         { a: 'a', b: 2, c: false },
+        { a: 'a', b: 2, c: false },
         { a: 'd', b: 2, c: true },
         { a: 'd', b: 3, c: true },
         { a: 'e', b: 4, c: false },
@@ -43,6 +45,7 @@ describe('sort array of object by two keys', () => {
 
     it('should sort character and boolean values', () => {
       const expected = [
+        { a: 'a', b: 2, c: false },
         { a: 'a', b: 2, c: false },
         { a: 'e', b: 4, c: false },
         { a: 'd', b: 2, c: true },
@@ -59,6 +62,7 @@ describe('sort array of object by two keys', () => {
         { a: 'd', b: 3, c: true },
         { a: 'd', b: 2, c: true },
         { a: 'a', b: 2, c: false },
+        { a: 'a', b: 2, c: false },
       ];
       expect(arrSortByTwoKey(testArray, 'a', 'b', 'des', 'character', 'numeric')).toEqual(expected);
     });
@@ -68,6 +72,7 @@ describe('sort array of object by two keys', () => {
         { a: 'd', b: 3, c: true },
         { a: 'd', b: 2, c: true },
         { a: 'e', b: 4, c: false },
+        { a: 'a', b: 2, c: false },
         { a: 'a', b: 2, c: false },
       ];
       expect(arrSortByTwoKey(testArray, 'c', 'b', 'des', 'bool', 'numeric')).toEqual(expected);

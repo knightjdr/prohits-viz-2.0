@@ -18,7 +18,7 @@ class ErrorBoundary extends Component {
     this.error = error.toString();
     this.info = info.toString();
   }
-  getDerivedStateFromError = () => ({
+  static getDerivedStateFromError = () => ({
     hasError: true,
   });
   reportError = () => {

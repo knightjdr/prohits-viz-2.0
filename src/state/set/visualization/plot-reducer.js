@@ -12,7 +12,7 @@ const plot = (state = defaultState, action) => {
     case fileActions.PARSE_INTERACTIVE_FILE:
       return action.file.plot
         ? action.file.plot
-        : defaultState;
+        : { ...defaultState };
     default:
       return state;
   }

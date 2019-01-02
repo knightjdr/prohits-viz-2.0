@@ -74,13 +74,24 @@ describe('Customize data reducer', () => {
     expect(data(undefined, action)).toEqual(expectedState);
   });
 
-  it('should handle PARSE_INTERACTIVE_FILE action', () => {
-    const action = {
-      file: { customize: [{ field: 'aaa' }] },
-      type: fileActions.PARSE_INTERACTIVE_FILE,
-    };
-    const expectedState = [{ field: 'aaa' }];
-    expect(data(undefined, action)).toEqual(expectedState);
+  describe('parsing file', () => {
+    it('should handle PARSE_INTERACTIVE_FILE action when customize field is present ', () => {
+      const action = {
+        file: { customize: [{ field: 'aaa' }] },
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = [{ field: 'aaa' }];
+      expect(data(undefined, action)).toEqual(expectedState);
+    });
+
+    it('should handle PARSE_INTERACTIVE_FILE action when customize field is not present ', () => {
+      const action = {
+        file: { },
+        type: fileActions.PARSE_INTERACTIVE_FILE,
+      };
+      const expectedState = [];
+      expect(data(undefined, action)).toEqual(expectedState);
+    });
   });
 
   describe('when removing tab', () => {
