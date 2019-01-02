@@ -14,11 +14,6 @@ exports[`Save image component with no save status should render 1`] = `
       value="svg"
     >
       <Option
-        value="pdf"
-      >
-        PDF
-      </Option>
-      <Option
         value="png"
       >
         PNG
@@ -83,11 +78,6 @@ exports[`Save image component with save status should render 1`] = `
       transitionName="slide-up"
       value="svg"
     >
-      <Option
-        value="pdf"
-      >
-        PDF
-      </Option>
       <Option
         value="png"
       >

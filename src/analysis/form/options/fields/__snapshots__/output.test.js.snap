@@ -30,21 +30,6 @@ exports[`Output Renders 1`] = `
       <div
         className="Output-checkbox-label"
       >
-        Generate PDF:
-      </div>
-      <CustomField
-        helpMessage="SVG images will always be generated. Please, specify if you would also like PDFs."
-        name="pdf"
-        onChange={[Function]}
-        type="switch"
-      />
-    </div>
-    <div
-      className="Output-checkbox"
-    >
-      <div
-        className="Output-checkbox-label"
-      >
         Generate PNG:
       </div>
       <CustomField

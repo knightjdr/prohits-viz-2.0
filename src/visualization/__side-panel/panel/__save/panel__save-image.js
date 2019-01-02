@@ -27,7 +27,6 @@ const SaveImage = ({
         onChange={handleImageType}
         value={imageType}
       >
-        <Option value="pdf">PDF</Option>
         <Option value="png">PNG</Option>
         <Option value="svg">SVG</Option>
       </Select>

@@ -33,9 +33,9 @@ export const AnalysisFormComponent = ({
   step,
   taskID,
 }) => (
-  <div className="Form-container">
+  <div className="form">
     <Form onSubmit={handleSubmit}>
-      <div className="Form-fields">
+      <div className="form__inner">
         <FileInput
           change={change}
         />

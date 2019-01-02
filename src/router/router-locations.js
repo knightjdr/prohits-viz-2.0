@@ -13,6 +13,15 @@ import News from '../news/news';
 import Tasks from '../tasks/tasks-container';
 import Visualization from '../visualization/visualization-loadable';
 
+// css to preload for loadable components
+import '../analysis/form/analysis-form.css';
+import '../analysis/form/file/file-input.css';
+import '../help/help.css';
+import '../help/help-bar/help-bar.css';
+import '../help/help-details/help-details.css';
+import '../visualization/__select/visualization__select.css';
+import '../visualization/__display/image/image.css';
+
 export const Locations = ({ location }) => (
   <Fragment>
     <Navbar

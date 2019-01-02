@@ -1,10 +1,10 @@
-.Form-container {
+.form {
   display: flex;
   justify-content: center;
   padding: 10px 30px 20px 30px;
   width: 100%;
 }
-.Form-fields {
+.form__inner {
   max-width: 800px;
   width: 100%;
 }

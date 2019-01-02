@@ -28,17 +28,6 @@ const Output = ({
     <div className="Output-checkboxes">
       <div className="Output-checkbox">
         <div className="Output-checkbox-label">
-          Generate PDF:
-        </div>
-        <CustomField
-          helpMessage={Info[analysisType].pdf}
-          name="pdf"
-          onChange={DefaultCheckboxChange}
-          type="switch"
-        />
-      </div>
-      <div className="Output-checkbox">
-        <div className="Output-checkbox-label">
           Generate PNG:
         </div>
         <CustomField
