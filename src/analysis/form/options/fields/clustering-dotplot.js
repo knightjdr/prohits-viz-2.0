@@ -16,13 +16,13 @@ const Clustering = ({
   readoutClustering,
 }) => (
   <div>
-    <div className="Clustering-header">
+    <div className="form__option-clustering-header">
       Clustering
     </div>
-    <div className="Clustering-introduction">
+    <div className="form__option-clustering-introduction">
       See the{' '}
       <NavLink
-        className="Clustering-introduction-link"
+        className="form__option-clustering-introduction-link"
         to="/help/tools/dotplot"
       >
         help
@@ -30,7 +30,7 @@ const Clustering = ({
       for clustering options available for this tool.
     </div>
     <CustomField
-      label="Clustering type"
+      label="form__option-clustering type"
       name="clustering"
       onChange={DefaultChange}
       options={[
@@ -43,8 +43,8 @@ const Clustering = ({
     />
     {
       clustering === 'biclustering' &&
-      <div className="Clustering-biclustering-checkbox">
-        <div className="Clustering-biclustering-checkbox-label">
+      <div className="form__option-clustering-biclustering-checkbox">
+        <div className="form__option-clustering-biclustering-checkbox-label">
           Approximate biclustering (faster):
         </div>
         <CustomField
@@ -56,7 +56,7 @@ const Clustering = ({
     }
     {
       clustering === 'hierarchical' &&
-      <div className="Clustering-hierarchical-container">
+      <div className="form__option-clustering-hierarchical-container">
         <CustomField
           label="Distance metric"
           name="distance"
@@ -73,7 +73,7 @@ const Clustering = ({
           type="select"
         />
         <CustomField
-          label="Clustering method"
+          label="form__option-clustering method"
           name="clusteringMethod"
           onChange={DefaultChange}
           options={[
@@ -92,7 +92,7 @@ const Clustering = ({
     }
     {
       clustering === 'none' &&
-      <div className="Clustering-none-container">
+      <div className="form__option-clustering-none-container">
         <CustomField
           helpMessage={Info[analysisType].conditionClustering}
           label="Condition options"
@@ -141,8 +141,8 @@ const Clustering = ({
     }
     {
       clustering !== 'biclustering' &&
-      <div className="Clustering-checkbox">
-        <div className="Clustering-checkbox-label">
+      <div className="form__option-clustering-checkbox">
+        <div className="form__option-clustering-checkbox-label">
           Optimize clustering:
         </div>
         <CustomField

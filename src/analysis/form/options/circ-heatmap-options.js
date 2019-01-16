@@ -1,34 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Clustering from './fields/clustering-dotplot';
 import ControlSubtraction from './fields/control-subtraction-container';
-import EdgeColor from './fields/edge-color';
 import FillColor from './fields/fill-color';
 import MaximumAbundance from './fields/maximum-abundance';
 import MinimumAbundance from './fields/minimum-abundance';
 import Log from './fields/log';
 import Normalization from './fields/normalization';
-import Output from './fields/output-dotplot';
+import OtherAbundanceColumns from './fields/other-abundance-columns-container';
+import Output from './fields/output-circ-heatmap';
 import ReadoutLengthNormalization from './fields/readout-length-normalization-container';
 import PrimaryFilter from './fields/primary-filter-container';
 import ScoreType from './fields/score-type-container';
-import SecondaryFilter from './fields/secondary-filter-container';
 
-const DotplotOptions = ({
+const CircHeatmapOptions = ({
   change,
   form,
   header,
 }) => {
   const {
+    abundance,
     analysisType,
-    conditionClustering,
-    clustering,
     control,
     ctrlSub,
     fileType,
     normalization,
-    readoutClustering,
+    otherAbundance,
     readoutLength,
     readoutLengthNorm,
     score,
@@ -43,12 +40,6 @@ const DotplotOptions = ({
         scoreType={scoreType}
       />
       <PrimaryFilter
-        analysisType={analysisType}
-        change={change}
-        fileType={fileType}
-        score={score}
-      />
-      <SecondaryFilter
         analysisType={analysisType}
         change={change}
         fileType={fileType}
@@ -76,14 +67,13 @@ const DotplotOptions = ({
       />
       <Log analysisType={analysisType} />
       <FillColor analysisType={analysisType} />
-      <EdgeColor analysisType={analysisType} />
-      <Clustering
-        analysisType={analysisType}
-        conditionClustering={conditionClustering}
-        clustering={clustering}
-        readoutClustering={readoutClustering}
+      <OtherAbundanceColumns
+        abundance={abundance}
+        change={change}
+        header={header}
+        otherAbundance={otherAbundance}
       />
-      <Output analysisType={analysisType} />
+      <Output />
     </div>
   );
   return (
@@ -91,7 +81,7 @@ const DotplotOptions = ({
   );
 };
 
-DotplotOptions.propTypes = {
+CircHeatmapOptions.propTypes = {
   change: PropTypes.func.isRequired,
   form: PropTypes.shape({
     analysisType: PropTypes.string,
@@ -101,4 +91,4 @@ DotplotOptions.propTypes = {
   ),
 };
 
-export default DotplotOptions;
+export default CircHeatmapOptions;

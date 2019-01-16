@@ -62,9 +62,9 @@ export const SpotlightComponent = ({
   });
   const spotlightElement = (
     <section className="spotlight">
-      <h1 className="spotlight__header">
+      <h3>
         SPOTLIGHT
-      </h1>
+      </h3>
       <Carousel
         autoplay
         autoplaySpeed="8000"
@@ -72,7 +72,7 @@ export const SpotlightComponent = ({
       >
         { carouselElement }
       </Carousel>
-      <p className="spotlight__howto">
+      <p>
         If you would like to have your work featured on ProHits-viz, check out our
         help to find out how
       </p>

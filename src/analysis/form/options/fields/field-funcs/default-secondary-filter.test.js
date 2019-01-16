@@ -1,19 +1,19 @@
-import DefaultSecondaryFilter from './default-secondary-filter';
+import defaultSecondaryFilter from './default-secondary-filter';
 
 describe('DefaultSecondaryFilter', () => {
-  test('Valid analysis type and score column returns default value', () => {
-    expect(DefaultSecondaryFilter('dotplot', 'avgp')).toBe(0.8);
+  it('should return default value for valid file type and score column', () => {
+    expect(defaultSecondaryFilter('saint', 'avgp')).toBe(0.8);
   });
 
-  test('Invalid analysis type returns 0.01', () => {
-    expect(DefaultSecondaryFilter('test', 'avgp')).toBe(0.05);
+  it('should return 0.05 for invalid file type', () => {
+    expect(defaultSecondaryFilter('test', 'avgp')).toBe(0.05);
   });
 
-  test('Unrecognized score returns 0.01', () => {
-    expect(DefaultSecondaryFilter('dotplot', 'test')).toBe(0.05);
+  it('should return 0.05 for unrecognized score', () => {
+    expect(defaultSecondaryFilter('saint', 'test')).toBe(0.05);
   });
 
-  test('Uppercase score column returns default value', () => {
-    expect(DefaultSecondaryFilter('dotplot', 'AVGP')).toBe(0.8);
+  it('should return default value for uppercase score column', () => {
+    expect(defaultSecondaryFilter('saint', 'AVGP')).toBe(0.8);
   });
 });

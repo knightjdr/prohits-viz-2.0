@@ -1,21 +1,24 @@
 @import 'style/link';
 
+.tool-selection > p {
+  margin: 0;
+}
 .tool-selection__link {
   @extend .decorate-link;
 }
-.ToolSelection-analysis-select {
-  margin-right: 20px;
-  width: 150px;
-}
-.ToolSelection-select-container {
+.tool-selection__select {
   display: flex;
   margin-top: 15px;
 }
-.ToolSelection-tool-description {
+.tool-selection__select-inner {
+  margin-right: 20px;
+  min-width: 200px;
+}
+.tool-selection__tool-description {
   min-width: 260px;
 }
 @media (max-width: 499px) {
-  .ToolSelection-select-container {
+  .tool-selection__select {
     flex-wrap: wrap;
   }
 }

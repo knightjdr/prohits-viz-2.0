@@ -53,7 +53,7 @@ const CustomInput = ({
       {
         helpMessage &&
         <FontAwesomeIcon
-          className="CustomField-help"
+          className="customfield__help"
           icon={faQuestionSquare}
           onClick={() => { InfoModal(label || 'Help', helpMessage); }}
           size="2x"

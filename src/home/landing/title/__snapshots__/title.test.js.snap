@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title should match snapshot 1`] = `
-<div
-  className="home__title"
+<h1
+  className="landing__title"
 >
+  ProHits-viz
   <img
     alt="ProHits-viz"
     src="title.svg"
   />
-</div>
+</h1>
 `;

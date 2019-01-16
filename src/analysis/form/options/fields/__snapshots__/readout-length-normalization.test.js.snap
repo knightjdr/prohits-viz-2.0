@@ -2,13 +2,13 @@
 
 exports[`ReadoutLengthNormalization Renders 1`] = `
 <div
-  className="ReadoutLengthNormalization-container"
+  className="form__option-cs"
 >
   <div
-    className="ReadoutLengthNormalization-checkbox"
+    className="form__option-cs-checkbox"
   >
     <div
-      className="ReadoutLengthNormalization-checkbox-label"
+      className="form__option-cs-checkbox-label"
     >
       Normalize to readout length:
     </div>
@@ -19,14 +19,14 @@ exports[`ReadoutLengthNormalization Renders 1`] = `
     />
   </div>
   <div
-    className="ReadoutLengthNormalization-select"
+    className="form__option-cs-select"
   >
     <CustomField
       helpMessage={
         <div>
           The abundance value of each readout can be adjusted to it length (gene/protein length) if a column with length is available in the input file. This option should be selected if you are worried the length may be unduly affecting the observed abundance. The adjusted value of a readout is calculated by dividing the median length of all readouts in the data set by the length of readout i and then multiplying by the abundance of readout i.
           <div
-            className="Info-img-container Info-img-padding"
+            className="form__info-img form__info-img_padding"
           >
             <img
               alt="Readout length normalization"

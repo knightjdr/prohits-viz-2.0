@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Output from './output';
+import Output from './output-dotplot';
 
 describe('Output', () => {
-  test('Renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <Output
         analysisType="dotplot"

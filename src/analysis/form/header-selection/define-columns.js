@@ -4,6 +4,14 @@ import FilterHeader from './filter-header';
 ** for the abundance, condition, readout and score columns. */
 
 export const recommendedHeaders = {
+  'circ-heatmap': {
+    saint: {
+      abundance: ['avgspec', 'specsum', 'avgintensity', 'intensitysum'],
+      condition: ['bait', 'baits'],
+      readout: ['preygene', 'prey', 'preygenes', 'preys'],
+      score: ['bfdr', 'fdr', 'saintscore', 'avgp', 'maxp'],
+    },
+  },
   dotplot: {
     saint: {
       abundance: ['avgspec', 'specsum', 'avgintensity', 'intensitysum'],

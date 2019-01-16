@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Description = () => (
-  <p className="home__description">
-    ProHits-viz is a suite of webtools for analyzing and visualizing screens
+  <h2 className="landing__description">
+    A suite of webtools for analyzing and visualizing screens
     and protein-protein interaction data
-  </p>
+  </h2>
 );
 
 export default Description;

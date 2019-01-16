@@ -55,8 +55,8 @@ const About = () => {
           { logoElement }
         </div>
       </div>
-      <div className="about__footer">
-        &copy; 2018,
+      <small>
+        &copy; 2019,
         <a
           className="about__link"
           href="http://gingraslab.lunenfeld.ca/"
@@ -65,7 +65,7 @@ const About = () => {
         >
           Gingras lab
         </a>
-      </div>
+      </small>
     </footer>
   );
 };

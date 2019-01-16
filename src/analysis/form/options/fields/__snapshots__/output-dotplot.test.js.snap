@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Output Renders 1`] = `
-<div>
+exports[`Output should match snapshot 1`] = `
+<div
+  className="form__output"
+>
   <div
-    className="Output-header"
+    className="form__output-header"
   >
     Output
   </div>
-  <div
-    className="Output-introduction"
-  >
+  <p>
     See the
      
     <Component
-      className="Output-introduction-link"
+      className="form__output-introduction-link"
       to="/help/tools/dotplot"
     >
       help
     </Component>
      
     for detailed information on the files output from this tool.
-  </div>
+  </p>
   <div
-    className="Output-checkboxes"
+    className="form__output-checkboxes"
   >
     <div
-      className="Output-checkbox"
+      className="form__output-checkbox"
     >
       <div
-        className="Output-checkbox-label"
+        className="form__output-checkbox-label"
       >
         Generate PNG:
       </div>
@@ -40,10 +40,10 @@ exports[`Output Renders 1`] = `
       />
     </div>
     <div
-      className="Output-checkbox"
+      className="form__output-checkbox"
     >
       <div
-        className="Output-checkbox-label"
+        className="form__output-checkbox-label"
       >
         Generate distance plots:
       </div>
@@ -57,10 +57,10 @@ exports[`Output Renders 1`] = `
       />
     </div>
     <div
-      className="Output-checkbox"
+      className="form__output-checkbox"
     >
       <div
-        className="Output-checkbox-label"
+        className="form__output-checkbox-label"
       >
         Generate heatmap:
       </div>

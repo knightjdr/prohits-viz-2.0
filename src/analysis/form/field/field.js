@@ -19,6 +19,7 @@ export const WrappedField = ({
   helpMessage,
   inputType,
   label,
+  multiple,
   onChange,
   options,
   placeHolder,
@@ -59,6 +60,7 @@ export const WrappedField = ({
           input={input}
           label={label}
           meta={meta}
+          multiple={Boolean(multiple)}
           onChange={onChange}
           options={options}
           placeHolder={placeHolder}

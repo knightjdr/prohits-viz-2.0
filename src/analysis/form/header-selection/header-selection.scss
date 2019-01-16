@@ -1,12 +1,12 @@
 @import 'style/link';
 
-.HeaderSelection-container {
+.form__header-selection {
     margin-top: 25px;
 }
-.HeaderSelection-link {
+.form__header-selection-link {
   @extend .decorate-link;
 }
-.HeaderSelection-select-container {
+.form__header-selection-select {
   display: grid;
   grid-column-gap: 10px;
   grid-row-gap: 0px;

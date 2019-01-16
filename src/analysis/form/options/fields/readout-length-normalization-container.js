@@ -6,7 +6,7 @@ import ReadoutLengthNormalization from './readout-length-normalization';
 import FilterHeader from '../../header-selection/filter-header';
 
 const recommendedColumns = [
-  'readoutsequencelength',
+  'preysequencelength',
 ];
 
 class ReadoutLengthNormalizationContainer extends Component {

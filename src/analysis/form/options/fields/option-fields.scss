@@ -1,22 +1,22 @@
 @import 'style/ant';
 
-.ReadoutLengthNormalization-container {
+.form__option-cs {
   display: flex;
   flex-wrap: wrap;
 }
-.ReadoutLengthNormalization-checkbox {
+.form__option-cs-checkbox {
   display: flex;
   margin-right: 10px;
   margin-top: 38px;
   min-width: 250px;
   width: 25%;
 }
-.ReadoutLengthNormalization-checkbox-label {
+.form__option-cs-checkbox-label {
   @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: 170px;
 }
-.ReadoutLengthNormalization-select {
+.form__option-cs-select {
   flex-grow: 1;
 }

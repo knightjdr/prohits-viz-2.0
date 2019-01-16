@@ -1,24 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import DefaultScore from './field-funcs/default-secondary-filter';
+import defaultScore from './field-funcs/default-secondary-filter';
 import SecondaryFilter from './secondary-filter';
 
 class SecondaryFilterContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     const {
-      analysisType,
+      fileType,
       score,
     } = nextProps;
-    // if score or analysisType changes, set new default
-    this.setReduxFormState(analysisType, score);
+    this.setReduxFormState(fileType, score);
   }
-  setReduxFormState = (analysisType, score) => {
+  setReduxFormState = (fileType, score) => {
     if (
-      analysisType !== this.props.analysisType ||
+      fileType !== this.props.fileType ||
       score !== this.props.score
     ) {
-      this.props.change('secondaryFilter', DefaultScore(analysisType, score));
+      this.props.change('secondaryFilter', defaultScore(fileType, score));
     }
   }
   render() {
@@ -35,6 +34,7 @@ SecondaryFilterContainer.defaultProps = {
 SecondaryFilterContainer.propTypes = {
   analysisType: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired,
+  fileType: PropTypes.string.isRequired,
   score: PropTypes.string,
 };
 

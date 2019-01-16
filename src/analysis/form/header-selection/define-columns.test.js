@@ -13,10 +13,18 @@ const expected = {
 };
 
 describe('DefineColumns', () => {
-  test('Calls FilterHeader with the correct recommended array', () => {
+  it('should call FilterHeader with the circ-heatmap array', () => {
+    const columns = DefineColumns('circ-heatmap', 'saint', header);
+    expect(columns).toEqual(expected);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders['circ-heatmap'].saint.abundance, header);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders['circ-heatmap'].saint.condition, header);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders['circ-heatmap'].saint.readout, header);
+    expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders['circ-heatmap'].saint.score, header);
+  });
+
+  it('should call FilterHeader with the dotplot array', () => {
     const columns = DefineColumns('dotplot', 'saint', header);
     expect(columns).toEqual(expected);
-    expect(FilterHeader).toHaveBeenCalledTimes(4);
     expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.abundance, header);
     expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.condition, header);
     expect(FilterHeader).toHaveBeenCalledWith(recommendedHeaders.dotplot.saint.readout, header);

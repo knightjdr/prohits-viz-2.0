@@ -1,34 +1,34 @@
 @import 'style/ant';
 @import 'style/link';
 
-.Clustering-header {
+.form__option-clustering-header {
   @extend .ant-text;
   font-size: 16px;
   font-weight: 500;
 }
-.Clustering-checkbox {
+.form__option-clustering-checkbox {
   display: flex;
   margin-right: 10px;
   min-width: 250px;
   width: 25%;
 }
-.Clustering-checkbox-label {
+.form__option-clustering-checkbox-label {
   @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: 170px;
 }
-.Clustering-introduction {
+.form__option-clustering-introduction {
   @extend .ant-text;
   margin: 10px 0;
 }
-.Clustering-introduction-link {
+.form__option-clustering-introduction-link {
   @extend .decorate-link;
 }
-.Clustering-biclustering-checkbox {
+.form__option-clustering-biclustering-checkbox {
   display: flex;
 }
-.Clustering-biclustering-checkbox-label {
+.form__option-clustering-biclustering-checkbox-label {
   @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;

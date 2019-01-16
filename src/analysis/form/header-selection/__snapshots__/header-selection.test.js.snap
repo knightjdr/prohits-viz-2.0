@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeaderSelection Renders 1`] = `
+exports[`HeaderSelection should match snapshot 1`] = `
 <div
-  className="HeaderSelection-container"
+  className="form__header-selection"
 >
   <Divider>
     Columns
@@ -11,7 +11,7 @@ exports[`HeaderSelection Renders 1`] = `
     Specify the columns to use if they have not been preselected. See
      
     <Component
-      className="HeaderSelection-link"
+      className="form__header-selection-link"
       onClick={[Function]}
       to="/help/format"
     >
@@ -21,7 +21,7 @@ exports[`HeaderSelection Renders 1`] = `
     to learn about how the columns are used during analysis.
   </div>
   <div
-    className="HeaderSelection-select-container"
+    className="form__header-selection-select"
   >
     <CustomField
       label="Condition column"

@@ -39,7 +39,7 @@ describe('Input', () => {
     const input = wrapper.find('Input').first();
     expect(input.props().type).toBe('text');
     expect(input.props().defaultValue).toBeUndefined();
-    expect(wrapper.find('svg.CustomField-help').length).toBe(1);
+    expect(wrapper.find('svg.customfield__help').length).toBe(1);
   });
 
   it('should render with without help message', () => {
@@ -63,7 +63,7 @@ describe('Input', () => {
       </TestForm>,
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('svg.CustomField-help').length).toBe(0);
+    expect(wrapper.find('svg.customfield__help').length).toBe(0);
   });
 
   it('should call modal on button click', () => {
@@ -88,7 +88,7 @@ describe('Input', () => {
       </TestForm>,
     );
     jest.clearAllMocks();
-    const button = wrapper.find('.CustomField-help').first();
+    const button = wrapper.find('.customfield__help').first();
     button.simulate('click');
     expect(InfoModal).toHaveBeenCalledTimes(1);
     expect(InfoModal).toHaveBeenCalledWith('Label', 'help');
@@ -115,7 +115,7 @@ describe('Input', () => {
       </TestForm>,
     );
     jest.clearAllMocks();
-    const button = wrapper.find('.CustomField-help').first();
+    const button = wrapper.find('.customfield__help').first();
     button.simulate('click');
     expect(InfoModal).toHaveBeenCalledTimes(1);
     expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
@@ -172,7 +172,7 @@ describe('Input', () => {
     );
     jest.clearAllMocks();
     const input = wrapper.find('Input').first();
-    input.props().onPressEnter({ target: { value: 10 }});
+    input.props().onPressEnter({ target: { value: 10 } });
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(10, formInput);
   });

@@ -6,15 +6,15 @@ import DefaultChange from '../../field/default-change';
 import DefaultCheckboxChange from '../../field/default-checkbox-change';
 import Info from '../info/info';
 
-import './control-subtraction.css';
+import './option-fields.css';
 
 const ControlSubtraction = ({
   analysisType,
   options,
 }) => (
-  <div className="ControlSubtraction-container">
-    <div className="ControlSubtraction-checkbox">
-      <div className="ControlSubtraction-checkbox-label">
+  <div className="form__option-cs">
+    <div className="form__option-cs-checkbox">
+      <div className="form__option-cs-checkbox-label">
         Control subtraction:
       </div>
       <CustomField
@@ -23,7 +23,7 @@ const ControlSubtraction = ({
         type="switch"
       />
     </div>
-    <div className="ControlSubtraction-select">
+    <div className="form__option-cs-select">
       <CustomField
         helpMessage={Info[analysisType].control}
         label="Control column"

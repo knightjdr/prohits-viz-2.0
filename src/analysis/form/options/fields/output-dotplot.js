@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -8,52 +7,48 @@ import Info from '../info/info';
 
 import './output.css';
 
-const Output = ({
-  analysisType,
-}) => (
-  <div>
-    <div className="Output-header">
-      Output
-    </div>
-    <div className="Output-introduction">
+const Output = () => (
+  <div className="form__output">
+    <div className="form__output-header">Output</div>
+    <p>
       See the{' '}
       <NavLink
-        className="Output-introduction-link"
+        className="form__output-introduction-link"
         to="/help/tools/dotplot"
       >
         help
       </NavLink>{' '}
       for detailed information on the files output from this tool.
-    </div>
-    <div className="Output-checkboxes">
-      <div className="Output-checkbox">
-        <div className="Output-checkbox-label">
+    </p>
+    <div className="form__output-checkboxes">
+      <div className="form__output-checkbox">
+        <div className="form__output-checkbox-label">
           Generate PNG:
         </div>
         <CustomField
-          helpMessage={Info[analysisType].png}
+          helpMessage={Info.dotplot.png}
           name="png"
           onChange={DefaultCheckboxChange}
           type="switch"
         />
       </div>
-      <div className="Output-checkbox">
-        <div className="Output-checkbox-label">
+      <div className="form__output-checkbox">
+        <div className="form__output-checkbox-label">
           Generate distance plots:
         </div>
         <CustomField
-          helpMessage={Info[analysisType].writeDistance}
+          helpMessage={Info.dotplot.writeDistance}
           name="writeDistance"
           onChange={DefaultCheckboxChange}
           type="switch"
         />
       </div>
-      <div className="Output-checkbox">
-        <div className="Output-checkbox-label">
+      <div className="form__output-checkbox">
+        <div className="form__output-checkbox-label">
           Generate heatmap:
         </div>
         <CustomField
-          helpMessage={Info[analysisType].writeHeatmap}
+          helpMessage={Info.dotplot.writeHeatmap}
           name="writeHeatmap"
           onChange={DefaultCheckboxChange}
           type="switch"
@@ -62,9 +57,5 @@ const Output = ({
     </div>
   </div>
 );
-
-Output.propTypes = {
-  analysisType: PropTypes.string.isRequired,
-};
 
 export default Output;

@@ -6,7 +6,7 @@ exports[`EdgeColor Renders 1`] = `
     <div>
       Various options are available for the fill and edge color, and these can be applied independently using the approiate menu.
       <div
-        className="Info-img-container"
+        className="form__info-img"
       >
         <img
           alt="Color scales"

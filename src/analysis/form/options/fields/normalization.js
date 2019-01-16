@@ -13,9 +13,9 @@ const Normalization = ({
 }) => {
   const readoutNorm = normalization === 'readout';
   return (
-    <div className="Normalization-container">
+    <div className="form__option-normalization">
       <div
-        className="Normalization-select"
+        className="form__option-normalization-select"
         style={{
           marginRight: normalization === 'readout' ? 20 : 0,
         }}
@@ -36,7 +36,7 @@ const Normalization = ({
       </div>
       {
         normalization === 'readout' &&
-        <div className="Normalization-input">
+        <div className="form__option-normalization-input">
           <CustomField
             helpMessage={Info[analysisType].normalization}
             label="Readout for normalization"

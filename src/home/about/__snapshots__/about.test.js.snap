@@ -67,10 +67,8 @@ exports[`About should match snapshot 1`] = `
       </a>
     </div>
   </div>
-  <div
-    className="about__footer"
-  >
-    © 2018,
+  <small>
+    © 2019,
     <a
       className="about__link"
       href="http://gingraslab.lunenfeld.ca/"
@@ -79,6 +77,6 @@ exports[`About should match snapshot 1`] = `
     >
       Gingras lab
     </a>
-  </div>
+  </small>
 </footer>
 `;

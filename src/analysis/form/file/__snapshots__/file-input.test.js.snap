@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FileInput Renders 1`] = `
+exports[`FileInput should match snapshot 1`] = `
 <div
-  className="FileInput-container"
+  className="form__file-input"
 >
   <Divider>
     File selection
   </Divider>
-  <div>
+  <p>
     Specifiy the type of file you would like to analyze and select or drag it to the input below. See the 
      
     <Component
-      className="FileInput-link"
+      className="form__file-input-link"
       onClick={[Function]}
       to="/help/format"
     >
@@ -21,7 +21,7 @@ exports[`FileInput Renders 1`] = `
     for information on input formats. Click
      
     <button
-      className="FileInput-sample-button"
+      className="form__file-input-sample-button"
       onClick={[Function]}
       type="button"
     >
@@ -29,12 +29,12 @@ exports[`FileInput Renders 1`] = `
     </button>
      
     if you would like to try a sample input file.
-  </div>
+  </p>
   <div
-    className="FileInput-select-container"
+    className="form__file-input-select"
   >
     <div
-      className="FileInput-select"
+      className="form__file-input-select-inner"
     >
       <CustomField
         name="fileType"
@@ -42,18 +42,35 @@ exports[`FileInput Renders 1`] = `
         options={
           Array [
             Object {
-              "text": "SAINT",
-              "value": "saint",
+              "children": Array [
+                Object {
+                  "text": "SAINT",
+                  "value": "saint",
+                },
+                Object {
+                  "disabled": true,
+                  "text": "CRAPome",
+                  "value": "crapome",
+                },
+                Object {
+                  "disabled": true,
+                  "text": "Generic",
+                  "value": "generic",
+                },
+              ],
+              "group": true,
+              "text": "Protein interaction",
             },
             Object {
-              "disabled": true,
-              "text": "CRAPome",
-              "value": "crapome",
-            },
-            Object {
-              "disabled": true,
-              "text": "Generic",
-              "value": "generic",
+              "children": Array [
+                Object {
+                  "disabled": true,
+                  "text": "BAGEL",
+                  "value": "bagel",
+                },
+              ],
+              "group": true,
+              "text": "CRISPR",
             },
           ]
         }
@@ -62,7 +79,7 @@ exports[`FileInput Renders 1`] = `
       />
     </div>
     <div
-      className="FileInput-upload-wrapper"
+      className="form__file-input-upload-wrapper"
     >
       <CustomField
         name="file"

@@ -50,9 +50,9 @@ const details = {
 
 const Tools = () => (
   <section className="tools">
-    <h1 className="tools__description">
+    <h3>
       GETTING STARTED
-    </h1>
+    </h3>
     <div className="tools__toolbox">
       <ToolBox
         image={details.analysis.image}

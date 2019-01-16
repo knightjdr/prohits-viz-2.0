@@ -2,31 +2,34 @@
 @import 'style/link';
 @import 'style/theme';
 
-.FileInput-container {
+.form__file-input {
   display: flex;
   flex-direction: column;
 }
-.FileInput-fa-icon {
+.form__file-input > p {
+  margin: 0;
+}
+.form__file-input-fa-icon {
   margin-right: 5px;
 }
-.FileInput-link {
+.form__file-input-link {
   @extend .decorate-link;
 }
-.FileInput-sample-button {
+.form__file-input-sample-button {
   @extend .nobutton;
   color: $primary-medium;
   padding: 0;
   text-decoration: underline;
 }
-.FileInput-select {
-  margin-right: 20px;
-  width: 150px;
-}
-.FileInput-select-container {
+.form__file-input-select {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.FileInput-upload-wrapper {
+.form__file-input-select-inner {
+  margin-right: 20px;
+  width: 150px;
+}
+.form__file-input-upload-wrapper {
   width: 200px;
 }

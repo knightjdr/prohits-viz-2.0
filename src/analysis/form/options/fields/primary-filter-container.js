@@ -7,18 +7,17 @@ import PrimaryFilter from './primary-filter';
 class PrimaryFilterContainer extends Component {
   componentWillReceiveProps = (nextProps) => {
     const {
-      analysisType,
+      fileType,
       score,
     } = nextProps;
-    // if score or analysisType changes, set new default
-    this.setReduxFormState(analysisType, score);
+    this.setReduxFormState(fileType, score);
   }
-  setReduxFormState = (analysisType, score) => {
+  setReduxFormState = (fileType, score) => {
     if (
-      analysisType !== this.props.analysisType ||
+      fileType !== this.props.fileType ||
       score !== this.props.score
     ) {
-      this.props.change('primaryFilter', DefaultScore(analysisType, score));
+      this.props.change('primaryFilter', DefaultScore(fileType, score));
     }
   }
   render() {
@@ -35,6 +34,7 @@ PrimaryFilterContainer.defaultProps = {
 PrimaryFilterContainer.propTypes = {
   analysisType: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired,
+  fileType: PropTypes.string.isRequired,
   score: PropTypes.string,
 };
 

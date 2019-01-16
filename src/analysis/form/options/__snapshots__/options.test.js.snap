@@ -2,7 +2,7 @@
 
 exports[`DotplotOptions Renders when hidden 1`] = `
 <div
-  className="Options-container"
+  className="form__options"
   style={
     Object {
       "height": 0,
@@ -14,22 +14,12 @@ exports[`DotplotOptions Renders when hidden 1`] = `
   <Divider>
     Advanced options
   </Divider>
-  <DotplotOptions
-    change={[Function]}
-    form={Object {}}
-    header={
-      Array [
-        "a",
-        "b",
-      ]
-    }
-  />
 </div>
 `;
 
 exports[`DotplotOptions Renders when visible 1`] = `
 <div
-  className="Options-container"
+  className="form__options"
   style={
     Object {
       "height": "auto",
@@ -41,15 +31,5 @@ exports[`DotplotOptions Renders when visible 1`] = `
   <Divider>
     Advanced options
   </Divider>
-  <DotplotOptions
-    change={[Function]}
-    form={Object {}}
-    header={
-      Array [
-        "a",
-        "b",
-      ]
-    }
-  />
 </div>
 `;

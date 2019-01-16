@@ -4,11 +4,9 @@ exports[`Spotlight should render with articles 1`] = `
 <section
   className="spotlight"
 >
-  <h1
-    className="spotlight__header"
-  >
+  <h3>
     SPOTLIGHT
-  </h1>
+  </h3>
   <Carousel
     arrows={false}
     autoplay={true}
@@ -75,9 +73,7 @@ exports[`Spotlight should render with articles 1`] = `
       </div>
     </div>
   </Carousel>
-  <p
-    className="spotlight__howto"
-  >
+  <p>
     If you would like to have your work featured on ProHits-viz, check out our help to find out how
   </p>
 </section>

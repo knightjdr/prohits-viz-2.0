@@ -20,6 +20,7 @@ const CustomSelect = ({
   input,
   label,
   meta,
+  multiple,
   onChange,
   options,
   placeHolder,
@@ -27,6 +28,12 @@ const CustomSelect = ({
 }) => {
   const { error, touched } = meta;
   const formError = touched && error;
+  const change = (value) => {
+    onChange(value, input);
+  };
+  const openModal = () => {
+    InfoModal(label || 'Help', helpMessage);
+  };
   return (
     <div className="CustomField-container">
       <FormItem
@@ -37,7 +44,9 @@ const CustomSelect = ({
       >
         <Select
           allowClear={allowClear}
-          onChange={(value) => { onChange(value, input); }}
+          autoClearSearchValue={false}
+          mode={multiple ? 'multiple' : 'default'}
+          onChange={change}
           placeholder={placeHolder}
           style={style}
           value={input.value || undefined}
@@ -82,9 +91,9 @@ const CustomSelect = ({
       {
         helpMessage &&
         <FontAwesomeIcon
-          className="CustomField-help"
+          className="customfield__help"
           icon={faQuestionSquare}
-          onClick={() => { InfoModal(label || 'Help', helpMessage); }}
+          onClick={openModal}
           size="2x"
         />
       }
@@ -96,6 +105,7 @@ CustomSelect.defaultProps = {
   allowClear: false,
   helpMessage: null,
   label: null,
+  multiple: false,
   options: [],
   placeHolder: 'Select',
   style: {},
@@ -110,8 +120,10 @@ CustomSelect.propTypes = {
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
-      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.number),
+      PropTypes.arrayOf(PropTypes.string),
       PropTypes.number,
+      PropTypes.string,
     ]),
   }).isRequired,
   label: PropTypes.string,
@@ -120,6 +132,7 @@ CustomSelect.propTypes = {
     touched: PropTypes.bool,
     warning: PropTypes.string,
   }).isRequired,
+  multiple: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({

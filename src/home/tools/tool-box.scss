@@ -25,6 +25,7 @@
   @extend .nobutton;
 }
 .toolbox__details {
+  align-items: center;
   display: flex;
 }
 .toolbox__image {
@@ -32,18 +33,16 @@
   color: $accent-dark;
   display: flex;
   font-size: 50px;
-  justify-content: center;
   margin-left: 10px;
 }
-.toolbox__text {
-  align-items: center;
+.toolbox__details > p {
   color: $text-dark;
-  display: flex;
   font-size: 0.9em;
+  margin: 0;
   padding: 10px;
   text-align: justify;
 }
-.toolbox__title {
+.toolbox > h4 {
   color: $accent-dark;
   font-family: $TitleFont;
   font-size: 1.1em;

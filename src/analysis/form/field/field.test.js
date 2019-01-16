@@ -34,83 +34,252 @@ const options = {
 };
 
 describe('Field', () => {
-  test('componentElement returns checkbox', () => {
-    const component = WrappedField({ ...options, ...{ type: 'checkbox' } });
-    expect(component.type().props.className).toBe('checkbox');
-    expect(Object.keys(component.props).includes('formItemLayout')).toBeTruthy();
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
+  describe('checkbox', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'checkbox' } });
+    });
+
+    it('should have checkbox class', () => {
+      expect(wrapper.type().props.className).toBe('checkbox');
+    });
+
+    it('should have formItemLayout', () => {
+      expect(Object.keys(wrapper.props).includes('formItemLayout')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns input', () => {
-    const component = WrappedField({ ...options, ...{ type: 'input' } });
-    expect(component.type().props.className).toBe('input');
-    expect(Object.keys(component.props).includes('helpMessage')).toBeTruthy();
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('meta')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('placeHolder')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
-    expect(Object.keys(component.props).includes('type')).toBeTruthy();
+  describe('input', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'input' } });
+    });
+
+    it('should have input class', () => {
+      expect(wrapper.type().props.className).toBe('input');
+    });
+
+    it('should have helpMessage', () => {
+      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have meta', () => {
+      expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have placeHolder', () => {
+      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
+
+    it('should have type', () => {
+      expect(Object.keys(wrapper.props).includes('type')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns select', () => {
-    const component = WrappedField({ ...options, ...{ type: 'select' } });
-    expect(component.type().props.className).toBe('select');
-    expect(Object.keys(component.props).includes('allowClear')).toBeTruthy();
-    expect(Object.keys(component.props).includes('helpMessage')).toBeTruthy();
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('meta')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('options')).toBeTruthy();
-    expect(Object.keys(component.props).includes('placeHolder')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
+  describe('select', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'select' } });
+    });
+
+    it('should have select class', () => {
+      expect(wrapper.type().props.className).toBe('select');
+    });
+
+    it('should have allowClear', () => {
+      expect(Object.keys(wrapper.props).includes('allowClear')).toBeTruthy();
+    });
+
+    it('should have helpMessage', () => {
+      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have meta', () => {
+      expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
+    });
+
+    it('should have multiple', () => {
+      expect(Object.keys(wrapper.props).includes('multiple')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have options', () => {
+      expect(Object.keys(wrapper.props).includes('options')).toBeTruthy();
+    });
+
+    it('should have placeHolder', () => {
+      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns switch', () => {
-    const component = WrappedField({ ...options, ...{ type: 'switch' } });
-    expect(component.type().props.className).toBe('switch');
-    expect(Object.keys(component.props).includes('helpMessage')).toBeTruthy();
-    expect(Object.keys(component.props).includes('formItemLayout')).toBeTruthy();
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
+  describe('switch', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'switch' } });
+    });
+
+    it('should have switch class', () => {
+      expect(wrapper.type().props.className).toBe('switch');
+    });
+
+    it('should have formItemLayout', () => {
+      expect(Object.keys(wrapper.props).includes('formItemLayout')).toBeTruthy();
+    });
+
+    it('should have helpMessage', () => {
+      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns text-area', () => {
-    const component = WrappedField({ ...options, ...{ type: 'textArea' } });
-    expect(component.type().props.className).toBe('text-area');
-    expect(Object.keys(component.props).includes('helpMessage')).toBeTruthy();
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('meta')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('placeHolder')).toBeTruthy();
-    expect(Object.keys(component.props).includes('rows')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
+  describe('text-area', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'textArea' } });
+    });
+
+    it('should have text-area class', () => {
+      expect(wrapper.type().props.className).toBe('text-area');
+    });
+
+    it('should have helpMessage', () => {
+      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have meta', () => {
+      expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have placeHolder', () => {
+      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
+    });
+
+    it('should have rows', () => {
+      expect(Object.keys(wrapper.props).includes('rows')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns upload', () => {
-    const component = WrappedField({ ...options, ...{ type: 'upload' } });
-    expect(component.type().props.className).toBe('upload');
-    expect(Object.keys(component.props).includes('input')).toBeTruthy();
-    expect(Object.keys(component.props).includes('label')).toBeTruthy();
-    expect(Object.keys(component.props).includes('meta')).toBeTruthy();
-    expect(Object.keys(component.props).includes('onChange')).toBeTruthy();
-    expect(Object.keys(component.props).includes('style')).toBeTruthy();
+  describe('upload', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'upload' } });
+    });
+
+    it('should have upload class', () => {
+      expect(wrapper.type().props.className).toBe('upload');
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have meta', () => {
+      expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
   });
 
-  test('componentElement returns other', () => {
-    const component = WrappedField({ ...options, ...{ type: 'other' } });
-    expect(component).toBeNull();
+  it('should return null for other component type', () => {
+    const wrapper = WrappedField({ ...options, ...{ type: 'other' } });
+    expect(wrapper).toBeNull();
   });
 
-  test('Field renders', () => {
+  it('should render field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestCheckbox"
@@ -120,7 +289,7 @@ describe('Field', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Field integration wraps checkbox', () => {
+  it('should wrap checkbox with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestCheckbox"
@@ -130,7 +299,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('checkbox');
   });
 
-  test('Field integration wraps input', () => {
+  it('should wrap input with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestInput"
@@ -140,7 +309,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('input');
   });
 
-  test('Field integration wraps select', () => {
+  it('should wrap select with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestSelect"
@@ -150,7 +319,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('select');
   });
 
-  test('Field integration wraps switch', () => {
+  it('should wrap switch with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestSwitch"
@@ -160,7 +329,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('switch');
   });
 
-  test('Field integration wraps text-area', () => {
+  it('should wrap text-area with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestTextArea"
@@ -170,7 +339,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('text-area');
   });
 
-  test('Field integration wraps upload', () => {
+  it('should wrap upload with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestUpload"
@@ -180,7 +349,7 @@ describe('Field', () => {
     expect(wrapper.props().component(field).type().props.className).toBe('upload');
   });
 
-  test('Field integration wraps other', () => {
+  it('should wrap other with field', () => {
     const wrapper = shallow(
       <CustomField
         name="TestUpload"

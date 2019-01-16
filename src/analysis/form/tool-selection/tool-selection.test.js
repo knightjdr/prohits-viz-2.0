@@ -4,25 +4,48 @@ import { shallow } from 'enzyme';
 import { ToolSelectionComponent } from './tool-selection';
 
 describe('ToolSelectionComponent', () => {
-  test('Renders item without selected analysis type', () => {
-    const wrapper = shallow(
-      <ToolSelectionComponent
-        form={{}}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
+  describe('with no selected type', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <ToolSelectionComponent
+          form={{}}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not show description', () => {
+      expect(wrapper.find('.tool-selection__tool-description').length).toBe(0);
+    });
   });
 
-  test('Renders item with selected analysis type', () => {
-    const wrapper = shallow(
-      <ToolSelectionComponent
-        form={{ analysisType: 'dotplot' }}
-      />,
-    );
-    expect(wrapper).toMatchSnapshot();
-    // opens an info Alert box
-    expect(wrapper.find('.ToolSelection-tool-description').length).toBe(1);
-    const alertProps = wrapper.find('Alert').props();
-    expect(alertProps.type).toEqual('info');
+  describe('with selected analysis type', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(
+        <ToolSelectionComponent
+          form={{ analysisType: 'dotplot' }}
+        />,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show description', () => {
+      expect(wrapper.find('.tool-selection__tool-description').length).toBe(1);
+    });
+
+    it('should open alert', () => {
+      const alertProps = wrapper.find('Alert').props();
+      expect(alertProps.type).toEqual('info');
+    });
   });
 });

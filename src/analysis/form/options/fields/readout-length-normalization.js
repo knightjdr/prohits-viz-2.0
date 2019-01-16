@@ -6,15 +6,15 @@ import DefaultChange from '../../field/default-change';
 import DefaultCheckboxChange from '../../field/default-checkbox-change';
 import Info from '../info/info';
 
-import './readout-length-normalization.css';
+import './option-fields.css';
 
 const ReadoutLengthNormalization = ({
   analysisType,
   options,
 }) => (
-  <div className="ReadoutLengthNormalization-container">
-    <div className="ReadoutLengthNormalization-checkbox">
-      <div className="ReadoutLengthNormalization-checkbox-label">
+  <div className="form__option-cs">
+    <div className="form__option-cs-checkbox">
+      <div className="form__option-cs-checkbox-label">
         Normalize to readout length:
       </div>
       <CustomField
@@ -23,7 +23,7 @@ const ReadoutLengthNormalization = ({
         type="switch"
       />
     </div>
-    <div className="ReadoutLengthNormalization-select">
+    <div className="form__option-cs-select">
       <CustomField
         helpMessage={Info[analysisType].readoutLength}
         label="Readout length column"

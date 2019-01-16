@@ -11,19 +11,15 @@ exports[`Toolbox with external link should match snapshot 1`] = `
     <div
       className="toolbox"
     >
-      <div
-        className="toolbox__title"
-      >
+      <h4>
         Test
-      </div>
+      </h4>
       <div
         className="toolbox__details"
       >
-        <div
-          className="toolbox__text"
-        >
+        <p>
           Test
-        </div>
+        </p>
         <div
           className="toolbox__image"
         >
@@ -49,19 +45,15 @@ exports[`Toolbox with internal link should match snapshot 1`] = `
     <div
       className="toolbox"
     >
-      <div
-        className="toolbox__title"
-      >
+      <h4>
         Test
-      </div>
+      </h4>
       <div
         className="toolbox__details"
       >
-        <div
-          className="toolbox__text"
-        >
+        <p>
           Test
-        </div>
+        </p>
         <div
           className="toolbox__image"
         >

@@ -9,6 +9,8 @@ jest.mock('./info-modal');
 
 const inputOnChange = jest.fn();
 const onChange = jest.fn();
+const onSubmit = jest.fn();
+
 const options = [
   { text: 'option1', value: 1 },
   { text: 'option2', value: 2 },
@@ -25,7 +27,160 @@ const optionsGroup = [
 ];
 
 describe('Select', () => {
-  test('Renders with no value and help message', () => {
+  describe('with no value but with help message', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            onChange: inputOnChange,
+            value: undefined,
+          }}
+          meta={{ error: '', touched: false, warning: '' }}
+          onSubmit={onSubmit}
+        >
+          <Select
+            allowClear
+            helpMessage="help"
+            input={{}}
+            label="Label"
+            meta={{}}
+            name="TestSelect"
+            onChange={onChange}
+            options={options}
+            placeHolder="Select..."
+            required
+            style={{ backgroundColor: '#000' }}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have no value', () => {
+      const select = wrapper.find('Select').first();
+      expect(select.props().value).toBeUndefined();
+    });
+
+    it('should have help', () => {
+      expect(wrapper.find('svg.customfield__help').length).toBe(1);
+    });
+
+    it('should have default mode', () => {
+      const select = wrapper.find('Select').first();
+      expect(select.props().mode).toBe('default');
+    });
+
+    it('should have custom style', () => {
+      const selectStyle = wrapper.find('Select').first().props().style;
+      expect(selectStyle).toHaveProperty('backgroundColor', '#000');
+    });
+
+    it('should open modal', () => {
+      InfoModal.mockClear();
+      const button = wrapper.find('.customfield__help').first();
+      button.simulate('click');
+      expect(InfoModal).toHaveBeenCalledWith('Label', 'help');
+    });
+
+    it('should call onChange when option changes', () => {
+      onChange.mockClear();
+      const select = wrapper.find('Select').first();
+      select.props().onChange();
+      expect(onChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call submit on button click', () => {
+      onSubmit.mockClear();
+      const button = wrapper.find('button');
+      button.simulate('submit');
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('with multiple option', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            onChange: inputOnChange,
+            value: undefined,
+          }}
+          meta={{ error: '', touched: false, warning: '' }}
+          onSubmit={onSubmit}
+        >
+          <Select
+            allowClear
+            helpMessage="help"
+            input={{}}
+            label="Label"
+            meta={{}}
+            multiple
+            name="TestSelect"
+            onChange={onChange}
+            options={options}
+            placeHolder="Select..."
+            required
+            style={{ backgroundColor: '#000' }}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have multiple mode', () => {
+      const select = wrapper.find('Select').first();
+      expect(select.props().mode).toBe('multiple');
+    });
+  });
+
+  describe('with no help message', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            onChange: inputOnChange,
+            value: undefined,
+          }}
+          meta={{ error: '', touched: false, warning: '' }}
+        >
+          <Select
+            allowClear
+            input={{}}
+            label="Label"
+            meta={{}}
+            name="TestSelect"
+            onChange={onChange}
+            options={options}
+            placeHolder="Select..."
+            required
+            style={{}}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not have help', () => {
+      expect(wrapper.find('svg.customfield__help').length).toBe(0);
+    });
+  });
+
+  it('should open modal without label text', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -38,7 +193,6 @@ describe('Select', () => {
           allowClear
           helpMessage="help"
           input={{}}
-          label="Label"
           meta={{}}
           name="TestSelect"
           onChange={onChange}
@@ -49,101 +203,13 @@ describe('Select', () => {
         />
       </TestForm>,
     );
-    expect(wrapper).toMatchSnapshot();
-    const select = wrapper.find('Select').first();
-    expect(select.props().value).toBeUndefined();
-    expect(wrapper.find('svg.CustomField-help').length).toBe(1);
-  });
-
-  test('Renders with without help message', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Select
-          allowClear
-          input={{}}
-          label="Label"
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('svg.CustomField-help').length).toBe(0);
-  });
-
-  test('Modal called on button click', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Select
-          allowClear
-          helpMessage="help"
-          label="Label"
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    jest.clearAllMocks();
-    const button = wrapper.find('.CustomField-help').first();
+    InfoModal.mockClear();
+    const button = wrapper.find('.customfield__help').first();
     button.simulate('click');
-    expect(InfoModal).toHaveBeenCalledTimes(1);
-    expect(InfoModal).toHaveBeenCalledWith('Label', 'help');
-  });
-
-  test('Modal called on button click without title text', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Select
-          allowClear
-          helpMessage="help"
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    jest.clearAllMocks();
-    const button = wrapper.find('.CustomField-help').first();
-    button.simulate('click');
-    expect(InfoModal).toHaveBeenCalledTimes(1);
     expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
   });
 
-  test('Renders with group', () => {
+  it('should renders with an option group', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -168,34 +234,7 @@ describe('Select', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('On change called when option changes', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Select
-          allowClear
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const select = wrapper.find('Select').first();
-    select.props().onChange();
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  test('Can be set via input.value', () => {
+  it('should set input value via input prop', () => {
     const wrapper = mount(
       <TestForm
         input={{
@@ -227,86 +266,45 @@ describe('Select', () => {
     expect(select.props().value).toBe(1);
   });
 
-  test('Submit called on button click', () => {
-    const onSubmitSpy = jest.fn();
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-        onSubmit={onSubmitSpy}
-      >
-        <Select
-          allowClear
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button');
-    button.simulate('submit');
-    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-  });
+  describe('submit error', () => {
+    let wrapper;
 
-  test('Submit error adds prop visualization queue', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: 'Error message', touched: true, warning: '' }}
-      >
-        <Select
-          allowClear
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    expect(wrapper).toMatchSnapshot();
-    const formItem = wrapper.find('FormItem');
-    expect(formItem.props().help).toBe('Error message');
-    expect(formItem.props().validateStatus).toBe('error');
-  });
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            onChange: inputOnChange,
+            value: undefined,
+          }}
+          meta={{ error: 'Error message', touched: true, warning: '' }}
+        >
+          <Select
+            allowClear
+            input={{}}
+            meta={{}}
+            name="TestSelect"
+            onChange={onChange}
+            options={options}
+            placeHolder="Select..."
+            required
+            style={{}}
+          />
+        </TestForm>,
+      );
+    });
 
-  test('Can add custom style', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          onChange: inputOnChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Select
-          allowClear
-          input={{}}
-          meta={{}}
-          name="TestSelect"
-          onChange={onChange}
-          options={options}
-          placeHolder="Select..."
-          required
-          style={{ backgroundColor: '#000' }}
-        />
-      </TestForm>,
-    );
-    const selectStyle = wrapper.find('Select').first().props().style;
-    expect(selectStyle).toHaveProperty('backgroundColor', '#000');
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should set error message', () => {
+      const formItem = wrapper.find('FormItem');
+      expect(formItem.props().help).toBe('Error message');
+    });
+
+    it('should set error status', () => {
+      const formItem = wrapper.find('FormItem');
+      expect(formItem.props().validateStatus).toBe('error');
+    });
   });
 });

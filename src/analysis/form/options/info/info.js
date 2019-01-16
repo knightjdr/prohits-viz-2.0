@@ -1,6 +1,8 @@
-import Dotplot from './info-dotplot';
+import circHeatmap from './info-circ-heatmap';
+import dotplot from './info-dotplot';
 
 const Info = {
-  dotplot: Dotplot,
+  'circ-heatmap': circHeatmap,
+  dotplot,
 };
 export default Info;

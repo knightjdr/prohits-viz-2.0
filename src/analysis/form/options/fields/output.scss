@@ -1,38 +1,39 @@
 @import 'style/ant';
 @import 'style/link';
 
-.Output-header {
+
+.form__output > p {
+  @extend .ant-text;
+  margin: 10px 0;
+}
+.form__output-introduction-link {
+  @extend .decorate-link;
+}
+.form__output-header {
   @extend .ant-text;
   font-size: 16px;
   font-weight: 500;
 }
-.Output-introduction {
-  @extend .ant-text;
-  margin: 10px 0;
-}
-.Output-introduction-link {
-  @extend .decorate-link;
-}
-.Output-checkbox {
+.form__output-checkbox {
   display: flex;
   justify-content: flex-end;
   margin: 10px 10px;
   min-width: 250px;
   width: auto;
 }
-.Output-checkbox-label {
+.form__output-checkbox-label {
   @extend .ant-text;
   margin-right: 10px;
   margin-top: 8px;
   width: auto;
 }
-.Output-checkboxes { 
+.form__output-checkboxes { 
   display: flex;
   flex-wrap: wrap;
 }
 // at 576, ant desin adds 10px to form items
 @media (max-width: 575px) {
-  .Output-checkbox {
+  .form__output-checkbox {
     margin-top: 28px;
   }
 }

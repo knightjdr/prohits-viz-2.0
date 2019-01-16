@@ -7,14 +7,14 @@
   flex-direction: column;
   padding: 40px 20px;
 }
-.tools__description {
+.tools > h3 {
   color: $accent-dark;
   font-family: $TitleFont;
   font-size: 1.3em;
   margin-bottom: 10px;
   position: relative;
 }
-.tools__description:before{
+.tools > h3:before{
   content: "";
   position: absolute;
   width: 50%;

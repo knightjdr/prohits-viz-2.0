@@ -32,64 +32,69 @@ export const AnalysisFormComponent = ({
   submitPending,
   step,
   taskID,
-}) => (
-  <div className="form">
-    <Form onSubmit={handleSubmit}>
-      <div className="form__inner">
-        <FileInput
-          change={change}
-        />
-        <NextStep
-          currentStep={step}
-          needed={['file', 'fileType']}
-          onClick={() => { nextStep(step); }}
-          step={0}
-        />
-        {
-          step > 0 &&
-          <div>
-            <ToolSelection />
-            <NextStep
-              currentStep={step}
-              needed={['analysisType', 'file', 'fileType']}
-              onClick={() => { nextStep(step); }}
-              step={1}
-              style={{ marginTop: 10 }}
-            />
-          </div>
-        }
-        {
-          step > 1 &&
-          <div>
-            <HeaderSelection change={change} />
-            <Submit
-              errors={errors}
-              handleOptions={handleOptions}
-              handleReset={handleReset}
-              showOptions={showOptions}
-              submitPending={submitPending}
-            />
-            <Options
-              change={change}
-              show={showOptions}
-            />
-          </div>
-        }
-      </div>
-    </Form>
-    <SubmitError
-      closeModal={closeError}
-      visible={analysisError}
-    />
-    {
-      taskID &&
-      <Status
-        closeModal={closeStatus}
-        taskID={taskID}
+}) => {
+  const onClick = () => {
+    nextStep(step);
+  };
+  return (
+    <div className="form">
+      <Form onSubmit={handleSubmit}>
+        <div className="form__inner">
+          <FileInput
+            change={change}
+          />
+          <NextStep
+            currentStep={step}
+            needed={['file', 'fileType']}
+            onClick={onClick}
+            step={0}
+          />
+          {
+            step > 0 &&
+            <div>
+              <ToolSelection />
+              <NextStep
+                currentStep={step}
+                needed={['analysisType', 'file', 'fileType']}
+                onClick={onClick}
+                step={1}
+                style={{ marginTop: 10 }}
+              />
+            </div>
+          }
+          {
+            step > 1 &&
+            <div>
+              <HeaderSelection change={change} />
+              <Submit
+                errors={errors}
+                handleOptions={handleOptions}
+                handleReset={handleReset}
+                showOptions={showOptions}
+                submitPending={submitPending}
+              />
+              <Options
+                change={change}
+                show={showOptions}
+              />
+            </div>
+          }
+        </div>
+      </Form>
+      <SubmitError
+        closeModal={closeError}
+        visible={analysisError}
       />
-    }
-  </div>
-);
+      {
+        taskID &&
+        <Status
+          closeModal={closeStatus}
+          taskID={taskID}
+        />
+      }
+    </div>
+  );
+};
 
 AnalysisFormComponent.defaultProps = {
   taskID: null,

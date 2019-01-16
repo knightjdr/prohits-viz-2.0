@@ -13,13 +13,13 @@ const FileInput = ({
   onFileChange,
   selectSampleFile,
 }) => (
-  <div className="FileInput-container">
+  <div className="form__file-input">
     <Divider>File selection</Divider>
-    <div>
+    <p>
       Specifiy the type of file you would like to analyze and select or drag it
       to the input below. See the {' '}
       <NavLink
-        className="FileInput-link"
+        className="form__file-input-link"
         onClick={ScrollTop}
         to="/help/format"
       >
@@ -27,29 +27,42 @@ const FileInput = ({
       </NavLink>{' '}
       for information on input formats. Click{' '}
       <button
-        className="FileInput-sample-button"
+        className="form__file-input-sample-button"
         onClick={selectSampleFile}
         type="button"
       >
         here
       </button>{' '}
       if you would like to try a sample input file.
-    </div>
-    <div className="FileInput-select-container">
-      <div className="FileInput-select">
+    </p>
+    <div className="form__file-input-select">
+      <div className="form__file-input-select-inner">
         <CustomField
           name="fileType"
           onChange={DefaultChange}
           options={[
-            { text: 'SAINT', value: 'saint' },
-            { disabled: true, text: 'CRAPome', value: 'crapome' },
-            { disabled: true, text: 'Generic', value: 'generic' },
+            {
+              group: true,
+              text: 'Protein interaction',
+              children: [
+                { text: 'SAINT', value: 'saint' },
+                { disabled: true, text: 'CRAPome', value: 'crapome' },
+                { disabled: true, text: 'Generic', value: 'generic' },
+              ],
+            },
+            {
+              group: true,
+              text: 'CRISPR',
+              children: [
+                { disabled: true, text: 'BAGEL', value: 'bagel' },
+              ],
+            },
           ]}
           placeHolder="File type..."
           type="select"
         />
       </div>
-      <div className="FileInput-upload-wrapper">
+      <div className="form__file-input-upload-wrapper">
         <CustomField
           name="file"
           onChange={onFileChange}

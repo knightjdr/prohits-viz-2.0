@@ -14,10 +14,9 @@ import './tool-selection.css';
 const infoMessages = {
   dotplot: (
     <span>
-      This tool takes quantitative information on condition-readout datasets
-      and visualizes the information as either a dot plot or heat map. This is
-      an ideal way of visualizing small to moderately sized data sets (&#8804;
-      20 conditions). See the{' '}
+      Quantitative information from condition-readout datasets is visualized as
+      a dot plot. This is an ideal way of visualizing and familiarizing yourself with
+      small to moderately sized data sets (&#8804; 20 conditions). See the{' '}
       <NavLink
         className="tool-selection__link"
         onClick={ScrollTop}
@@ -25,7 +24,22 @@ const infoMessages = {
       >
         help
       </NavLink>{' '}
-      for more information on this tool
+      for more information on this tool.
+    </span>
+  ),
+  'circ-heatmap': (
+    <span>
+      Each condition is summarized as a circular heatmap, displaying information about
+      the readouts it captured. These images are great for exploring and displaying
+      conditions individually. See the{' '}
+      <NavLink
+        className="tool-selection__link"
+        onClick={ScrollTop}
+        to="/help/tools/circ-heatmap"
+      >
+        help
+      </NavLink>{' '}
+      for more information on this tool.
     </span>
   ),
 };
@@ -34,9 +48,9 @@ export const ToolSelectionComponent = ({
   form,
 }) => {
   const toolElement = (
-    <div className="ToolSelection-container">
+    <div className="tool-selection">
       <Divider>Analysis tool</Divider>
-      <div>
+      <p>
         Select the tool you would like to use for your analysis. A detailed
         description of the tools can be found{' '}
         <NavLink
@@ -46,13 +60,14 @@ export const ToolSelectionComponent = ({
         >
           here
         </NavLink>.
-      </div>
-      <div className="ToolSelection-select-container">
-        <div className="ToolSelection-analysis-select">
+      </p>
+      <div className="tool-selection__select">
+        <div className="tool-selection__select-inner">
           <CustomField
             name="analysisType"
             onChange={DefaultChange}
             options={[
+              { text: 'Circular heatmap', value: 'circ-heatmap' },
               { disabled: true, text: 'Condition v condition', value: 'conditioncondition' },
               { disabled: true, text: 'Correlation', value: 'correlation' },
               { text: 'Dot plot', value: 'dotplot' },
@@ -64,9 +79,9 @@ export const ToolSelectionComponent = ({
         </div>
         {
           form.analysisType &&
-          <div className="ToolSelection-tool-description">
+          <div className="tool-selection__tool-description">
             <Alert
-              message={infoMessages.dotplot}
+              message={infoMessages[form.analysisType]}
               showIcon
               type="info"
             />

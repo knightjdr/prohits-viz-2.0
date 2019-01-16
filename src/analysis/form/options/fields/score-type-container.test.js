@@ -6,98 +6,73 @@ import ScoreTypeContainer, { expectedScoreDir } from './score-type-container';
 const change = jest.fn();
 
 describe('ScoreTypeContainer', () => {
-  test('expectedScoreDir returns assigned value when score type is known', () => {
-    expect(expectedScoreDir('avgp')).toBe('gte');
+  describe('expectedScoreDir function', () => {
+    it('should return assigned value when score type is known', () => {
+      expect(expectedScoreDir('avgp')).toBe('gte');
+    });
+
+    it('should ignore score case', () => {
+      expect(expectedScoreDir('AVGP')).toBe('gte');
+    });
+
+    it('should returns "lte" when score type is unknown', () => {
+      expect(expectedScoreDir('test')).toBe('lte');
+    });
   });
 
-  test('expectedScoreDir ignores score case', () => {
-    expect(expectedScoreDir('AVGP')).toBe('gte');
-  });
+  describe('container', () => {
+    let wrapper;
 
-  test('expectedScoreDir returns "lte" when score type is unknown', () => {
-    expect(expectedScoreDir('test')).toBe('lte');
-  });
+    beforeAll(() => {
+      change.mockClear();
+      wrapper = shallow(
+        <ScoreTypeContainer
+          analysisType="dotplot"
+          change={change}
+          score="bfdr"
+          scoreType={undefined}
+        />,
+      );
+    });
 
-  test('Store updated on mount', () => {
-    jest.clearAllMocks();
-    shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score="bfdr"
-        scoreType={undefined}
-      />,
-    );
-    expect(change).toHaveBeenCalledWith('scoreType', 'lte');
-  });
+    it('should update store on mount', () => {
+      expect(change).toHaveBeenCalledWith('scoreType', 'lte');
+    });
 
-  test('Store updated when type is not set', () => {
-    const wrapper = shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score="bfdr"
-        scoreType={undefined}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, 'bfdr', undefined);
-    expect(change).toHaveBeenCalledWith('scoreType', 'lte');
-  });
+    describe('setReduxFormState method', () => {
+      it('should not update store when type is set', () => {
+        change.mockClear();
+        wrapper.instance().setReduxFormState(change, 'bfdr', 'lte');
+        expect(change).not.toHaveBeenCalled();
+      });
 
-  test('Store not updated when type is set', () => {
-    const wrapper = shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score="bfdr"
-        scoreType="lte"
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, 'bfdr', 'lte');
-    expect(change).not.toHaveBeenCalled();
-  });
+      it('should not update store when score column is not set', () => {
+        change.mockClear();
+        wrapper.instance().setReduxFormState(change, undefined, undefined);
+        expect(change).not.toHaveBeenCalled();
+      });
 
-  test('Store not updated when score column is not set', () => {
-    const wrapper = shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score={undefined}
-        scoreType={undefined}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, undefined, undefined);
-    expect(change).not.toHaveBeenCalled();
-  });
+      it('should update store when type is not set', () => {
+        change.mockClear();
+        wrapper.instance().setReduxFormState(change, 'bfdr', undefined);
+        expect(change).toHaveBeenCalledWith('scoreType', 'lte');
+      });
+    });
 
-  test('When score column changes via props, store updates', () => {
-    const wrapper = shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score="bfdr"
-        scoreType={undefined}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.setProps({ score: 'avgp' });
-    expect(change).toHaveBeenCalledWith('scoreType', 'gte');
-  });
+    describe('prop change', () => {
+      it('should update store when score column changes via props', () => {
+        wrapper.setProps({ score: 'bfdr' });
+        change.mockClear();
+        wrapper.setProps({ score: 'avgp' });
+        expect(change).toHaveBeenCalledWith('scoreType', 'gte');
+      });
 
-  test('When score column does not change via props, store does not change', () => {
-    const wrapper = shallow(
-      <ScoreTypeContainer
-        analysisType="dotplot"
-        change={change}
-        score="bfdr"
-        scoreType={undefined}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.setProps({ score: 'bfdr' });
-    expect(change).not.toHaveBeenCalled();
+      it('should not update store when score column does not change via props', () => {
+        wrapper.setProps({ score: 'bfdr' });
+        change.mockClear();
+        wrapper.setProps({ score: 'bfdr' });
+        expect(change).not.toHaveBeenCalled();
+      });
+    });
   });
 });

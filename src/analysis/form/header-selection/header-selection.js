@@ -13,12 +13,12 @@ const HeaderSelection = ({
   columns,
 }) => {
   const headerElement = (
-    <div className="HeaderSelection-container">
+    <div className="form__header-selection">
       <Divider>Columns</Divider>
       <div>
         Specify the columns to use if they have not been preselected. See{' '}
         <NavLink
-          className="HeaderSelection-link"
+          className="form__header-selection-link"
           onClick={ScrollTop}
           to="/help/format"
         >
@@ -26,7 +26,7 @@ const HeaderSelection = ({
         </NavLink>{' '}
         to learn about how the columns are used during analysis.
       </div>
-      <div className="HeaderSelection-select-container">
+      <div className="form__header-selection-select">
         <CustomField
           label="Condition column"
           name="condition"

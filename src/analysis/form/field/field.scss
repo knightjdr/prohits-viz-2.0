@@ -4,7 +4,7 @@
 .CustomField-formItem {
   flex-grow: 1;
 }
-.CustomField-help {
+.customfield__help {
   cursor: pointer;
   margin-left: 20px;
   margin-top: 45px;
@@ -18,7 +18,7 @@
 }
 // at 576, ant desin adds 10px to form items
 @media (max-width: 575px) {
-  .CustomField-help {
+  .customfield__help {
     margin-top: 35px;
   }
 }

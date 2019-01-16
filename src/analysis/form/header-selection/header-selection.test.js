@@ -11,7 +11,7 @@ const columns = {
 };
 
 describe('HeaderSelection', () => {
-  test('Renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <HeaderSelection
         columns={columns}

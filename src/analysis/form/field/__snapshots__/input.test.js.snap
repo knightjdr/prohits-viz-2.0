@@ -156,7 +156,7 @@ exports[`Input should adds prop visualization queue on submit error 1`] = `
           </FormItem>
           <FontAwesomeIcon$1
             border={false}
-            className="CustomField-help"
+            className="customfield__help"
             fixedWidth={false}
             flip={null}
             icon={
@@ -186,7 +186,7 @@ exports[`Input should adds prop visualization queue on submit error 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="svg-inline--fa fa-question-square fa-w-14 fa-2x CustomField-help"
+              className="svg-inline--fa fa-question-square fa-w-14 fa-2x customfield__help"
               data-icon="question-square"
               data-prefix="fas"
               onClick={[Function]}
@@ -352,7 +352,7 @@ exports[`Input should render with no value, help message and type = text 1`] = `
           </FormItem>
           <FontAwesomeIcon$1
             border={false}
-            className="CustomField-help"
+            className="customfield__help"
             fixedWidth={false}
             flip={null}
             icon={
@@ -382,7 +382,7 @@ exports[`Input should render with no value, help message and type = text 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="svg-inline--fa fa-question-square fa-w-14 fa-2x CustomField-help"
+              className="svg-inline--fa fa-question-square fa-w-14 fa-2x customfield__help"
               data-icon="question-square"
               data-prefix="fas"
               onClick={[Function]}

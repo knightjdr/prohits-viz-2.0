@@ -7,23 +7,21 @@ const onFileChange = jest.fn();
 const selectSampleFile = jest.fn();
 
 describe('FileInput', () => {
-  test('Renders', () => {
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
       <FileInput
         onFileChange={onFileChange}
         selectSampleFile={selectSampleFile}
       />,
     );
+  });
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Use sample button call selectSampleFile function', () => {
-    const wrapper = shallow(
-      <FileInput
-        onFileChange={onFileChange}
-        selectSampleFile={selectSampleFile}
-      />,
-    );
+  it('should call selectSampleFile on click', () => {
     const button = wrapper.find('button');
     button.simulate('click');
     expect(selectSampleFile).toHaveBeenCalledTimes(1);

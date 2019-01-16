@@ -2,7 +2,7 @@
 
 exports[`AnalysisFormComponent first step should match snapshot 1`] = `
 <div
-  className="Form-container"
+  className="form"
 >
   <Form
     hideRequiredMark={false}
@@ -11,7 +11,7 @@ exports[`AnalysisFormComponent first step should match snapshot 1`] = `
     prefixCls="ant-form"
   >
     <div
-      className="Form-fields"
+      className="form__inner"
     >
       <Connect(FileInputContainer)
         change={[Function]}
@@ -58,7 +58,7 @@ exports[`AnalysisFormComponent first step should match snapshot 1`] = `
 
 exports[`AnalysisFormComponent initial render should match snapshot 1`] = `
 <div
-  className="Form-container"
+  className="form"
 >
   <Form
     hideRequiredMark={false}
@@ -67,7 +67,7 @@ exports[`AnalysisFormComponent initial render should match snapshot 1`] = `
     prefixCls="ant-form"
   >
     <div
-      className="Form-fields"
+      className="form__inner"
     >
       <Connect(FileInputContainer)
         change={[Function]}
@@ -94,7 +94,7 @@ exports[`AnalysisFormComponent initial render should match snapshot 1`] = `
 
 exports[`AnalysisFormComponent second step should match snapshot 1`] = `
 <div
-  className="Form-container"
+  className="form"
 >
   <Form
     hideRequiredMark={false}
@@ -103,7 +103,7 @@ exports[`AnalysisFormComponent second step should match snapshot 1`] = `
     prefixCls="ant-form"
   >
     <div
-      className="Form-fields"
+      className="form__inner"
     >
       <Connect(FileInputContainer)
         change={[Function]}
@@ -166,7 +166,7 @@ exports[`AnalysisFormComponent second step should match snapshot 1`] = `
 
 exports[`AnalysisFormComponent status modal should match snapshot 1`] = `
 <div
-  className="Form-container"
+  className="form"
 >
   <Form
     hideRequiredMark={false}
@@ -175,7 +175,7 @@ exports[`AnalysisFormComponent status modal should match snapshot 1`] = `
     prefixCls="ant-form"
   >
     <div
-      className="Form-fields"
+      className="form__inner"
     >
       <Connect(FileInputContainer)
         change={[Function]}

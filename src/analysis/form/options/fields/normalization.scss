@@ -1,15 +1,15 @@
-.Normalization-container {
+.form__option-normalization {
   display: flex;
   flex-wrap: wrap;
 }
-.Normalization-input {
+.form__option-normalization-input {
   width: 50%;
 }
-.Normalization-select {
+.form__option-normalization-select {
   flex-grow: 1;
 }
 @media (max-width: 499px) {
-  .Normalization-input {
+  .form__option-normalization-input {
     min-width: 250px;
     width: 100%;
   }

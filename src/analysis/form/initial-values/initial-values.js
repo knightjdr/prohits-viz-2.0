@@ -1,4 +1,17 @@
 export const values = {
+  'circ-heatmap': {
+    abundanceCap: 50,
+    ctrlSub: true,
+    fillColor: 'blueBlack',
+    logBase: 'none',
+    minAbundance: 0,
+    normalization: 'none',
+    otherAbundance: [],
+    png: false,
+    primaryFilter: 0.01,
+    species: 'Homo sapiens',
+    tissues: ['HEK 293'],
+  },
   dotplot: {
     abundanceCap: 50,
     biclusteringApprox: false,

@@ -18,7 +18,7 @@ const form = {
 };
 
 describe('DotplotOptions', () => {
-  test('Renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <DotplotOptions
         change={jest.fn()}

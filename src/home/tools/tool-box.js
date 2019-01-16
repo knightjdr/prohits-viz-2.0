@@ -28,15 +28,13 @@ const ToolBox = ({
   const imageElement = getImageElement(image);
   const linkContent = (
     <div className="toolbox">
-      <div className="toolbox__title">
-        { title }
-      </div>
+      <h4>
+        {title}
+      </h4>
       <div className="toolbox__details">
-        <div className="toolbox__text">
-          { text }
-        </div>
+        <p>{text}</p>
         <div className="toolbox__image">
-          { imageElement }
+          {imageElement}
         </div>
       </div>
     </div>

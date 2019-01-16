@@ -1,5 +1,5 @@
 const defaultFilters = {
-  dotplot: {
+  saint: {
     avgp: 0.9,
     bfdr: 0.01,
     fca: 0.9,
@@ -13,14 +13,14 @@ const defaultFilters = {
   },
 };
 
-const DefaultPrimaryFilter = (analysisType, scoreColumn) => {
+const defaultPrimaryFilter = (fileType, scoreColumn) => {
   const scoreColumnLC = scoreColumn.toLowerCase();
   if (
-    defaultFilters[analysisType] &&
-    defaultFilters[analysisType][scoreColumnLC]
+    defaultFilters[fileType] &&
+    defaultFilters[fileType][scoreColumnLC]
   ) {
-    return defaultFilters[analysisType][scoreColumnLC];
+    return defaultFilters[fileType][scoreColumnLC];
   }
   return 0.01; // default score for an unknown column
 };
-export default DefaultPrimaryFilter;
+export default defaultPrimaryFilter;
