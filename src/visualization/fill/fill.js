@@ -6,7 +6,7 @@ const Fill = (name, file) => {
       return heatmap(name, file);
     case 'heatmap':
       return heatmap(name, file);
-    case 'segcircle':
+    case 'circHeatmap':
       return file;
     default:
       return file;

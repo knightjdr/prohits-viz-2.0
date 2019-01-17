@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Heatmap from './heatmap/panel__settings-heatmap';
-import SegCircle from './segcircle/panel__settings-segcircle';
+import CircHeatmap from './circheatmap/panel__settings-circheatmap';
 
 import './panel__settings.css';
 
@@ -17,9 +17,9 @@ const Settings = ({
   updateSetting,
 }) => {
   switch (imageKind) {
-    case 'segcircle':
+    case 'circ-heatmap':
       return (
-        <SegCircle
+        <CircHeatmap
           changePlot={changePlot}
           changeSetting={changeSetting}
           plots={plots}

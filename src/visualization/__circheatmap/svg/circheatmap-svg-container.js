@@ -63,14 +63,14 @@ export class SvgDimensions extends Component {
   }
   calculateDims = () => {
     const { height, width } = this.wrapperRef.current.getBoundingClientRect();
-    const padding = process.env.REACT_APP_SEGCIRCLE_PLOT_PADDING;
+    const padding = process.env.REACT_APP_CIRCHEATMAP_PLOT_PADDING;
     return {
       canTranslate: height < width,
       wrapper: height < width ? height - padding : width - padding,
     };
   }
   defineThickness = (circleNumber, height) => {
-    let thickness = Number(process.env.REACT_APP_SEGCIRCLE_THICKNESS);
+    let thickness = Number(process.env.REACT_APP_CIRCHEATMAP_THICKNESS);
     const radius = height / 2;
     if (thickness * (1 + (1.25 * circleNumber)) > radius) {
       thickness = Math.floor(radius / (1 + (1.25 * circleNumber)));

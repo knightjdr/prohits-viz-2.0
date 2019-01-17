@@ -5,7 +5,7 @@ import panelSelector from '../../../state/selectors/visualization/panel-selector
 import plotSelector from '../../../state/selectors/visualization/plot-selector';
 import { displaySelector } from '../../../state/selectors/visualization/display-selector';
 import { parameterSelectorProp } from '../../../state/selectors/visualization/params-selector';
-import { segCircleSettingsSelector } from '../../../state/selectors/visualization/segcircle-settings-selector';
+import { circHeatmapSettingsSelector } from '../../../state/selectors/visualization/circ-heatmap-settings-selector';
 import { settingSelector } from '../../../state/selectors/visualization/settings-selector';
 import { updatePlotPosition } from '../../../state/set/visualization/display-actions';
 import { updateSetting } from '../../../state/set/visualization/settings-actions';
@@ -63,7 +63,7 @@ StoreConnection.propTypes = {
   }).isRequired,
   renderProp: PropTypes.func.isRequired,
   renderSvg: PropTypes.func,
-  segcircleSettings: PropTypes.arrayOf(
+  circHeatmapSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,
@@ -83,7 +83,7 @@ const mapStateToProps = state => ({
   name: parameterSelectorProp(state, 'name'),
   panel: panelSelector(state),
   plot: plotSelector(state),
-  segcircleSettings: segCircleSettingsSelector(state),
+  circHeatmapSettings: circHeatmapSettingsSelector(state),
   settings: settingSelector(state),
 });
 

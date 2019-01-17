@@ -1,10 +1,12 @@
-import ValidationDefault from './validation-default';
-import ValidationDotplot from './validation-dotplot';
+import validationDefault from './validation-default';
+import validationDotplot from './validation-dotplot';
 
-const Validation = (values) => {
+const validation = (values) => {
   let errors = {};
-  errors = { ...ValidationDefault(values), ...errors };
-  errors = { ...ValidationDotplot(values), ...errors };
+  errors = { ...validationDefault(values), ...errors };
+  errors = { ...validationDotplot(values), ...errors };
+  errors = { ...validationDotplot(values), ...errors };
   return errors;
 };
-export default Validation;
+
+export default validation;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SegCircle legend with known line segment should to match snapshot 1`] = `
+exports[`CircHeatmap legend with known line segment should to match snapshot 1`] = `
 <svg
   height={270}
   id="legend"
@@ -189,7 +189,7 @@ exports[`SegCircle legend with known line segment should to match snapshot 1`] =
 </svg>
 `;
 
-exports[`SegCircle legend without known line segment should to match snapshot 1`] = `
+exports[`CircHeatmap legend without known line segment should to match snapshot 1`] = `
 <svg
   height={270}
   id="legend"

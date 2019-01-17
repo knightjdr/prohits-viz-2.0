@@ -9,6 +9,7 @@ const form = {
   clustering: 'test',
   control: 'test',
   ctrlSub: true,
+  fileType: 'saint',
   normalization: 'none',
   readoutClustering: 'readouts',
   readoutLength: 'test',

@@ -4,7 +4,7 @@ exports[`Visualization image for other image types should match snapshot 1`] = `
 
 exports[`Visualization image for scatter images should match snapshot 1`] = `<ScatterContainer />`;
 
-exports[`Visualization image for segcircle images should match snapshot 1`] = `<Segcircle />`;
+exports[`Visualization image for circHeatmap images should match snapshot 1`] = `<CircHeatmap />`;
 
 exports[`Visualization image when loading should match snapshot 1`] = `
 <Status

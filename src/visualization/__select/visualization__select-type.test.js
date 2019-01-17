@@ -66,14 +66,14 @@ describe('Visualization control', () => {
     });
   });
 
-  describe('when vizType is segcircle', () => {
+  describe('when vizType is circHeatmap', () => {
     let wrapper;
     beforeAll(() => {
       wrapper = shallow(
         <SelectType
           handleFile={jest.fn()}
           loading={false}
-          vizType="segcircle"
+          vizType="circHeatmap"
         />,
       );
     });
@@ -82,8 +82,8 @@ describe('Visualization control', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should display segcircle plot component', () => {
-      expect(wrapper.find('Segcircle').length).toBe(1);
+    it('should display circHeatmap plot component', () => {
+      expect(wrapper.find('CircHeatmap').length).toBe(1);
     });
   });
 

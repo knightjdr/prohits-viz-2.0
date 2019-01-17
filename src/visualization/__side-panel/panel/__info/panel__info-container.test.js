@@ -21,7 +21,7 @@ describe('Info panel container', () => {
         history={history}
         params={{}}
         plot={{ segments: [] }}
-        segcircleSettings={[]}
+        circHeatmapSettings={[]}
         settings={{}}
       />,
     );

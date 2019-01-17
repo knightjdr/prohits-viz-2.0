@@ -4,10 +4,6 @@ import Settings from './settings';
 jest.mock('../../../helpers/falsy-but-not-zero');
 
 describe('Settings', () => {
-  it('should return null for unknown analysis type ', () => {
-    expect(Settings({ analysisType: 'test' })).toBeNull();
-  });
-
   describe('default dotplot analysis', () => {
     let settings;
 

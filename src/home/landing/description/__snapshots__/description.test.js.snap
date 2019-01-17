@@ -4,6 +4,6 @@ exports[`Home description should match snapshot 1`] = `
 <h2
   className="landing__description"
 >
-  ProHits-viz is a suite of webtools for analyzing and visualizing screens and protein-protein interaction data
+  A suite of webtools for analyzing and visualizing screens and protein-protein interaction data
 </h2>
 `;

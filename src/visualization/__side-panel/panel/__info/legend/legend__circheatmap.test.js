@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
 import colorGradient from '../../../../color/color-gradient';
-import SegCircleLegend from './legend__segcircle';
+import CircHeatmapLegend from './legend__circheatmap';
 
 jest.mock('../../../../color/color-gradient');
 colorGradient.mockReturnValue(['#ffffff', '#0000ff', '#000000']);
@@ -29,16 +29,16 @@ const settings = [
   },
 ];
 
-describe('SegCircle legend', () => {
+describe('CircHeatmap legend', () => {
   describe('with known line segment', () => {
     let wrapper;
 
     beforeAll(() => {
       colorGradient.mockClear();
       wrapper = shallow(
-        SegCircleLegend({
+        CircHeatmapLegend({
           known: true,
-          segcircleSettings: settings,
+          circHeatmapSettings: settings,
           segments,
         }),
       );
@@ -71,9 +71,9 @@ describe('SegCircle legend', () => {
     beforeAll(() => {
       colorGradient.mockClear();
       wrapper = shallow(
-        SegCircleLegend({
+        CircHeatmapLegend({
           known: false,
-          segcircleSettings: settings,
+          circHeatmapSettings: settings,
           segments,
         }),
       );

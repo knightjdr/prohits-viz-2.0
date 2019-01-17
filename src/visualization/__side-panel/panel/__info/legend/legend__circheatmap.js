@@ -3,12 +3,12 @@ import React from 'react';
 
 import colorGradient from '../../../../color/color-gradient';
 
-const SegCircleLegend = ({
+const CircHeatmapLegend = ({
   known,
-  segcircleSettings,
+  circHeatmapSettings,
   segments,
 }) => {
-  const height = (segcircleSettings.length * 70) + 60;
+  const height = (circHeatmapSettings.length * 70) + 60;
   return (
     <svg
       id="legend"
@@ -18,7 +18,7 @@ const SegCircleLegend = ({
       viewBox={`0 0 200 ${height}`}
     >
       {
-        segcircleSettings.map((setting, index) => {
+        circHeatmapSettings.map((setting, index) => {
           const gradientFill = colorGradient(setting.color, 101, false);
           const { name } = segments[index];
           const numColors = gradientFill.length;
@@ -77,9 +77,9 @@ const SegCircleLegend = ({
   );
 };
 
-SegCircleLegend.propTypes = {
+CircHeatmapLegend.propTypes = {
   known: PropTypes.bool.isRequired,
-  segcircleSettings: PropTypes.arrayOf(
+  circHeatmapSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,
@@ -96,4 +96,4 @@ SegCircleLegend.propTypes = {
   ).isRequired,
 };
 
-export default SegCircleLegend;
+export default CircHeatmapLegend;

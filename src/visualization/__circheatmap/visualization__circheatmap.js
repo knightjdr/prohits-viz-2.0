@@ -3,10 +3,10 @@ import React from 'react';
 import SidePanel from '../__side-panel/visualization__side-panel-container';
 import Tabs from '../__tabs/visualization__tabs-container';
 
-import './visualization__segcircle.css';
+import './visualization__circheatmap.css';
 
-const Segcircle = () => (
-  <div className="visualization__segcircle">
+const CircHeatmap = () => (
+  <div className="visualization__circheatmap">
     <Tabs />
     <SidePanel
       tabs={['info', 'settings']}
@@ -14,4 +14,4 @@ const Segcircle = () => (
   </div>
 );
 
-export default Segcircle;
+export default CircHeatmap;

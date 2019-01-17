@@ -37,7 +37,7 @@ exports[`ToolSelectionComponent with no selected type should match snapshot 1`] 
             Object {
               "disabled": true,
               "text": "Condition v condition",
-              "value": "conditioncondition",
+              "value": "condition-condition",
             },
             Object {
               "disabled": true,
@@ -100,7 +100,7 @@ exports[`ToolSelectionComponent with selected analysis type should match snapsho
             Object {
               "disabled": true,
               "text": "Condition v condition",
-              "value": "conditioncondition",
+              "value": "condition-condition",
             },
             Object {
               "disabled": true,

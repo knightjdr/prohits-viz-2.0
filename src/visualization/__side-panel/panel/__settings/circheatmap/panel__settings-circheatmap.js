@@ -5,7 +5,7 @@ import PanelSection from '../../__section/panel__section';
 import Plots from './panel__settings-plots';
 import Reset from '../panel__settings-reset';
 
-const SegCircleSettings = ({
+const CircHeatmapSettings = ({
   changePlot,
   changeSetting,
   plots,
@@ -34,7 +34,7 @@ const SegCircleSettings = ({
   </div>
 );
 
-SegCircleSettings.propTypes = {
+CircHeatmapSettings.propTypes = {
   changePlot: PropTypes.func.isRequired,
   changeSetting: PropTypes.func.isRequired,
   plots: PropTypes.arrayOf(
@@ -46,4 +46,4 @@ SegCircleSettings.propTypes = {
   updateSetting: PropTypes.func.isRequired,
 };
 
-export default SegCircleSettings;
+export default CircHeatmapSettings;

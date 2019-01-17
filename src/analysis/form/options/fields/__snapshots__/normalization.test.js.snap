@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Normalization Renders for default normalization 1`] = `
+exports[`Normalization default should match snapshot 1`] = `
 <div
-  className="Normalization-container"
+  className="form__option-normalization"
 >
   <div
-    className="Normalization-select"
+    className="form__option-normalization-select"
     style={
       Object {
         "marginRight": 0,
@@ -43,12 +43,12 @@ exports[`Normalization Renders for default normalization 1`] = `
 </div>
 `;
 
-exports[`Normalization Renders for readout normalization 1`] = `
+exports[`Normalization readout normalization should match snapshot 1`] = `
 <div
-  className="Normalization-container"
+  className="form__option-normalization"
 >
   <div
-    className="Normalization-select"
+    className="form__option-normalization-select"
     style={
       Object {
         "marginRight": 20,
@@ -81,7 +81,7 @@ exports[`Normalization Renders for readout normalization 1`] = `
     />
   </div>
   <div
-    className="Normalization-input"
+    className="form__option-normalization-input"
   >
     <CustomField
       helpMessage="No normalization is applied by default but data can be normalized by the total

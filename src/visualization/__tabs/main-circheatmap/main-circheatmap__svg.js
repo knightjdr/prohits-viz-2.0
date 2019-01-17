@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
-import Known from '../../__segcircle/svg/known/known-container';
-import Circle from '../../__segcircle/svg/circle/circle-container';
+import Known from '../../__circheatmap/svg/known/known-container';
+import Circle from '../../__circheatmap/svg/circle/circle-container';
 
 const Svg = ({
   pieDimensions,
   plot,
-  segcircleSettings,
+  circHeatmapSettings,
   settings,
 }) => {
   const radius = Math.ceil(pieDimensions.wrapper / 2);
@@ -28,7 +28,7 @@ const Svg = ({
           <Circle
             plot={plot}
             radius={radius}
-            settings={segcircleSettings}
+            settings={circHeatmapSettings}
             thickness={settings.thickness}
           />
         </g>
@@ -55,7 +55,7 @@ Svg.propTypes = {
       }),
     ),
   }).isRequired,
-  segcircleSettings: PropTypes.arrayOf(
+  circHeatmapSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,

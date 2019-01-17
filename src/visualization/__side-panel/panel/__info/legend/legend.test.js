@@ -1,11 +1,11 @@
 import Dotplot from './legend__dotplot';
 import Heatmap from './legend__heatmap';
 import Legend from './legend';
-import SegCircle from './legend__segcircle';
+import CircHeatmap from './legend__circheatmap';
 
 jest.mock('./legend__dotplot');
 jest.mock('./legend__heatmap');
-jest.mock('./legend__segcircle');
+jest.mock('./legend__circheatmap');
 
 describe('Legend', () => {
   it('should call dotplot legend', () => {
@@ -20,10 +20,10 @@ describe('Legend', () => {
     expect(Heatmap).toHaveBeenCalled();
   });
 
-  it('should call segcircle legend', () => {
-    SegCircle.mockClear();
-    Legend({ imageType: 'segcircle' });
-    expect(SegCircle).toHaveBeenCalled();
+  it('should call circHeatmap legend', () => {
+    CircHeatmap.mockClear();
+    Legend({ imageType: 'circ-heatmap' });
+    expect(CircHeatmap).toHaveBeenCalled();
   });
 
   it('should call nothing and return null', () => {

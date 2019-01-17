@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import download from '../../../../helpers/download';
 import Info from './panel__info';
 import plotSelector from '../../../../state/selectors/visualization/plot-selector';
-import { segCircleSettingsSelector } from '../../../../state/selectors/visualization/segcircle-settings-selector';
+import { circHeatmapSettingsSelector } from '../../../../state/selectors/visualization/circ-heatmap-settings-selector';
 import { settingSelector } from '../../../../state/selectors/visualization/settings-selector';
 import { clearFile } from '../../../../state/set/interactive-file-actions';
 import { parameterSelector } from '../../../../state/selectors/visualization/params-selector';
@@ -16,7 +16,7 @@ export const InfoContainer = ({
   history,
   params,
   plot,
-  segcircleSettings,
+  circHeatmapSettings,
   settings,
 }) => {
   const downloadLegend = () => {
@@ -32,7 +32,7 @@ export const InfoContainer = ({
       downloadLegend={downloadLegend}
       loadNewFile={loadNewFile}
       params={params}
-      segcircleSettings={segcircleSettings}
+      circHeatmapSettings={circHeatmapSettings}
       segments={plot.segments}
       settings={settings}
     />
@@ -41,7 +41,7 @@ export const InfoContainer = ({
 
 InfoContainer.defaultProps = {
   plot: { segments: [] },
-  segcircleSettings: [],
+  circHeatmapSettings: [],
 };
 
 InfoContainer.propTypes = {
@@ -57,7 +57,7 @@ InfoContainer.propTypes = {
       }),
     ),
   }),
-  segcircleSettings: PropTypes.arrayOf(
+  circHeatmapSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,
@@ -71,7 +71,7 @@ InfoContainer.propTypes = {
 const mapStateToProps = state => ({
   params: parameterSelector(state),
   plot: plotSelector(state),
-  segcircleSettings: segCircleSettingsSelector(state),
+  circHeatmapSettings: circHeatmapSettingsSelector(state),
   settings: settingSelector(state),
 });
 

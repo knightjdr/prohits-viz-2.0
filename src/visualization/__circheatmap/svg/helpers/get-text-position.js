@@ -3,7 +3,7 @@ import roundNearest from '../../../../helpers/round-nearest';
 import textLimits from '../text/text-limits';
 import textSize from '../../../../helpers/text-size';
 
-/* The plot is being rotated -90 in main-segcircle-svg, so the "x" and
+/* The plot is being rotated -90 in main-circHeatmap-svg, so the "x" and
 ** and "y" here are reversed. I'm intentionaly leaving it like this
 ** because it makes calculating the text positions easier. */
 const textPosition = (data, radius) => {

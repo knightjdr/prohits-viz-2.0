@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import ControlSubtraction from './control-subtraction';
 
 describe('ControlSubtraction', () => {
-  test('Renders', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(
       <ControlSubtraction
         analysisType="dotplot"

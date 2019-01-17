@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ControlSubtraction Renders 1`] = `
+exports[`ControlSubtraction should match snapshot 1`] = `
 <div
-  className="ControlSubtraction-container"
+  className="form__option-cs"
 >
   <div
-    className="ControlSubtraction-checkbox"
+    className="form__option-cs-checkbox"
   >
     <div
-      className="ControlSubtraction-checkbox-label"
+      className="form__option-cs-checkbox-label"
     >
       Control subtraction:
     </div>
@@ -19,7 +19,7 @@ exports[`ControlSubtraction Renders 1`] = `
     />
   </div>
   <div
-    className="ControlSubtraction-select"
+    className="form__option-cs-select"
   >
     <CustomField
       helpMessage="The average value of a readout across control samples will be subtracted

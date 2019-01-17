@@ -1,15 +1,15 @@
 import Dotplot from './legend__dotplot';
 import Heatmap from './legend__heatmap';
-import SegCircle from './legend__segcircle';
+import CircHeatmap from './legend__circheatmap';
 
-const Legend = ({ imageType, ...settings }, segcircleSettings, segments) => {
+const Legend = ({ imageType, ...settings }, circHeatmapSettings, segments) => {
   switch (imageType) {
     case 'dotplot':
       return Dotplot({ ...settings });
     case 'heatmap':
       return Heatmap({ ...settings });
-    case 'segcircle':
-      return SegCircle({ ...settings, segcircleSettings, segments });
+    case 'circ-heatmap':
+      return CircHeatmap({ ...settings, circHeatmapSettings, segments });
     default:
       return null;
   }

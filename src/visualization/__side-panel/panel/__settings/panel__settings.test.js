@@ -10,8 +10,10 @@ describe('Settings panel', () => {
     beforeAll(() => {
       wrapper = shallow(
         <Settings
+          changePlot={jest.fn()}
           changeSetting={jest.fn()}
           imageKind="dotplot"
+          plots={[]}
           resetSettings={jest.fn()}
           settings={{}}
           storeSettings={{}}
@@ -35,8 +37,10 @@ describe('Settings panel', () => {
     beforeAll(() => {
       wrapper = shallow(
         <Settings
+          changePlot={jest.fn()}
           changeSetting={jest.fn()}
           imageKind="heatmap"
+          plots={[]}
           resetSettings={jest.fn()}
           settings={{}}
           storeSettings={{}}
@@ -54,14 +58,16 @@ describe('Settings panel', () => {
     });
   });
 
-  describe('with segcircle image', () => {
+  describe('with circHeatmap image', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = shallow(
         <Settings
+          changePlot={jest.fn()}
           changeSetting={jest.fn()}
-          imageKind="segcircle"
+          imageKind="circ-heatmap"
+          plots={[]}
           resetSettings={jest.fn()}
           settings={{}}
           storeSettings={{}}
@@ -74,8 +80,8 @@ describe('Settings panel', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should have SegCircle component', () => {
-      expect(wrapper.find('SegCircleSettings').length).toBe(1);
+    it('should have CircHeatmap component', () => {
+      expect(wrapper.find('CircHeatmapSettings').length).toBe(1);
     });
   });
 });

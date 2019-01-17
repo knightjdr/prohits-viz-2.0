@@ -48,7 +48,7 @@ describe('Visualization image', () => {
     });
   });
 
-  describe('for segcircle images', () => {
+  describe('for circHeatmap images', () => {
     let wrapper;
 
     beforeAll(() => {
@@ -56,7 +56,7 @@ describe('Visualization image', () => {
         <Image
           error={false}
           loading={false}
-          vizType="segcircle"
+          vizType="circ-heatmap"
         />,
       );
     });
@@ -65,8 +65,8 @@ describe('Visualization image', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render segcircle component', () => {
-      expect(wrapper.find('Segcircle').length).toBe(1);
+    it('should render circHeatmap component', () => {
+      expect(wrapper.find('CircHeatmap').length).toBe(1);
     });
   });
 

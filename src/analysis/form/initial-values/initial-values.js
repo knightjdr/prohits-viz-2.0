@@ -10,6 +10,7 @@ export const values = {
     png: false,
     primaryFilter: 0.01,
     species: 'Homo sapiens',
+    specificity: false,
     tissues: ['HEK 293'],
   },
   dotplot: {

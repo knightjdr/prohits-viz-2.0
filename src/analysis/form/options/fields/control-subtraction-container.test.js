@@ -13,20 +13,19 @@ const options = [
   { text: 'column1', value: 'column1' },
   { text: 'column2', value: 'column2' },
 ];
+FilterHeader.mockReturnValue({
+  initialValue: 'column1',
+  options,
+});
 
 const change = jest.fn();
 const header = ['column1', 'column2'];
 
 describe('ControlSubtractionContainer', () => {
-  test('Store set on mount', () => {
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
+  let wrapper;
+
+  beforeAll(() => {
+    wrapper = shallow(
       <ControlSubtractionContainer
         analysisType="dotplot"
         change={change}
@@ -35,251 +34,218 @@ describe('ControlSubtractionContainer', () => {
         header={header}
       />,
     );
+  });
+
+  it('should set state initially on mount', () => {
     expect(wrapper.state().options).toEqual(options);
-    FilterHeader.mockRestore();
   });
 
-  test(`Store updated via setInitialReduxFormState when control is true and
-    can be set`, () => {
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
-    expect(FilterHeader).toHaveBeenCalledTimes(1);
-    expect(wrapper.state().options).toEqual(options);
-    expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('ctrlSub', true);
-    expect(change).toHaveBeenCalledWith('control', 'column1');
-    FilterHeader.mockRestore();
-  });
-
-  test(`Store not updated via setInitialReduxFormState when control has been
-    turned off by user on it's initial mounting`, () => {
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub={false}
-        control="column1"
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, 'column1', false, header);
-    expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('ctrlSub', false);
-    FilterHeader.mockRestore();
-  });
-
-  test(`Store not updated via setInitialReduxFormState when there is no
-    suggested intial value`, () => {
-    FilterHeader.mockReturnValue({
-      initialValue: null,
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
-    expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('ctrlSub', false);
-    FilterHeader.mockRestore();
-  });
-
-  test('Store set via setInitialReduxFormState on remounting', () => {
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub
-        control="column1"
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, 'column1', true, header);
-    expect(change).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledWith('ctrlSub', true);
-    FilterHeader.mockRestore();
-  });
-
-  test('Store set via setInitialReduxFormState on remounting when no control column', () => {
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
-    expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('ctrlSub', true);
-    expect(change).toHaveBeenCalledWith('control', 'column1');
-    FilterHeader.mockRestore();
-  });
-
-  test('Check header when props change', () => {
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub={false}
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
+  it('should check header when props change', () => {
+    const componentMethod = wrapper.instance().setReduxFormState;
     wrapper.instance().setReduxFormState = jest.fn();
     wrapper.update();
     wrapper.setProps({});
     expect(wrapper.instance().setReduxFormState).toHaveBeenCalledTimes(1);
-    wrapper.instance().setReduxFormState.mockRestore();
+    wrapper.instance().setReduxFormState = componentMethod;
   });
 
-  test('Store updated when header changes', () => {
-    const headerNew = ['column1', 'column2', 'column3'];
-    const optionsNew = [
-      { text: 'column1', value: 'column1' },
-      { text: 'column2', value: 'column2' },
-      { text: 'column3', value: 'column3' },
-    ];
-    arrayShallowEqual.mockReturnValue(false);
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options: optionsNew,
+  describe('setInitialReduxFormState', () => {
+    describe('with control true and can be set', () => {
+      beforeAll(() => {
+        change.mockClear();
+        FilterHeader.mockClear();
+        wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
+      });
+
+      it('should filter header', () => {
+        expect(FilterHeader).toHaveBeenCalledTimes(1);
+      });
+
+      it('should set state', () => {
+        expect(wrapper.state().options).toEqual(options);
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', true);
+      });
+
+      it('should call change for control column', () => {
+        expect(change).toHaveBeenCalledWith('control', 'column1');
+      });
     });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub={false}
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, headerNew);
-    expect(FilterHeader).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('ctrlSub', true);
-    expect(change).toHaveBeenCalledWith('control', 'column1');
-    expect(wrapper.state().options).toEqual(optionsNew);
-    arrayShallowEqual.mockRestore();
-    FilterHeader.mockRestore();
+
+    describe('when control is false', () => {
+      beforeAll(() => {
+        change.mockClear();
+        wrapper.instance().setInitialReduxFormState(change, 'column1', false, header);
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', false);
+      });
+    });
+
+    describe('when there is no suggested initial value', () => {
+      beforeAll(() => {
+        change.mockClear();
+        FilterHeader.mockReturnValueOnce({
+          initialValue: null,
+          options,
+        });
+        wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', false);
+      });
+    });
+
+    describe('when column specified and control is true', () => {
+      beforeAll(() => {
+        change.mockClear();
+        wrapper.instance().setInitialReduxFormState(change, 'column1', true, header);
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', true);
+      });
+    });
+
+    describe('when column not specified but can be set', () => {
+      beforeAll(() => {
+        change.mockClear();
+        wrapper.instance().setInitialReduxFormState(change, undefined, true, header);
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', true);
+      });
+
+      it('should call change for control column', () => {
+        expect(change).toHaveBeenCalledWith('control', 'column1');
+      });
+    });
   });
 
-  test('Store not updated when header changes and no recommended column', () => {
-    const headerNew = ['column1', 'column2', 'column3'];
-    const optionsNew = [
-      { text: 'column1', value: 'column1' },
-      { text: 'column2', value: 'column2' },
-      { text: 'column3', value: 'column3' },
-    ];
-    arrayShallowEqual.mockReturnValue(false);
-    FilterHeader.mockReturnValue({
-      initialValue: null,
-      options: optionsNew,
-    });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub={false}
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, headerNew);
-    expect(FilterHeader).toHaveBeenCalledTimes(1);
-    expect(change).toHaveBeenCalledTimes(2);
-    expect(change).toHaveBeenCalledWith('ctrlSub', false);
-    expect(change).toHaveBeenCalledWith('control', undefined);
-    expect(wrapper.state().options).toEqual(optionsNew);
-    arrayShallowEqual.mockRestore();
-    FilterHeader.mockRestore();
-  });
+  describe('set form state', () => {
+    describe('when header changes', () => {
+      afterAll(() => {
+        arrayShallowEqual.mockRestore();
+      });
 
-  test('Store not updated when header is the same', () => {
-    arrayShallowEqual.mockReturnValue(true);
-    FilterHeader.mockReturnValue({
-      initialValue: 'column1',
-      options,
+      beforeAll(() => {
+        change.mockClear();
+        FilterHeader.mockClear();
+        const headerNew = ['column1', 'column2', 'column3'];
+        const optionsNew = [
+          { text: 'column1', value: 'column1' },
+          { text: 'column2', value: 'column2' },
+          { text: 'column3', value: 'column3' },
+        ];
+        arrayShallowEqual.mockReturnValue(false);
+        FilterHeader.mockReturnValueOnce({
+          initialValue: 'column1',
+          options: optionsNew,
+        });
+        wrapper.instance().setReduxFormState(change, headerNew);
+      });
+
+      it('should filter header', () => {
+        expect(FilterHeader).toHaveBeenCalled();
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', true);
+      });
+
+      it('should call change for control column', () => {
+        expect(change).toHaveBeenCalledWith('control', 'column1');
+      });
+
+      it('should update state', () => {
+        const expected = [
+          { text: 'column1', value: 'column1' },
+          { text: 'column2', value: 'column2' },
+          { text: 'column3', value: 'column3' },
+        ];
+        expect(wrapper.state().options).toEqual(expected);
+      });
     });
-    /* this is just for mounting, not for running the test. The actual test
-    ** is run with wrapper.instance() but I'm using props consistent with the
-    ** function call */
-    const wrapper = shallow(
-      <ControlSubtractionContainer
-        analysisType="dotplot"
-        change={change}
-        ctrlSub={false}
-        control={undefined}
-        header={header}
-      />,
-    );
-    jest.clearAllMocks();
-    wrapper.instance().setReduxFormState(change, header);
-    expect(FilterHeader).not.toHaveBeenCalled();
-    expect(wrapper.state().options).toEqual(options);
-    arrayShallowEqual.mockRestore();
-    FilterHeader.mockRestore();
+
+    describe('when header changes with no recommended column', () => {
+      afterAll(() => {
+        arrayShallowEqual.mockRestore();
+      });
+
+      beforeAll(() => {
+        change.mockClear();
+        FilterHeader.mockClear();
+        const headerNew = ['column1', 'column2', 'column3'];
+        const optionsNew = [
+          { text: 'column1', value: 'column1' },
+          { text: 'column2', value: 'column2' },
+          { text: 'column3', value: 'column3' },
+        ];
+        arrayShallowEqual.mockReturnValue(false);
+        FilterHeader.mockReturnValue({
+          initialValue: null,
+          options: optionsNew,
+        });
+        wrapper.instance().setReduxFormState(change, headerNew);
+      });
+
+      it('should filter header', () => {
+        expect(FilterHeader).toHaveBeenCalled();
+      });
+
+      it('should call change for ctrlSub', () => {
+        expect(change).toHaveBeenCalledWith('ctrlSub', false);
+      });
+
+      it('should call change for control column', () => {
+        expect(change).toHaveBeenCalledWith('control', undefined);
+      });
+
+      it('should update state', () => {
+        const expected = [
+          { text: 'column1', value: 'column1' },
+          { text: 'column2', value: 'column2' },
+          { text: 'column3', value: 'column3' },
+        ];
+        expect(wrapper.state().options).toEqual(expected);
+      });
+    });
+
+    describe('when header does not change', () => {
+      afterAll(() => {
+        arrayShallowEqual.mockRestore();
+      });
+
+      beforeAll(() => {
+        wrapper.setState({ options });
+        change.mockClear();
+        FilterHeader.mockClear();
+        const headerNew = ['column1', 'column2', 'column3'];
+        const optionsNew = [
+          { text: 'column1', value: 'column1' },
+          { text: 'column2', value: 'column2' },
+          { text: 'column3', value: 'column3' },
+        ];
+        arrayShallowEqual.mockReturnValue(true);
+        FilterHeader.mockReturnValue({
+          initialValue: null,
+          options: optionsNew,
+        });
+        wrapper.instance().setReduxFormState(change, headerNew);
+      });
+
+      it('should not filter header', () => {
+        expect(FilterHeader).not.toHaveBeenCalled();
+      });
+
+      it('should update state', () => {
+        expect(wrapper.state().options).toEqual(options);
+      });
+    });
   });
 });

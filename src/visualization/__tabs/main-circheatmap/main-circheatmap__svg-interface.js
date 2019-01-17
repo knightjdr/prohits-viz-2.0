@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import MainConnected from './main-segcircle__store-connection';
-import renderSvg from './main-segcircle__svg';
+import MainConnected from './main-circheatmap__store-connection';
+import renderSvg from './main-circheatmap__svg';
 
-import '../../__segcircle/svg/segcircle-svg.css';
+import '../../__circheatmap/svg/circheatmap-svg.css';
 
 const SvgInterface = ({
   plotTranslate,
@@ -13,7 +13,7 @@ const SvgInterface = ({
   ...otherProps
 }) => (
   <div
-    className="segcircle-svg__wrapper"
+    className="circheatmap-svg__wrapper"
     ref={setContainerRef}
     style={{
       transform: `translate(${plotTranslate}px)`,

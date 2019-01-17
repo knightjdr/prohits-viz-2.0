@@ -11,11 +11,13 @@ exports[`DotplotOptions should match snapshot 1`] = `
   <PrimaryFilterContainer
     analysisType="test"
     change={[Function]}
+    fileType="saint"
     score="test"
   />
   <SecondaryFilterContainer
     analysisType="test"
     change={[Function]}
+    fileType="saint"
     score="test"
   />
   <MinimumAbundance

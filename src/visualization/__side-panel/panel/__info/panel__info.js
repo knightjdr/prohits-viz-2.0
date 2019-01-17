@@ -14,7 +14,7 @@ const Info = ({
   downloadLegend,
   loadNewFile,
   params,
-  segcircleSettings,
+  circHeatmapSettings,
   segments,
   settings,
 }) => (
@@ -28,7 +28,7 @@ const Info = ({
     </Section>
     <Section title="Legend">
       <div className="panel__info-legend">
-        {Legend({ ...params, ...settings }, segcircleSettings, segments)}
+        {Legend({ ...params, ...settings }, circHeatmapSettings, segments)}
       </div>
     </Section>
     <div className="panel__info-legend-save">
@@ -53,7 +53,7 @@ Info.propTypes = {
   downloadLegend: PropTypes.func.isRequired,
   loadNewFile: PropTypes.func.isRequired,
   params: PropTypes.shape({}).isRequired,
-  segcircleSettings: PropTypes.arrayOf(
+  circHeatmapSettings: PropTypes.arrayOf(
     PropTypes.shape({
       abundanceCap: PropTypes.number,
       color: PropTypes.string,

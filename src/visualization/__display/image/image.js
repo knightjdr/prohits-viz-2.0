@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Heatmap from '../../__heatmap/visualization__heatmap';
-import Segcircle from '../../__segcircle/visualization__segcircle';
+import CircHeatmap from '../../__circheatmap/visualization__circheatmap';
 import Scatter from '../../__scatter/visualization__scatter-container';
 import Status from './image__status';
 
@@ -24,8 +24,8 @@ const ImageType = ({
         loading={loading}
       />
     );
-  } else if (vizType === 'segcircle') {
-    vizElement = <Segcircle />;
+  } else if (vizType === 'circ-heatmap') {
+    vizElement = <CircHeatmap />;
   } else if (vizType === 'scatter') {
     vizElement = <Scatter />;
   } else {

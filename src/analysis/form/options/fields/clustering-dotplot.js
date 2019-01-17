@@ -56,7 +56,7 @@ const Clustering = ({
     }
     {
       clustering === 'hierarchical' &&
-      <div className="form__option-clustering-hierarchical-container">
+      <div className="form__option-clustering-hierarchical">
         <CustomField
           label="Distance metric"
           name="distance"
@@ -92,7 +92,7 @@ const Clustering = ({
     }
     {
       clustering === 'none' &&
-      <div className="form__option-clustering-none-container">
+      <div className="form__option-clustering-none">
         <CustomField
           helpMessage={Info[analysisType].conditionClustering}
           label="Condition options"

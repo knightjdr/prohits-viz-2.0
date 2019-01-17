@@ -9,7 +9,7 @@ import Text from '../text/text';
 import textLimits from '../text/text-limits';
 import textSize from '../../../../helpers/text-size';
 
-/* The plot is being rotated -90 in main-segcircle-svg, so the "x" and
+/* The plot is being rotated -90 in main-circHeatmap-svg, so the "x" and
 ** and "y" here for text are reversed. I'm intentionaly leaving it like this
 ** because it makes calculating the text positions easier. */
 export class CircleContainer extends Component {
