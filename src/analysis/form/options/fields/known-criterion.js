@@ -1,13 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import CustomField from '../../field/field';
 import DefaultChange from '../../field/default-change';
 import Info from '../info/info';
-import speciesList from '../../../../assets/data/interactor-species';
 
 import './option-fields.css';
 
-const Known = () => (
+const KnownCriterion = ({
+  dataSource,
+  disableSpecies,
+}) => (
   <div className="form__option-tf">
     <CustomField
       allowClear
@@ -25,7 +28,8 @@ const Known = () => (
       type="select"
     />
     <CustomField
-      dataSource={speciesList}
+      dataSource={dataSource}
+      disabled={disableSpecies}
       helpMessage={Info['circ-heatmap'].species}
       label="Species"
       name="species"
@@ -36,4 +40,11 @@ const Known = () => (
   </div>
 );
 
-export default Known;
+KnownCriterion.propTypes = {
+  dataSource: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+  disableSpecies: PropTypes.bool.isRequired,
+};
+
+export default KnownCriterion;

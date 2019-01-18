@@ -16,6 +16,7 @@ import CustomUpload from './upload';
 export const WrappedField = ({
   allowClear,
   dataSource,
+  disabled,
   field,
   formItemLayout,
   helpMessage,
@@ -35,6 +36,7 @@ export const WrappedField = ({
       return (
         <CustomAutoComplete
           dataSource={dataSource}
+          disabled={disabled}
           helpMessage={helpMessage}
           input={input}
           label={label}

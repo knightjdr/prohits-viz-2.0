@@ -3,7 +3,7 @@ import React from 'react';
 
 import ControlSubtraction from './fields/control-subtraction-container';
 import FillColor from './fields/fill-color';
-import KnownCriterion from './fields/known-criterion';
+import KnownCriterion from './fields/known-criterion-container';
 import Log from './fields/log';
 import MaximumAbundance from './fields/maximum-abundance';
 import MinimumAbundance from './fields/minimum-abundance';
@@ -25,6 +25,7 @@ const CircHeatmapOptions = ({
     control,
     ctrlSub,
     fileType,
+    knownCriterion,
     normalization,
     otherAbundance,
     readoutLength,
@@ -68,7 +69,7 @@ const CircHeatmapOptions = ({
       />
       <Log analysisType={analysisType} />
       <FillColor analysisType={analysisType} />
-      <KnownCriterion />
+      <KnownCriterion disableSpecies={!knownCriterion} />
       <OtherAbundanceColumns
         abundance={abundance}
         change={change}

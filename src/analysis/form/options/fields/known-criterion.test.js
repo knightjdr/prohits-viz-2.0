@@ -9,7 +9,12 @@ describe('Known criterion', () => {
   let wrapper;
 
   beforeAll(() => {
-    wrapper = shallow(<KnownCriterion />);
+    wrapper = shallow(
+      <KnownCriterion
+        dataSource={[]}
+        disableSpecies={false}
+      />,
+    );
   });
 
   it('should match snapshot', () => {

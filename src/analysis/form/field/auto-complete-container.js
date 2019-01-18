@@ -28,6 +28,7 @@ class CustomAutoCompleteContainer extends PureComponent {
   }
   render() {
     const {
+      disabled,
       helpMessage,
       input,
       label,
@@ -40,6 +41,7 @@ class CustomAutoCompleteContainer extends PureComponent {
     return (
       <CustomAutoComplete
         dataSource={dataSource}
+        disabled={disabled}
         handleSearch={this.handleSearch}
         helpMessage={helpMessage}
         input={input}
@@ -56,6 +58,7 @@ class CustomAutoCompleteContainer extends PureComponent {
 }
 
 CustomAutoCompleteContainer.defaultProps = {
+  disabled: false,
   helpMessage: null,
   label: null,
   placeHolder: 'Search...',
@@ -66,6 +69,7 @@ CustomAutoCompleteContainer.propTypes = {
   dataSource: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  disabled: PropTypes.bool,
   helpMessage: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.string,

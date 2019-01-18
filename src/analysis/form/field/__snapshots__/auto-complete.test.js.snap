@@ -29,6 +29,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
     >
       <CustomAutoComplete
         dataSource={Array []}
+        disabled={false}
         handleSearch={[Function]}
         helpMessage="help"
         input={
@@ -106,6 +107,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                         <AutoComplete
                           choiceTransitionName="zoom"
                           dataSource={Array []}
+                          disabled={false}
                           filterOption={false}
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -126,6 +128,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                             choiceTransitionName="zoom"
                             className="ant-select-show-search ant-select-auto-complete"
                             dataSource={Array []}
+                            disabled={false}
                             filterOption={false}
                             getInputElement={[Function]}
                             mode="combobox"
@@ -162,6 +165,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                                 dataSource={Array []}
                                 defaultActiveFirstOption={true}
                                 defaultOpen={false}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -200,6 +204,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                                 <SelectTrigger
                                   combobox={true}
                                   defaultActiveFirstOption={true}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -261,6 +266,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                                     defaultActiveFirstOption={true}
                                     defaultPopupVisible={false}
                                     destroyPopupOnHide={false}
+                                    disabled={false}
                                     dropdownMatchSelectWidth={true}
                                     dropdownMenuStyle={Object {}}
                                     dropdownStyle={Object {}}
@@ -370,6 +376,7 @@ exports[`Auto complete submit error should match snapshot 1`] = `
                                               >
                                                 <InputElement
                                                   className="ant-select-search__field"
+                                                  disabled={false}
                                                   onChange={[Function]}
                                                   onKeyDown={[Function]}
                                                   prefixCls="ant-input"
@@ -550,6 +557,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
     >
       <CustomAutoComplete
         dataSource={Array []}
+        disabled={false}
         handleSearch={[Function]}
         helpMessage=""
         input={
@@ -627,6 +635,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                         <AutoComplete
                           choiceTransitionName="zoom"
                           dataSource={Array []}
+                          disabled={false}
                           filterOption={false}
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -647,6 +656,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                             choiceTransitionName="zoom"
                             className="ant-select-show-search ant-select-auto-complete"
                             dataSource={Array []}
+                            disabled={false}
                             filterOption={false}
                             getInputElement={[Function]}
                             mode="combobox"
@@ -683,6 +693,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                                 dataSource={Array []}
                                 defaultActiveFirstOption={true}
                                 defaultOpen={false}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -721,6 +732,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                                 <SelectTrigger
                                   combobox={true}
                                   defaultActiveFirstOption={true}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -782,6 +794,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                                     defaultActiveFirstOption={true}
                                     defaultPopupVisible={false}
                                     destroyPopupOnHide={false}
+                                    disabled={false}
                                     dropdownMatchSelectWidth={true}
                                     dropdownMenuStyle={Object {}}
                                     dropdownStyle={Object {}}
@@ -891,6 +904,7 @@ exports[`Auto complete with no help message should match snapshot 1`] = `
                                               >
                                                 <InputElement
                                                   className="ant-select-search__field"
+                                                  disabled={false}
                                                   onChange={[Function]}
                                                   onKeyDown={[Function]}
                                                   prefixCls="ant-input"
@@ -1007,6 +1021,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
     >
       <CustomAutoComplete
         dataSource={Array []}
+        disabled={false}
         handleSearch={[Function]}
         helpMessage="help"
         input={
@@ -1067,6 +1082,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                         <AutoComplete
                           choiceTransitionName="zoom"
                           dataSource={Array []}
+                          disabled={false}
                           filterOption={false}
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -1087,6 +1103,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                             choiceTransitionName="zoom"
                             className="ant-select-show-search ant-select-auto-complete"
                             dataSource={Array []}
+                            disabled={false}
                             filterOption={false}
                             getInputElement={[Function]}
                             mode="combobox"
@@ -1123,6 +1140,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                                 dataSource={Array []}
                                 defaultActiveFirstOption={true}
                                 defaultOpen={false}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -1161,6 +1179,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                                 <SelectTrigger
                                   combobox={true}
                                   defaultActiveFirstOption={true}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -1222,6 +1241,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                                     defaultActiveFirstOption={true}
                                     defaultPopupVisible={false}
                                     destroyPopupOnHide={false}
+                                    disabled={false}
                                     dropdownMatchSelectWidth={true}
                                     dropdownMenuStyle={Object {}}
                                     dropdownStyle={Object {}}
@@ -1331,6 +1351,7 @@ exports[`Auto complete with no label should match snapshot 1`] = `
                                               >
                                                 <InputElement
                                                   className="ant-select-search__field"
+                                                  disabled={false}
                                                   onChange={[Function]}
                                                   onKeyDown={[Function]}
                                                   prefixCls="ant-input"
@@ -1495,6 +1516,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
     >
       <CustomAutoComplete
         dataSource={Array []}
+        disabled={false}
         handleSearch={[Function]}
         helpMessage="help"
         input={
@@ -1572,6 +1594,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                         <AutoComplete
                           choiceTransitionName="zoom"
                           dataSource={Array []}
+                          disabled={false}
                           filterOption={false}
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -1592,6 +1615,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                             choiceTransitionName="zoom"
                             className="ant-select-show-search ant-select-auto-complete"
                             dataSource={Array []}
+                            disabled={false}
                             filterOption={false}
                             getInputElement={[Function]}
                             mode="combobox"
@@ -1628,6 +1652,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                                 dataSource={Array []}
                                 defaultActiveFirstOption={true}
                                 defaultOpen={false}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -1666,6 +1691,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                                 <SelectTrigger
                                   combobox={true}
                                   defaultActiveFirstOption={true}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -1727,6 +1753,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                                     defaultActiveFirstOption={true}
                                     defaultPopupVisible={false}
                                     destroyPopupOnHide={false}
+                                    disabled={false}
                                     dropdownMatchSelectWidth={true}
                                     dropdownMenuStyle={Object {}}
                                     dropdownStyle={Object {}}
@@ -1836,6 +1863,7 @@ exports[`Auto complete without error should match snapshot 1`] = `
                                               >
                                                 <InputElement
                                                   className="ant-select-search__field"
+                                                  disabled={false}
                                                   onChange={[Function]}
                                                   onKeyDown={[Function]}
                                                   prefixCls="ant-input"

@@ -21,6 +21,7 @@ const field = {
 const options = {
   allowClear: false,
   dataSource: [],
+  disabled: false,
   field,
   formItemLayout: {},
   helpMessage: 'test help',
@@ -49,6 +50,10 @@ describe('Field', () => {
 
     it('should have dataSource', () => {
       expect(Object.keys(wrapper.props).includes('dataSource')).toBeTruthy();
+    });
+
+    it('should have disabled', () => {
+      expect(Object.keys(wrapper.props).includes('disabled')).toBeTruthy();
     });
 
     it('should have input', () => {

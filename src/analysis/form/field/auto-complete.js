@@ -15,6 +15,7 @@ const FormItem = Form.Item;
 
 const CustomAutoComplete = ({
   dataSource,
+  disabled,
   handleSearch,
   helpMessage,
   input,
@@ -49,6 +50,7 @@ const CustomAutoComplete = ({
       >
         <AutoComplete
           dataSource={dataSource}
+          disabled={disabled}
           onBlur={onBlur}
           onChange={onChange}
           onSelect={handleSelect}
@@ -72,6 +74,7 @@ const CustomAutoComplete = ({
 };
 
 CustomAutoComplete.defaultProps = {
+  disabled: false,
   helpMessage: null,
   label: null,
   value: undefined,
@@ -81,6 +84,7 @@ CustomAutoComplete.propTypes = {
   dataSource: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  disabled: PropTypes.bool,
   handleSearch: PropTypes.func.isRequired,
   helpMessage: PropTypes.oneOfType([
     PropTypes.shape({}),
