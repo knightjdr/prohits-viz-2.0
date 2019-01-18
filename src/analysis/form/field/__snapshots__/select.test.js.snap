@@ -70,10 +70,10 @@ exports[`Select should renders with an option group 1`] = `
         style={Object {}}
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help=""
@@ -82,11 +82,11 @@ exports[`Select should renders with an option group 1`] = `
             validateStatus=""
           >
             <Row
-              className="ant-form-item CustomField-formItem"
+              className="ant-form-item customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item CustomField-formItem"
+                className="ant-row ant-form-item customfield__form-item"
               >
                 <Col
                   className="ant-form-item-control-wrapper"
@@ -437,10 +437,10 @@ exports[`Select submit error should match snapshot 1`] = `
         style={Object {}}
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help="Error message"
@@ -449,11 +449,11 @@ exports[`Select submit error should match snapshot 1`] = `
             validateStatus="error"
           >
             <Row
-              className="ant-form-item ant-form-item-with-help CustomField-formItem"
+              className="ant-form-item ant-form-item-with-help customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item ant-form-item-with-help CustomField-formItem"
+                className="ant-row ant-form-item ant-form-item-with-help customfield__form-item"
               >
                 <Col
                   className="ant-form-item-control-wrapper"
@@ -824,10 +824,10 @@ exports[`Select with multiple option should match snapshot 1`] = `
         }
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help=""
@@ -836,11 +836,11 @@ exports[`Select with multiple option should match snapshot 1`] = `
             validateStatus=""
           >
             <Row
-              className="ant-form-item CustomField-formItem"
+              className="ant-form-item customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item CustomField-formItem"
+                className="ant-row ant-form-item customfield__form-item"
               >
                 <Col
                   className="ant-form-item-label"
@@ -1298,10 +1298,10 @@ exports[`Select with no help message should match snapshot 1`] = `
         style={Object {}}
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help=""
@@ -1310,11 +1310,11 @@ exports[`Select with no help message should match snapshot 1`] = `
             validateStatus=""
           >
             <Row
-              className="ant-form-item CustomField-formItem"
+              className="ant-form-item customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item CustomField-formItem"
+                className="ant-row ant-form-item customfield__form-item"
               >
                 <Col
                   className="ant-form-item-label"
@@ -1686,10 +1686,10 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
         }
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help=""
@@ -1698,11 +1698,11 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
             validateStatus=""
           >
             <Row
-              className="ant-form-item CustomField-formItem"
+              className="ant-form-item customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item CustomField-formItem"
+                className="ant-row ant-form-item customfield__form-item"
               >
                 <Col
                   className="ant-form-item-label"

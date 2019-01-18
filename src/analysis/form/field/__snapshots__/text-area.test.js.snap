@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextArea Renders with no value, help message and type = text 1`] = `
+exports[`TextArea no label should match snapshot 1`] = `
 <TestForm
   input={
     Object {
@@ -35,7 +35,7 @@ exports[`TextArea Renders with no value, help message and type = text 1`] = `
             "value": undefined,
           }
         }
-        label="Label"
+        label={null}
         meta={
           Object {
             "error": "",
@@ -50,41 +50,24 @@ exports[`TextArea Renders with no value, help message and type = text 1`] = `
         style={Object {}}
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help=""
-            label="Label"
+            label={null}
             prefixCls="ant-form"
             validateStatus=""
           >
             <Row
-              className="ant-form-item CustomField-formItem"
+              className="ant-form-item customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item CustomField-formItem"
+                className="ant-row ant-form-item customfield__form-item"
               >
-                <Col
-                  className="ant-form-item-label"
-                  key=".$label"
-                >
-                  <div
-                    className="ant-form-item-label"
-                  >
-                    <label
-                      className=""
-                      htmlFor={null}
-                      onClick={[Function]}
-                      title="Label"
-                    >
-                      Label
-                    </label>
-                  </div>
-                </Col>
                 <Col
                   className="ant-form-item-control-wrapper"
                   key=".$wrapper"
@@ -99,7 +82,7 @@ exports[`TextArea Renders with no value, help message and type = text 1`] = `
                         className="ant-form-item-children"
                       >
                         <TextArea
-                          onMouseLeave={[Function]}
+                          onBlur={[Function]}
                           placeholder="TextArea..."
                           prefixCls="ant-input"
                           rows={5}
@@ -107,9 +90,9 @@ exports[`TextArea Renders with no value, help message and type = text 1`] = `
                         >
                           <textarea
                             className="ant-input"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onKeyDown={[Function]}
-                            onMouseLeave={[Function]}
                             placeholder="TextArea..."
                             rows={5}
                             style={Object {}}
@@ -194,153 +177,7 @@ exports[`TextArea Renders with no value, help message and type = text 1`] = `
 </TestForm>
 `;
 
-exports[`TextArea Renders with without help message 1`] = `
-<TestForm
-  input={
-    Object {
-      "onChange": [Function],
-      "value": undefined,
-    }
-  }
-  meta={
-    Object {
-      "error": "",
-      "touched": false,
-      "warning": "",
-    }
-  }
-  onSubmit={[Function]}
->
-  <Form
-    hideRequiredMark={false}
-    layout="horizontal"
-    onSubmit={[Function]}
-    prefixCls="ant-form"
-  >
-    <form
-      className="ant-form ant-form-horizontal"
-      onSubmit={[Function]}
-    >
-      <CustomInput
-        helpMessage={null}
-        input={
-          Object {
-            "onChange": [Function],
-            "value": undefined,
-          }
-        }
-        label="Label"
-        meta={
-          Object {
-            "error": "",
-            "touched": false,
-            "warning": "",
-          }
-        }
-        name="TestTextArea"
-        onChange={[Function]}
-        placeHolder="TextArea..."
-        rows={5}
-        style={Object {}}
-      >
-        <div
-          className="CustomField-container"
-        >
-          <FormItem
-            className="CustomField-formItem"
-            colon={true}
-            hasFeedback={false}
-            help=""
-            label="Label"
-            prefixCls="ant-form"
-            validateStatus=""
-          >
-            <Row
-              className="ant-form-item CustomField-formItem"
-              gutter={0}
-            >
-              <div
-                className="ant-row ant-form-item CustomField-formItem"
-              >
-                <Col
-                  className="ant-form-item-label"
-                  key=".$label"
-                >
-                  <div
-                    className="ant-form-item-label"
-                  >
-                    <label
-                      className=""
-                      htmlFor={null}
-                      onClick={[Function]}
-                      title="Label"
-                    >
-                      Label
-                    </label>
-                  </div>
-                </Col>
-                <Col
-                  className="ant-form-item-control-wrapper"
-                  key=".$wrapper"
-                >
-                  <div
-                    className="ant-form-item-control-wrapper"
-                  >
-                    <div
-                      className="ant-form-item-control"
-                    >
-                      <span
-                        className="ant-form-item-children"
-                      >
-                        <TextArea
-                          onMouseLeave={[Function]}
-                          placeholder="TextArea..."
-                          prefixCls="ant-input"
-                          rows={5}
-                          style={Object {}}
-                        >
-                          <textarea
-                            className="ant-input"
-                            onChange={[Function]}
-                            onKeyDown={[Function]}
-                            onMouseLeave={[Function]}
-                            placeholder="TextArea..."
-                            rows={5}
-                            style={Object {}}
-                          />
-                        </TextArea>
-                      </span>
-                      <Animate
-                        animation={Object {}}
-                        component=""
-                        componentProps={Object {}}
-                        key="help"
-                        onAppear={[Function]}
-                        onEnd={[Function]}
-                        onEnter={[Function]}
-                        onLeave={[Function]}
-                        transitionAppear={true}
-                        transitionEnter={true}
-                        transitionLeave={true}
-                        transitionName="show-help"
-                      />
-                    </div>
-                  </div>
-                </Col>
-              </div>
-            </Row>
-          </FormItem>
-        </div>
-      </CustomInput>
-      <button
-        type="submit"
-      />
-    </form>
-  </Form>
-</TestForm>
-`;
-
-exports[`TextArea Submit error adds prop visualization queue 1`] = `
+exports[`TextArea submit error should match snapshot 1`] = `
 <TestForm
   input={
     Object {
@@ -391,10 +228,10 @@ exports[`TextArea Submit error adds prop visualization queue 1`] = `
         type="number"
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
-            className="CustomField-formItem"
+            className="customfield__form-item"
             colon={true}
             hasFeedback={false}
             help="Error message"
@@ -403,11 +240,11 @@ exports[`TextArea Submit error adds prop visualization queue 1`] = `
             validateStatus="error"
           >
             <Row
-              className="ant-form-item ant-form-item-with-help CustomField-formItem"
+              className="ant-form-item ant-form-item-with-help customfield__form-item"
               gutter={0}
             >
               <div
-                className="ant-row ant-form-item ant-form-item-with-help CustomField-formItem"
+                className="ant-row ant-form-item ant-form-item-with-help customfield__form-item"
               >
                 <Col
                   className="ant-form-item-label"
@@ -440,7 +277,7 @@ exports[`TextArea Submit error adds prop visualization queue 1`] = `
                         className="ant-form-item-children"
                       >
                         <TextArea
-                          onMouseLeave={[Function]}
+                          onBlur={[Function]}
                           placeholder="TextArea..."
                           prefixCls="ant-input"
                           rows={5}
@@ -448,9 +285,9 @@ exports[`TextArea Submit error adds prop visualization queue 1`] = `
                         >
                           <textarea
                             className="ant-input"
+                            onBlur={[Function]}
                             onChange={[Function]}
                             onKeyDown={[Function]}
-                            onMouseLeave={[Function]}
                             placeholder="TextArea..."
                             rows={5}
                             style={Object {}}
@@ -541,6 +378,358 @@ exports[`TextArea Submit error adds prop visualization queue 1`] = `
               />
             </svg>
           </FontAwesomeIcon$1>
+        </div>
+      </CustomInput>
+      <button
+        type="submit"
+      />
+    </form>
+  </Form>
+</TestForm>
+`;
+
+exports[`TextArea with help message should match snapshot 1`] = `
+<TestForm
+  input={
+    Object {
+      "onChange": [Function],
+      "value": undefined,
+    }
+  }
+  meta={
+    Object {
+      "error": "",
+      "touched": false,
+      "warning": "",
+    }
+  }
+  onSubmit={[Function]}
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <form
+      className="ant-form ant-form-horizontal"
+      onSubmit={[Function]}
+    >
+      <CustomInput
+        helpMessage="help"
+        input={
+          Object {
+            "onChange": [Function],
+            "value": undefined,
+          }
+        }
+        label="Label"
+        meta={
+          Object {
+            "error": "",
+            "touched": false,
+            "warning": "",
+          }
+        }
+        name="TestTextArea"
+        onChange={[Function]}
+        placeHolder="TextArea..."
+        rows={5}
+        style={
+          Object {
+            "backgroundColor": "#000",
+          }
+        }
+      >
+        <div
+          className="customfield"
+        >
+          <FormItem
+            className="customfield__form-item"
+            colon={true}
+            hasFeedback={false}
+            help=""
+            label="Label"
+            prefixCls="ant-form"
+            validateStatus=""
+          >
+            <Row
+              className="ant-form-item customfield__form-item"
+              gutter={0}
+            >
+              <div
+                className="ant-row ant-form-item customfield__form-item"
+              >
+                <Col
+                  className="ant-form-item-label"
+                  key=".$label"
+                >
+                  <div
+                    className="ant-form-item-label"
+                  >
+                    <label
+                      className=""
+                      htmlFor={null}
+                      onClick={[Function]}
+                      title="Label"
+                    >
+                      Label
+                    </label>
+                  </div>
+                </Col>
+                <Col
+                  className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
+                >
+                  <div
+                    className="ant-form-item-control-wrapper"
+                  >
+                    <div
+                      className="ant-form-item-control"
+                    >
+                      <span
+                        className="ant-form-item-children"
+                      >
+                        <TextArea
+                          onBlur={[Function]}
+                          placeholder="TextArea..."
+                          prefixCls="ant-input"
+                          rows={5}
+                          style={
+                            Object {
+                              "backgroundColor": "#000",
+                            }
+                          }
+                        >
+                          <textarea
+                            className="ant-input"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onKeyDown={[Function]}
+                            placeholder="TextArea..."
+                            rows={5}
+                            style={
+                              Object {
+                                "backgroundColor": "#000",
+                              }
+                            }
+                          />
+                        </TextArea>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
+          <FontAwesomeIcon$1
+            border={false}
+            className="customfield__help"
+            fixedWidth={false}
+            flip={null}
+            icon={
+              Object {
+                "icon": Array [
+                  448,
+                  512,
+                  Array [],
+                  "f2fd",
+                  "M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 430c-25.365 0-46-20.636-46-46 0-25.365 20.635-46 46-46s46 20.635 46 46c0 25.364-20.635 46-46 46zm40-131.333V300c0 6.627-5.373 12-12 12h-56c-6.627 0-12-5.373-12-12v-4c0-41.059 31.128-57.472 54.652-70.66 20.171-11.309 32.534-19 32.534-33.976 0-19.81-25.269-32.958-45.698-32.958-27.19 0-39.438 13.139-57.303 35.797-4.045 5.13-11.46 6.069-16.665 2.122l-34.699-26.31c-5.068-3.843-6.251-10.972-2.715-16.258C141.4 112.957 176.158 90 230.655 90c56.366 0 116.531 43.998 116.531 102 0 77.02-83.186 78.205-83.186 106.667z",
+                ],
+                "iconName": "question-square",
+                "prefix": "fas",
+              }
+            }
+            listItem={false}
+            mask={null}
+            name=""
+            onClick={[Function]}
+            pull={null}
+            pulse={false}
+            rotation={null}
+            size="2x"
+            spin={false}
+            symbol={false}
+            transform={null}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-question-square fa-w-14 fa-2x customfield__help"
+              data-icon="question-square"
+              data-prefix="fas"
+              onClick={[Function]}
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 430c-25.365 0-46-20.636-46-46 0-25.365 20.635-46 46-46s46 20.635 46 46c0 25.364-20.635 46-46 46zm40-131.333V300c0 6.627-5.373 12-12 12h-56c-6.627 0-12-5.373-12-12v-4c0-41.059 31.128-57.472 54.652-70.66 20.171-11.309 32.534-19 32.534-33.976 0-19.81-25.269-32.958-45.698-32.958-27.19 0-39.438 13.139-57.303 35.797-4.045 5.13-11.46 6.069-16.665 2.122l-34.699-26.31c-5.068-3.843-6.251-10.972-2.715-16.258C141.4 112.957 176.158 90 230.655 90c56.366 0 116.531 43.998 116.531 102 0 77.02-83.186 78.205-83.186 106.667z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </FontAwesomeIcon$1>
+        </div>
+      </CustomInput>
+      <button
+        type="submit"
+      />
+    </form>
+  </Form>
+</TestForm>
+`;
+
+exports[`TextArea without help message should match snapshot 1`] = `
+<TestForm
+  input={
+    Object {
+      "onChange": [Function],
+      "value": undefined,
+    }
+  }
+  meta={
+    Object {
+      "error": "",
+      "touched": false,
+      "warning": "",
+    }
+  }
+  onSubmit={[Function]}
+>
+  <Form
+    hideRequiredMark={false}
+    layout="horizontal"
+    onSubmit={[Function]}
+    prefixCls="ant-form"
+  >
+    <form
+      className="ant-form ant-form-horizontal"
+      onSubmit={[Function]}
+    >
+      <CustomInput
+        helpMessage={null}
+        input={
+          Object {
+            "onChange": [Function],
+            "value": undefined,
+          }
+        }
+        label="Label"
+        meta={
+          Object {
+            "error": "",
+            "touched": false,
+            "warning": "",
+          }
+        }
+        name="TestTextArea"
+        onChange={[Function]}
+        placeHolder="TextArea..."
+        rows={5}
+        style={Object {}}
+      >
+        <div
+          className="customfield"
+        >
+          <FormItem
+            className="customfield__form-item"
+            colon={true}
+            hasFeedback={false}
+            help=""
+            label="Label"
+            prefixCls="ant-form"
+            validateStatus=""
+          >
+            <Row
+              className="ant-form-item customfield__form-item"
+              gutter={0}
+            >
+              <div
+                className="ant-row ant-form-item customfield__form-item"
+              >
+                <Col
+                  className="ant-form-item-label"
+                  key=".$label"
+                >
+                  <div
+                    className="ant-form-item-label"
+                  >
+                    <label
+                      className=""
+                      htmlFor={null}
+                      onClick={[Function]}
+                      title="Label"
+                    >
+                      Label
+                    </label>
+                  </div>
+                </Col>
+                <Col
+                  className="ant-form-item-control-wrapper"
+                  key=".$wrapper"
+                >
+                  <div
+                    className="ant-form-item-control-wrapper"
+                  >
+                    <div
+                      className="ant-form-item-control"
+                    >
+                      <span
+                        className="ant-form-item-children"
+                      >
+                        <TextArea
+                          onBlur={[Function]}
+                          placeholder="TextArea..."
+                          prefixCls="ant-input"
+                          rows={5}
+                          style={Object {}}
+                        >
+                          <textarea
+                            className="ant-input"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onKeyDown={[Function]}
+                            placeholder="TextArea..."
+                            rows={5}
+                            style={Object {}}
+                          />
+                        </TextArea>
+                      </span>
+                      <Animate
+                        animation={Object {}}
+                        component=""
+                        componentProps={Object {}}
+                        key="help"
+                        onAppear={[Function]}
+                        onEnd={[Function]}
+                        onEnter={[Function]}
+                        onLeave={[Function]}
+                        transitionAppear={true}
+                        transitionEnter={true}
+                        transitionLeave={true}
+                        transitionName="show-help"
+                      />
+                    </div>
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </FormItem>
         </div>
       </CustomInput>
       <button

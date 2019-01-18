@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox Renders with false as initial value 1`] = `
+exports[`Checkbox should match snapshot 1`] = `
 <TestForm
   input={
     Object {
@@ -22,7 +22,16 @@ exports[`Checkbox Renders with false as initial value 1`] = `
       onSubmit={[Function]}
     >
       <CustomCheckbox
-        formItemLayout={Object {}}
+        formItemLayout={
+          Object {
+            "labelCol": Object {
+              "span": 10,
+            },
+            "wrapperCol": Object {
+              "span": 20,
+            },
+          }
+        }
         input={
           Object {
             "change": [Function],
@@ -32,13 +41,27 @@ exports[`Checkbox Renders with false as initial value 1`] = `
         label="TestCheckbox"
         meta={Object {}}
         onChange={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#000",
+          }
+        }
       >
         <FormItem
           colon={true}
           hasFeedback={false}
           label="TestCheckbox"
+          labelCol={
+            Object {
+              "span": 10,
+            }
+          }
           prefixCls="ant-form"
+          wrapperCol={
+            Object {
+              "span": 20,
+            }
+          }
         >
           <Row
             className="ant-form-item"
@@ -50,9 +73,10 @@ exports[`Checkbox Renders with false as initial value 1`] = `
               <Col
                 className="ant-form-item-label"
                 key=".$label"
+                span={10}
               >
                 <div
-                  className="ant-form-item-label"
+                  className="ant-col-10 ant-form-item-label"
                 >
                   <label
                     className=""
@@ -67,9 +91,10 @@ exports[`Checkbox Renders with false as initial value 1`] = `
               <Col
                 className="ant-form-item-control-wrapper"
                 key=".$wrapper"
+                span={20}
               >
                 <div
-                  className="ant-form-item-control-wrapper"
+                  className="ant-col-20 ant-form-item-control-wrapper"
                 >
                   <div
                     className="ant-form-item-control"
@@ -82,11 +107,19 @@ exports[`Checkbox Renders with false as initial value 1`] = `
                         indeterminate={false}
                         onChange={[Function]}
                         prefixCls="ant-checkbox"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "backgroundColor": "#000",
+                          }
+                        }
                       >
                         <label
                           className="ant-checkbox-wrapper"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "backgroundColor": "#000",
+                            }
+                          }
                         >
                           <Checkbox
                             checked={false}

@@ -95,7 +95,7 @@ describe('Switch', () => {
     });
 
     it('should render help', () => {
-      expect(wrapper.find('svg.CustomField-switch-help').length).toBe(1);
+      expect(wrapper.find('svg.customfield__switch-help').length).toBe(1);
     });
 
     it('should add custom style', () => {
@@ -105,7 +105,7 @@ describe('Switch', () => {
 
     it('should open modal with label title', () => {
       InfoModal.mockClear();
-      const button = wrapper.find('.CustomField-switch-help').first();
+      const button = wrapper.find('.customfield__switch-help').first();
       button.simulate('click');
       expect(InfoModal).toHaveBeenCalledWith('TestSwitch', 'help');
     });
@@ -173,7 +173,7 @@ describe('Switch', () => {
     it('should open modal with default help title', () => {
       InfoModal.mockClear();
       wrapper.setProps({ label: null });
-      const button = wrapper.find('.CustomField-switch-help').first();
+      const button = wrapper.find('.customfield__switch-help').first();
       button.simulate('click');
       expect(InfoModal).toHaveBeenCalledWith('Help', 'help');
     });

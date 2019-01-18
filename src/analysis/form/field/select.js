@@ -26,18 +26,19 @@ const CustomSelect = ({
   placeHolder,
   style,
 }) => {
-  const { error, touched } = meta;
-  const formError = touched && error;
-  const change = (value) => {
+  const handleChange = (value) => {
     onChange(value, input);
   };
   const openModal = () => {
     InfoModal(label || 'Help', helpMessage);
   };
+
+  const { error, touched } = meta;
+  const formError = touched && error;
   return (
-    <div className="CustomField-container">
+    <div className="customfield">
       <FormItem
-        className="CustomField-formItem"
+        className="customfield__form-item"
         label={label}
         help={formError ? error : ''}
         validateStatus={formError ? 'error' : ''}
@@ -46,7 +47,7 @@ const CustomSelect = ({
           allowClear={allowClear}
           autoClearSearchValue={false}
           mode={multiple ? 'multiple' : 'default'}
-          onChange={change}
+          onChange={handleChange}
           placeholder={placeHolder}
           style={style}
           value={input.value || undefined}

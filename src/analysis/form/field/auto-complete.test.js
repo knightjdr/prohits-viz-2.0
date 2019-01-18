@@ -1,43 +1,44 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+import AutoComplete from './auto-complete';
 import InfoModal from './info-modal';
-import TextArea from './text-area';
 import TestForm from './__mocks__/form-wrapper';
-import UndefinedIfNotSet from '../../../helpers/undefined-if-not-set';
 
 jest.mock('./info-modal');
-jest.mock('../../../helpers/undefined-if-not-set');
-UndefinedIfNotSet.mockImplementation(value => (value));
 
-const inputOnChange = jest.fn();
+const inputChange = jest.fn();
+const handleSearch = jest.fn();
 const onChange = jest.fn();
+const onSelect = jest.fn();
 const onSubmit = jest.fn();
 
-describe('TextArea', () => {
-  describe('with help message', () => {
+describe('Auto complete', () => {
+  describe('without error', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = mount(
         <TestForm
           input={{
-            onChange: inputOnChange,
+            change: inputChange,
             value: undefined,
           }}
           meta={{ error: '', touched: false, warning: '' }}
           onSubmit={onSubmit}
         >
-          <TextArea
+          <AutoComplete
+            dataSource={[]}
+            handleSearch={handleSearch}
             helpMessage="help"
             input={{}}
             label="Label"
             meta={{}}
-            name="TestTextArea"
             onChange={onChange}
-            placeHolder="TextArea..."
+            onSelect={onSelect}
+            placeHolder="Auto complete"
             style={{ backgroundColor: '#000' }}
-            rows={5}
+            value={undefined}
           />
         </TestForm>,
       );
@@ -47,89 +48,80 @@ describe('TextArea', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render with no value', () => {
-      const input = wrapper.find('textarea');
-      expect(input.props().defaultValue).toBeUndefined();
+    it('should have no value', () => {
+      const select = wrapper.find('AutoComplete').first();
+      expect(select.props().value).toBeUndefined();
     });
 
-    it('should render 5 rows', () => {
-      const input = wrapper.find('textarea');
-      expect(input.props().rows).toBe(5);
-    });
-
-    it('should render help', () => {
+    it('should have help', () => {
       expect(wrapper.find('svg.customfield__help').length).toBe(1);
     });
 
-    it('should add custom style', () => {
-      const inputStyle = wrapper.find('textarea').first().props().style;
-      expect(inputStyle).toHaveProperty('backgroundColor', '#000');
+    it('should have custom style', () => {
+      const selectStyle = wrapper.find('Select').first().props().style;
+      expect(selectStyle).toHaveProperty('backgroundColor', '#000');
     });
 
-    it('should open modal on click', () => {
+    it('should open modal', () => {
       InfoModal.mockClear();
       const button = wrapper.find('.customfield__help').first();
       button.simulate('click');
       expect(InfoModal).toHaveBeenCalledWith('Label', 'help');
     });
 
-    it('should not call change on blur when input does not', () => {
+    it('should call onSelect on blur', () => {
+      onSelect.mockClear();
+      const autoComplete = wrapper.find('AutoComplete').first();
+      autoComplete.props().onBlur();
+      expect(onSelect).toHaveBeenCalled();
+    });
+
+    it('should call onChange when input changes', () => {
       onChange.mockClear();
-      const input = wrapper.find('textarea');
-      input.props().onBlur(undefined);
-      expect(onChange).not.toHaveBeenCalled();
+      const autoComplete = wrapper.find('AutoComplete').first();
+      autoComplete.props().onChange();
+      expect(onChange).toHaveBeenCalled();
     });
 
-    it('should call change on blur when input changes', () => {
-      onChange.mockClear();
-      const expected = {
-        onChange: inputOnChange,
-        value: undefined,
-      };
-      const input = wrapper.find('textarea');
-      input.props().onBlur(10);
-      expect(onChange).toHaveBeenCalledWith(10, expected);
+    it('should call onSelect when option selected', () => {
+      onSelect.mockClear();
+      const autoComplete = wrapper.find('AutoComplete').first();
+      autoComplete.props().onSelect();
+      expect(onSelect).toHaveBeenCalled();
     });
 
-    it('should set inpute value via input.value prop', () => {
-      wrapper.setProps({
-        input: {
-          onChange: inputOnChange,
-          value: 1,
-        },
-      });
-      const input = wrapper.find('textarea');
-      expect(input.props().defaultValue).toBe(1);
-    });
-
-    it('should call submit on button click', () => {
-      onSubmit.mockClear();
-      const button = wrapper.find('button');
-      button.simulate('submit');
-      expect(onSubmit).toHaveBeenCalledTimes(1);
+    it('should call handleSearch on search', () => {
+      handleSearch.mockClear();
+      const autoComplete = wrapper.find('AutoComplete').first();
+      autoComplete.props().onSearch();
+      expect(handleSearch).toHaveBeenCalled();
     });
   });
 
-  describe('without help message', () => {
+  describe('with no help message', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = mount(
         <TestForm
           input={{
-            onChange: inputOnChange,
+            onChange: inputChange,
             value: undefined,
           }}
           meta={{ error: '', touched: false, warning: '' }}
         >
-          <TextArea
+          <AutoComplete
+            dataSource={[]}
+            handleSearch={handleSearch}
+            helpMessage=""
             input={{}}
             label="Label"
             meta={{}}
-            name="TestTextArea"
             onChange={onChange}
-            placeHolder="TextArea..."
-            style={{}}
+            onSelect={onSelect}
+            placeHolder="Auto complete"
+            style={{ backgroundColor: '#000' }}
+            value={undefined}
           />
         </TestForm>,
       );
@@ -139,31 +131,35 @@ describe('TextArea', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should not have help message', () => {
+    it('should not have help', () => {
       expect(wrapper.find('svg.customfield__help').length).toBe(0);
     });
   });
 
-  describe('no label', () => {
+  describe('with no label', () => {
     let wrapper;
 
     beforeAll(() => {
       wrapper = mount(
         <TestForm
           input={{
-            onChange: inputOnChange,
+            onChange: inputChange,
             value: undefined,
           }}
           meta={{ error: '', touched: false, warning: '' }}
         >
-          <TextArea
+          <AutoComplete
+            dataSource={[]}
+            handleSearch={handleSearch}
             helpMessage="help"
             input={{}}
+            label=""
             meta={{}}
-            name="TestTextArea"
             onChange={onChange}
-            placeHolder="TextArea..."
-            style={{}}
+            onSelect={onSelect}
+            placeHolder="Auto complete"
+            style={{ backgroundColor: '#000' }}
+            value={undefined}
           />
         </TestForm>,
       );
@@ -173,7 +169,7 @@ describe('TextArea', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should open modal on click', () => {
+    it('should open modal without label text', () => {
       InfoModal.mockClear();
       const button = wrapper.find('.customfield__help').first();
       button.simulate('click');
@@ -188,21 +184,23 @@ describe('TextArea', () => {
       wrapper = mount(
         <TestForm
           input={{
-            onChange: inputOnChange,
+            change: inputChange,
             value: undefined,
           }}
           meta={{ error: 'Error message', touched: true, warning: '' }}
         >
-          <TextArea
+          <AutoComplete
+            dataSource={[]}
+            handleSearch={handleSearch}
             helpMessage="help"
             input={{}}
             label="Label"
             meta={{}}
-            name="TestTextArea"
             onChange={onChange}
-            placeHolder="TextArea..."
-            style={{}}
-            type="number"
+            onSelect={onSelect}
+            placeHolder="Auto complete"
+            style={{ backgroundColor: '#000' }}
+            value={undefined}
           />
         </TestForm>,
       );

@@ -3,9 +3,10 @@ import React from 'react';
 
 import ControlSubtraction from './fields/control-subtraction-container';
 import FillColor from './fields/fill-color';
+import KnownCriterion from './fields/known-criterion';
+import Log from './fields/log';
 import MaximumAbundance from './fields/maximum-abundance';
 import MinimumAbundance from './fields/minimum-abundance';
-import Log from './fields/log';
 import Normalization from './fields/normalization';
 import OtherAbundanceColumns from './fields/other-abundance-columns-container';
 import Output from './fields/output-circ-heatmap';
@@ -67,6 +68,7 @@ const CircHeatmapOptions = ({
       />
       <Log analysisType={analysisType} />
       <FillColor analysisType={analysisType} />
+      <KnownCriterion />
       <OtherAbundanceColumns
         abundance={abundance}
         change={change}

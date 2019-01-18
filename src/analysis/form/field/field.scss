@@ -1,7 +1,7 @@
-.CustomField-container {
+.customfield {
   display: flex;
 }
-.CustomField-formItem {
+.customfield__form-item {
   flex-grow: 1;
 }
 .customfield__help {
@@ -10,7 +10,7 @@
   margin-top: 45px;
   width: 25px;
 }
-.CustomField-switch-help {
+.customfield__switch-help {
   cursor: pointer;
   margin-left: 20px;
   margin-top: 5px;

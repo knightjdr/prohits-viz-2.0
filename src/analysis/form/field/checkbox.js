@@ -13,18 +13,23 @@ const CustomCheckbox = ({
   label,
   onChange,
   style,
-}) => (
-  <FormItem
-    {...formItemLayout}
-    label={label}
-  >
-    <Checkbox
-      checked={input.value || false}
-      onChange={(e) => { onChange(e.target.checked, input); }}
-      style={style}
-    />
-  </FormItem>
-);
+}) => {
+  const handleChange = (e) => {
+    onChange(e.target.checked, input);
+  };
+  return (
+    <FormItem
+      {...formItemLayout}
+      label={label}
+    >
+      <Checkbox
+        checked={input.value || false}
+        onChange={handleChange}
+        style={style}
+      />
+    </FormItem>
+  );
+};
 
 CustomCheckbox.defaultProps = {
   formItemLayout: {},

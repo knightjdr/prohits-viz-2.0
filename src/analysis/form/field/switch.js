@@ -18,29 +18,37 @@ const CustomSwitch = ({
   label,
   onChange,
   style,
-}) => (
-  <div className="CustomField-container">
-    <FormItem
-      {...formItemLayout}
-      label={label}
-    >
-      <Switch
-        checked={input.value || false}
-        onChange={(value) => { onChange(value, input); }}
-        style={style}
-      />
-    </FormItem>
-    {
-      helpMessage &&
-      <FontAwesomeIcon
-        className="CustomField-switch-help"
-        icon={faQuestionSquare}
-        onClick={() => { InfoModal(label || 'Help', helpMessage); }}
-        size="2x"
-      />
-    }
-  </div>
-);
+}) => {
+  const handleChange = (value) => {
+    onChange(value, input);
+  };
+  const openModal = () => {
+    InfoModal(label || 'Help', helpMessage);
+  };
+  return (
+    <div className="customfield">
+      <FormItem
+        {...formItemLayout}
+        label={label}
+      >
+        <Switch
+          checked={input.value || false}
+          onChange={handleChange}
+          style={style}
+        />
+      </FormItem>
+      {
+        helpMessage &&
+        <FontAwesomeIcon
+          className="customfield__switch-help"
+          icon={faQuestionSquare}
+          onClick={openModal}
+          size="2x"
+        />
+      }
+    </div>
+  );
+};
 
 CustomSwitch.defaultProps = {
   helpMessage: null,

@@ -6,156 +6,113 @@ import TestForm from './__mocks__/form-wrapper';
 
 const inputChange = jest.fn();
 const onChange = jest.fn();
+const onSubmit = jest.fn();
+
 const file = new File([''], 'samplefile.txt', { type: 'text/plain' });
 file.uid = 'rc-upload-sampleFile';
 
-describe('Select', () => {
-  test('Renders with inital value', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: undefined,
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const upload = wrapper.find('Upload').first();
-    expect(upload.props().fileList).toEqual([]);
-  });
+describe('Upload', () => {
+  describe('without error', () => {
+    let wrapper;
 
-  test('On change called when file added', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: [],
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const input = wrapper.find('input');
-    input.simulate('change', { target: { files: [file] } });
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  test('Can be set via input.value', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: [],
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    wrapper.setProps({
-      input: {
-        change: inputChange,
-        value: [file],
-      },
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            change: inputChange,
+            value: undefined,
+          }}
+          meta={{ error: '', touched: false, warning: '' }}
+          onSubmit={onSubmit}
+        >
+          <Upload
+            input={{}}
+            meta={{}}
+            name="TestFile"
+            onChange={onChange}
+            required
+            style={{ backgroundColor: '#000' }}
+          />
+        </TestForm>,
+      );
     });
-    const upload = wrapper.find('Upload').first();
-    expect(upload.props().fileList).toEqual([file]);
-  });
 
-  test('Submit called on button click', () => {
-    const onSubmitSpy = jest.fn();
-    const wrapper = mount(
-      <TestForm
-        input={{
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should set initial file list', () => {
+      const upload = wrapper.find('Upload').first();
+      expect(upload.props().fileList).toEqual([]);
+    });
+
+    it('should add custom style', () => {
+      const uploadStyle = wrapper.find('Button').props().style;
+      expect(uploadStyle).toHaveProperty('backgroundColor', '#000');
+    });
+
+    it('should call change when file added', () => {
+      onChange.mockClear();
+      const input = wrapper.find('input');
+      input.simulate('change', { target: { files: [file] } });
+      expect(onChange).toHaveBeenCalled();
+    });
+
+    it('should set input value via input.value prop', () => {
+      wrapper.setProps({
+        input: {
           change: inputChange,
           value: [file],
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-        onSubmit={onSubmitSpy}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const button = wrapper.find('button').at(1);
-    button.simulate('submit');
-    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
+        },
+      });
+      const upload = wrapper.find('Upload').first();
+      expect(upload.props().fileList).toEqual([file]);
+    });
+
+    it('should call submit on button click', () => {
+      onSubmit.mockClear();
+      const button = wrapper.find('button').at(1);
+      button.simulate('submit');
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+    });
   });
 
-  test('Submit error adds prop visualization queue', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: [],
-        }}
-        meta={{ error: 'Error message', touched: true, warning: '' }}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{}}
-        />
-      </TestForm>,
-    );
-    const formItem = wrapper.find('FormItem');
-    expect(formItem.props().help).toBe('Error message');
-    expect(formItem.props().validateStatus).toBe('error');
-  });
+  describe('submit error', () => {
+    let wrapper;
 
-  test('Can add custom style', () => {
-    const wrapper = mount(
-      <TestForm
-        input={{
-          change: inputChange,
-          value: [],
-        }}
-        meta={{ error: '', touched: false, warning: '' }}
-      >
-        <Upload
-          input={{}}
-          meta={{}}
-          name="TestFile"
-          onChange={onChange}
-          required
-          style={{ backgroundColor: '#000' }}
-        />
-      </TestForm>,
-    );
-    const uploadStyle = wrapper.find('Button').props().style;
-    expect(uploadStyle).toHaveProperty('backgroundColor', '#000');
+    beforeAll(() => {
+      wrapper = mount(
+        <TestForm
+          input={{
+            change: inputChange,
+            value: [],
+          }}
+          meta={{ error: 'Error message', touched: true, warning: '' }}
+        >
+          <Upload
+            input={{}}
+            meta={{}}
+            name="TestFile"
+            onChange={onChange}
+            required
+            style={{}}
+          />
+        </TestForm>,
+      );
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should have error message', () => {
+      const formItem = wrapper.find('FormItem');
+      expect(formItem.props().help).toBe('Error message');
+    });
+
+    it('should set validation status', () => {
+      const formItem = wrapper.find('FormItem');
+      expect(formItem.props().validateStatus).toBe('error');
+    });
   });
 });

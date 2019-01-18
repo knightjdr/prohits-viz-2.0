@@ -25,6 +25,11 @@ const InfoDotplot = {
     field. If you are applying multiple transformations to your data, control subtraction
     will always occur first (before readout length normalization, condition normalization
     and log transformation).`,
+  knownCriterion: `Circular heat maps can have an indicator displaying which of the readouts was
+    previously known, for example which where previously known interactions for the
+    condition they were found in. Select what known criterion you would like to evaluate
+    against here. Currently it only supports interactions but additional options will be
+    added in the future. You can unselect an option if you do not wish to include this feature.`,
   log: `If desired, abundance values can be log-transformed by base 2, e or base 10.
     If you are applying multiple transformations to your data, log transformation will
     always occur last (after control subtraction, readout length normalization and condition
@@ -84,5 +89,7 @@ const InfoDotplot = {
   scoreType: `The score type defines how the scoring system in the
     input file works, i.e. are smaller scores better that large scores, or
     vice versa?`,
+  species: `The species to use for evaluating whether a readout is "known"
+    according to the criterion used.`,
 };
 export default InfoDotplot;

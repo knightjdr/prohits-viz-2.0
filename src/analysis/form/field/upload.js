@@ -24,6 +24,10 @@ const CustomUpload = ({
   onChange,
   style,
 }) => {
+  const handleChange = (value) => {
+    onChange(value, input);
+  };
+
   const { error, touched } = meta;
   const formError = touched && error;
   return (
@@ -34,7 +38,7 @@ const CustomUpload = ({
     >
       <Upload
         fileList={input.value || []}
-        onChange={(value) => { onChange(value, input); }}
+        onChange={handleChange}
         {...config}
       >
         <Button

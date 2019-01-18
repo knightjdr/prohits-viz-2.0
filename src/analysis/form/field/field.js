@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
 
+import CustomAutoComplete from './auto-complete-container';
 import CustomCheckbox from './checkbox';
 import CustomInput from './input';
 import CustomSelect from './select';
@@ -14,6 +15,7 @@ import CustomUpload from './upload';
 
 export const WrappedField = ({
   allowClear,
+  dataSource,
   field,
   formItemLayout,
   helpMessage,
@@ -29,6 +31,19 @@ export const WrappedField = ({
 }) => {
   const { input, meta } = field;
   switch (type) {
+    case 'autocomplete':
+      return (
+        <CustomAutoComplete
+          dataSource={dataSource}
+          helpMessage={helpMessage}
+          input={input}
+          label={label}
+          meta={meta}
+          onChange={onChange}
+          placeHolder={placeHolder}
+          style={style}
+        />
+      );
     case 'checkbox':
       return (
         <CustomCheckbox

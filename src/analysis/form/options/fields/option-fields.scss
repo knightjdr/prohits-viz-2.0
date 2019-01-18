@@ -20,3 +20,30 @@
 .form__option-cs-select {
   flex-grow: 1;
 }
+.form__option-tf {
+  display: flex;
+}
+.form__option-tf > :first-child {
+  margin-right: 10px;
+}
+.form__option-tf > :last-child {
+  margin-left: 10px;
+}
+.form__option-tf > * {
+  flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+  .form__option-tf {
+    flex-direction: column;
+  }
+  .form__option-tf > :first-child {
+    margin-right: 0;
+  }
+  .form__option-tf > :last-child {
+    margin-left: 0;
+  }
+  .form__option-tf > * {
+    width: 100%;
+  }
+}

@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import CustomField, { WrappedField } from './field';
 
+jest.mock('./auto-complete-container');
 jest.mock('./checkbox');
 jest.mock('./input');
 jest.mock('./select');
@@ -19,6 +20,7 @@ const field = {
 };
 const options = {
   allowClear: false,
+  dataSource: [],
   field,
   formItemLayout: {},
   helpMessage: 'test help',
@@ -34,6 +36,38 @@ const options = {
 };
 
 describe('Field', () => {
+  describe('auto complete', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = WrappedField({ ...options, ...{ type: 'autocomplete' } });
+    });
+
+    it('should have autocomplete class', () => {
+      expect(wrapper.type().props.className).toBe('autocomplete');
+    });
+
+    it('should have dataSource', () => {
+      expect(Object.keys(wrapper.props).includes('dataSource')).toBeTruthy();
+    });
+
+    it('should have input', () => {
+      expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
+    });
+
+    it('should have label', () => {
+      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    });
+
+    it('should have onChange', () => {
+      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
+    });
+
+    it('should have style', () => {
+      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    });
+  });
+
   describe('checkbox', () => {
     let wrapper;
 
@@ -287,6 +321,16 @@ describe('Field', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should wrap autocomplete with field', () => {
+    const wrapper = shallow(
+      <CustomField
+        name="TestAutoComplete"
+        type="autocomplete"
+      />,
+    );
+    expect(wrapper.props().component(field).type().props.className).toBe('autocomplete');
   });
 
   it('should wrap checkbox with field', () => {

@@ -1,35 +1,36 @@
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Form, Input } from 'antd';
+import { AutoComplete, Form } from 'antd';
 import { faQuestionSquare } from '@fortawesome/pro-solid-svg-icons';
 
 import InfoModal from './info-modal';
-import UndefinedIfNotSet from '../../../helpers/undefined-if-not-set';
 
 import './field.css';
 
-const { TextArea } = Input;
-
-/* text area wrapped in Ant design's <FormItem>, whose initial state will
+/* auto complete wrapped in Ant design's <FormItem>, whose initial state will
 ** be set from the redux store's 'input' */
 
 const FormItem = Form.Item;
 
-const CustomInput = ({
+const CustomAutoComplete = ({
+  dataSource,
+  handleSearch,
   helpMessage,
   input,
   label,
   meta,
   onChange,
+  onSelect,
   placeHolder,
-  rows,
   style,
+  value,
 }) => {
-  const handleBlur = (value) => {
-    if (value !== input.value) {
-      onChange(value, input);
-    }
+  const handleSelect = (selectedValue) => {
+    onSelect(selectedValue, input);
+  };
+  const onBlur = () => {
+    onSelect(value, input);
   };
   const openModal = () => {
     InfoModal(label || 'Help', helpMessage);
@@ -37,8 +38,7 @@ const CustomInput = ({
 
   const { error, touched } = meta;
   const formError = touched && error;
-  // the next condition is to allow input values of 0
-  const defaultValue = UndefinedIfNotSet(input.value);
+
   return (
     <div className="customfield">
       <FormItem
@@ -47,12 +47,15 @@ const CustomInput = ({
         help={formError ? error : ''}
         validateStatus={formError ? 'error' : ''}
       >
-        <TextArea
-          defaultValue={defaultValue}
-          onBlur={handleBlur}
+        <AutoComplete
+          dataSource={dataSource}
+          onBlur={onBlur}
+          onChange={onChange}
+          onSelect={handleSelect}
+          onSearch={handleSearch}
           placeholder={placeHolder}
-          rows={rows}
           style={style}
+          value={value}
         />
       </FormItem>
       {
@@ -68,15 +71,17 @@ const CustomInput = ({
   );
 };
 
-CustomInput.defaultProps = {
+CustomAutoComplete.defaultProps = {
   helpMessage: null,
   label: null,
-  placeHolder: 'Select',
-  rows: 5,
-  style: {},
+  value: undefined,
 };
 
-CustomInput.propTypes = {
+CustomAutoComplete.propTypes = {
+  dataSource: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+  handleSearch: PropTypes.func.isRequired,
   helpMessage: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.string,
@@ -95,9 +100,10 @@ CustomInput.propTypes = {
     warning: PropTypes.string,
   }).isRequired,
   onChange: PropTypes.func.isRequired,
-  placeHolder: PropTypes.string,
-  rows: PropTypes.number,
-  style: PropTypes.shape({}),
+  onSelect: PropTypes.func.isRequired,
+  placeHolder: PropTypes.string.isRequired,
+  style: PropTypes.shape({}).isRequired,
+  value: PropTypes.string,
 };
 
-export default CustomInput;
+export default CustomAutoComplete;

@@ -3,6 +3,7 @@ export const values = {
     abundanceCap: 50,
     ctrlSub: true,
     fillColor: 'blueBlack',
+    knownCriterion: 'interactions',
     logBase: 'none',
     minAbundance: 0,
     normalization: 'none',

@@ -49,7 +49,7 @@ exports[`Switch with help text should match snapshot 1`] = `
         }
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
             colon={true}
@@ -175,7 +175,7 @@ exports[`Switch with help text should match snapshot 1`] = `
           </FormItem>
           <FontAwesomeIcon$1
             border={false}
-            className="CustomField-switch-help"
+            className="customfield__switch-help"
             fixedWidth={false}
             flip={null}
             icon={
@@ -205,7 +205,7 @@ exports[`Switch with help text should match snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="svg-inline--fa fa-question-square fa-w-14 fa-2x CustomField-switch-help"
+              className="svg-inline--fa fa-question-square fa-w-14 fa-2x customfield__switch-help"
               data-icon="question-square"
               data-prefix="fas"
               onClick={[Function]}
@@ -276,7 +276,7 @@ exports[`Switch without help text should match snapshot 1`] = `
         style={Object {}}
       >
         <div
-          className="CustomField-container"
+          className="customfield"
         >
           <FormItem
             colon={true}

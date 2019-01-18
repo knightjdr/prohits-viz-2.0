@@ -91,14 +91,14 @@ describe('Select', () => {
       onChange.mockClear();
       const select = wrapper.find('Select').first();
       select.props().onChange();
-      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalled();
     });
 
     it('should call submit on button click', () => {
       onSubmit.mockClear();
       const button = wrapper.find('button');
       button.simulate('submit');
-      expect(onSubmit).toHaveBeenCalledTimes(1);
+      expect(onSubmit).toHaveBeenCalled();
     });
   });
 

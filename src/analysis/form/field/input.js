@@ -24,27 +24,34 @@ const CustomInput = ({
   style,
   type,
 }) => {
+  const handleBlur = (e) => {
+    if (e.target.value !== input.value) {
+      onChange(e.target.value, input);
+    }
+  };
+  const handleEnter = (e) => {
+    onChange(e.target.value, input);
+  };
+  const openModal = () => {
+    InfoModal(label || 'Help', helpMessage);
+  };
+
   const { error, touched } = meta;
   const formError = touched && error;
   // the next condition is to allow input values of 0
   const defaultValue = UndefinedIfNotSet(input.value);
   return (
-    <div className="CustomField-container">
+    <div className="customfield">
       <FormItem
-        className="CustomField-formItem"
+        className="customfield__form-item"
         label={label}
         help={formError ? error : ''}
         validateStatus={formError ? 'error' : ''}
       >
         <Input
           defaultValue={defaultValue}
-          onMouseLeave={(e) => {
-            // if user changed input then update
-            if (e.target.value !== input.value) {
-              onChange(e.target.value, input);
-            }
-          }}
-          onPressEnter={(e) => { onChange(e.target.value, input); }}
+          onBlur={handleBlur}
+          onPressEnter={handleEnter}
           placeholder={placeHolder}
           style={style}
           type={type}
@@ -55,7 +62,7 @@ const CustomInput = ({
         <FontAwesomeIcon
           className="customfield__help"
           icon={faQuestionSquare}
-          onClick={() => { InfoModal(label || 'Help', helpMessage); }}
+          onClick={openModal}
           size="2x"
         />
       }
