@@ -206,13 +206,13 @@ describe('Input', () => {
           <Input
             helpMessage="help"
             input={{}}
+            inputType="number"
             label="Label"
             meta={{}}
             name="TestInput"
             onChange={onChange}
             placeHolder="Input..."
             style={{}}
-            type="number"
           />
         </TestForm>,
       );
@@ -243,13 +243,13 @@ describe('Input', () => {
           <Input
             helpMessage="help"
             input={{}}
+            inputType="number"
             label="Label"
             meta={{}}
             name="TestInput"
             onChange={onChange}
             placeHolder="Input..."
             style={{}}
-            type="number"
           />
         </TestForm>,
       );

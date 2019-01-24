@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Circ-heatmap options should match snapshot 1`] = `
+<div>
+  <ScoreTypeContainer
+    analysisType="test"
+    change={[Function]}
+    score="test"
+    scoreType="lte"
+  />
+  <PrimaryFilterContainer
+    analysisType="test"
+    change={[Function]}
+    fileType="saint"
+    score="test"
+  />
+  <MinimumAbundance
+    analysisType="test"
+  />
+  <MaximumAbundance
+    analysisType="test"
+  />
+  <ControlSubtractionContainer
+    analysisType="test"
+    change={[Function]}
+    control="test"
+    ctrlSub={true}
+    header={
+      Array [
+        "a",
+        "b",
+      ]
+    }
+  />
+  <ReadoutLengthNormalizationContainer
+    analysisType="test"
+    change={[Function]}
+    header={
+      Array [
+        "a",
+        "b",
+      ]
+    }
+    readoutLength="test"
+    readoutLengthNorm={false}
+  />
+  <Normalization
+    analysisType="test"
+    normalization="none"
+  />
+  <Log
+    analysisType="test"
+  />
+  <FillColor
+    analysisType="test"
+  />
+  <KnownCriterionContainer
+    disableSpecies={false}
+  />
+  <Tissue
+    disableTissues={false}
+  />
+  <OtherAbundanceColumnsContainer
+    abundance="test"
+    change={[Function]}
+    header={
+      Array [
+        "a",
+        "b",
+      ]
+    }
+    otherAbundance={Array []}
+  />
+  <Output />
+</div>
+`;

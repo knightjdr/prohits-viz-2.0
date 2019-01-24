@@ -16,6 +16,7 @@ const { OptGroup, Option } = Select;
 
 const CustomSelect = ({
   allowClear,
+  disabled,
   helpMessage,
   input,
   label,
@@ -45,6 +46,7 @@ const CustomSelect = ({
       >
         <Select
           allowClear={allowClear}
+          disabled={disabled}
           autoClearSearchValue={false}
           mode={multiple ? 'multiple' : 'default'}
           onChange={handleChange}
@@ -104,6 +106,7 @@ const CustomSelect = ({
 
 CustomSelect.defaultProps = {
   allowClear: false,
+  disabled: false,
   helpMessage: null,
   label: null,
   multiple: false,
@@ -114,6 +117,7 @@ CustomSelect.defaultProps = {
 
 CustomSelect.propTypes = {
   allowClear: PropTypes.bool,
+  disabled: PropTypes.bool,
   helpMessage: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.string,

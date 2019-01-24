@@ -5,6 +5,8 @@ const convertToForm = obj => (
       value.forEach((item) => {
         form.append('file', item.originFileObj);
       });
+    } else if (Array.isArray(value)) {
+      form.append(key, JSON.stringify(value));
     } else {
       form.append(key, value);
     }

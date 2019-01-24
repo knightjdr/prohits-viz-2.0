@@ -1,6 +1,7 @@
 import convertToForm from './convert-to-form';
 
 const obj = {
+  arr: ['a', 'b'],
   field1: 'value1',
   field2: 'value2',
   file: ['file1', 'file2'],

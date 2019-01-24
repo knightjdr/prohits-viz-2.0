@@ -13,6 +13,7 @@ import Output from './fields/output-circ-heatmap';
 import ReadoutLengthNormalization from './fields/readout-length-normalization-container';
 import PrimaryFilter from './fields/primary-filter-container';
 import ScoreType from './fields/score-type-container';
+import Tissue from './fields/tissue';
 
 const CircHeatmapOptions = ({
   change,
@@ -32,6 +33,7 @@ const CircHeatmapOptions = ({
     readoutLengthNorm,
     score,
     scoreType,
+    tissueExpression,
   } = form;
   const dotplotElement = (
     <div>
@@ -70,6 +72,7 @@ const CircHeatmapOptions = ({
       <Log analysisType={analysisType} />
       <FillColor analysisType={analysisType} />
       <KnownCriterion disableSpecies={!knownCriterion} />
+      <Tissue disableTissues={!tissueExpression} />
       <OtherAbundanceColumns
         abundance={abundance}
         change={change}
@@ -87,7 +90,21 @@ const CircHeatmapOptions = ({
 CircHeatmapOptions.propTypes = {
   change: PropTypes.func.isRequired,
   form: PropTypes.shape({
+    abundance: PropTypes.string,
     analysisType: PropTypes.string,
+    control: PropTypes.string,
+    ctrlSub: PropTypes.bool,
+    fileType: PropTypes.string,
+    knownCriterion: PropTypes.string,
+    normalization: PropTypes.string,
+    otherAbundance: PropTypes.arrayOf(
+      PropTypes.string,
+    ),
+    readoutLength: PropTypes.string,
+    readoutLengthNorm: PropTypes.bool,
+    score: PropTypes.string,
+    scoreType: PropTypes.string,
+    tissueExpression: PropTypes.bool,
   }).isRequired,
   header: PropTypes.arrayOf(
     PropTypes.string,

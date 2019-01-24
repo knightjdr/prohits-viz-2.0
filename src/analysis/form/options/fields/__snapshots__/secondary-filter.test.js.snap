@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SecondaryFilter Renders 1`] = `
+exports[`SecondaryFilter should match snapshot 1`] = `
 <CustomField
   helpMessage="Readouts that do no pass the primary score filter but
     pass this secondary filter will be marked with an intermediate intensity

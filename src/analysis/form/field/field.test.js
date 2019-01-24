@@ -19,21 +19,8 @@ const field = {
   },
 };
 const options = {
-  allowClear: false,
-  dataSource: [],
-  disabled: false,
   field,
-  formItemLayout: {},
-  helpMessage: 'test help',
-  inputType: 'number',
-  label: 'TestField',
-  name: 'TestField',
-  onChange: jest.fn(),
-  options: [],
-  placeHolder: 'Test...',
-  required: false,
-  rows: 5,
-  style: {},
+  otherProp: true,
 };
 
 describe('Field', () => {
@@ -48,28 +35,16 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('autocomplete');
     });
 
-    it('should have dataSource', () => {
-      expect(Object.keys(wrapper.props).includes('dataSource')).toBeTruthy();
-    });
-
-    it('should have disabled', () => {
-      expect(Object.keys(wrapper.props).includes('disabled')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
+    it('should have meta prop', () => {
+      expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
     });
 
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -84,24 +59,12 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('checkbox');
     });
 
-    it('should have formItemLayout', () => {
-      expect(Object.keys(wrapper.props).includes('formItemLayout')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -116,36 +79,16 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('input');
     });
 
-    it('should have helpMessage', () => {
-      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have meta', () => {
+    it('should have meta prop', () => {
       expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
     });
 
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have placeHolder', () => {
-      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
-    });
-
-    it('should have type', () => {
-      expect(Object.keys(wrapper.props).includes('type')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -160,44 +103,16 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('select');
     });
 
-    it('should have allowClear', () => {
-      expect(Object.keys(wrapper.props).includes('allowClear')).toBeTruthy();
-    });
-
-    it('should have helpMessage', () => {
-      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have meta', () => {
+    it('should have meta prop', () => {
       expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
     });
 
-    it('should have multiple', () => {
-      expect(Object.keys(wrapper.props).includes('multiple')).toBeTruthy();
-    });
-
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have options', () => {
-      expect(Object.keys(wrapper.props).includes('options')).toBeTruthy();
-    });
-
-    it('should have placeHolder', () => {
-      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -212,28 +127,12 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('switch');
     });
 
-    it('should have formItemLayout', () => {
-      expect(Object.keys(wrapper.props).includes('formItemLayout')).toBeTruthy();
-    });
-
-    it('should have helpMessage', () => {
-      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -248,36 +147,16 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('text-area');
     });
 
-    it('should have helpMessage', () => {
-      expect(Object.keys(wrapper.props).includes('helpMessage')).toBeTruthy();
-    });
-
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have meta', () => {
+    it('should have meta prop', () => {
       expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
     });
 
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have placeHolder', () => {
-      expect(Object.keys(wrapper.props).includes('placeHolder')).toBeTruthy();
-    });
-
-    it('should have rows', () => {
-      expect(Object.keys(wrapper.props).includes('rows')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 
@@ -292,24 +171,16 @@ describe('Field', () => {
       expect(wrapper.type().props.className).toBe('upload');
     });
 
-    it('should have input', () => {
+    it('should have input prop', () => {
       expect(Object.keys(wrapper.props).includes('input')).toBeTruthy();
     });
 
-    it('should have label', () => {
-      expect(Object.keys(wrapper.props).includes('label')).toBeTruthy();
-    });
-
-    it('should have meta', () => {
+    it('should have meta prop', () => {
       expect(Object.keys(wrapper.props).includes('meta')).toBeTruthy();
     });
 
-    it('should have onChange', () => {
-      expect(Object.keys(wrapper.props).includes('onChange')).toBeTruthy();
-    });
-
-    it('should have style', () => {
-      expect(Object.keys(wrapper.props).includes('style')).toBeTruthy();
+    it('should have other prop', () => {
+      expect(Object.keys(wrapper.props).includes('otherProp')).toBeTruthy();
     });
   });
 

@@ -92,10 +92,6 @@ CustomAutoComplete.propTypes = {
   ]),
   input: PropTypes.shape({
     onChange: PropTypes.func,
-    value: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
   }).isRequired,
   label: PropTypes.string,
   meta: PropTypes.shape({
@@ -107,7 +103,12 @@ CustomAutoComplete.propTypes = {
   onSelect: PropTypes.func.isRequired,
   placeHolder: PropTypes.string.isRequired,
   style: PropTypes.shape({}).isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default CustomAutoComplete;

@@ -1,0 +1,457 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tissue should match snapshot 1`] = `
+<div
+  className="form__option-cs"
+>
+  <div
+    className="form__option-cs-checkbox"
+  >
+    <div
+      className="form__option-cs-checkbox-label"
+    >
+      Show tissue expression:
+    </div>
+    <CustomField
+      name="tissueExpression"
+      onChange={[Function]}
+      type="switch"
+    />
+  </div>
+  <div
+    className="form__option-cs-select"
+  >
+    <CustomField
+      disabled={false}
+      helpMessage="Select the tissues you would like to display expression information
+        for on the heat map, if any."
+      label="Tissues"
+      multiple={true}
+      name="tissues"
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "children": Array [
+              Object {
+                "text": "A-431",
+                "value": "A-431",
+              },
+              Object {
+                "text": "A549",
+                "value": "A549",
+              },
+              Object {
+                "text": "AF22",
+                "value": "AF22",
+              },
+              Object {
+                "text": "AN3-CA",
+                "value": "AN3-CA",
+              },
+              Object {
+                "text": "ASC diff",
+                "value": "ASC diff",
+              },
+              Object {
+                "text": "ASC TERT1",
+                "value": "ASC TERT1",
+              },
+              Object {
+                "text": "BEWO",
+                "value": "BEWO",
+              },
+              Object {
+                "text": "BJ",
+                "value": "BJ",
+              },
+              Object {
+                "text": "BJ hTERT+",
+                "value": "BJ hTERT+",
+              },
+              Object {
+                "text": "BJ hTERT+ SV40 Large T+",
+                "value": "BJ hTERT+ SV40 Large T+",
+              },
+              Object {
+                "text": "BJ hTERT+ SV40 Large T+ RasG12V",
+                "value": "BJ hTERT+ SV40 Large T+ RasG12V",
+              },
+              Object {
+                "text": "CACO-2",
+                "value": "CACO-2",
+              },
+              Object {
+                "text": "CAPAN-2",
+                "value": "CAPAN-2",
+              },
+              Object {
+                "text": "Daudi",
+                "value": "Daudi",
+              },
+              Object {
+                "text": "EFO-21",
+                "value": "EFO-21",
+              },
+              Object {
+                "text": "fHDF/TERT166",
+                "value": "fHDF/TERT166",
+              },
+              Object {
+                "text": "HaCaT",
+                "value": "HaCaT",
+              },
+              Object {
+                "text": "HAP1",
+                "value": "HAP1",
+              },
+              Object {
+                "text": "HBEC3-KT",
+                "value": "HBEC3-KT",
+              },
+              Object {
+                "text": "HBF TERT88",
+                "value": "HBF TERT88",
+              },
+              Object {
+                "text": "HDLM-2",
+                "value": "HDLM-2",
+              },
+              Object {
+                "text": "HEK 293",
+                "value": "HEK 293",
+              },
+              Object {
+                "text": "HEL",
+                "value": "HEL",
+              },
+              Object {
+                "text": "HeLa",
+                "value": "HeLa",
+              },
+              Object {
+                "text": "Hep G2",
+                "value": "Hep G2",
+              },
+              Object {
+                "text": "HHSteC",
+                "value": "HHSteC",
+              },
+              Object {
+                "text": "HL-60",
+                "value": "HL-60",
+              },
+              Object {
+                "text": "HMC-1",
+                "value": "HMC-1",
+              },
+              Object {
+                "text": "HSkMC",
+                "value": "HSkMC",
+              },
+              Object {
+                "text": "hTCEpi",
+                "value": "hTCEpi",
+              },
+              Object {
+                "text": "hTEC/SVTERT24-B",
+                "value": "hTEC/SVTERT24-B",
+              },
+              Object {
+                "text": "hTERT-HME1",
+                "value": "hTERT-HME1",
+              },
+              Object {
+                "text": "HUVEC TERT2",
+                "value": "HUVEC TERT2",
+              },
+              Object {
+                "text": "K-562",
+                "value": "K-562",
+              },
+              Object {
+                "text": "Karpas-707",
+                "value": "Karpas-707",
+              },
+              Object {
+                "text": "LHCN-M2",
+                "value": "LHCN-M2",
+              },
+              Object {
+                "text": "MCF7",
+                "value": "MCF7",
+              },
+              Object {
+                "text": "MOLT-4",
+                "value": "MOLT-4",
+              },
+              Object {
+                "text": "NB-4",
+                "value": "NB-4",
+              },
+              Object {
+                "text": "NTERA-2",
+                "value": "NTERA-2",
+              },
+              Object {
+                "text": "PC-3",
+                "value": "PC-3",
+              },
+              Object {
+                "text": "REH",
+                "value": "REH",
+              },
+              Object {
+                "text": "RH-30",
+                "value": "RH-30",
+              },
+              Object {
+                "text": "RPMI-8226",
+                "value": "RPMI-8226",
+              },
+              Object {
+                "text": "RPTEC TERT1",
+                "value": "RPTEC TERT1",
+              },
+              Object {
+                "text": "RT4",
+                "value": "RT4",
+              },
+              Object {
+                "text": "SCLC-21H",
+                "value": "SCLC-21H",
+              },
+              Object {
+                "text": "SH-SY5Y",
+                "value": "SH-SY5Y",
+              },
+              Object {
+                "text": "SiHa",
+                "value": "SiHa",
+              },
+              Object {
+                "text": "SK-BR-3",
+                "value": "SK-BR-3",
+              },
+              Object {
+                "text": "SK-MEL-30",
+                "value": "SK-MEL-30",
+              },
+              Object {
+                "text": "T-47d",
+                "value": "T-47d",
+              },
+              Object {
+                "text": "THP-1",
+                "value": "THP-1",
+              },
+              Object {
+                "text": "TIME",
+                "value": "TIME",
+              },
+              Object {
+                "text": "U-138 MG",
+                "value": "U-138 MG",
+              },
+              Object {
+                "text": "U-2 OS",
+                "value": "U-2 OS",
+              },
+              Object {
+                "text": "U-2197",
+                "value": "U-2197",
+              },
+              Object {
+                "text": "U-251 MG",
+                "value": "U-251 MG",
+              },
+              Object {
+                "text": "U-266/70",
+                "value": "U-266/70",
+              },
+              Object {
+                "text": "U-266/84",
+                "value": "U-266/84",
+              },
+              Object {
+                "text": "U-698",
+                "value": "U-698",
+              },
+              Object {
+                "text": "U-87 MG",
+                "value": "U-87 MG",
+              },
+              Object {
+                "text": "U-937",
+                "value": "U-937",
+              },
+              Object {
+                "text": "WM-115",
+                "value": "WM-115",
+              },
+            ],
+            "group": true,
+            "text": "Cells",
+          },
+          Object {
+            "children": Array [
+              Object {
+                "text": "adipose tissue",
+                "value": "adipose tissue",
+              },
+              Object {
+                "text": "adrenal gland",
+                "value": "adrenal gland",
+              },
+              Object {
+                "text": "appendix",
+                "value": "appendix",
+              },
+              Object {
+                "text": "bone marrow",
+                "value": "bone marrow",
+              },
+              Object {
+                "text": "breast",
+                "value": "breast",
+              },
+              Object {
+                "text": "cerebral cortex",
+                "value": "cerebral cortex",
+              },
+              Object {
+                "text": "cervix, uterine",
+                "value": "cervix, uterine",
+              },
+              Object {
+                "text": "colon",
+                "value": "colon",
+              },
+              Object {
+                "text": "duodenum",
+                "value": "duodenum",
+              },
+              Object {
+                "text": "endometrium",
+                "value": "endometrium",
+              },
+              Object {
+                "text": "epididymis",
+                "value": "epididymis",
+              },
+              Object {
+                "text": "esophagus",
+                "value": "esophagus",
+              },
+              Object {
+                "text": "fallopian tube",
+                "value": "fallopian tube",
+              },
+              Object {
+                "text": "gallbladder",
+                "value": "gallbladder",
+              },
+              Object {
+                "text": "heart muscle",
+                "value": "heart muscle",
+              },
+              Object {
+                "text": "kidney",
+                "value": "kidney",
+              },
+              Object {
+                "text": "liver",
+                "value": "liver",
+              },
+              Object {
+                "text": "lung",
+                "value": "lung",
+              },
+              Object {
+                "text": "lymph node",
+                "value": "lymph node",
+              },
+              Object {
+                "text": "ovary",
+                "value": "ovary",
+              },
+              Object {
+                "text": "pancreas",
+                "value": "pancreas",
+              },
+              Object {
+                "text": "parathyroid gland",
+                "value": "parathyroid gland",
+              },
+              Object {
+                "text": "placenta",
+                "value": "placenta",
+              },
+              Object {
+                "text": "prostate",
+                "value": "prostate",
+              },
+              Object {
+                "text": "rectum",
+                "value": "rectum",
+              },
+              Object {
+                "text": "salivary gland",
+                "value": "salivary gland",
+              },
+              Object {
+                "text": "seminal vesicle",
+                "value": "seminal vesicle",
+              },
+              Object {
+                "text": "skeletal muscle",
+                "value": "skeletal muscle",
+              },
+              Object {
+                "text": "skin",
+                "value": "skin",
+              },
+              Object {
+                "text": "small intestine",
+                "value": "small intestine",
+              },
+              Object {
+                "text": "smooth muscle",
+                "value": "smooth muscle",
+              },
+              Object {
+                "text": "spleen",
+                "value": "spleen",
+              },
+              Object {
+                "text": "stomach",
+                "value": "stomach",
+              },
+              Object {
+                "text": "testis",
+                "value": "testis",
+              },
+              Object {
+                "text": "thyroid gland",
+                "value": "thyroid gland",
+              },
+              Object {
+                "text": "tonsil",
+                "value": "tonsil",
+              },
+              Object {
+                "text": "urinary bladder",
+                "value": "urinary bladder",
+              },
+            ],
+            "group": true,
+            "text": "Tissues",
+          },
+        ]
+      }
+      placeHolder="Tissues..."
+      type="select"
+    />
+  </div>
+</div>
+`;

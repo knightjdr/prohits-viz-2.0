@@ -1,13 +1,13 @@
-.Errors-container {
+.form__errors {
   background-color: rgba(211, 47, 47, 0.2);
   border: 1px solid rgba(211, 47, 47, 0.7);
   border-radius: 5px;
   margin-top: 25px;
   padding: 10px;
 }
-.Errors-content {
-  font-size: 0.9em;
-}
-.Errors-header {
+.form__errors > :first-child {
   font-weight: bold;
+}
+.form__errors > :last-child {
+  font-size: 0.9em;
 }

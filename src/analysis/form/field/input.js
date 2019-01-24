@@ -17,12 +17,12 @@ const FormItem = Form.Item;
 const CustomInput = ({
   helpMessage,
   input,
+  inputType,
   label,
   meta,
   onChange,
   placeHolder,
   style,
-  type,
 }) => {
   const handleBlur = (e) => {
     if (e.target.value !== input.value) {
@@ -54,7 +54,7 @@ const CustomInput = ({
           onPressEnter={handleEnter}
           placeholder={placeHolder}
           style={style}
-          type={type}
+          type={inputType}
         />
       </FormItem>
       {
@@ -72,10 +72,10 @@ const CustomInput = ({
 
 CustomInput.defaultProps = {
   helpMessage: null,
+  inputType: 'text',
   label: null,
   placeHolder: 'Select',
   style: {},
-  type: 'text',
 };
 
 CustomInput.propTypes = {
@@ -90,6 +90,7 @@ CustomInput.propTypes = {
       PropTypes.string,
     ]),
   }).isRequired,
+  inputType: PropTypes.string,
   label: PropTypes.string,
   meta: PropTypes.shape({
     error: PropTypes.string,
@@ -99,7 +100,6 @@ CustomInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeHolder: PropTypes.string,
   style: PropTypes.shape({}),
-  type: PropTypes.string,
 };
 
 export default CustomInput;

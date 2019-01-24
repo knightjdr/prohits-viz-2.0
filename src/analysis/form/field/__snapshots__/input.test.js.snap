@@ -35,6 +35,7 @@ exports[`Input with help message should match snapshot 1`] = `
             "value": undefined,
           }
         }
+        inputType="text"
         label="Label"
         meta={
           Object {
@@ -51,7 +52,6 @@ exports[`Input with help message should match snapshot 1`] = `
             "backgroundColor": "#000",
           }
         }
-        type="text"
       >
         <div
           className="customfield"
@@ -243,6 +243,7 @@ exports[`Input with input type should match snapshot 1`] = `
             "value": undefined,
           }
         }
+        inputType="number"
         label="Label"
         meta={
           Object {
@@ -255,7 +256,6 @@ exports[`Input with input type should match snapshot 1`] = `
         onChange={[Function]}
         placeHolder="Input..."
         style={Object {}}
-        type="number"
       >
         <div
           className="customfield"
@@ -439,6 +439,7 @@ exports[`Input with submit error should match snapshot 1`] = `
             "value": undefined,
           }
         }
+        inputType="number"
         label="Label"
         meta={
           Object {
@@ -451,7 +452,6 @@ exports[`Input with submit error should match snapshot 1`] = `
         onChange={[Function]}
         placeHolder="Input..."
         style={Object {}}
-        type="number"
       >
         <div
           className="customfield"
@@ -651,6 +651,7 @@ exports[`Input without help message should match snapshot 1`] = `
             "value": undefined,
           }
         }
+        inputType="text"
         label="Label"
         meta={
           Object {
@@ -663,7 +664,6 @@ exports[`Input without help message should match snapshot 1`] = `
         onChange={[Function]}
         placeHolder="Input..."
         style={Object {}}
-        type="text"
       >
         <div
           className="customfield"
@@ -799,6 +799,7 @@ exports[`Input without label should match snapshot 1`] = `
             "value": undefined,
           }
         }
+        inputType="text"
         label={null}
         meta={
           Object {
@@ -811,7 +812,6 @@ exports[`Input without label should match snapshot 1`] = `
         onChange={[Function]}
         placeHolder="Input..."
         style={Object {}}
-        type="text"
       >
         <div
           className="customfield"

@@ -13,6 +13,7 @@ export const values = {
     species: 'Homo sapiens',
     specificity: false,
     tissues: ['HEK 293'],
+    tissueExpression: true,
   },
   dotplot: {
     abundanceCap: 50,

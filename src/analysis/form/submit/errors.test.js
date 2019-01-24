@@ -3,14 +3,24 @@ import { shallow } from 'enzyme';
 import Errors from './errors';
 
 describe('Errors', () => {
-  test('No errors returns null', () => {
+  it('should return null with no errors', () => {
     expect(Errors({})).toBeNull();
   });
 
-  test('Errors returns an element', () => {
-    const wrapper = shallow(Errors({ test: 'error' }));
-    expect(wrapper).toMatchSnapshot();
-    const container = wrapper.find('.Errors-container');
-    expect(container.length).toBe(1);
+  describe('error present', () => {
+    let wrapper;
+
+    beforeAll(() => {
+      wrapper = shallow(Errors({ test: 'error' }));
+    });
+
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should return error wrapper', () => {
+      const container = wrapper.find('.form__errors');
+      expect(container.length).toBe(1);
+    });
   });
 });

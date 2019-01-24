@@ -1,17 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Errors Errors returns an element 1`] = `
+exports[`Errors error present should match snapshot 1`] = `
 <div
-  className="Errors-container"
+  className="form__errors"
 >
-  <div
-    className="Errors-header"
-  >
+  <div>
     Submission errors
   </div>
-  <div
-    className="Errors-content"
-  >
+  <div>
     <div
       key="test"
     >

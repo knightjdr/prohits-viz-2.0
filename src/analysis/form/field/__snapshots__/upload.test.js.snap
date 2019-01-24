@@ -166,7 +166,7 @@ exports[`Upload submit error should match snapshot 1`] = `
                                 >
                                   <input
                                     accept=""
-                                    key="rc-upload-1547846209914-4"
+                                    key="rc-upload-1548362283881-4"
                                     multiple={true}
                                     onChange={[Function]}
                                     style={
@@ -517,7 +517,7 @@ exports[`Upload without error should match snapshot 1`] = `
                                 >
                                   <input
                                     accept=""
-                                    key="rc-upload-1547846209914-1"
+                                    key="rc-upload-1548362283881-1"
                                     multiple={true}
                                     onChange={[Function]}
                                     style={

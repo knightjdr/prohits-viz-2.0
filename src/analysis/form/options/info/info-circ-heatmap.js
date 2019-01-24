@@ -91,5 +91,7 @@ const InfoDotplot = {
     vice versa?`,
   species: `The species to use for evaluating whether a readout is "known"
     according to the criterion used.`,
+  tissues: `Select the tissues you would like to display expression information
+    for on the heat map, if any.`,
 };
 export default InfoDotplot;

@@ -29,6 +29,7 @@ exports[`Select should renders with an option group 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        disabled={false}
         helpMessage={null}
         input={
           Object {
@@ -105,6 +106,7 @@ exports[`Select should renders with an option group 1`] = `
                           allowClear={true}
                           autoClearSearchValue={false}
                           choiceTransitionName="zoom"
+                          disabled={false}
                           mode="default"
                           onChange={[Function]}
                           placeholder="Select..."
@@ -130,6 +132,7 @@ exports[`Select should renders with an option group 1`] = `
                               combobox={false}
                               defaultActiveFirstOption={true}
                               defaultOpen={false}
+                              disabled={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
@@ -162,6 +165,7 @@ exports[`Select should renders with an option group 1`] = `
                               <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -223,6 +227,7 @@ exports[`Select should renders with an option group 1`] = `
                                   defaultActiveFirstOption={true}
                                   defaultPopupVisible={false}
                                   destroyPopupOnHide={false}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -402,6 +407,7 @@ exports[`Select submit error should match snapshot 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        disabled={false}
         helpMessage={null}
         input={
           Object {
@@ -472,6 +478,7 @@ exports[`Select submit error should match snapshot 1`] = `
                           allowClear={true}
                           autoClearSearchValue={false}
                           choiceTransitionName="zoom"
+                          disabled={false}
                           mode="default"
                           onChange={[Function]}
                           placeholder="Select..."
@@ -497,6 +504,7 @@ exports[`Select submit error should match snapshot 1`] = `
                               combobox={false}
                               defaultActiveFirstOption={true}
                               defaultOpen={false}
+                              disabled={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
@@ -529,6 +537,7 @@ exports[`Select submit error should match snapshot 1`] = `
                               <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -590,6 +599,7 @@ exports[`Select submit error should match snapshot 1`] = `
                                   defaultActiveFirstOption={true}
                                   defaultPopupVisible={false}
                                   destroyPopupOnHide={false}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -785,6 +795,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        disabled={false}
         helpMessage="help"
         input={
           Object {
@@ -876,6 +887,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
                           allowClear={true}
                           autoClearSearchValue={false}
                           choiceTransitionName="zoom"
+                          disabled={false}
                           mode="multiple"
                           onChange={[Function]}
                           placeholder="Select..."
@@ -905,6 +917,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
                               combobox={false}
                               defaultActiveFirstOption={true}
                               defaultOpen={false}
+                              disabled={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
@@ -941,6 +954,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
                               <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -1002,6 +1016,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
                                   defaultActiveFirstOption={true}
                                   defaultPopupVisible={false}
                                   destroyPopupOnHide={false}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -1133,6 +1148,7 @@ exports[`Select with multiple option should match snapshot 1`] = `
                                                   <input
                                                     autoComplete="off"
                                                     className="ant-select-search__field"
+                                                    disabled={false}
                                                     onChange={[Function]}
                                                     onKeyDown={[Function]}
                                                     value=""
@@ -1263,6 +1279,7 @@ exports[`Select with no help message should match snapshot 1`] = `
     >
       <CustomSelect
         allowClear={true}
+        disabled={false}
         helpMessage={null}
         input={
           Object {
@@ -1350,6 +1367,7 @@ exports[`Select with no help message should match snapshot 1`] = `
                           allowClear={true}
                           autoClearSearchValue={false}
                           choiceTransitionName="zoom"
+                          disabled={false}
                           mode="default"
                           onChange={[Function]}
                           placeholder="Select..."
@@ -1375,6 +1393,7 @@ exports[`Select with no help message should match snapshot 1`] = `
                               combobox={false}
                               defaultActiveFirstOption={true}
                               defaultOpen={false}
+                              disabled={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
@@ -1407,6 +1426,7 @@ exports[`Select with no help message should match snapshot 1`] = `
                               <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -1468,6 +1488,7 @@ exports[`Select with no help message should match snapshot 1`] = `
                                   defaultActiveFirstOption={true}
                                   defaultPopupVisible={false}
                                   destroyPopupOnHide={false}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}
@@ -1647,6 +1668,7 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
     >
       <CustomSelect
         allowClear={true}
+        disabled={false}
         helpMessage="help"
         input={
           Object {
@@ -1738,6 +1760,7 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
                           allowClear={true}
                           autoClearSearchValue={false}
                           choiceTransitionName="zoom"
+                          disabled={false}
                           mode="default"
                           onChange={[Function]}
                           placeholder="Select..."
@@ -1767,6 +1790,7 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
                               combobox={false}
                               defaultActiveFirstOption={true}
                               defaultOpen={false}
+                              disabled={false}
                               dropdownMatchSelectWidth={true}
                               dropdownMenuStyle={Object {}}
                               dropdownStyle={Object {}}
@@ -1803,6 +1827,7 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
                               <SelectTrigger
                                 combobox={false}
                                 defaultActiveFirstOption={true}
+                                disabled={false}
                                 dropdownMatchSelectWidth={true}
                                 dropdownMenuStyle={Object {}}
                                 dropdownStyle={Object {}}
@@ -1864,6 +1889,7 @@ exports[`Select with no value but with help message should match snapshot 1`] = 
                                   defaultActiveFirstOption={true}
                                   defaultPopupVisible={false}
                                   destroyPopupOnHide={false}
+                                  disabled={false}
                                   dropdownMatchSelectWidth={true}
                                   dropdownMenuStyle={Object {}}
                                   dropdownStyle={Object {}}

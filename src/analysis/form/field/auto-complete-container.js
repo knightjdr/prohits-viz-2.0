@@ -27,31 +27,16 @@ class CustomAutoCompleteContainer extends PureComponent {
     });
   }
   render() {
-    const {
-      disabled,
-      helpMessage,
-      input,
-      label,
-      meta,
-      onChange,
-      placeHolder,
-      style,
-    } = this.props;
+    const { onChange, ...otherProps } = this.props;
     const { dataSource, value } = this.state;
     return (
       <CustomAutoComplete
         dataSource={dataSource}
-        disabled={disabled}
         handleSearch={this.handleSearch}
-        helpMessage={helpMessage}
-        input={input}
-        label={label}
-        meta={meta}
         onChange={this.onChange}
         onSelect={onChange}
-        placeHolder={placeHolder}
-        style={style}
         value={value}
+        {...otherProps}
       />
     );
   }
@@ -77,6 +62,8 @@ CustomAutoCompleteContainer.propTypes = {
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.number),
+      PropTypes.arrayOf(PropTypes.string),
       PropTypes.number,
       PropTypes.string,
     ]),

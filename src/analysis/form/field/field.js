@@ -14,108 +14,64 @@ import CustomUpload from './upload';
 ** wraps it in redux form's <Field> component and Ant design's <FormItem> */
 
 export const WrappedField = ({
-  allowClear,
-  dataSource,
-  disabled,
   field,
-  formItemLayout,
-  helpMessage,
-  inputType,
-  label,
-  multiple,
-  onChange,
-  options,
-  placeHolder,
-  rows,
-  style,
   type,
+  ...otherProps
 }) => {
   const { input, meta } = field;
   switch (type) {
     case 'autocomplete':
       return (
         <CustomAutoComplete
-          dataSource={dataSource}
-          disabled={disabled}
-          helpMessage={helpMessage}
           input={input}
-          label={label}
           meta={meta}
-          onChange={onChange}
-          placeHolder={placeHolder}
-          style={style}
+          {...otherProps}
         />
       );
     case 'checkbox':
       return (
         <CustomCheckbox
-          formItemLayout={formItemLayout}
           input={input}
-          label={label}
-          onChange={onChange}
-          style={style}
+          {...otherProps}
         />
       );
     case 'input':
       return (
         <CustomInput
-          helpMessage={helpMessage}
           input={input}
-          label={label}
           meta={meta}
-          onChange={onChange}
-          placeHolder={placeHolder}
-          style={style}
-          type={inputType}
+          {...otherProps}
         />
       );
     case 'select':
       return (
         <CustomSelect
-          allowClear={allowClear}
-          helpMessage={helpMessage}
           input={input}
-          label={label}
           meta={meta}
-          multiple={Boolean(multiple)}
-          onChange={onChange}
-          options={options}
-          placeHolder={placeHolder}
-          style={style}
+          {...otherProps}
         />
       );
     case 'switch':
       return (
         <CustomSwitch
-          formItemLayout={formItemLayout}
-          helpMessage={helpMessage}
           input={input}
-          label={label}
-          onChange={onChange}
-          style={style}
+          {...otherProps}
         />
       );
     case 'textArea':
       return (
         <CustomTextArea
-          helpMessage={helpMessage}
           input={input}
-          label={label}
           meta={meta}
-          onChange={onChange}
-          placeHolder={placeHolder}
-          rows={rows}
-          style={style}
+          {...otherProps}
         />
       );
     case 'upload':
       return (
         <CustomUpload
           input={input}
-          label={label}
           meta={meta}
-          onChange={onChange}
-          style={style}
+          {...otherProps}
         />
       );
     default:

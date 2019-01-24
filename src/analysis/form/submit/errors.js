@@ -8,11 +8,11 @@ const Errors = (errors) => {
       <div key={key}>{error}</div>
     ));
     return (
-      <div className="Errors-container">
-        <div className="Errors-header">
+      <div className="form__errors">
+        <div>
           Submission errors
         </div>
-        <div className="Errors-content">
+        <div>
           {content}
         </div>
       </div>
