@@ -1,31 +1,31 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import getFile from '../helpers/get-file';
 import getTaskStatus from '../state/post/task-thunk';
+import sessionSelector from '../state/selectors/session-selector';
 import Tasks from './tasks';
 import taskSelector from '../state/selectors/task-selector';
 import { arrayShallowEqual } from '../helpers/array-shallow-equal';
 
 const txtFiles = ['error', 'log'];
 
-export class TaskContainer extends Component {
+export class TaskContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       modalContent: null,
       modalTitle: null,
       openModal: false,
+      selectedFiles: {},
     };
   }
-  componentDidMount = () => {
-    this.fetchTasks();
-  }
-  componentWillReceiveProps = (nextProps) => {
-    const { tasks } = nextProps;
-    this.updateTasks(tasks, this.props.tasks);
+  componentDidUpdate = (prevProps) => {
+    const { session, tasks } = prevProps;
+    this.fetchTasks(this.props.session, session);
+    this.updateTasks(this.props.tasks, tasks);
   }
   getError = () => {
     this.setState({
@@ -35,7 +35,12 @@ export class TaskContainer extends Component {
     });
   }
   changeFile = (task, value) => {
-    this.selectFiles[task] = value;
+    this.setState(({ selectedFiles }) => ({
+      selectedFiles: {
+        ...selectedFiles,
+        [task]: value,
+      },
+    }));
   }
   closeModal = () => {
     this.setState({
@@ -52,9 +57,14 @@ export class TaskContainer extends Component {
     };
     getFile(`task/${id}`, options);
   }
-  fetchTasks = () => {
-    const { fetchTaskStatus, id } = this.props;
-    fetchTaskStatus(id);
+  fetchTasks = (session, prevSession) => {
+    if (
+      session
+      && session !== prevSession
+    ) {
+      const { fetchTaskStatus, id } = this.props;
+      fetchTaskStatus(id);
+    }
   }
   openModal = id => (text) => {
     this.showText(text, id);
@@ -66,27 +76,29 @@ export class TaskContainer extends Component {
       openModal: true,
     });
   }
-  selectFiles = {}
   updateTasks = (tasks, prevTasks) => {
     if (
       !arrayShallowEqual(tasks.list, prevTasks.list) ||
       tasks.shouldUpdate
     ) {
-      this.fetchTasks();
+      const { fetchTaskStatus, id } = this.props;
+      fetchTaskStatus(id);
     }
   }
   viewFile = (id) => {
+    const selectedtask = this.props.tasks.status.find(task => task.id === id);
+    const selectedFile = this.state.selectedFiles[id] || selectedtask.primaryFile;
     if (
-      this.selectFiles[id] &&
-      txtFiles.includes(this.selectFiles[id])
+      selectedFile
+      && txtFiles.includes(selectedFile)
     ) {
       const options = {
         err: this.getError,
         responseType: 'text',
       };
-      getFile(`task/${id}/${this.selectFiles[id]}`, options, this.openModal(id));
-    } else if (this.selectFiles[id]) {
-      this.props.history.push(`/visualization/${id}/${this.selectFiles[id]}`);
+      getFile(`task/${id}/${selectedFile}`, options, this.openModal(id));
+    } else if (selectedFile) {
+      this.props.history.push(`/visualization/${id}/${selectedFile}`);
     }
   }
   render() {
@@ -112,6 +124,7 @@ export class TaskContainer extends Component {
         modalTitle={this.state.modalTitle}
         navbar={this.props.navbar}
         openModal={this.state.openModal}
+        selectedFiles={this.state.selectedFiles}
         tasks={tasks}
         refreshStatus={this.fetchTasks}
         viewFile={this.viewFile}
@@ -123,6 +136,7 @@ export class TaskContainer extends Component {
 TaskContainer.defaultProps = {
   id: null,
   navbar: true,
+  session: '',
 };
 
 TaskContainer.propTypes = {
@@ -132,6 +146,7 @@ TaskContainer.propTypes = {
   }).isRequired,
   id: PropTypes.string,
   navbar: PropTypes.bool,
+  session: PropTypes.string,
   tasks: PropTypes.shape({
     didError: PropTypes.bool,
     isUpdating: PropTypes.bool,
@@ -147,6 +162,7 @@ TaskContainer.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
+  session: sessionSelector(state),
   tasks: taskSelector(state),
 });
 

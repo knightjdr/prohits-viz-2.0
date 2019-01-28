@@ -37,6 +37,7 @@ describe('Task files', () => {
           downloadFolder={downloadFolder}
           files={['log.txt', 'dotplot.json']}
           id="task1"
+          primaryFile="dotplot.json"
           viewFile={viewFile}
         />,
       );
@@ -44,6 +45,10 @@ describe('Task files', () => {
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should set default value for file', () => {
+      expect(wrapper.find('Select').props().defaultValue).toBe('dotplot.json');
     });
 
     it('should call change file', () => {

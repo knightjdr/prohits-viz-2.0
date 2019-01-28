@@ -6,6 +6,7 @@ exports[`Task files with files should match snapshot 1`] = `
 >
   <Select
     choiceTransitionName="zoom"
+    defaultValue="dotplot.json"
     onChange={[Function]}
     placeholder="File..."
     prefixCls="ant-select"

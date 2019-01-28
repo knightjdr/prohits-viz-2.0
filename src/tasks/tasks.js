@@ -24,11 +24,11 @@ const Tasks = ({
   openModal,
   tasks,
   refreshStatus,
+  selectedFiles,
   viewFile,
 }) => (
   <Fragment>
     <main className="tasks">
-
       {
         error ||
         isUpdating ||
@@ -52,7 +52,7 @@ const Tasks = ({
                 width: 150,
               }}
               maxBodyWidth={700}
-              rows={format(tasks, changeFile, viewFile, downloadFolder)}
+              rows={format(tasks, changeFile, viewFile, downloadFolder, selectedFiles)}
             />
           )
       }
@@ -87,6 +87,7 @@ Tasks.propTypes = {
   modalContent: PropTypes.string,
   modalTitle: PropTypes.string,
   openModal: PropTypes.bool.isRequired,
+  selectedFiles: PropTypes.shape({}).isRequired,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({}),
   ).isRequired,

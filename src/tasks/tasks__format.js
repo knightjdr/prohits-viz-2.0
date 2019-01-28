@@ -4,7 +4,7 @@ import convertIso from '../helpers/convert-iso-date';
 import Files from './task__files';
 import status from './task__status';
 
-const format = (tasks, changeFile, viewFile, downloadFolder) => (
+const format = (tasks, changeFile, viewFile, downloadFolder, selectedFiles) => (
   tasks.map(task => ({
     analysis: {
       content: task.analysis,
@@ -19,6 +19,7 @@ const format = (tasks, changeFile, viewFile, downloadFolder) => (
           downloadFolder={downloadFolder}
           files={task.files}
           id={task.id}
+          primaryFile={selectedFiles[task.id] || task.primaryFile}
           viewFile={viewFile}
         />
       ),

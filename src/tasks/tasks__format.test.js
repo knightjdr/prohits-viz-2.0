@@ -24,6 +24,15 @@ const tasks = [
     date: new Date().toISOString(),
     files: ['log.txt', 'correlation.txt'],
     id: 'task1',
+    primaryFile: 'correlation.txt',
+    status: 'complete',
+  },
+  {
+    analysis: 'dotplot',
+    date: new Date().toISOString(),
+    files: ['log.txt', 'dotplot.txt'],
+    id: 'task3',
+    primaryFile: 'dotplot.txt',
     status: 'complete',
   },
 ];
@@ -55,6 +64,7 @@ const expectedTasks = [
           downloadFolder={downloadFile}
           files={['log.txt', 'correlation.txt']}
           id="task1"
+          primaryFile="correlation.txt"
           viewFile={viewFile}
         />
       ),
@@ -62,10 +72,29 @@ const expectedTasks = [
     id: { content: 'task1' },
     status: { content: <div className="status" /> },
   },
+  {
+    analysis: { content: 'dotplot' },
+    date: { content: 'today' },
+    files: {
+      content: (
+        <Files
+          changeFile={changeFile}
+          downloadFolder={downloadFile}
+          files={['log.txt', 'dotplot.txt']}
+          id="task3"
+          primaryFile="log.txt"
+          viewFile={viewFile}
+        />
+      ),
+    },
+    id: { content: 'task3' },
+    status: { content: <div className="status" /> },
+  },
 ];
 
 describe('Format tasks', () => {
   it('should return an array of tasks formatted for a table', () => {
-    expect(format(tasks, changeFile, viewFile, downloadFile)).toEqual(expectedTasks);
+    const selectedFiles = { task3: 'log.txt' };
+    expect(format(tasks, changeFile, viewFile, downloadFile, selectedFiles)).toEqual(expectedTasks);
   });
 });

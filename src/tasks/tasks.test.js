@@ -21,6 +21,7 @@ describe('Tasks', () => {
           modalContent="test"
           modalTitle="Test"
           openModal={false}
+          selectedFiles={{}}
           tasks={[{}]}
           refreshStatus={jest.fn()}
           viewFile={jest.fn()}
@@ -58,6 +59,7 @@ describe('Tasks', () => {
           openModal={false}
           tasks={[{}]}
           refreshStatus={jest.fn()}
+          selectedFiles={{}}
           viewFile={jest.fn()}
         />,
       );
@@ -93,6 +95,7 @@ describe('Tasks', () => {
           openModal={false}
           tasks={[{}]}
           refreshStatus={jest.fn()}
+          selectedFiles={{}}
           viewFile={jest.fn()}
         />,
       );
@@ -128,6 +131,7 @@ describe('Tasks', () => {
           openModal={false}
           tasks={[]}
           refreshStatus={jest.fn()}
+          selectedFiles={{}}
           viewFile={jest.fn()}
         />,
       );
@@ -163,6 +167,7 @@ describe('Tasks', () => {
           openModal={false}
           tasks={[{ id: 'task1' }]}
           refreshStatus={jest.fn()}
+          selectedFiles={{}}
           viewFile={jest.fn()}
         />,
       );

@@ -67,7 +67,7 @@ export const ToolSelectionComponent = ({
             name="analysisType"
             onChange={DefaultChange}
             options={[
-              { text: 'Circular heatmap', value: 'circ-heatmap' },
+              { disabled: true, text: 'Circular heatmap', value: 'circ-heatmap' },
               { disabled: true, text: 'Condition v condition', value: 'condition-condition' },
               { disabled: true, text: 'Correlation', value: 'correlation' },
               { text: 'Dot plot', value: 'dotplot' },

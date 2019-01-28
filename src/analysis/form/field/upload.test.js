@@ -37,10 +37,6 @@ describe('Upload', () => {
       );
     });
 
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
     it('should set initial file list', () => {
       const upload = wrapper.find('Upload').first();
       expect(upload.props().fileList).toEqual([]);
@@ -99,10 +95,6 @@ describe('Upload', () => {
           />
         </TestForm>,
       );
-    });
-
-    it('should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
     });
 
     it('should have error message', () => {

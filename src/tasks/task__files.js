@@ -13,15 +13,26 @@ const Files = ({
   downloadFolder,
   files,
   id,
+  primaryFile,
   viewFile,
 }) => {
   if (!files.length) {
     return '-';
   }
+  const download = () => {
+    downloadFolder(id);
+  };
+  const handleChange = (value) => {
+    changeFile(id, value);
+  };
+  const view = () => {
+    viewFile(id);
+  };
   return (
     <div className="tasks__files">
       <Select
-        onChange={(value) => { changeFile(id, value); }}
+        defaultValue={primaryFile}
+        onChange={handleChange}
         placeholder="File..."
       >
         {
@@ -37,14 +48,14 @@ const Files = ({
       </Select>
       <Button
         className="tasks__files-view"
-        onClick={() => { viewFile(id); }}
+        onClick={view}
       >
         View
       </Button>
 
       <Button
         className="tasks__files-download"
-        onClick={() => { downloadFolder(id); }}
+        onClick={download}
         type="success"
       >
         <FontAwesomeIcon icon={faDownload} />
@@ -55,6 +66,7 @@ const Files = ({
 
 Files.defaultProps = {
   files: [],
+  primaryFile: undefined,
 };
 
 Files.propTypes = {
@@ -64,6 +76,7 @@ Files.propTypes = {
     PropTypes.string,
   ),
   id: PropTypes.string.isRequired,
+  primaryFile: PropTypes.string,
   viewFile: PropTypes.func.isRequired,
 };
 

@@ -162,6 +162,7 @@ exports[`Tasks with tasks and no issues should match snapshot 1`] = `
                 downloadFolder={[Function]}
                 files={Array []}
                 id="task1"
+                primaryFile={undefined}
                 viewFile={[Function]}
         />,
             },

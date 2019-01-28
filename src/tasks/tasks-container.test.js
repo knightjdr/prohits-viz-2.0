@@ -25,35 +25,39 @@ describe('Task container', () => {
             didError: false,
             isUpdating: false,
             list: ['task1', 'task2'],
+            session: 'abcdef',
             shouldUpdate: false,
             status: [
               { id: 'task1', status: 'running' },
-              { id: 'task2', status: 'complete' },
+              { id: 'task2', primaryFile: 'dotplot', status: 'complete' },
             ],
           }}
         />,
       );
     });
 
-    it('should call fetch tasks on mount', () => {
-      expect(fetchTaskStatus).toHaveBeenCalledWith('task1');
-    });
-
-    describe('prop change', () => {
-      let spy;
+    describe('component updates from prop', () => {
+      let spyFetch;
+      let spyUpdate;
 
       afterAll(() => {
-        spy.mockRestore();
+        spyFetch.mockRestore();
+        spyUpdate.mockRestore();
       });
 
       beforeAll(() => {
-        spy = jest.spyOn(wrapper.instance(), 'updateTasks');
+        spyFetch = jest.spyOn(wrapper.instance(), 'fetchTasks');
+        spyUpdate = jest.spyOn(wrapper.instance(), 'updateTasks');
         wrapper.update();
         wrapper.setProps({});
       });
 
+      it('should call fetchTasks', () => {
+        expect(spyFetch).toHaveBeenCalled();
+      });
+
       it('should call updateTasks', () => {
-        expect(spy).toHaveBeenCalled();
+        expect(spyUpdate).toHaveBeenCalled();
       });
     });
 
@@ -77,7 +81,7 @@ describe('Task container', () => {
 
     it('should set task file to view', () => {
       wrapper.instance().changeFile('task1', 'log.txt');
-      expect(wrapper.instance().selectFiles.task1).toBe('log.txt');
+      expect(wrapper.state('selectedFiles')).toEqual({ task1: 'log.txt' });
     });
 
     describe('close modal', () => {
@@ -109,10 +113,24 @@ describe('Task container', () => {
       expect(getFile).toHaveBeenCalledWith('task/task1', expectedOptions);
     });
 
-    it('should call fetch task status', () => {
-      fetchTaskStatus.mockClear();
-      wrapper.instance().fetchTasks();
-      expect(fetchTaskStatus).toHaveBeenCalledWith('task1');
+    describe('fetch task status', () => {
+      it('should not call fetch task status when session empty', () => {
+        fetchTaskStatus.mockClear();
+        wrapper.instance().fetchTasks('', '');
+        expect(fetchTaskStatus).not.toHaveBeenCalled();
+      });
+
+      it('should not call fetch task status when session does not change', () => {
+        fetchTaskStatus.mockClear();
+        wrapper.instance().fetchTasks('abcdef', 'abcdef');
+        expect(fetchTaskStatus).not.toHaveBeenCalled();
+      });
+
+      it('should call fetch task status when session defined and changes', () => {
+        fetchTaskStatus.mockClear();
+        wrapper.instance().fetchTasks('abcdef', '');
+        expect(fetchTaskStatus).toHaveBeenCalledWith('task1');
+      });
     });
 
     describe('open modal', () => {
@@ -198,9 +216,9 @@ describe('Task container', () => {
     describe('view file', () => {
       describe('no file selected', () => {
         beforeAll(() => {
+          wrapper.setState({ selectedFiles: { task1: null } });
           getFile.mockClear();
           push.mockClear();
-          wrapper.instance().selectFiles.task1 = null;
           wrapper.instance().viewFile('task1');
         });
 
@@ -215,9 +233,9 @@ describe('Task container', () => {
 
       describe('file selected but not text file', () => {
         beforeAll(() => {
+          wrapper.setState({ selectedFiles: { task1: 'dotplot' } });
           getFile.mockClear();
           push.mockClear();
-          wrapper.instance().selectFiles.task1 = 'dotplot';
           wrapper.instance().viewFile('task1');
         });
 
@@ -232,9 +250,9 @@ describe('Task container', () => {
 
       describe('file selected and is text file', () => {
         beforeAll(() => {
+          wrapper.setState({ selectedFiles: { task1: 'log' } });
           getFile.mockClear();
           push.mockClear();
-          wrapper.instance().selectFiles.task1 = 'log';
           wrapper.instance().viewFile('task1');
         });
 
