@@ -1,6 +1,6 @@
 import isJson from '../../helpers/is-json';
 
-const validTypes = ['dotplot', 'heatmap', 'circHeatmap', 'scatter'];
+const validTypes = ['dotplot', 'heatmap', 'circ-heatmap', 'scatter'];
 
 // SelectValidate validates that an input file is JSON formatted and has the
 // necessary fields and values for the interactive viewer. If the analysis
@@ -17,7 +17,12 @@ const SelectValidate = (jsonString) => {
     };
   }
 
-  const { columns, parameters, rows } = json;
+  const {
+    availablePlots,
+    columns,
+    parameters,
+    rows,
+  } = json;
 
   // The file should have a "parameters" key that is an object.
   if (
@@ -90,6 +95,53 @@ const SelectValidate = (jsonString) => {
       return {
         err: true,
         message: 'The row data should be an array with at least a "value" key',
+      };
+    }
+  } else // Validate dotplot/heatmaps.
+  if (parameters.imageType === 'circ-heatmap') {
+    // The file should have an "availablePlots" key that is an array.
+    if (
+      !availablePlots ||
+      !Array.isArray(availablePlots)
+    ) {
+      return {
+        err: true,
+        message: 'The JSON object must have an "availablePlots" property that is an array',
+      };
+    }
+
+    // The availablePlots entries should have "name", "readouts" and "segments" props.
+    if (
+      availablePlots.length === 0
+      || !Object.prototype.hasOwnProperty.call(availablePlots[0], 'name')
+      || !Object.prototype.hasOwnProperty.call(availablePlots[0], 'readouts')
+      || !Object.prototype.hasOwnProperty.call(availablePlots[0], 'segments')
+    ) {
+      return {
+        err: true,
+        message: 'Each plot entry should have a "name", "readout" and "segment" property',
+      };
+    }
+
+    // The availablePlots readouts should be an array with at least a "name" prop for each child.
+    if (
+      !Array.isArray(availablePlots[0].readouts)
+      || !Object.prototype.hasOwnProperty.call(availablePlots[0].readouts[0], 'name')
+    ) {
+      return {
+        err: true,
+        message: 'Each readout should have a "name" property',
+      };
+    }
+
+    // The availablePlots segments should be an array with at least a "name" prop for each child.
+    if (
+      !Array.isArray(availablePlots[0].segments)
+      || !Object.prototype.hasOwnProperty.call(availablePlots[0].segments[0], 'name')
+    ) {
+      return {
+        err: true,
+        message: 'Each segment should have a "name" property',
       };
     }
   }

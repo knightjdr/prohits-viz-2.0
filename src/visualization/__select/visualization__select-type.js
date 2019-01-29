@@ -17,7 +17,7 @@ const SelectType = ({
     vizElement = <Heatmap />;
   } else if (vizType === 'dotplot') {
     vizElement = <Heatmap />;
-  } else if (vizType === 'circHeatmap') {
+  } else if (vizType === 'circ-heatmap') {
     vizElement = <CircHeatmap />;
   } else if (vizType === 'scatter') {
     vizElement = <Scatter />;

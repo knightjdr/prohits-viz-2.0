@@ -66,14 +66,14 @@ describe('Visualization control', () => {
     });
   });
 
-  describe('when vizType is circHeatmap', () => {
+  describe('when vizType is circ-heatmap', () => {
     let wrapper;
     beforeAll(() => {
       wrapper = shallow(
         <SelectType
           handleFile={jest.fn()}
           loading={false}
-          vizType="circHeatmap"
+          vizType="circ-heatmap"
         />,
       );
     });

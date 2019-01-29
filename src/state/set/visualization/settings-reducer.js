@@ -9,6 +9,7 @@ export const defaultState = {
   imageType: 'heatmap',
   invertColor: false,
   minAbundance: 0,
+  plot: 0,
   primaryFilter: 0.01,
   secondaryFilter: 0.05,
   thickness: 50,

@@ -1,7 +1,7 @@
 import { defaultState } from '../../state/set/visualization/settings-reducer';
 
 const acceptedColors = ['blueBlack', 'blueRed', 'blueYellow', 'greenBlack', 'greyscale', 'redBlack', 'yellowBlack'];
-const acceptedImageTypes = ['dotplot', 'heatmap'];
+const acceptedImageTypes = ['dotplot', 'heatmap', 'circ-heatmap'];
 
 const fillSettings = (userSettings = { current: {} }, paramsImageType) => {
   const settings = {};
@@ -15,6 +15,7 @@ const fillSettings = (userSettings = { current: {} }, paramsImageType) => {
     imageType,
     invertColor,
     minAbundance,
+    plot,
     primaryFilter,
     secondaryFilter,
     thickness,
@@ -27,6 +28,7 @@ const fillSettings = (userSettings = { current: {} }, paramsImageType) => {
   settings.fillColor = acceptedColors.includes(fillColor) ? fillColor : defaultState.fillColor;
   settings.invertColor = typeof invertColor === 'boolean' ? invertColor : defaultState.invertColor;
   settings.minAbundance = typeof minAbundance === 'number' ? minAbundance : defaultState.minAbundance;
+  settings.plot = typeof plot === 'number' ? plot : defaultState.plot;
   settings.primaryFilter = typeof primaryFilter === 'number' ? primaryFilter : defaultState.primaryFilter;
   settings.secondaryFilter = typeof secondaryFilter === 'number' ?
     secondaryFilter : defaultState.secondaryFilter;

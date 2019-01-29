@@ -1,6 +1,6 @@
 import { defaultState } from '../../state/set/visualization/params-reducer';
 
-const acceptedImageTypes = ['dotplot', 'heatmap'];
+const acceptedImageTypes = ['dotplot', 'heatmap', 'circ-heatmap'];
 const acceptedScoreTypes = ['lte', 'gte'];
 
 const fillParameters = (userParams = {}, filename) => {
