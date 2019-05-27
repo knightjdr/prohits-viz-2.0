@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Visualization control when vizType is circ-heatmap should match snapshot 1`] = `<CircHeatmap />`;
+
 exports[`Visualization control when vizType is dotplot should match snapshot 1`] = `<Heatmap />`;
 
 exports[`Visualization control when vizType is heatmap should match snapshot 1`] = `<Heatmap />`;
@@ -13,5 +15,3 @@ exports[`Visualization control when vizType is null should match snapshot 1`] = 
 `;
 
 exports[`Visualization control when vizType is scatter should match snapshot 1`] = `<ScatterContainer />`;
-
-exports[`Visualization control when vizType is circHeatmap should match snapshot 1`] = `<CircHeatmap />`;

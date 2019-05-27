@@ -31,7 +31,6 @@ exports[`ToolSelectionComponent with no selected type should match snapshot 1`] 
         options={
           Array [
             Object {
-              "disabled": true,
               "text": "Circular heatmap",
               "value": "circ-heatmap",
             },
@@ -95,7 +94,6 @@ exports[`ToolSelectionComponent with selected analysis type should match snapsho
         options={
           Array [
             Object {
-              "disabled": true,
               "text": "Circular heatmap",
               "value": "circ-heatmap",
             },
