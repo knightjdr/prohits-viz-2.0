@@ -1,4 +1,6 @@
-# ProHits-viz
+# ProHits-viz (obsolete)
+
+> Project moved to [prohits-viz-client](https://github.com/knightjdr/prohit-viz-client)
 
 Web app for visualizing protein-protein interaction data.
 

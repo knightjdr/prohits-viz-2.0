@@ -1,15 +1,15 @@
 {
   "author": "James Knight <knightjdr@gmail.com>",
   "bugs": {
-    "url": "https://github.com/knightjdr/prohits-viz-client/issues"
+    "url": "https://github.com/knightjdr/prohits-viz-client-prototype/issues"
   },
   "homepage": "https://prohits-viz.org",
   "license": "MIT",
-  "name": "prohits-viz-client",
+  "name": "prohits-viz-client-prototype",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/knightjdr/prohits-viz-client.git"
+    "url": "git+https://github.com/knightjdr/prohits-viz-client-prototype.git"
   },
   "version": "0.1.0",
   "dependencies": {
